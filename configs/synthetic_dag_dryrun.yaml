@@ -1,0 +1,41 @@
+# Dry-run config for the synthetic Assumption-DAG benchmark.
+# All methods listed here run without API calls, so this config is safe to execute
+# offline and produces the headline attribution / repair-cost numbers for Tier C.
+
+benchmark: synthetic_dag
+n_examples: 100
+seed: 0
+output_dir: outputs/synthetic_dryrun
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+    provider_name: none
+    model: ""
+    seed: 0
+  - name: self_refine
+    provider_name: none      # no-LLM fallback (passthrough); real run would use a provider
+    model: ""
+    seed: 0
+  - name: reflexion
+    provider_name: none      # idem
+    model: ""
+    seed: 0
+  - name: full_regen
+    provider_name: none
+    model: ""
+    seed: 0
+  - name: oracle_repair
+    provider_name: none
+    model: ""
+    seed: 0
+  - name: intro_specter
+    provider_name: none      # rule-based sampler — no API key required
+    model: ""
+    seed: 0
+    extra:
+      tau_abstain: 0.0
+      cost_lambda: 0.0
+      n_counterfactual_trials: 1
