@@ -30,6 +30,7 @@ from ..schemas import (
     Trajectory,
     TrajectoryStep,
     UserProfile,
+    VerifierResult,
     ViolationEvent,
 )
 from ..verifier import RuleFn
@@ -57,6 +58,11 @@ class BenchmarkExample:
     evaluator: EvaluatorFn | None = None
     rerun_fn: RerunFn | None = None
     regenerate_fn: RegenerateFn | None = None
+    # Gold violations supplied by the benchmark when an oracle detector is
+    # required. For the synthetic benchmark this is the rule-based verifier's
+    # output; for natural benchmarks it would be a human-annotated set.
+    gold_violations: list[ViolationEvent] = field(default_factory=list)
+    split: str = "all"
 
     def passthrough_rerun(self, fault_node_id: str) -> Trajectory:
         if self.rerun_fn is None:

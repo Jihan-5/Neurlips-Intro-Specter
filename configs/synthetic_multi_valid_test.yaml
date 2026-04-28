@@ -1,0 +1,32 @@
+# Tier-C synthetic, multi_valid mode, test split, 3 seeds.
+# Used for COST-EFFICIENCY metrics (Δsuccess vs full_regen, Δtokens, degradation).
+# In multi_valid mode, the fault is at a `function` node and propagates through
+# downstream compute. Multiple swap points produce a clean trajectory; the
+# system's job is to pick a *good* one under cost constraints. Earliest-fault
+# distance is the secondary attribution metric here.
+
+benchmark: synthetic_dag
+mode: multi_valid
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/synthetic_multi_valid
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+  - name: self_refine
+  - name: reflexion
+  - name: full_regen
+  - name: oracle_repair
+  - name: oracle_detector
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+  - name: intro_specter
+    extra:
+      tau_abstain: 0.0
+      cost_lambda: 0.0
+      n_counterfactual_trials: 1

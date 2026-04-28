@@ -1,0 +1,23 @@
+# Tier-C synthetic, single_fault mode, **val split**, 3 seeds.
+# Validation split — used to tune `tau_abstain` and the cost_lambda before
+# locking the test-split numbers. Final headline metrics MUST come from the
+# `test` config, not this one.
+
+benchmark: synthetic_dag
+mode: single_fault
+split: val
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/synthetic_single_fault_val
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+  - name: oracle_repair
+  - name: intro_specter
+    extra:
+      tau_abstain: 0.0
+      cost_lambda: 0.0
+      n_counterfactual_trials: 1

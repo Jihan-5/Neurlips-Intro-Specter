@@ -10,6 +10,7 @@ because they require an environment.
 from .base import BaselineResult, run_baseline
 from .direct import run_direct
 from .full_regen import run_full_regen
+from .oracle_detector import run_oracle_detector
 from .oracle_repair import run_oracle_repair
 from .reflexion import run_reflexion
 from .self_refine import run_self_refine
@@ -19,6 +20,7 @@ __all__ = [
     "run_baseline",
     "run_direct",
     "run_full_regen",
+    "run_oracle_detector",
     "run_oracle_repair",
     "run_reflexion",
     "run_self_refine",

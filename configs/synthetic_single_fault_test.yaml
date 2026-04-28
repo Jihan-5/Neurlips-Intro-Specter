@@ -1,0 +1,30 @@
+# Tier-C synthetic, single_fault mode, test split, 3 seeds.
+# Used for ATTRIBUTION metrics (top-1 / top-3 / MRR / earliest-fault distance).
+# In single_fault mode, the fault sits at a `manual` node so only swapping at
+# the actual fault node clears the violation. Top-1 attribution is meaningful.
+
+benchmark: synthetic_dag
+mode: single_fault
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/synthetic_single_fault
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+  - name: self_refine
+  - name: reflexion
+  - name: full_regen
+  - name: oracle_repair
+  - name: oracle_detector
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+  - name: intro_specter
+    extra:
+      tau_abstain: 0.0
+      cost_lambda: 0.0
+      n_counterfactual_trials: 1
