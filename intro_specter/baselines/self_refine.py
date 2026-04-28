@@ -11,7 +11,7 @@ from typing import Any
 
 from ..models import ChatProvider
 from ..prompts import SELF_REFINE_CRITIQUE_SYSTEM, self_refine_user
-from ..schemas import Trajectory, TrajectoryStep, UserProfile
+from ..schemas import Trajectory, UserProfile, coerce_trajectory_steps
 from ..verifier import HybridVerifier
 from .base import BaselineResult, register
 
@@ -55,9 +55,7 @@ def run_self_refine(
         )
         tokens_in += completion.tokens_input
         tokens_out += completion.tokens_output
-        revised_steps = [
-            TrajectoryStep.model_validate(s) for s in payload.get("revised_steps", [])
-        ]
+        revised_steps = coerce_trajectory_steps(payload.get("revised_steps", []))
         cur = Trajectory(
             task_id=cur.task_id,
             steps=revised_steps or cur.steps,

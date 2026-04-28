@@ -60,6 +60,7 @@ from .schemas import (
     Trajectory,
     TrajectoryStep,
     ViolationEvent,
+    coerce_trajectory_steps,
 )
 from .verifier import HybridVerifier
 
@@ -114,21 +115,7 @@ def _prime_initial_trajectory(
         seed=seed,
         max_tokens=2048,
     )
-    raw_steps = payload.get("steps", [])
-    steps: list[TrajectoryStep] = []
-    for raw in raw_steps:
-        try:
-            steps.append(TrajectoryStep.model_validate(raw))
-        except Exception:
-            # Tolerate flaky JSON: minimal step from text.
-            steps.append(
-                TrajectoryStep(
-                    step_id=int(raw.get("step_id", len(steps) + 1)),
-                    kind="output",  # type: ignore[arg-type]
-                    text=str(raw.get("text", raw)),
-                    reason_summary=str(raw.get("reason_summary", "")),
-                )
-            )
+    steps = coerce_trajectory_steps(payload.get("steps", []))
     final = payload.get("final_output", "")
     if not steps:
         # Fallback: synthesize a one-step trajectory from final_output.
@@ -170,12 +157,7 @@ def _llm_regenerate_fn(provider_name: str, model: str, seed: int, cache: SQLiteC
             seed=attempt_seed,
             max_tokens=2048,
         )
-        steps = []
-        for raw in payload.get("steps", []):
-            try:
-                steps.append(TrajectoryStep.model_validate(raw))
-            except Exception:
-                continue
+        steps = coerce_trajectory_steps(payload.get("steps", []))
         final = payload.get("final_output", "")
         if not steps:
             steps = [TrajectoryStep(step_id=1, kind="output", text=str(final))]  # type: ignore[arg-type]

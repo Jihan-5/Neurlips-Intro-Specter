@@ -23,6 +23,7 @@ from .schemas import (
     Trajectory,
     TrajectoryStep,
     UserProfile,
+    coerce_trajectory_steps,
 )
 
 
@@ -171,8 +172,7 @@ def rerun_downstream_subgraph_llm(
         temperature=temperature,
         seed=seed,
     )
-    new_steps_raw = payload.get("repaired_steps", [])
-    new_steps = [TrajectoryStep.model_validate(s) for s in new_steps_raw]
+    new_steps = coerce_trajectory_steps(payload.get("repaired_steps", []))
     final_output = payload.get("final_output")
     return Trajectory(
         task_id=trajectory.task_id,

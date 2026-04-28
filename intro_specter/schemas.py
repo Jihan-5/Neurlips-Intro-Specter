@@ -101,6 +101,62 @@ class Trajectory(BaseModel):
     final_output: str | None = None
 
 
+# ---------------------------------------------------------------------------
+# Tolerant parsing helpers — used everywhere we read LLM-produced JSON into
+# pydantic. Open-weight models (Llama, Qwen, DeepSeek) sometimes invent enum
+# values (e.g., kind="translation") or send wrong types (e.g., tool_input as
+# a bare string). Rather than crash a 4-hour headline run, we coerce.
+# ---------------------------------------------------------------------------
+
+_VALID_STEP_KINDS = {k.value for k in StepKind}
+
+
+def coerce_trajectory_step(raw: Any) -> TrajectoryStep:
+    """Best-effort conversion of a possibly-malformed LLM step dict into a
+    valid TrajectoryStep. Falls back to ``OUTPUT`` kind and stringifies any
+    non-dict tool_input rather than raising."""
+    if not isinstance(raw, dict):
+        return TrajectoryStep(step_id=0, kind=StepKind.OUTPUT, text=str(raw))
+    try:
+        step_id = int(raw.get("step_id", 0))
+    except (TypeError, ValueError):
+        step_id = 0
+    kind_str = str(raw.get("kind", "output")).strip().lower().replace("-", "_")
+    if kind_str not in _VALID_STEP_KINDS:
+        kind_str = StepKind.OUTPUT.value
+    text = str(raw.get("text", "") or "")
+    reason = raw.get("reason_summary")
+    reason = str(reason) if reason is not None else None
+    tool_name = raw.get("tool_name")
+    tool_name = str(tool_name) if tool_name is not None else None
+    tool_input = raw.get("tool_input")
+    if tool_input is not None and not isinstance(tool_input, dict):
+        tool_input = {"value": str(tool_input)}
+    tool_output = raw.get("tool_output")
+    tool_output = str(tool_output) if tool_output is not None else None
+    return TrajectoryStep(
+        step_id=step_id,
+        kind=StepKind(kind_str),
+        text=text,
+        reason_summary=reason,
+        tool_name=tool_name,
+        tool_input=tool_input,
+        tool_output=tool_output,
+    )
+
+
+def coerce_trajectory_steps(raw_steps: Any) -> list[TrajectoryStep]:
+    if not isinstance(raw_steps, list):
+        return []
+    out: list[TrajectoryStep] = []
+    for r in raw_steps:
+        try:
+            out.append(coerce_trajectory_step(r))
+        except Exception:
+            continue
+    return out
+
+
 class AssumptionNode(BaseModel):
     """A claim the agent relies on, with provenance and confidence.
 
