@@ -48,8 +48,16 @@ from .metrics.stats import (
 from .models import build_provider
 from .models.cache import SQLiteCache
 from .pipeline import IntroSpecterConfig, run_intro_specter
+from .prompts import DIRECT_AGENT_SYSTEM, direct_agent_user
 from .repair import CostModel
-from .schemas import CandidateScore, RunResult
+from .schemas import (
+    CandidateScore,
+    CounterfactualRepair,
+    RunResult,
+    Trajectory,
+    TrajectoryStep,
+    ViolationEvent,
+)
 from .verifier import HybridVerifier
 
 
@@ -68,6 +76,122 @@ class MethodConfig:
     extra: dict[str, Any] = field(default_factory=dict)
 
 
+# ---------------------------------------------------------------------------
+# Helpers for natural benchmarks (LLM produces the initial trajectory)
+# ---------------------------------------------------------------------------
+
+
+def _prime_initial_trajectory(
+    example: BenchmarkExample,
+    *,
+    provider_name: str,
+    model: str,
+    seed: int,
+    cache: SQLiteCache | None,
+    temperature: float = 0.0,
+) -> tuple[BenchmarkExample, int, int]:
+    """Run the agent prompt once to populate `example.trajectory`.
+
+    Returns a copy of `example` with the trajectory filled in, plus the agent
+    call's tokens. All methods sharing the same (task_id, seed) hit the
+    SQLite cache after the first call, so we pay this once per pair regardless
+    of how many methods consume it.
+    """
+    if example.trajectory.steps:
+        return example, 0, 0
+    if not provider_name or provider_name == "none":
+        return example, 0, 0
+
+    provider = build_provider(provider_name, cache=cache)
+    payload, completion = provider.complete_json(
+        system=DIRECT_AGENT_SYSTEM,
+        user=direct_agent_user(profile=example.profile.model_dump(mode="json"), task=example.task),
+        model=model,
+        temperature=temperature,
+        seed=seed,
+        max_tokens=2048,
+    )
+    raw_steps = payload.get("steps", [])
+    steps: list[TrajectoryStep] = []
+    for raw in raw_steps:
+        try:
+            steps.append(TrajectoryStep.model_validate(raw))
+        except Exception:
+            # Tolerate flaky JSON: minimal step from text.
+            steps.append(
+                TrajectoryStep(
+                    step_id=int(raw.get("step_id", len(steps) + 1)),
+                    kind="output",  # type: ignore[arg-type]
+                    text=str(raw.get("text", raw)),
+                    reason_summary=str(raw.get("reason_summary", "")),
+                )
+            )
+    final = payload.get("final_output", "")
+    if not steps:
+        # Fallback: synthesize a one-step trajectory from final_output.
+        steps = [TrajectoryStep(step_id=1, kind="output", text=str(final))]  # type: ignore[arg-type]
+    new_traj = Trajectory(task_id=example.task_id, steps=steps, final_output=str(final))
+    primed = BenchmarkExample(
+        task_id=example.task_id,
+        dataset=example.dataset,
+        profile=example.profile,
+        task=example.task,
+        trajectory=new_traj,
+        dag=example.dag,
+        gold=example.gold,
+        rules=example.rules,
+        swap_fn=example.swap_fn,
+        evaluator=example.evaluator,
+        rerun_fn=example.rerun_fn,
+        regenerate_fn=example.regenerate_fn,
+        gold_violations=example.gold_violations,
+        split=example.split,
+    )
+    return primed, completion.tokens_input, completion.tokens_output
+
+
+def _llm_regenerate_fn(provider_name: str, model: str, seed: int, cache: SQLiteCache | None):
+    """Build a regenerate_fn that calls the agent prompt with a varied seed so
+    `full_regen` actually produces a different trajectory each attempt."""
+    state = {"attempt": 0}
+
+    def regenerate(profile, task):  # type: ignore[no-untyped-def]
+        state["attempt"] += 1
+        provider = build_provider(provider_name, cache=cache)
+        attempt_seed = (seed or 0) * 7919 + state["attempt"]
+        payload, completion = provider.complete_json(
+            system=DIRECT_AGENT_SYSTEM,
+            user=direct_agent_user(profile=profile.model_dump(mode="json"), task=task),
+            model=model,
+            temperature=0.7,  # higher temp so attempts differ
+            seed=attempt_seed,
+            max_tokens=2048,
+        )
+        steps = []
+        for raw in payload.get("steps", []):
+            try:
+                steps.append(TrajectoryStep.model_validate(raw))
+            except Exception:
+                continue
+        final = payload.get("final_output", "")
+        if not steps:
+            steps = [TrajectoryStep(step_id=1, kind="output", text=str(final))]  # type: ignore[arg-type]
+        traj = Trajectory(task_id=task.get("task_id", "regen"), steps=steps, final_output=str(final))
+        return traj, completion.tokens_input, completion.tokens_output
+
+    return regenerate
+
+
+def _self_report_evaluator(repair: CounterfactualRepair, trajectory, violation: ViolationEvent) -> bool:
+    """Default evaluator for `LLMCounterfactualSampler` on natural benchmarks.
+
+    Trusts the LLM's own `expected_violation_removed` flag. Cheaper than
+    re-running the trajectory through the verifier per-candidate; the loss in
+    rigor is acknowledged in the token-accounting docs and §5 limitations.
+    """
+    return bool(repair.expected_violation_removed)
+
+
 def run_method_on_example(
     method: MethodConfig,
     example: BenchmarkExample,
@@ -78,6 +202,20 @@ def run_method_on_example(
     seed_override: int | None = None,
 ) -> RunResult:
     method_seed = seed_override if seed_override is not None else method.seed
+
+    # Prime the trajectory if the benchmark didn't ship one (natural benchmarks).
+    # All methods on the same (task_id, seed) hit the SQLite cache after the
+    # first call, so the agent prompt is paid for once per pair.
+    prime_in, prime_out = 0, 0
+    if not example.trajectory.steps and method.provider_name and method.provider_name != "none":
+        example, prime_in, prime_out = _prime_initial_trajectory(
+            example,
+            provider_name=method.provider_name,
+            model=method.model,
+            seed=method_seed,
+            cache=cache,
+            temperature=method.temperature,
+        )
 
     verifier = HybridVerifier(rules=list(example.rules))
     if verifier_provider_name and verifier_provider_name != "none":
@@ -139,12 +277,21 @@ def run_method_on_example(
             max_trials=int(method.extra.get("max_trials", 2)),
         )
     elif method.name == "full_regen":
+        regen_fn = example.regenerate_fn
+        if regen_fn is None and method.provider_name and method.provider_name != "none":
+            regen_fn = _llm_regenerate_fn(
+                provider_name=method.provider_name,
+                model=method.model,
+                seed=method_seed,
+                cache=cache,
+            )
         result = run_full_regen(
             profile=example.profile,
             task=example.task,
             trajectory=example.trajectory,
             verifier=verifier,
-            regenerate_fn=example.regenerate_fn,
+            regenerate_fn=regen_fn,
+            max_attempts=int(method.extra.get("max_attempts", 1)),
         )
     elif method.name == "oracle_repair":
         if example.gold.fault_node_id is None or example.rerun_fn is None:
@@ -194,13 +341,12 @@ def run_method_on_example(
             reexecution_provider = None
         else:
             provider = build_provider(method.provider_name, cache=cache)
-            if example.evaluator is None:
-                raise ValueError("intro_specter_llm needs an evaluator")
+            evaluator = example.evaluator if example.evaluator is not None else _self_report_evaluator
             sampler = LLMCounterfactualSampler(
                 provider=provider,
                 model=method.model,
-                evaluator=example.evaluator,
-                temperature=method.temperature,
+                evaluator=evaluator,
+                temperature=max(method.temperature, 0.5),
                 seed=method_seed,
             )
             extraction_provider = provider
@@ -216,6 +362,9 @@ def run_method_on_example(
             cost_lambda=float(method.extra.get("cost_lambda", 0.0)),
             n_counterfactual_trials=int(method.extra.get("n_counterfactual_trials", 1)),
         )
+        # On natural benchmarks the dag is empty — let the pipeline call the
+        # LLM extraction prompt and the LLM rerun prompt instead.
+        gold_dag_arg = example.dag if (example.dag is not None and example.dag.nodes) else None
         is_result = run_intro_specter(
             profile=example.profile,
             task=example.task,
@@ -223,7 +372,7 @@ def run_method_on_example(
             verifier=verifier,
             sampler=sampler,
             config=cfg,
-            gold_dag=example.dag,
+            gold_dag=gold_dag_arg,
             rerun_callable=example.rerun_fn,
         )
         repair_status = is_result.status
@@ -260,22 +409,37 @@ def run_method_on_example(
             CandidateScore.model_validate(p) for p in posterior_dump
         ],
         final_output=result.final_trajectory.final_output,
-        tokens_input=result.tokens_input,
-        tokens_output=result.tokens_output,
+        tokens_input=result.tokens_input + prime_in,
+        tokens_output=result.tokens_output + prime_out,
         latency_ms=latency_ms,
-        extra={"split": example.split, "meta_summary": _meta_summary(result.meta)},
+        extra={
+            "split": example.split,
+            "meta_summary": _meta_summary(result.meta),
+            "prime_tokens_input": prime_in,
+            "prime_tokens_output": prime_out,
+        },
     )
 
 
 def _success(result: BaselineResult, example: BenchmarkExample) -> bool:
-    """Synthetic / dataset-aware success: verifier passes AND (if a gold output
-    is provided) the final output matches it modulo whitespace."""
+    """Success contract:
+
+    * Synthetic benchmarks set both verifier rules AND ``gold.correct_final_output``
+      to the *exact* canonical string — exact-match is the right check.
+    * Natural benchmarks (PFQABench-style) embed the gold semantics inside the
+      verifier rules themselves; exact-match would be too strict against an
+      LLM's free-form prose. Verifier-passes is the right check.
+
+    We distinguish by whether the example carries a ``swap_fn`` — synthetic
+    benchmarks do, natural ones don't.
+    """
     if not result.verifier.passed:
         return False
     gold = example.gold.correct_final_output
-    if gold is None:
-        return True
-    return (result.final_trajectory.final_output or "").strip() == gold.strip()
+    is_synthetic = example.swap_fn is not None
+    if is_synthetic and gold is not None:
+        return (result.final_trajectory.final_output or "").strip() == gold.strip()
+    return True
 
 
 def _meta_summary(meta: dict[str, Any] | None) -> dict[str, Any]:

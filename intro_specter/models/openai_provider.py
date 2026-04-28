@@ -14,11 +14,14 @@ from .cache import SQLiteCache, make_key
 
 class OpenAIProvider(ChatProvider):
     name = "openai"
+    default_base_url: str | None = None
+    use_response_format_json: bool = True
 
     def __init__(
         self,
         cache: SQLiteCache | None = None,
         api_key_env: str = "OPENAI_API_KEY",
+        base_url: str | None = None,
     ) -> None:
         try:
             import openai  # noqa: F401
@@ -29,7 +32,11 @@ class OpenAIProvider(ChatProvider):
             raise ProviderError(f"{api_key_env} not set")
         from openai import OpenAI
 
-        self._client = OpenAI(api_key=api_key)
+        url = base_url or self.default_base_url
+        client_kwargs: dict[str, Any] = {"api_key": api_key}
+        if url:
+            client_kwargs["base_url"] = url
+        self._client = OpenAI(**client_kwargs)
         self._cache = cache
 
     @retry(
@@ -74,8 +81,9 @@ class OpenAIProvider(ChatProvider):
             ],
             "temperature": temperature,
             "max_tokens": max_tokens,
-            "response_format": {"type": "json_object"},
         }
+        if self.use_response_format_json:
+            kwargs["response_format"] = {"type": "json_object"}
         if seed is not None:
             kwargs["seed"] = seed
         resp = self._call(**kwargs)
