@@ -1,0 +1,34 @@
+# Tier-A headline run on TauBench-Recon, Llama 3.3 70B Turbo, 3 seeds.
+benchmark: taubench_recon
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/tier_a/taubench_llama
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+  - name: self_refine
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+  - name: reflexion
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    extra:
+      max_trials: 2
+  - name: full_regen
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    extra:
+      max_attempts: 1
+  - name: intro_specter_llm
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
