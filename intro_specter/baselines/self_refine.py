@@ -11,7 +11,7 @@ from typing import Any
 
 from ..models import ChatProvider
 from ..prompts import SELF_REFINE_CRITIQUE_SYSTEM, self_refine_user
-from ..schemas import Trajectory, UserProfile, coerce_trajectory_steps
+from ..schemas import Trajectory, UserProfile, coerce_final_output, coerce_trajectory_steps
 from ..verifier import HybridVerifier
 from .base import BaselineResult, register
 
@@ -59,7 +59,7 @@ def run_self_refine(
         cur = Trajectory(
             task_id=cur.task_id,
             steps=revised_steps or cur.steps,
-            final_output=payload.get("final_output", cur.final_output),
+            final_output=coerce_final_output(payload.get("final_output"), fallback=cur.final_output),
         )
         last_meta = {"round": r, "critique": payload.get("critique", "")}
         verdict, _ = verifier.check(

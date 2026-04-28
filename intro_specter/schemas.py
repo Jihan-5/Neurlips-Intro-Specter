@@ -157,6 +157,36 @@ def coerce_trajectory_steps(raw_steps: Any) -> list[TrajectoryStep]:
     return out
 
 
+def coerce_final_output(value: Any, fallback: str | None = None) -> str | None:
+    """Coerce an LLM-produced final_output into a string.
+
+    Handles three observed misbehaviours from Llama / DeepSeek:
+    * dict response (e.g., the agent put the whole itinerary in a dict
+      keyed by slot name) — we JSON-stringify it as a single paragraph.
+    * list response (e.g., a list of step strings) — we join with '\n'.
+    * empty string or None — we fall back to ``fallback`` so a self-refine
+      revision that drops the answer doesn't overwrite a correct prefix.
+    """
+    if value is None or value == "":
+        return fallback
+    if isinstance(value, str):
+        return value
+    if isinstance(value, list):
+        joined = "\n".join(str(x) for x in value)
+        return joined or fallback
+    if isinstance(value, dict):
+        # Render as "key: value" pairs joined by '. '. Preserves the key
+        # information for the keyword-based verifier, which scans for tokens.
+        parts = []
+        for k, v in value.items():
+            if isinstance(v, (dict, list)):
+                v = str(v)
+            parts.append(f"{k}: {v}")
+        rendered = ". ".join(parts)
+        return rendered or fallback
+    return str(value)
+
+
 class AssumptionNode(BaseModel):
     """A claim the agent relies on, with provenance and confidence.
 

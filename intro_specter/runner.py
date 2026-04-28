@@ -60,6 +60,7 @@ from .schemas import (
     Trajectory,
     TrajectoryStep,
     ViolationEvent,
+    coerce_final_output,
     coerce_trajectory_steps,
 )
 from .verifier import HybridVerifier
@@ -116,11 +117,11 @@ def _prime_initial_trajectory(
         max_tokens=2048,
     )
     steps = coerce_trajectory_steps(payload.get("steps", []))
-    final = payload.get("final_output", "")
+    final = coerce_final_output(payload.get("final_output"), fallback="") or ""
     if not steps:
         # Fallback: synthesize a one-step trajectory from final_output.
-        steps = [TrajectoryStep(step_id=1, kind="output", text=str(final))]  # type: ignore[arg-type]
-    new_traj = Trajectory(task_id=example.task_id, steps=steps, final_output=str(final))
+        steps = [TrajectoryStep(step_id=1, kind="output", text=final)]  # type: ignore[arg-type]
+    new_traj = Trajectory(task_id=example.task_id, steps=steps, final_output=final)
     primed = BenchmarkExample(
         task_id=example.task_id,
         dataset=example.dataset,
@@ -158,10 +159,10 @@ def _llm_regenerate_fn(provider_name: str, model: str, seed: int, cache: SQLiteC
             max_tokens=2048,
         )
         steps = coerce_trajectory_steps(payload.get("steps", []))
-        final = payload.get("final_output", "")
+        final = coerce_final_output(payload.get("final_output"), fallback="") or ""
         if not steps:
-            steps = [TrajectoryStep(step_id=1, kind="output", text=str(final))]  # type: ignore[arg-type]
-        traj = Trajectory(task_id=task.get("task_id", "regen"), steps=steps, final_output=str(final))
+            steps = [TrajectoryStep(step_id=1, kind="output", text=final)]  # type: ignore[arg-type]
+        traj = Trajectory(task_id=task.get("task_id", "regen"), steps=steps, final_output=final)
         return traj, completion.tokens_input, completion.tokens_output
 
     return regenerate

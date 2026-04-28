@@ -18,14 +18,18 @@ from ..prompts import (
     reflexion_reflect_user,
     reflexion_retry_user,
 )
-from ..schemas import Trajectory, UserProfile, coerce_trajectory_steps
+from ..schemas import Trajectory, UserProfile, coerce_final_output, coerce_trajectory_steps
 from ..verifier import HybridVerifier
 from .base import BaselineResult, register
 
 
 def _trajectory_from_payload(payload: dict[str, Any], task_id: str) -> Trajectory:
     steps = coerce_trajectory_steps(payload.get("steps", []))
-    return Trajectory(task_id=task_id, steps=steps, final_output=payload.get("final_output"))
+    return Trajectory(
+        task_id=task_id,
+        steps=steps,
+        final_output=coerce_final_output(payload.get("final_output")),
+    )
 
 
 def run_reflexion(
