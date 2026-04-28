@@ -1,0 +1,30 @@
+# Tiny dev run for PFQABench-Recon.
+# Goal: catch JSON-parse / adapter / runner bugs on real LLM output before any
+# headline run. ~5 examples × 1 seed × 3 methods on Llama 3.3 70B Turbo.
+# Estimated cost: <$0.10.
+
+benchmark: pfqa_recon
+split: all
+n_examples: 5            # tiny dev set just to exercise the pipeline
+seeds: [0]
+output_dir: outputs/dev_pfqa
+cache_path: cache/completions.sqlite
+verifier_provider: together
+verifier_model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+
+methods:
+  - name: direct
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+  - name: full_regen
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    extra:
+      max_attempts: 1
+  - name: intro_specter_llm
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1

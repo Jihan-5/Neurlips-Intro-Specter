@@ -37,7 +37,10 @@ from .baselines import (
 )
 from .baselines.base import BaselineResult
 from .benchmarks.base import BenchmarkExample
+from .benchmarks.pfqa_recon import PFQABenchRecon
 from .benchmarks.synthetic_dag import SyntheticDAGBenchmark
+from .benchmarks.taubench_recon import TauBenchRecon
+from .benchmarks.travelplanner_recon import TravelPlannerRecon
 from .metrics.repair import degradation_rate, delta_success_rate
 from .metrics.stats import (
     holm_bonferroni,
@@ -482,6 +485,24 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
             n_examples=spec.n_examples,
             seed=seed,
             mode=spec.mode,  # type: ignore[arg-type]
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "pfqa_recon":
+        return PFQABenchRecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "travelplanner_recon":
+        return TravelPlannerRecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "taubench_recon":
+        return TauBenchRecon(
+            n_examples=spec.n_examples,
+            seed=seed,
             split=spec.split,  # type: ignore[arg-type]
         )
     raise KeyError(f"unknown benchmark {spec.benchmark!r}")

@@ -1,0 +1,25 @@
+benchmark: taubench_recon
+split: all
+n_examples: 5
+seeds: [0]
+output_dir: outputs/dev_taubench
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+  - name: full_regen
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    extra:
+      max_attempts: 1
+  - name: intro_specter_llm
+    provider_name: together
+    model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
