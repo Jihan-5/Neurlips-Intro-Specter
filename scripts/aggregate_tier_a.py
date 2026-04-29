@@ -88,7 +88,11 @@ def _load_long(path: Path) -> pd.DataFrame | None:
     candidates = list(path.glob("*__results_long.csv"))
     if not candidates:
         return None
-    return pd.read_csv(candidates[0])
+    df = pd.read_csv(candidates[0])
+    # Dedup on (task_id, seed, method) — earlier crashes can produce duplicates.
+    if {"task_id", "seed", "method"} <= set(df.columns):
+        df = df.drop_duplicates(subset=["task_id", "seed", "method"], keep="last")
+    return df
 
 
 def main() -> int:
