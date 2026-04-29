@@ -117,7 +117,7 @@ def _prime_initial_trajectory(
         model=model,
         temperature=temperature,
         seed=seed,
-        max_tokens=4096,  # bumped to give reasoning models room for their CoT trace
+        max_tokens=8192,  # bumped further: long ALFWorld/Travel multi-step plans truncate at 4k
     )
     steps = coerce_trajectory_steps(payload.get("steps", []))
     final = coerce_final_output(payload.get("final_output"), fallback="") or ""
@@ -159,7 +159,7 @@ def _llm_regenerate_fn(provider_name: str, model: str, seed: int, cache: SQLiteC
             model=model,
             temperature=0.7,  # higher temp so attempts differ
             seed=attempt_seed,
-            max_tokens=4096,
+            max_tokens=8192,
         )
         steps = coerce_trajectory_steps(payload.get("steps", []))
         final = coerce_final_output(payload.get("final_output"), fallback="") or ""
