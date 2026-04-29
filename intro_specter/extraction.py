@@ -81,9 +81,14 @@ def _normalize_dag_payload(payload: dict[str, Any]) -> dict[str, Any]:
     """Run before `AssumptionDAG.model_validate`. Maps fuzzy LLM enum strings
     back into the schema's strict enum values. Drops malformed nodes silently
     rather than crashing the whole run."""
+    raw_final = payload.get("final_decision_node")
+    if isinstance(raw_final, dict):
+        # Llama 3.1 8B sometimes embeds the node object instead of just its id.
+        raw_final = raw_final.get("id") or raw_final.get("node_id")
+    final_str = str(raw_final) if raw_final is not None else None
     out: dict[str, Any] = {
         "task_id": payload.get("task_id", "unknown"),
-        "final_decision_node": payload.get("final_decision_node"),
+        "final_decision_node": final_str,
     }
     nodes_in = payload.get("nodes") or []
     edges_in = payload.get("edges") or []
