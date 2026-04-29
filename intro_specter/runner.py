@@ -114,7 +114,7 @@ def _prime_initial_trajectory(
         model=model,
         temperature=temperature,
         seed=seed,
-        max_tokens=2048,
+        max_tokens=4096,  # bumped to give reasoning models room for their CoT trace
     )
     steps = coerce_trajectory_steps(payload.get("steps", []))
     final = coerce_final_output(payload.get("final_output"), fallback="") or ""
@@ -156,7 +156,7 @@ def _llm_regenerate_fn(provider_name: str, model: str, seed: int, cache: SQLiteC
             model=model,
             temperature=0.7,  # higher temp so attempts differ
             seed=attempt_seed,
-            max_tokens=2048,
+            max_tokens=4096,
         )
         steps = coerce_trajectory_steps(payload.get("steps", []))
         final = coerce_final_output(payload.get("final_output"), fallback="") or ""
@@ -314,7 +314,10 @@ def run_method_on_example(
             n_counterfactual_trials=int(method.extra.get("n_counterfactual_trials", 1)),
         )
         fault_node_predicted = result.meta.get("fault_node_predicted")
-    elif method.name in {"intro_specter", "intro_specter_llm"}:
+    elif method.name.startswith("intro_specter"):
+        # Ablation-friendly: any name starting with `intro_specter_*` routes
+        # to this dispatch (one JSONL per ablation), but keeps the rule-based
+        # vs. LLM distinction by the suffix.
         if method.name == "intro_specter":
             if example.swap_fn is None or example.evaluator is None:
                 raise ValueError(
@@ -347,6 +350,12 @@ def run_method_on_example(
             tau_abstain=float(method.extra.get("tau_abstain", 0.0)),
             cost_lambda=float(method.extra.get("cost_lambda", 0.0)),
             n_counterfactual_trials=int(method.extra.get("n_counterfactual_trials", 1)),
+            # Ablation toggles surfaced through MethodConfig.extra.
+            flat_dag=bool(method.extra.get("flat_dag", False)),
+            uniform_prior=bool(method.extra.get("uniform_prior", False)),
+            skip_likelihood=bool(method.extra.get("skip_likelihood", False)),
+            disable_cost=bool(method.extra.get("disable_cost", False)),
+            use_confidence_in_prior=bool(method.extra.get("use_confidence_in_prior", True)),
         )
         # On natural benchmarks the dag is empty — let the pipeline call the
         # LLM extraction prompt and the LLM rerun prompt instead.

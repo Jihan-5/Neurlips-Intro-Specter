@@ -1,0 +1,66 @@
+# Ablation block on Mistral Nemo 12B (Intro-Specter most clearly outperforms
+# Reflexion here at +16.7% vs +3.3%). Each row disables one component of the
+# full method so we measure marginal contribution to the headline gain.
+# Each ablation gets a UNIQUE method name so the runner writes a separate
+# JSONL per ablation.
+
+benchmark: pfqa_recon
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/tier_a/ablation_mistral7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: intro_specter_llm
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+
+  - name: intro_specter_flat_dag
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      flat_dag: true
+
+  - name: intro_specter_uniform_prior
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      uniform_prior: true
+
+  - name: intro_specter_no_likelihood
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      skip_likelihood: true
+
+  - name: intro_specter_no_cost
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      disable_cost: true
+
+  - name: intro_specter_k3
+    provider_name: openrouter
+    model: mistralai/mistral-nemo
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 3

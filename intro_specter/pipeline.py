@@ -7,7 +7,7 @@ candidates = ancestors → posterior → abstain-or-repair.
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any
 
 from .attribution import (
@@ -50,6 +50,12 @@ class IntroSpecterConfig:
     cost_lambda: float = 0.0
     n_counterfactual_trials: int = 3
     provenance_weights: dict[Provenance, float] = field(default_factory=lambda: dict(DEFAULT_PROVENANCE_PRIOR))
+    # ---- Ablation toggles (all default off = full method) ----
+    flat_dag: bool = False           # drop dependency edges before attribution
+    uniform_prior: bool = False      # all candidates get equal prior (1.0)
+    skip_likelihood: bool = False    # posterior = prior only (no counterfactual sampling)
+    disable_cost: bool = False       # choose_repair_node picks argmax posterior, ignores cost
+    use_confidence_in_prior: bool = True  # multiply prior by (1 - confidence)
 
 
 @dataclass
@@ -103,6 +109,14 @@ def run_intro_specter(
         )
         meta["tokens_input"] += dag_meta.get("tokens_input", 0)
         meta["tokens_output"] += dag_meta.get("tokens_output", 0)
+    if config.flat_dag:
+        # Ablation: strip dependency edges so attribution treats candidates as siblings.
+        dag = dag.model_copy(update={"edges": []})
+        dag_meta["flat_dag_applied"] = True
+    if config.uniform_prior:
+        # Ablation: replace per-provenance weights with uniform 1.0 (no provenance bias).
+        from .schemas import Provenance as _P
+        config = replace(config, provenance_weights={p: 1.0 for p in _P})
     meta["stages"].append({"stage": "extraction", **dag_meta})
 
     # ---- Layer 2a: detection ----
@@ -130,27 +144,62 @@ def run_intro_specter(
 
     # ---- Layer 2b: posterior attribution ----
     candidates = candidate_nodes_for_violations(dag, verifier_result.violations)
-    posterior, trials = posterior_update(
-        candidates=candidates,
-        dag=dag,
-        sampler=sampler,
-        profile=profile,
-        task=task,
-        trajectory=trajectory,
-        violations=verifier_result.violations,
-        n_trials=config.n_counterfactual_trials,
-        cost_lambda=config.cost_lambda,
-        provenance_weights=config.provenance_weights,
-    )
+    if config.skip_likelihood:
+        # Ablation: prior-only posterior (no counterfactual sampling).
+        from .attribution import (
+            structural_prior as _sp,
+            DEFAULT_PROVENANCE_PRIOR as _DEF,
+        )
+        weights = config.provenance_weights or _DEF
+        priors = []
+        for c in candidates:
+            p = _sp(c, provenance_weights=weights, use_confidence=config.use_confidence_in_prior)
+            priors.append(p)
+        Z = sum(priors) or 1.0
+        from .schemas import (
+            AttributionPosterior as _AP,
+            CandidateScore as _CS,
+        )
+        ranked = [
+            _CS(node_id=c.id, prior=priors[i], likelihood=1.0,
+                cost=float(len([n for n in dag.nodes if c.id in n.depends_on]) + 1),
+                posterior=priors[i] / Z)
+            for i, c in enumerate(candidates)
+        ]
+        ranked.sort(key=lambda s: s.posterior, reverse=True)
+        posterior = _AP(
+            candidates=ranked,
+            entropy=0.0,
+            top_k=[s.node_id for s in ranked[:3]],
+        )
+        trials = []
+    else:
+        posterior, trials = posterior_update(
+            candidates=candidates,
+            dag=dag,
+            sampler=sampler,
+            profile=profile,
+            task=task,
+            trajectory=trajectory,
+            violations=verifier_result.violations,
+            n_trials=config.n_counterfactual_trials,
+            cost_lambda=config.cost_lambda,
+            provenance_weights=config.provenance_weights,
+        )
     meta["stages"].append(
         {"stage": "attribution", "n_candidates": len(candidates), "n_trials": len(trials)}
     )
 
     # ---- Layer 3: repair decision ----
+    cost_model_eff = config.cost_model
+    if config.disable_cost:
+        # Ablation: zero out cost so the selector picks argmax(posterior).
+        from .repair import CostModel as _CM
+        cost_model_eff = _CM(w_desc=0.0, w_tokens=0.0, w_corruption=0.0)
     decision = choose_repair_node(
         posterior=posterior,
         dag=dag,
-        cost_model=config.cost_model,
+        cost_model=cost_model_eff,
         tau_abstain=config.tau_abstain,
     )
     meta["stages"].append({"stage": "decision", "status": decision.status})
