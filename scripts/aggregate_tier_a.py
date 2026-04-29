@@ -64,6 +64,16 @@ TIER_A_BENCHMARKS = {
     "HotpotQA (Mistral Nemo 12B)":          "outputs/tier_b/hotpotqa_mistral_nemo",
     "HotpotQA (Qwen 2.5 7B)":               "outputs/tier_b/hotpotqa_qwen_7b",
     "HotpotQA (Gemini 2.5 Flash)":          "outputs/tier_b/hotpotqa_gemini_flash",
+    # Tier-B: ALFWorld-Recon × 4 IS-winners
+    "ALFWorld (DeepSeek V3)":               "outputs/tier_b/alfworld_deepseek_v3",
+    "ALFWorld (Mistral Nemo 12B)":          "outputs/tier_b/alfworld_mistral_nemo",
+    "ALFWorld (Qwen 2.5 7B)":               "outputs/tier_b/alfworld_qwen_7b",
+    "ALFWorld (Gemini 2.5 Flash)":          "outputs/tier_b/alfworld_gemini_flash",
+    # Tier-B: WebShop-Recon × 4 IS-winners
+    "WebShop (DeepSeek V3)":                "outputs/tier_b/webshop_deepseek_v3",
+    "WebShop (Mistral Nemo 12B)":           "outputs/tier_b/webshop_mistral_nemo",
+    "WebShop (Qwen 2.5 7B)":                "outputs/tier_b/webshop_qwen_7b",
+    "WebShop (Gemini 2.5 Flash)":           "outputs/tier_b/webshop_gemini_flash",
 }
 
 

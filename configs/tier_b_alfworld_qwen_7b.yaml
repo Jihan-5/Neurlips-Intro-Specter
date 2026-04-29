@@ -1,0 +1,15 @@
+benchmark: alfworld_recon
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/tier_b/alfworld_qwen_7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - {name: direct,            provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct}
+  - {name: self_refine,       provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct}
+  - {name: reflexion,         provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct, extra: {max_trials: 2}}
+  - {name: full_regen,        provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct, extra: {max_attempts: 1}}
+  - {name: intro_specter_llm, provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct, temperature: 0.0, extra: {tau_abstain: 0.0, n_counterfactual_trials: 1}}

@@ -37,11 +37,13 @@ from .baselines import (
 )
 from .baselines.base import BaselineResult
 from .benchmarks.base import BenchmarkExample
+from .benchmarks.alfworld_recon import ALFWorldRecon
 from .benchmarks.hotpotqa_recon import HotpotQARecon
 from .benchmarks.pfqa_recon import PFQABenchRecon
 from .benchmarks.synthetic_dag import SyntheticDAGBenchmark
 from .benchmarks.taubench_recon import TauBenchRecon
 from .benchmarks.travelplanner_recon import TravelPlannerRecon
+from .benchmarks.webshop_recon import WebShopRecon
 from .metrics.repair import degradation_rate, delta_success_rate
 from .metrics.stats import (
     holm_bonferroni,
@@ -500,6 +502,18 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
         )
     if spec.benchmark == "hotpotqa_recon":
         return HotpotQARecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "alfworld_recon":
+        return ALFWorldRecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "webshop_recon":
+        return WebShopRecon(
             n_examples=spec.n_examples,
             seed=seed,
             split=spec.split,  # type: ignore[arg-type]
