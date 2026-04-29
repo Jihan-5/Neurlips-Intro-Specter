@@ -98,7 +98,7 @@ class ChatProvider(ABC):
         model: str,
         temperature: float = 0.0,
         seed: int | None = None,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,  # bumped: long ALFWorld/Travel JSON truncates at 4k
         retries: int = 2,
     ) -> tuple[dict[str, Any], CompletionResult]:
         """Call `complete` and parse JSON. On parse failure, retry with a stricter
