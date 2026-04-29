@@ -1,0 +1,36 @@
+# PFQABench-Recon × OpenAI gpt-oss-20b (different family, smaller size).
+# Note: gpt-oss models produce internal reasoning tokens before the JSON
+# answer; default 2048-4096 max_tokens is enough headroom.
+benchmark: pfqa_recon
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/tier_a/pfqa_gptoss20b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: direct
+    provider_name: together
+    model: openai/gpt-oss-20b
+  - name: self_refine
+    provider_name: together
+    model: openai/gpt-oss-20b
+  - name: reflexion
+    provider_name: together
+    model: openai/gpt-oss-20b
+    extra:
+      max_trials: 2
+  - name: full_regen
+    provider_name: together
+    model: openai/gpt-oss-20b
+    extra:
+      max_attempts: 1
+  - name: intro_specter_llm
+    provider_name: together
+    model: openai/gpt-oss-20b
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
