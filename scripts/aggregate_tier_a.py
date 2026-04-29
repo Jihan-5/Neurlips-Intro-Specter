@@ -74,6 +74,16 @@ TIER_A_BENCHMARKS = {
     "WebShop (Mistral Nemo 12B)":           "outputs/tier_b/webshop_mistral_nemo",
     "WebShop (Qwen 2.5 7B)":                "outputs/tier_b/webshop_qwen_7b",
     "WebShop (Gemini 2.5 Flash)":           "outputs/tier_b/webshop_gemini_flash",
+    # Tier-B: MuSiQue-Recon (3-hop QA) × 4 IS-winners
+    "MuSiQue (DeepSeek V3)":                "outputs/tier_b/musique_deepseek_v3",
+    "MuSiQue (Mistral Nemo 12B)":           "outputs/tier_b/musique_mistral_nemo",
+    "MuSiQue (Qwen 2.5 7B)":                "outputs/tier_b/musique_qwen_7b",
+    "MuSiQue (Gemini 2.5 Flash)":           "outputs/tier_b/musique_gemini_flash",
+    # Tier-B: StrategyQA-Recon (implicit yes/no) × 4 IS-winners
+    "StrategyQA (DeepSeek V3)":             "outputs/tier_b/strategyqa_deepseek_v3",
+    "StrategyQA (Mistral Nemo 12B)":        "outputs/tier_b/strategyqa_mistral_nemo",
+    "StrategyQA (Qwen 2.5 7B)":             "outputs/tier_b/strategyqa_qwen_7b",
+    "StrategyQA (Gemini 2.5 Flash)":        "outputs/tier_b/strategyqa_gemini_flash",
 }
 
 

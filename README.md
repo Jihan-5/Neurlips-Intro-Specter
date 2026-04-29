@@ -46,12 +46,14 @@ across **eight LLMs spanning four training families and 7B–671B
 parameters** — 35 (model × benchmark) cells, paired-bootstrap CIs and
 Holm-Bonferroni-corrected McNemar p-values throughout.
 
-**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 11 of 34
+**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 13 of 36
 (model × benchmark) cells, spanning all five major benchmarks**:
 
 | Cell | $n$ | $\Delta$ vs Direct | Holm $p$ |
 |---|---|---|---|
-| ALFWorld × Gemini 2.5 Flash | 45 | **+24.4%** | **0.006** |
+| ALFWorld × Gemini 2.5 Flash | 60 | **+30.0%** | **0.0002** |
+| ALFWorld × Mistral Nemo 12B | 60 | **+25.0%** | **0.001** |
+| ALFWorld × Qwen 2.5 7B | 60 | **+21.7%** | **0.003** |
 | PFQABench × Qwen 2.5 7B | 60 | **+20.0%** | **0.002** |
 | HotpotQA × Qwen 2.5 7B | 40 | **+20.0%** | **0.023** |
 | TravelPlanner+ × DeepSeek V3.1 | 93 | **+19.4%** | **0.004** |
@@ -60,15 +62,16 @@ Holm-Bonferroni-corrected McNemar p-values throughout.
 | HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
 | PFQABench × Gemini 2.5 Flash | 60 | **+15.0%** | **0.023** |
 | TauBench × Qwen 2.5 7B | 60 | **+15.0%** | **0.023** |
+| TravelPlanner+ × DeepSeek V3 | 60 | **+13.3%** | **0.023** |
 | PFQABench × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
 
 **Head-to-head against Reflexion** (the strongest published self-correction
 baseline) on the same paired (task, seed) trials: Intro-Specter
-strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 36 cells**:
+strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 37 cells**:
 
 | Cell | IS | Reflexion | $\Delta$ | $p$ |
 |---|---|---|---|---|
-| ALFWorld × Mistral Nemo 12B | 90.0% | 60.0% | +30.0% | 0.031 |
+| ALFWorld × Mistral Nemo 12B | 83.3% | 58.3% | +25.0% | 0.0003 |
 | PFQABench × Qwen 2.5 7B | 75.0% | 58.3% | +16.7% | 0.002 |
 | TravelPlanner+ × DeepSeek V3.1 | 80.0% | 65.0% | +15.0% | 0.023 |
 | PFQABench × Mistral Nemo 12B | 90.0% | 76.7% | +13.3% | 0.022 |
