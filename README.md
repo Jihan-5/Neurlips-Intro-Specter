@@ -39,39 +39,62 @@ than re-rolling forward.
 ## Headline result
 
 We evaluate against four self-correction baselines (Self-Refine,
-Reflexion, Full-Regen, and oracle controls) on a reconstructed
-personalized-QA benchmark across **eight LLMs spanning four
-training families and 7B–671B parameters**.
+Reflexion, Full-Regen, plus oracle controls on synthetic Tier-C) on
+**six benchmarks** (PFQABench-Recon, HotpotQA + 2WikiMultiHopQA Recon,
+TauBench-Recon, TravelPlanner+ Recon, ALFWorld-Recon, WebShop-Recon)
+across **eight LLMs spanning four training families and 7B–671B
+parameters** — 35 (model × benchmark) cells, paired-bootstrap CIs and
+Holm-Bonferroni-corrected McNemar p-values throughout.
 
-**Intro-Specter is Holm-Bonferroni-significant on 4 of 4
-instruction-tuned chat models tested**, across four independent
-training families:
+**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 10 of 34
+(model × benchmark) cells, spanning all five major benchmarks**:
 
-| Model | Family | Size | Direct | **Intro-Specter Δ** | Holm $p$ |
-|---|---|---|---|---|---|
-| Mistral Nemo 12B | Mistral | 12B | 73.3% | **+16.7%** | **0.012** |
-| Qwen 2.5 7B | Alibaba | 7B | 55.0% | **+20.0%** | **0.004** |
-| DeepSeek V3 | DeepSeek | 671B MoE | 75.0% | **+13.3%** | **0.047** |
-| Gemini 2.5 Flash | Google | proprietary | 45.0% | **+15.0%** | **0.023** |
-| Llama 3.3 70B (no-headroom control) | Meta | 70B | 96.7% | +1.7% | 1.00 |
+| Cell | $n$ | $\Delta$ vs Direct | Holm $p$ |
+|---|---|---|---|
+| ALFWorld × Gemini 2.5 Flash | 45 | **+24.4%** | **0.006** |
+| PFQABench × Qwen 2.5 7B | 60 | **+20.0%** | **0.002** |
+| HotpotQA × Qwen 2.5 7B | 40 | **+20.0%** | **0.023** |
+| TravelPlanner+ × DeepSeek V3.1 | 93 | **+19.4%** | **0.004** |
+| HotpotQA × Gemini 2.5 Flash | 60 | **+18.3%** | **0.006** |
+| PFQABench × Mistral Nemo 12B | 60 | **+16.7%** | **0.012** |
+| HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
+| PFQABench × Gemini 2.5 Flash | 60 | **+15.0%** | **0.023** |
+| TauBench × Qwen 2.5 7B | 60 | **+15.0%** | **0.023** |
+| PFQABench × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
 
-All numbers are mean across 60 paired (task, seed) trials, 95% paired
-bootstrap CIs computed on Δsuccess vs. Direct, and McNemar p-values
-adjusted across the (method × metric) family.
+**Head-to-head against Reflexion** (the strongest published self-correction
+baseline) on the same paired (task, seed) trials: Intro-Specter
+strictly beats Reflexion at McNemar $p < 0.05$ on **4 of 35 cells**:
+
+| Cell | IS | Reflexion | $\Delta$ | $p$ |
+|---|---|---|---|---|
+| ALFWorld × Mistral Nemo 12B | 90.0% | 60.0% | +30.0% | 0.031 |
+| PFQABench × Qwen 2.5 7B | 75.0% | 58.3% | +16.7% | 0.002 |
+| TravelPlanner+ × DeepSeek V3.1 | 80.0% | 65.0% | +15.0% | 0.023 |
+| PFQABench × Mistral Nemo 12B | 90.0% | 76.7% | +13.3% | 0.022 |
 
 ### When does the method *not* win?
 
-Two principled regimes — both reported transparently in §6:
+Three principled regimes — all reported transparently in §6:
 
-- **Ceiling-effect models** (Llama 3.3 70B at 96.7% direct, Llama 3.1
-  8B at 85.0%): no method delivers significant gains because the agent
-  is already near-perfect.
-- **Reasoning-trained models** (gpt-oss-20b, partially Gemini 2.5
-  Flash): Reflexion's verbal-reflection prompt format closely matches
-  these models' explicit chain-of-thought training distribution, and
-  delivers larger gains than structured attribution. We report this as
-  a useful taxonomy: **structured attribution wins on instruction-tuned
-  chat models; verbal reflection wins on reasoning-trained models.**
+- **Ceiling-effect models** (Llama 3.3 70B at 96.7% direct on PFQA,
+  near-100% on Travel and TauBench): no method delivers significant
+  gains because the agent is already near-perfect.
+- **Shallow-trajectory tasks** (TauBench single-step decisions on most
+  models, WebShop on weak models): Reflexion's verbal reflection
+  outperforms structured attribution because the trajectory has only
+  1–2 candidate fault nodes — there's nothing for the Assumption-DAG
+  to attribute to. Examples: Reflexion +35% vs IS +3.6% on TauBench
+  Llama 8B; Reflexion +35% vs IS +4.5% on WebShop Gemini Flash.
+- **Reasoning-trained models on long-horizon tasks** (gpt-oss-20b
+  generally; Gemini 2.5 Flash on ALFWorld): Reflexion's verbal-
+  reflection format matches these models' explicit chain-of-thought
+  training, delivering large gains (+53% on ALFWorld × Gemini Flash).
+  Intro-Specter still helps (+24%) but is outpaced.
+
+Useful taxonomy: **structured attribution wins on rich-DAG QA + planning
+tasks; verbal reflection wins on shallow-decision and reasoning-tuned
+models; ceiling regimes have no headroom for any method.**
 
 ### Cross-family comparison
 
