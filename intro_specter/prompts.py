@@ -424,3 +424,144 @@ def detection_only_user(profile: dict, task: dict, trajectory: dict, final_outpu
         + "\n\nFINAL_OUTPUT:\n"
         + (final_output or "")
     )
+
+
+# ---------------------------------------------------------------------------
+# 10. Tree of Thoughts (Yao et al. 2023, NeurIPS).
+# Each call generates ONE next reasoning step; we sample k=3 candidates per
+# parent and prune to b=2 via TOT_EVALUATE_PROMPT.
+# ---------------------------------------------------------------------------
+
+TOT_GENERATE_SYSTEM = """\
+You are solving a problem step by step under a user profile.
+
+User Profile:
+{profile}
+
+Problem:
+{task}
+
+Current reasoning path:
+{path_so_far}
+
+Generate the next reasoning step. Provide exactly ONE next step that continues
+this reasoning path toward an answer. Be specific and concrete. Respect any
+hard constraints in the profile.
+
+Output JSON only:
+{{
+  "next_step": "string"
+}}
+"""
+
+
+def tot_generate_user(profile: dict, task: dict, path_so_far: list[str]) -> str:
+    return (
+        "PROFILE:\n" + _dump(profile)
+        + "\n\nTASK:\n" + _dump(task)
+        + "\n\nPATH_SO_FAR:\n" + "\n".join(f"- {step}" for step in path_so_far)
+    )
+
+
+TOT_EVALUATE_SYSTEM = """\
+You are evaluating a partial reasoning path under a user profile.
+
+Evaluate this reasoning path on a 1–10 scale:
+* Is it making progress toward a correct answer?
+* Does it respect EVERY hard constraint in the profile?
+* Is each step logically sound?
+
+Penalty: subtract 3 from the score if any hard profile constraint is violated.
+
+Output JSON only:
+{
+  "score": int 1..10,
+  "rationale": "string"
+}
+"""
+
+
+def tot_evaluate_user(profile: dict, task: dict, path: list[str]) -> str:
+    return (
+        "PROFILE:\n" + _dump(profile)
+        + "\n\nTASK:\n" + _dump(task)
+        + "\n\nPATH:\n" + "\n".join(f"- {step}" for step in path)
+    )
+
+
+TOT_SOLVE_SYSTEM = """\
+You are answering a problem given a complete reasoning path. Produce ONLY the
+final answer respecting any hard profile constraints.
+
+Output JSON only:
+{
+  "final_output": "string"
+}
+"""
+
+
+def tot_solve_user(profile: dict, task: dict, best_path: list[str]) -> str:
+    return (
+        "PROFILE:\n" + _dump(profile)
+        + "\n\nTASK:\n" + _dump(task)
+        + "\n\nBEST_PATH:\n" + "\n".join(f"- {step}" for step in best_path)
+    )
+
+
+# ---------------------------------------------------------------------------
+# 11. SelfCheckGPT (Manakul et al. 2023, ACL). Sampling-based hallucination
+# detection over N alternative completions, per-claim consistency check, and
+# a single regeneration pass that avoids flagged claims.
+# ---------------------------------------------------------------------------
+
+SELFCHECK_SAMPLE_SYSTEM = """\
+You are an assistant. Answer the following question given the user profile.
+Output JSON only:
+{
+  "final_output": "string"
+}
+"""
+
+
+def selfcheck_sample_user(profile: dict, task: dict) -> str:
+    return "PROFILE:\n" + _dump(profile) + "\n\nTASK:\n" + _dump(task)
+
+
+SELFCHECK_CONSISTENCY_SYSTEM = """\
+You are checking whether a specific claim from an original answer is supported
+by alternative answers to the same question. Reply with one word: SUPPORTED or
+UNSUPPORTED.
+
+Output JSON only:
+{
+  "verdict": "SUPPORTED|UNSUPPORTED",
+  "rationale": "string"
+}
+"""
+
+
+def selfcheck_consistency_user(claim: str, alternatives: list[str]) -> str:
+    return (
+        "ORIGINAL_CLAIM: " + claim
+        + "\n\nALTERNATIVES:\n" + "\n".join(f"({i}) {a}" for i, a in enumerate(alternatives, 1))
+    )
+
+
+SELFCHECK_REGENERATE_SYSTEM = """\
+You are answering a question. Some claims in your previous answer may have been
+unreliable. Re-answer the question while AVOIDING the listed unreliable claims.
+
+Output JSON only:
+{
+  "final_output": "string"
+}
+"""
+
+
+def selfcheck_regenerate_user(profile: dict, task: dict, flagged_claims: list[str]) -> str:
+    return (
+        "PROFILE:\n" + _dump(profile)
+        + "\n\nTASK:\n" + _dump(task)
+        + "\n\nUNRELIABLE_CLAIMS_TO_AVOID:\n"
+        + "\n".join(f"- {c}" for c in flagged_claims)
+    )

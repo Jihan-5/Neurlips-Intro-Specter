@@ -1,0 +1,54 @@
+benchmark: hotpotqa_real
+split: test
+n_examples: 60
+seeds:
+- 42
+- 123
+- 456
+output_dir: outputs/real/hotpotqa_real__deepseek-v3.1
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: direct
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+- name: self_refine
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+- name: reflexion
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  extra:
+    max_trials: 2
+- name: full_regen
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  extra:
+    max_attempts: 1
+- name: react
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  extra:
+    max_steps: 4
+- name: selfcheckgpt
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  extra:
+    n_samples: 5
+    sample_temperature: 1.0
+- name: tot
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  extra:
+    tot_candidates: 3
+    tot_beam_width: 2
+    tot_max_depth: 4
+    tot_temperature: 0.7
+- name: intro_specter_llm
+  provider_name: together
+  model: deepseek-ai/DeepSeek-V3.1
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.0
+    n_counterfactual_trials: 1

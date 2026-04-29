@@ -35,7 +35,9 @@ from .baselines import (
     run_oracle_repair,
     run_react,
     run_reflexion,
+    run_selfcheckgpt,
     run_self_refine,
+    run_tot,
 )
 from .baselines.base import BaselineResult
 from .benchmarks.base import BenchmarkExample
@@ -44,10 +46,13 @@ from .benchmarks.hotpotqa_real import HotpotQAReal
 from .benchmarks.hotpotqa_recon import HotpotQARecon
 from .benchmarks.musique_recon import MuSiQueRecon
 from .benchmarks.pfqa_recon import PFQABenchRecon
+from .benchmarks.strategyqa_real import StrategyQAReal
 from .benchmarks.strategyqa_recon import StrategyQARecon
 from .benchmarks.synthetic_dag import SyntheticDAGBenchmark
 from .benchmarks.taubench_recon import TauBenchRecon
+from .benchmarks.travelplanner_real import TravelPlannerReal
 from .benchmarks.travelplanner_recon import TravelPlannerRecon
+from .benchmarks.truthfulqa_real import TruthfulQAReal
 from .benchmarks.webshop_recon import WebShopRecon
 from .metrics.repair import degradation_rate, delta_success_rate
 from .metrics.stats import (
@@ -321,6 +326,44 @@ def run_method_on_example(
             seed=method_seed,
             abstain_on_detection=bool(method.extra.get("abstain_on_detection", True)),
         )
+    elif method.name == "tot":
+        provider = (
+            build_provider(method.provider_name, cache=cache)
+            if method.provider_name and method.provider_name != "none"
+            else None
+        )
+        result = run_tot(
+            profile=example.profile,
+            task=example.task,
+            trajectory=example.trajectory,
+            verifier=verifier,
+            provider=provider,
+            model=method.model,
+            temperature=float(method.extra.get("tot_temperature", 0.7)),
+            seed=method_seed,
+            k=int(method.extra.get("tot_candidates", 3)),
+            b=int(method.extra.get("tot_beam_width", 2)),
+            max_depth=int(method.extra.get("tot_max_depth", 5)),
+        )
+    elif method.name == "selfcheckgpt":
+        provider = (
+            build_provider(method.provider_name, cache=cache)
+            if method.provider_name and method.provider_name != "none"
+            else None
+        )
+        result = run_selfcheckgpt(
+            profile=example.profile,
+            task=example.task,
+            trajectory=example.trajectory,
+            verifier=verifier,
+            provider=provider,
+            model=method.model,
+            temperature=method.temperature,
+            sample_temperature=float(method.extra.get("sample_temperature", 1.0)),
+            seed=method_seed,
+            n_samples=int(method.extra.get("n_samples", 5)),
+            abstain_on_inconsistency=bool(method.extra.get("abstain_on_inconsistency", False)),
+        )
     elif method.name == "oracle_repair":
         if example.gold.fault_node_id is None or example.rerun_fn is None:
             raise ValueError("oracle_repair requires gold.fault_node_id and example.rerun_fn")
@@ -571,6 +614,24 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
         )
     if spec.benchmark == "hotpotqa_real":
         return HotpotQAReal(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "truthfulqa_real":
+        return TruthfulQAReal(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "strategyqa_real":
+        return StrategyQAReal(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "travelplanner_real":
+        return TravelPlannerReal(
             n_examples=spec.n_examples,
             seed=seed,
             split=spec.split,  # type: ignore[arg-type]

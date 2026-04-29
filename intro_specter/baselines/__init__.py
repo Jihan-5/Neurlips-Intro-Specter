@@ -15,7 +15,9 @@ from .oracle_detector import run_oracle_detector
 from .oracle_repair import run_oracle_repair
 from .react import run_react
 from .reflexion import run_reflexion
+from .selfcheckgpt import run_selfcheckgpt
 from .self_refine import run_self_refine
+from .tot import run_tot
 
 __all__ = [
     "BaselineResult",
@@ -27,5 +29,7 @@ __all__ = [
     "run_oracle_repair",
     "run_react",
     "run_reflexion",
+    "run_selfcheckgpt",
     "run_self_refine",
+    "run_tot",
 ]
