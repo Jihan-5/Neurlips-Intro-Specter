@@ -28,16 +28,19 @@ from .attribution import (
     RuleBasedCounterfactualSampler,
 )
 from .baselines import (
+    run_detection_only,
     run_direct,
     run_full_regen,
     run_oracle_detector,
     run_oracle_repair,
+    run_react,
     run_reflexion,
     run_self_refine,
 )
 from .baselines.base import BaselineResult
 from .benchmarks.base import BenchmarkExample
 from .benchmarks.alfworld_recon import ALFWorldRecon
+from .benchmarks.hotpotqa_real import HotpotQAReal
 from .benchmarks.hotpotqa_recon import HotpotQARecon
 from .benchmarks.musique_recon import MuSiQueRecon
 from .benchmarks.pfqa_recon import PFQABenchRecon
@@ -284,6 +287,40 @@ def run_method_on_example(
             regenerate_fn=regen_fn,
             max_attempts=int(method.extra.get("max_attempts", 1)),
         )
+    elif method.name == "react":
+        provider = (
+            build_provider(method.provider_name, cache=cache)
+            if method.provider_name and method.provider_name != "none"
+            else None
+        )
+        result = run_react(
+            profile=example.profile,
+            task=example.task,
+            trajectory=example.trajectory,
+            verifier=verifier,
+            provider=provider,
+            model=method.model,
+            temperature=method.temperature,
+            seed=method_seed,
+            max_steps=int(method.extra.get("max_steps", 4)),
+        )
+    elif method.name == "detection_only":
+        provider = (
+            build_provider(method.provider_name, cache=cache)
+            if method.provider_name and method.provider_name != "none"
+            else None
+        )
+        result = run_detection_only(
+            profile=example.profile,
+            task=example.task,
+            trajectory=example.trajectory,
+            verifier=verifier,
+            provider=provider,
+            model=method.model,
+            temperature=method.temperature,
+            seed=method_seed,
+            abstain_on_detection=bool(method.extra.get("abstain_on_detection", True)),
+        )
     elif method.name == "oracle_repair":
         if example.gold.fault_node_id is None or example.rerun_fn is None:
             raise ValueError("oracle_repair requires gold.fault_node_id and example.rerun_fn")
@@ -528,6 +565,12 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
         )
     if spec.benchmark == "strategyqa_recon":
         return StrategyQARecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "hotpotqa_real":
+        return HotpotQAReal(
             n_examples=spec.n_examples,
             seed=seed,
             split=spec.split,  # type: ignore[arg-type]

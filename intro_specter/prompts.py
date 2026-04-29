@@ -339,3 +339,88 @@ def reflexion_retry_user(
         + "\n\nREFLECTIONS:\n"
         + _dump(reflections)
     )
+
+
+# ---------------------------------------------------------------------------
+# 8. ReAct baseline (Yao et al. 2023). Explicit Thought→Action→Observation
+# interleaving over a fixed maximum number of steps. Unlike Direct (which
+# emits a flat trajectory in one pass) and Self-Refine (which critiques an
+# already-completed trajectory), ReAct decomposes reasoning into discrete
+# steps where each Action's Observation is conditioned on prior steps.
+#
+# Our adaptation: since most of the benchmark suite does not provide an
+# external tool/environment, the ReAct loop runs entirely in-LLM —
+# Action steps emit a string the model intends to "do" and the
+# Observation is a self-generated reflection on the action's effect.
+# This matches the original ReAct framing for non-tool reasoning tasks.
+# ---------------------------------------------------------------------------
+
+REACT_SYSTEM = """\
+You are a ReAct-style agent solving a task for a user with a given profile.
+Iterate Thought → Action → Observation up to MAX_STEPS times. Each step
+must include all three. After enough steps, emit a Final Answer that
+respects every hard profile constraint.
+
+Output JSON only:
+{
+  "steps": [
+    {"step_id": int, "kind": "observation|assumption|action|tool_call|output",
+     "text": "string", "reason_summary": "string"}
+  ],
+  "thoughts": [{"step_id": int, "thought": "string", "action": "string",
+                "observation": "string"}],
+  "final_output": "string"
+}
+
+Do NOT skip the thoughts array — every iteration must record one entry there.
+Do NOT invent profile facts. Output a single valid JSON object and nothing else.
+"""
+
+
+def react_user(profile: dict, task: dict, max_steps: int = 4) -> str:
+    return (
+        f"MAX_STEPS={max_steps}\n\nPROFILE:\n"
+        + _dump(profile)
+        + "\n\nTASK:\n"
+        + _dump(task)
+    )
+
+
+# ---------------------------------------------------------------------------
+# 9. Detection-only baseline (SelfCheckGPT / HaloScope-style). Uses the
+# Intro-Specter LLM verifier to detect whether the trajectory has a
+# profile-grounded violation. If a violation is detected, we *abstain* —
+# return the trajectory unchanged and mark the trial as a detection-flag.
+# This isolates the contribution of detection from the contribution of
+# repair. Pairs with the IS results to show that detection alone is
+# insufficient.
+# ---------------------------------------------------------------------------
+
+DETECTION_ONLY_SYSTEM = """\
+You are a detector. Read the user profile and the agent trajectory.
+Decide whether the trajectory contains a profile-grounded error
+(a hard constraint violation, contradicted profile span, or assumption
+unsupported by the profile). Return a JSON object only:
+
+{
+  "violation_present": true|false,
+  "rationale": "string",
+  "confidence": float in [0, 1]
+}
+
+Be conservative — only flag if a hard violation is clearly present.
+Output a single valid JSON object and nothing else.
+"""
+
+
+def detection_only_user(profile: dict, task: dict, trajectory: dict, final_output: str | None) -> str:
+    return (
+        "PROFILE:\n"
+        + _dump(profile)
+        + "\n\nTASK:\n"
+        + _dump(task)
+        + "\n\nTRAJECTORY:\n"
+        + _dump(trajectory)
+        + "\n\nFINAL_OUTPUT:\n"
+        + (final_output or "")
+    )

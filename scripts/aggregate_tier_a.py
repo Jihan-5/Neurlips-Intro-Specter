@@ -31,59 +31,77 @@ from intro_specter.metrics.stats import (
 )
 
 
+# NOTE on naming. Every entry below is a *profile-grounded reconstruction*
+# inspired by the named benchmark family (PFQABench, HotpotQA, etc.) — NOT
+# the original benchmark itself. The "Profile-X" prefix signals this. We
+# rebuilt these task families with controlled gold labels and explicit
+# profile-grounded conditions so the verifier can be rule-based and the
+# fault-attribution metric has ground truth. A real-data anchor on
+# HotpotQA is provided separately as `Real-HotpotQA` (see hotpotqa_real.py)
+# to demonstrate that the same method also lifts performance on an
+# unaltered, non-reconstructed benchmark. This rename was applied at the
+# label layer only; output directory names, dataset string ids, and JSONL
+# `dataset` fields are unchanged so prior results remain valid.
+
 TIER_A_BENCHMARKS = {
-    # PFQABench × 8 models
-    "PFQABench-Recon (Llama 3.3 70B)":      "outputs/tier_a/pfqa_llama",
-    "PFQABench-Recon (Llama 3.1 8B)":       "outputs/tier_a/pfqa_llama3_8b",
-    "PFQABench-Recon (DeepSeek V3)":        "outputs/tier_a/pfqa_deepseek",
-    "PFQABench-Recon (DeepSeek V3.1)":      "outputs/tier_a/pfqa_deepseek_v31",
-    "PFQABench-Recon (gpt-oss-20b)":        "outputs/tier_a/pfqa_gptoss20b",
-    "PFQABench-Recon (Mistral Nemo 12B)":   "outputs/tier_a/pfqa_mistral7b",
-    "PFQABench-Recon (Gemini 2.5 Flash)":   "outputs/tier_a/pfqa_gemini_flash",
-    "PFQABench-Recon (Qwen 2.5 7B)":        "outputs/tier_a/pfqa_qwen7b",
-    # TravelPlanner+ × 8 models
-    "TravelPlanner+ (Llama 3.3 70B)":       "outputs/tier_a/travel_llama",
-    "TravelPlanner+ (Llama 3.1 8B)":        "outputs/tier_a/travel_llama3_8b",
-    "TravelPlanner+ (DeepSeek V3)":         "outputs/tier_a/travel_deepseek",
-    "TravelPlanner+ (DeepSeek V3.1)":       "outputs/tier_a/travel_deepseek_v31",
-    "TravelPlanner+ (gpt-oss-20b)":         "outputs/tier_a/travel_gptoss20b",
-    "TravelPlanner+ (Mistral Nemo 12B)":    "outputs/tier_a/travel_mistral7b",
-    "TravelPlanner+ (Gemini 2.5 Flash)":    "outputs/tier_a/travel_gemini_flash",
-    "TravelPlanner+ (Qwen 2.5 7B)":         "outputs/tier_a/travel_qwen7b",
-    # TauBench × 8 models
-    "TauBench (Llama 3.3 70B)":             "outputs/tier_a/taubench_llama",
-    "TauBench (Llama 3.1 8B)":              "outputs/tier_a/taubench_llama3_8b",
-    "TauBench (DeepSeek V3)":               "outputs/tier_a/taubench_deepseek",
-    "TauBench (DeepSeek V3.1)":             "outputs/tier_a/taubench_deepseek_v31",
-    "TauBench (gpt-oss-20b)":               "outputs/tier_a/taubench_gptoss20b",
-    "TauBench (Mistral Nemo 12B)":          "outputs/tier_a/taubench_mistral7b",
-    "TauBench (Gemini 2.5 Flash)":          "outputs/tier_a/taubench_gemini_flash",
-    "TauBench (Qwen 2.5 7B)":               "outputs/tier_a/taubench_qwen7b",
-    # Tier-B: HotpotQA-Recon × 4 IS-winners
-    "HotpotQA (DeepSeek V3)":               "outputs/tier_b/hotpotqa_deepseek_v3",
-    "HotpotQA (Mistral Nemo 12B)":          "outputs/tier_b/hotpotqa_mistral_nemo",
-    "HotpotQA (Qwen 2.5 7B)":               "outputs/tier_b/hotpotqa_qwen_7b",
-    "HotpotQA (Gemini 2.5 Flash)":          "outputs/tier_b/hotpotqa_gemini_flash",
-    # Tier-B: ALFWorld-Recon × 4 IS-winners
-    "ALFWorld (DeepSeek V3)":               "outputs/tier_b/alfworld_deepseek_v3",
-    "ALFWorld (Mistral Nemo 12B)":          "outputs/tier_b/alfworld_mistral_nemo",
-    "ALFWorld (Qwen 2.5 7B)":               "outputs/tier_b/alfworld_qwen_7b",
-    "ALFWorld (Gemini 2.5 Flash)":          "outputs/tier_b/alfworld_gemini_flash",
-    # Tier-B: WebShop-Recon × 4 IS-winners
-    "WebShop (DeepSeek V3)":                "outputs/tier_b/webshop_deepseek_v3",
-    "WebShop (Mistral Nemo 12B)":           "outputs/tier_b/webshop_mistral_nemo",
-    "WebShop (Qwen 2.5 7B)":                "outputs/tier_b/webshop_qwen_7b",
-    "WebShop (Gemini 2.5 Flash)":           "outputs/tier_b/webshop_gemini_flash",
-    # Tier-B: MuSiQue-Recon (3-hop QA) × 4 IS-winners
-    "MuSiQue (DeepSeek V3)":                "outputs/tier_b/musique_deepseek_v3",
-    "MuSiQue (Mistral Nemo 12B)":           "outputs/tier_b/musique_mistral_nemo",
-    "MuSiQue (Qwen 2.5 7B)":                "outputs/tier_b/musique_qwen_7b",
-    "MuSiQue (Gemini 2.5 Flash)":           "outputs/tier_b/musique_gemini_flash",
-    # Tier-B: StrategyQA-Recon (implicit yes/no) × 4 IS-winners
-    "StrategyQA (DeepSeek V3)":             "outputs/tier_b/strategyqa_deepseek_v3",
-    "StrategyQA (Mistral Nemo 12B)":        "outputs/tier_b/strategyqa_mistral_nemo",
-    "StrategyQA (Qwen 2.5 7B)":             "outputs/tier_b/strategyqa_qwen_7b",
-    "StrategyQA (Gemini 2.5 Flash)":        "outputs/tier_b/strategyqa_gemini_flash",
+    # Profile-PFQA (PFQABench-style profile-grounded factual QA) × 8 models
+    "Profile-PFQA (Llama 3.3 70B)":         "outputs/tier_a/pfqa_llama",
+    "Profile-PFQA (Llama 3.1 8B)":          "outputs/tier_a/pfqa_llama3_8b",
+    "Profile-PFQA (DeepSeek V3)":           "outputs/tier_a/pfqa_deepseek",
+    "Profile-PFQA (DeepSeek V3.1)":         "outputs/tier_a/pfqa_deepseek_v31",
+    "Profile-PFQA (gpt-oss-20b)":           "outputs/tier_a/pfqa_gptoss20b",
+    "Profile-PFQA (Mistral Nemo 12B)":      "outputs/tier_a/pfqa_mistral7b",
+    "Profile-PFQA (Gemini 2.5 Flash)":      "outputs/tier_a/pfqa_gemini_flash",
+    "Profile-PFQA (Qwen 2.5 7B)":           "outputs/tier_a/pfqa_qwen7b",
+    # Profile-Travel (TravelPlanner+-style itinerary task) × 8 models
+    "Profile-Travel (Llama 3.3 70B)":       "outputs/tier_a/travel_llama",
+    "Profile-Travel (Llama 3.1 8B)":        "outputs/tier_a/travel_llama3_8b",
+    "Profile-Travel (DeepSeek V3)":         "outputs/tier_a/travel_deepseek",
+    "Profile-Travel (DeepSeek V3.1)":       "outputs/tier_a/travel_deepseek_v31",
+    "Profile-Travel (gpt-oss-20b)":         "outputs/tier_a/travel_gptoss20b",
+    "Profile-Travel (Mistral Nemo 12B)":    "outputs/tier_a/travel_mistral7b",
+    "Profile-Travel (Gemini 2.5 Flash)":    "outputs/tier_a/travel_gemini_flash",
+    "Profile-Travel (Qwen 2.5 7B)":         "outputs/tier_a/travel_qwen7b",
+    # Profile-TauBench (tau-bench-style policy-compliance) × 8 models
+    "Profile-TauBench (Llama 3.3 70B)":     "outputs/tier_a/taubench_llama",
+    "Profile-TauBench (Llama 3.1 8B)":      "outputs/tier_a/taubench_llama3_8b",
+    "Profile-TauBench (DeepSeek V3)":       "outputs/tier_a/taubench_deepseek",
+    "Profile-TauBench (DeepSeek V3.1)":     "outputs/tier_a/taubench_deepseek_v31",
+    "Profile-TauBench (gpt-oss-20b)":       "outputs/tier_a/taubench_gptoss20b",
+    "Profile-TauBench (Mistral Nemo 12B)":  "outputs/tier_a/taubench_mistral7b",
+    "Profile-TauBench (Gemini 2.5 Flash)":  "outputs/tier_a/taubench_gemini_flash",
+    "Profile-TauBench (Qwen 2.5 7B)":       "outputs/tier_a/taubench_qwen7b",
+    # Profile-HotpotQA (2-hop QA) × 4 IS-winners
+    "Profile-HotpotQA (DeepSeek V3)":       "outputs/tier_b/hotpotqa_deepseek_v3",
+    "Profile-HotpotQA (Mistral Nemo 12B)":  "outputs/tier_b/hotpotqa_mistral_nemo",
+    "Profile-HotpotQA (Qwen 2.5 7B)":       "outputs/tier_b/hotpotqa_qwen_7b",
+    "Profile-HotpotQA (Gemini 2.5 Flash)":  "outputs/tier_b/hotpotqa_gemini_flash",
+    # Profile-ALFWorld (long-horizon household tasks) × 4 IS-winners
+    "Profile-ALFWorld (DeepSeek V3)":       "outputs/tier_b/alfworld_deepseek_v3",
+    "Profile-ALFWorld (Mistral Nemo 12B)":  "outputs/tier_b/alfworld_mistral_nemo",
+    "Profile-ALFWorld (Qwen 2.5 7B)":       "outputs/tier_b/alfworld_qwen_7b",
+    "Profile-ALFWorld (Gemini 2.5 Flash)":  "outputs/tier_b/alfworld_gemini_flash",
+    # Profile-WebShop (product search) × 4 IS-winners
+    "Profile-WebShop (DeepSeek V3)":        "outputs/tier_b/webshop_deepseek_v3",
+    "Profile-WebShop (Mistral Nemo 12B)":   "outputs/tier_b/webshop_mistral_nemo",
+    "Profile-WebShop (Qwen 2.5 7B)":        "outputs/tier_b/webshop_qwen_7b",
+    "Profile-WebShop (Gemini 2.5 Flash)":   "outputs/tier_b/webshop_gemini_flash",
+    # Profile-MuSiQue (3-hop QA) × 4 IS-winners
+    "Profile-MuSiQue (DeepSeek V3)":        "outputs/tier_b/musique_deepseek_v3",
+    "Profile-MuSiQue (Mistral Nemo 12B)":   "outputs/tier_b/musique_mistral_nemo",
+    "Profile-MuSiQue (Qwen 2.5 7B)":        "outputs/tier_b/musique_qwen_7b",
+    "Profile-MuSiQue (Gemini 2.5 Flash)":   "outputs/tier_b/musique_gemini_flash",
+    # Profile-StrategyQA (implicit yes/no) × 4 IS-winners
+    "Profile-StrategyQA (DeepSeek V3)":     "outputs/tier_b/strategyqa_deepseek_v3",
+    "Profile-StrategyQA (Mistral Nemo 12B)":"outputs/tier_b/strategyqa_mistral_nemo",
+    "Profile-StrategyQA (Qwen 2.5 7B)":     "outputs/tier_b/strategyqa_qwen_7b",
+    "Profile-StrategyQA (Gemini 2.5 Flash)":"outputs/tier_b/strategyqa_gemini_flash",
+    # Real-HotpotQA (HuggingFace hotpot_qa, distractor split) × 4 IS-winners
+    # — fidelity anchor showing the method also lifts on a non-reconstructed benchmark.
+    "Real-HotpotQA (DeepSeek V3)":          "outputs/tier_b/real_hotpotqa_deepseek_v3",
+    "Real-HotpotQA (Mistral Nemo 12B)":     "outputs/tier_b/real_hotpotqa_mistral_nemo",
+    "Real-HotpotQA (Qwen 2.5 7B)":          "outputs/tier_b/real_hotpotqa_qwen_7b",
+    "Real-HotpotQA (Gemini 2.5 Flash)":     "outputs/tier_b/real_hotpotqa_gemini_flash",
 }
 
 

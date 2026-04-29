@@ -40,35 +40,49 @@ than re-rolling forward.
 
 We evaluate against four self-correction baselines (Self-Refine,
 Reflexion, Full-Regen, plus oracle controls on synthetic Tier-C) on
-**eight benchmarks** (PFQABench-Recon, HotpotQA + 2WikiMultiHopQA Recon,
-MuSiQue-Recon, StrategyQA-Recon, TauBench-Recon, TravelPlanner+ Recon,
-ALFWorld-Recon, WebShop-Recon) across **eight LLMs spanning four
-training families and 7B–671B parameters** — 44 (model × benchmark)
-cells, paired-bootstrap CIs and Holm-Bonferroni-corrected McNemar
-p-values throughout.
+**eight reconstruction benchmarks** (Profile-PFQA, Profile-HotpotQA,
+Profile-MuSiQue, Profile-StrategyQA, Profile-TauBench, Profile-Travel,
+Profile-ALFWorld, Profile-WebShop) plus **a real-data fidelity
+anchor** (Real-HotpotQA, drawn directly from the HuggingFace
+`hotpot_qa` distractor split with no reconstruction), across **eight
+LLMs spanning four training families and 7B–671B parameters** — 44
+(model × benchmark) cells, paired-bootstrap CIs and
+Holm-Bonferroni-corrected McNemar p-values throughout.
+
+**On benchmark naming.** Each "Profile-X" benchmark is a programmatic
+*reconstruction* designed to isolate the profile-grounded failure
+mode with rule-based gold labels — they are NOT the original named
+benchmarks (PFQABench, HotpotQA, etc.). We chose this approach because
+the originals lack profile-grounded conditions and rule-based gold
+fault labels, both of which are needed to evaluate posterior
+attribution. To address the obvious fidelity concern, we additionally
+report Real-HotpotQA (the unaltered HotpotQA validation split) on the
+four IS-winning models; if Intro-Specter still lifts performance
+there, the reconstruction's positive results are not an artifact of
+synthetic difficulty.
 
 **Intro-Specter is Holm-Bonferroni-significant vs. Direct on 17 of 44
 (model × benchmark) cells, spanning all seven major benchmarks**:
 
 | Cell | $n$ | $\Delta$ vs Direct | Holm $p$ |
 |---|---|---|---|
-| MuSiQue × Gemini 2.5 Flash | 60 | **+33.3%** | **0.00001** |
-| ALFWorld × Gemini 2.5 Flash | 60 | **+30.0%** | **0.0002** |
-| MuSiQue × Qwen 2.5 7B | 59 | **+25.0%** | **0.001** |
-| ALFWorld × Mistral Nemo 12B | 60 | **+25.0%** | **0.001** |
-| StrategyQA × Gemini 2.5 Flash | 60 | **+21.7%** | **0.002** |
-| ALFWorld × Qwen 2.5 7B | 60 | **+21.7%** | **0.003** |
-| PFQABench × Qwen 2.5 7B | 60 | **+20.0%** | **0.002** |
-| HotpotQA × Qwen 2.5 7B | 40 | **+20.0%** | **0.023** |
-| TravelPlanner+ × DeepSeek V3.1 | 93 | **+19.4%** | **0.004** |
-| HotpotQA × Gemini 2.5 Flash | 60 | **+18.3%** | **0.006** |
-| PFQABench × Mistral Nemo 12B | 60 | **+16.7%** | **0.012** |
-| PFQABench × Gemini 2.5 Flash | 60 | **+15.0%** | **0.023** |
-| HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
-| TauBench × Qwen 2.5 7B | 60 | **+15.0%** | **0.023** |
-| TravelPlanner+ × DeepSeek V3 | 60 | **+13.3%** | **0.023** |
-| StrategyQA × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
-| PFQABench × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
+| Profile-MuSiQue × Gemini 2.5 Flash | 60 | **+33.3%** | **0.00001** |
+| Profile-ALFWorld × Gemini 2.5 Flash | 60 | **+30.0%** | **0.0002** |
+| Profile-MuSiQue × Qwen 2.5 7B | 59 | **+25.0%** | **0.001** |
+| Profile-ALFWorld × Mistral Nemo 12B | 60 | **+25.0%** | **0.001** |
+| Profile-StrategyQA × Gemini 2.5 Flash | 60 | **+21.7%** | **0.002** |
+| Profile-ALFWorld × Qwen 2.5 7B | 60 | **+21.7%** | **0.003** |
+| Profile-PFQA × Qwen 2.5 7B | 60 | **+20.0%** | **0.002** |
+| Profile-HotpotQA × Qwen 2.5 7B | 40 | **+20.0%** | **0.023** |
+| Profile-Travel × DeepSeek V3.1 | 93 | **+19.4%** | **0.004** |
+| Profile-HotpotQA × Gemini 2.5 Flash | 60 | **+18.3%** | **0.006** |
+| Profile-PFQA × Mistral Nemo 12B | 60 | **+16.7%** | **0.012** |
+| Profile-PFQA × Gemini 2.5 Flash | 60 | **+15.0%** | **0.023** |
+| Profile-HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
+| Profile-TauBench × Qwen 2.5 7B | 60 | **+15.0%** | **0.023** |
+| Profile-Travel × DeepSeek V3 | 60 | **+13.3%** | **0.023** |
+| Profile-StrategyQA × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
+| Profile-PFQA × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
 
 **Head-to-head against Reflexion** (the strongest published self-correction
 baseline) on the same paired (task, seed) trials: Intro-Specter
@@ -76,29 +90,29 @@ strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 45 cells**:
 
 | Cell | IS | Reflexion | $\Delta$ | $p$ |
 |---|---|---|---|---|
-| ALFWorld × Mistral Nemo 12B | 83.3% | 58.3% | +25.0% | 0.0003 |
-| PFQABench × Qwen 2.5 7B | 75.0% | 58.3% | +16.7% | 0.002 |
-| TravelPlanner+ × DeepSeek V3.1 | 80.0% | 65.0% | +15.0% | 0.023 |
-| PFQABench × Mistral Nemo 12B | 90.0% | 76.7% | +13.3% | 0.022 |
-| TravelPlanner+ × DeepSeek V3 | 85.0% | 73.3% | +11.7% | 0.039 |
+| Profile-ALFWorld × Mistral Nemo 12B | 83.3% | 58.3% | +25.0% | 0.0003 |
+| Profile-PFQA × Qwen 2.5 7B | 75.0% | 58.3% | +16.7% | 0.002 |
+| Profile-Travel × DeepSeek V3.1 | 80.0% | 65.0% | +15.0% | 0.023 |
+| Profile-PFQA × Mistral Nemo 12B | 90.0% | 76.7% | +13.3% | 0.022 |
+| Profile-Travel × DeepSeek V3 | 85.0% | 73.3% | +11.7% | 0.039 |
 
 ### When does the method *not* win?
 
 Three principled regimes — all reported transparently in §6:
 
-- **Ceiling-effect models** (Llama 3.3 70B at 96.7% direct on PFQA,
+- **Ceiling-effect models** (Llama 3.3 70B at 96.7% direct on Profile-PFQA,
   near-100% on Travel and TauBench): no method delivers significant
   gains because the agent is already near-perfect.
 - **Shallow-trajectory tasks** (TauBench single-step decisions on most
   models, WebShop on weak models): Reflexion's verbal reflection
   outperforms structured attribution because the trajectory has only
   1–2 candidate fault nodes — there's nothing for the Assumption-DAG
-  to attribute to. Examples: Reflexion +35% vs IS +3.6% on TauBench
-  Llama 8B; Reflexion +35% vs IS +4.5% on WebShop Gemini Flash.
+  to attribute to. Examples: Reflexion +35% vs IS +3.6% on Profile-TauBench
+  Llama 8B; Reflexion +35% vs IS +4.5% on Profile-WebShop Gemini Flash.
 - **Reasoning-trained models on long-horizon tasks** (gpt-oss-20b
-  generally; Gemini 2.5 Flash on ALFWorld): Reflexion's verbal-
+  generally; Gemini 2.5 Flash on Profile-ALFWorld): Reflexion's verbal-
   reflection format matches these models' explicit chain-of-thought
-  training, delivering large gains (+53% on ALFWorld × Gemini Flash).
+  training, delivering large gains (+53% on Profile-ALFWorld × Gemini Flash).
   Intro-Specter still helps (+24%) but is outpaced.
 
 Useful taxonomy: **structured attribution wins on rich-DAG QA + planning
@@ -167,7 +181,7 @@ pip install -e ".[dev]"
 export TOGETHER_API_KEY="..."        # Llama 3.3 70B + DeepSeek V3 family + gpt-oss-20b
 export OPENROUTER_API_KEY="..."      # Mistral Nemo + Qwen 2.5 7B + Gemini 2.5 Flash + Llama 3.1 8B
 
-# 3. Run all 8 PFQABench-Recon configs (~$5, ~1.5h wall-clock with caching)
+# 3. Run all 8 Profile-PFQA configs (~$5, ~1.5h wall-clock with caching)
 for cfg in configs/tier_a_pfqa_*.yaml; do
     intro-specter run --config "$cfg"
 done
