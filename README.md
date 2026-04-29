@@ -40,34 +40,39 @@ than re-rolling forward.
 
 We evaluate against four self-correction baselines (Self-Refine,
 Reflexion, Full-Regen, plus oracle controls on synthetic Tier-C) on
-**six benchmarks** (PFQABench-Recon, HotpotQA + 2WikiMultiHopQA Recon,
-TauBench-Recon, TravelPlanner+ Recon, ALFWorld-Recon, WebShop-Recon)
-across **eight LLMs spanning four training families and 7B–671B
-parameters** — 35 (model × benchmark) cells, paired-bootstrap CIs and
-Holm-Bonferroni-corrected McNemar p-values throughout.
+**eight benchmarks** (PFQABench-Recon, HotpotQA + 2WikiMultiHopQA Recon,
+MuSiQue-Recon, StrategyQA-Recon, TauBench-Recon, TravelPlanner+ Recon,
+ALFWorld-Recon, WebShop-Recon) across **eight LLMs spanning four
+training families and 7B–671B parameters** — 44 (model × benchmark)
+cells, paired-bootstrap CIs and Holm-Bonferroni-corrected McNemar
+p-values throughout.
 
-**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 13 of 36
-(model × benchmark) cells, spanning all five major benchmarks**:
+**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 17 of 44
+(model × benchmark) cells, spanning all seven major benchmarks**:
 
 | Cell | $n$ | $\Delta$ vs Direct | Holm $p$ |
 |---|---|---|---|
+| MuSiQue × Gemini 2.5 Flash | 60 | **+33.3%** | **0.00001** |
 | ALFWorld × Gemini 2.5 Flash | 60 | **+30.0%** | **0.0002** |
+| MuSiQue × Qwen 2.5 7B | 59 | **+25.0%** | **0.001** |
 | ALFWorld × Mistral Nemo 12B | 60 | **+25.0%** | **0.001** |
+| StrategyQA × Gemini 2.5 Flash | 60 | **+21.7%** | **0.002** |
 | ALFWorld × Qwen 2.5 7B | 60 | **+21.7%** | **0.003** |
 | PFQABench × Qwen 2.5 7B | 60 | **+20.0%** | **0.002** |
 | HotpotQA × Qwen 2.5 7B | 40 | **+20.0%** | **0.023** |
 | TravelPlanner+ × DeepSeek V3.1 | 93 | **+19.4%** | **0.004** |
 | HotpotQA × Gemini 2.5 Flash | 60 | **+18.3%** | **0.006** |
 | PFQABench × Mistral Nemo 12B | 60 | **+16.7%** | **0.012** |
-| HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
 | PFQABench × Gemini 2.5 Flash | 60 | **+15.0%** | **0.023** |
+| HotpotQA × Mistral Nemo 12B | 60 | **+15.0%** | **0.016** |
 | TauBench × Qwen 2.5 7B | 60 | **+15.0%** | **0.023** |
 | TravelPlanner+ × DeepSeek V3 | 60 | **+13.3%** | **0.023** |
+| StrategyQA × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
 | PFQABench × DeepSeek V3 | 60 | **+13.3%** | **0.047** |
 
 **Head-to-head against Reflexion** (the strongest published self-correction
 baseline) on the same paired (task, seed) trials: Intro-Specter
-strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 37 cells**:
+strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 45 cells**:
 
 | Cell | IS | Reflexion | $\Delta$ | $p$ |
 |---|---|---|---|---|
@@ -129,6 +134,11 @@ intro_specter/                      # The framework
 ├── benchmarks/
 │   ├── synthetic_dag.py            # Tier-C synthetic (single-fault & multi-valid modes, 3 splits)
 │   ├── pfqa_recon.py               # PFQABench-style reconstruction (factual_irrelevant + profile_required)
+│   ├── hotpotqa_recon.py           # HotpotQA + 2WikiMultiHop reconstruction (2-hop QA)
+│   ├── musique_recon.py            # MuSiQue-style 3-hop multi-hop QA reconstruction
+│   ├── strategyqa_recon.py         # StrategyQA-style implicit yes/no reasoning reconstruction
+│   ├── alfworld_recon.py           # ALFWorld-style household task reconstruction
+│   ├── webshop_recon.py            # WebShop-style product search reconstruction
 │   ├── travelplanner_recon.py      # TravelPlanner+-style itinerary task (dietary/mobility/budget hard constraints)
 │   └── taubench_recon.py           # tau-bench-style policy-compliance decision task
 └── metrics/                        # Attribution / calibration / detection / paired-stats suite
