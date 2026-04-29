@@ -37,6 +37,7 @@ from .baselines import (
 )
 from .baselines.base import BaselineResult
 from .benchmarks.base import BenchmarkExample
+from .benchmarks.hotpotqa_recon import HotpotQARecon
 from .benchmarks.pfqa_recon import PFQABenchRecon
 from .benchmarks.synthetic_dag import SyntheticDAGBenchmark
 from .benchmarks.taubench_recon import TauBenchRecon
@@ -493,6 +494,12 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
         )
     if spec.benchmark == "taubench_recon":
         return TauBenchRecon(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "hotpotqa_recon":
+        return HotpotQARecon(
             n_examples=spec.n_examples,
             seed=seed,
             split=spec.split,  # type: ignore[arg-type]
