@@ -88,6 +88,14 @@ class OpenAIProvider(ChatProvider):
             kwargs["seed"] = seed
         resp = self._call(**kwargs)
         latency_ms = (time.perf_counter() - t0) * 1000.0
+        if not getattr(resp, "choices", None):
+            # OpenRouter occasionally returns no choices when an upstream
+            # provider (e.g. Qwen via Cloudflare) hits a transient hiccup.
+            # Raise so tenacity retries; suppress the cryptic NoneType error.
+            raise ProviderError(
+                f"provider returned no choices for {model!r}: "
+                f"{getattr(resp, 'id', '?')}"
+            )
         choice = resp.choices[0]
         usage = resp.usage
         result = CompletionResult(
