@@ -552,6 +552,7 @@ def run(spec: RunSpec) -> dict[str, Any]:
     label = _benchmark_label(spec)
 
     # ---- Per (seed, method) JSONL writes ----
+    skipped_errors: list[dict[str, Any]] = []
     for seed in spec.seeds:
         bench_examples = list(_build_benchmark(spec, seed))
         for method in spec.methods:
@@ -561,16 +562,32 @@ def run(spec: RunSpec) -> dict[str, Any]:
                 for example in bench_examples:
                     if example.task_id in done:
                         continue
-                    res = run_method_on_example(
-                        method,
-                        example,
-                        cache=cache,
-                        verifier_provider_name=spec.verifier_provider,
-                        verifier_model=spec.verifier_model,
-                        seed_override=seed,
-                    )
+                    try:
+                        res = run_method_on_example(
+                            method,
+                            example,
+                            cache=cache,
+                            verifier_provider_name=spec.verifier_provider,
+                            verifier_model=spec.verifier_model,
+                            seed_override=seed,
+                        )
+                    except Exception as e:
+                        # Don't let one bad task kill the whole run — log and
+                        # keep going so the run produces a partial summary.
+                        skipped_errors.append({
+                            "task_id": example.task_id,
+                            "seed": seed,
+                            "method": method.name,
+                            "error_class": type(e).__name__,
+                            "error_msg": str(e)[:200],
+                        })
+                        continue
                     f.write(json.dumps(res.model_dump(mode="json"), default=str) + "\n")
                     f.flush()
+    if skipped_errors:
+        with (out_dir / f"{label}__skipped_errors.jsonl").open("w") as f:
+            for e in skipped_errors:
+                f.write(json.dumps(e) + "\n")
 
     # ---- Aggregate ----
     rows: list[dict[str, Any]] = []
