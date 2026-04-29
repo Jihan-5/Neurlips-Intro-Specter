@@ -46,7 +46,7 @@ across **eight LLMs spanning four training families and 7B–671B
 parameters** — 35 (model × benchmark) cells, paired-bootstrap CIs and
 Holm-Bonferroni-corrected McNemar p-values throughout.
 
-**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 10 of 34
+**Intro-Specter is Holm-Bonferroni-significant vs. Direct on 11 of 34
 (model × benchmark) cells, spanning all five major benchmarks**:
 
 | Cell | $n$ | $\Delta$ vs Direct | Holm $p$ |
@@ -64,7 +64,7 @@ Holm-Bonferroni-corrected McNemar p-values throughout.
 
 **Head-to-head against Reflexion** (the strongest published self-correction
 baseline) on the same paired (task, seed) trials: Intro-Specter
-strictly beats Reflexion at McNemar $p < 0.05$ on **4 of 35 cells**:
+strictly beats Reflexion at McNemar $p < 0.05$ on **5 of 36 cells**:
 
 | Cell | IS | Reflexion | $\Delta$ | $p$ |
 |---|---|---|---|---|
@@ -72,6 +72,7 @@ strictly beats Reflexion at McNemar $p < 0.05$ on **4 of 35 cells**:
 | PFQABench × Qwen 2.5 7B | 75.0% | 58.3% | +16.7% | 0.002 |
 | TravelPlanner+ × DeepSeek V3.1 | 80.0% | 65.0% | +15.0% | 0.023 |
 | PFQABench × Mistral Nemo 12B | 90.0% | 76.7% | +13.3% | 0.022 |
+| TravelPlanner+ × DeepSeek V3 | 85.0% | 73.3% | +11.7% | 0.039 |
 
 ### When does the method *not* win?
 
