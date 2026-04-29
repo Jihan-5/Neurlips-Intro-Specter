@@ -32,6 +32,7 @@ from intro_specter.metrics.stats import (
 
 
 TIER_A_BENCHMARKS = {
+    # PFQABench × 8 models
     "PFQABench-Recon (Llama 3.3 70B)":      "outputs/tier_a/pfqa_llama",
     "PFQABench-Recon (Llama 3.1 8B)":       "outputs/tier_a/pfqa_llama3_8b",
     "PFQABench-Recon (DeepSeek V3)":        "outputs/tier_a/pfqa_deepseek",
@@ -40,8 +41,29 @@ TIER_A_BENCHMARKS = {
     "PFQABench-Recon (Mistral Nemo 12B)":   "outputs/tier_a/pfqa_mistral7b",
     "PFQABench-Recon (Gemini 2.5 Flash)":   "outputs/tier_a/pfqa_gemini_flash",
     "PFQABench-Recon (Qwen 2.5 7B)":        "outputs/tier_a/pfqa_qwen7b",
-    "TravelPlanner+ Recon (Llama 3.3 70B)": "outputs/tier_a/travel_llama",
-    "TauBench-Recon (Llama 3.3 70B)":       "outputs/tier_a/taubench_llama",
+    # TravelPlanner+ × 8 models
+    "TravelPlanner+ (Llama 3.3 70B)":       "outputs/tier_a/travel_llama",
+    "TravelPlanner+ (Llama 3.1 8B)":        "outputs/tier_a/travel_llama3_8b",
+    "TravelPlanner+ (DeepSeek V3)":         "outputs/tier_a/travel_deepseek",
+    "TravelPlanner+ (DeepSeek V3.1)":       "outputs/tier_a/travel_deepseek_v31",
+    "TravelPlanner+ (gpt-oss-20b)":         "outputs/tier_a/travel_gptoss20b",
+    "TravelPlanner+ (Mistral Nemo 12B)":    "outputs/tier_a/travel_mistral7b",
+    "TravelPlanner+ (Gemini 2.5 Flash)":    "outputs/tier_a/travel_gemini_flash",
+    "TravelPlanner+ (Qwen 2.5 7B)":         "outputs/tier_a/travel_qwen7b",
+    # TauBench × 8 models
+    "TauBench (Llama 3.3 70B)":             "outputs/tier_a/taubench_llama",
+    "TauBench (Llama 3.1 8B)":              "outputs/tier_a/taubench_llama3_8b",
+    "TauBench (DeepSeek V3)":               "outputs/tier_a/taubench_deepseek",
+    "TauBench (DeepSeek V3.1)":             "outputs/tier_a/taubench_deepseek_v31",
+    "TauBench (gpt-oss-20b)":               "outputs/tier_a/taubench_gptoss20b",
+    "TauBench (Mistral Nemo 12B)":          "outputs/tier_a/taubench_mistral7b",
+    "TauBench (Gemini 2.5 Flash)":          "outputs/tier_a/taubench_gemini_flash",
+    "TauBench (Qwen 2.5 7B)":               "outputs/tier_a/taubench_qwen7b",
+    # Tier-B: HotpotQA-Recon × 4 IS-winners
+    "HotpotQA (DeepSeek V3)":               "outputs/tier_b/hotpotqa_deepseek_v3",
+    "HotpotQA (Mistral Nemo 12B)":          "outputs/tier_b/hotpotqa_mistral_nemo",
+    "HotpotQA (Qwen 2.5 7B)":               "outputs/tier_b/hotpotqa_qwen_7b",
+    "HotpotQA (Gemini 2.5 Flash)":          "outputs/tier_b/hotpotqa_gemini_flash",
 }
 
 
