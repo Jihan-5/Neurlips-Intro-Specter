@@ -43,6 +43,11 @@ def _register_defaults() -> None:
 
         return TogetherProvider(**kw)
 
+    def _openrouter(**kw: Any) -> ChatProvider:
+        from .openrouter_provider import OpenRouterProvider
+
+        return OpenRouterProvider(**kw)
+
     def _mock(**kw: Any) -> ChatProvider:
         from .mock import MockProvider
 
@@ -51,6 +56,7 @@ def _register_defaults() -> None:
     register_provider("anthropic", _anthropic)
     register_provider("openai", _openai)
     register_provider("together", _together)
+    register_provider("openrouter", _openrouter)
     register_provider("mock", _mock)
 
 

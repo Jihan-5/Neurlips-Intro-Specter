@@ -19,10 +19,16 @@ import pandas as pd
 
 
 TIER_A = {
-    "PFQABench-Recon (Llama)":     "outputs/tier_a/pfqa_llama",
-    "TravelPlanner+ Recon (Llama)": "outputs/tier_a/travel_llama",
-    "TauBench-Recon (Llama)":      "outputs/tier_a/taubench_llama",
-    "PFQABench-Recon (DeepSeek)":  "outputs/tier_a/pfqa_deepseek",
+    "PFQABench-Recon (Llama 3.3 70B)":      "outputs/tier_a/pfqa_llama",
+    "PFQABench-Recon (Llama 3.1 8B)":       "outputs/tier_a/pfqa_llama3_8b",
+    "PFQABench-Recon (DeepSeek V3)":        "outputs/tier_a/pfqa_deepseek",
+    "PFQABench-Recon (DeepSeek V3.1)":      "outputs/tier_a/pfqa_deepseek_v31",
+    "PFQABench-Recon (gpt-oss-20b)":        "outputs/tier_a/pfqa_gptoss20b",
+    "PFQABench-Recon (Mistral Nemo 12B)":   "outputs/tier_a/pfqa_mistral7b",
+    "PFQABench-Recon (Gemini 2.5 Flash)":   "outputs/tier_a/pfqa_gemini_flash",
+    "PFQABench-Recon (Qwen 2.5 7B)":        "outputs/tier_a/pfqa_qwen7b",
+    "TravelPlanner+ Recon (Llama 3.3 70B)": "outputs/tier_a/travel_llama",
+    "TauBench-Recon (Llama 3.3 70B)":       "outputs/tier_a/taubench_llama",
 }
 METHOD_DISPLAY = {
     "direct": "Direct",
