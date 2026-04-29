@@ -223,6 +223,117 @@ include all dataset-construction code in the supplementary material.
 """
 
 
+def _calibration_table_tex() -> str:
+    cal_path = Path("outputs/tier_a/calibration/summary.csv")
+    if not cal_path.exists():
+        return "% calibration summary missing\n"
+    df = pd.read_csv(cal_path)
+    out = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\caption{Posterior calibration on PFQABench-Recon. ECE and Brier are "
+        r"computed on (max-posterior $\to$ repair-success). $\tau^*_{\text{5\%}}$ "
+        r"is the smallest abstention threshold achieving false-commit rate $\le 5\%$ "
+        r"(`--' = unreachable in our data, treated as a §6 limitation).}",
+        r"\label{tab:calibration}",
+        r"\small",
+        r"\begin{tabular}{lrrrrr}",
+        r"\toprule",
+        r"Model & $n$ & ECE & Brier & $\tau^*_{\text{5\%}}$ & coverage at $\tau^*_{\text{5\%}}$ \\",
+        r"\midrule",
+    ]
+    for _, r in df.iterrows():
+        tau = r.get("tau_at_5pct_fcr")
+        cov = r.get("coverage_at_5pct_fcr")
+        tau_s = "--" if pd.isna(tau) else f"{tau:.2f}"
+        cov_s = "--" if pd.isna(cov) else f"{cov*100:.1f}" + r"\%"
+        out.append(
+            f"{r['model']} & {int(r['n'])} & {r['ece']:.3f} & {r['brier']:.3f} & "
+            f"{tau_s} & {cov_s} \\\\"
+        )
+    out.extend([r"\bottomrule", r"\end{tabular}", r"\end{table}"])
+    return "\n".join(out) + "\n"
+
+
+def _ablation_table_tex() -> str:
+    d = Path("outputs/tier_a/ablation_mistral7b")
+    s = _load(d)
+    if s is None:
+        return "% ablation summary missing\n"
+    pretty = {
+        "intro_specter_llm": r"\textbf{Full method (control)}",
+        "intro_specter_flat_dag": r"-- Flat DAG (no edges)",
+        "intro_specter_uniform_prior": r"-- Uniform prior",
+        "intro_specter_no_likelihood": r"-- No counterfactual likelihood",
+        "intro_specter_no_cost": r"-- No edit cost (argmax posterior)",
+        "intro_specter_k3": r"-- $K=3$ counterfactual trials",
+    }
+    out = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\caption{Ablation block on Mistral Nemo 12B (the model where "
+        r"Intro-Specter most clearly outperforms Reflexion at +16.7\\%). "
+        r"Each row disables one component of the full method. "
+        r"$\Delta$ is success rate vs.\\ the full-method control on paired "
+        r"(task, seed) data.}",
+        r"\label{tab:ablation}",
+        r"\small",
+        r"\begin{tabular}{lrrr}",
+        r"\toprule",
+        r"Variant & Success (\%) & $\Delta$ vs.\\ control (\%) & Holm $p$ \\",
+        r"\midrule",
+    ]
+    control = s["methods"].get("intro_specter_llm", {}).get("success_rate")
+    for key, label in pretty.items():
+        if key not in s["methods"]:
+            continue
+        rec = s["methods"][key]
+        delta = (rec.get("success_rate") or 0) - (control or 0)
+        out.append(
+            f"{label} & {(rec.get('success_rate') or 0)*100:.1f} & "
+            f"{delta*100:+.1f} & {_p(rec.get('holm_success_p_adj'))} \\\\"
+        )
+    out.extend([r"\bottomrule", r"\end{tabular}", r"\end{table}"])
+    return "\n".join(out) + "\n"
+
+
+def _robustness_table_tex() -> str:
+    rob_path = Path("outputs/tier_a/robustness_stratify.csv")
+    if not rob_path.exists():
+        return "% robustness summary missing\n"
+    df = pd.read_csv(rob_path)
+    if df.empty:
+        return "% empty robustness summary\n"
+    # Pivot to one row per (model × stratum), columns = methods.
+    sub = df[df["axis"] == "condition"]
+    pivot = sub.pivot_table(
+        index=["model", "stratum"], columns="method", values="success_rate", aggfunc="first"
+    )
+    pivot = pivot[[c for c in ["direct", "self_refine", "reflexion", "full_regen", "intro_specter_llm"] if c in pivot.columns]]
+    out = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\caption{Robustness stratified by PFQABench condition "
+        r"(\textsc{factual\\_irrelevant} vs.\\ \textsc{profile\\_required}). "
+        r"Intro-Specter's gain concentrates on \textsc{profile\\_required} "
+        r"where the agent must actively use a profile fact.}",
+        r"\label{tab:robustness}",
+        r"\small",
+        r"\begin{tabular}{ll" + "r" * len(pivot.columns) + r"}",
+        r"\toprule",
+        r"Model & Condition & " + " & ".join(c for c in pivot.columns) + r" \\",
+        r"\midrule",
+    ]
+    cur_model = None
+    for (model, stratum), row in pivot.iterrows():
+        m = model if model != cur_model else ""
+        cur_model = model
+        cells = " & ".join(f"{v*100:.1f}" if not pd.isna(v) else "--" for v in row)
+        out.append(f"{m} & {stratum} & {cells} \\\\")
+    out.extend([r"\bottomrule", r"\end{tabular}", r"\end{table}"])
+    return "\n".join(out) + "\n"
+
+
 def main() -> int:
     out_dir = Path("outputs/tier_a")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -250,6 +361,10 @@ def main() -> int:
         label="tab:appendix-full",
     )
 
+    calibration_tab = _calibration_table_tex()
+    ablation_tab = _ablation_table_tex()
+    robustness_tab = _robustness_table_tex()
+
     parts = [
         "% Auto-generated by scripts/generate_focused_section.py.",
         "% Drop-in fragments for the focused, scope-honest paper structure.",
@@ -261,6 +376,15 @@ def main() -> int:
         SECTION5_PROSE,
         "",
         headline_tab,
+        "",
+        r"% --- Component ablation (Mistral Nemo, the model where IS most clearly wins) ---",
+        ablation_tab,
+        "",
+        r"% --- Robustness stratified by PFQABench condition ---",
+        robustness_tab,
+        "",
+        r"% --- Posterior calibration ---",
+        calibration_tab,
         "",
         LIMITATIONS_SECTION,
         "",
