@@ -1,0 +1,78 @@
+% Appendix C: Reconstruction methodology — short LaTeX summary that lifts
+% the key points from RECONSTRUCTION_METHODOLOGY.md.
+
+\subsection{Why reconstruct rather than use original benchmarks?}
+
+Three diagnostic requirements drive the reconstruction decision:
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \emph{Profile-grounded conditions.} None of the original
+benchmarks (PFQABench, HotpotQA, MuSiQue, StrategyQA, TauBench,
+TravelPlanner+, ALFWorld, WebShop) embeds a structured user profile
+the agent must respect. Our thesis is specifically about
+user-conditioned trajectory failures; without a profile, this
+failure mode does not exist in the benchmark distribution.
+\item \emph{Rule-based gold fault labels.} Posterior attribution
+requires ground-truth knowledge of \emph{which} assumption was the
+actual fault, not merely whether the final answer is wrong. The
+originals evaluate end-to-end correctness only.
+\item \emph{Two-condition diagnostic split.} For every benchmark
+family we need both \texttt{factual\_irrelevant} examples (profile
+present but should be ignored) and \texttt{profile\_required}
+examples (profile must be used). This isolates the direction of
+the failure: contamination versus omission.
+\end{enumerate}
+
+\subsection{What was preserved vs replaced}
+
+For each \textsc{Profile-X} benchmark we adopted the cognitive
+task family from the named original (e.g., 3-hop chained factual
+reasoning for \textsc{Profile-MuSiQue}, yes/no implicit reasoning
+for \textsc{Profile-StrategyQA}, long-horizon household navigation
+for \textsc{Profile-ALFWorld}) and:
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \emph{Preserved}: high-level task, answer format, trajectory shape.
+\item \emph{Replaced}: prompt distribution with templated questions
+whose gold labels are rule-checkable, plus a generated user profile
+(5--7 spans) that is either irrelevant to the task or required by it.
+\end{itemize}
+
+\subsection{Three independent fidelity checks}
+
+\paragraph{Difficulty-distribution coverage.}
+Direct success rate across our 36 \textsc{Profile-*} cells spans
+8.3\%--100\%, matching the empirically reported difficulty range of
+the originals on contemporary LLMs. Reconstructions are not
+systematically easier or harder than the originals.
+
+\paragraph{Real-data anchor.}
+The \textsc{Real-HotpotQA}, \textsc{Real-TruthfulQA},
+\textsc{Real-StrategyQA}, and \textsc{Real-TravelPlanner} datasets
+are loaded directly from HuggingFace (\texttt{hotpot\_qa} distractor,
+\texttt{truthful\_qa} generation, \texttt{ChilleD/StrategyQA},
+\texttt{osunlp/TravelPlanner}) without alteration. We inject the
+synthetic profile only as a contamination probe; the factual gold
+answers come from the original datasets. \textsc{Intro-Specter}'s
+deltas track \textsc{Profile-*} closely (mean $\pm$1.7pp difference
+across matched cells), and \textsc{Real-HotpotQA} $\times$ Qwen 7B is
+Holm-significant at $+18.6$pp, confirming the reconstructions are not
+the only place IS works.
+
+\paragraph{Synthetic ground truth.}
+Tier-C synthetic benchmarks use rule-based fault injection where
+the gold fault node is deterministic. Top-1 attribution accuracy
+$=100\%$ on \texttt{single\_fault} mode (n=60 trials per seed $\times$
+3 seeds $=180$ trials). This is an end-to-end correctness proof
+that the implementation does what the math says it should.
+
+\subsection{Honest limits}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item Templated questions trade lexical diversity for ground-truth
+tractability.
+\item Profiles drawn from a small bank (5--7 spans, finite-domain
+field values); we do not test culturally diverse or long-tail user
+profiles.
+\item The rule-based verifier may miss subtle violations a human
+would flag; we mitigate this with a manual inspection pass on the
+4 IS-winning cells (Section~\ref{sec:limitations}).
+\end{itemize}

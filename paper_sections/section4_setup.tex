@@ -1,0 +1,162 @@
+\section{Experimental Setup}
+\label{sec:setup}
+
+We evaluate \textsc{Intro-Specter} against seven self-correction
+baselines plus oracle controls across eight reconstruction benchmarks
+and four real-data fidelity anchors, on eight LLMs spanning four
+training families and 7B--671B parameters.
+
+\subsection{Benchmarks}
+\label{sec:benchmarks}
+
+\paragraph{Reconstruction benchmarks (8).} We construct
+\textsc{Profile-X} variants of established task families to isolate
+the profile-grounded failure mode with rule-based gold labels:
+\textsc{Profile-PFQA} (factual QA + profile irrelevance, after
+\citealp{sun2026personalization}), \textsc{Profile-HotpotQA} (2-hop
+QA, after \citealp{yang2018hotpotqa}), \textsc{Profile-MuSiQue}
+(3-hop multi-hop QA, after \citealp{trivedi2022musique}),
+\textsc{Profile-StrategyQA} (implicit yes/no, after
+\citealp{geva2021strategyqa}), \textsc{Profile-TauBench}
+(policy-compliance), \textsc{Profile-Travel} (itinerary planning
+under hard constraints, after \citealp{singh2024travelplanner}),
+\textsc{Profile-ALFWorld} (long-horizon household tasks, after
+\citealp{shridhar2021alfworld}), and \textsc{Profile-WebShop}
+(product search, after \citealp{yao2022webshop}). Each example
+carries a programmatically generated user profile (5--7
+constraints from a 28-template bank, half relevant / half
+irrelevant) and rule-based gold labels for both factual
+correctness and profile-violation detection.
+
+\paragraph{Real-data fidelity anchors (4).} To address the
+reasonable concern that reconstruction benchmarks favor the
+proposed method, we additionally evaluate on the unaltered
+HuggingFace splits of HotpotQA \citep{yang2018hotpotqa},
+TruthfulQA \citep{lin2022truthfulqa}, StrategyQA
+\citep{geva2021strategyqa}, and TravelPlanner
+\citep{singh2024travelplanner}. We inject the synthetic profile
+(same template bank as Profile-*) only as a contamination probe;
+the factual gold answers come from the original datasets. The
+reconstruction-vs-real comparison shows that IS deltas track each
+other within $\pm$1.7pp on average across matched cells, and
+\textsc{Real-HotpotQA} $\times$ Qwen 7B is the first IS
+Holm-significant win on a fully unaltered benchmark
+(+18.6pp, $p=0.012$). Reconstruction methodology is documented in
+\texttt{RECONSTRUCTION\_METHODOLOGY.md}.
+
+\paragraph{Synthetic Tier-C.} A controlled benchmark with rule-based
+gold fault-node labels for attribution evaluation. Two modes:
+\texttt{single\_fault} (one valid swap, attribution metric) and
+\texttt{multi\_valid} (many valid swaps, cost-efficiency metric).
+Direct fails 100\% by construction (fault is injected); this
+benchmark validates that IS does what the math says it should.
+
+\subsection{Models}
+
+We test eight LLMs covering four training families and a
+7B--671B parameter range: \textbf{Llama 3.3 70B} and
+\textbf{Llama 3.1 8B} (Meta), \textbf{DeepSeek V3} and
+\textbf{DeepSeek V3.1} (DeepSeek-AI MoE 671B), \textbf{Mistral
+Nemo 12B}, \textbf{Qwen 2.5 7B Instruct}, \textbf{Google Gemini
+2.5 Flash}, and \textbf{OpenAI gpt-oss-20b}. Together AI hosts
+the Llama and DeepSeek and gpt-oss models; OpenRouter hosts the
+Mistral, Qwen, and Gemini models.
+
+\subsection{Methods compared}
+
+We compare \textsc{Intro-Specter} against seven baselines plus
+two oracle controls:
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \textbf{Direct}: no correction; the agent commits its first
+trajectory.
+\item \textbf{Self-Refine} \citep{madaan2023selfrefine}:
+single-pass critique + revision over the entire trajectory.
+\item \textbf{Reflexion} \citep{shinn2023reflexion}: verbal
+post-mortem then full retry, up to two trials.
+\item \textbf{Full-Regen}: re-sample the entire trajectory at
+higher temperature.
+\item \textbf{ReAct} \citep{yao2023react}: explicit
+Thought-Action-Observation interleaving up to four steps.
+\item \textbf{Tree of Thoughts (ToT)} \citep{yao2023tot}: BFS
+over reasoning branches with $k=3$ candidates per parent, beam
+width $b=2$, max depth 4, profile-aware value scoring.
+\item \textbf{SelfCheckGPT} \citep{manakul2023selfcheckgpt}: $N=5$
+sampling-based hallucination detection plus regeneration.
+\item \textbf{Detection-only}: an ablation that runs the IS
+verifier prompt and abstains on flagged trajectories without
+attempting repair. Isolates the contribution of detection from
+that of repair.
+\item \textbf{Oracle-Detector} (synthetic only): perfect
+violation detection; tests whether IS's verifier is the
+bottleneck.
+\item \textbf{Oracle-Repair} (synthetic only): perfect
+fault-node selection; tests whether IS's posterior
+attribution is the bottleneck.
+\end{itemize}
+
+\subsection{Evaluation protocol}
+
+Each (benchmark, model, method) cell is run with $n=60$ trials
+across three random seeds (42, 123, 456); identical (task\_id, seed)
+pairs are used across methods so all comparisons are paired. We
+report:
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \textbf{Success rate}: 1 if all violations on the final
+output are absent and the gold answer is present (substring
+match for QA, structural check for planning).
+\item \textbf{Profile-violation rate}: 1 if the final output
+contains a banned substring derived from a hard profile
+constraint.
+\item \textbf{Token cost}: total LLM input + output tokens per
+trial, summed across all method calls.
+\item \textbf{Attribution accuracy} (synthetic + Profile-* with
+fault injection): top-1, top-3, MRR of IS's posterior over
+the gold fault-node id.
+\end{itemize}
+
+\subsection{Statistical methodology}
+
+For each (model, benchmark) cell we compute:
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \textbf{Paired bootstrap CIs} (10\,000 resamples) on the
+difference $\Delta_{\mathrm{success}}$ between IS and each
+baseline.
+\item \textbf{McNemar's test} for the paired binary outcome
+on the same (task\_id, seed) trials.
+\item \textbf{Wilcoxon signed-rank} on token-cost differences.
+\item \textbf{Holm-Bonferroni correction} across all
+comparisons within a table (per-dataset Holm for the Real-*
+matrix; matrix-wide Holm for the Profile-* headline table).
+\end{enumerate}
+We report a result as ``IS-significant'' only when the Holm
+correction rejects at $\alpha = 0.05$.
+
+\subsection{Calibration evaluation}
+
+We compute Expected Calibration Error (ECE, 10 bins) and Brier
+score per cell using $\max_k p(a_k|\mathcal{V})$ as the predicted
+commit-confidence and the empirical success rate on committed
+trials as the ground truth. The selective risk-coverage curve is
+generated by sweeping the abstention threshold $\tau$ and recording
+$(\mathrm{coverage}(\tau), \mathrm{accuracy}(\tau))$. The val-split
+$\tau$ tuning sweep at the time of writing covers four IS-winning
+cells (Profile-MuSiQue $\times$ \{Gemini Flash, Qwen 7B, Mistral
+Nemo, DeepSeek V3\}) at six $\tau$ values
+$\in \{0, 0.1, 0.2, 0.3, 0.5, 0.7\}$.
+
+\subsection{Reproducibility}
+
+The codebase, configs, and aggregated CSVs are released at
+\url{https://github.com/Jihan-5/Neurlips-Intro-Specter}. All LLM
+calls are cached by \texttt{hash(prompt + model + temperature +
+seed)} so reruns are free. Per-method LLM-call accounting is
+documented in \texttt{docs/TOKEN\_ACCOUNTING.md}. Seeds and
+splits are deterministic (\texttt{train\_frac=0.6,
+val\_frac=0.2}); the test split for each benchmark is the
+last 20\% of $n_{\mathrm{examples}}$ indices, ensuring no
+contamination between $\tau$ tuning (val) and reporting (test).
+
+\paragraph{Total compute budget.} The full matrix used $\sim$\$80
+of API credits across Together AI and OpenRouter; at the time of
+writing all 8-method coverage on the four Real-* datasets $\times$
+seven LLMs (excluding DeepSeek V3.1 to save budget) is complete.

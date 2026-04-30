@@ -1,0 +1,174 @@
+% Abstract + §1 Introduction + §2 Related Work
+% Source: user-authored LaTeX, integrated as-is so main.tex can \input{}.
+
+\begin{abstract}
+LLM agents are increasingly deployed for user-facing sequential decision-making,
+where they act on behalf of users whose preferences are captured in structured
+profiles. Errors that violate these profiles often go undetected until trajectory
+completion. We take a step toward principled error repair in profile-conditioned
+agent trajectories. We identify three challenges: (i) existing methods critique
+flat trajectories without modeling which latent assumptions caused the failure;
+(ii) search- and uncertainty-based approaches localize \emph{where} to intervene
+but not \emph{what} to revise, leading to wasteful re-rollouts; (iii) violations
+detected only at completion leave forward-only methods unable to recover
+otherwise-valid prefixes. To address these issues, we introduce
+\textsc{Intro-Specter}, a three-stage framework that formalizes self-correction
+as abductive Bayesian inference over an assumption graph. We first construct an
+Assumption-DAG over reasoning steps. We then compute a posterior
+$p(a_k \mid \mathcal{V})$ over candidate faulty assumptions via LLM-scored
+counterfactual repairs. Finally, we apply a Min-Cost Graph-Edit Repair (MCGR)
+procedure that identifies the most likely faulty assumption under the posterior
+and re-samples only the downstream subgraph while preserving the unaffected
+prefix. We evaluate \textsc{Intro-Specter} against seven self-correction baselines
+on profile-conditioned agent benchmarks and find it Holm-Bonferroni-significant
+on 18 of 45 model$\times$benchmark cells across eight reconstruction benchmarks
+plus a real-data fidelity anchor, peaking at $+33.3$pp on
+\textsc{Profile-MuSiQue} $\times$ Gemini Flash ($p = 10^{-5}$), while matching
+oracle controls at zero token overhead in the controlled synthetic setting.
+\end{abstract}
+
+% =====================================================================
+% INTRODUCTION
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+
+LLM agents such as ReAct~\citep{yao2023react},
+Reflexion~\citep{shinn2023reflexion}, and generative agents~\citep{park2023generative}
+are increasingly deployed for sequential decision-making on behalf of
+users---scheduling meetings, booking flights, ordering food, and managing
+personal workflows~\citep{wang2024survey,liu2024agentbench}. In these settings,
+the agent operates over a structured user profile that captures preferences
+and constraints, and users often trust the agent's decisions without
+re-verifying each intermediate step. Because these agents commit to each
+action before moving on, errors that emerge midway through a trajectory---such
+as selecting a meal that violates a dietary restriction or booking a hotel
+that conflicts with a stated preference---are hard to trace back to the
+assumptions that caused them, leaving root causes intact and risking
+\emph{user-specific hallucinations}: outputs that are internally coherent
+but violate the user's own stated constraints.
+
+Recent work confirms that this problem is both real and systematic.
+\citet{singh2024travelplanner} show that injecting user models into multi-step
+planning degrades hard constraint satisfaction even as personalized plans are
+strongly preferred by users. \citet{sun2026personalization} formalize this as
+personalization-induced hallucination, showing that user-specific context can
+distort factual reasoning through representational entanglement.
+\citet{he2025martingale} provide evidence that LLM belief updates during reasoning
+can systematically violate Bayesian rationality, raising concerns about
+self-correction mechanisms that rely solely on the model judging its own
+trajectory. Together, these findings suggest that reliable correction in
+user-conditioned settings requires two ingredients that are not jointly
+addressed by current methods: backward attribution from observed errors to the
+assumptions that caused them, and external grounding against the user profile
+rather than LLM self-evaluation alone.
+
+Several approaches have been proposed to improve LLM agent outputs through
+iterative refinement and structured search. Self-Refine~\citep{madaan2023selfrefine}
+alternates between feedback and refinement steps using the same model.
+Reflexion~\citep{shinn2023reflexion} converts environment feedback into verbal
+summaries stored as episodic memory. Tree of Thoughts~\citep{yao2023tot}
+maintains diverse reasoning alternatives through branching and backtracking,
+and Graph of Thoughts~\citep{besta2024got} generalizes to graph transformations
+including refinement, aggregation, and merging. Process-level signals such as
+UProp~\citep{duan2025uprop} and URSA~\citep{luo2025ursa} attach uncertainty or
+reward estimates to individual reasoning steps. While these methods improve
+output quality across a range of tasks, few of them maintain an explicit model
+of which latent assumptions caused a failure, and existing approaches do not
+prescribe how to selectively repair a trajectory once an error is detected.
+
+In this paper, we propose \textsc{Intro-Specter}, a framework that formalizes
+agent self-correction as abductive Bayesian inference over an assumption graph.
+Rather than searching forward through a space of thoughts or critiquing flat
+trajectories, \textsc{Intro-Specter} maintains an explicit directed acyclic
+graph of the assumptions underlying each reasoning step---some derived from the
+user profile, others inferred by the model. When a user-profile violation is
+detected, \textsc{Intro-Specter} treats the error as evidence, computes a
+posterior $p(a_k \mid \mathcal{V})$ over ancestor assumptions via LLM-scored
+counterfactual repairs, and solves a minimum-expected-cost graph-edit problem
+that selects the most likely faulty assumption under the posterior and
+re-samples only the downstream subgraph while reusing the unaffected prefix.
+This combination of backward attribution, profile-grounded detection, and
+selective repair is, to our knowledge, not jointly addressed by prior work.
+
+\paragraph{Contributions.}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \textbf{Problem formalization.} We define user-specific hallucination as
+a profile-grounded trajectory failure caused by unsupported or contradicted
+assumptions about user constraints, and formulate self-correction as abductive
+posterior inference over an explicit assumption graph.
+\item \textbf{Method.} We introduce an Assumption-DAG that records profile-,
+tool-, and model-inferred assumptions with provenance, and a posterior
+attribution procedure that scores candidate faulty assumptions via LLM-driven
+counterfactual repair.
+\item \textbf{Selective repair objective.} We formulate repair as a
+decision-theoretic objective trading posterior fault probability against
+downstream edit cost, with empirically calibrated abstention for
+low-confidence cases.
+\item \textbf{Evaluation.} We benchmark across personalized QA, planning,
+and sequential-agent tasks, against seven self-correction baselines including
+ReAct, Tree of Thoughts, and SelfCheckGPT, with attribution labels,
+calibration analysis, ablations, and token-cost comparisons.
+\end{itemize}
+
+% =====================================================================
+% RELATED WORK
+% =====================================================================
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Reasoning structures and forward self-correction.}
+Chain-of-Thought prompting~\citep{wei2022cot} enables LLMs to decompose problems
+into intermediate steps. Self-Consistency~\citep{wang2023selfconsistency} samples
+multiple chains and selects via majority vote. Tree of Thoughts~\citep{yao2023tot}
+maintains a tree of partial reasoning states with LLM-based evaluation and
+BFS/DFS search; Graph of Thoughts~\citep{besta2024got} further allows branch
+merging for divide-and-conquer strategies. On the correction side,
+Self-Refine~\citep{madaan2023selfrefine} iterates generate--critique--refine
+loops using the same LLM; Reflexion~\citep{shinn2023reflexion} stores verbal
+post-mortems in episodic memory for future attempts; ReAct~\citep{yao2023react}
+interleaves reasoning with tool calls and environment feedback. These methods
+have substantially advanced LLM reasoning, but correction operates forward: to
+our knowledge, none of these methods explicitly attribute an error at step $T$
+to a faulty assumption at step $k<T$ via an explicit assumption graph or belief
+state.
+
+\paragraph{Hallucination detection.}
+SelfCheckGPT~\citep{manakul2023selfcheckgpt} samples $N$ alternative completions
+and checks per-claim consistency for hallucination detection in a zero-resource
+setting. HaloScope~\citep{du2024haloscope} learns hallucination scores from
+internal model representations. These methods establish that detection is
+tractable, but our \textsc{Detection-only} ablation (Section~\ref{sec:results})
+shows detection alone produces zero downstream success lift without paired
+repair, motivating our three-layer architecture.
+
+\paragraph{Process supervision and uncertainty.}
+UProp~\citep{duan2025uprop} decomposes per-step uncertainty into intrinsic
+and extrinsic components, showing that uncertainty inherited from earlier
+decisions dominates in later steps. URSA~\citep{luo2025ursa} trains a process
+reward model for multimodal reasoning. Both establish that error propagation
+is a first-class concern, but UProp is diagnostic only and URSA operates at
+training time; neither performs trajectory-level repair in user-conditioned
+settings.
+
+\paragraph{Personalized agents and user-specific hallucination.}
+TravelPlanner+~\citep{singh2024travelplanner} benchmarks personal LLM agents
+and shows that personalization can degrade hard constraint satisfaction.
+\citet{sun2026personalization} explain a related effect via representational
+entanglement between personalization and factual knowledge.
+\citet{he2025martingale} provide evidence that LLM belief updates can
+systematically entrench priors rather than revising them. These results show
+that personalization can corrupt reasoning and that external grounding helps,
+but they do not couple user-profile grounding with backward attribution and
+trajectory-level repair.
+
+\paragraph{Gap statement.}
+Taken together, existing work provides forward reflection, structured search,
+hallucination detection, process-level uncertainty, and personalization
+analysis. We are not aware of prior work that jointly (i) represents
+user-profile assumptions as explicit trajectory nodes with provenance,
+(ii) infers a posterior over candidate faulty assumptions after a
+profile-grounded violation is detected, and (iii) selectively repairs only
+the downstream subgraph while preserving valid prefixes.
+\textsc{Intro-Specter} targets this joint problem of detection, attribution,
+and selective repair in user-conditioned agent trajectories.

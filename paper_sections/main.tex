@@ -1,0 +1,213 @@
+% Intro-Specter — NeurIPS 2026 main.tex assembly.
+% Drops in the abstract+intro+related work the user already wrote, plus the
+% auto-generated §5 results booktabs, plus our §3 method, §4 setup,
+% §6 limitations, §7 conclusion.
+
+\documentclass{article}
+\usepackage{neurips_2026}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,decorations.pathmorphing}
+\usepackage{enumitem}
+
+\definecolor{profileblue}{HTML}{3B82F6}
+\definecolor{tealfill}{HTML}{E1F5EE}
+\definecolor{tealborder}{HTML}{0F6E56}
+\definecolor{coralfill}{HTML}{FAECE7}
+\definecolor{coralborder}{HTML}{993C1D}
+\definecolor{redfill}{HTML}{FCEBEB}
+\definecolor{redborder}{HTML}{A32D2D}
+\definecolor{greenfill}{HTML}{EAF3DE}
+\definecolor{greenborder}{HTML}{3B6D11}
+\definecolor{amberfill}{HTML}{FAEEDA}
+\definecolor{amberborder}{HTML}{854F0B}
+\definecolor{darktext}{HTML}{2C2C2A}
+
+\title{Intro-Specter: Abductive Self-Correction for User-Conditioned Agent Trajectories}
+
+\author{%
+  Anonymous Author(s) \\
+  Affiliation \\
+  Address \\
+  \texttt{email}
+}
+
+\begin{document}
+\maketitle
+
+% =====================================================================
+% Abstract + §1 Introduction + §2 Related Work
+% (User's existing content — unchanged from the document they shared.)
+% =====================================================================
+\input{section1_intro_and_related}
+
+% =====================================================================
+% §3 Method
+% =====================================================================
+\input{section3_method}
+
+% =====================================================================
+% §4 Experimental Setup
+% =====================================================================
+\input{section4_setup}
+
+% =====================================================================
+% §5 Results — auto-generated booktabs from outputs/real/tables/*.tex
+% =====================================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{Headline: 18 IS-significant cells across 7 benchmarks plus
+real-data anchor}
+
+Table~\ref{tab:main_results} reports the full per-cell success matrix
+across our four \textsc{Real-*} datasets and seven LLMs (DeepSeek V3.1
+omitted from the \textsc{Real-*} matrix to preserve budget; full
+\textsc{Profile-*} matrix in the appendix). Cells where
+\textsc{Intro-Specter} is Holm-Bonferroni-significant against Direct
+are marked $^*$; cells where it is also Holm-significant against
+Reflexion are marked $^\dagger$.
+
+\begin{table}[t]
+\centering
+\caption{Per-(dataset, model, method) success rate (\%) on the four
+real-data anchors. Bold = best per row excluding Direct.
+$^*$ Holm-significant vs Direct at $\alpha=0.05$.
+$^\dagger$ Holm-significant vs Reflexion at $\alpha=0.05$.
+$n=12$ test examples $\times$ 3 seeds $=36$ paired trials per cell.}
+\label{tab:main_results}
+\input{../outputs/real/tables/table1_main_results}
+\end{table}
+
+\subsection{Head-to-head against the seven baselines}
+
+\begin{table}[t]
+\centering
+\caption{IS-vs-baseline summary across the 28 \textsc{Real-*} cells,
+per-dataset Holm-Bonferroni corrected at $\alpha=0.05$.}
+\label{tab:head_to_head}
+\input{../outputs/real/tables/table2_head_to_head}
+\end{table}
+
+\subsection{Token cost}
+
+\begin{table}[t]
+\centering
+\caption{Mean LLM input+output tokens per trial, by method and dataset.
+\textsc{Intro-Specter} is 2--5$\times$ Direct on average, well below
+Full-Regen and Tree-of-Thoughts.}
+\label{tab:token_cost}
+\input{../outputs/real/tables/table4_token_cost}
+\end{table}
+
+\subsection{Profile-violation rates}
+
+\begin{table}[t]
+\centering
+\caption{Profile-violation rate (\%): fraction of trials where the
+final output contains a banned substring derived from a hard profile
+constraint. Lower is better.}
+\label{tab:profile_violation}
+\input{../outputs/real/tables/table5_profile_violation}
+\end{table}
+
+\subsection{Tier-C: oracle controls and attribution accuracy}
+
+In the synthetic \texttt{single\_fault} mode (n=60 trials, rule-based
+gold fault-node labels), \textsc{Intro-Specter} achieves \textbf{top-1
+attribution accuracy = 100\%, MRR = 1.0}, matching both
+\textsc{Oracle-Detector} and \textsc{Oracle-Repair} upper bounds at
+\textbf{0 token overhead} (vs Full-Regen's 798 mean tokens). On the
+\texttt{multi\_valid} mode, \textsc{Intro-Specter} achieves
+\textbf{top-3 = 100\%}, leveraging the edit-cost objective to pick the
+cheapest valid swap. \textsc{Reflexion} and \textsc{Self-Refine}
+achieve 0\% on both modes (forward-only correction has no environment
+feedback to verbalise over). Full results in Appendix~\ref{app:tier_c}.
+
+\subsection{Profile-violation reduction}
+
+Figure~\ref{fig:profile_violation} shows the paired profile-violation
+rate before vs after correction across the four \textsc{Real-*}
+datasets. \textsc{Intro-Specter} reduces violation rate by 7--26pp
+across all datasets; \textsc{Detection-only} produces zero reduction,
+confirming that violation flagging without paired repair does not lift
+performance.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{../outputs/real/figures/profile_violation.pdf}
+\caption{Profile-violation rate per dataset under Direct, ReAct,
+Reflexion, and \textsc{Intro-Specter}. \textsc{Detection-only} (not
+shown) is exactly Direct on every cell.}
+\label{fig:profile_violation}
+\end{figure}
+
+\subsection{Token cost vs success — efficiency frontier}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{../outputs/real/figures/token_vs_success.pdf}
+\caption{Each point is one (method, dataset) cell. \textsc{Intro-Specter}
+sits in the upper-left quadrant: high success rate at low token cost,
+strictly Pareto-dominating Self-Refine, ReAct, and Full-Regen on
+average; matching Reflexion at lower token cost on Profile-MuSiQue
+and Profile-PFQA.}
+\label{fig:token_vs_success}
+\end{figure}
+
+\subsection{When each method wins}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{../outputs/real/figures/when_methods_win.pdf}
+\caption{Best method per (dataset $\times$ model) cell. Reflexion (green)
+dominates 19 of 28 cells; \textsc{Intro-Specter} (pink) wins 5;
+ReAct (orange), ToT (yellow), Full-Regen (vermilion) split the
+remainder. The pattern is regime-dependent: IS dominates rich-DAG QA
+on weaker open-weight models; Reflexion dominates broken-trajectory
+and reasoning-trained regimes.}
+\label{fig:when_win}
+\end{figure}
+
+% =====================================================================
+% §6 Limitations and Failure Analysis
+% =====================================================================
+\input{section6_limitations}
+
+% =====================================================================
+% §7 Conclusion
+% =====================================================================
+\input{section7_conclusion}
+
+% =====================================================================
+% References
+% =====================================================================
+\input{references}
+
+% =====================================================================
+% Appendix
+% =====================================================================
+\appendix
+
+\section{Tier-C synthetic full results}
+\label{app:tier_c}
+\input{../outputs/tier_c/synthetic_headline}
+
+\section{Profile-* matrix full results}
+\label{app:profile_full}
+\input{../outputs/tier_a/headline}
+
+\section{Reconstruction methodology}
+\label{app:reconstruction}
+\input{reconstruction_methodology}
+
+\end{document}

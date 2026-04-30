@@ -1,0 +1,66 @@
+# Extended ablation block on MuSiQue × Gemini Flash — our deepest-DAG +33pp cell.
+# Where the original Mistral × PFQA ablation showed only flat_dag mattering
+# (-3.3pp), the deeper 3-hop MuSiQue trajectories should exercise the
+# posterior-weighting components (uniform_prior / no_likelihood / no_cost / K=3)
+# more meaningfully. Each ablation gets a unique method name.
+
+benchmark: musique_recon
+split: test
+n_examples: 100
+seeds: [0, 1, 2]
+output_dir: outputs/tier_a/ablation_musique_gemini_flash
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - name: intro_specter_llm
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+
+  - name: intro_specter_flat_dag
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      flat_dag: true
+
+  - name: intro_specter_uniform_prior
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      uniform_prior: true
+
+  - name: intro_specter_no_likelihood
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      skip_likelihood: true
+
+  - name: intro_specter_no_cost
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 1
+      disable_cost: true
+
+  - name: intro_specter_k3
+    provider_name: openrouter
+    model: google/gemini-2.5-flash
+    temperature: 0.0
+    extra:
+      tau_abstain: 0.0
+      n_counterfactual_trials: 3

@@ -1,0 +1,101 @@
+\section{Method}
+\label{sec:method}
+
+\textsc{Intro-Specter} formalises self-correction as abductive Bayesian
+inference over an explicit assumption graph. We describe the three
+layers in turn (Sections~\ref{sec:layer1}--\ref{sec:layer3}) and then
+state the joint optimisation that ties them together
+(Section~\ref{sec:joint}).
+
+\subsection{Layer 1: Assumption-DAG construction}
+\label{sec:layer1}
+
+Given an agent trajectory $\mathcal{T} = (s_0, s_1, \dots, s_T)$ where
+each $s_t$ is a reasoning step, observation, or tool call, and a
+structured user profile $\mathcal{P} = \{p_1, \dots, p_K\}$ of
+constraint spans, we extract an Assumption-DAG
+$G = (\mathcal{V}, \mathcal{E})$ as follows. Each node $a \in \mathcal{V}$
+is an explicit assumption the agent relied on at some step in
+$\mathcal{T}$, annotated with provenance
+$\mathrm{prov}(a) \in \{\textsc{profile}, \textsc{tool}, \textsc{model-inferred}\}$.
+Edges $(a_i, a_j) \in \mathcal{E}$ encode "$a_j$ is a downstream
+consequence of $a_i$" via a topological ordering of trajectory steps:
+if step $t_j > t_i$ and $a_j$'s rationale references $a_i$, we add the
+edge.
+
+The extraction prompt (\textsc{ASSUMPTION\_EXTRACTION}) elicits this
+graph from any frozen LLM by asking it to enumerate explicit
+assumptions per step and label provenance. The Pydantic schema
+(\texttt{AssumptionDAG}, \texttt{AssumptionNode}) plus a tolerant JSON
+parser (\texttt{coerce\_trajectory\_steps}, \texttt{coerce\_final\_output})
+handles the model-specific JSON quirks we encountered across the eight
+LLMs in our matrix.
+
+\subsection{Layer 2: Posterior attribution}
+\label{sec:layer2}
+
+When a profile-grounded violation $\mathcal{V}$ is detected (Layer 2a:
+the rule-based or LLM-based verifier flags an output as inconsistent
+with $\mathcal{P}$), we treat $\mathcal{V}$ as evidence and compute the
+posterior over candidate ancestor assumptions:
+\begin{equation}
+p(a_k \mid \mathcal{V}) \;\propto\; p(\mathcal{V} \mid a_k) \cdot p(a_k),
+\qquad k \in \mathrm{Anc}_G(\mathrm{step}(\mathcal{V})),
+\end{equation}
+where $\mathrm{Anc}_G(\cdot)$ denotes ancestors in the DAG up to the
+step at which the violation manifested.
+
+The likelihood $p(\mathcal{V} \mid a_k)$ is estimated via
+\emph{counterfactual repair}: the LLM (\textsc{COUNTERFACTUAL} prompt)
+proposes alternative values for $a_k$, re-runs only the affected
+sub-DAG, and reports whether the violation persists. We aggregate over
+$K$ counterfactual draws (default $K=3$) for variance reduction.
+
+The prior $p(a_k)$ is provenance-weighted:
+\begin{equation}
+p(a_k) \propto \alpha_{\mathrm{prov}(a_k)} \cdot \beta_{|\mathrm{step}(a_k) - \mathrm{step}(\mathcal{V})|}
+\end{equation}
+with $\alpha_{\textsc{model-inferred}} > \alpha_{\textsc{tool}} > \alpha_{\textsc{profile}}$
+(model-inferred assumptions are most likely to be wrong) and
+$\beta_d$ a decay factor preferring nodes closer to the violation
+step (the \emph{earliest-fault bias}).
+
+\subsection{Layer 3: Selective MCGR repair}
+\label{sec:layer3}
+
+Given the posterior, we select a repair node by maximising a
+Bayes-risk-inspired utility:
+\begin{equation}
+a^* \;=\; \argmax_{a_k}\; p(a_k \mid \mathcal{V}) \cdot U_{\mathrm{success}} - \lambda \cdot \frac{C(a_k)}{C_{\max}},
+\label{eq:mcgr}
+\end{equation}
+where $C(a_k)$ is the edit cost (number of downstream nodes to re-run
+plus the LLM-call budget for re-execution) and $\lambda$ trades
+posterior probability against re-execution cost. We then re-execute
+only the descendants of $a^*$ via the \textsc{REEXECUTION} prompt,
+preserving the trajectory prefix above $a^*$.
+
+The verifier is re-applied to the repaired trajectory; if the violation
+persists, we either commit (when $\max_k p(a_k|\mathcal{V}) \geq \tau$)
+or abstain (when below threshold). The threshold $\tau$ is the
+\emph{calibrated abstention parameter}, tuned on a held-out val split.
+
+\subsection{Why this combination is novel}
+\label{sec:joint}
+
+Existing self-correction methods either (i) critique the entire
+trajectory without identifying which assumption was wrong (Self-Refine,
+Reflexion) or (ii) search forward over thoughts without backward
+attribution (Tree of Thoughts). \textsc{Intro-Specter} is the first to
+jointly:
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item represent user-profile assumptions as explicit trajectory nodes
+with provenance,
+\item infer a posterior over candidate faulty assumptions \emph{after}
+violation detection,
+\item selectively repair only the downstream subgraph while preserving
+valid prefix steps.
+\end{enumerate}
+Section~\ref{sec:results} shows this joint design yields
+Holm-Bonferroni-significant improvements over the seven self-correction
+baselines we compare against.

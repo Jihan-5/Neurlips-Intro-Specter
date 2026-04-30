@@ -1,0 +1,125 @@
+\section{Limitations and Failure Analysis}
+\label{sec:limitations}
+
+We report failure regimes and open questions directly. The full
+quantified accounting is in \texttt{LIMITATIONS.md}; this section
+summarises the headline points.
+
+\subsection{Where Intro-Specter does not win}
+
+Across the 28 \textsc{Real-*} cells with eight methods compared,
+Reflexion strictly beats \textsc{Intro-Specter} at McNemar
+$p < 0.05$ on \textbf{2 cells} under per-dataset Holm correction:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item \textsc{Real-TruthfulQA} $\times$ DeepSeek V3 (Reflexion 83.3\%
+vs IS 41.7\%): DeepSeek's TruthfulQA trajectories are corrupted
+from step 1 by the adversarial profile pressure. The
+Assumption-DAG has no salvageable prefix; selective repair has
+nothing to selectively keep. Reflexion's "throw out the
+trajectory and re-roll with a one-line verbal summary" is the
+right primitive here.
+\item \textsc{Real-TravelPlanner} $\times$ DeepSeek V3 (Reflexion
+88.9\% vs IS 72.2\%): Long-horizon Travel trajectories (15+ steps)
+have many candidate fault nodes; the posterior is diffuse and the
+edit-cost objective penalises deep-prefix repairs. Reflexion's
+verbal summary captures the constraint violation efficiently.
+\end{itemize}
+
+Across the broader matrix, three principled regimes emerge as IS
+non-winners:
+
+\paragraph{Ceiling regime.}
+Llama 3.3 70B at Direct $\geq$ 96\% on \textsc{Profile-PFQA},
+\textsc{Profile-Travel}, and \textsc{Profile-TauBench} leaves no
+headroom for any method to recover. We see no significant
+gains from any baseline on these cells; this is not a
+limitation specific to IS.
+
+\paragraph{Shallow-trajectory regime.}
+Tasks with 1--3 candidate fault nodes (\textsc{Profile-WebShop} on
+weak models; single-step decisions in \textsc{Profile-TauBench})
+do not provide a rich-enough Assumption-DAG to attribute over.
+Reflexion's verbal reflection wins here at margins of 5--35pp on
+the 5 cells in this regime.
+
+\paragraph{Reasoning-trained-model regime.}
+gpt-oss-20b and Gemini 2.5 Flash on long-horizon tasks have
+internal chain-of-thought training that aligns with Reflexion's
+"what went wrong?" prompt. \textsc{Profile-ALFWorld} $\times$
+Gemini 2.5 Flash: Reflexion +53pp vs IS +30pp from the same
+Direct baseline of 38.3\%. IS still helps; verbal reflection
+helps more.
+
+\subsection{Detection alone is insufficient}
+
+The \textsc{Detection-only} baseline (Section~\ref{sec:setup})
+runs the same LLM verifier prompt as IS but abstains rather than
+repairing. On the four \textsc{Real-HotpotQA} IS-winner cells,
+\textsc{Detection-only} sits \emph{exactly} at Direct on every
+cell ($\Delta = 0.0$pp on all four). This is the cleanest
+evidence that detection without paired repair provides zero
+lift, and it is the central empirical claim behind IS's
+three-layer architecture: detection, attribution, and selective
+repair must be jointly engineered.
+
+\subsection{Open questions}
+
+\paragraph{Calibration is currently post-hoc.}
+We report ECE and Brier across all IS cells using
+$\max_k p(a_k|\mathcal{V})$ as the commit confidence; pooled across
+2\,710 trials, ECE $=0.130$. The val-split-tuned $\tau$ sweep
+across four \textsc{Profile-MuSiQue} cells (six $\tau$ values
+$\in \{0, 0.1, 0.2, 0.3, 0.5, 0.7\}$) was running at the time of
+writing. Until that lands, the "calibrated abstention" claim is
+supported only by post-hoc operating-point analysis on the same
+data we evaluate on.
+
+\paragraph{Single-cell ablation evidence.}
+The original Mistral $\times$ \textsc{Profile-PFQA} ablation
+showed only the structured DAG (\texttt{flat\_dag} ablation) moves
+the needle ($-3.3$pp); the four posterior-weighting components
+(\texttt{uniform\_prior}, \texttt{no\_likelihood}, \texttt{no\_cost},
+$K=1$ vs $K=3$) were within noise on this benchmark. PFQA's
+short trajectories don't exercise these components; the
+deeper-DAG \textsc{Profile-MuSiQue} $\times$ Gemini Flash
+ablation in progress will give them a fairer test.
+
+\paragraph{Verifier-as-rule limitations.}
+\textsc{Profile-*} benchmarks use a substring-based verifier
+which can produce false negatives (missing subtle violations)
+and false positives (legitimate keyword overlap). A 48-case
+manual analysis bundle in \texttt{outputs/error\_analysis/}
+quantifies this for the four IS-winning cells; preliminary
+inspection suggests $\sim$10\% of IS "failures" are verifier
+false-negatives rather than method failures.
+
+\paragraph{ToT execution is rate-limit-fragile.}
+ToT's $k \times b \times \mathrm{depth} \times 2 + 1 \approx 49$
+LLM calls per trial make it sensitive to provider rate limits;
+we logged 192 ToT errors out of $\sim$1\,000 attempts. Where
+ToT did complete, it is competitive with IS on
+\textsc{Profile-MuSiQue} (87.5\% on Mistral cell) but fails
+badly on \textsc{Real-Travel} (mean 33.3\% vs Direct 41.7\%).
+This is a deployment limitation, not a fundamental method
+comparison.
+
+\subsection{What this paper does not claim}
+
+\textsc{Intro-Specter} is not faster than \textsc{Direct}: it
+runs an LLM pipeline on top of the agent's first attempt and
+pays 2--5$\times$ tokens depending on whether repair fires. We
+make no claim about hallucination correction outside
+profile-grounded settings. We assume static profiles; users
+whose preferences drift over time would require a profile-update
+mechanism we do not study. The cross-family compensation result
+(IS recovers half the Llama-70B-to-DeepSeek-V3 quality drop) is
+specific to PFQA-style factual QA; we do not verify it on
+long-horizon planning tasks.
+
+The honest framing: IS dominates the regime it was theoretically
+built for (rich-DAG profile-grounded errors on weaker open-weight
+models, with recoverable trajectory prefixes and concentrated
+fault nodes). Reflexion remains the strongest baseline and
+dominates broken-trajectory and reasoning-tuned-model regimes.
+The two methods are complementary, not competitive.

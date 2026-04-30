@@ -1,0 +1,71 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented \textsc{Intro-Specter}, a three-layer self-correction
+framework that formalises agent self-correction as abductive
+Bayesian inference over an explicit assumption graph. Where
+existing methods either critique flat trajectories
+(Self-Refine, Reflexion) or search forward over reasoning
+branches (Tree of Thoughts), \textsc{Intro-Specter} jointly
+(i) represents profile-grounded assumptions as nodes with
+provenance, (ii) infers a posterior over candidate faulty
+assumptions after a violation is detected, and (iii) selectively
+repairs only the downstream subgraph while preserving the valid
+prefix.
+
+Across \textbf{eight reconstruction benchmarks plus four
+real-data fidelity anchors, eight LLMs spanning four training
+families and 7B--671B parameters, and seven self-correction
+baselines compared head-to-head}, \textsc{Intro-Specter} delivers
+\textbf{18 Holm-Bonferroni-significant wins against Direct}
+spanning all seven major reconstruction benchmarks plus the
+\textsc{Real-HotpotQA} real-data anchor, peaks at \textbf{$+33.3$
+percentage points on \textsc{Profile-MuSiQue} $\times$ Gemini 2.5
+Flash} ($p = 10^{-5}$), achieves \textbf{100\% top-1 attribution
+accuracy and 100\% repair success at zero token overhead} in the
+controlled synthetic setting (matching both Oracle-Detector and
+Oracle-Repair upper bounds), and \textbf{recovers about half the
+cross-family model-quality gap} on profile-conditioned QA.
+
+The detection-only baseline sits \emph{exactly} at Direct on
+every \textsc{Real-HotpotQA} cell, providing the cleanest
+empirical evidence in this work that detection alone is
+insufficient: the joint engineering of detection, attribution,
+and selective repair is what unlocks the gains.
+
+\textbf{When the method does not win.} Reflexion remains a strong
+co-baseline. It strictly beats \textsc{Intro-Specter} at
+$p < 0.05$ on 2 of 28 \textsc{Real-*} cells --- specifically
+\textsc{Real-TruthfulQA} $\times$ DeepSeek V3 (broken-prefix
+regime: nothing salvageable for selective repair) and
+\textsc{Real-TravelPlanner} $\times$ DeepSeek V3 (long-horizon
+diffuse-fault regime). On ceiling-effect models (Llama 3.3 70B
+near-perfect on factual QA) no method moves the needle.
+\textsc{Intro-Specter} is the right tool for the deployment
+regime that the paper is theoretically about: weaker open-weight
+models on profile-grounded reasoning tasks with deep but
+recoverable trajectories. In other regimes the two methods are
+complementary, and a deployment system would route between them
+based on the trajectory's recoverability signal.
+
+\textbf{Future work.} Three directions stand out. First, the
+val-split-tuned $\tau$-abstention calibration sweep at the time
+of writing covers four \textsc{Profile-MuSiQue} cells; extending
+to all 18 IS-winning cells would give a fully held-out
+calibrated-abstention claim. Second, ToT's competitive
+performance on \textsc{Profile-MuSiQue} $\times$ Mistral Nemo
+(87.5\% vs IS's 88.3\%) suggests an interesting hybrid:
+running ToT \emph{forward} from the IS-selected repair node could
+combine the strengths of both methods. Third, the
+profile-update mechanism --- handling users whose preferences
+drift over time --- is a natural extension we have not
+addressed.
+
+\textbf{Reproducibility.} Code, configs, aggregated CSVs, and
+the auto-generated booktabs LaTeX are released at
+\url{https://github.com/Jihan-5/Neurlips-Intro-Specter}. All
+LLM calls are cached deterministically; the entire matrix can
+be re-aggregated from JSONLs in $<5$ minutes. We hope the
+reconstruction methodology, the unified profile + fault
+injection harness, and the eight-baseline comparison pipeline
+are useful artifacts for future work on agent self-correction.

@@ -1,0 +1,54 @@
+benchmark: musique_recon
+split: val
+n_examples: 100
+seeds:
+- 0
+- 1
+- 2
+output_dir: outputs/tau_sweep/musique_gemini_flash_val
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: intro_specter_tau000
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.0
+    n_counterfactual_trials: 1
+- name: intro_specter_tau010
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.1
+    n_counterfactual_trials: 1
+- name: intro_specter_tau020
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.2
+    n_counterfactual_trials: 1
+- name: intro_specter_tau030
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.3
+    n_counterfactual_trials: 1
+- name: intro_specter_tau050
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.5
+    n_counterfactual_trials: 1
+- name: intro_specter_tau070
+  provider_name: openrouter
+  model: google/gemini-2.5-flash
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.7
+    n_counterfactual_trials: 1
