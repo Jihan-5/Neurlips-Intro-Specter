@@ -178,11 +178,19 @@ def main() -> int:
     if not tables.exists():
         print(f"Run aggregate_real_benchmarks.py first.")
         return 1
-    main_t = pd.read_csv(tables / "main_table.csv") if (tables / "main_table.csv").exists() else pd.DataFrame()
-    h2h = pd.read_csv(tables / "head_to_head.csv") if (tables / "head_to_head.csv").exists() else pd.DataFrame()
-    attr = pd.read_csv(tables / "attribution.csv") if (tables / "attribution.csv").exists() else pd.DataFrame()
-    tok = pd.read_csv(tables / "token_cost.csv") if (tables / "token_cost.csv").exists() else pd.DataFrame()
-    pvr = pd.read_csv(tables / "profile_violation.csv") if (tables / "profile_violation.csv").exists() else pd.DataFrame()
+    def _safe_read(p: Path) -> pd.DataFrame:
+        if not p.exists() or p.stat().st_size < 5:
+            return pd.DataFrame()
+        try:
+            return pd.read_csv(p)
+        except Exception:
+            return pd.DataFrame()
+
+    main_t = _safe_read(tables / "main_table.csv")
+    h2h = _safe_read(tables / "head_to_head.csv")
+    attr = _safe_read(tables / "attribution.csv")
+    tok = _safe_read(tables / "token_cost.csv")
+    pvr = _safe_read(tables / "profile_violation.csv")
 
     table1_main(main_t, h2h, tables / "table1_main_results.tex")
     table2_head_to_head(h2h, tables / "table2_head_to_head.tex")
