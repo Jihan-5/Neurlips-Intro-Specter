@@ -35,7 +35,7 @@ set -u
 PHASE="${1:-all}"
 
 CHEAP_MODELS=(qwen-2.5-7b mistral-nemo-12b llama-3.1-8b)
-EXPENSIVE_MODELS=(deepseek-v3 deepseek-v3.1 gemini-2.5-flash gpt-oss-20b llama-3.3-70b)
+EXPENSIVE_MODELS=(deepseek-v3 gemini-2.5-flash gpt-oss-20b llama-3.3-70b)
 
 DATASETS=(hotpotqa_real truthfulqa_real strategyqa_real travelplanner_real)
 

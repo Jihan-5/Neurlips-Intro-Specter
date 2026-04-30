@@ -72,8 +72,10 @@ def load_results(output_root: Path = Path("outputs/real")) -> pd.DataFrame:
     if not records:
         return pd.DataFrame()
     df = pd.DataFrame(records)
-    if {"task_id", "seed", "method"} <= set(df.columns):
-        df = df.drop_duplicates(subset=["task_id", "seed", "method"], keep="last")
+    # Dedup must include model + dataset since task_ids are deterministic
+    # across cells (same task_id generated for Qwen vs Llama, etc.).
+    if {"task_id", "seed", "method", "model"} <= set(df.columns):
+        df = df.drop_duplicates(subset=["dataset", "model", "task_id", "seed", "method"], keep="last")
     return df
 
 
