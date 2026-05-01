@@ -1,0 +1,11 @@
+benchmark: musique_real
+split: all
+n_examples: 2
+seeds: [42]
+output_dir: outputs/real/_smoke_musique_real__qwen-2.5-7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ""
+
+methods:
+  - {name: direct, provider_name: openrouter, model: qwen/qwen-2.5-7b-instruct}
