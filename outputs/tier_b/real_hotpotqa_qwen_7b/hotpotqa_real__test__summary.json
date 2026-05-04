@@ -1,0 +1,30 @@
+{
+  "benchmark": "hotpotqa_real__test",
+  "n_examples": 60,
+  "n_total_rows": 69,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "selfcheckgpt": {
+      "n": 60,
+      "success_rate": 0.6333333333333333,
+      "violation_rate": 0.36666666666666664,
+      "tokens_input_mean": 10358.7,
+      "tokens_output_mean": 363.75,
+      "latency_ms_mean": 13098.47810069999
+    },
+    "tot": {
+      "n": 9,
+      "success_rate": 0.7777777777777778,
+      "violation_rate": 0.2222222222222222,
+      "tokens_input_mean": 38351.11111111111,
+      "tokens_output_mean": 1238.5555555555557,
+      "latency_ms_mean": 66301.41670377634
+    }
+  }
+}
