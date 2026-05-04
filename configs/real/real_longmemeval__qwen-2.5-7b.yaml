@@ -1,0 +1,52 @@
+benchmark: longmemeval_real
+split: all
+n_examples: 60
+seeds:
+- 42
+output_dir: outputs/real/longmemeval_real__qwen-2.5-7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: direct
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+- name: self_refine
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+- name: reflexion
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    max_trials: 2
+- name: full_regen
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    max_attempts: 1
+- name: react
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    max_steps: 4
+- name: selfcheckgpt
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    n_samples: 5
+    sample_temperature: 1.0
+- name: tot
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    tot_candidates: 3
+    tot_beam_width: 2
+    tot_max_depth: 4
+    tot_temperature: 0.7
+- name: intro_specter_llm
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.0
+    n_counterfactual_trials: 1

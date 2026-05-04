@@ -18,10 +18,12 @@ from __future__ import annotations
 import pytest
 
 from intro_specter.benchmarks.hotpotqa_real import HotpotQAReal
+from intro_specter.benchmarks.longmemeval_real import LongMemEvalReal
 from intro_specter.benchmarks.musique_real import MuSiQueReal
 from intro_specter.benchmarks.strategyqa_real import StrategyQAReal
 from intro_specter.benchmarks.travelplanner_real import TravelPlannerReal
 from intro_specter.benchmarks.truthfulqa_real import TruthfulQAReal
+from intro_specter.benchmarks.twowiki_real import TwoWikiReal
 
 
 REAL_LOADERS = [
@@ -30,6 +32,8 @@ REAL_LOADERS = [
     pytest.param(StrategyQAReal, id="strategyqa_real"),
     pytest.param(TravelPlannerReal, id="travelplanner_real"),
     pytest.param(MuSiQueReal, id="musique_real"),
+    pytest.param(TwoWikiReal, id="twowiki_real"),
+    pytest.param(LongMemEvalReal, id="longmemeval_real"),
 ]
 
 

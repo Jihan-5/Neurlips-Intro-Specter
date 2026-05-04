@@ -44,8 +44,10 @@ from .benchmarks.base import BenchmarkExample
 from .benchmarks.alfworld_recon import ALFWorldRecon
 from .benchmarks.hotpotqa_real import HotpotQAReal
 from .benchmarks.hotpotqa_recon import HotpotQARecon
+from .benchmarks.longmemeval_real import LongMemEvalReal
 from .benchmarks.musique_real import MuSiQueReal
 from .benchmarks.musique_recon import MuSiQueRecon
+from .benchmarks.twowiki_real import TwoWikiReal
 from .benchmarks.pfqa_recon import PFQABenchRecon
 from .benchmarks.strategyqa_real import StrategyQAReal
 from .benchmarks.strategyqa_recon import StrategyQARecon
@@ -639,6 +641,18 @@ def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
         )
     if spec.benchmark == "musique_real":
         return MuSiQueReal(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "twowiki_real":
+        return TwoWikiReal(
+            n_examples=spec.n_examples,
+            seed=seed,
+            split=spec.split,  # type: ignore[arg-type]
+        )
+    if spec.benchmark == "longmemeval_real":
+        return LongMemEvalReal(
             n_examples=spec.n_examples,
             seed=seed,
             split=spec.split,  # type: ignore[arg-type]

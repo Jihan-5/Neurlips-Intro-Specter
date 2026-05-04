@@ -106,10 +106,26 @@ TIER_A_BENCHMARKS = {
 
 
 def _load_summary(path: Path) -> dict | None:
+    """Prefer the cell-name-matching summary; fall back to merging all
+    summary.json files in the dir (some cells have both an original
+    5-method summary and an add-on 3-method summary).
+    """
     candidates = list(path.glob("*__summary.json"))
     if not candidates:
         return None
-    return json.loads(candidates[0].read_text())
+    # Prefer the one whose stem starts with the dir name (the merged file).
+    preferred = [c for c in candidates if c.name.startswith(path.name + "__")]
+    if preferred:
+        return json.loads(preferred[0].read_text())
+    # Otherwise merge methods from all summary files.
+    merged: dict[str, dict] | None = None
+    for c in candidates:
+        s = json.loads(c.read_text())
+        if merged is None:
+            merged = s
+        else:
+            merged.setdefault("methods", {}).update(s.get("methods", {}))
+    return merged
 
 
 def _load_long(path: Path) -> pd.DataFrame | None:

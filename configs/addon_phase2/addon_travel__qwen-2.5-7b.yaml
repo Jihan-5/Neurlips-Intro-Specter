@@ -1,0 +1,31 @@
+benchmark: travelplanner_recon
+split: test
+n_examples: 100
+seeds:
+- 0
+- 1
+- 2
+output_dir: outputs/tier_a/travel_qwen7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: react
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    max_steps: 4
+- name: tot
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    tot_candidates: 3
+    tot_beam_width: 2
+    tot_max_depth: 4
+    tot_temperature: 0.7
+- name: selfcheckgpt
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  extra:
+    n_samples: 5
+    sample_temperature: 1.0
