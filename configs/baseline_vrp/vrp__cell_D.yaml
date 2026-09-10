@@ -1,0 +1,16 @@
+benchmark: longmemeval_real
+split: all
+n_examples: 60
+seeds:
+- 42
+output_dir: outputs/real/longmemeval_real__llama-3.1-8b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: violation_reprompt
+  provider_name: openrouter
+  model: meta-llama/llama-3.1-8b-instruct
+  temperature: 0.7
+  extra:
+    max_trials: 1

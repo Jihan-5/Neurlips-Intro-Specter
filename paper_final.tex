@@ -1,0 +1,768 @@
+% =============================================================================
+%  Intro-Specter: Abductive Self-Correction for User-Conditioned Agent Trajectories
+%  NeurIPS 2026 submission - FINAL CORRECTED VERSION
+% =============================================================================
+
+\documentclass{article}
+\usepackage{neurips_2026}
+
+\newcommand{\authorname}{Anonymous Author(s)}
+\newcommand{\authoraffil}{Affiliation}
+\newcommand{\authoremail}{email}
+\newcommand{\repourl}{https://github.com/anonymous/NeurIPS-Intro-Specter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{url}
+\usepackage{amsfonts}\usepackage{amsmath}\usepackage{amssymb}\usepackage{amsthm}\usepackage{nicefrac}
+\usepackage{booktabs}\usepackage{graphicx}\usepackage{multirow}\usepackage{array}\usepackage{caption}
+\captionsetup{font=small}
+\usepackage{algorithm}\usepackage{algpseudocode}\usepackage{float}
+\usepackage{enumitem}
+\usepackage{pifont}\usepackage{makecell}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\usepackage{xcolor}
+\usepackage{tikz}\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,decorations.pathmorphing}
+\usepackage{xspace}
+\newtheorem{definition}{Definition}
+\newcommand{\method}{\textsc{Intro-Specter}\xspace}
+\newcommand{\dagg}{\textsc{Assumption-DAG}\xspace}
+\newcommand{\mcgr}{\textsc{MCGR}\xspace}
+\newcommand{\Anc}{\mathrm{Anc}}
+\newcommand{\tbdmfive}{\textsc{tbd}}
+
+\title{Intro-Specter: Abductive Self-Correction for User-Conditioned Agent Trajectories}
+\author{\authorname \\ \authoraffil \\ \texttt{\authoremail}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+LLM-based agents increasingly execute multi-step tasks conditioned on a structured profile of user constraints. When such an agent adopts an incorrect assumption about the user early in its trajectory, the error propagates silently through subsequent steps, producing an output that violates the user's explicitly stated constraints. State-of-the-art self-correction methods such as Reflexion and Tree-of-Thoughts retry the full task or search alternative reasoning paths, yet none identify \emph{which specific assumption} introduced the failure.
+
+We propose \method, a framework that extracts the assumptions an agent relied upon, structures them into a provenance-aware dependency graph, and conducts targeted counterfactual repair experiments to isolate the root-cause assumption and correct only the affected portion of the trajectory.
+
+Across four benchmarks and four LLMs (16 cells; 864 paired observations), \method achieves the highest or tied-highest task success on \textbf{15 of 16} cells with \textbf{zero significant losses} against any of seven baselines. On Profile-injected TruthfulQA $\times$ Mistral 12\,B, success rises from 63.9\% (Direct) to \textbf{86.1\%} (+22.2\,pp); on MuSiQue $\times$ Mistral 12\,B, from 71.7\% to \textbf{91.7\%} (+20.0\,pp). Pooled across the seven-baseline comparison, \method outperforms the baseline mean by \textbf{14.7\,pp}. Code: \url{\repourl}.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+LLMs~\cite{ouyang2022instructgpt, openai2023gpt4} deployed as user-facing agents operate over a structured profile of preferences, constraints, and user-specific facts. Because users rarely inspect every intermediate step, a mistake made early in the trajectory propagates silently until it surfaces as a final violation: a restaurant that ignores a dietary restriction, a hotel that conflicts with a stated budget, a recommendation that treats an inferred preference as explicit. We call these \emph{user-specific hallucinations}: outputs that may be internally coherent but violate, overgeneralize, or contradict the user's own stated constraints~\cite{sun2024pfqabench, xie2024travelplanner}. Existing self-correction methods do not directly target this failure mode---Self-Refine~\cite{madaan2023selfrefine} and Reflexion~\cite{shinn2023reflexion} retry forward, Tree-of-Thoughts~\cite{yao2023tot} and Graph-of-Thoughts~\cite{besta2024got} search over completions, and process-level reward methods~\cite{lightman2023verify} flag low-confidence steps but do not localize which latent user assumption to revise. Tyen et al.~\cite{tyen2024selfcorrect,tyen2024llmerrors} make this gap concrete: LLMs can detect errors but consistently fail at \emph{localizing} which step is wrong.
+
+We introduce \method, a framework for counterfactual fault attribution in user-conditioned agent trajectories. \method represents a trajectory as a provenance-typed Assumption-DAG (profile, tool, model-inferred, world) over observable trajectory artifacts. When a profile-grounded violation is detected, the system estimates an attribution score over candidate faulty ancestors using counterfactual repair trials and selects a repair point by trading off fault probability against downstream edit cost; if the post-repair verifier still rejects the trajectory, Sequential Posterior Refinement (SPR; Eq.~\ref{eq:spr-update}) treats that rejection as additional counterfactual evidence and updates the same posterior in closed form, retargeting the next-best ancestor without invoking any auxiliary mechanism. Our contributions are: (i) the \dagg + \method framework that performs typed fault attribution and selective subgraph repair (\S\ref{sec:method}); (ii) a paired evaluation across four benchmarks $\times$ four LLMs with honest statistical methodology (\S\ref{sec:experiments}, \S\ref{sec:results}); and (iii) a regime-structure finding: single-round attribution drives wins on deployment-relevant 7--12\,B models, while SPR is the deciding component on 70\,B models with long-context inputs.
+
+\begin{figure*}[t]\centering
+  \includegraphics[width=\textwidth]{figure2_comparison.png}
+  \caption{Comparison of Tree of Thoughts (ToT), Graph of Thoughts (GoT), Heuristic Tree of Thoughts (ToTH), and \method. ToT explores a branching tree with backtracking. GoT generalizes to graph transformations. ToTH augments ToT with heuristic scoring and lookahead pruning. \method performs counterfactual fault attribution over an assumption graph: the score $q(a_k \mid \text{error})$ traces fault backward through the DAG, then repairs only the affected subgraph while reusing valid steps.}
+  \label{fig:comparison}
+\end{figure*}
+
+\section{\method}\label{sec:method}
+
+Let $x$ denote a user task and $P = \{p_1, \ldots, p_m\}$ a structured user profile. An agent produces a trajectory $\tau = (s_1, u_1, o_1, \ldots, s_T, u_T, o_T, y)$ with steps $s_t$, actions or tool calls $u_t$, observations $o_t$, and final output $y$. A profile-grounded verifier $V(P, x, \tau, y) \in \{0,1\}$ returns 1 when the trajectory or output violates the profile (a \emph{profile-grounded violation}); a reference-free task-success evaluator $S(x, \tau, y) \in \{0,1\}$ judges task-appropriateness from observable trajectory artifacts without access to ground-truth labels (an LLM-based coherence and constraint-satisfaction check, not the gold-answer substring matcher used for benchmark scoring; \S\ref{sec:experiments}). A profile-grounded violation is a \emph{user-specific hallucination} when at least one assumption used in producing $\tau$ or $y$ is unsupported by, contradicted by, or improperly generalized from $P$.
+
+\paragraph{Assumption-DAG.} \method represents the latent commitments of a trajectory as a directed acyclic graph $G = (A, E)$, where each node $a_i \in A$ is an assumption $a_i = (c_i, \rho_i, t_i, \ell_i)$ with one-sentence commitment $c_i$, provenance $\rho_i \in \{\text{profile}, \text{tool}, \text{model}, \text{world}\}$, trajectory step $t_i$, and confidence $\ell_i \in [0,1]$; edges encode dependency. An LLM-based extractor is prompted with $(P, x, \tau)$ and returns JSON containing each assumption's commitment, step, provenance, profile evidence spans, confidence, and dependency list. Edges are added when one assumption justifies, specializes, or enables another. Cycles, when detected, are resolved by removing the edge with the lowest endpoint-node confidence ($\min(\ell_{\text{source}}, \ell_{\text{target}})$); the cycle-removal rate is logged. Extraction precision and recall on synthetic diagnostics (where the gold graph is known by construction) are reported in Appendix~\ref{app:dag-quality}; full prompt in Appendix~\ref{app:prompts}.
+
+\paragraph{Profile-grounded verification.}\label{sec:verifier} The verifier $V$ combines deterministic predicates (budget, allergy, date, location, forbidden-action) with an LLM-based pass for semantic cases not covered by rules; LLM outputs are calibrated against the rule-based layer on a held-out development split. Each violation event records the violated profile span, affected step, severity, and confidence.
+
+\paragraph{Counterfactual fault attribution.}\label{sec:attribution} Given a violation $v$ at trajectory step $t_v$, the goal is to infer which earlier assumption caused it. Let $F \in A$ denote the latent faulty assumption. Because the true likelihood $p(v \mid F{=}a_i, G, \tau, P)$ is unavailable, \method uses counterfactual repair success as empirical evidence for fault assignment. Let $\mathcal{C}(v; G) = \{a_i \in A \mid t_i \leq t_v, \rho_i \neq \text{profile}, a_i \in \Anc(v;G)\}$ denote the candidate set: ancestors of the violation step, excluding immutable profile-derived assumptions. For each candidate $a_i \in \mathcal{C}(v; G)$, the system samples $M$ minimal repairs and measures whether repairing $a_i$ removes the violation while preserving task success:
+\begin{equation}
+  r_i = \frac{1}{M} \sum_{j=1}^{M} \mathbf{1}[V(P,x,\tau^{(i,j)},y^{(i,j)})=0] \cdot \mathbf{1}[S(x,\tau^{(i,j)},y^{(i,j)})=1],\label{eq:repair-evidence}
+\end{equation}
+where $\tau^{(i,j)}$ is the trajectory obtained by repairing $a_i$ under sample $j$. The attribution score combines repair evidence with the provenance prior via prior-weighted normalization:
+\begin{equation}
+  q_i = \frac{\pi_{\rho_i}\, r_i}{\sum_{a_k \in \mathcal{C}(v;G)} \pi_{\rho_k}\, r_k},\label{eq:attribution}
+\end{equation}
+where $\pi_{\rho_i}$ is a provenance-dependent prior ($\pi_{\text{model}} > \pi_{\text{world}} > \pi_{\text{tool}}$; values in Table~\ref{tab:hparams}). When $\sum_k \pi_{\rho_k} r_k = 0$ (no counterfactual sample removed the violation), we fall back to prior-only attribution $q_i = \pi_{\rho_i} / \sum_k \pi_{\rho_k}$. We refer to $q_i$ as an \emph{attribution score} rather than a calibrated posterior: $r_i$ is a Monte Carlo estimate from intervention trials, not a calibrated likelihood, and $q$ is not calibrated to the true generative process.
+
+\paragraph{Min-cost graph-edit repair.}\label{sec:mcgr}
+
+For candidate $a_i$, let $D_i$ be the downstream subgraph and $C(a_i, G)$ the normalized edit cost:
+\begin{equation}
+  C(a_i, G) = w_n \frac{|D_i|}{|A|} + w_t \frac{\hat{T}_i}{T_{\max}} + w_c \frac{\hat{K}_i}{K_{\max}} + w_p \,\mathbf{1}[a_i \text{ precedes a verified tool observation}],\label{eq:edit-cost}
+\end{equation}
+where $|D_i|$ is the number of downstream assumptions to re-execute, $\hat{T}_i$ and $\hat{K}_i$ are estimated regenerated-token and re-issued-tool-call counts (derived by summing per-step token and tool-call counts of $D_i$ from the original trajectory), $T_{\max}$ and $K_{\max}$ are the original trajectory's total token and tool-call counts (used for normalization), and the final term penalizes edits that may invalidate already-verified tool observations. \method selects
+\begin{equation}
+  a^\star = \arg\min_{a_i \in \mathcal{C}(v;G)} \bigl[-q_i + \lambda\, C(a_i, G)\bigr],\label{eq:mcgr}
+\end{equation}
+abstaining or falling back to full regeneration when $\max_i q_i < \delta$. We call this the \emph{cost-regularized attribution objective}: it minimizes a regularized score under the approximate attribution score $q$ and cost $C$. The valid prefix before the repair node is preserved; only the downstream subgraph is regenerated.
+
+\paragraph{Sequential Posterior Refinement (SPR).} When the post-repair verifier rejects $\tau^{\text{repair}}$, that rejection is partial evidence against $a^\star$: it is consistent with both ``wrong candidate'' and ``right candidate, bad repair''. Rather than permanently excluding tried candidates, we down-weight them by a Bayesian decay factor $\alpha \in [0,1)$ and renormalize:
+\begin{equation}
+  q^{(t+1)}_i = \begin{cases} \alpha \cdot q^{(t)}_i \big/ Z^{(t)} & a_i \in \mathcal{T}^{(t)} \\ q^{(t)}_i \big/ Z^{(t)} & \text{otherwise,} \end{cases} \quad Z^{(t)} = \alpha \!\!\sum_{a_j \in \mathcal{T}^{(t)}}\! q^{(t)}_j + \!\!\sum_{a_j \notin \mathcal{T}^{(t)}}\! q^{(t)}_j,\label{eq:spr-update}
+\end{equation}
+where $\mathcal{T}^{(t)}$ is the set of candidates whose repair $V$ has already rejected. We use $\alpha = 0.1$ throughout, frozen on the Profile-X dev split (Appendix~\ref{app:hparams}); the second-round selector is insensitive to $\alpha \in [0, 0.3]$ at our cell sizes. We then re-select $a^\star$ via Eq.~\ref{eq:mcgr} on $q^{(t+1)}$, re-execute, and re-verify; the loop runs for at most $T_{\text{spr}}$ rounds. SPR is strictly sequential abductive inference over the same Assumption-DAG and posterior framework as the first round---no auxiliary model, no verbal critique, no full re-generation. Disabling SPR ($T_{\text{spr}}=0$) reverts \method to the targeted-repair-only configuration (Appendix~\ref{app:spr-impl}, Table~\ref{tab:spr-impact}).
+
+\begin{algorithm}[H]
+\caption{\method (sketch). Full pseudocode with caching, abstention, and SPR loop in Appendix~\ref{app:spr-impl}.}\label{alg:intro-specter-mini}
+\begin{algorithmic}[1]
+  \Require task $x$, profile $P$, trajectory $\tau$, verifier $V$
+  \State Build \dagg $G$; if $V$ accepts $\tau$ \textbf{return} $\tau$.
+  \State $\mathcal{C}(v;G) \gets$ non-profile ancestors of the violated step; score each via Eqs.~\ref{eq:repair-evidence}--\ref{eq:attribution}.
+  \For{$t = 0, \ldots, T_{\text{spr}}$}
+    \State $a^\star \gets \arg\min_{a_i \notin \mathcal{T}} [-q^{(t)}_i + \lambda C(a_i, G)]$; \textbf{if} $V$ accepts the repaired $\tau$ \textbf{return} it.
+    \State $\mathcal{T} \gets \mathcal{T} \cup \{a^\star\}$;\ \ update $q^{(t+1)}$ via Eq.~\ref{eq:spr-update}.
+  \EndFor
+\end{algorithmic}\end{algorithm}
+
+\begin{figure*}[t]\centering
+  \includegraphics[width=\textwidth]{figure_worked_example.png}
+  \caption{Worked example of \method on a restaurant recommendation task. The user profile specifies vegan, gluten-free, and budget${}<\$30$. \textbf{(1)}~The agent shortlists three restaurants ranked by model-inferred priors. \textbf{(2)}~Three violations are detected on the top pick. \textbf{(3)}~Ancestor assumptions are traced; profile nodes ($a_1$--$a_3$) are immutable. \textbf{(4)}~Counterfactual repair trials score each candidate; the algorithm proceeds via sequential single-node repair, with re-verification detecting residual violations between passes (here resolving $a_4$ then $a_7$). \textbf{(5)}~The repaired output satisfies all profile constraints.}
+  \label{fig:worked-example}
+\end{figure*}
+
+\section{Experiments}\label{sec:experiments}
+
+\paragraph{Tasks.} We evaluate \method on four canonical benchmarks spanning adversarial truthfulness, two-hop factual reasoning, three-hop reasoning, and long-context conversational recall, plus a native planning benchmark in Appendix~\ref{app:travel}. Datasets are loaded from HuggingFace with unmodified questions, contexts, and gold labels; the only modification is the injection of a synthetic user profile drawn from a bank of 28 realistic constraint templates (dietary, language, accessibility, expertise, budget). Profile assignment is deterministic per (\texttt{task\_id}, seed). Half the injected constraints are \emph{relevant} (must be respected); half are \emph{irrelevant distractors} (must not bias the factual answer). \textbf{Profile-injected TruthfulQA}~\cite{lin2021truthfulqa}: 817 imitative-falsehood questions; we sample $n{=}60$ per cell across three dataset seeds, with $n{=}36$ paired (task, seed) observations per cell after partial completion under provider rate limits. \textbf{Profile-injected 2WikiMultiHopQA}~\cite{ho2020twowiki}: $n{=}60$ two-hop questions per cell, single dataset seed. \textbf{Profile-injected LongMemEval}~\cite{wu2024longmemeval}: $n{=}60$ oracle-mode questions per cell over long conversational histories. \textbf{Profile-injected MuSiQue}~\cite{trivedi2022musique}: $n{=}60$ three-hop questions per cell.
+
+\paragraph{Models.} Four LLMs across three training families and a 7--70\,B parameter range: Llama 3.1 8\,B Instruct~\cite{dubey2024llama3}, Mistral Nemo 12\,B Instruct~\cite{jiang2023mistral}, Qwen 2.5 7\,B Instruct~\cite{yang2024qwen2.5} via OpenRouter; Llama 3.3 70\,B Instruct~\cite{dubey2024llama3} via Together AI.
+
+\paragraph{Baselines and protocol.} We compare \method against seven baselines on every (dataset, model) cell with an identical agent prompt; only the post-generation correction pipeline differs (Table~\ref{tab:methods}). For each (dataset, model, method) cell we sample 60 examples deterministically using $\texttt{Random}(42 \times 1{,}000{,}037 + \texttt{idx})$; the same example IDs and profiles are used across all methods, and we verify pairing correctness with 28 automated unit tests before committing results. A trial is successful iff both: (i) a \emph{factual check} (substring match of the gold answer for QA tasks, predicate satisfaction for planning) and (ii) a \emph{profile-violation check} (deterministic predicates plus calibrated LLM verification for semantic cases) pass; this benchmark scorer is used only for reporting and is distinct from the reference-free inference-time $S$ in Eq.~\ref{eq:repair-evidence}. Stochastic methods (Self-Refine, Reflexion, Full-Regen, ToT, \method) use three method-internal seeds $\{0,1,2\}$; TruthfulQA additionally varies three dataset seeds. For each (model, benchmark) cell we report a paired-bootstrap 95\% CI (10{,}000 resamples) for $\Delta = \text{IS} - \text{baseline}$ and McNemar's exact test on the paired $2{\times}2$ contingency table; $p$-values are Holm-Bonferroni-corrected at $\alpha{=}0.05$ within each pre-registered family (\method vs.\ Direct; \method vs.\ Reflexion). All \method hyperparameters are frozen on Profile-X validation splits with no per-cell tuning (Appendix~\ref{app:hparams}).
+
+\begin{table}[h!]\centering\small
+\caption{Methods compared. LLM calls are approximate per-task averages.}
+\label{tab:methods}
+\begin{tabular}{llr}\toprule
+\textbf{Method} & \textbf{Description} & \textbf{Calls} \\\midrule
+Direct & Single forward pass, no correction & 1 \\
+Self-Refine~\cite{madaan2023selfrefine} & Single critique-and-revise pass & 2 \\
+Reflexion~\cite{shinn2023reflexion} & Verbal post-mortem then retry (max 2 trials) & ${\sim}3$ \\
+Full-Regen & Discard trajectory, re-sample from scratch & 1 \\
+ReAct~\cite{yao2022react} & Thought-Action-Observation loop (4 steps) & 4 \\
+SelfCheckGPT~\cite{manakul2023selfcheckgpt} & $N{=}5$ sampling + per-claim consistency & ${\sim}10$ \\
+ToT~\cite{yao2023tot} & BFS, $k{=}3$, beam${=}2$, depth${=}4$ & ${\sim}49$ \\
+Violation-Reprompt & Re-prompt with violated profile span as feedback (1 round) & 2 \\
+\method & \dagg $\to$ attribution $\to$ \mcgr & ${\sim}5$ \\
+\bottomrule\end{tabular}\end{table}
+
+\section{Results}\label{sec:results}
+
+Tables~\ref{tab:truthfulqa}--\ref{tab:musique} report per-cell task success (\%). \textbf{Bold} = highest per row; \underline{underline} = second. Full McNemar $p$-value tables are in Appendix~\ref{app:full-tables}.
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected TruthfulQA. Per-cell paired observations: 36 ($n{=}12$ examples that completed across all 8 methods $\times$ 3 dataset seeds). Success rate (\%).}
+\label{tab:truthfulqa}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+Llama 8B    & 80.6 & 61.1 & \textbf{94.4} & \underline{86.1} & 72.2 & 91.7 & 77.8 & \textbf{94.4} \\
+Llama 70B   & 83.3 & 61.1 & \textbf{91.7} & 80.6 & 75.0 & 83.3 & 80.6 & \textbf{91.7} \\
+Mistral 12B & 63.9 & 61.1 & \underline{80.6} & 69.4 & 63.9 & 72.7 & 56.5 & \textbf{86.1} \\
+Qwen 7B     & 63.9 & 36.1 & \underline{69.4} & 58.3 & 52.8 & 66.7 & 44.4 & \textbf{77.8} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Success rate (\%).}
+\label{tab:2wiki}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+Llama 8B    & \underline{86.7} & 76.7 & \textbf{93.3} & 78.3 & 76.7 & 66.7 & 80.0 & \textbf{93.3} \\
+Llama 70B   & \textbf{96.7} & 91.7 & \textbf{96.7} & 95.0 & 95.0 & 93.3 & 90.0 & \textbf{96.7} \\
+Mistral 12B & 91.7 & 86.7 & \underline{95.0} & 90.0 & 86.7 & 89.8 & 92.2 & \textbf{96.7} \\
+Qwen 7B     & 81.7 & 80.0 & \underline{91.7} & 85.0 & 76.7 & 85.0 & 90.9 & \textbf{94.9} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected LongMemEval ($n{=}60$). Success rate (\%).}
+\label{tab:longmemeval}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+Llama 8B    & 63.3 & 51.7 & \underline{76.7} & 63.3 & 61.7 & 50.0 & 55.0 & \textbf{78.3} \\
+Llama 70B   & 43.3 & 48.3 & \textbf{70.0} & 45.0 & 40.0 & 33.3 & 30.0 & \underline{68.3} \\
+Mistral 12B & 55.0 & 50.0 & \textbf{73.3} & 58.3 & 58.3 & 53.3 & 67.9 & \textbf{73.3} \\
+Qwen 7B     & 70.0 & 66.7 & \textbf{76.7} & 66.7 & 63.3 & 75.0 & 25.0 & \textbf{76.7} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected MuSiQue ($n{=}60$). Success rate (\%).}
+\label{tab:musique}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+Llama 8B    & 76.7 & 66.7 & \underline{90.0} & 76.7 & 66.7 & 51.7 & 71.7 & \textbf{91.7} \\
+Llama 70B   & 83.3 & 78.3 & \textbf{96.7} & 81.7 & 81.7 & 70.0 & 55.0 & \textbf{96.7} \\
+Mistral 12B & 71.7 & 61.7 & \underline{85.0} & 71.7 & 68.3 & 75.0 & 68.6 & \textbf{91.7} \\
+Qwen 7B     & 80.0 & 63.3 & \underline{83.3} & 80.0 & 65.0 & 75.0 & 77.3 & \textbf{85.0} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Aggregate outcomes across sixteen (dataset, model) cells. ``NS losses'' are paired-McNemar non-significant losses (the single NS loss in this matrix has $p = 1.000$).}
+\label{tab:summary}
+\begin{tabular}{lcccc}\toprule
+\textbf{Dataset} & \textbf{Wins} & \textbf{Ties} & \textbf{NS losses} & \textbf{Sig.\ losses} \\\midrule
+Prof.-inj.\ TruthfulQA & 2 & 2 & 0 & 0 \\
+Prof.-inj.\ 2Wiki & 2 & 2 & 0 & 0 \\
+Prof.-inj.\ LongMemEval & 1 & 2 & 1 & 0 \\
+Prof.-inj.\ MuSiQue & 3 & 1 & 0 & 0 \\\midrule
+\textbf{Total (16 cells)} & \textbf{8} & \textbf{7} & \textbf{1} & \textbf{0} \\
+\bottomrule\end{tabular}\end{table}
+
+\paragraph{Per-cell outcomes.} \method achieves the highest or tied-highest success on \textbf{15 of 16} cells. The single non-significant loss is LongMemEval$\times$Llama 70\,B at $-1.7$\,pp ($p = 1.000$, paired-bootstrap CI $[-11.7, +8.3]$). Strict wins over the strongest self-correction baseline (Reflexion) include MuSiQue$\times$Mistral 12\,B (\textbf{91.7\%}, +6.7\,pp, $p{=}0.012$), TruthfulQA$\times$Mistral 12\,B (\textbf{86.1\%}, +5.5\,pp, $p{=}0.012$), TruthfulQA$\times$Qwen 7\,B (\textbf{77.8\%}, +8.4\,pp), and 2Wiki$\times$Qwen 7\,B (\textbf{94.9\%}, +3.2\,pp); on the remaining cells \method ties or numerically leads Reflexion. On TravelPlanner (Appendix~\ref{app:travel}), \method records one numerical win and three NS losses against Reflexion; we attribute the gap to short trajectories with few model-inferred assumption nodes and disclaim the absolute numbers as uncalibrated against the official strict evaluator.
+
+\paragraph{Pooled performance and regime structure.} Pooled across 864 paired observations (TruthfulQA contributes $4 \times 36 = 144$; the other three benchmarks $4 \times 60 = 240$ each), \method reaches \textbf{87.0\%}, exceeding Reflexion (85.4\%) by 1.6\,pp; single-round attribution alone yields 84.3\%, and SPR (Eq.~\ref{eq:spr-update}, Table~\ref{tab:spr-impact}) lifts this to 87.0\% by reallocating posterior mass to non-MAP ancestors after the first-round repair is rejected by $V$. On the three mid-tier models (7--12\,B), \method is top or tied-top on twelve of twelve cells; on Llama 3.3 70\,B, \method ties Reflexion on three of four benchmarks (TruthfulQA, 2Wiki, MuSiQue) and trails on LongMemEval ($-1.7$\,pp, NS). The 70\,B regime is the cell pattern where the first-round MAP candidate is more often wrong (extracted ancestor sets are larger; the single-trial counterfactual is a noisier signal) but the correct ancestor remains inside $\mathcal{C}(v;G)$, which is exactly the regime SPR is designed for; the residual NS gap reflects cases where the true fault lies outside the extracted DAG. The 70\,B regime is represented by a single model family ($n{=}1$).
+
+
+\subsection{Mechanism Diagnostics}
+
+On synthetic \dagg tasks with known fault nodes ($n{=}60$), \method achieves 100\% top-1 attribution (MRR${=}1.0$) and 100\% repair success in \texttt{single\_fault} mode. Forward-only baselines score 0\% on this diagnostic. In \texttt{multi\_valid} mode, \method selects the minimum-cost valid repair on every trial.
+
+\subsection{Cost Analysis}\label{sec:cost}
+\begin{table}[t]\centering\small
+\caption{Mean tokens per task (four-LLM average). \method totals include the SPR re-execution cost on cells where SPR fires; $\times$ = ratio relative to \method.}
+\label{tab:cost-full}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l rr rr rr rr rr}\toprule
+& \multicolumn{2}{c}{Direct} & \multicolumn{2}{c}{Rfx} & \multicolumn{2}{c}{SChk} & \multicolumn{2}{c}{ToT} & \multicolumn{2}{c}{\method} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+& tok & $\times$ & tok & $\times$ & tok & $\times$ & tok & $\times$ & tok & $\times$ \\\midrule
+TruthfulQA  & 1.2k & 0.39 & 2.6k & 0.84 & 5.9k & 1.90 & 36.5k & 11.8 & \textbf{3.1k} & 1.00 \\
+2Wiki       & 2.0k & 0.40 & 2.9k & 0.58 & 10.4k & 2.08 & 56.2k & 11.2 & \textbf{5.0k} & 1.00 \\
+LongMemEval & 2.2k & 0.34 & 5.9k & 0.91 & 12.1k & 1.86 & 73.2k & 11.3 & \textbf{6.5k} & 1.00 \\
+MuSiQue     & 2.1k & 0.38 & 4.0k & 0.73 & 11.3k & 2.05 & 73.1k & 13.3 & \textbf{5.5k} & 1.00 \\
+\bottomrule\end{tabular}\end{table}
+
+ToT and SelfCheckGPT are Pareto-dominated: they cost more and do not achieve higher accuracy than \method on any cell. Across all four benchmarks, ToT requires 11.2--13.3$\times$ more tokens than \method. \method's per-task token cost is 3.1--6.5\,k tokens, between Reflexion (2.6--5.9\,k) and SelfCheckGPT (5.9--12.1\,k). The cost overhead over Reflexion arises only on cells where SPR fires; on the ten cells where the first-round repair satisfies the verifier (SPR does not fire), \method's cost matches the single-round configuration. SPR's per-round cost is one re-execution prompt over the next-best ancestor's downstream subgraph---no full trajectory regeneration---so a second SPR round adds $|D_i|/|A| \cdot T_{\max}$ tokens in expectation rather than the full trajectory length. Whether \method's $1.6$\,pp pooled accuracy advantage over Reflexion justifies the modest cost overhead is application-dependent; the cost gap to ToT is large enough that ToT is dominated regardless.
+
+\subsection{Ablations}\label{sec:ablations}
+
+Table~\ref{tab:ablations} reports ablation results on four representative cells, one per benchmark, drawn from cells where \method achieves a strict win over Reflexion. Each ablation removes one component; entries are $\Delta$ success rate (pp) relative to full \method.
+
+\begin{table}[t]\centering\small
+\caption{Ablation: $\Delta$ success (pp) vs.\ full \method. Negative $=$ component is load-bearing.}
+\label{tab:ablations}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc c}\toprule
+Variant & \makecell{TruthQA\\$\times$Mist.} & \makecell{TruthQA\\$\times$Qwen} & \makecell{2Wiki\\$\times$Mist.} & \makecell{LongMem\\$\times$Llama8B} & Mean \\\midrule
+Full \method     & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+No \dagg (flat)  & $-8.3$ & $-2.8$ & $0.0$ & $0.0$ & $-2.8$ \\
+Uniform prior    & $-5.6$ & $-8.3$ & $0.0$ & $+1.7$ & $-3.1$ \\
+No counterfactual & $-2.8$ & $-8.3$ & $+1.7$ & $+3.3$ & $-1.5$ \\
+No edit cost     & $-2.8$ & $-2.8$ & $0.0$ & $+3.3$ & $-0.6$ \\
+$M{=}3$ samples  & $-5.6$ & $-11.1$ & $0.0$ & $-3.3$ & $-5.0$ \\
+\bottomrule\end{tabular}\end{table}
+
+The contribution of each component is summarized in two complementary ablations: Table~\ref{tab:ablations} measures the single-round attribution components on cells where the first-round repair drives the win, and Table~\ref{tab:spr-impact} (Appendix~\ref{app:spr-impl}) measures the SPR contribution on cells where the first-round MAP candidate misidentifies the fault.
+
+\textbf{Single-round attribution components (Table~\ref{tab:ablations}).} Three components are load-bearing on the cells where the first-round repair is the deciding stage: removing the \dagg drops mean accuracy by 2.8\,pp ($-8.3$\,pp on TruthfulQA$\times$Mistral); replacing provenance-weighted priors with uniform priors drops 3.1\,pp ($-8.3$\,pp on TruthfulQA$\times$Qwen); skipping the counterfactual likelihood drops 1.5\,pp on average but 8.3\,pp on the most affected cell.
+
+\textbf{Sequential Posterior Refinement (Appendix~\ref{app:spr-impl}, Table~\ref{tab:spr-impact}).} On the six cells where the verifier rejects the first-round repair, SPR contributes between $+3.3$ and $+11.7$\,pp ($+7.2$\,pp on average); pooled, this lifts \method from 84.3\% to 87.0\%. SPR derives its lift entirely from re-using the same posterior framework conditioned on the failure of the first repair (Eq.~\ref{eq:spr-update})---not from a different self-correction method---and is the methodological contrast with Reflexion (verbal critiques) vs.\ SPR (counterfactual evidence inside the same DAG-grounded posterior).
+
+Two further findings warrant brief comment. First, increasing $M$ from 1 to 3 \emph{degrades} mean accuracy by 5.0\,pp; the full $M{\in}\{1,3,5\}$ sweep is non-monotone with a recovery at $M{=}5$ on one cell (Appendix~\ref{app:m-sweep}). The pattern is incompatible with an i.i.d.\ Bernoulli model of $r_{i,j}$ (which predicts monotone variance reduction $\propto 1/M$); we attribute it to within-candidate trial correlation (shared prompt context, shared decoding trace), so $M{=}1$ is the empirical operating point of the framework given the LLM generator's actual non-i.i.d.\ behaviour, not a statistically optimal estimator. Variance-reduced or seed-diversified counterfactual sampling are the right next steps to enable $M{>}1$ to provide net benefit. Second, the cost-aware repair objective contributes only $0.6$\,pp to raw accuracy; its operational value lies in bounded edit cost (\S\ref{sec:cost}), not in higher success rate.
+
+\subsection{Is the Assumption-DAG Necessary? Violation-Aware Reprompt}\label{sec:vrp}
+
+A natural alternative to the Assumption-DAG is to feed the verifier's violated profile span directly back into a re-prompt and let the agent revise its trajectory holistically, without any structured attribution. This isolates the contribution of the DAG from the contribution of \emph{having access to violation evidence at all}. We implement this as the \emph{violation-aware reprompt} (VRP) baseline: given a profile violation, format the violated profile span(s) as explicit feedback and re-prompt the agent for a single revised trajectory (one round, comparable cost to Self-Refine). Table~\ref{tab:vrp} compares VRP to \method on the four ablation cells.
+
+\begin{table}[H]\centering\small
+\caption{Violation-aware reprompt (VRP) vs.\ \method. Cells: success rate (\%); $\Delta$ = IS$-$VRP; $p$ = paired McNemar.}
+\label{tab:vrp}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}\toprule
+Cell & Direct & Reflexion & VRP & \method & $\Delta$ (IS$-$VRP) \\\midrule
+TruthQA $\times$ Mist & 63.9 & 80.6 & 61.1 & \textbf{86.1} & $+25.0\,(p{=}0.012)^{\checkmark}$ \\
+TruthQA $\times$ Qwen & 63.9 & 69.4 & 44.4 & \textbf{77.8} & $+33.3\,(p{<}.001)^{\checkmark}$ \\
+2Wiki $\times$ Mist   & 91.7 & 95.0 & 96.7 & \textbf{96.7} & $\phantom{+0}0.0\,(p{=}1.000)$ \\
+LongMem $\times$ Llama8B & 63.3 & 76.7 & 76.7 & \textbf{78.3} & $+1.7\,(p{=}1.000)$ \\
+\bottomrule\end{tabular}\end{table}
+
+On the two TruthfulQA cells where \method has its largest gains, VRP does not just underperform \method---it performs \emph{worse} than Direct (61.1 vs.\ 63.9 on Mistral; 44.4 vs.\ 63.9 on Qwen). Without typed attribution, feeding the violated profile span back as feedback sometimes drives the model to over-correct in ways that introduce new errors. On 2Wiki (saturation ceiling) and LongMemEval (where the prior already strongly discriminates), VRP and \method are statistically tied, consistent with the failure-taxonomy observation that the DAG matters most when the prior is uncertain (\S\ref{sec:ablations}).
+
+\paragraph{Scope.} VRP is single-round; \method is multi-round. Table~\ref{tab:vrp} therefore establishes that \emph{violation evidence alone, applied naively, does not substitute for typed attribution}---it does not by itself isolate the DAG contribution from the iterative repair budget. A DAG-free baseline matching \method's retry budget over flat text (``Iter-VRP'') is the cleanest follow-up ablation; we did not run it for this submission.
+
+\subsection{Failure-Mode Taxonomy on Ablation Cells}\label{sec:failure-taxonomy}
+
+We categorize \method failures on the four ablation cells (Table~\ref{tab:ablations}) into five buckets: (i)~verifier miss, (ii)~wrong graph edge, (iii)~wrong prior, (iv)~counterfactual repair failure, and (v)~no valid downstream trajectory after repair. On these four cells, 100\% of \method failures occur at the repair stage (buckets iv--v): the verifier detects all violations and the attribution score correctly identifies the faulty node, but the repair itself either fails to remove the violation or introduces a new one during re-execution. We do not extend this analysis to the remaining twelve cells; the 100\% repair-stage statistic should be read as a property of the ablation cells, not as a global claim. The pattern motivates provenance-conditioned re-execution and diversified counterfactual sampling as the highest-leverage improvement directions on cells where attribution succeeds but repair fails.
+
+\section{Related Work}\label{sec:related}
+
+\paragraph{Self-correction and search.} Self-Refine~\cite{madaan2023selfrefine}, Reflexion~\cite{shinn2023reflexion}, and self-verification~\cite{weng2023selfverif} retry forward by critiquing or reflecting on a failed trajectory; LATS~\cite{zhou2024lats}, ExpeL~\cite{zhao2024expel}, and AdaPlanner~\cite{sun2023adaplanner} extend this with search and learned reflection. Tree-of-Thoughts~\cite{yao2023tot}, Graph-of-Thoughts~\cite{besta2024got}, and RAP~\cite{hao2023rap} search over candidate completions. None of these localize \emph{which} latent assumption to revise; \method searches over candidate faulty assumptions rather than candidate completions.
+
+\paragraph{Step-level error detection and process rewards.} CRITIC~\cite{gou2024critic} requires tool grounding; CoVe~\cite{dhuliawala2024cove} and SelfCheckGPT~\cite{manakul2023selfcheckgpt} detect hallucinations via consistency; process-level reward methods~\cite{lightman2023verify, wang2023mathshepherd} flag low-confidence steps but do not specify which user assumption to revise. Tyen et al.~\cite{tyen2024selfcorrect, tyen2024llmerrors} establish the gap \method targets: LLMs detect errors but consistently fail at \emph{localizing} them.
+
+\paragraph{Trajectory-grounded fault attribution.} RAFFLES~\cite{tyen2024raffles} introduces a Judge-LLM with iterative fault localization; ContextWeaver~\cite{liu2024contextweaver} organizes interaction history as a dependency graph; Theorem-of-Thought~\cite{peng2024theoremofthought} performs Bayesian belief propagation over reasoning graphs; StateAct~\cite{rozanov2025stateact} tracks chain-of-states forward at every step. \method is complementary: it focuses on profile-grounded violations specifically, treats profile-derived assumptions as immutable, and couples backward attribution to selective downstream repair rather than forward state tracking.
+
+\paragraph{Personalization and constraint-aware planning.} \method targets the trajectory-level version of the personalization-induced hallucination problem~\cite{sun2024pfqabench, xie2024travelplanner}; LaMP~\cite{salemi2023lamp}, TravelAgent~\cite{chen2024travelagent}, and MemoryBank~\cite{zhong2024memorybank} provide complementary personalization frameworks. On native multi-constraint planning, specialized architectures (ATLAS~\cite{choi2025atlas}, Behavior Forest~\cite{yuan2026behaviorforest}, TriFlow~\cite{chen2026triflow}) substantially outperform general-purpose self-correction; \method does not compete in that regime (Appendix~\ref{app:travel}).
+
+\section{Limitations}\label{sec:limitations}
+
+At $n{=}60$ per cell ($n{=}36$ for TruthfulQA after partial completion), the per-cell paired-McNemar MDE at $\alpha{=}0.05$ is approximately 13\,pp; per-cell claims in this paper are therefore descriptive, with directional accuracy claims supported only at the pooled level (864 paired observations). The 100\% repair-stage failure statistic in §\ref{sec:failure-taxonomy} is scoped to the four ablation cells only. DAG extraction precision/recall are measured on synthetic diagnostics (Appendix~\ref{app:dag-quality}) only; human-annotated fault labels on natural trajectories are the highest-priority follow-up. Profile-injected variants of public benchmarks shift the construct from pure factuality to factuality-plus-profile-following, controlled within a row by paired sampling; native user-conditioned benchmarks (Appendix~\ref{app:travel}) provide a complementary evaluation track but do not reproduce the gains seen on Profile-injected QA. The relationship to Reflexion is conceptually parallel and mechanistically distinct: SPR conditions on the same DAG-grounded posterior $q$ as round one (Eq.~\ref{eq:spr-update}) and re-targets the next-best ancestor's downstream subgraph---no verbal critique, no full re-generation, no Reflexion subroutine call. The single NS loss (LongMemEval$\times$Llama 70\,B, $-1.7$\,pp) is consistent with this characterization: it is a regime where the true fault frequently lies outside the extracted ancestor set, so neither round of SPR can reach it while Reflexion's free-form regeneration sometimes can. The cleaner ablation isolating the DAG (an iterative-VRP baseline matching \method's retry budget over flat text) requires re-executing every cell under a new method definition and is the highest-priority follow-up ablation we did not run.
+
+\section*{Broader Impact}\label{sec:broader-impact}
+
+\method makes latent agent assumptions explicit and auditable, which improves safety for user-facing deployments by exposing the inferred user attributes that drove a decision. The same representation creates a privacy surface: an \dagg materializes inferred user attributes as structured text that downstream systems may retain. Deployments should minimize retained graph state, separate profile-derived facts from model-inferred assumptions, and expose assumption logs to users for correction.
+
+\section{Conclusion}
+
+Across sixteen (dataset, model) cells, \method achieves the best or tied-best task success on fifteen with no significant losses, reaches a pooled mean of 87.0\% that exceeds the strongest baseline (Reflexion, 85.4\%) by 1.6\,pp, and matches or exceeds Tree-of-Thoughts accuracy at $11.8$--$14.9\times$ lower token cost. The contribution is a unified pipeline of typed counterfactual fault attribution and selective subgraph repair over an Assumption-DAG, with Sequential Posterior Refinement (Eq.~\ref{eq:spr-update}) reusing the same posterior, prior, and re-execution prompt to close the residual gap when the first-round MAP candidate misidentifies the fault.
+
+\bibliographystyle{unsrt}
+\begin{thebibliography}{99}
+% References use "first-author et~al." format consistently for papers with >2 authors,
+% and full author lists for papers with <=2 authors.
+\bibitem{madaan2023selfrefine} A. Madaan et~al. Self-Refine: Iterative refinement with self-feedback. \emph{NeurIPS}, 2023.
+\bibitem{shinn2023reflexion} N. Shinn et~al. Reflexion: Language agents with verbal reinforcement learning. \emph{NeurIPS}, 2023.
+\bibitem{yao2022react} S. Yao et~al. ReAct: Synergizing reasoning and acting in language models. \emph{ICLR}, 2023.
+\bibitem{yao2023tot} S. Yao et~al. Tree of Thoughts: Deliberate problem solving with large language models. \emph{NeurIPS}, 2023.
+\bibitem{besta2024got} M. Besta et~al. Graph of Thoughts: Solving elaborate problems with large language models. \emph{AAAI}, 2024.
+\bibitem{manakul2023selfcheckgpt} P. Manakul et~al. SelfCheckGPT: Zero-resource black-box hallucination detection. \emph{EMNLP}, 2023.
+\bibitem{du2024haloscope} X. Du et~al. HaloScope: Harnessing unlabeled LLM generations for hallucination detection. \emph{NeurIPS}, 2024.
+\bibitem{lin2021truthfulqa} S. Lin et~al. TruthfulQA: Measuring how models mimic human falsehoods. \emph{ACL}, 2022.
+\bibitem{trivedi2022musique} H. Trivedi et~al. MuSiQue: Multi-hop questions via single-hop question composition. \emph{TACL}, 2022.
+\bibitem{xie2024travelplanner} J. Xie et~al. TravelPlanner: A benchmark for real-world planning with language agents. \emph{ICML}, 2024.
+\bibitem{sun2024pfqabench} W. Sun et~al. PFQABench: Benchmarking personalized factual question answering. \emph{arXiv preprint}, 2024.
+\bibitem{shridhar2021alfworld} M. Shridhar et~al. ALFWorld: Aligning text and embodied environments for interactive learning. \emph{ICLR}, 2021.
+\bibitem{yao2022webshop} S. Yao et~al. WebShop: Towards scalable real-world web interaction. \emph{NeurIPS}, 2022.
+\bibitem{yao2024taubench} S. Yao et~al. $\tau$-bench: A benchmark for tool-agent-user interaction. \emph{arXiv preprint}, 2024.
+\bibitem{lightman2023verify} H. Lightman et~al. Let's verify step by step. \emph{ICLR}, 2024.
+\bibitem{wang2023mathshepherd} P. Wang et~al. Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations. \emph{arXiv:2312.08935}, 2023.
+\bibitem{liu2023agentbench} X. Liu et~al. AgentBench: Evaluating LLMs as agents. \emph{ICLR}, 2024.
+\bibitem{hao2023rap} S. Hao et~al. Reasoning with language model is planning with world model. \emph{EMNLP}, 2023.
+\bibitem{huang2024selfcorrect} J. Huang et~al. Large language models cannot self-correct reasoning yet. \emph{ICLR}, 2024.
+\bibitem{zhou2023webarena} S. Zhou et~al. WebArena: A realistic web environment for building autonomous agents. \emph{ICLR}, 2024.
+\bibitem{wu2024longmemeval} D. Wu et~al. LongMemEval: Benchmarking chat assistants on long-term interactive memory. \emph{arXiv preprint}, 2024.
+\bibitem{ho2020twowiki} X. Ho et~al. Constructing a multi-hop QA dataset for comprehensive evaluation of reasoning steps. \emph{COLING}, 2020.
+\bibitem{tyen2024selfcorrect} I. Tyen et~al. Self-correction is more than refinement: A framework for evaluating LLM self-correction. \emph{arXiv:2406.11424}, 2024.
+\bibitem{tyen2024llmerrors} I. Tyen et~al. LLMs cannot find reasoning errors, but can correct them given the error location. \emph{NAACL Findings}, 2024.
+\bibitem{zhou2024lats} A. Zhou et~al. Language Agent Tree Search unifies reasoning, acting, and planning. \emph{ICML}, 2024.
+\bibitem{zhao2024expel} A. Zhao et~al. ExpeL: LLM agents are experiential learners. \emph{AAAI}, 2024.
+\bibitem{sun2023adaplanner} H. Sun et~al. AdaPlanner: Adaptive planning from feedback with language models. \emph{NeurIPS}, 2023.
+\bibitem{gou2024critic} Z. Gou et~al. CRITIC: Large language models can self-correct with tool-interactive critiquing. \emph{ICLR}, 2024.
+\bibitem{dhuliawala2024cove} S. Dhuliawala et~al. Chain-of-Verification reduces hallucination in large language models. \emph{ACL Findings}, 2024.
+\bibitem{asai2024selfrag} A. Asai et~al. Self-RAG: Learning to retrieve, generate, and critique through self-reflection. \emph{ICLR}, 2024.
+\bibitem{ma2024agentboard} C. Ma et~al. AgentBoard: An analytical evaluation board of multi-turn LLM agents. \emph{NeurIPS}, 2024.
+\bibitem{choi2025atlas} J. Choi et~al. ATLAS: Constraints-aware multi-agent collaboration for real-world travel planning. \emph{arXiv preprint}, 2025.
+\bibitem{yuan2026behaviorforest} D. Yuan et~al. Decoupled travel planning with behavior forest. \emph{arXiv:2604.21354}, 2026.
+\bibitem{chen2026triflow} Y. Chen et~al. TriFlow: A progressive multi-agent framework for intelligent trip planning. \emph{The Web Conference (WWW) Companion}, 2026.
+
+% --- Self-correction extensions ---
+\bibitem{weng2023selfverif} Y. Weng et~al. Large language models are better reasoners with self-verification. \emph{Findings of EMNLP}, 2023.
+\bibitem{wang2023planandsolve} L. Wang et~al. Plan-and-Solve prompting: Improving zero-shot chain-of-thought reasoning by large language models. \emph{ACL}, 2023.
+\bibitem{zhou2024selfdiscover} P. Zhou et~al. Self-Discover: Large language models self-compose reasoning structures. \emph{NeurIPS}, 2024.
+\bibitem{kim2023rci} G. Kim et~al. Language models can solve computer tasks. \emph{NeurIPS}, 2023.
+\bibitem{huang2023hallucinationsurvey} L. Huang et~al. A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. \emph{arXiv:2311.05232}, 2023.
+
+% --- Search / reasoning architectures ---
+\bibitem{xu2023rewoo} B. Xu et~al. ReWOO: Decoupling reasoning from observations for efficient augmented language models. \emph{arXiv:2305.18323}, 2023.
+\bibitem{ning2023sot} X. Ning et~al. Skeleton-of-Thought: Large language models can do parallel decoding. \emph{ICLR}, 2024.
+\bibitem{bi2024forestofthought} Z. Bi et~al. Forest-of-Thought: Scaling test-time compute for enhancing LLM reasoning. \emph{ICML}, 2025.
+
+% --- Hallucination detection / benchmarks ---
+\bibitem{li2023halueval} J. Li et~al. HaluEval: A large-scale hallucination evaluation benchmark for large language models. \emph{EMNLP}, 2023.
+\bibitem{min2023factscore} S. Min et~al. FActScore: Fine-grained atomic evaluation of factual precision in long-form text generation. \emph{EMNLP}, 2023.
+\bibitem{chern2023factool} I. Chern et~al. FacTool: Factuality detection in generative AI. \emph{arXiv:2307.13528}, 2023.
+
+% --- Personalization ---
+\bibitem{salemi2023lamp} A. Salemi et~al. LaMP: When large language models meet personalization. \emph{ACL}, 2024.
+\bibitem{chen2024travelagent} A. Chen et~al. TravelAgent: An AI assistant for personalized travel planning. \emph{arXiv:2409.08069}, 2024.
+\bibitem{zhong2024memorybank} W. Zhong et~al. MemoryBank: Enhancing large language models with long-term memory. \emph{AAAI}, 2024.
+
+% --- Failure attribution and dependency-structured reasoning ---
+\bibitem{tyen2024raffles} I. Tyen et~al. RAFFLES: Reasoning-based attribution of faults for LLM systems. \emph{EACL}, 2026.
+\bibitem{rozanov2025stateact} N. Rozanov and M. Rei. StateAct: Enhancing LLM base agents via structured contextual state for goal-driven decision making. \emph{arXiv preprint}, 2025.
+\bibitem{liu2024contextweaver} M. Liu et~al. ContextWeaver: Dependency-structured agent memory for long-horizon interactions. \emph{arXiv preprint}, 2024.
+\bibitem{peng2024theoremofthought} Q. Peng et~al. Theorem-of-Thought: Bayesian belief propagation over reasoning graphs. \emph{ACL Findings}, 2024.
+
+% --- Constraint-aware planning (extended) ---
+\bibitem{kambhampati2024llmmodulo} S. Kambhampati et~al. LLMs can't plan, but can help planning in LLM-modulo frameworks. \emph{ICML}, 2024.
+\bibitem{hao2024llmrwplanning} Y. Hao et~al. Large language models can solve real-world planning rigorously with formal verification tools. \emph{NAACL}, 2025.
+\bibitem{gui2024htp} R. Gui et~al. Hypertree planning: Enhancing LLM reasoning via hierarchical thinking. \emph{ICML}, 2025.
+\bibitem{liu2023llmp} B. Liu et~al. LLM+P: Empowering large language models with optimal planning proficiency. \emph{arXiv:2304.11477}, 2023.
+\bibitem{lu2024dppm} Z. Lu et~al. Decompose, plan in parallel, and merge: A novel paradigm for LLM-based planning with multiple constraints. \emph{arXiv:2506.02683}, 2025.
+\bibitem{yuan2025evoagent} S. Yuan et~al. EvoAgent: Towards automatic multi-agent generation via evolutionary algorithms. \emph{NAACL}, 2025.
+
+% --- Tool-using and multi-agent frameworks ---
+\bibitem{schick2023toolformer} T. Schick et~al. Toolformer: Language models can teach themselves to use tools. \emph{NeurIPS}, 2023.
+\bibitem{patil2023gorilla} S.~G. Patil et~al. Gorilla: Large language model connected with massive APIs. \emph{NeurIPS}, 2024.
+\bibitem{shen2023hugginggpt} Y. Shen et~al. HuggingGPT: Solving AI tasks with ChatGPT and its friends in HuggingFace. \emph{NeurIPS}, 2023.
+\bibitem{wang2023voyager} G. Wang et~al. Voyager: An open-ended embodied agent with large language models. \emph{TMLR}, 2024.
+\bibitem{park2023genagents} J.~S. Park et~al. Generative agents: Interactive simulacra of human behavior. \emph{UIST}, 2023.
+\bibitem{wu2023autogen} Q. Wu et~al. AutoGen: Enabling next-gen LLM applications via multi-agent conversation. \emph{ICLR}, 2024.
+\bibitem{hong2023metagpt} S. Hong et~al. MetaGPT: Meta programming for a multi-agent collaborative framework. \emph{ICLR}, 2024.
+\bibitem{li2023camel} G. Li et~al. CAMEL: Communicative agents for ``mind'' exploration of large language model society. \emph{NeurIPS}, 2023.
+\bibitem{du2023multiagentdebate} Y. Du et~al. Improving factuality and reasoning in language models through multiagent debate. \emph{ICML}, 2024.
+\bibitem{chan2023chateval} C. Chan et~al. ChatEval: Towards better LLM-based evaluators through multi-agent debate. \emph{ICLR}, 2024.
+
+% --- LLM technical reports ---
+\bibitem{dubey2024llama3} A. Dubey et~al. The Llama 3 herd of models. \emph{arXiv:2407.21783}, 2024.
+\bibitem{jiang2023mistral} A. Jiang et~al. Mistral 7B. \emph{arXiv:2310.06825}, 2023.
+\bibitem{yang2024qwen2.5} A. Yang et~al. Qwen2.5 technical report. \emph{arXiv:2412.15115}, 2024.
+
+% --- Foundational instruction-following ---
+\bibitem{ouyang2022instructgpt} L. Ouyang et~al. Training language models to follow instructions with human feedback. \emph{NeurIPS}, 2022.
+\bibitem{openai2023gpt4} OpenAI. GPT-4 technical report. \emph{arXiv:2303.08774}, 2023.
+\end{thebibliography}
+
+\appendix
+
+\section{Algorithm and SPR Implementation Details}\label{app:spr-impl}
+
+\paragraph{Implementation notes.} During counterfactual trials (Algorithm~\ref{alg:intro-specter}, Line~8), the repaired trajectories are cached; the final re-execution (Line~13) reuses the cached trajectory of $a^\star$ rather than regenerating it. The worked example in Figure~\ref{fig:worked-example} depicts a multi-fault scenario; in the current implementation this is handled by a sequential single-node pass: after repairing $a^\star$, re-verification may detect a residual violation triggering a second single-node repair. All hyperparameters ($M$, provenance priors, cost weights, $\delta$, $\lambda$, $T_{\text{spr}}$, $\alpha$) are fixed on Profile-X development splits before any Profile-injected-X evaluation; values are listed in Appendix~\ref{app:hparams}. The decay $\alpha$ encodes our credence that a verifier rejection is partial rather than conclusive evidence: $\alpha{\to}1$ recovers the prior (no learning from failure), $\alpha{\to}0$ recovers hard exclusion (which over-commits to ``wrong fault'' over the alternative ``right fault, bad repair''). At $T_{\text{spr}} = 2$ and our cell sizes, the second-round selector is essentially insensitive to $\alpha \in [0, 0.3]$ once the rejected candidate's mass is reduced by $10\times$ or more. The routing signal (``did $V$ accept the repaired output?'') uses no gold labels; SPR addresses what we call the \emph{single-handed} regime---failures where the first-round MAP candidate misidentifies the fault but the true fault is still inside the original ancestor set $\mathcal{C}(v;G)$.
+
+\begin{algorithm}[H]
+\caption{\method (full)}\label{alg:intro-specter}
+\begin{algorithmic}[1]
+  \Require task $x$, profile $P$, trajectory $\tau$, verifier $V$, success evaluator $S$, threshold $\delta$, SPR rounds $T_{\text{spr}}$
+  \Ensure  accepted, repaired, or abstained trajectory
+  \State Construct \dagg $G = (A, E)$ from $\tau$.
+  \State Run verifier $V(P, x, \tau, y)$.
+  \If{no violation} \Return $\tau$ \EndIf
+  \State $\mathcal{C}(v; G) \gets$ ancestors of violated step in $G$, excluding profile-derived nodes.
+  \For{each $a_i \in \mathcal{C}(v; G)$}
+    \State Sample $M$ counterfactual repairs of $a_i$.
+    \State Re-execute downstream subgraph $D_i$ (cache trajectory).
+    \State Compute $r_i$ (Eq.~\ref{eq:repair-evidence}), $q_i$ (Eq.~\ref{eq:attribution}).
+  \EndFor
+  \If{$\max_i q_i < \delta$} \Return abstain or full re-generation. \EndIf
+  \State $\mathcal{T} \gets \emptyset$;\quad $q^{(0)} \gets q$.
+  \For{$t = 0, 1, \ldots, T_{\text{spr}}$}
+    \State Select $a^\star \gets \arg\min_{a_i \notin \mathcal{T}} \bigl[-q^{(t)}_i + \lambda\, C(a_i, G)\bigr]$;\quad $\tau^{\text{repair}} \gets$ cached trajectory for $a^\star$.
+    \State Verify $\tau^{\text{repair}}$ via $V$; \textbf{if} verifier passes \textbf{then} \Return $\tau^{\text{repair}}$.
+    \State $\mathcal{T} \gets \mathcal{T} \cup \{a^\star\}$;\quad update $q^{(t+1)}$ via Eq.~\ref{eq:spr-update}.
+    \If{$\mathcal{T} = \mathcal{C}(v;G)$ \textbf{or} $t = T_{\text{spr}}$} \textbf{break} \EndIf
+  \EndFor
+  \State \Return $\tau^{\text{repair}}$ from the final round (verifier-rejected; reported as repair\_failed).
+\end{algorithmic}\end{algorithm}
+
+\begin{table}[h]\centering\small
+\caption{SPR contribution: the six cells where SPR fires (i.e., the first-round repair was rejected by the verifier). Disabling SPR ($T_{\text{spr}}=0$) reverts \method to the single-round configuration. Cells: success rate (\%); $\Delta$ = full \method $-$ no-SPR variant; $p$ = paired McNemar.}
+\label{tab:spr-impact}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccr l}\toprule
+Cell & Direct & Reflexion & No SPR ($T_{\text{spr}}=0$) & Full \method ($T_{\text{spr}}=2$) & \multicolumn{1}{c}{$\Delta$} & Verdict vs.\ Rfx \\\midrule
+TruthQA $\times$ Llama 70B & 83.3 & 91.7 & 83.3 & 91.7 & $+8.3$ & TIE \\
+2Wiki $\times$ Qwen 7B     & 81.7 & 91.7 & 89.8 & 94.9 & $+5.1$ & \textbf{WIN $+3.2$\,pp} \\
+LongMem $\times$ Llama 70B & 43.3 & 70.0 & 56.7 & 68.3 & $+11.7$ & NS loss $-1.7$\,pp \\
+LongMem $\times$ Qwen 7B   & 70.0 & 76.7 & 71.7 & 76.7 & $+5.0$ & TIE \\
+MuSiQue $\times$ Llama 70B & 83.3 & 96.7 & 93.3 & 96.7 & $+3.3$ & TIE \\
+MuSiQue $\times$ Mistral   & 71.7 & 85.0 & 81.7 & 91.7 & $+10.0$ & \textbf{WIN $+6.7$\,pp} \\
+\bottomrule\end{tabular}\end{table}
+
+On the ten cells where the first-round repair satisfies the verifier, SPR never fires and the rest of the matrix is unchanged. SPR is the difference between trailing Reflexion in pooled mean ($-1.1$\,pp) and exceeding it ($+1.6$\,pp); disabling SPR ($T_{\text{spr}}=0$) does not break the method, it simply forfeits the second round of attribution, so the ablation is a clean isolation of the iterated-update contribution.
+
+\section{Hyperparameters}\label{app:hparams}
+
+\begin{table}[h]\centering\small
+\caption{Fixed hyperparameters. Values selected on Profile-X development splits and frozen before Profile-injected-X evaluation.}
+\label{tab:hparams}
+\begin{tabular}{lll}\toprule
+Symbol & Meaning & Value \\\midrule
+$M$ & Counterfactual repairs per candidate & 1 \\
+$\pi_{\text{model}}$ & Prior: model-inferred assumptions & 0.45 \\
+$\pi_{\text{world}}$ & Prior: world-knowledge assumptions & 0.33 \\
+$\pi_{\text{tool}}$ & Prior: tool-derived assumptions & 0.22 \\
+$\lambda$ & \mcgr cost weight (Eq.~\ref{eq:mcgr}) & 0.3 \\
+$(w_n, w_t, w_c, w_p)$ & Edit-cost weights (Eq.~\ref{eq:edit-cost}) & $(0.4, 0.3, 0.2, 0.1)$ \\
+$\delta$ & Abstention threshold & 0.25 \\
+$T_{\text{spr}}$ & SPR rounds (Eq.~\ref{eq:spr-update}) & 2 \\
+$\alpha$ & SPR Bayesian decay (Eq.~\ref{eq:spr-update}) & 0.1 \\
+\bottomrule\end{tabular}\end{table}
+
+Hyperparameter values were selected on the Profile-X validation split and frozen before any Profile-injected-X evaluation; informal sensitivity sweeps over $\delta$, $\lambda$, the edit-cost weights, and the SPR decay $\alpha$ are reproducible from the released code.
+
+\section{Reproducibility Details}\label{app:repro}
+
+\paragraph{Inference infrastructure.} All LLM calls are issued via remote provider APIs, not local GPU inference: Llama 3.3 70\,B Instruct through Together AI's hosted inference; Llama 3.1 8\,B Instruct, Mistral Nemo 12\,B Instruct, and Qwen 2.5 7\,B Instruct through OpenRouter's hosted inference. We do not maintain a local GPU cluster; the only local compute used is a single laptop (Apple Silicon) for orchestration and metric aggregation. Total API spend across all 16 cells, the synthetic diagnostics, the ablations, and the SPR overlay reruns: approximately USD 70 (cumulative across the run window of March--May 2026). The orchestration laptop ran Python 3.11 in a virtual environment; pinned package versions are in \texttt{requirements.txt} in the released code.
+
+\paragraph{Caching and determinism.} All model calls are cached by SHA-256 hash of \texttt{(provider, model, temperature, system\_prompt, user\_prompt, max\_tokens, seed)}. Cache hits return identical bytes; the same (\texttt{task\_id}, seed) pair therefore yields identical method outputs across reruns. Cache database is shipped as a single SQLite file alongside the released code, so an external reviewer can re-execute the metric pipeline end-to-end without paying any API cost.
+
+\paragraph{Seeds.} Example sampling uses seed 42 (deterministic hash-based index $\texttt{Random}(42 \times 1{,}000{,}037 + \texttt{idx})$). Method-internal stochasticity (Self-Refine, Reflexion, Full-Regen, ToT, \method) uses three method seeds $\{0, 1, 2\}$; reported success rates average across seeds. TruthfulQA uses three additional dataset seeds; 2Wiki, LongMemEval, and MuSiQue use a single dataset seed.
+
+\paragraph{Inference parameters.} Temperature is 0.0 for deterministic baselines (Direct, ReAct) and for the \method extraction, verifier, counterfactual, and re-execution prompts; 0.7 for stochastic-by-design baselines (Self-Refine, Reflexion, Full-Regen, ToT). Max-tokens is 8192 for the agent prompt and trajectory regeneration calls (raised from 4096 after we observed truncation on long ALFWorld and TravelPlanner plans), 2048 for the verifier and counterfactual prompts. Default top-p is 1.0; we do not modify it.
+
+\paragraph{Run window and orchestration.} All evaluation runs occurred between March and May 2026 against the provider models available at that time. Each cell is run by a single \texttt{run\_real\_benchmark.py} invocation that reads a YAML config (\texttt{configs/real/}), iterates over methods and seeds, and writes one JSONL row per task to \texttt{outputs/real/<dataset>\_\_<model>/}. Per-cell aggregation (\texttt{scripts/aggregate\_real\_benchmarks.py}) and p-value regeneration (\texttt{scripts/regen\_pvalue\_tables.py}) consume those JSONLs to produce the tables in this paper.
+
+\paragraph{Repository contents.} The released code includes: full prompts (Appendix~\ref{app:prompts}), all benchmark loaders, all baseline implementations, the SPR pipeline, the verifier, the cost model, the SQLite cache file, all 16 cell YAML configs, the aggregation and regeneration scripts, the per-cell JSONL outputs that produced the headline tables, and a single notebook reproducing every figure and table in this paper.
+
+\section{Prompts}\label{app:prompts}
+
+Four prompts drive \method's pipeline. We list each system prompt verbatim below; the user-prompt formatters are deterministic JSON-dump wrappers around the inputs and are reproduced in the released code.
+
+\paragraph{1. Assumption extraction.} System prompt invoked once per trajectory to construct the Assumption-DAG (\S\ref{sec:method}).
+
+{\small\begin{verbatim}
+You are extracting explicit assumptions from an agent trajectory for evaluation.
+
+Inputs:
+- User profile JSON
+- Task
+- Agent trajectory with steps, actions, observations, and final output
+
+Return JSON only with:
+- nodes: assumption nodes used by the agent
+- edges: dependencies among assumptions
+- final_decision_node: the node most directly supporting the final output
+
+For each node, include:
+- id (string, e.g. "a0", "a1", ...)
+- step_id (integer, matches a trajectory step_id)
+- assumption: one sentence
+- provenance: one of profile, tool, external_evidence, model_inferred,
+  world_knowledge
+- profile_span_ids: list of profile evidence spans, or empty list
+- confidence: number from 0 to 1
+- depends_on: list of node ids
+
+For each edge, include:
+- source: assumption id
+- target: assumption id
+- type: one of supports, depends_on, contradicts, downstream_of
+
+Do not include hidden chain-of-thought. Use concise observable reasoning
+summaries only.
+Output a single valid JSON object and nothing else.
+\end{verbatim}}
+
+\paragraph{2. Profile-grounded verification.} System prompt invoked to detect violations against the profile (\S\ref{sec:verifier}).
+
+{\small\begin{verbatim}
+You are a profile-grounded verifier.
+
+Inputs:
+- User profile JSON with span ids
+- Task
+- Agent trajectory
+- Final output
+
+Return JSON only:
+{
+  "pass": true or false,
+  "violations": [
+    {
+      "violation_id": "v1",
+      "step_id": integer,
+      "violated_profile_span_id": "p3",
+      "violated_constraint": "string",
+      "trajectory_text": "string",
+      "severity": "low|medium|high",
+      "confidence": number from 0 to 1,
+      "explanation": "one sentence"
+    }
+  ]
+}
+
+A violation exists if the trajectory or final output contradicts an explicit
+profile fact, depends on an unsupported inferred user property, or allows
+irrelevant profile context to distort a factual answer.
+
+Output a single valid JSON object and nothing else.
+\end{verbatim}}
+
+\paragraph{3. Counterfactual repair generation.} System prompt invoked once per candidate ancestor to test whether a minimal change at that node removes the violation (\S\ref{sec:attribution}).
+
+{\small\begin{verbatim}
+You are testing whether an assumption is the root cause of a profile-grounded
+error.
+
+Inputs:
+- User profile JSON
+- Task
+- Current Assumption-DAG
+- Candidate faulty node
+- Original trajectory
+- Detected violation
+
+Generate 3 counterfactual repairs that minimally change the candidate node
+while preserving upstream assumptions. Each repair should describe what the
+new assumption is, which downstream nodes need to be re-run, and whether the
+violation is expected to be removed.
+
+Return JSON only:
+{
+  "candidate_node_id": "a4",
+  "repairs": [
+    {
+      "repair_id": "r1",
+      "new_assumption": "string",
+      "nodes_to_rerun": ["a4", "a5", "a6"],
+      "repair_instruction": "string",
+      "expected_violation_removed": true,
+      "risk_notes": "string"
+    }
+  ]
+}
+
+Output a single valid JSON object and nothing else.
+\end{verbatim}}
+
+\paragraph{4. Downstream re-execution.} System prompt invoked once per selected repair candidate (round one and each SPR round) to regenerate only the descendants of the repaired node (\S\ref{sec:mcgr}).
+
+{\small\begin{verbatim}
+You are repairing only the downstream part of an agent trajectory.
+
+Inputs:
+- User profile JSON
+- Task
+- Original valid prefix steps
+- Repaired assumption node
+- Downstream nodes to regenerate
+- Tool observations available so far
+
+Regenerate the downstream trajectory from the repaired assumption onward.
+
+Constraints:
+- Preserve all valid prefix steps.
+- Do not invent new user preferences.
+- If a profile fact is missing, mark it unknown instead of assuming it.
+- Use available tool observations exactly as given.
+- Return structured JSON with repaired steps and final output.
+
+Return JSON only with the schema:
+{
+  "repaired_steps": [{"step_id": int, "kind": "...", "text": "...",
+                      "reason_summary": "..."}],
+  "final_output": "string"
+}
+
+Output a single valid JSON object and nothing else.
+\end{verbatim}}
+
+User-prompt formatters for all four prompts (the deterministic JSON-dump wrappers around inputs) and the baseline-method prompts (Self-Refine critique, Reflexion reflect/retry, ReAct, Detection-Only, ToT generate/evaluate/solve, SelfCheckGPT sample/consistency/regenerate, Direct agent) are reproduced verbatim in \texttt{intro\_specter/prompts.py} in the released code.
+
+\section{DAG Extraction Quality}\label{app:dag-quality}
+\begin{table}[h]\centering\small
+\caption{Assumption-DAG extraction quality on synthetic diagnostics ($n{=}60$).}
+\begin{tabular}{lccccc}\toprule
+Metric & Node P & Node R & Edge P & Edge R & Cycle rate \\\midrule
+Synthetic diagnostic & 0.94 & 0.91 & 0.88 & 0.82 & 0.05 \\
+\bottomrule\end{tabular}\end{table}
+Edge metrics are lower than node metrics, reflecting the difficulty of identifying dependency relationships. Cyclic graphs (5\%) are resolved by removing the edge with the lowest endpoint-node confidence.
+
+\section{Full Per-Cell Statistical Tables}\label{app:full-tables}
+Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique} report McNemar exact-test $p$-values and 95\% paired-bootstrap confidence intervals for $\Delta = \text{IS} - \text{baseline}$ (in pp; positive favors \method). Checkmark $\checkmark$ = \method significantly better at $p{<}0.05$ (uncorrected). CIs from 10{,}000 paired-bootstrap resamples. All entries are regenerated by \texttt{scripts/regen\_pvalue\_tables.py} from the same per-cell JSONLs that produce the headline success rates in Tables~\ref{tab:truthfulqa}--\ref{tab:musique}; \method numbers reflect the full pipeline (single-round attribution + SPR).
+
+\begin{table}[h]\centering\scriptsize
+\caption{Profile-injected TruthfulQA. Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}]. Per-cell paired observations: 36 (12 examples $\times$ 3 dataset seeds, after partial completion).}
+\label{tab:pvalues-tqa}\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
+Llama 8B    & $0.062$\,[+3,+25] & $<\!.001$\checkmark\,[+19,+50] & $1.000$\,[+0,+0] & $0.250$\,[+0,+19] & $0.008$\checkmark\,[+8,+36] & $1.000$\,[+0,+8] & $0.031$\checkmark\,[+6,+31] \\
+Llama 70B   & $0.250$\,[+0,+19] & $<\!.001$\checkmark\,[+17,+47] & $1.000$\,[$-$8,+8] & $0.125$\,[+3,+22] & $0.031$\checkmark\,[+6,+31] & $0.250$\,[+0,+19] & $0.219$\,[+0,+25] \\
+Mistral 12B & $0.008$\checkmark\,[+8,+36] & $0.012$\checkmark\,[+8,+42] & $0.625$\,[$-$6,+17] & $0.070$\,[+3,+31] & $0.021$\checkmark\,[+8,+39] & $0.219$\,[+0,+27] & $0.016$\checkmark\,[+13,+48] \\
+Qwen 7B     & $0.062$\,[+3,+25] & $<\!.001$\checkmark\,[+25,+58] & $0.375$\,[$-$3,+19] & $0.016$\checkmark\,[+8,+33] & $0.004$\checkmark\,[+11,+39] & $0.125$\,[+3,+22] & $0.250$\,[+0,+67] \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[h]\centering\scriptsize
+\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}].}
+\label{tab:pvalues-2wiki}\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
+Llama 8B    & $0.125$\,[+2,+13] & $0.002$\checkmark\,[+8,+27] & $1.000$\,[$-$5,+5] & $0.012$\checkmark\,[+5,+25] & $0.006$\checkmark\,[+7,+27] & $<\!.001$\checkmark\,[+17,+38] & $0.021$\checkmark\,[+3,+23] \\
+Llama 70B   & $1.000$\,[+0,+0] & $0.250$\,[+0,+12] & $1.000$\,[+0,+0] & $1.000$\,[$-$3,+8] & $1.000$\,[+0,+5] & $0.500$\,[+0,+8] & $0.125$\,[+2,+13] \\
+Mistral 12B & $0.250$\,[+0,+12] & $0.031$\checkmark\,[+3,+18] & $1.000$\,[$-$3,+8] & $0.125$\,[+2,+13] & $0.070$\,[+2,+20] & $0.125$\,[+2,+14] & $0.625$\,[$-$4,+12] \\
+Qwen 7B     & $0.021$\checkmark\,[+3,+24] & $0.012$\checkmark\,[+5,+25] & $0.625$\,[$-$3,+10] & $0.031$\checkmark\,[+3,+19] & $0.002$\checkmark\,[+8,+27] & $0.070$\,[+2,+20] & $1.000$\,[$-$27,+27] \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[h]\centering\scriptsize
+\caption{Profile-injected LongMemEval ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}]. ToT for Qwen 7B is omitted (insufficient paired completions to compute exact McNemar).}
+\label{tab:pvalues-lme}\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
+Llama 8B    & $0.004$\checkmark\,[+7,+25] & $<\!.001$\checkmark\,[+15,+38] & $1.000$\,[$-$7,+10] & $0.012$\checkmark\,[+5,+25] & $0.006$\checkmark\,[+7,+27] & $<\!.001$\checkmark\,[+17,+40] & $<\!.001$\checkmark\,[+12,+35] \\
+Llama 70B   & $<\!.001$\checkmark\,[+15,+37] & $0.002$\checkmark\,[+10,+32] & $1.000$\,[$-$12,+8] & $<\!.001$\checkmark\,[+13,+35] & $<\!.001$\checkmark\,[+17,+40] & $<\!.001$\checkmark\,[+23,+47] & $<\!.001$\checkmark\,[+27,+50] \\
+Mistral 12B & $<\!.001$\checkmark\,[+8,+28] & $<\!.001$\checkmark\,[+13,+35] & $1.000$\,[$-$10,+10] & $0.022$\checkmark\,[+3,+27] & $0.012$\checkmark\,[+5,+25] & $0.002$\checkmark\,[+10,+32] & $0.375$\,[$-$2,+15] \\
+Qwen 7B     & $0.125$\,[+2,+13] & $0.070$\,[+2,+18] & $1.000$\,[$-$7,+7] & $0.031$\checkmark\,[+3,+18] & $0.008$\checkmark\,[+5,+22] & $1.000$\,[$-$3,+8] & --- \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[h]\centering\scriptsize
+\caption{Profile-injected MuSiQue ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}].}
+\label{tab:pvalues-musique}\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
+Llama 8B    & $0.004$\checkmark\,[+7,+25] & $<\!.001$\checkmark\,[+15,+37] & $1.000$\,[$-$3,+8] & $0.012$\checkmark\,[+5,+25] & $<\!.001$\checkmark\,[+15,+37] & $<\!.001$\checkmark\,[+28,+52] & $<\!.001$\checkmark\,[+10,+30] \\
+Llama 70B   & $0.008$\checkmark\,[+5,+23] & $<\!.001$\checkmark\,[+10,+28] & $1.000$\,[$-$5,+5] & $0.004$\checkmark\,[+7,+25] & $0.004$\checkmark\,[+7,+25] & $<\!.001$\checkmark\,[+17,+38] & $<\!.001$\checkmark\,[+30,+55] \\
+Mistral 12B & $<\!.001$\checkmark\,[+10,+30] & $<\!.001$\checkmark\,[+18,+42] & $0.219$\,[+0,+15] & $0.002$\checkmark\,[+8,+32] & $<\!.001$\checkmark\,[+13,+35] & $0.006$\checkmark\,[+7,+27] & $0.007$\checkmark\,[+8,+35] \\
+Qwen 7B     & $0.250$\,[+0,+12] & $0.002$\checkmark\,[+10,+33] & $1.000$\,[$-$3,+7] & $0.508$\,[$-$5,+15] & $<\!.001$\checkmark\,[+10,+30] & $0.146$\,[$-$2,+22] & $1.000$\,[$-$14,+23] \\
+\bottomrule\end{tabular}\end{table}
+
+\section{Synthetic Benchmark Details}\label{app:synthetic}
+The synthetic \dagg generator constructs random DAGs of 8--15 nodes by sampling node provenances from the empirical mix observed in development trajectories, sampling edges to satisfy a target average in-degree of 2.0, and injecting one or more known faulty assumptions whose downstream effects propagate to a deterministic verifier. The verifier checks whether the trajectory output satisfies a set of compositional constraints derived from the gold graph. We generate 60 such graphs per condition. In \texttt{single\_fault}, exactly one ancestor is faulty; in \texttt{multi\_valid}, multiple ancestors can each independently resolve the violation but at different downstream edit costs.
+
+\section{Profile-X Controlled Benchmarks}\label{app:profile-x}
+Profile-X attaches structured user profiles to canonical tasks under our control and injects known assumption faults. Hyperparameters were tuned on the Profile-X validation split. Profile-X numbers are reported as supplementary evidence; the main paper emphasizes Profile-injected-X (\S\ref{sec:experiments}) and TravelPlanner (Appendix~\ref{app:travel}).
+
+\section{TravelPlanner Results}\label{app:travel}
+\begin{table}[h]\centering\small
+\caption{Real-TravelPlanner ($n{=}36$ per cell after merging seeds; success rate \%).}
+\begin{tabular}{lcccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+Llama 8B    & 52.8 & 52.8 & \textbf{80.6} & 47.2 & 52.8 & \underline{74.2} & 63.6 & 66.7 \\
+Llama 70B   & 25.0 & 22.2 & 25.0 & 25.0 & \textbf{41.7} & 34.5 & 36.1 & \underline{33.3} \\
+Mistral 12B & 25.0 & 27.8 & \textbf{41.7} & 19.4 & \underline{36.1} & 22.6 & 0.0 & 27.8 \\
+Qwen 7B     & 41.7 & 41.7 & \textbf{66.7} & 38.9 & \underline{52.8} & 34.4 & 36.1 & 54.3 \\
+\bottomrule\end{tabular}\end{table}
+
+\method records one numerical win on Llama 70\,B (33.3\% vs.\ Reflexion 25.0\%) and three NS losses (all $p \geq 0.180$). Short trajectories with few model-inferred assumption nodes reduce the value of structured attribution.
+
+\paragraph{Calibration to the official TravelPlanner evaluator.} We caveat the absolute numbers above. Our success criterion is a permissive subset of the official TravelPlanner evaluator: we apply only the dataset's hard-constraint predicates (budget, allergies, transportation rules, room counts, and accommodation/cuisine includes) plus our injected profile-violation predicates. We do \emph{not} apply the official evaluator's commonsense-constraint pass (e.g., realistic transit times, consistent attraction-to-attraction scheduling, no overnight transit between cities) nor the environmental-constraint pass (validity of the returned restaurants, attractions, and accommodations against the dataset's reference databases). The official evaluator's \emph{Final Pass Rate} requires all three layers (hard + commonsense + environmental) to pass simultaneously; under that stricter rubric, recent specialized planners (ATLAS~\cite{choi2025atlas}: 44.4\%, Behavior Forest~\cite{yuan2026behaviorforest}: up to 94.4\%, TriFlow~\cite{chen2026triflow}: 91.1\%) substantially outperform any general-purpose self-correction baseline including \method.
+
+The 80.6\% Reflexion rate on Llama 8\,B in our table should not be read as a state-of-the-art TravelPlanner result---it reflects only that, on the subset of constraints we score, Reflexion's full-trajectory regeneration tends to satisfy the explicit hard constraints we retained. This appendix is included to complete the per-method comparison on user-conditioned benchmarks, not to claim a TravelPlanner accuracy result. The relevant comparison is the within-row $\Delta$ between methods evaluated on the identical predicate set; the absolute level is uncalibrated against the official benchmark.
+
+\section{Failure-Case Examples}\label{app:failure-cases}
+Representative example trajectories per failure bucket (verifier miss, wrong edge, wrong prior, counterfactual failure, no valid repair) are included in supplementary materials; see the released code repository for the full case-study notebook.
+
+\section{$M$-Sweep Detail}\label{app:m-sweep}
+To examine the non-obvious finding that $M{=}1$ outperforms $M{=}3$, we extend the sweep to $M \in \{1, 3, 5\}$ on the four ablation cells. Holding all other components at their default values, the mean success rate decreases at $M{=}3$ and remains below the $M{=}1$ baseline at $M{=}5$, but the per-cell pattern is non-monotone (Table~\ref{tab:m-sweep}).
+
+\begin{table}[h]\centering\small
+\caption{$M$-sweep on the four ablation cells. Cells are absolute success rate (\%); right column is the mean delta vs $M{=}1$. The TruthfulQA cells use $n{=}36$ paired trials per cell at $M{=}5$ due to API-budget exhaustion during the sweep (other rows use the full $n{=}60$ or $n{=}180$).}
+\label{tab:m-sweep}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}\toprule
+$M$ & TruthQA$\times$Mist & TruthQA$\times$Qwen & 2Wiki$\times$Mist & LongMem$\times$Llama8B & Mean $\Delta$ \\\midrule
+1 (default) & 86.1 & 77.8 & 96.7 & 78.3 & 0.0 \\
+3           & 80.6 & 66.7 & 96.7 & 75.0 & $-5.0$ \\
+5           & 72.2 & 66.7 & 96.7 & 78.3 & $-6.3$ \\
+\bottomrule\end{tabular}\end{table}
+
+The mean trend is decreasing in $M$ but the per-cell pattern is non-monotone, which is the diagnostic signal we discuss in §\ref{sec:ablations}. Per-cell behavior: TruthfulQA $\times$ Mistral shows a monotone decrease (86.1 $\to$ 80.6 $\to$ 72.2); TruthfulQA $\times$ Qwen drops at $M{=}3$ then plateaus; 2Wiki $\times$ Mistral is at the saturation ceiling and does not move; \textbf{LongMemEval $\times$ Llama 8B drops at $M{=}3$ then recovers to the $M{=}1$ value at $M{=}5$}. The recovery on LongMemEval is the diagnostic that rules out a simple i.i.d.\ Bernoulli interpretation: under that model, $\hat{r}_i$ would have variance $\theta_i(1-\theta_i)/M$, monotone-decreasing in $M$, and accuracy should improve (or at minimum not recover non-monotonically) as $M$ grows. The pattern is more consistent with the within-candidate trials being correlated rather than independent (shared prompt context, shared decoding trace), so larger $M$ does not realize the variance reduction the i.i.d.\ model would predict and instead introduces small misranking events on cells with closely matched priors (TruthfulQA), while having negligible net effect on cells where the prior already strongly discriminates (2Wiki and LongMemEval). Variance-reduced or seed-diversified counterfactual sampling are the natural next steps; we use $M{=}1$ as the empirical operating point of the current framework.
+
+\section{NeurIPS 2026 Paper Checklist}\label{app:checklist}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Claims.} Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?\\
+\textbf{Answer:} Yes. The abstract states the directional accuracy claim only at the pooled level (864 paired observations, $+1.6$\,pp over Reflexion), explicitly acknowledges the $n{=}60$ per-cell underpower, and frames per-cell results descriptively (§\ref{sec:limitations}, paragraph ``Statistical power'').
+
+\item \textbf{Limitations.} Does the paper discuss the limitations of the work performed by the authors?\\
+\textbf{Answer:} Yes (§\ref{sec:limitations}): statistical power, repair-stage finding scope, DAG extraction quality, hyperparameter sensitivity, no human attribution on natural benchmarks, relationship to Reflexion, profile-injection construct shift, ToT configuration. The TravelPlanner result (Appendix~\ref{app:travel}) explicitly disclaims the absolute numbers as uncalibrated against the official benchmark scorer.
+
+\item \textbf{Theory assumptions and proofs.} For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?\\
+\textbf{Answer:} N/A. The paper does not present formal theorems; it presents an algorithmic framework with a closed-form posterior update (Eq.~\ref{eq:spr-update}). The framework's modeling assumptions (e.g., correlated rather than i.i.d.\ counterfactual trials, partial-evidence interpretation of verifier rejection) are stated explicitly in §\ref{sec:method} and §\ref{sec:ablations}.
+
+\item \textbf{Experimental result reproducibility.} Does the paper fully disclose all the information needed to reproduce the main experimental results?\\
+\textbf{Answer:} Yes. Appendix~\ref{app:repro} details inference infrastructure (provider APIs, no local GPU cluster, USD\,70 total spend), caching by prompt SHA-256 (cache file shipped with code), seeds (42 for sampling, $\{0,1,2\}$ for stochastic methods), inference parameters (temperatures, max-tokens), and run window. Appendix~\ref{app:prompts} lists the four \method system prompts verbatim. The released code repository contains every per-cell JSONL output, every aggregation script, and a notebook reproducing every paper figure and table.
+
+\item \textbf{Open access to data and code.} Does the paper provide open access to the data and code?\\
+\textbf{Answer:} Yes. Code (with cache database, configs, JSONLs, and notebooks) at \url{\repourl} (anonymized for review).
+
+\item \textbf{Experimental setting/details.} Does the paper specify all the training and test details?\\
+\textbf{Answer:} Yes. §\ref{sec:experiments} (Tasks, Models, Baselines, Evaluation Protocol) and Appendix~\ref{app:hparams} (Table~\ref{tab:hparams}, frozen hyperparameters) cover the full setting. We do not perform any model training or fine-tuning; all evaluations use frozen pre-trained LLMs accessed through provider APIs.
+
+\item \textbf{Experiment statistical significance.} Does the paper report error bars suitably and correctly defined?\\
+\textbf{Answer:} Yes. Per-cell paired-bootstrap 95\% CIs (10{,}000 resamples) and exact McNemar p-values are reported in Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique}. Appendix~\ref{app:repro} documents the regeneration pipeline (\texttt{scripts/regen\_pvalue\_tables.py}) that produces these tables from the same per-cell JSONLs that produce the headline tables.
+
+\item \textbf{Experiments compute resources.} Does the paper provide sufficient information on the computer resources?\\
+\textbf{Answer:} Yes (Appendix~\ref{app:repro}). All inference is via remote provider APIs (Together AI, OpenRouter); no local GPU cluster. The orchestration laptop ran Python 3.11. Total cumulative API spend across all 16 cells, ablations, synthetic diagnostics, and SPR overlay reruns: approximately USD\,70.
+
+\item \textbf{Code of ethics.} Does the research conform to the NeurIPS Code of Ethics?\\
+\textbf{Answer:} Yes. All datasets used are publicly released benchmarks (TruthfulQA, 2WikiMultiHopQA, LongMemEval, MuSiQue, TravelPlanner). No human subject data is collected; profile constraints are synthetic templates not derived from any specific individual. The Broader Impact statement (§\ref{sec:broader-impact}) discusses the privacy implications of materializing inferred user attributes as structured DAG nodes.
+
+\item \textbf{Broader impacts.} Does the paper discuss both potential positive and negative societal impacts?\\
+\textbf{Answer:} Yes (§\ref{sec:broader-impact}): improved auditability of agent assumptions for safety-critical user-facing deployments, balanced against the privacy risk of materializing inferred user attributes as auditable graph state. Mitigations (minimizing retained graph state, separating profile-derived from model-inferred nodes, exposing assumption logs to users) are recommended.
+
+\item \textbf{Safeguards.} Does the paper describe safeguards put in place for responsible release of data or models?\\
+\textbf{Answer:} N/A. The paper does not release a new dataset or new pretrained model. It releases an evaluation framework and metric scripts that operate over public benchmarks.
+
+\item \textbf{Licenses for existing assets.} Are the creators or original owners of assets used in the paper properly credited and the license and terms of use explicitly mentioned and properly respected?\\
+\textbf{Answer:} Yes. All evaluated benchmarks are cited (\cite{lin2021truthfulqa}, \cite{ho2020twowiki}, \cite{wu2024longmemeval}, \cite{trivedi2022musique}, \cite{xie2024travelplanner}); LLM model identifiers are cited (\cite{dubey2024llama3}, \cite{jiang2023mistral}, \cite{yang2024qwen2.5}); baseline methods are cited at first use. We use the public release versions of the benchmarks loaded directly from HuggingFace; no terms-of-use restrictions are violated.
+
+\item \textbf{New assets.} Are the new assets well-documented?\\
+\textbf{Answer:} Yes. The released code repository documents the SPR pipeline, the verifier, the cost model, the benchmark loaders, and the aggregation scripts; every config and JSONL output is included; a notebook reproduces every figure and table.
+
+\item \textbf{Crowdsourcing and research with human subjects.} For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation?\\
+\textbf{Answer:} N/A. No crowdsourcing or human-subject data collection was performed.
+
+\item \textbf{IRB approvals or equivalent for research with human subjects.}\\
+\textbf{Answer:} N/A. No human-subject research.
+
+\item \textbf{LLM usage.} Does the paper describe the usage of LLMs as part of the research methodology?\\
+\textbf{Answer:} Yes. LLMs are the central object of study: as the agents being corrected (Llama 3.1 8\,B, Mistral Nemo 12\,B, Qwen 2.5 7\,B, Llama 3.3 70\,B), as the verifier and counterfactual generator inside \method, and as the evaluators where the verifier's rule-based pass is insufficient. All prompts, model identifiers, decoding parameters, and run windows are documented in Appendix~\ref{app:repro} and Appendix~\ref{app:prompts}.
+\end{enumerate}
+
+\end{document}

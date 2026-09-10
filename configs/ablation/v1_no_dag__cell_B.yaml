@@ -1,0 +1,20 @@
+benchmark: truthfulqa_real
+split: test
+n_examples: 60
+seeds:
+- 42
+- 123
+- 456
+output_dir: outputs/real/ablation/v1_no_dag__truthfulqa_real__qwen-2.5-7b
+cache_path: cache/completions.sqlite
+verifier_provider: null
+verifier_model: ''
+methods:
+- name: intro_specter_llm
+  provider_name: openrouter
+  model: qwen/qwen-2.5-7b-instruct
+  temperature: 0.0
+  extra:
+    tau_abstain: 0.0
+    flat_dag: true
+    n_counterfactual_trials: 1

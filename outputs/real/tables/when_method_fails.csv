@@ -1,2 +1,2 @@
 dataset,model,baseline,is_success,bl_success,delta,ci_low,ci_high,p_raw,n,p_holm,holm_reject,winner
-truthfulqa_real,deepseek-v3,reflexion,0.4166666666666667,0.8333333333333334,-0.4166666666666667,-0.5833333333333334,-0.25,6.103515625e-05,36,0.0115966796875,True,reflexion
+truthfulqa_real,deepseek-v3,reflexion,0.4166666666666667,0.8333333333333334,-0.4166666666666667,-0.5833333333333334,-0.25,6.103515625e-05,36,0.01904296875,True,reflexion

@@ -27,6 +27,7 @@ from .repair import (
 from .schemas import (
     AssumptionDAG,
     AttributionPosterior,
+    CandidateScore,
     Provenance,
     RepairDecision,
     Trajectory,
@@ -56,6 +57,16 @@ class IntroSpecterConfig:
     skip_likelihood: bool = False    # posterior = prior only (no counterfactual sampling)
     disable_cost: bool = False       # choose_repair_node picks argmax posterior, ignores cost
     use_confidence_in_prior: bool = True  # multiply prior by (1 - confidence)
+    # ---- Sequential Posterior Refinement (SPR) ----
+    # When the first targeted repair does not satisfy the verifier, that failure is
+    # partial evidence against the tried candidate (it could be the wrong fault, or
+    # the right fault with a bad repair). We down-weight tried candidates by a
+    # Bayesian decay factor `spr_decay_alpha` and renormalize, then re-select the
+    # next argmax. alpha=0.0 = hard exclusion, alpha=1.0 = no learning from failure;
+    # 0.1 is the default (frozen on dev split). spr_max_rounds=0 disables SPR
+    # (used by the no-SPR ablation in Table 9).
+    spr_max_rounds: int = 2
+    spr_decay_alpha: float = 0.1
 
 
 @dataclass
@@ -252,13 +263,130 @@ def run_intro_specter(
     )
     meta["stages"].append({"stage": "post_verifier", "passed": post_verifier.passed})
 
+    # ---- Layer 4: Sequential Posterior Refinement (SPR) ----
+    # If targeted repair at n* did not satisfy the verifier, that failure is partial
+    # evidence against n* being the fault: it could mean n* is the wrong candidate,
+    # or that n* is the right candidate where the LLM failed to generate a valid
+    # downstream trajectory. We down-weight tried candidates by `spr_decay_alpha`
+    # rather than excluding them outright (Eq. 7 in the paper). Pure sequential
+    # Bayesian inference over the same Assumption-DAG --- no external model, no
+    # verbal reflection. Bounded by `config.spr_max_rounds`.
+    last_traj: Trajectory = new_traj
+    last_verdict: VerifierResult = post_verifier
+    last_decision: RepairDecision = decision
+    last_posterior: AttributionPosterior = posterior
+    tried_nodes: set[str] = {decision.fault_node}
+
+    if not post_verifier.passed and config.spr_max_rounds > 0:
+        import math as _math
+        alpha = max(0.0, min(1.0, config.spr_decay_alpha))
+        for round_idx in range(config.spr_max_rounds):
+            # Soft-decay update: tried candidates get their posterior multiplied by
+            # alpha; untried candidates keep their posterior; renormalize over both.
+            untried = [c for c in posterior.candidates if c.node_id not in tried_nodes]
+            tried_scores = [c for c in posterior.candidates if c.node_id in tried_nodes]
+            Z = (alpha * sum(c.posterior for c in tried_scores)
+                 + sum(c.posterior for c in untried)) or 1.0
+            updated_scores = [
+                CandidateScore(
+                    node_id=c.node_id,
+                    prior=c.prior,
+                    likelihood=c.likelihood,
+                    cost=c.cost,
+                    posterior=(alpha if c.node_id in tried_nodes else 1.0) * c.posterior / Z,
+                )
+                for c in posterior.candidates
+            ]
+            # Stop if every remaining candidate has effectively zero posterior mass
+            # (e.g., when alpha=0 and we've exhausted untried candidates).
+            if not untried:
+                meta["stages"].append({"stage": f"spr_round_{round_idx+1}", "exhausted": True})
+                break
+            updated_scores.sort(key=lambda s: s.posterior, reverse=True)
+            ent = -sum(
+                s.posterior * _math.log(s.posterior + 1e-12)
+                for s in updated_scores if s.posterior > 0
+            )
+            spr_posterior = AttributionPosterior(
+                candidates=updated_scores,
+                entropy=ent,
+                top_k=[s.node_id for s in updated_scores[:3]],
+            )
+            spr_decision = choose_repair_node(
+                posterior=spr_posterior,
+                dag=dag,
+                cost_model=cost_model_eff,
+                tau_abstain=config.tau_abstain,
+            )
+            meta["stages"].append({
+                "stage": f"spr_round_{round_idx+1}_decision",
+                "status": spr_decision.status,
+                "fault_node": spr_decision.fault_node,
+            })
+            if spr_decision.status != "repaired" or spr_decision.fault_node is None:
+                break
+            # If the soft-decay still let a tried candidate win the argmax (rare;
+            # only when its posterior was much larger than the next-best), force
+            # the next-best untried candidate to break the loop.
+            if spr_decision.fault_node in tried_nodes:
+                next_best = max(untried, key=lambda c: c.posterior, default=None)
+                if next_best is None:
+                    break
+                spr_decision = spr_decision.model_copy(update={"fault_node": next_best.node_id})
+            if rerun_callable is not None:
+                spr_traj = rerun_downstream_subgraph_callable(
+                    trajectory=trajectory,
+                    dag=dag,
+                    fault_node_id=spr_decision.fault_node,
+                    rerun_fn=rerun_callable,
+                )
+            else:
+                if config.reexecution_provider is None or not config.model_reexecution:
+                    break
+                spr_traj = rerun_downstream_subgraph_llm(
+                    profile=profile,
+                    task=task,
+                    trajectory=trajectory,
+                    dag=dag,
+                    fault_node_id=spr_decision.fault_node,
+                    repaired_assumption="(repaired by SPR re-execution)",
+                    provider=config.reexecution_provider,
+                    model=config.model_reexecution,
+                )
+            spr_verdict, _ = verifier.check(
+                profile=profile,
+                task=task,
+                trajectory=spr_traj,
+                final_output=spr_traj.final_output,
+            )
+            meta["stages"].append({
+                "stage": f"spr_round_{round_idx+1}_post_verifier",
+                "passed": spr_verdict.passed,
+            })
+            tried_nodes.add(spr_decision.fault_node)
+            last_traj = spr_traj
+            last_verdict = spr_verdict
+            last_decision = spr_decision
+            last_posterior = spr_posterior
+            if spr_verdict.passed:
+                return IntroSpecterResult(
+                    status="repaired_via_spr",
+                    final_trajectory=spr_traj,
+                    dag=dag,
+                    verifier=spr_verdict,
+                    posterior=spr_posterior,
+                    decision=spr_decision,
+                    fault_node=spr_decision.fault_node,
+                    meta=meta,
+                )
+
     return IntroSpecterResult(
-        status="repaired" if post_verifier.passed else "repair_failed",
-        final_trajectory=new_traj,
+        status="repaired" if last_verdict.passed else "repair_failed",
+        final_trajectory=last_traj,
         dag=dag,
-        verifier=post_verifier,
-        posterior=posterior,
-        decision=decision,
-        fault_node=decision.fault_node,
+        verifier=last_verdict,
+        posterior=last_posterior,
+        decision=last_decision,
+        fault_node=last_decision.fault_node,
         meta=meta,
     )

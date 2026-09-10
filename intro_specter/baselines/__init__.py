@@ -18,6 +18,7 @@ from .reflexion import run_reflexion
 from .selfcheckgpt import run_selfcheckgpt
 from .self_refine import run_self_refine
 from .tot import run_tot
+from .violation_reprompt import run_violation_reprompt
 
 __all__ = [
     "BaselineResult",
@@ -32,4 +33,5 @@ __all__ = [
     "run_selfcheckgpt",
     "run_self_refine",
     "run_tot",
+    "run_violation_reprompt",
 ]

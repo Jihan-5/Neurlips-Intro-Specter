@@ -51,6 +51,13 @@ def load_results(output_root: Path = Path("outputs/real")) -> pd.DataFrame:
     for path in sorted(output_root.rglob("*.jsonl")):
         if "skipped_errors" in path.name:
             continue
+        # Only the 16 primary cells (direct children of outputs/real) belong in the
+        # main aggregation. Auxiliary tiers (ablation/, cascade/, n120/, _smoke_*)
+        # nest their own {tag}__{dataset}__{model} dirs one level deeper and must
+        # be excluded here, else their tag swallows the dataset in the partition
+        # below and corrupts the main dataset/model breakdown.
+        if path.parent.parent != output_root:
+            continue
         # Cell directory is the JSONL's parent. Name format: {dataset}__{model_slug}.
         cell_dir = path.parent.name
         if "__" in cell_dir:

@@ -278,6 +278,24 @@ def run_method_on_example(
             seed=method_seed,
             max_trials=int(method.extra.get("max_trials", 2)),
         )
+    elif method.name == "violation_reprompt":
+        provider = (
+            build_provider(method.provider_name, cache=cache)
+            if method.provider_name and method.provider_name != "none"
+            else None
+        )
+        from .baselines import run_violation_reprompt
+        result = run_violation_reprompt(
+            profile=example.profile,
+            task=example.task,
+            trajectory=example.trajectory,
+            verifier=verifier,
+            provider=provider,
+            model=method.model,
+            temperature=method.temperature,
+            seed=method_seed,
+            max_trials=int(method.extra.get("max_trials", 1)),
+        )
     elif method.name == "full_regen":
         regen_fn = example.regenerate_fn
         if regen_fn is None and method.provider_name and method.provider_name != "none":
@@ -444,6 +462,8 @@ def run_method_on_example(
             skip_likelihood=bool(method.extra.get("skip_likelihood", False)),
             disable_cost=bool(method.extra.get("disable_cost", False)),
             use_confidence_in_prior=bool(method.extra.get("use_confidence_in_prior", True)),
+            spr_max_rounds=int(method.extra.get("spr_max_rounds", 2)),
+            spr_decay_alpha=float(method.extra.get("spr_decay_alpha", 0.1)),
         )
         # On natural benchmarks the dag is empty — let the pipeline call the
         # LLM extraction prompt and the LLM rerun prompt instead.
