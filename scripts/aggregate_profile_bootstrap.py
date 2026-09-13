@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import statistics
 from collections import defaultdict
 from pathlib import Path
@@ -95,6 +96,20 @@ def aggregate_cell(name: str, path: Path) -> None:
           f"p2.5={_percentile(effects, 2.5):+.3f}  "
           f"p97.5={_percentile(effects, 97.5):+.3f}  "
           f"frac_draws_IS>=Reflexion={frac_ge:.3f}")
+
+    # Pre-registered analyses (orchestration/profile_robustness_prereg.md):
+    # (a) worst-case tail: the bottom decile of draws ranked by effect —
+    #     deliberate adversarial selection AGAINST Intro-Specter.
+    k = max(1, len(effects) // 10)
+    worst = effects[:k]  # `effects` is sorted ascending
+    print(f"    worst-case bottom-decile ({k} draws): mean={statistics.mean(worst):+.3f}  "
+          f"min={worst[0]:+.3f}  frac>=0={sum(1 for e in worst if e >= 0) / k:.3f}")
+    # (b) Hoeffding bound: P(observing this favorable-draw fraction if the
+    #     true favorable fraction over profile space were <= 0.5).
+    K = len(effects)
+    dev = max(0.0, frac_ge - 0.5)
+    hoeffding = math.exp(-2 * K * dev * dev)
+    print(f"    Hoeffding bound P(frac>={frac_ge:.3f} | true frac<=0.5) <= {hoeffding:.2e}")
 
 
 def main() -> None:
