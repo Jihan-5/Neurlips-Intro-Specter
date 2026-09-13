@@ -47,3 +47,31 @@ Running examples: **enterprise CRM copilot acting on a stale client record** and
 
 ## Honest odds
 As-is at NeurIPS-quality: ~10–15%. With everything above landed: **~25–35%**. Same upgraded paper + annotation study at ICML in January: ~30–40%. TMLR: high, but claims must be narrowed to evidence (its only criterion).
+
+---
+
+## Risk register (added 2026-09-12)
+
+**Process (potentially fatal):**
+1. **Deanonymization — this repo is PUBLIC** with paper, reviews, strategy, author names. ICLR is double-blind. → Flip private before Sep 25; separate anonymized artifact repo. *(Decision: Jihan)*
+2. 1-day window Sep 24→25: submission must be 100% assembled by Sep 22.
+3. Dual-submission gray zone (abstract Sep 18 while NeurIPS pending) — read exact CFP wording this week.
+4. Reciprocal-reviewing eligibility — verify an author qualifies.
+5. Public NeurIPS record: never silently walk back a posted concession; supersede with new evidence or keep it.
+
+**Scientific:**
+6. Qwen column: 4/16 cells irreproducible (provider dead). Mixed-provenance table w/ disclosure vs 12-cell paper. *(Decision: Jihan; recommendation: keep 16 + archival footnote.)*
+7. Bootstrap may return an unflattering variance → we pre-commit to reporting it as-is.
+8. Profile-candidacy mechanism may not recover failures → fallback diagnostic-only; must know by Sep 19 (run it early).
+9. SPR delta partially confounded by provider drift → cite the 21 `repaired_via_spr` rescue rows as drift-immune evidence; all tables from new artifacts.
+10. TruthfulQA has only 12 distinct tasks — don't let it carry the profile-fault story alone; LongMemEval for breadth.
+11. Extend the pre-registered Holm-Bonferroni families to the new comparisons explicitly.
+12. Spot-check ~30 bootstrap paraphrases by hand (canonical-rule invariant protects scoring, not display coherence).
+
+**Operational:**
+13. Budget: maximal bootstrap blocked on +$30 OpenRouter top-up (Jihan); else ship scoped + disclose.
+14. Provider drift (2 incidents already): health-probe before each launch wave; snapshot dates in paper.
+15. Laptop sleep pauses detached runs: use `caffeinate -i` for overnight workers.
+16. Two-writer collisions on paper_final.tex: teammate owns prose/figures on a branch; automation owns tables/numbers on main; merge daily.
+17. Page budget: two new results sections + contribution rewrite must fit — decide cuts by Sep 20.
+18. Figure 1 redraw unassigned — good first teammate task.
