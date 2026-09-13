@@ -51,7 +51,7 @@ Across four benchmarks and four LLMs (16 cells; 864 paired observations), \metho
 
 \section{Introduction}\label{sec:intro}
 
-LLMs~\cite{ouyang2022instructgpt, openai2023gpt4} deployed as user-facing agents operate over a structured profile of preferences, constraints, and user-specific facts. Because users rarely inspect every intermediate step, a mistake made early in the trajectory propagates silently until it surfaces as a final violation: a restaurant that ignores a dietary restriction, a hotel that conflicts with a stated budget, a recommendation that treats an inferred preference as explicit. We call these \emph{user-specific hallucinations}: outputs that may be internally coherent but violate, overgeneralize, or contradict the user's own stated constraints~\cite{sun2024pfqabench, xie2024travelplanner}. Existing self-correction methods do not directly target this failure mode---Self-Refine~\cite{madaan2023selfrefine} and Reflexion~\cite{shinn2023reflexion} retry forward, Tree-of-Thoughts~\cite{yao2023tot} and Graph-of-Thoughts~\cite{besta2024got} search over completions, and process-level reward methods~\cite{lightman2023verify} flag low-confidence steps but do not localize which latent user assumption to revise. Tyen et al.~\cite{tyen2024selfcorrect,tyen2024llmerrors} make this gap concrete: LLMs can detect errors but consistently fail at \emph{localizing} which step is wrong.
+LLMs~\cite{ouyang2022instructgpt, openai2023gpt4} deployed as user-facing agents operate over a structured profile of preferences, constraints, and user-specific facts. Because users rarely inspect every intermediate step, a mistake made early in the trajectory propagates silently until it surfaces as a final violation: a restaurant that ignores a dietary restriction, a hotel that conflicts with a stated budget, a recommendation that treats an inferred preference as explicit. We call these \emph{user-specific hallucinations}: outputs that may be internally coherent but violate, overgeneralize, or contradict the user's own stated constraints~\cite{sun2024pfqabench, xie2024travelplanner}. Existing self-correction methods do not directly target this failure mode---Self-Refine~\cite{madaan2023selfrefine} and Reflexion~\cite{shinn2023reflexion} retry forward, Tree-of-Thoughts~\cite{yao2023tot} and Graph-of-Thoughts~\cite{besta2024got} search over completions, and process-level reward methods~\cite{lightman2023verify} flag low-confidence steps but do not localize which latent user assumption to revise. Tyen et al.~\cite{tyen2024llmerrors} make this gap concrete: LLMs can detect errors but consistently fail at \emph{localizing} which step is wrong, and He et al.~\cite{he2025selfcorrect} argue that self-correction must be evaluated as more than output refinement.
 
 We introduce \method, a framework for counterfactual fault attribution in user-conditioned agent trajectories. \method represents a trajectory as a provenance-typed Assumption-DAG (profile, tool, model-inferred, world) over observable trajectory artifacts. When a profile-grounded violation is detected, the system estimates an attribution score over candidate faulty ancestors using counterfactual repair trials and selects a repair point by trading off fault probability against downstream edit cost; if the post-repair verifier still rejects the trajectory, Sequential Posterior Refinement (SPR; Eq.~\ref{eq:spr-update}) treats that rejection as additional counterfactual evidence and updates the same posterior in closed form, retargeting the next-best ancestor without invoking any auxiliary mechanism. Our contributions are: (i) the \dagg + \method framework that performs typed fault attribution and selective subgraph repair (\S\ref{sec:method}); (ii) a paired evaluation across four benchmarks $\times$ four LLMs with honest statistical methodology (\S\ref{sec:experiments}, \S\ref{sec:results}); and (iii) a regime-structure finding: single-round attribution drives wins on deployment-relevant 7--12\,B models, while SPR is the deciding component on 70\,B models with long-context inputs.
 
@@ -266,19 +266,54 @@ LongMem $\times$ Llama8B & 63.3 & 76.7 & 76.7 & \textbf{78.3} & $+1.7\,(p{=}1.00
 
 On the two TruthfulQA cells where \method has its largest gains, VRP does not just underperform \method---it performs \emph{worse} than Direct (61.1 vs.\ 63.9 on Mistral; 44.4 vs.\ 63.9 on Qwen). Without typed attribution, feeding the violated profile span back as feedback sometimes drives the model to over-correct in ways that introduce new errors. On 2Wiki (saturation ceiling) and LongMemEval (where the prior already strongly discriminates), VRP and \method are statistically tied, consistent with the failure-taxonomy observation that the DAG matters most when the prior is uncertain (\S\ref{sec:ablations}).
 
-\paragraph{Scope.} VRP is single-round; \method is multi-round. Table~\ref{tab:vrp} therefore establishes that \emph{violation evidence alone, applied naively, does not substitute for typed attribution}---it does not by itself isolate the DAG contribution from the iterative repair budget. A DAG-free baseline matching \method's retry budget over flat text (``Iter-VRP'') is the cleanest follow-up ablation; we did not run it for this submission.
+\paragraph{Matched-budget control (Iter-VRP).} VRP is single-round; \method is multi-round. To isolate the DAG contribution from the retry budget, we run \emph{Iter-VRP}: DAG-free flat-text violation feedback at \method's exact retry budget, on paired examples, seeds, and initial trajectories. Iter-VRP trails or ties \method on all four ablation cells while consuming \emph{more} repair rounds: LongMemEval$\times$Llama-8B 73.3 vs.\ 88.9 ($n{=}180$, $+15.6$pp, exact McNemar $p{<}0.001$; 1.66 vs.\ 1.27 mean rounds), 2Wiki$\times$Mistral 95.0 vs.\ 99.4 ($n{=}180$, $+4.4$pp, $p{=}0.022$; 1.13 vs.\ 1.00), TruthfulQA$\times$Mistral 78.4 vs.\ 81.1 and TruthfulQA$\times$Qwen 75.0 vs.\ 75.0 (both $n{\le}37$, below the per-cell minimum detectable effect at these sizes---underpowered by construction rather than negative). Retry budget alone therefore does not account for \method's behavior: typed attribution changes \emph{where} revision is applied, not merely how often revision occurs.
 
 \subsection{Failure-Mode Taxonomy on Ablation Cells}\label{sec:failure-taxonomy}
 
 We categorize \method failures on the four ablation cells (Table~\ref{tab:ablations}) into five buckets: (i)~verifier miss, (ii)~wrong graph edge, (iii)~wrong prior, (iv)~counterfactual repair failure, and (v)~no valid downstream trajectory after repair. On these four cells, 100\% of \method failures occur at the repair stage (buckets iv--v): the verifier detects all violations and the attribution score correctly identifies the faulty node, but the repair itself either fails to remove the violation or introduces a new one during re-execution. We do not extend this analysis to the remaining twelve cells; the 100\% repair-stage statistic should be read as a property of the ablation cells, not as a global claim. The pattern motivates provenance-conditioned re-execution and diversified counterfactual sampling as the highest-leverage improvement directions on cells where attribution succeeds but repair fails.
 
+\subsection{Robustness to Multiple Simultaneous Faults}\label{sec:multifault}
+
+The main matrix injects a single fault per example. To test whether the advantage survives---or collapses---when errors compound, we extend injection to $N{=}2$--$5$ simultaneous faults per example (one factual context distractor plus $N{-}1$ independent profile-constraint corruptions; dataset-native multi-hop fact corruptions where structure permits), across five benchmarks $\times$ four LLMs $\times$ seven methods ($\sim$76k trajectories). Pooled over $N$ and models, \method leads all six baselines on all five datasets: 2WikiMultiHop 78.6 vs.\ 71.5 (Reflexion, best baseline), HotpotQA 81.4 vs.\ 71.6, MuSiQue 62.4 vs.\ 57.2, LongMemEval 65.3 vs.\ 57.7, TravelPlanner 36.6 vs.\ 34.1 (Self-Refine, best baseline). Table~\ref{tab:multifault} reports the per-fault-count breakdown.
+
+\begin{table}[t]\centering\small
+\caption{Success (\%) by simultaneous fault count $N$, pooled over four LLMs (\method{} / Reflexion; $n{\approx}660$--$720$ paired per cell). The margin \emph{widens} as faults stack until whole-chain saturation.}
+\label{tab:multifault}
+\begin{tabular}{lcccc}\toprule
+ & $N{=}2$ & $N{=}3$ & $N{=}4$ & $N{=}5$ \\\midrule
+HotpotQA      & 84.8 / 84.1 & 79.9 / 68.3 & 79.6 / 62.3 & --- \\
+2WikiMultiHop & 90.6 / 89.0 & 88.0 / 78.9 & 88.4 / 73.4 & 34.6 / 33.7 \\
+LongMemEval   & 73.9 / 71.7 & 66.0 / 57.9 & 56.1 / 43.6 & --- \\
+MuSiQue       & 85.6 / 79.9 & 80.8 / 73.5 & 44.3 / 42.4 & 39.0 / 33.2 \\
+\bottomrule\end{tabular}\end{table}
+
+Two boundary behaviors are reported rather than omitted. First, when every fact in a reasoning chain is corrupted at once (2Wiki $N{=}5$; MuSiQue $N{\ge}4$), all seven methods converge toward statistical ties: with no uncorrupted anchor left against which a counterfactual repair can be validated, attribution has nothing to attribute against, and full regeneration is the appropriate tool. Second, on TravelPlanner---short trajectories with globally-cascading constraints---all methods sit within a few points of each other at every $N$. Both boundaries are instances of the operating envelope stated in \S\ref{sec:limitations}: the advantage requires at least one uncorrupted anchor and at least one localizable fault.
+
+\subsection{Real User Histories: PersonalWAB}\label{sec:personalwab}
+
+The construction above is synthetic by design. To test the failure mode where user-conditioning arises from \emph{real} behavior, we evaluate on PersonalWAB, whose 1{,}000 users carry profiles grounded in real purchase, rating, and review histories (profiles are synthesized over these real behaviors by the benchmark's authors, not by us); ground truth is the item the real user genuinely interacted with, scored hit@1 over a 20-candidate real-product slate. Three LLMs $\times$ 180 paired examples $\times$ five arms, pooled over 540 paired units:
+
+\begin{table}[t]\centering\small
+\caption{PersonalWAB (real user histories), pooled over three LLMs, 540 paired units. Discordant = paired units where exactly one of \{\method{}, arm\} succeeds (\method-win\,/\,\method-loss); $p$ from exact McNemar.}
+\label{tab:personalwab}
+\begin{tabular}{lccc}\toprule
+Arm & Success (\%) & Discordant & $p$ \\\midrule
+Direct              & 93.2 & 26 / 0 & --- \\
+VRP (single-round)  & 94.6 & 18 / 0 & --- \\
+Iter-VRP (matched budget) & 95.2 & 18 / 3 & 0.0015 \\
+Reflexion           & 96.3 & 12 / 3 & 0.035 \\
+\method             & \textbf{98.0} & --- & --- \\
+\bottomrule\end{tabular}\end{table}
+
+With success rates near ceiling, the discordant counts are the informative statistic: every discordant comparison across all three models favors \method, a 46\% relative reduction in remaining error against the strongest baseline (3.7\%$\to$2.0\%), achieved at \emph{fewer} mean repair rounds than the budget-matched control (1.04 vs.\ 1.15). A per-example view sharpens the targeting claim: 18 of the 540 units are failed jointly by all three revision baselines (VRP, Iter-VRP, Reflexion); \method solves 10 of those 18, while the reverse---some revision baseline succeeding where \method fails---occurs on 3 units in the entire benchmark. Protocol disclosures: our scorer replicates the benchmark's ASIN-containment criterion at hit@1 rather than its trained-recommender top-10, and the ground-truth interaction is excluded from the visible history to prevent leakage.
+
 \section{Related Work}\label{sec:related}
 
 \paragraph{Self-correction and search.} Self-Refine~\cite{madaan2023selfrefine}, Reflexion~\cite{shinn2023reflexion}, and self-verification~\cite{weng2023selfverif} retry forward by critiquing or reflecting on a failed trajectory; LATS~\cite{zhou2024lats}, ExpeL~\cite{zhao2024expel}, and AdaPlanner~\cite{sun2023adaplanner} extend this with search and learned reflection. Tree-of-Thoughts~\cite{yao2023tot}, Graph-of-Thoughts~\cite{besta2024got}, and RAP~\cite{hao2023rap} search over candidate completions. None of these localize \emph{which} latent assumption to revise; \method searches over candidate faulty assumptions rather than candidate completions.
 
-\paragraph{Step-level error detection and process rewards.} CRITIC~\cite{gou2024critic} requires tool grounding; CoVe~\cite{dhuliawala2024cove} and SelfCheckGPT~\cite{manakul2023selfcheckgpt} detect hallucinations via consistency; process-level reward methods~\cite{lightman2023verify, wang2023mathshepherd} flag low-confidence steps but do not specify which user assumption to revise. Tyen et al.~\cite{tyen2024selfcorrect, tyen2024llmerrors} establish the gap \method targets: LLMs detect errors but consistently fail at \emph{localizing} them.
+\paragraph{Step-level error detection and process rewards.} CRITIC~\cite{gou2024critic} requires tool grounding; CoVe~\cite{dhuliawala2024cove} and SelfCheckGPT~\cite{manakul2023selfcheckgpt} detect hallucinations via consistency; process-level reward methods~\cite{lightman2023verify, wang2023mathshepherd} flag low-confidence steps but do not specify which user assumption to revise. Tyen et al.~\cite{tyen2024llmerrors} establish the gap \method targets: LLMs detect errors but consistently fail at \emph{localizing} them; He et al.~\cite{he2025selfcorrect} make the complementary case that correction quality must be judged beyond surface refinement.
 
-\paragraph{Trajectory-grounded fault attribution.} RAFFLES~\cite{tyen2024raffles} introduces a Judge-LLM with iterative fault localization; ContextWeaver~\cite{liu2024contextweaver} organizes interaction history as a dependency graph; Theorem-of-Thought~\cite{peng2024theoremofthought} performs Bayesian belief propagation over reasoning graphs; StateAct~\cite{rozanov2025stateact} tracks chain-of-states forward at every step. \method is complementary: it focuses on profile-grounded violations specifically, treats profile-derived assumptions as immutable, and couples backward attribution to selective downstream repair rather than forward state tracking.
+\paragraph{Trajectory-grounded fault attribution.} RAFFLES~\cite{zhu2026raffles} introduces a Judge-LLM with iterative fault localization; ContextWeaver~\cite{wu2026contextweaver} organizes interaction history as a dependency graph; Theorem-of-Thought~\cite{abdaljalil2025theoremofthought} coordinates abductive, deductive, and inductive reasoning agents to derive answers, but its inference composes reasoning modes rather than attributing faults post hoc; StateAct~\cite{rozanov2025stateact} enhances agents with self-prompting and forward state-tracking at every step. \method is complementary: it focuses on profile-grounded violations specifically, treats profile-derived assumptions as immutable, and couples backward attribution to selective downstream repair rather than forward state tracking.
 
 \paragraph{Personalization and constraint-aware planning.} \method targets the trajectory-level version of the personalization-induced hallucination problem~\cite{sun2024pfqabench, xie2024travelplanner}; LaMP~\cite{salemi2023lamp}, TravelAgent~\cite{chen2024travelagent}, and MemoryBank~\cite{zhong2024memorybank} provide complementary personalization frameworks. On native multi-constraint planning, specialized architectures (ATLAS~\cite{choi2025atlas}, Behavior Forest~\cite{yuan2026behaviorforest}, TriFlow~\cite{chen2026triflow}) substantially outperform general-purpose self-correction; \method does not compete in that regime (Appendix~\ref{app:travel}).
 
@@ -303,26 +338,26 @@ Across sixteen (dataset, model) cells, \method achieves the best or tied-best ta
 \bibitem{yao2022react} S. Yao et~al. ReAct: Synergizing reasoning and acting in language models. \emph{ICLR}, 2023.
 \bibitem{yao2023tot} S. Yao et~al. Tree of Thoughts: Deliberate problem solving with large language models. \emph{NeurIPS}, 2023.
 \bibitem{besta2024got} M. Besta et~al. Graph of Thoughts: Solving elaborate problems with large language models. \emph{AAAI}, 2024.
-\bibitem{manakul2023selfcheckgpt} P. Manakul et~al. SelfCheckGPT: Zero-resource black-box hallucination detection. \emph{EMNLP}, 2023.
+\bibitem{manakul2023selfcheckgpt} P. Manakul et~al. SelfCheckGPT: Zero-resource black-box hallucination detection for generative large language models. \emph{EMNLP}, 2023.
 \bibitem{du2024haloscope} X. Du et~al. HaloScope: Harnessing unlabeled LLM generations for hallucination detection. \emph{NeurIPS}, 2024.
 \bibitem{lin2021truthfulqa} S. Lin et~al. TruthfulQA: Measuring how models mimic human falsehoods. \emph{ACL}, 2022.
-\bibitem{trivedi2022musique} H. Trivedi et~al. MuSiQue: Multi-hop questions via single-hop question composition. \emph{TACL}, 2022.
+\bibitem{trivedi2022musique} H. Trivedi et~al. MuSiQue: Multihop questions via single-hop question composition. \emph{TACL}, 2022.
 \bibitem{xie2024travelplanner} J. Xie et~al. TravelPlanner: A benchmark for real-world planning with language agents. \emph{ICML}, 2024.
-\bibitem{sun2024pfqabench} W. Sun et~al. PFQABench: Benchmarking personalized factual question answering. \emph{arXiv preprint}, 2024.
+\bibitem{sun2024pfqabench} Z. Sun et~al. When personalization misleads: Understanding and mitigating hallucinations in personalized LLMs. \emph{arXiv:2601.11000}, 2026.
 \bibitem{shridhar2021alfworld} M. Shridhar et~al. ALFWorld: Aligning text and embodied environments for interactive learning. \emph{ICLR}, 2021.
-\bibitem{yao2022webshop} S. Yao et~al. WebShop: Towards scalable real-world web interaction. \emph{NeurIPS}, 2022.
-\bibitem{yao2024taubench} S. Yao et~al. $\tau$-bench: A benchmark for tool-agent-user interaction. \emph{arXiv preprint}, 2024.
+\bibitem{yao2022webshop} S. Yao et~al. WebShop: Towards scalable real-world web interaction with grounded language agents. \emph{NeurIPS}, 2022.
+\bibitem{yao2024taubench} S. Yao et~al. $\tau$-bench: A benchmark for tool-agent-user interaction in real-world domains. \emph{arXiv:2406.12045}, 2024.
 \bibitem{lightman2023verify} H. Lightman et~al. Let's verify step by step. \emph{ICLR}, 2024.
 \bibitem{wang2023mathshepherd} P. Wang et~al. Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations. \emph{arXiv:2312.08935}, 2023.
 \bibitem{liu2023agentbench} X. Liu et~al. AgentBench: Evaluating LLMs as agents. \emph{ICLR}, 2024.
 \bibitem{hao2023rap} S. Hao et~al. Reasoning with language model is planning with world model. \emph{EMNLP}, 2023.
 \bibitem{huang2024selfcorrect} J. Huang et~al. Large language models cannot self-correct reasoning yet. \emph{ICLR}, 2024.
 \bibitem{zhou2023webarena} S. Zhou et~al. WebArena: A realistic web environment for building autonomous agents. \emph{ICLR}, 2024.
-\bibitem{wu2024longmemeval} D. Wu et~al. LongMemEval: Benchmarking chat assistants on long-term interactive memory. \emph{arXiv preprint}, 2024.
+\bibitem{wu2024longmemeval} D. Wu et~al. LongMemEval: Benchmarking chat assistants on long-term interactive memory. \emph{ICLR}, 2025.
 \bibitem{ho2020twowiki} X. Ho et~al. Constructing a multi-hop QA dataset for comprehensive evaluation of reasoning steps. \emph{COLING}, 2020.
-\bibitem{tyen2024selfcorrect} I. Tyen et~al. Self-correction is more than refinement: A framework for evaluating LLM self-correction. \emph{arXiv:2406.11424}, 2024.
-\bibitem{tyen2024llmerrors} I. Tyen et~al. LLMs cannot find reasoning errors, but can correct them given the error location. \emph{NAACL Findings}, 2024.
-\bibitem{zhou2024lats} A. Zhou et~al. Language Agent Tree Search unifies reasoning, acting, and planning. \emph{ICML}, 2024.
+\bibitem{he2025selfcorrect} J. He et~al. Self-correction is more than refinement: A learning framework for visual and language reasoning tasks. \emph{Findings of ACL}, 2025.
+\bibitem{tyen2024llmerrors} G. Tyen et~al. LLMs cannot find reasoning errors, but can correct them given the error location. \emph{Findings of ACL}, 2024.
+\bibitem{zhou2024lats} A. Zhou et~al. Language Agent Tree Search unifies reasoning, acting, and planning in language models. \emph{ICML}, 2024.
 \bibitem{zhao2024expel} A. Zhao et~al. ExpeL: LLM agents are experiential learners. \emph{AAAI}, 2024.
 \bibitem{sun2023adaplanner} H. Sun et~al. AdaPlanner: Adaptive planning from feedback with language models. \emph{NeurIPS}, 2023.
 \bibitem{gou2024critic} Z. Gou et~al. CRITIC: Large language models can self-correct with tool-interactive critiquing. \emph{ICLR}, 2024.
@@ -356,26 +391,26 @@ Across sixteen (dataset, model) cells, \method achieves the best or tied-best ta
 \bibitem{zhong2024memorybank} W. Zhong et~al. MemoryBank: Enhancing large language models with long-term memory. \emph{AAAI}, 2024.
 
 % --- Failure attribution and dependency-structured reasoning ---
-\bibitem{tyen2024raffles} I. Tyen et~al. RAFFLES: Reasoning-based attribution of faults for LLM systems. \emph{EACL}, 2026.
-\bibitem{rozanov2025stateact} N. Rozanov and M. Rei. StateAct: Enhancing LLM base agents via structured contextual state for goal-driven decision making. \emph{arXiv preprint}, 2025.
-\bibitem{liu2024contextweaver} M. Liu et~al. ContextWeaver: Dependency-structured agent memory for long-horizon interactions. \emph{arXiv preprint}, 2024.
-\bibitem{peng2024theoremofthought} Q. Peng et~al. Theorem-of-Thought: Bayesian belief propagation over reasoning graphs. \emph{ACL Findings}, 2024.
+\bibitem{zhu2026raffles} C. Zhu et~al. RAFFLES: Reasoning-based attribution of faults for LLM systems. \emph{EACL}, 2026.
+\bibitem{rozanov2025stateact} N. Rozanov and M. Rei. StateAct: Enhancing LLM base agents via self-prompting and state-tracking. \emph{arXiv:2410.02810}, 2024.
+\bibitem{wu2026contextweaver} Y. Wu et~al. ContextWeaver: Selective and dependency-structured memory construction for LLM agents. \emph{arXiv:2604.23069}, 2026.
+\bibitem{abdaljalil2025theoremofthought} S. Abdaljalil et~al. Theorem-of-Thought: A multi-agent framework for abductive, deductive, and inductive reasoning in language models. \emph{KnowFM Workshop at ACL}, 2025.
 
 % --- Constraint-aware planning (extended) ---
 \bibitem{kambhampati2024llmmodulo} S. Kambhampati et~al. LLMs can't plan, but can help planning in LLM-modulo frameworks. \emph{ICML}, 2024.
 \bibitem{hao2024llmrwplanning} Y. Hao et~al. Large language models can solve real-world planning rigorously with formal verification tools. \emph{NAACL}, 2025.
 \bibitem{gui2024htp} R. Gui et~al. Hypertree planning: Enhancing LLM reasoning via hierarchical thinking. \emph{ICML}, 2025.
 \bibitem{liu2023llmp} B. Liu et~al. LLM+P: Empowering large language models with optimal planning proficiency. \emph{arXiv:2304.11477}, 2023.
-\bibitem{lu2024dppm} Z. Lu et~al. Decompose, plan in parallel, and merge: A novel paradigm for LLM-based planning with multiple constraints. \emph{arXiv:2506.02683}, 2025.
+\bibitem{lu2024dppm} Z. Lu et~al. Decompose, plan in parallel, and merge: A novel paradigm for large language models based planning with multiple constraints. \emph{arXiv:2506.02683}, 2025.
 \bibitem{yuan2025evoagent} S. Yuan et~al. EvoAgent: Towards automatic multi-agent generation via evolutionary algorithms. \emph{NAACL}, 2025.
 
 % --- Tool-using and multi-agent frameworks ---
 \bibitem{schick2023toolformer} T. Schick et~al. Toolformer: Language models can teach themselves to use tools. \emph{NeurIPS}, 2023.
 \bibitem{patil2023gorilla} S.~G. Patil et~al. Gorilla: Large language model connected with massive APIs. \emph{NeurIPS}, 2024.
-\bibitem{shen2023hugginggpt} Y. Shen et~al. HuggingGPT: Solving AI tasks with ChatGPT and its friends in HuggingFace. \emph{NeurIPS}, 2023.
+\bibitem{shen2023hugginggpt} Y. Shen et~al. HuggingGPT: Solving AI tasks with ChatGPT and its friends in Hugging Face. \emph{NeurIPS}, 2023.
 \bibitem{wang2023voyager} G. Wang et~al. Voyager: An open-ended embodied agent with large language models. \emph{TMLR}, 2024.
 \bibitem{park2023genagents} J.~S. Park et~al. Generative agents: Interactive simulacra of human behavior. \emph{UIST}, 2023.
-\bibitem{wu2023autogen} Q. Wu et~al. AutoGen: Enabling next-gen LLM applications via multi-agent conversation. \emph{ICLR}, 2024.
+\bibitem{wu2023autogen} Q. Wu et~al. AutoGen: Enabling next-gen LLM applications via multi-agent conversation. \emph{COLM}, 2024.
 \bibitem{hong2023metagpt} S. Hong et~al. MetaGPT: Meta programming for a multi-agent collaborative framework. \emph{ICLR}, 2024.
 \bibitem{li2023camel} G. Li et~al. CAMEL: Communicative agents for ``mind'' exploration of large language model society. \emph{NeurIPS}, 2023.
 \bibitem{du2023multiagentdebate} Y. Du et~al. Improving factuality and reasoning in language models through multiagent debate. \emph{ICML}, 2024.

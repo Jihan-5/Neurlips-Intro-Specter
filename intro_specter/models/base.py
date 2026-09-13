@@ -37,7 +37,24 @@ class CompletionResult:
     raw: dict[str, Any] = field(default_factory=dict)
 
     def parse_json(self) -> dict[str, Any]:
-        return _coerce_json(self.text)
+        return _strip_pointer_keys(_coerce_json(self.text))
+
+
+def _strip_pointer_keys(value: Any) -> Any:
+    """Some OpenRouter backends (observed on qwen-2.5-7b-instruct, Sep 2026)
+    emit JSON-pointer-style keys ("/steps", "/final_output") instead of plain
+    key names, which silently breaks every `payload.get(...)` downstream.
+    Stripping a single leading "/" recursively is a no-op on well-formed
+    output — no schema in this repo uses slash-prefixed keys.
+    """
+    if isinstance(value, dict):
+        return {
+            (k[1:] if isinstance(k, str) and k.startswith("/") else k): _strip_pointer_keys(v)
+            for k, v in value.items()
+        }
+    if isinstance(value, list):
+        return [_strip_pointer_keys(v) for v in value]
+    return value
 
 
 _FENCED_JSON_RE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL)

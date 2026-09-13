@@ -19,6 +19,7 @@ and therefore real, small API spend):
 from __future__ import annotations
 
 import argparse
+import functools
 import hashlib
 import json
 import sys
@@ -51,7 +52,11 @@ def _with_retry(fn: Callable[[], _T], *, attempts: int = 3, base_delay: float = 
 from intro_specter.attribution import LLMCounterfactualSampler
 from intro_specter.baselines import run_reflexion
 from intro_specter.benchmarks.base import BenchmarkExample
+from intro_specter.benchmarks.hotpotqa_real import HotpotQAReal
+from intro_specter.benchmarks.longmemeval_real import LongMemEvalReal
+from intro_specter.benchmarks.musique_real import MuSiQueReal
 from intro_specter.benchmarks.truthfulqa_real import TruthfulQAReal
+from intro_specter.benchmarks.twowiki_real import TwoWikiReal
 from intro_specter.models import SQLiteCache, build_provider
 from intro_specter.pipeline import IntroSpecterConfig, run_intro_specter
 from intro_specter.profile_corruption import corrupt_profile
@@ -70,6 +75,12 @@ MODEL_TABLE = {
     "deepseek-v3.1":    ("together",   "deepseek-ai/DeepSeek-V3.1"),
     "mistral-nemo-12b": ("openrouter", "mistralai/mistral-nemo"),
     "qwen-2.5-7b":      ("openrouter", "qwen/qwen-2.5-7b-instruct"),
+    # Qwen-2.5-7B is unrunnable as of 2026-09-10: OpenRouter's sole remaining
+    # upstream (Phala) emits degenerate JSON ("/steps" keys, arrays mangled
+    # into strings), and Together dropped serverless access to every
+    # Qwen2.5-7B variant (model_not_available). Entry kept for the day a
+    # working host reappears; use llama-3.1-8b as the second small model.
+    "qwen-2.5-7b-together": ("together", "Qwen/Qwen2.5-7B-Instruct-Turbo"),
     "gemini-2.5-flash": ("openrouter", "google/gemini-2.5-flash"),
     "gpt-oss-20b":      ("together",   "openai/gpt-oss-20b"),
 }
@@ -86,6 +97,33 @@ MODEL_TABLE = {
 DATASET_REGISTRY: dict[str, dict[str, Any]] = {
     "truthfulqa_real": {
         "cls": TruthfulQAReal,
+        "bench_seed": 42,
+        "split": "test",
+        "n_examples": 60,
+    },
+    # Extension cells (2026-09-10): bench_seed/split copied from each dataset's
+    # clean real_*.yaml config (all use seed 42 as their first/only run seed),
+    # so task_id selection matches the outputs/real/ clean runs 1:1.
+    "musique_real": {
+        "cls": MuSiQueReal,
+        "bench_seed": 42,
+        "split": "all",
+        "n_examples": 60,
+    },
+    "twowiki_real": {
+        "cls": TwoWikiReal,
+        "bench_seed": 42,
+        "split": "all",
+        "n_examples": 60,
+    },
+    "longmemeval_real": {
+        "cls": LongMemEvalReal,
+        "bench_seed": 42,
+        "split": "all",
+        "n_examples": 60,
+    },
+    "hotpotqa_real": {
+        "cls": HotpotQAReal,
         "bench_seed": 42,
         "split": "test",
         "n_examples": 60,
@@ -186,6 +224,7 @@ def _run_intro_specter_arm(
     model: str,
     seed: int,
     cache: SQLiteCache | None,
+    tau_abstain: float = 0.25,
 ) -> dict[str, Any]:
     provider = build_provider(provider_name, cache=cache)
     verifier = HybridVerifier(rules=list(example.rules))
@@ -200,7 +239,12 @@ def _run_intro_specter_arm(
         model_reexecution=model,
         extraction_provider=provider,
         reexecution_provider=provider,
-        tau_abstain=0.25,  # Experiment A override — every existing config uses 0.0
+        # Original Experiment A (TruthfulQA cells) ran with 0.25, where no row
+        # ever abstained so it is behaviourally identical to the clean runs'
+        # 0.0. On the extension datasets 0.25 causes mass abstention (the
+        # attribution scores sit below it), so those cells pass 0.0 via
+        # --tau-abstain to match the clean-run protocol.
+        tau_abstain=tau_abstain,
         cost_lambda=0.0,
         n_counterfactual_trials=1,  # matches real config's `extra.n_counterfactual_trials`
         # all other fields left at IntroSpecterConfig dataclass defaults (Table 11)
@@ -230,9 +274,14 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dataset", default="truthfulqa_real", choices=list(DATASET_REGISTRY))
     ap.add_argument("--model", required=True, choices=list(MODEL_TABLE))
-    ap.add_argument("--rho", type=float, required=True, choices=[0.10, 0.30])
+    ap.add_argument("--rho", type=float, required=True, choices=[0.0, 0.10, 0.30],
+                    help="0.0 = clean-profile control arm (no corruption), for "
+                         "in-harness pairing immune to provider drift")
     ap.add_argument("--seeds", default="0,1,2")
     ap.add_argument("--n-examples", type=int, default=None)
+    ap.add_argument("--tau-abstain", type=float, default=0.25,
+                    help="IntroSpecter abstain threshold; original TruthfulQA cells used 0.25, "
+                         "extension cells use 0.0 to match the clean-run configs")
     ap.add_argument("--cache-path", default="cache/completions.sqlite")
     ap.add_argument("--output-dir", default="outputs/rebuttal/experiment_a")
     ap.add_argument("--smoke", action="store_true", help="n=2 examples, 1 seed, both arms, then stop")
@@ -282,14 +331,17 @@ def main() -> None:
         for seed in seeds:
             arm_runners = {
                 "reflexion": _run_reflexion_arm,
-                "intro_specter": _run_intro_specter_arm,
+                "intro_specter": functools.partial(_run_intro_specter_arm, tau_abstain=args.tau_abstain),
             }
             pending_arms = [a for a in arm_runners if (example.task_id, seed) not in done[a]]
             if not pending_arms:
                 continue
 
-            cseed = _corruption_seed(example.task_id, seed, args.rho)
-            corrupted_profile, corrupted_ids = corrupt_profile(example.profile, args.rho, cseed, cmeta)
+            if args.rho == 0.0:
+                corrupted_profile, corrupted_ids = example.profile, []
+            else:
+                cseed = _corruption_seed(example.task_id, seed, args.rho)
+                corrupted_profile, corrupted_ids = corrupt_profile(example.profile, args.rho, cseed, cmeta)
             corrupted_example = replace(example, profile=corrupted_profile)
 
             try:
