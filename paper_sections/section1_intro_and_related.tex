@@ -41,10 +41,9 @@ personal workflows~\citep{wang2024survey,liu2024agentbench}. In these settings,
 the agent operates over a structured user profile that captures preferences
 and constraints, and users often trust the agent's decisions without
 re-verifying each intermediate step. Because these agents commit to each
-action before moving on, errors that emerge midway through a trajectory---such
-as selecting a meal that violates a dietary restriction or booking a hotel
-that conflicts with a stated preference---are hard to trace back to the
-assumptions that caused them, leaving root causes intact and risking
+action before moving on, errors that emerge midway through a trajectory---such as a CRM copilot acting on a stale client record or a healthcare intake
+agent relying on an outdated medication or allergy list---are hard to trace
+back to the assumptions that caused them, leaving root causes intact and risking
 \emph{user-specific hallucinations}: outputs that are internally coherent
 but violate the user's own stated constraints.
 

@@ -1,15 +1,11 @@
 % =============================================================================
 %  Intro-Specter: Abductive Self-Correction for User-Conditioned Agent Trajectories
-%  NeurIPS 2026 submission - FINAL CORRECTED VERSION
+%  ICLR 2027 submission
 % =============================================================================
 
 \documentclass{article}
-\usepackage{neurips_2026}
+\usepackage{iclr2027_conference,times}
 
-\newcommand{\authorname}{Anonymous Author(s)}
-\newcommand{\authoraffil}{Affiliation}
-\newcommand{\authoremail}{email}
-\newcommand{\repourl}{https://github.com/anonymous/NeurIPS-Intro-Specter}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -36,7 +32,7 @@
 \newcommand{\tbdmfive}{\textsc{tbd}}
 
 \title{Intro-Specter: Abductive Self-Correction for User-Conditioned Agent Trajectories}
-\author{\authorname \\ \authoraffil \\ \texttt{\authoremail}}
+\author{Anonymous Author(s)}
 
 \begin{document}
 \maketitle
@@ -46,17 +42,17 @@ LLM-based agents increasingly execute multi-step tasks conditioned on a structur
 
 We propose \method, a framework that extracts the assumptions an agent relied upon, structures them into a provenance-aware dependency graph, and conducts targeted counterfactual repair experiments to isolate the root-cause assumption and correct only the affected portion of the trajectory.
 
-Across four benchmarks and four LLMs (16 cells; 864 paired observations), \method achieves the highest or tied-highest task success on \textbf{15 of 16} cells with \textbf{zero significant losses} against any of seven baselines. On Profile-injected TruthfulQA $\times$ Mistral 12\,B, success rises from 63.9\% (Direct) to \textbf{86.1\%} (+22.2\,pp); on MuSiQue $\times$ Mistral 12\,B, from 71.7\% to \textbf{91.7\%} (+20.0\,pp). Pooled across the seven-baseline comparison, \method outperforms the baseline mean by \textbf{14.7\,pp}. Code: \url{\repourl}.
+Across four benchmarks and four LLMs (16 cells; 864 paired observations), \method achieves the highest or tied-highest task success on \textbf{15 of 16} cells with \textbf{zero significant losses} against any of seven baselines. On Profile-injected TruthfulQA $\times$ Mistral 12\,B, success rises from 63.9\% (Direct) to \textbf{86.1\%} (+22.2\,pp); on MuSiQue $\times$ Mistral 12\,B, from 71.7\% to \textbf{91.7\%} (+20.0\,pp). Pooled across the seven-baseline comparison, \method outperforms the baseline mean by \textbf{14.7\,pp}.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
 
-LLMs~\cite{ouyang2022instructgpt, openai2023gpt4} deployed as user-facing agents operate over a structured profile of preferences, constraints, and user-specific facts. Because users rarely inspect every intermediate step, a mistake made early in the trajectory propagates silently until it surfaces as a final violation: a restaurant that ignores a dietary restriction, a hotel that conflicts with a stated budget, a recommendation that treats an inferred preference as explicit. We call these \emph{user-specific hallucinations}: outputs that may be internally coherent but violate, overgeneralize, or contradict the user's own stated constraints~\cite{sun2024pfqabench, xie2024travelplanner}. Existing self-correction methods do not directly target this failure mode---Self-Refine~\cite{madaan2023selfrefine} and Reflexion~\cite{shinn2023reflexion} retry forward, Tree-of-Thoughts~\cite{yao2023tot} and Graph-of-Thoughts~\cite{besta2024got} search over completions, and process-level reward methods~\cite{lightman2023verify} flag low-confidence steps but do not localize which latent user assumption to revise. Tyen et al.~\cite{tyen2024llmerrors} make this gap concrete: LLMs can detect errors but consistently fail at \emph{localizing} which step is wrong, and He et al.~\cite{he2025selfcorrect} argue that self-correction must be evaluated as more than output refinement.
+LLMs~\cite{ouyang2022instructgpt, openai2023gpt4} deployed as user-facing agents operate over a structured profile of preferences, constraints, and user-specific facts. Because users rarely inspect every intermediate step, a mistake made early in the trajectory propagates silently until it surfaces as a final violation: a CRM copilot acting on a stale client record, a healthcare intake agent relying on an outdated medication or allergy list, a recommendation that treats an inferred preference as explicit. The same failure can arise when a finance assistant uses stale risk tolerance or a coding agent follows an outdated repository configuration. We call these \emph{user-specific hallucinations}: outputs that may be internally coherent but violate, overgeneralize, or contradict the user's own stated constraints~\cite{sun2024pfqabench, xie2024travelplanner}. Existing self-correction methods do not directly target this failure mode---Self-Refine~\cite{madaan2023selfrefine} and Reflexion~\cite{shinn2023reflexion} retry forward, Tree-of-Thoughts~\cite{yao2023tot} and Graph-of-Thoughts~\cite{besta2024got} search over completions, and process-level reward methods~\cite{lightman2023verify} flag low-confidence steps but do not localize which latent user assumption to revise. Tyen et al.~\cite{tyen2024llmerrors} make this gap concrete: LLMs can detect errors but consistently fail at \emph{localizing} which step is wrong, and He et al.~\cite{he2025selfcorrect} argue that self-correction must be evaluated as more than output refinement.
 
 We introduce \method, a framework for counterfactual fault attribution in user-conditioned agent trajectories. \method represents a trajectory as a provenance-typed Assumption-DAG (profile, tool, model-inferred, world) over observable trajectory artifacts. When a profile-grounded violation is detected, the system estimates an attribution score over candidate faulty ancestors using counterfactual repair trials and selects a repair point by trading off fault probability against downstream edit cost; if the post-repair verifier still rejects the trajectory, Sequential Posterior Refinement (SPR; Eq.~\ref{eq:spr-update}) treats that rejection as additional counterfactual evidence and updates the same posterior in closed form, retargeting the next-best ancestor without invoking any auxiliary mechanism. None of our components is new in isolation: abductive diagnosis, dependency graphs, and counterfactual intervention each have a multi-decade history in model-based diagnosis and software fault localization (\S\ref{sec:related}). The contribution is the setting-driven construction that makes those classical principles applicable to a single stochastic agent trajectory---and the closed loop they form once applied. Concretely: (i) \textbf{a construction that transfers classical abductive diagnosis to LLM agent trajectories by synthesizing the execution spectrum classical methods presuppose}---fault localization \`a la Tarantula/Ochiai requires many executions with pass/fail labels over shared components, while a trajectory supplies one execution and one failure; our counterfactual repair trials manufacture that missing spectrum (Eq.~\ref{eq:repair-evidence}), over a component set (the Assumption-DAG) that is itself \emph{inferred} rather than given---a failure mode no classical setting faces, which is why extraction quality is a first-class metric here (Appendix~\ref{app:dag-quality}); (ii) \textbf{the closed loop in which repair execution is the diagnostic evidence}: the likelihood proxy \emph{is} the repair attempt (Eq.~\ref{eq:repair-evidence}), that score selects the repair point against downstream edit cost (Eq.~\ref{eq:mcgr}), and verifier rejection re-enters as evidence on the same posterior (Eq.~\ref{eq:spr-update}); no prior fault-attribution system closes this loop---localization elsewhere terminates in a judgment---and our ablations show the loop is load-bearing, not compositional (removing the DAG costs 2.8\,pp, uniform priors 3.1\,pp, and disabling SPR drops pooled success below the Reflexion baseline; \S\ref{sec:ablations}); (iii) \textbf{a falsifiable operating envelope}: attribution requires at least one uncorrupted anchor---a clean evidence span, untouched constraint, or genuine user history---against which a counterfactual repair can be validated; our saturation experiments confirm the boundary in both directions (\S\ref{sec:multifault}, \S\ref{sec:limitations}); and (iv) \textbf{a paired evaluation} across benchmarks and LLMs, including real user histories (\S\ref{sec:personalwab}) and multi-fault stress tests (\S\ref{sec:multifault}), with losses and saturation regimes reported alongside wins.
 
 \begin{figure*}[t]\centering
-  \includegraphics[width=\textwidth]{figure2_comparison.png}
+  \includegraphics[width=0.82\textwidth]{B1_figure_redraw_package/figure2_comparison_overlay.pdf}
   \caption{Comparison of Tree of Thoughts (ToT), Graph of Thoughts (GoT), Heuristic Tree of Thoughts (ToTH), and \method. ToT explores a branching tree with backtracking. GoT generalizes to graph transformations. ToTH augments ToT with heuristic scoring and lookahead pruning. \method performs counterfactual fault attribution over an assumption graph: the score $q(a_k \mid \text{error})$ traces fault backward through the DAG, then repairs only the affected subgraph while reusing valid steps.}
   \label{fig:comparison}
 \end{figure*}
@@ -109,11 +105,7 @@ where $\mathcal{T}^{(t)}$ is the set of candidates whose repair $V$ has already 
   \EndFor
 \end{algorithmic}\end{algorithm}
 
-\begin{figure*}[t]\centering
-  \includegraphics[width=\textwidth]{figure_worked_example.png}
-  \caption{Worked example of \method on a restaurant recommendation task. The user profile specifies vegan, gluten-free, and budget${}<\$30$. \textbf{(1)}~The agent shortlists three restaurants ranked by model-inferred priors. \textbf{(2)}~Three violations are detected on the top pick. \textbf{(3)}~Ancestor assumptions are traced; profile nodes ($a_1$--$a_3$) are immutable. \textbf{(4)}~Counterfactual repair trials score each candidate; the algorithm proceeds via sequential single-node repair, with re-verification detecting residual violations between passes (here resolving $a_4$ then $a_7$). \textbf{(5)}~The repaired output satisfies all profile constraints.}
-  \label{fig:worked-example}
-\end{figure*}
+A complete worked example is provided in Figure~\ref{fig:worked-example} in the appendix.
 
 \section{Experiments}\label{sec:experiments}
 
@@ -309,26 +301,14 @@ With success rates near ceiling, the discordant counts are the informative stati
 
 \section{Related Work}\label{sec:related}
 
-\paragraph{Classical diagnosis and fault localization.} The intellectual ancestry of \method is a multi-decade literature we build on explicitly rather than reinvent: model-based diagnosis from first principles (Reiter's theory~\cite{reiter1987diagnosis} and de~Kleer \& Williams' GDE for multiple faults~\cite{dekleer1987gde}), whose minimal-conflict-set reasoning is the closest ancestor of our candidate-ancestor formulation; spectrum-based fault localization (Tarantula~\cite{jones2005tarantula}, the Ochiai coefficient~\cite{abreu2006ochiai}, and the Wong et~al.\ survey~\cite{wong2016survey}), whose suspiciousness-ranking-over-components view maps onto our attribution score; delta debugging as input-space fault isolation~\cite{zeller2002delta}; program slicing~\cite{weiser1981slicing}, whose dependency-closure semantics parallel our downstream-subgraph re-execution; structural accounts of actual causation (Halpern--Pearl~\cite{halpern2005causes}), which formalize the but-for reasoning our counterfactual trials operationalize; and network fault localization~\cite{steinder2004survey}, where symptom-to-cause decoding under noise anticipates violation-to-ancestor inference. Table~\ref{tab:classical} states what each classical setting assumes, what an LLM agent trajectory fails to supply, and what \method constructs in its place. None of these frameworks faces our three structural gaps simultaneously: the component set is \emph{inferred} by an extractor rather than given, the execution spectrum must be \emph{synthesized} because a trajectory supplies one execution, and diagnosis and repair are \emph{one operation} because the repair attempt is the likelihood evidence.
+\paragraph{Classical diagnosis and fault localization.}
+\method builds directly on classical diagnosis rather than presenting fault localization as new. Model-based diagnosis~\cite{reiter1987diagnosis,dekleer1987gde} searches over candidate faulty components; spectrum-based fault localization such as Tarantula and Ochiai~\cite{jones2005tarantula,abreu2006ochiai,wong2016survey} ranks components from pass/fail evidence; delta debugging~\cite{zeller2002delta}, program slicing~\cite{weiser1981slicing}, and structural causation~\cite{halpern2005causes} provide related intervention and dependency views. Our setting differs because the component set is inferred from a stochastic trajectory, only one failed execution is initially available, and repair itself supplies the counterfactual evidence. Appendix~\ref{app:classical-comparison} summarizes these correspondences.
 
-\begin{table}[t]\centering\small
-\caption{What classical diagnosis assumes, what a single LLM agent trajectory lacks, and \method's replacement.}
-\label{tab:classical}
-\begin{tabular}{p{3.1cm}p{3.4cm}p{2.9cm}p{3.4cm}}\toprule
-Classical setting & Assumes & Our setting lacks & Replacement \\\midrule
-Model-based diagnosis (Reiter; GDE) & System description given & No supplied model & LLM-extracted Assumption-DAG (\S\ref{sec:method}) \\
-SBFL (Tarantula/Ochiai) & Many executions, pass/fail spectrum & One execution, one failure & Counterfactual repair trials synthesize the spectrum (Eq.~\ref{eq:repair-evidence}) \\
-Delta debugging & Deterministic re-runnable oracle & Stochastic trajectory & Verifier + paired re-execution \\
-Localize-then-fix pipelines & Repair follows diagnosis & --- & Repair \emph{is} the diagnostic evidence (Eqs.~\ref{eq:repair-evidence}, \ref{eq:mcgr}) \\
-\bottomrule\end{tabular}\end{table}
+\paragraph{Self-correction and error localization.}
+Self-Refine~\cite{madaan2023selfrefine}, Reflexion~\cite{shinn2023reflexion}, self-verification~\cite{weng2023selfverif}, LATS~\cite{zhou2024lats}, ExpeL~\cite{zhao2024expel}, AdaPlanner~\cite{sun2023adaplanner}, Tree-of-Thoughts~\cite{yao2023tot}, Graph-of-Thoughts~\cite{besta2024got}, and RAP~\cite{hao2023rap} revise or search over candidate trajectories, but do not explicitly identify which latent user assumption should be repaired. CRITIC~\cite{gou2024critic}, CoVe~\cite{dhuliawala2024cove}, SelfCheckGPT~\cite{manakul2023selfcheckgpt}, and process-reward methods~\cite{lightman2023verify,wang2023mathshepherd} provide complementary verification signals. Tyen et al.~\cite{tyen2024llmerrors} show that localization itself remains difficult, while He et al.~\cite{he2025selfcorrect} argue that correction should be evaluated beyond surface refinement.
 
-\paragraph{Self-correction and search.} Self-Refine~\cite{madaan2023selfrefine}, Reflexion~\cite{shinn2023reflexion}, and self-verification~\cite{weng2023selfverif} retry forward by critiquing or reflecting on a failed trajectory; LATS~\cite{zhou2024lats}, ExpeL~\cite{zhao2024expel}, and AdaPlanner~\cite{sun2023adaplanner} extend this with search and learned reflection. Tree-of-Thoughts~\cite{yao2023tot}, Graph-of-Thoughts~\cite{besta2024got}, and RAP~\cite{hao2023rap} search over candidate completions. None of these localize \emph{which} latent assumption to revise; \method searches over candidate faulty assumptions rather than candidate completions.
-
-\paragraph{Step-level error detection and process rewards.} CRITIC~\cite{gou2024critic} requires tool grounding; CoVe~\cite{dhuliawala2024cove} and SelfCheckGPT~\cite{manakul2023selfcheckgpt} detect hallucinations via consistency; process-level reward methods~\cite{lightman2023verify, wang2023mathshepherd} flag low-confidence steps but do not specify which user assumption to revise. Tyen et al.~\cite{tyen2024llmerrors} establish the gap \method targets: LLMs detect errors but consistently fail at \emph{localizing} them; He et al.~\cite{he2025selfcorrect} make the complementary case that correction quality must be judged beyond surface refinement.
-
-\paragraph{Trajectory-grounded fault attribution.} RAFFLES~\cite{zhu2026raffles} introduces a Judge-LLM with iterative fault localization; ContextWeaver~\cite{wu2026contextweaver} organizes interaction history as a dependency graph; Theorem-of-Thought~\cite{abdaljalil2025theoremofthought} coordinates abductive, deductive, and inductive reasoning agents to derive answers, but its inference composes reasoning modes rather than attributing faults post hoc; StateAct~\cite{rozanov2025stateact} enhances agents with self-prompting and forward state-tracking at every step. \method is complementary: it focuses on profile-grounded violations specifically, treats profile-derived assumptions as immutable, and couples backward attribution to selective downstream repair rather than forward state tracking.
-
-\paragraph{Personalization and constraint-aware planning.} \method targets the trajectory-level version of the personalization-induced hallucination problem~\cite{sun2024pfqabench, xie2024travelplanner}; LaMP~\cite{salemi2023lamp}, TravelAgent~\cite{chen2024travelagent}, and MemoryBank~\cite{zhong2024memorybank} provide complementary personalization frameworks. On native multi-constraint planning, specialized architectures (ATLAS~\cite{choi2025atlas}, Behavior Forest~\cite{yuan2026behaviorforest}, TriFlow~\cite{chen2026triflow}) substantially outperform general-purpose self-correction; \method does not compete in that regime (Appendix~\ref{app:travel}).
+\paragraph{Agent fault attribution and personalization.}
+Recent systems move closer to trajectory-level diagnosis: RAFFLES~\cite{zhu2026raffles} performs iterative fault localization, ContextWeaver~\cite{wu2026contextweaver} structures interaction history as a dependency graph, Theorem-of-Thought~\cite{abdaljalil2025theoremofthought} combines abductive, deductive, and inductive reasoning, and StateAct~\cite{rozanov2025stateact} maintains forward state during agent execution. \method instead targets profile-grounded violations and couples backward attribution to selective downstream repair. This complements work on personalization-induced hallucination and constrained planning~\cite{sun2024pfqabench,xie2024travelplanner}, including LaMP~\cite{salemi2023lamp}, TravelAgent~\cite{chen2024travelagent}, MemoryBank~\cite{zhong2024memorybank}, and specialized planners such as ATLAS~\cite{choi2025atlas}, Behavior Forest~\cite{yuan2026behaviorforest}, and TriFlow~\cite{chen2026triflow}.
 
 \section{Limitations}\label{sec:limitations}
 
@@ -342,113 +322,133 @@ At $n{=}60$ per cell ($n{=}36$ for TruthfulQA after partial completion), the per
 
 Across sixteen (dataset, model) cells, \method achieves the best or tied-best task success on fifteen with no significant losses, reaches a pooled mean of 87.0\% that exceeds the strongest baseline (Reflexion, 85.4\%) by 1.6\,pp, and matches or exceeds Tree-of-Thoughts accuracy at $11.8$--$14.9\times$ lower token cost. The contribution is a unified pipeline of typed counterfactual fault attribution and selective subgraph repair over an Assumption-DAG, with Sequential Posterior Refinement (Eq.~\ref{eq:spr-update}) reusing the same posterior, prior, and re-execution prompt to close the residual gap when the first-round MAP candidate misidentifies the fault.
 
-\bibliographystyle{unsrt}
+\bibliographystyle{iclr2027_conference}
 \begin{thebibliography}{99}
 % References use "first-author et~al." format consistently for papers with >2 authors,
 % and full author lists for papers with <=2 authors.
-\bibitem{madaan2023selfrefine} A. Madaan et~al. Self-Refine: Iterative refinement with self-feedback. \emph{NeurIPS}, 2023.
-\bibitem{shinn2023reflexion} N. Shinn et~al. Reflexion: Language agents with verbal reinforcement learning. \emph{NeurIPS}, 2023.
-\bibitem{yao2022react} S. Yao et~al. ReAct: Synergizing reasoning and acting in language models. \emph{ICLR}, 2023.
-\bibitem{yao2023tot} S. Yao et~al. Tree of Thoughts: Deliberate problem solving with large language models. \emph{NeurIPS}, 2023.
-\bibitem{besta2024got} M. Besta et~al. Graph of Thoughts: Solving elaborate problems with large language models. \emph{AAAI}, 2024.
-\bibitem{manakul2023selfcheckgpt} P. Manakul et~al. SelfCheckGPT: Zero-resource black-box hallucination detection for generative large language models. \emph{EMNLP}, 2023.
-\bibitem{du2024haloscope} X. Du et~al. HaloScope: Harnessing unlabeled LLM generations for hallucination detection. \emph{NeurIPS}, 2024.
-\bibitem{lin2021truthfulqa} S. Lin et~al. TruthfulQA: Measuring how models mimic human falsehoods. \emph{ACL}, 2022.
-\bibitem{trivedi2022musique} H. Trivedi et~al. MuSiQue: Multihop questions via single-hop question composition. \emph{TACL}, 2022.
-\bibitem{xie2024travelplanner} J. Xie et~al. TravelPlanner: A benchmark for real-world planning with language agents. \emph{ICML}, 2024.
-\bibitem{sun2024pfqabench} Z. Sun et~al. When personalization misleads: Understanding and mitigating hallucinations in personalized LLMs. \emph{arXiv:2601.11000}, 2026.
-\bibitem{shridhar2021alfworld} M. Shridhar et~al. ALFWorld: Aligning text and embodied environments for interactive learning. \emph{ICLR}, 2021.
-\bibitem{yao2022webshop} S. Yao et~al. WebShop: Towards scalable real-world web interaction with grounded language agents. \emph{NeurIPS}, 2022.
-\bibitem{yao2024taubench} S. Yao et~al. $\tau$-bench: A benchmark for tool-agent-user interaction in real-world domains. \emph{arXiv:2406.12045}, 2024.
-\bibitem{lightman2023verify} H. Lightman et~al. Let's verify step by step. \emph{ICLR}, 2024.
-\bibitem{wang2023mathshepherd} P. Wang et~al. Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations. \emph{arXiv:2312.08935}, 2023.
-\bibitem{liu2023agentbench} X. Liu et~al. AgentBench: Evaluating LLMs as agents. \emph{ICLR}, 2024.
-\bibitem{hao2023rap} S. Hao et~al. Reasoning with language model is planning with world model. \emph{EMNLP}, 2023.
-\bibitem{huang2024selfcorrect} J. Huang et~al. Large language models cannot self-correct reasoning yet. \emph{ICLR}, 2024.
-\bibitem{zhou2023webarena} S. Zhou et~al. WebArena: A realistic web environment for building autonomous agents. \emph{ICLR}, 2024.
-\bibitem{wu2024longmemeval} D. Wu et~al. LongMemEval: Benchmarking chat assistants on long-term interactive memory. \emph{ICLR}, 2025.
-\bibitem{ho2020twowiki} X. Ho et~al. Constructing a multi-hop QA dataset for comprehensive evaluation of reasoning steps. \emph{COLING}, 2020.
-\bibitem{he2025selfcorrect} J. He et~al. Self-correction is more than refinement: A learning framework for visual and language reasoning tasks. \emph{Findings of ACL}, 2025.
-\bibitem{tyen2024llmerrors} G. Tyen et~al. LLMs cannot find reasoning errors, but can correct them given the error location. \emph{Findings of ACL}, 2024.
-\bibitem{zhou2024lats} A. Zhou et~al. Language Agent Tree Search unifies reasoning, acting, and planning in language models. \emph{ICML}, 2024.
-\bibitem{zhao2024expel} A. Zhao et~al. ExpeL: LLM agents are experiential learners. \emph{AAAI}, 2024.
-\bibitem{sun2023adaplanner} H. Sun et~al. AdaPlanner: Adaptive planning from feedback with language models. \emph{NeurIPS}, 2023.
-\bibitem{gou2024critic} Z. Gou et~al. CRITIC: Large language models can self-correct with tool-interactive critiquing. \emph{ICLR}, 2024.
-\bibitem{dhuliawala2024cove} S. Dhuliawala et~al. Chain-of-Verification reduces hallucination in large language models. \emph{ACL Findings}, 2024.
-\bibitem{asai2024selfrag} A. Asai et~al. Self-RAG: Learning to retrieve, generate, and critique through self-reflection. \emph{ICLR}, 2024.
-\bibitem{ma2024agentboard} C. Ma et~al. AgentBoard: An analytical evaluation board of multi-turn LLM agents. \emph{NeurIPS}, 2024.
-\bibitem{choi2025atlas} J. Choi et~al. ATLAS: Constraints-aware multi-agent collaboration for real-world travel planning. \emph{arXiv preprint}, 2025.
-\bibitem{yuan2026behaviorforest} D. Yuan et~al. Decoupled travel planning with behavior forest. \emph{arXiv:2604.21354}, 2026.
-\bibitem{chen2026triflow} Y. Chen et~al. TriFlow: A progressive multi-agent framework for intelligent trip planning. \emph{The Web Conference (WWW) Companion}, 2026.
+\bibitem[Madaan et~al.(2023)]{madaan2023selfrefine} A. Madaan et~al. Self-Refine: Iterative refinement with self-feedback. \emph{NeurIPS}, 2023.
+\bibitem[Shinn et~al.(2023)]{shinn2023reflexion} N. Shinn et~al. Reflexion: Language agents with verbal reinforcement learning. \emph{NeurIPS}, 2023.
+\bibitem[Yao et~al.(2023)]{yao2022react} S. Yao et~al. ReAct: Synergizing reasoning and acting in language models. \emph{ICLR}, 2023.
+\bibitem[Yao et~al.(2023)]{yao2023tot} S. Yao et~al. Tree of Thoughts: Deliberate problem solving with large language models. \emph{NeurIPS}, 2023.
+\bibitem[Besta et~al.(2024)]{besta2024got} M. Besta et~al. Graph of Thoughts: Solving elaborate problems with large language models. \emph{AAAI}, 2024.
+\bibitem[Manakul et~al.(2023)]{manakul2023selfcheckgpt} P. Manakul et~al. SelfCheckGPT: Zero-resource black-box hallucination detection for generative large language models. \emph{EMNLP}, 2023.
+\bibitem[Du et~al.(2024)]{du2024haloscope} X. Du et~al. HaloScope: Harnessing unlabeled LLM generations for hallucination detection. \emph{NeurIPS}, 2024.
+\bibitem[Lin et~al.(2022)]{lin2021truthfulqa} S. Lin et~al. TruthfulQA: Measuring how models mimic human falsehoods. \emph{ACL}, 2022.
+\bibitem[Trivedi et~al.(2022)]{trivedi2022musique} H. Trivedi et~al. MuSiQue: Multihop questions via single-hop question composition. \emph{TACL}, 2022.
+\bibitem[Xie et~al.(2024)]{xie2024travelplanner} J. Xie et~al. TravelPlanner: A benchmark for real-world planning with language agents. \emph{ICML}, 2024.
+\bibitem[Sun et~al.(2026)]{sun2024pfqabench} Z. Sun et~al. When personalization misleads: Understanding and mitigating hallucinations in personalized LLMs. \emph{arXiv:2601.11000}, 2026.
+\bibitem[Shridhar et~al.(2021)]{shridhar2021alfworld} M. Shridhar et~al. ALFWorld: Aligning text and embodied environments for interactive learning. \emph{ICLR}, 2021.
+\bibitem[Yao et~al.(2022)]{yao2022webshop} S. Yao et~al. WebShop: Towards scalable real-world web interaction with grounded language agents. \emph{NeurIPS}, 2022.
+\bibitem[Yao et~al.(2024)]{yao2024taubench} S. Yao et~al. $\tau$-bench: A benchmark for tool-agent-user interaction in real-world domains. \emph{arXiv:2406.12045}, 2024.
+\bibitem[Lightman et~al.(2024)]{lightman2023verify} H. Lightman et~al. Let's verify step by step. \emph{ICLR}, 2024.
+\bibitem[Wang et~al.(2023)]{wang2023mathshepherd} P. Wang et~al. Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations. \emph{arXiv:2312.08935}, 2023.
+\bibitem[Liu et~al.(2024)]{liu2023agentbench} X. Liu et~al. AgentBench: Evaluating LLMs as agents. \emph{ICLR}, 2024.
+\bibitem[Hao et~al.(2023)]{hao2023rap} S. Hao et~al. Reasoning with language model is planning with world model. \emph{EMNLP}, 2023.
+\bibitem[Huang et~al.(2024)]{huang2024selfcorrect} J. Huang et~al. Large language models cannot self-correct reasoning yet. \emph{ICLR}, 2024.
+\bibitem[Zhou et~al.(2024)]{zhou2023webarena} S. Zhou et~al. WebArena: A realistic web environment for building autonomous agents. \emph{ICLR}, 2024.
+\bibitem[Wu et~al.(2025)]{wu2024longmemeval} D. Wu et~al. LongMemEval: Benchmarking chat assistants on long-term interactive memory. \emph{ICLR}, 2025.
+\bibitem[Ho et~al.(2020)]{ho2020twowiki} X. Ho et~al. Constructing a multi-hop QA dataset for comprehensive evaluation of reasoning steps. \emph{COLING}, 2020.
+\bibitem[He et~al.(2025)]{he2025selfcorrect} J. He et~al. Self-correction is more than refinement: A learning framework for visual and language reasoning tasks. \emph{Findings of ACL}, 2025.
+\bibitem[Tyen et~al.(2024)]{tyen2024llmerrors} G. Tyen et~al. LLMs cannot find reasoning errors, but can correct them given the error location. \emph{Findings of ACL}, 2024.
+\bibitem[Zhou et~al.(2024)]{zhou2024lats} A. Zhou et~al. Language Agent Tree Search unifies reasoning, acting, and planning in language models. \emph{ICML}, 2024.
+\bibitem[Zhao et~al.(2024)]{zhao2024expel} A. Zhao et~al. ExpeL: LLM agents are experiential learners. \emph{AAAI}, 2024.
+\bibitem[Sun et~al.(2023)]{sun2023adaplanner} H. Sun et~al. AdaPlanner: Adaptive planning from feedback with language models. \emph{NeurIPS}, 2023.
+\bibitem[Gou et~al.(2024)]{gou2024critic} Z. Gou et~al. CRITIC: Large language models can self-correct with tool-interactive critiquing. \emph{ICLR}, 2024.
+\bibitem[Dhuliawala et~al.(2024)]{dhuliawala2024cove} S. Dhuliawala et~al. Chain-of-Verification reduces hallucination in large language models. \emph{ACL Findings}, 2024.
+\bibitem[Asai et~al.(2024)]{asai2024selfrag} A. Asai et~al. Self-RAG: Learning to retrieve, generate, and critique through self-reflection. \emph{ICLR}, 2024.
+\bibitem[Ma et~al.(2024)]{ma2024agentboard} C. Ma et~al. AgentBoard: An analytical evaluation board of multi-turn LLM agents. \emph{NeurIPS}, 2024.
+\bibitem[Choi et~al.(2025)]{choi2025atlas} J. Choi et~al. ATLAS: Constraints-aware multi-agent collaboration for real-world travel planning. \emph{arXiv preprint}, 2025.
+\bibitem[Yuan et~al.(2026)]{yuan2026behaviorforest} D. Yuan et~al. Decoupled travel planning with behavior forest. \emph{arXiv:2604.21354}, 2026.
+\bibitem[Chen et~al.(2026)]{chen2026triflow} Y. Chen et~al. TriFlow: A progressive multi-agent framework for intelligent trip planning. \emph{The Web Conference (WWW) Companion}, 2026.
 
 % --- Self-correction extensions ---
-\bibitem{weng2023selfverif} Y. Weng et~al. Large language models are better reasoners with self-verification. \emph{Findings of EMNLP}, 2023.
-\bibitem{wang2023planandsolve} L. Wang et~al. Plan-and-Solve prompting: Improving zero-shot chain-of-thought reasoning by large language models. \emph{ACL}, 2023.
-\bibitem{zhou2024selfdiscover} P. Zhou et~al. Self-Discover: Large language models self-compose reasoning structures. \emph{NeurIPS}, 2024.
-\bibitem{kim2023rci} G. Kim et~al. Language models can solve computer tasks. \emph{NeurIPS}, 2023.
-\bibitem{huang2023hallucinationsurvey} L. Huang et~al. A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. \emph{arXiv:2311.05232}, 2023.
+\bibitem[Weng et~al.(2023)]{weng2023selfverif} Y. Weng et~al. Large language models are better reasoners with self-verification. \emph{Findings of EMNLP}, 2023.
+\bibitem[Wang et~al.(2023)]{wang2023planandsolve} L. Wang et~al. Plan-and-Solve prompting: Improving zero-shot chain-of-thought reasoning by large language models. \emph{ACL}, 2023.
+\bibitem[Zhou et~al.(2024)]{zhou2024selfdiscover} P. Zhou et~al. Self-Discover: Large language models self-compose reasoning structures. \emph{NeurIPS}, 2024.
+\bibitem[Kim et~al.(2023)]{kim2023rci} G. Kim et~al. Language models can solve computer tasks. \emph{NeurIPS}, 2023.
+\bibitem[Huang et~al.(2023)]{huang2023hallucinationsurvey} L. Huang et~al. A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. \emph{arXiv:2311.05232}, 2023.
 
 % --- Search / reasoning architectures ---
-\bibitem{xu2023rewoo} B. Xu et~al. ReWOO: Decoupling reasoning from observations for efficient augmented language models. \emph{arXiv:2305.18323}, 2023.
-\bibitem{ning2023sot} X. Ning et~al. Skeleton-of-Thought: Large language models can do parallel decoding. \emph{ICLR}, 2024.
-\bibitem{bi2024forestofthought} Z. Bi et~al. Forest-of-Thought: Scaling test-time compute for enhancing LLM reasoning. \emph{ICML}, 2025.
+\bibitem[Xu et~al.(2023)]{xu2023rewoo} B. Xu et~al. ReWOO: Decoupling reasoning from observations for efficient augmented language models. \emph{arXiv:2305.18323}, 2023.
+\bibitem[Ning et~al.(2024)]{ning2023sot} X. Ning et~al. Skeleton-of-Thought: Large language models can do parallel decoding. \emph{ICLR}, 2024.
+\bibitem[Bi et~al.(2025)]{bi2024forestofthought} Z. Bi et~al. Forest-of-Thought: Scaling test-time compute for enhancing LLM reasoning. \emph{ICML}, 2025.
 
 % --- Hallucination detection / benchmarks ---
-\bibitem{li2023halueval} J. Li et~al. HaluEval: A large-scale hallucination evaluation benchmark for large language models. \emph{EMNLP}, 2023.
-\bibitem{min2023factscore} S. Min et~al. FActScore: Fine-grained atomic evaluation of factual precision in long-form text generation. \emph{EMNLP}, 2023.
-\bibitem{chern2023factool} I. Chern et~al. FacTool: Factuality detection in generative AI. \emph{arXiv:2307.13528}, 2023.
+\bibitem[Li et~al.(2023)]{li2023halueval} J. Li et~al. HaluEval: A large-scale hallucination evaluation benchmark for large language models. \emph{EMNLP}, 2023.
+\bibitem[Min et~al.(2023)]{min2023factscore} S. Min et~al. FActScore: Fine-grained atomic evaluation of factual precision in long-form text generation. \emph{EMNLP}, 2023.
+\bibitem[Chern et~al.(2023)]{chern2023factool} I. Chern et~al. FacTool: Factuality detection in generative AI. \emph{arXiv:2307.13528}, 2023.
 
 % --- Personalization ---
-\bibitem{salemi2023lamp} A. Salemi et~al. LaMP: When large language models meet personalization. \emph{ACL}, 2024.
-\bibitem{chen2024travelagent} A. Chen et~al. TravelAgent: An AI assistant for personalized travel planning. \emph{arXiv:2409.08069}, 2024.
-\bibitem{zhong2024memorybank} W. Zhong et~al. MemoryBank: Enhancing large language models with long-term memory. \emph{AAAI}, 2024.
+\bibitem[Salemi et~al.(2024)]{salemi2023lamp} A. Salemi et~al. LaMP: When large language models meet personalization. \emph{ACL}, 2024.
+\bibitem[Chen et~al.(2024)]{chen2024travelagent} A. Chen et~al. TravelAgent: An AI assistant for personalized travel planning. \emph{arXiv:2409.08069}, 2024.
+\bibitem[Zhong et~al.(2024)]{zhong2024memorybank} W. Zhong et~al. MemoryBank: Enhancing large language models with long-term memory. \emph{AAAI}, 2024.
 
 % --- Failure attribution and dependency-structured reasoning ---
-\bibitem{reiter1987diagnosis} R. Reiter. A theory of diagnosis from first principles. \emph{Artificial Intelligence}, 32(1):57--95, 1987.
-\bibitem{dekleer1987gde} J. de~Kleer and B.~C. Williams. Diagnosing multiple faults. \emph{Artificial Intelligence}, 32(1):97--130, 1987.
-\bibitem{jones2005tarantula} J.~A. Jones and M.~J. Harrold. Empirical evaluation of the Tarantula automatic fault-localization technique. \emph{ASE}, 2005.
-\bibitem{abreu2006ochiai} R. Abreu et~al. An evaluation of similarity coefficients for software fault localization. \emph{PRDC}, 2006.
-\bibitem{wong2016survey} W.~E. Wong et~al. A survey on software fault localization. \emph{IEEE Transactions on Software Engineering}, 42(8):707--740, 2016.
-\bibitem{zeller2002delta} A. Zeller and R. Hildebrandt. Simplifying and isolating failure-inducing input. \emph{IEEE Transactions on Software Engineering}, 28(2):183--200, 2002.
-\bibitem{weiser1981slicing} M. Weiser. Program slicing. \emph{ICSE}, 1981.
-\bibitem{halpern2005causes} J.~Y. Halpern and J. Pearl. Causes and explanations: A structural-model approach. Part I: Causes. \emph{British Journal for the Philosophy of Science}, 56(4):843--887, 2005.
-\bibitem{steinder2004survey} M. Steinder and A.~S. Sethi. A survey of fault localization techniques in computer networks. \emph{Science of Computer Programming}, 53(2):165--194, 2004.
-\bibitem{zhu2026raffles} C. Zhu et~al. RAFFLES: Reasoning-based attribution of faults for LLM systems. \emph{EACL}, 2026.
-\bibitem{rozanov2025stateact} N. Rozanov and M. Rei. StateAct: Enhancing LLM base agents via self-prompting and state-tracking. \emph{arXiv:2410.02810}, 2024.
-\bibitem{wu2026contextweaver} Y. Wu et~al. ContextWeaver: Selective and dependency-structured memory construction for LLM agents. \emph{arXiv:2604.23069}, 2026.
-\bibitem{abdaljalil2025theoremofthought} S. Abdaljalil et~al. Theorem-of-Thought: A multi-agent framework for abductive, deductive, and inductive reasoning in language models. \emph{KnowFM Workshop at ACL}, 2025.
+\bibitem[Reiter(1987)]{reiter1987diagnosis} R. Reiter. A theory of diagnosis from first principles. \emph{Artificial Intelligence}, 32(1):57--95, 1987.
+\bibitem[de~Kleer and Williams(1987)]{dekleer1987gde} J. de~Kleer and B.~C. Williams. Diagnosing multiple faults. \emph{Artificial Intelligence}, 32(1):97--130, 1987.
+\bibitem[Jones and Harrold(2005)]{jones2005tarantula} J.~A. Jones and M.~J. Harrold. Empirical evaluation of the Tarantula automatic fault-localization technique. \emph{ASE}, 2005.
+\bibitem[Abreu et~al.(2006)]{abreu2006ochiai} R. Abreu et~al. An evaluation of similarity coefficients for software fault localization. \emph{PRDC}, 2006.
+\bibitem[Wong et~al.(2016)]{wong2016survey} W.~E. Wong et~al. A survey on software fault localization. \emph{IEEE Transactions on Software Engineering}, 42(8):707--740, 2016.
+\bibitem[Zeller and Hildebrandt(2002)]{zeller2002delta} A. Zeller and R. Hildebrandt. Simplifying and isolating failure-inducing input. \emph{IEEE Transactions on Software Engineering}, 28(2):183--200, 2002.
+\bibitem[Weiser(1981)]{weiser1981slicing} M. Weiser. Program slicing. \emph{ICSE}, 1981.
+\bibitem[Halpern and Pearl(2005)]{halpern2005causes} J.~Y. Halpern and J. Pearl. Causes and explanations: A structural-model approach. Part I: Causes. \emph{British Journal for the Philosophy of Science}, 56(4):843--887, 2005.
+\bibitem[Steinder and Sethi(2004)]{steinder2004survey} M. Steinder and A.~S. Sethi. A survey of fault localization techniques in computer networks. \emph{Science of Computer Programming}, 53(2):165--194, 2004.
+\bibitem[Zhu et~al.(2026)]{zhu2026raffles} C. Zhu et~al. RAFFLES: Reasoning-based attribution of faults for LLM systems. \emph{EACL}, 2026.
+\bibitem[Rozanov and Rei(2024)]{rozanov2025stateact} N. Rozanov and M. Rei. StateAct: Enhancing LLM base agents via self-prompting and state-tracking. \emph{arXiv:2410.02810}, 2024.
+\bibitem[Wu et~al.(2026)]{wu2026contextweaver} Y. Wu et~al. ContextWeaver: Selective and dependency-structured memory construction for LLM agents. \emph{arXiv:2604.23069}, 2026.
+\bibitem[Abdaljalil et~al.(2025)]{abdaljalil2025theoremofthought} S. Abdaljalil et~al. Theorem-of-Thought: A multi-agent framework for abductive, deductive, and inductive reasoning in language models. \emph{KnowFM Workshop at ACL}, 2025.
 
 % --- Constraint-aware planning (extended) ---
-\bibitem{kambhampati2024llmmodulo} S. Kambhampati et~al. LLMs can't plan, but can help planning in LLM-modulo frameworks. \emph{ICML}, 2024.
-\bibitem{hao2024llmrwplanning} Y. Hao et~al. Large language models can solve real-world planning rigorously with formal verification tools. \emph{NAACL}, 2025.
-\bibitem{gui2024htp} R. Gui et~al. Hypertree planning: Enhancing LLM reasoning via hierarchical thinking. \emph{ICML}, 2025.
-\bibitem{liu2023llmp} B. Liu et~al. LLM+P: Empowering large language models with optimal planning proficiency. \emph{arXiv:2304.11477}, 2023.
-\bibitem{lu2024dppm} Z. Lu et~al. Decompose, plan in parallel, and merge: A novel paradigm for large language models based planning with multiple constraints. \emph{arXiv:2506.02683}, 2025.
-\bibitem{yuan2025evoagent} S. Yuan et~al. EvoAgent: Towards automatic multi-agent generation via evolutionary algorithms. \emph{NAACL}, 2025.
+\bibitem[Kambhampati et~al.(2024)]{kambhampati2024llmmodulo} S. Kambhampati et~al. LLMs can't plan, but can help planning in LLM-modulo frameworks. \emph{ICML}, 2024.
+\bibitem[Hao et~al.(2025)]{hao2024llmrwplanning} Y. Hao et~al. Large language models can solve real-world planning rigorously with formal verification tools. \emph{NAACL}, 2025.
+\bibitem[Gui et~al.(2025)]{gui2024htp} R. Gui et~al. Hypertree planning: Enhancing LLM reasoning via hierarchical thinking. \emph{ICML}, 2025.
+\bibitem[Liu et~al.(2023)]{liu2023llmp} B. Liu et~al. LLM+P: Empowering large language models with optimal planning proficiency. \emph{arXiv:2304.11477}, 2023.
+\bibitem[Lu et~al.(2025)]{lu2024dppm} Z. Lu et~al. Decompose, plan in parallel, and merge: A novel paradigm for large language models based planning with multiple constraints. \emph{arXiv:2506.02683}, 2025.
+\bibitem[Yuan et~al.(2025)]{yuan2025evoagent} S. Yuan et~al. EvoAgent: Towards automatic multi-agent generation via evolutionary algorithms. \emph{NAACL}, 2025.
 
 % --- Tool-using and multi-agent frameworks ---
-\bibitem{schick2023toolformer} T. Schick et~al. Toolformer: Language models can teach themselves to use tools. \emph{NeurIPS}, 2023.
-\bibitem{patil2023gorilla} S.~G. Patil et~al. Gorilla: Large language model connected with massive APIs. \emph{NeurIPS}, 2024.
-\bibitem{shen2023hugginggpt} Y. Shen et~al. HuggingGPT: Solving AI tasks with ChatGPT and its friends in Hugging Face. \emph{NeurIPS}, 2023.
-\bibitem{wang2023voyager} G. Wang et~al. Voyager: An open-ended embodied agent with large language models. \emph{TMLR}, 2024.
-\bibitem{park2023genagents} J.~S. Park et~al. Generative agents: Interactive simulacra of human behavior. \emph{UIST}, 2023.
-\bibitem{wu2023autogen} Q. Wu et~al. AutoGen: Enabling next-gen LLM applications via multi-agent conversation. \emph{COLM}, 2024.
-\bibitem{hong2023metagpt} S. Hong et~al. MetaGPT: Meta programming for a multi-agent collaborative framework. \emph{ICLR}, 2024.
-\bibitem{li2023camel} G. Li et~al. CAMEL: Communicative agents for ``mind'' exploration of large language model society. \emph{NeurIPS}, 2023.
-\bibitem{du2023multiagentdebate} Y. Du et~al. Improving factuality and reasoning in language models through multiagent debate. \emph{ICML}, 2024.
-\bibitem{chan2023chateval} C. Chan et~al. ChatEval: Towards better LLM-based evaluators through multi-agent debate. \emph{ICLR}, 2024.
+\bibitem[Schick et~al.(2023)]{schick2023toolformer} T. Schick et~al. Toolformer: Language models can teach themselves to use tools. \emph{NeurIPS}, 2023.
+\bibitem[Patil et~al.(2024)]{patil2023gorilla} S.~G. Patil et~al. Gorilla: Large language model connected with massive APIs. \emph{NeurIPS}, 2024.
+\bibitem[Shen et~al.(2023)]{shen2023hugginggpt} Y. Shen et~al. HuggingGPT: Solving AI tasks with ChatGPT and its friends in Hugging Face. \emph{NeurIPS}, 2023.
+\bibitem[Wang et~al.(2024)]{wang2023voyager} G. Wang et~al. Voyager: An open-ended embodied agent with large language models. \emph{TMLR}, 2024.
+\bibitem[Park et~al.(2023)]{park2023genagents} J.~S. Park et~al. Generative agents: Interactive simulacra of human behavior. \emph{UIST}, 2023.
+\bibitem[Wu et~al.(2024)]{wu2023autogen} Q. Wu et~al. AutoGen: Enabling next-gen LLM applications via multi-agent conversation. \emph{COLM}, 2024.
+\bibitem[Hong et~al.(2024)]{hong2023metagpt} S. Hong et~al. MetaGPT: Meta programming for a multi-agent collaborative framework. \emph{ICLR}, 2024.
+\bibitem[Li et~al.(2023)]{li2023camel} G. Li et~al. CAMEL: Communicative agents for ``mind'' exploration of large language model society. \emph{NeurIPS}, 2023.
+\bibitem[Du et~al.(2024)]{du2023multiagentdebate} Y. Du et~al. Improving factuality and reasoning in language models through multiagent debate. \emph{ICML}, 2024.
+\bibitem[Chan et~al.(2024)]{chan2023chateval} C. Chan et~al. ChatEval: Towards better LLM-based evaluators through multi-agent debate. \emph{ICLR}, 2024.
 
 % --- LLM technical reports ---
-\bibitem{dubey2024llama3} A. Dubey et~al. The Llama 3 herd of models. \emph{arXiv:2407.21783}, 2024.
-\bibitem{jiang2023mistral} A. Jiang et~al. Mistral 7B. \emph{arXiv:2310.06825}, 2023.
-\bibitem{yang2024qwen2.5} A. Yang et~al. Qwen2.5 technical report. \emph{arXiv:2412.15115}, 2024.
+\bibitem[Dubey et~al.(2024)]{dubey2024llama3} A. Dubey et~al. The Llama 3 herd of models. \emph{arXiv:2407.21783}, 2024.
+\bibitem[Jiang et~al.(2023)]{jiang2023mistral} A. Jiang et~al. Mistral 7B. \emph{arXiv:2310.06825}, 2023.
+\bibitem[Yang et~al.(2024)]{yang2024qwen2.5} A. Yang et~al. Qwen2.5 technical report. \emph{arXiv:2412.15115}, 2024.
 
 % --- Foundational instruction-following ---
-\bibitem{ouyang2022instructgpt} L. Ouyang et~al. Training language models to follow instructions with human feedback. \emph{NeurIPS}, 2022.
-\bibitem{openai2023gpt4} OpenAI. GPT-4 technical report. \emph{arXiv:2303.08774}, 2023.
-\end{thebibliography}
+\bibitem[Ouyang et~al.(2022)]{ouyang2022instructgpt} L. Ouyang et~al. Training language models to follow instructions with human feedback. \emph{NeurIPS}, 2022.
+\bibitem[OpenAI(2023)]{openai2023gpt4} OpenAI. GPT-4 technical report. \emph{arXiv:2303.08774}, 2023.\end{thebibliography}
 
 \appendix
+
+\section{Classical Diagnosis Comparison}\label{app:classical-comparison}
+
+\begin{table}[t]\centering\small
+\caption{What classical diagnosis assumes, what a single LLM agent trajectory lacks, and \method's replacement.}
+\label{tab:classical}
+\begin{tabular}{p{3.1cm}p{3.4cm}p{2.9cm}p{3.4cm}}\toprule
+Classical setting & Assumes & Our setting lacks & Replacement \\\midrule
+Model-based diagnosis (Reiter; GDE) & System description given & No supplied model & LLM-extracted Assumption-DAG (\S\ref{sec:method}) \\
+SBFL (Tarantula/Ochiai) & Many executions, pass/fail spectrum & One execution, one failure & Counterfactual repair trials synthesize the spectrum (Eq.~\ref{eq:repair-evidence}) \\
+Delta debugging & Deterministic re-runnable oracle & Stochastic trajectory & Verifier + paired re-execution \\
+Localize-then-fix pipelines & Repair follows diagnosis & --- & Repair \emph{is} the diagnostic evidence (Eqs.~\ref{eq:repair-evidence}, \ref{eq:mcgr}) \\
+\bottomrule\end{tabular}\end{table}
+
+
+\begin{figure*}[t]\centering
+  \includegraphics[width=0.82\textwidth]{B2_worked_example_crm_package/figure_worked_example_crm.pdf}
+  \caption{Worked example of \method on an enterprise CRM follow-up task. The user profile records that the client has already renewed, prefers email-only contact, and has opted out of upsell outreach. \textbf{(1)}~The agent shortlists three follow-up actions ranked by model-inferred priors. \textbf{(2)}~Three violations are detected on the top action. \textbf{(3)}~Ancestor assumptions are traced; profile nodes ($a_1$--$a_3$) are immutable. \textbf{(4)}~Counterfactual repair trials score each candidate; the algorithm proceeds via sequential single-node repair, with re-verification detecting residual violations between passes (here resolving $a_4$ then $a_7$). \textbf{(5)}~The repaired output satisfies all profile constraints.}
+  \label{fig:worked-example}
+\end{figure*}
+
 
 \section{Algorithm and SPR Implementation Details}\label{app:spr-impl}
 
@@ -769,57 +769,5 @@ $M$ & TruthQA$\times$Mist & TruthQA$\times$Qwen & 2Wiki$\times$Mist & LongMem$\t
 \bottomrule\end{tabular}\end{table}
 
 The mean trend is decreasing in $M$ but the per-cell pattern is non-monotone, which is the diagnostic signal we discuss in §\ref{sec:ablations}. Per-cell behavior: TruthfulQA $\times$ Mistral shows a monotone decrease (86.1 $\to$ 80.6 $\to$ 72.2); TruthfulQA $\times$ Qwen drops at $M{=}3$ then plateaus; 2Wiki $\times$ Mistral is at the saturation ceiling and does not move; \textbf{LongMemEval $\times$ Llama 8B drops at $M{=}3$ then recovers to the $M{=}1$ value at $M{=}5$}. The recovery on LongMemEval is the diagnostic that rules out a simple i.i.d.\ Bernoulli interpretation: under that model, $\hat{r}_i$ would have variance $\theta_i(1-\theta_i)/M$, monotone-decreasing in $M$, and accuracy should improve (or at minimum not recover non-monotonically) as $M$ grows. The pattern is more consistent with the within-candidate trials being correlated rather than independent (shared prompt context, shared decoding trace), so larger $M$ does not realize the variance reduction the i.i.d.\ model would predict and instead introduces small misranking events on cells with closely matched priors (TruthfulQA), while having negligible net effect on cells where the prior already strongly discriminates (2Wiki and LongMemEval). Variance-reduced or seed-diversified counterfactual sampling are the natural next steps; we use $M{=}1$ as the empirical operating point of the current framework.
-
-\section{NeurIPS 2026 Paper Checklist}\label{app:checklist}
-
-\begin{enumerate}[leftmargin=*]
-\item \textbf{Claims.} Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?\\
-\textbf{Answer:} Yes. The abstract states the directional accuracy claim only at the pooled level (864 paired observations, $+1.6$\,pp over Reflexion), explicitly acknowledges the $n{=}60$ per-cell underpower, and frames per-cell results descriptively (§\ref{sec:limitations}, paragraph ``Statistical power'').
-
-\item \textbf{Limitations.} Does the paper discuss the limitations of the work performed by the authors?\\
-\textbf{Answer:} Yes (§\ref{sec:limitations}): statistical power, repair-stage finding scope, DAG extraction quality, hyperparameter sensitivity, no human attribution on natural benchmarks, relationship to Reflexion, profile-injection construct shift, ToT configuration. The TravelPlanner result (Appendix~\ref{app:travel}) explicitly disclaims the absolute numbers as uncalibrated against the official benchmark scorer.
-
-\item \textbf{Theory assumptions and proofs.} For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?\\
-\textbf{Answer:} N/A. The paper does not present formal theorems; it presents an algorithmic framework with a closed-form posterior update (Eq.~\ref{eq:spr-update}). The framework's modeling assumptions (e.g., correlated rather than i.i.d.\ counterfactual trials, partial-evidence interpretation of verifier rejection) are stated explicitly in §\ref{sec:method} and §\ref{sec:ablations}.
-
-\item \textbf{Experimental result reproducibility.} Does the paper fully disclose all the information needed to reproduce the main experimental results?\\
-\textbf{Answer:} Yes. Appendix~\ref{app:repro} details inference infrastructure (provider APIs, no local GPU cluster, USD\,70 total spend), caching by prompt SHA-256 (cache file shipped with code), seeds (42 for sampling, $\{0,1,2\}$ for stochastic methods), inference parameters (temperatures, max-tokens), and run window. Appendix~\ref{app:prompts} lists the four \method system prompts verbatim. The released code repository contains every per-cell JSONL output, every aggregation script, and a notebook reproducing every paper figure and table.
-
-\item \textbf{Open access to data and code.} Does the paper provide open access to the data and code?\\
-\textbf{Answer:} Yes. Code (with cache database, configs, JSONLs, and notebooks) at \url{\repourl} (anonymized for review).
-
-\item \textbf{Experimental setting/details.} Does the paper specify all the training and test details?\\
-\textbf{Answer:} Yes. §\ref{sec:experiments} (Tasks, Models, Baselines, Evaluation Protocol) and Appendix~\ref{app:hparams} (Table~\ref{tab:hparams}, frozen hyperparameters) cover the full setting. We do not perform any model training or fine-tuning; all evaluations use frozen pre-trained LLMs accessed through provider APIs.
-
-\item \textbf{Experiment statistical significance.} Does the paper report error bars suitably and correctly defined?\\
-\textbf{Answer:} Yes. Per-cell paired-bootstrap 95\% CIs (10{,}000 resamples) and exact McNemar p-values are reported in Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique}. Appendix~\ref{app:repro} documents the regeneration pipeline (\texttt{scripts/regen\_pvalue\_tables.py}) that produces these tables from the same per-cell JSONLs that produce the headline tables.
-
-\item \textbf{Experiments compute resources.} Does the paper provide sufficient information on the computer resources?\\
-\textbf{Answer:} Yes (Appendix~\ref{app:repro}). All inference is via remote provider APIs (Together AI, OpenRouter); no local GPU cluster. The orchestration laptop ran Python 3.11. Total cumulative API spend across all 16 cells, ablations, synthetic diagnostics, and SPR overlay reruns: approximately USD\,70.
-
-\item \textbf{Code of ethics.} Does the research conform to the NeurIPS Code of Ethics?\\
-\textbf{Answer:} Yes. All datasets used are publicly released benchmarks (TruthfulQA, 2WikiMultiHopQA, LongMemEval, MuSiQue, TravelPlanner). No human subject data is collected; profile constraints are synthetic templates not derived from any specific individual. The Broader Impact statement (§\ref{sec:broader-impact}) discusses the privacy implications of materializing inferred user attributes as structured DAG nodes.
-
-\item \textbf{Broader impacts.} Does the paper discuss both potential positive and negative societal impacts?\\
-\textbf{Answer:} Yes (§\ref{sec:broader-impact}): improved auditability of agent assumptions for safety-critical user-facing deployments, balanced against the privacy risk of materializing inferred user attributes as auditable graph state. Mitigations (minimizing retained graph state, separating profile-derived from model-inferred nodes, exposing assumption logs to users) are recommended.
-
-\item \textbf{Safeguards.} Does the paper describe safeguards put in place for responsible release of data or models?\\
-\textbf{Answer:} N/A. The paper does not release a new dataset or new pretrained model. It releases an evaluation framework and metric scripts that operate over public benchmarks.
-
-\item \textbf{Licenses for existing assets.} Are the creators or original owners of assets used in the paper properly credited and the license and terms of use explicitly mentioned and properly respected?\\
-\textbf{Answer:} Yes. All evaluated benchmarks are cited (\cite{lin2021truthfulqa}, \cite{ho2020twowiki}, \cite{wu2024longmemeval}, \cite{trivedi2022musique}, \cite{xie2024travelplanner}); LLM model identifiers are cited (\cite{dubey2024llama3}, \cite{jiang2023mistral}, \cite{yang2024qwen2.5}); baseline methods are cited at first use. We use the public release versions of the benchmarks loaded directly from HuggingFace; no terms-of-use restrictions are violated.
-
-\item \textbf{New assets.} Are the new assets well-documented?\\
-\textbf{Answer:} Yes. The released code repository documents the SPR pipeline, the verifier, the cost model, the benchmark loaders, and the aggregation scripts; every config and JSONL output is included; a notebook reproduces every figure and table.
-
-\item \textbf{Crowdsourcing and research with human subjects.} For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation?\\
-\textbf{Answer:} N/A. No crowdsourcing or human-subject data collection was performed.
-
-\item \textbf{IRB approvals or equivalent for research with human subjects.}\\
-\textbf{Answer:} N/A. No human-subject research.
-
-\item \textbf{LLM usage.} Does the paper describe the usage of LLMs as part of the research methodology?\\
-\textbf{Answer:} Yes. LLMs are the central object of study: as the agents being corrected (Llama 3.1 8\,B, Mistral Nemo 12\,B, Qwen 2.5 7\,B, Llama 3.3 70\,B), as the verifier and counterfactual generator inside \method, and as the evaluators where the verifier's rule-based pass is insufficient. All prompts, model identifiers, decoding parameters, and run windows are documented in Appendix~\ref{app:repro} and Appendix~\ref{app:prompts}.
-\end{enumerate}
 
 \end{document}
