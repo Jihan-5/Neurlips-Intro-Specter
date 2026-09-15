@@ -74,5 +74,25 @@ rozanov2025stateact | HALLUCINATED — real title: \bibitem{rozanov2025stateact}
 liu2024contextweaver | HALLUCINATED — real: Y. Wu et al. arXiv 2604.23069 (2026): \bibitem{wu2026contextweaver} Y. Wu et~al. ContextWeaver: Selective and dependency-structured memory construction for LLM agents. \emph{arXiv:2604.23069}, 2026.
 peng2024theoremofthought | HALLUCINATED — real: S. Abdaljalil et al., KnowFM @ ACL 2025 (arXiv 2506.07106): \bibitem{abdaljalil2025theoremofthought} S. Abdaljalil et~al. Theorem-of-Thought: A multi-agent framework for abductive, deductive, and inductive reasoning in language models. \emph{KnowFM Workshop @ ACL}, 2025.
 
+## Batch 5 (2026-09-15) — classical-diagnosis + agent-fault keys for Track B4
+
+The classical keys below were added to `paper_final.tex` in commit efb8faa ("canonical FL citations") and their \bibitem entries already exist in the manuscript bibliography. Use these keys verbatim — do not invent new ones:
+
+reiter1987diagnosis | OK — R. Reiter. A theory of diagnosis from first principles. \emph{Artificial Intelligence}, 32(1):57--95, 1987.
+dekleer1987gde | OK — J. de~Kleer and B.~C. Williams. Diagnosing multiple faults. \emph{Artificial Intelligence}, 32(1):97--130, 1987.
+jones2005tarantula | OK — J.~A. Jones and M.~J. Harrold. Empirical evaluation of the Tarantula automatic fault-localization technique. \emph{ASE}, 2005.
+abreu2006ochiai | OK — R. Abreu et~al. An evaluation of similarity coefficients for software fault localization. \emph{PRDC}, 2006.
+wong2016survey | OK — W.~E. Wong et~al. A survey on software fault localization. \emph{IEEE TSE}, 42(8):707--740, 2016.
+zeller2002delta | OK — A. Zeller and R. Hildebrandt. Simplifying and isolating failure-inducing input. \emph{IEEE TSE}, 28(2):183--200, 2002.
+weiser1981slicing | OK — M. Weiser. Program slicing. \emph{ICSE}, 1981.
+halpern2005causes | OK — J.~Y. Halpern and J. Pearl. Causes and explanations: A structural-model approach. Part I: Causes. \emph{BJPS}, 56(4):843--887, 2005.
+steinder2004survey | OK — M. Steinder and A.~S. Sethi. A survey of fault localization techniques in computer networks. \emph{Science of Computer Programming}, 53(2):165--194, 2004.
+zhu2026raffles | OK — already audited in Batch 3.
+
+NEW keys, verified against arXiv abs pages 2026-09-15 (not yet in paper_final.tex — add these \bibitem entries when the B4 draft is merged):
+
+zhang2025whowhen | VERIFIED — arXiv:2505.00212, submitted 2025-04-30. Full author list confirmed (S. Zhang, M. Yin, J. Zhang, et al.). arXiv comments say "camera-ready" but the venue is not named on the abs page — cite as arXiv unless the venue is separately verified. \bibitem[Zhang et~al.(2025)]{zhang2025whowhen} S. Zhang et~al. Which agent causes task failures and when? On automated failure attribution of LLM multi-agent systems. \emph{arXiv:2505.00212}, 2025.
+zhu2025agentdebug | VERIFIED — arXiv:2509.25370, submitted 2025-09-29, no venue on abs page. First author Kunlun Zhu (no relation to zhu2026raffles' C. Zhu — keep keys distinct). \bibitem[Zhu et~al.(2025)]{zhu2025agentdebug} K. Zhu et~al. Where LLM agents fail and how they can learn from failures. \emph{arXiv:2509.25370}, 2025.
+
 ## FINAL TALLY: 6 hallucinated (matches NeurIPS checker), 10 minor, 56 OK, 0 unverifiable.
 Key renames (update \cite{} in body): tyen2024selfcorrect→he2025selfcorrect, tyen2024raffles→zhu2026raffles, liu2024contextweaver→wu2026contextweaver, peng2024theoremofthought→abdaljalil2025theoremofthought
