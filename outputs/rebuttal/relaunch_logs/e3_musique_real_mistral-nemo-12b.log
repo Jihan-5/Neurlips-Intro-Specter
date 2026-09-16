@@ -1,0 +1,912 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00000_3hop1__617062_127905_80487 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00000_3hop1__617062_127905_80487 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00000_3hop1__617062_127905_80487 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00000_3hop1__617062_127905_80487 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00001_3hop1__132968_40769_64047 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00001_3hop1__132968_40769_64047 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00001_3hop1__132968_40769_64047 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00001_3hop1__132968_40769_64047 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00002_3hop2__36852_326964_7713 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00002_3hop2__36852_326964_7713 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00002_3hop2__36852_326964_7713 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00002_3hop2__36852_326964_7713 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00003_3hop1__813285_774554_64412 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00003_3hop1__813285_774554_64412 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00003_3hop1__813285_774554_64412 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00003_3hop1__813285_774554_64412 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00004_3hop2__92991_28727_76291 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00004_3hop2__92991_28727_76291 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00004_3hop2__92991_28727_76291 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00004_3hop2__92991_28727_76291 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00005_3hop1__446612_160545_60577 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00005_3hop1__446612_160545_60577 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00005_3hop1__446612_160545_60577 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00005_3hop1__446612_160545_60577 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00006_3hop2__57233_106716_56883 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00006_3hop2__57233_106716_56883 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00006_3hop2__57233_106716_56883 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00006_3hop2__57233_106716_56883 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00007_3hop1__313670_42197_18397 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00007_3hop1__313670_42197_18397 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00007_3hop1__313670_42197_18397 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00007_3hop1__313670_42197_18397 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00008_3hop1__639955_834494_34109 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00008_3hop1__639955_834494_34109 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00008_3hop1__639955_834494_34109 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00008_3hop1__639955_834494_34109 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00009_3hop1__312146_720914_27537 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00009_3hop1__312146_720914_27537 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00009_3hop1__312146_720914_27537 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00009_3hop1__312146_720914_27537 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00010_3hop1__24980_42197_18397 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00010_3hop1__24980_42197_18397 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00010_3hop1__24980_42197_18397 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00010_3hop1__24980_42197_18397 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00011_3hop2__88342_93066_47738 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00011_3hop2__88342_93066_47738 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00011_3hop2__88342_93066_47738 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00011_3hop2__88342_93066_47738 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00012_3hop1__567955_503371_21711 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00012_3hop1__567955_503371_21711 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00012_3hop1__567955_503371_21711 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00012_3hop1__567955_503371_21711 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00013_3hop1__662618_339990_54675 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00013_3hop1__662618_339990_54675 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00013_3hop1__662618_339990_54675 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00013_3hop1__662618_339990_54675 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00014_3hop1__145212_443779_52195 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00014_3hop1__145212_443779_52195 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00014_3hop1__145212_443779_52195 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00014_3hop1__145212_443779_52195 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00015_3hop1__337705_132457_47686 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00015_3hop1__337705_132457_47686 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00015_3hop1__337705_132457_47686 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00015_3hop1__337705_132457_47686 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00016_3hop1__545624_2053_52946 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00016_3hop1__545624_2053_52946 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00016_3hop1__545624_2053_52946 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00016_3hop1__545624_2053_52946 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00017_3hop1__108833_720914_27537 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00017_3hop1__108833_720914_27537 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00017_3hop1__108833_720914_27537 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00017_3hop1__108833_720914_27537 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00018_3hop1__527372_339990_54675 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00018_3hop1__527372_339990_54675 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00018_3hop1__527372_339990_54675 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00018_3hop1__527372_339990_54675 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00019_3hop1__365934_87694_64412 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00019_3hop1__365934_87694_64412 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00019_3hop1__365934_87694_64412 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00019_3hop1__365934_87694_64412 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00020_3hop2__132957_379231_40768 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00020_3hop2__132957_379231_40768 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00020_3hop2__132957_379231_40768 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00020_3hop2__132957_379231_40768 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00021_3hop1__438364_443779_52195 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00021_3hop1__438364_443779_52195 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00021_3hop1__438364_443779_52195 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00021_3hop1__438364_443779_52195 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00022_3hop1__539312_744503_34754 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00022_3hop1__539312_744503_34754 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00022_3hop1__539312_744503_34754 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00022_3hop1__539312_744503_34754 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00023_3hop1__133292_40769_64047 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00023_3hop1__133292_40769_64047 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00023_3hop1__133292_40769_64047 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00023_3hop1__133292_40769_64047 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00024_3hop1__79039_131926_90707 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00024_3hop1__79039_131926_90707 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00024_3hop1__79039_131926_90707 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00024_3hop1__79039_131926_90707 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00025_3hop1__813285_774554_124169 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00025_3hop1__813285_774554_124169 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00025_3hop1__813285_774554_124169 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00025_3hop1__813285_774554_124169 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00026_3hop2__304722_796034_63959 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00026_3hop2__304722_796034_63959 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00026_3hop2__304722_796034_63959 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00026_3hop2__304722_796034_63959 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00027_3hop1__857_846_7798 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00027_3hop1__857_846_7798 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00027_3hop1__857_846_7798 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00027_3hop1__857_846_7798 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00028_3hop2__304722_330033_63959 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00028_3hop2__304722_330033_63959 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00028_3hop2__304722_330033_63959 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00028_3hop2__304722_330033_63959 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00029_3hop1__136129_87694_64412 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00029_3hop1__136129_87694_64412 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00029_3hop1__136129_87694_64412 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00029_3hop1__136129_87694_64412 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00030_3hop1__305282_282081_10972 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00030_3hop1__305282_282081_10972 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00030_3hop1__305282_282081_10972 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00030_3hop1__305282_282081_10972 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00031_3hop2__6989_37759_74563 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00031_3hop2__6989_37759_74563 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00031_3hop2__6989_37759_74563 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00031_3hop2__6989_37759_74563 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00032_3hop1__131783_131926_90707 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00032_3hop1__131783_131926_90707 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00032_3hop1__131783_131926_90707 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00032_3hop1__131783_131926_90707 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00033_3hop1__768500_730460_78782 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00033_3hop1__768500_730460_78782 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00033_3hop1__768500_730460_78782 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00033_3hop1__768500_730460_78782 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00034_3hop2__855821_467331_162182 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00034_3hop2__855821_467331_162182 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00034_3hop2__855821_467331_162182 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00034_3hop2__855821_467331_162182 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00035_3hop2__30152_105395_20999 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00035_3hop2__30152_105395_20999 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00035_3hop2__30152_105395_20999 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00035_3hop2__30152_105395_20999 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00036_3hop1__847420_720378_15538 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00036_3hop1__847420_720378_15538 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00036_3hop1__847420_720378_15538 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00036_3hop1__847420_720378_15538 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00037_3hop1__662618_339990_54675 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00037_3hop1__662618_339990_54675 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00037_3hop1__662618_339990_54675 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00037_3hop1__662618_339990_54675 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00038_3hop1__747772_514761_594810 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00038_3hop1__747772_514761_594810 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00038_3hop1__747772_514761_594810 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00038_3hop1__747772_514761_594810 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00039_3hop1__131783_131926_90707 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00039_3hop1__131783_131926_90707 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00039_3hop1__131783_131926_90707 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00039_3hop1__131783_131926_90707 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00040_3hop2__326964_263934_7713 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00040_3hop2__326964_263934_7713 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00040_3hop2__326964_263934_7713 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00040_3hop2__326964_263934_7713 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00041_3hop1__635099_131926_89261 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00041_3hop1__635099_131926_89261 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00041_3hop1__635099_131926_89261 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00041_3hop1__635099_131926_89261 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00042_3hop1__109422_720914_41132 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00042_3hop1__109422_720914_41132 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00042_3hop1__109422_720914_41132 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00042_3hop1__109422_720914_41132 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00043_3hop2__79512_16214_84681 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00043_3hop2__79512_16214_84681 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00043_3hop2__79512_16214_84681 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00043_3hop2__79512_16214_84681 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00044_3hop2__809962_89048_66294 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00044_3hop2__809962_89048_66294 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00044_3hop2__809962_89048_66294 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00044_3hop2__809962_89048_66294 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00045_3hop1__489567_443779_52195 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00045_3hop1__489567_443779_52195 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00045_3hop1__489567_443779_52195 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00045_3hop1__489567_443779_52195 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00046_3hop1__401538_132457_47686 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00046_3hop1__401538_132457_47686 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00046_3hop1__401538_132457_47686 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00046_3hop1__401538_132457_47686 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00047_3hop1__639955_834494_33939 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00047_3hop1__639955_834494_33939 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00047_3hop1__639955_834494_33939 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00047_3hop1__639955_834494_33939 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00048_3hop2__89048_228_66294 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00048_3hop2__89048_228_66294 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00048_3hop2__89048_228_66294 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00048_3hop2__89048_228_66294 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00049_3hop1__86965_488922_4093 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00049_3hop1__86965_488922_4093 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00049_3hop1__86965_488922_4093 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00049_3hop1__86965_488922_4093 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00050_3hop1__92251_34179_23375 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00050_3hop1__92251_34179_23375 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00050_3hop1__92251_34179_23375 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00050_3hop1__92251_34179_23375 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00051_3hop2__132957_133264_40768 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00051_3hop2__132957_133264_40768 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00051_3hop2__132957_133264_40768 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00051_3hop2__132957_133264_40768 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00052_3hop1__641921_42197_18397 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00052_3hop1__641921_42197_18397 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00052_3hop1__641921_42197_18397 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00052_3hop1__641921_42197_18397 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00053_3hop1__142044_538202_84283 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00053_3hop1__142044_538202_84283 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00053_3hop1__142044_538202_84283 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00053_3hop1__142044_538202_84283 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00054_3hop1__409517_547811_80702 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00054_3hop1__409517_547811_80702 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00054_3hop1__409517_547811_80702 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00054_3hop1__409517_547811_80702 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00055_3hop1__106042_64399_59680 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00055_3hop1__106042_64399_59680 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00055_3hop1__106042_64399_59680 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00055_3hop1__106042_64399_59680 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00056_3hop1__742464_15840_36002 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00056_3hop1__742464_15840_36002 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00056_3hop1__742464_15840_36002 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00056_3hop1__742464_15840_36002 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00057_3hop1__131783_131926_90707 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00057_3hop1__131783_131926_90707 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00057_3hop1__131783_131926_90707 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00057_3hop1__131783_131926_90707 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00058_3hop1__465684_160545_34751 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00058_3hop1__465684_160545_34751 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00058_3hop1__465684_160545_34751 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00058_3hop1__465684_160545_34751 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00059_3hop1__315504_629431_64412 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00059_3hop1__315504_629431_64412 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_musique_00059_3hop1__315504_629431_64412 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_musique_00059_3hop1__315504_629431_64412 seed=2: OPENROUTER_API_KEY not set
+Loaded 60 examples for musique_real (bench_seed=42), rho=0.0, seeds=[0, 1, 2]
+
+--- run summary ---
+rows written: 0  errors: 180
+total tokens_input=0  total tokens_output=0  grand_total=0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loaded 60 examples for musique_real (bench_seed=42), rho=0.0, seeds=[0, 1, 2]
+  real_musique_00000_3hop1__617062_127905_80487 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(7035,1061)
+  real_musique_00000_3hop1__617062_127905_80487 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4642,821)
+  real_musique_00000_3hop1__617062_127905_80487 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(7035,1061)
+  real_musique_00000_3hop1__617062_127905_80487 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4642,821)
+  real_musique_00000_3hop1__617062_127905_80487 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(12863,1740)
+  real_musique_00000_3hop1__617062_127905_80487 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4662,774)
+  real_musique_00001_3hop1__132968_40769_64047 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1708,381)
+  real_musique_00001_3hop1__132968_40769_64047 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4047,829)
+  real_musique_00001_3hop1__132968_40769_64047 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1708,381)
+  real_musique_00001_3hop1__132968_40769_64047 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4047,829)
+  real_musique_00001_3hop1__132968_40769_64047 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1708,366)
+  real_musique_00001_3hop1__132968_40769_64047 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4032,768)
+  real_musique_00002_3hop2__36852_326964_7713 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1729,206)
+  real_musique_00002_3hop2__36852_326964_7713 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3922,495)
+  real_musique_00002_3hop2__36852_326964_7713 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1729,206)
+  real_musique_00002_3hop2__36852_326964_7713 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3922,495)
+  real_musique_00002_3hop2__36852_326964_7713 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1731,258)
+  real_musique_00002_3hop2__36852_326964_7713 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3948,435)
+  real_musique_00003_3hop1__813285_774554_64412 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1905,306)
+  real_musique_00003_3hop1__813285_774554_64412 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4367,602)
+  real_musique_00003_3hop1__813285_774554_64412 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1905,306)
+  real_musique_00003_3hop1__813285_774554_64412 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4367,602)
+  real_musique_00003_3hop1__813285_774554_64412 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1905,309)
+  real_musique_00003_3hop1__813285_774554_64412 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4369,599)
+  real_musique_00004_3hop2__92991_28727_76291 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1561,303)
+  real_musique_00004_3hop2__92991_28727_76291 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3674,580)
+  real_musique_00004_3hop2__92991_28727_76291 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1561,303)
+  real_musique_00004_3hop2__92991_28727_76291 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3674,580)
+  real_musique_00004_3hop2__92991_28727_76291 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1561,292)
+  real_musique_00004_3hop2__92991_28727_76291 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3670,577)
+  real_musique_00005_3hop1__446612_160545_60577 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(11201,1601)
+  real_musique_00005_3hop1__446612_160545_60577 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4008,597)
+  real_musique_00005_3hop1__446612_160545_60577 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(11201,1601)
+  real_musique_00005_3hop1__446612_160545_60577 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4008,597)
+  real_musique_00005_3hop1__446612_160545_60577 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1720,230)
+  real_musique_00005_3hop1__446612_160545_60577 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3879,539)
+  real_musique_00006_3hop2__57233_106716_56883 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1681,568)
+  real_musique_00006_3hop2__57233_106716_56883 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4264,889)
+  real_musique_00006_3hop2__57233_106716_56883 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1681,568)
+  real_musique_00006_3hop2__57233_106716_56883 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4264,889)
+  real_musique_00006_3hop2__57233_106716_56883 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1682,374)
+  real_musique_00006_3hop2__57233_106716_56883 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3988,713)
+  real_musique_00007_3hop1__313670_42197_18397 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1763,317)
+  real_musique_00007_3hop1__313670_42197_18397 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4072,791)
+  real_musique_00007_3hop1__313670_42197_18397 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1763,317)
+  real_musique_00007_3hop1__313670_42197_18397 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4072,791)
+  real_musique_00007_3hop1__313670_42197_18397 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1762,264)
+  real_musique_00007_3hop1__313670_42197_18397 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4018,560)
+  real_musique_00008_3hop1__639955_834494_34109 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1950,391)
+  real_musique_00008_3hop1__639955_834494_34109 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4563,755)
+  real_musique_00008_3hop1__639955_834494_34109 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1950,391)
+  real_musique_00008_3hop1__639955_834494_34109 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4563,755)
+  real_musique_00008_3hop1__639955_834494_34109 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1948,372)
+  real_musique_00008_3hop1__639955_834494_34109 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4542,851)
+  real_musique_00009_3hop1__312146_720914_27537 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1801,674)
+  real_musique_00009_3hop1__312146_720914_27537 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4674,1074)
+  real_musique_00009_3hop1__312146_720914_27537 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1801,674)
+  real_musique_00009_3hop1__312146_720914_27537 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4674,1074)
+  real_musique_00009_3hop1__312146_720914_27537 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1801,219)
+  real_musique_00009_3hop1__312146_720914_27537 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4030,551)
+  real_musique_00010_3hop1__24980_42197_18397 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1777,333)
+  real_musique_00010_3hop1__24980_42197_18397 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4136,730)
+  real_musique_00010_3hop1__24980_42197_18397 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1777,333)
+  real_musique_00010_3hop1__24980_42197_18397 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4136,730)
+  real_musique_00010_3hop1__24980_42197_18397 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1778,505)
+  real_musique_00010_3hop1__24980_42197_18397 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4373,911)
+  real_musique_00011_3hop2__88342_93066_47738 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(12059,1514)
+  real_musique_00011_3hop2__88342_93066_47738 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4405,700)
+  real_musique_00011_3hop2__88342_93066_47738 seed=1 arm=reflexion: true_success=False believed=False abstained=None tokens=(12059,1514)
+  real_musique_00011_3hop2__88342_93066_47738 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4405,700)
+  real_musique_00011_3hop2__88342_93066_47738 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(12059,1812)
+  real_musique_00011_3hop2__88342_93066_47738 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4395,688)
+  real_musique_00012_3hop1__567955_503371_21711 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1716,288)
+  real_musique_00012_3hop1__567955_503371_21711 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4035,621)
+  real_musique_00012_3hop1__567955_503371_21711 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1716,288)
+  real_musique_00012_3hop1__567955_503371_21711 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4035,621)
+  real_musique_00012_3hop1__567955_503371_21711 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1717,363)
+  real_musique_00012_3hop1__567955_503371_21711 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4047,577)
+  real_musique_00013_3hop1__662618_339990_54675 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1682,304)
+  real_musique_00013_3hop1__662618_339990_54675 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3919,651)
+  real_musique_00013_3hop1__662618_339990_54675 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1682,304)
+  real_musique_00013_3hop1__662618_339990_54675 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3919,651)
+  real_musique_00013_3hop1__662618_339990_54675 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1683,441)
+  real_musique_00013_3hop1__662618_339990_54675 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4098,723)
+  real_musique_00014_3hop1__145212_443779_52195 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1923,290)
+  real_musique_00014_3hop1__145212_443779_52195 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4388,606)
+  real_musique_00014_3hop1__145212_443779_52195 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1923,290)
+  real_musique_00014_3hop1__145212_443779_52195 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4388,606)
+  real_musique_00014_3hop1__145212_443779_52195 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1924,535)
+  real_musique_00014_3hop1__145212_443779_52195 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4718,1105)
+  real_musique_00015_3hop1__337705_132457_47686 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1574,139)
+  real_musique_00015_3hop1__337705_132457_47686 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3474,240)
+  real_musique_00015_3hop1__337705_132457_47686 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1574,139)
+  real_musique_00015_3hop1__337705_132457_47686 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3474,240)
+  real_musique_00015_3hop1__337705_132457_47686 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1574,182)
+  real_musique_00015_3hop1__337705_132457_47686 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3539,391)
+  real_musique_00016_3hop1__545624_2053_52946 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1930,316)
+  real_musique_00016_3hop1__545624_2053_52946 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4403,764)
+  real_musique_00016_3hop1__545624_2053_52946 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1930,316)
+  real_musique_00016_3hop1__545624_2053_52946 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4403,764)
+  real_musique_00016_3hop1__545624_2053_52946 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1930,334)
+  real_musique_00016_3hop1__545624_2053_52946 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4442,545)
+  real_musique_00017_3hop1__108833_720914_27537 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1668,210)
+  real_musique_00017_3hop1__108833_720914_27537 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3762,435)
+  real_musique_00017_3hop1__108833_720914_27537 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1668,210)
+  real_musique_00017_3hop1__108833_720914_27537 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3762,435)
+  real_musique_00017_3hop1__108833_720914_27537 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1669,245)
+  real_musique_00017_3hop1__108833_720914_27537 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3791,525)
+  real_musique_00018_3hop1__527372_339990_54675 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1671,350)
+  real_musique_00018_3hop1__527372_339990_54675 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3964,645)
+  real_musique_00018_3hop1__527372_339990_54675 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1671,350)
+  real_musique_00018_3hop1__527372_339990_54675 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3964,645)
+  real_musique_00018_3hop1__527372_339990_54675 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1671,342)
+  real_musique_00018_3hop1__527372_339990_54675 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3956,820)
+  real_musique_00019_3hop1__365934_87694_64412 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2120,328)
+  real_musique_00019_3hop1__365934_87694_64412 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4818,755)
+  real_musique_00019_3hop1__365934_87694_64412 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2120,328)
+  real_musique_00019_3hop1__365934_87694_64412 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4818,755)
+  real_musique_00019_3hop1__365934_87694_64412 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2120,377)
+  real_musique_00019_3hop1__365934_87694_64412 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4867,853)
+  real_musique_00020_3hop2__132957_379231_40768 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6697,1127)
+  real_musique_00020_3hop2__132957_379231_40768 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4434,950)
+  real_musique_00020_3hop2__132957_379231_40768 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6697,1127)
+  real_musique_00020_3hop2__132957_379231_40768 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4434,950)
+  real_musique_00020_3hop2__132957_379231_40768 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6690,993)
+  real_musique_00020_3hop2__132957_379231_40768 seed=2 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4429,713)
+  real_musique_00021_3hop1__438364_443779_52195 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,337)
+  real_musique_00021_3hop1__438364_443779_52195 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3770,770)
+  real_musique_00021_3hop1__438364_443779_52195 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,337)
+  real_musique_00021_3hop1__438364_443779_52195 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3770,770)
+  real_musique_00021_3hop1__438364_443779_52195 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,508)
+  real_musique_00021_3hop1__438364_443779_52195 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4004,922)
+  real_musique_00022_3hop1__539312_744503_34754 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1779,283)
+  real_musique_00022_3hop1__539312_744503_34754 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4154,576)
+  real_musique_00022_3hop1__539312_744503_34754 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1779,283)
+  real_musique_00022_3hop1__539312_744503_34754 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4154,576)
+  real_musique_00022_3hop1__539312_744503_34754 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1779,410)
+  real_musique_00022_3hop1__539312_744503_34754 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4219,822)
+  real_musique_00023_3hop1__133292_40769_64047 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2084,329)
+  real_musique_00023_3hop1__133292_40769_64047 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4747,824)
+  real_musique_00023_3hop1__133292_40769_64047 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2084,329)
+  real_musique_00023_3hop1__133292_40769_64047 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4747,824)
+  real_musique_00023_3hop1__133292_40769_64047 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2084,260)
+  real_musique_00023_3hop1__133292_40769_64047 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4713,705)
+  real_musique_00024_3hop1__79039_131926_90707 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1716,502)
+  real_musique_00024_3hop1__79039_131926_90707 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4268,1173)
+  real_musique_00024_3hop1__79039_131926_90707 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1716,502)
+  real_musique_00024_3hop1__79039_131926_90707 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4268,1173)
+  real_musique_00024_3hop1__79039_131926_90707 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(10840,1598)
+  real_musique_00024_3hop1__79039_131926_90707 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3910,543)
+  real_musique_00025_3hop1__813285_774554_124169 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1764,423)
+  real_musique_00025_3hop1__813285_774554_124169 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4265,866)
+  real_musique_00025_3hop1__813285_774554_124169 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1764,423)
+  real_musique_00025_3hop1__813285_774554_124169 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4265,866)
+  real_musique_00025_3hop1__813285_774554_124169 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1764,391)
+  real_musique_00025_3hop1__813285_774554_124169 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4212,888)
+  real_musique_00026_3hop2__304722_796034_63959 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1839,382)
+  real_musique_00026_3hop2__304722_796034_63959 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4311,717)
+  real_musique_00026_3hop2__304722_796034_63959 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1839,382)
+  real_musique_00026_3hop2__304722_796034_63959 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4311,717)
+  real_musique_00026_3hop2__304722_796034_63959 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1839,370)
+  real_musique_00026_3hop2__304722_796034_63959 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4299,938)
+  real_musique_00027_3hop1__857_846_7798 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1811,213)
+  real_musique_00027_3hop1__857_846_7798 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4037,535)
+  real_musique_00027_3hop1__857_846_7798 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1811,213)
+  real_musique_00027_3hop1__857_846_7798 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4037,535)
+  real_musique_00027_3hop1__857_846_7798 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1811,219)
+  real_musique_00027_3hop1__857_846_7798 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4043,529)
+  real_musique_00028_3hop2__304722_330033_63959 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6299,889)
+  real_musique_00028_3hop2__304722_330033_63959 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4188,748)
+  real_musique_00028_3hop2__304722_330033_63959 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6299,889)
+  real_musique_00028_3hop2__304722_330033_63959 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4188,748)
+  real_musique_00028_3hop2__304722_330033_63959 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1823,291)
+  real_musique_00028_3hop2__304722_330033_63959 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4167,618)
+  real_musique_00029_3hop1__136129_87694_64412 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1872,391)
+  real_musique_00029_3hop1__136129_87694_64412 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4426,950)
+  real_musique_00029_3hop1__136129_87694_64412 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1872,391)
+  real_musique_00029_3hop1__136129_87694_64412 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4426,950)
+  real_musique_00029_3hop1__136129_87694_64412 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1871,414)
+  real_musique_00029_3hop1__136129_87694_64412 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4406,953)
+  real_musique_00030_3hop1__305282_282081_10972 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6501,1007)
+  real_musique_00030_3hop1__305282_282081_10972 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4295,681)
+  real_musique_00030_3hop1__305282_282081_10972 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6501,1007)
+  real_musique_00030_3hop1__305282_282081_10972 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4295,681)
+  real_musique_00030_3hop1__305282_282081_10972 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1823,305)
+  real_musique_00030_3hop1__305282_282081_10972 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4202,589)
+  real_musique_00031_3hop2__6989_37759_74563 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1638,469)
+  real_musique_00031_3hop2__6989_37759_74563 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4035,1098)
+  real_musique_00031_3hop2__6989_37759_74563 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1638,469)
+  real_musique_00031_3hop2__6989_37759_74563 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4035,1098)
+  real_musique_00031_3hop2__6989_37759_74563 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(10742,1566)
+  real_musique_00031_3hop2__6989_37759_74563 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3906,842)
+  real_musique_00032_3hop1__131783_131926_90707 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,275)
+  real_musique_00032_3hop1__131783_131926_90707 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3877,717)
+  real_musique_00032_3hop1__131783_131926_90707 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,275)
+  real_musique_00032_3hop1__131783_131926_90707 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3877,717)
+  real_musique_00032_3hop1__131783_131926_90707 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1685,309)
+  real_musique_00032_3hop1__131783_131926_90707 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3909,752)
+  real_musique_00033_3hop1__768500_730460_78782 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1545,462)
+  real_musique_00033_3hop1__768500_730460_78782 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3866,1179)
+  real_musique_00033_3hop1__768500_730460_78782 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1545,462)
+  real_musique_00033_3hop1__768500_730460_78782 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3866,1179)
+  real_musique_00033_3hop1__768500_730460_78782 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1544,453)
+  real_musique_00033_3hop1__768500_730460_78782 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3856,1056)
+  real_musique_00034_3hop2__855821_467331_162182 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1974,611)
+  real_musique_00034_3hop2__855821_467331_162182 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4896,973)
+  real_musique_00034_3hop2__855821_467331_162182 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1974,611)
+  real_musique_00034_3hop2__855821_467331_162182 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4896,973)
+  real_musique_00034_3hop2__855821_467331_162182 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1975,485)
+  real_musique_00034_3hop2__855821_467331_162182 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4750,1163)
+  real_musique_00035_3hop2__30152_105395_20999 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(13517,1470)
+  real_musique_00035_3hop2__30152_105395_20999 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4756,996)
+  real_musique_00035_3hop2__30152_105395_20999 seed=1 arm=reflexion: true_success=False believed=False abstained=None tokens=(13517,1470)
+  real_musique_00035_3hop2__30152_105395_20999 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4756,996)
+  real_musique_00035_3hop2__30152_105395_20999 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(12214,1902)
+  real_musique_00035_3hop2__30152_105395_20999 seed=2 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4381,974)
+  real_musique_00036_3hop1__847420_720378_15538 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(11538,1797)
+  real_musique_00036_3hop1__847420_720378_15538 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4120,1211)
+  real_musique_00036_3hop1__847420_720378_15538 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(11538,1797)
+  real_musique_00036_3hop1__847420_720378_15538 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4120,1211)
+  real_musique_00036_3hop1__847420_720378_15538 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6152,934)
+  real_musique_00036_3hop1__847420_720378_15538 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4044,796)
+  real_musique_00037_3hop1__662618_339990_54675 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1822,329)
+  real_musique_00037_3hop1__662618_339990_54675 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4224,539)
+  real_musique_00037_3hop1__662618_339990_54675 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1822,329)
+  real_musique_00037_3hop1__662618_339990_54675 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4224,539)
+  real_musique_00037_3hop1__662618_339990_54675 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1821,395)
+  real_musique_00037_3hop1__662618_339990_54675 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4309,841)
+  real_musique_00038_3hop1__747772_514761_594810 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1871,312)
+  real_musique_00038_3hop1__747772_514761_594810 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4307,596)
+  real_musique_00038_3hop1__747772_514761_594810 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1871,312)
+  real_musique_00038_3hop1__747772_514761_594810 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4307,596)
+  real_musique_00038_3hop1__747772_514761_594810 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1872,375)
+  real_musique_00038_3hop1__747772_514761_594810 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4391,691)
+  real_musique_00039_3hop1__131783_131926_90707 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1816,189)
+  real_musique_00039_3hop1__131783_131926_90707 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4080,467)
+  real_musique_00039_3hop1__131783_131926_90707 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1816,189)
+  real_musique_00039_3hop1__131783_131926_90707 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4080,467)
+  real_musique_00039_3hop1__131783_131926_90707 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1816,335)
+  real_musique_00039_3hop1__131783_131926_90707 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4219,624)
+  real_musique_00040_3hop2__326964_263934_7713 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(12840,2003)
+  real_musique_00040_3hop2__326964_263934_7713 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4583,1120)
+  real_musique_00040_3hop2__326964_263934_7713 seed=1 arm=reflexion: true_success=False believed=False abstained=None tokens=(12840,2003)
+  real_musique_00040_3hop2__326964_263934_7713 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4583,1120)
+  real_musique_00040_3hop2__326964_263934_7713 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(13505,2629)
+  real_musique_00040_3hop2__326964_263934_7713 seed=2 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4567,1101)
+  real_musique_00041_3hop1__635099_131926_89261 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1835,251)
+  real_musique_00041_3hop1__635099_131926_89261 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4158,682)
+  real_musique_00041_3hop1__635099_131926_89261 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1835,251)
+  real_musique_00041_3hop1__635099_131926_89261 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4158,682)
+  real_musique_00041_3hop1__635099_131926_89261 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1835,271)
+  real_musique_00041_3hop1__635099_131926_89261 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4170,696)
+  real_musique_00042_3hop1__109422_720914_41132 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1889,339)
+  real_musique_00042_3hop1__109422_720914_41132 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4369,548)
+  real_musique_00042_3hop1__109422_720914_41132 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1889,339)
+  real_musique_00042_3hop1__109422_720914_41132 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4369,548)
+  real_musique_00042_3hop1__109422_720914_41132 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(12263,1833)
+  real_musique_00042_3hop1__109422_720914_41132 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4427,685)
+  real_musique_00043_3hop2__79512_16214_84681 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(7182,1886)
+  real_musique_00043_3hop2__79512_16214_84681 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4570,1189)
+  real_musique_00043_3hop2__79512_16214_84681 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(7182,1886)
+  real_musique_00043_3hop2__79512_16214_84681 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4570,1189)
+  real_musique_00043_3hop2__79512_16214_84681 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1727,646)
+  real_musique_00043_3hop2__79512_16214_84681 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4434,1095)
+  real_musique_00044_3hop2__809962_89048_66294 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6065,1016)
+  real_musique_00044_3hop2__809962_89048_66294 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3986,864)
+  real_musique_00044_3hop2__809962_89048_66294 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6065,1016)
+  real_musique_00044_3hop2__809962_89048_66294 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3986,864)
+  real_musique_00044_3hop2__809962_89048_66294 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6727,1658)
+  real_musique_00044_3hop2__809962_89048_66294 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4317,1069)
+  real_musique_00045_3hop1__489567_443779_52195 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1626,421)
+  real_musique_00045_3hop1__489567_443779_52195 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3987,837)
+  real_musique_00045_3hop1__489567_443779_52195 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1626,421)
+  real_musique_00045_3hop1__489567_443779_52195 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3987,837)
+  real_musique_00045_3hop1__489567_443779_52195 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1626,422)
+  real_musique_00045_3hop1__489567_443779_52195 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3988,835)
+  real_musique_00046_3hop1__401538_132457_47686 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1674,270)
+  real_musique_00046_3hop1__401538_132457_47686 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3868,651)
+  real_musique_00046_3hop1__401538_132457_47686 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1674,270)
+  real_musique_00046_3hop1__401538_132457_47686 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3868,651)
+  real_musique_00046_3hop1__401538_132457_47686 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1674,299)
+  real_musique_00046_3hop1__401538_132457_47686 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3897,711)
+  real_musique_00047_3hop1__639955_834494_33939 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1884,521)
+  real_musique_00047_3hop1__639955_834494_33939 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4623,998)
+  real_musique_00047_3hop1__639955_834494_33939 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1884,521)
+  real_musique_00047_3hop1__639955_834494_33939 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4623,998)
+  real_musique_00047_3hop1__639955_834494_33939 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1884,477)
+  real_musique_00047_3hop1__639955_834494_33939 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4559,1048)
+  real_musique_00048_3hop2__89048_228_66294 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(12498,1852)
+  real_musique_00048_3hop2__89048_228_66294 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4457,840)
+  real_musique_00048_3hop2__89048_228_66294 seed=1 arm=reflexion: true_success=False believed=False abstained=None tokens=(12498,1852)
+  real_musique_00048_3hop2__89048_228_66294 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4457,840)
+  real_musique_00048_3hop2__89048_228_66294 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6635,1021)
+  real_musique_00048_3hop2__89048_228_66294 seed=2 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4379,1041)
+  real_musique_00049_3hop1__86965_488922_4093 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,305)
+  real_musique_00049_3hop1__86965_488922_4093 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3736,596)
+  real_musique_00049_3hop1__86965_488922_4093 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,305)
+  real_musique_00049_3hop1__86965_488922_4093 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3736,596)
+  real_musique_00049_3hop1__86965_488922_4093 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(9964,1196)
+  real_musique_00049_3hop1__86965_488922_4093 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3699,463)
+  real_musique_00050_3hop1__92251_34179_23375 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1557,312)
+  real_musique_00050_3hop1__92251_34179_23375 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3675,598)
+  real_musique_00050_3hop1__92251_34179_23375 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1557,312)
+  real_musique_00050_3hop1__92251_34179_23375 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3675,598)
+  real_musique_00050_3hop1__92251_34179_23375 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1557,311)
+  real_musique_00050_3hop1__92251_34179_23375 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3674,601)
+  real_musique_00051_3hop2__132957_133264_40768 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2043,442)
+  real_musique_00051_3hop2__132957_133264_40768 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4821,773)
+  real_musique_00051_3hop2__132957_133264_40768 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2043,442)
+  real_musique_00051_3hop2__132957_133264_40768 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4821,773)
+  real_musique_00051_3hop2__132957_133264_40768 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2043,298)
+  real_musique_00051_3hop2__132957_133264_40768 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4613,728)
+  real_musique_00052_3hop1__641921_42197_18397 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,429)
+  real_musique_00052_3hop1__641921_42197_18397 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4222,675)
+  real_musique_00052_3hop1__641921_42197_18397 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,429)
+  real_musique_00052_3hop1__641921_42197_18397 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4222,675)
+  real_musique_00052_3hop1__641921_42197_18397 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,388)
+  real_musique_00052_3hop1__641921_42197_18397 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4160,614)
+  real_musique_00053_3hop1__142044_538202_84283 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1847,380)
+  real_musique_00053_3hop1__142044_538202_84283 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4346,672)
+  real_musique_00053_3hop1__142044_538202_84283 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1847,380)
+  real_musique_00053_3hop1__142044_538202_84283 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4346,672)
+  real_musique_00053_3hop1__142044_538202_84283 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(12767,2331)
+  real_musique_00053_3hop1__142044_538202_84283 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4444,747)
+  real_musique_00054_3hop1__409517_547811_80702 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1888,185)
+  real_musique_00054_3hop1__409517_547811_80702 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4171,354)
+  real_musique_00054_3hop1__409517_547811_80702 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1888,185)
+  real_musique_00054_3hop1__409517_547811_80702 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4171,354)
+  real_musique_00054_3hop1__409517_547811_80702 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1889,275)
+  real_musique_00054_3hop1__409517_547811_80702 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4303,581)
+  real_musique_00055_3hop1__106042_64399_59680 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1735,339)
+  real_musique_00055_3hop1__106042_64399_59680 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4060,705)
+  real_musique_00055_3hop1__106042_64399_59680 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1735,339)
+  real_musique_00055_3hop1__106042_64399_59680 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4060,705)
+  real_musique_00055_3hop1__106042_64399_59680 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1737,281)
+  real_musique_00055_3hop1__106042_64399_59680 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3984,665)
+  real_musique_00056_3hop1__742464_15840_36002 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1810,467)
+  real_musique_00056_3hop1__742464_15840_36002 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4400,863)
+  real_musique_00056_3hop1__742464_15840_36002 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1810,467)
+  real_musique_00056_3hop1__742464_15840_36002 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4400,863)
+  real_musique_00056_3hop1__742464_15840_36002 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(7221,1687)
+  real_musique_00056_3hop1__742464_15840_36002 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4641,1437)
+  real_musique_00057_3hop1__131783_131926_90707 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1711,185)
+  real_musique_00057_3hop1__131783_131926_90707 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3865,499)
+  real_musique_00057_3hop1__131783_131926_90707 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1711,185)
+  real_musique_00057_3hop1__131783_131926_90707 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3865,499)
+  real_musique_00057_3hop1__131783_131926_90707 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1712,278)
+  real_musique_00057_3hop1__131783_131926_90707 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3931,716)
+  real_musique_00058_3hop1__465684_160545_34751 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,278)
+  real_musique_00058_3hop1__465684_160545_34751 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3899,484)
+  real_musique_00058_3hop1__465684_160545_34751 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,278)
+  real_musique_00058_3hop1__465684_160545_34751 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3899,484)
+  real_musique_00058_3hop1__465684_160545_34751 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1696,304)
+  real_musique_00058_3hop1__465684_160545_34751 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3946,802)
+  real_musique_00059_3hop1__315504_629431_64412 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(14142,2012)
+  real_musique_00059_3hop1__315504_629431_64412 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5027,847)
+  real_musique_00059_3hop1__315504_629431_64412 seed=1 arm=reflexion: true_success=False believed=False abstained=None tokens=(14142,2012)
+  real_musique_00059_3hop1__315504_629431_64412 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5027,847)
+  real_musique_00059_3hop1__315504_629431_64412 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2135,577)
+  real_musique_00059_3hop1__315504_629431_64412 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5204,1174)
+
+--- run summary ---
+rows written: 360  errors: 0
+total tokens_input=1404976  total tokens_output=246550  grand_total=1651526

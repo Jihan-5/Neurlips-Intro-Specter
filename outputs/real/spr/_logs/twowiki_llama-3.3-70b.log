@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/bin/intro-specter", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/click/core.py", line 1631, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/click/core.py", line 1552, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/click/core.py", line 2032, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/click/core.py", line 1415, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/click/core.py", line 910, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/cli.py", line 108, in run_cmd
+    summary = run(spec)
+              ^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/runner.py", line 710, in run
+    cache = SQLiteCache(spec.cache_path) if spec.cache_path else None
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/models/cache.py", line 61, in __init__
+    with self._connect() as conn:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/models/cache.py", line 68, in _connect
+    conn.execute("PRAGMA journal_mode=WAL")
+sqlite3.OperationalError: database is locked

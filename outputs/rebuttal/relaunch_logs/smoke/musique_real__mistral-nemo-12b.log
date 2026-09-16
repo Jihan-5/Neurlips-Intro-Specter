@@ -1,0 +1,24 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loaded 2 examples for musique_real, n_variants=3, paraphrase=True, dry_run=False
+  real_musique_00000_3hop1__617062_127905_80487 v=0 arm=direct: true_success=False hash=241635d961ed8892 tokens=(1988,499)
+  real_musique_00000_3hop1__617062_127905_80487 v=0 arm=reflexion: true_success=True hash=241635d961ed8892 tokens=(7279,1019)
+  real_musique_00000_3hop1__617062_127905_80487 v=0 arm=intro_specter: true_success=False hash=241635d961ed8892 tokens=(4768,974)
+  real_musique_00000_3hop1__617062_127905_80487 v=1 arm=direct: true_success=False hash=19871589f58f7d02 tokens=(1964,414)
+  real_musique_00000_3hop1__617062_127905_80487 v=1 arm=reflexion: true_success=True hash=19871589f58f7d02 tokens=(6996,1094)
+  real_musique_00000_3hop1__617062_127905_80487 v=1 arm=intro_specter: true_success=True hash=19871589f58f7d02 tokens=(4614,945)
+  real_musique_00000_3hop1__617062_127905_80487 v=2 arm=direct: true_success=True hash=6980a80f6eefa4c2 tokens=(1974,388)
+  real_musique_00000_3hop1__617062_127905_80487 v=2 arm=reflexion: true_success=True hash=6980a80f6eefa4c2 tokens=(1974,388)
+  real_musique_00000_3hop1__617062_127905_80487 v=2 arm=intro_specter: true_success=True hash=6980a80f6eefa4c2 tokens=(4608,811)
+  real_musique_00001_3hop1__132968_40769_64047 v=0 arm=direct: true_success=False hash=e52c68d01582fdee tokens=(1728,483)
+  real_musique_00001_3hop1__132968_40769_64047 v=0 arm=reflexion: true_success=True hash=e52c68d01582fdee tokens=(6546,1147)
+  real_musique_00001_3hop1__132968_40769_64047 v=0 arm=intro_specter: true_success=True hash=e52c68d01582fdee tokens=(4252,978)
+  real_musique_00001_3hop1__132968_40769_64047 v=1 arm=direct: true_success=False hash=26b65ccae5495a33 tokens=(1712,525)
+  real_musique_00001_3hop1__132968_40769_64047 v=1 arm=reflexion: true_success=True hash=26b65ccae5495a33 tokens=(6496,1353)
+  real_musique_00001_3hop1__132968_40769_64047 v=1 arm=intro_specter: true_success=True hash=26b65ccae5495a33 tokens=(4241,867)
+  real_musique_00001_3hop1__132968_40769_64047 v=2 arm=direct: true_success=True hash=765fcc9b15a7a57b tokens=(1718,340)
+  real_musique_00001_3hop1__132968_40769_64047 v=2 arm=reflexion: true_success=True hash=765fcc9b15a7a57b tokens=(1718,340)
+  real_musique_00001_3hop1__132968_40769_64047 v=2 arm=intro_specter: true_success=True hash=765fcc9b15a7a57b tokens=(4026,741)
+
+--- run summary ---
+rows written: 18  errors: 0
+total tokens_input=68602  tokens_output=13306  paraphrase_tokens=2020  grand_total=83928

@@ -1,0 +1,7 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loaded 12 examples for hotpotqa_real, n_variants=100, paraphrase=True, dry_run=False
+Resuming: 3609 (task_id, variant_idx, arm) rows already present, skipped.
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  tokens_output=0  paraphrase_tokens=0  grand_total=0

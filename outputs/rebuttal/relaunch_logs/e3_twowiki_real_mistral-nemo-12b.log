@@ -1,0 +1,912 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=1 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=1 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=1: OPENROUTER_API_KEY not set
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=2 attempt 1/3 failed (OPENROUTER_API_KEY not set); retrying in 2s
+[RETRY] prime task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=2 attempt 2/3 failed (OPENROUTER_API_KEY not set); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=2: OPENROUTER_API_KEY not set
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.0, seeds=[0, 1, 2]
+
+--- run summary ---
+rows written: 0  errors: 180
+total tokens_input=0  total tokens_output=0  grand_total=0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.0, seeds=[0, 1, 2]
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1710,551)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4308,1498)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1710,551)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4308,1498)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1710,554)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4311,1362)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1620,498)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4034,1299)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1620,498)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4034,1299)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1620,500)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4036,981)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6275,957)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4156,912)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6275,957)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4156,912)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6432,1151)
+  real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4238,1092)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6698,1338)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4386,649)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6698,1338)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4386,649)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6321,905)
+  real_2wiki_00003_578ac41e0bde11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4177,909)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1694,145)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3723,361)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1694,145)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3723,361)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1694,146)
+  real_2wiki_00004_86806877099411ebbdb0ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3731,365)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,332)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3976,645)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,332)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3976,645)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1694,251)
+  real_2wiki_00005_072f19a00bdb11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3873,574)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1443,322)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3483,813)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1443,322)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3483,813)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1442,220)
+  real_2wiki_00006_990341840bdc11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3394,669)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1731,289)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3984,743)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1731,289)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3984,743)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1731,324)
+  real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4039,918)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1326,341)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3246,860)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1326,341)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3246,860)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1325,331)
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3236,834)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1862,341)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4318,821)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1862,341)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4318,821)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1862,331)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4309,807)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,281)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4036,677)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,281)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4036,677)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1762,346)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4101,729)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1810,341)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4216,836)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1810,341)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4216,836)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1810,355)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4250,1013)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,394)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3829,945)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1591,394)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3829,945)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1590,403)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3858,863)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1533,386)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3747,1106)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1533,386)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3747,1106)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1533,285)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3582,489)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1820,322)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4213,864)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1820,322)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4213,864)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1820,311)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4202,848)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1883,274)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4270,496)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1883,274)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4270,496)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1882,397)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4456,896)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1802,371)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4230,692)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1802,371)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4230,692)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1802,251)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4068,464)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2002,395)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4651,951)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2002,395)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4651,951)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2002,394)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4650,876)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,360)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3827,955)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,360)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3827,955)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,416)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3904,1056)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(5925,657)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3993,554)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(5925,657)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3993,554)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(5926,745)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3995,566)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2001,398)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4676,955)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2001,398)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4676,955)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(6954,938)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4621,1072)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1790,255)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4154,567)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1790,255)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4154,567)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1792,341)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4178,879)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1372,255)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3232,666)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1372,255)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3232,666)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1372,258)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3234,664)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1670,241)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3793,558)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1670,241)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3793,558)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1670,284)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3857,443)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1935,241)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4344,562)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1935,241)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4344,562)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1935,241)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4344,562)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1714,273)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3932,599)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1714,273)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3932,599)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1714,257)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3916,569)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1535,269)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3594,758)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1535,269)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3594,758)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1536,409)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3777,745)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6306,1302)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4151,1017)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(6306,1302)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4151,1017)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1706,196)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3818,505)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1687,327)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3954,611)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1687,327)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3954,611)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,395)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4041,939)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1653,460)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4082,1294)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1653,460)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4082,1294)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1653,465)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4087,1257)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1921,451)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4547,1031)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1921,451)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4547,1031)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1921,429)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4524,1006)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1406,239)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3281,540)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1406,239)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3281,540)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1406,434)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3519,779)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1798,332)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4181,857)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1798,332)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4181,857)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1797,146)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3973,470)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1688,555)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4268,881)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1688,555)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4268,881)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,530)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4220,1377)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1897,215)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4219,427)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1897,215)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4219,427)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1897,215)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4219,427)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1904,435)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4537,1097)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1904,435)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4537,1097)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1903,602)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4725,804)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1275,211)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3000,625)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1275,211)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3000,625)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1275,211)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3000,625)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1869,361)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4373,676)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1869,361)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4373,676)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1868,397)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4409,1027)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1617,439)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3967,888)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1617,439)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3967,888)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1617,619)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4190,979)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1624,184)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3650,494)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1624,184)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3650,494)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1623,492)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4075,1075)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1847,366)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4331,1045)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1847,366)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4331,1045)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1847,400)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4367,1028)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1745,396)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4160,670)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1745,396)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4160,670)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1743,327)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4068,717)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1216,400)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3104,725)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1216,400)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3104,725)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1216,594)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3381,692)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(11004,1958)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3834,932)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(11004,1958)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3834,932)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(5629,854)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3741,865)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1582,230)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3606,575)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1582,230)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3606,575)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1583,217)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3594,555)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2033,262)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4581,641)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2033,262)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4581,641)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2032,388)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4727,806)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1923,387)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4633,1340)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1923,387)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4633,1340)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1924,371)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4493,692)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1682,326)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3944,832)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1682,326)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3944,832)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1681,360)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3977,803)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,209)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3809,416)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,209)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3809,416)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1695,209)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3809,416)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1571,314)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3709,711)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1571,314)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3709,711)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1571,327)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3722,588)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(11540,1988)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4050,900)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(11540,1988)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4050,900)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=2 arm=reflexion: true_success=False believed=False abstained=None tokens=(15578,4247)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4802,1765)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1362,562)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3624,956)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1362,562)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3624,956)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1362,379)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3385,780)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2197,359)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5006,996)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(2197,359)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5006,996)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(2197,350)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4996,852)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1898,343)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4391,739)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1898,343)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4391,739)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1898,280)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4307,710)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1586,224)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3605,424)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1586,224)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3605,424)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1587,281)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3685,485)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1562,378)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3777,845)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1562,378)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3777,845)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1561,398)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3796,1071)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1832,463)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4442,829)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1832,463)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4442,829)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1831,212)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4092,514)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1690,395)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4049,688)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1690,395)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4049,688)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1690,395)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4049,687)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,492)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4022,1440)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,492)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4022,1440)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,354)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3822,667)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1415,213)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3256,550)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=1 arm=reflexion: true_success=True believed=True abstained=None tokens=(1415,213)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=1 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3256,550)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=2 arm=reflexion: true_success=True believed=True abstained=None tokens=(1415,403)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=2 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3509,1062)
+
+--- run summary ---
+rows written: 360  errors: 0
+total tokens_input=1139544  total tokens_output=225365  grand_total=1364909

@@ -1,0 +1,23 @@
+Loaded 2 examples for twowiki_real, n_variants=3, paraphrase=True, dry_run=False
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=0 arm=direct: true_success=True hash=065ca0c5ff1907d3 tokens=(1696,364)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=0 arm=reflexion: true_success=True hash=065ca0c5ff1907d3 tokens=(1696,364)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=0 arm=intro_specter: true_success=True hash=065ca0c5ff1907d3 tokens=(4009,876)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=1 arm=direct: true_success=True hash=a1a5ed16c881f2e7 tokens=(1676,444)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=1 arm=reflexion: true_success=True hash=a1a5ed16c881f2e7 tokens=(1676,444)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=1 arm=intro_specter: true_success=True hash=a1a5ed16c881f2e7 tokens=(4112,1260)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=2 arm=direct: true_success=True hash=aaecba0a59b7f151 tokens=(1694,647)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=2 arm=reflexion: true_success=True hash=aaecba0a59b7f151 tokens=(1694,647)
+  real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6 v=2 arm=intro_specter: true_success=True hash=aaecba0a59b7f151 tokens=(4393,1591)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=0 arm=direct: true_success=True hash=cb8ced4a5ad7d7b9 tokens=(1623,418)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=0 arm=reflexion: true_success=True hash=cb8ced4a5ad7d7b9 tokens=(1623,418)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=0 arm=intro_specter: true_success=True hash=cb8ced4a5ad7d7b9 tokens=(3938,1119)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=1 arm=direct: true_success=True hash=a0b0cef8c45037e2 tokens=(1625,258)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=1 arm=reflexion: true_success=True hash=a0b0cef8c45037e2 tokens=(1625,258)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=1 arm=intro_specter: true_success=True hash=a0b0cef8c45037e2 tokens=(3797,779)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=2 arm=direct: true_success=True hash=f95b84566133984f tokens=(1626,379)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=2 arm=reflexion: true_success=True hash=f95b84566133984f tokens=(1626,379)
+  real_2wiki_00001_c3b8a8a4086b11ebbd60ac1f6bf848b6 v=2 arm=intro_specter: true_success=True hash=f95b84566133984f tokens=(3905,1020)
+
+--- run summary ---
+rows written: 18  errors: 0
+total tokens_input=44034  tokens_output=11665  paraphrase_tokens=1921  grand_total=57620

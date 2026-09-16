@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/scripts/profile_bootstrap_study.py", line 409, in <module>
+    main()
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/scripts/profile_bootstrap_study.py", line 289, in main
+    examples = expa._load_examples(args.dataset, n_examples)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/scripts/rebuttal_experiment_a.py", line 137, in _load_examples
+    return list(bench)
+           ^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/benchmarks/hotpotqa_real.py", line 175, in __iter__
+    yield self._build_example(idx)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/benchmarks/hotpotqa_real.py", line 205, in _build_example
+    ds = _load_hotpot(self.hf_split)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/intro_specter/benchmarks/hotpotqa_real.py", line 55, in _load_hotpot
+    ds = load_dataset("hotpot_qa", "distractor", split=split, trust_remote_code=False)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/load.py", line 1696, in load_dataset
+    builder_instance = load_dataset_builder(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/load.py", line 1323, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/load.py", line 1215, in dataset_module_factory
+    raise e1 from None
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/load.py", line 1190, in dataset_module_factory
+    ).get_module()
+      ^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/load.py", line 608, in get_module
+    standalone_yaml_path = cached_path(
+                           ^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/datasets/utils/file_utils.py", line 180, in cached_path
+    ).resolve_path(url_or_filename)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/huggingface_hub/hf_file_system.py", line 306, in resolve_path
+    parsed = parse_hf_uri(f"{constants.HF_PROTOCOL}{path}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_hf_uris.py", line 319, in parse_hf_uri
+    return _parse_repo_body(location, type_, raw=raw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jas/Downloads/Neurlips-Intro-Specter/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_hf_uris.py", line 617, in _parse_repo_body
+    raise HfUriError(uri=raw, msg=f"Repository id must be 'namespace/name', got '{repo_id}'.")
+huggingface_hub.errors.HfUriError: Invalid HF URI 'hf://datasets/hotpot_qa@1908d6afbbead072334abe2965f91bd2709910ab/.huggingface.yaml'. Repository id must be 'namespace/name', got 'hotpot_qa'.
