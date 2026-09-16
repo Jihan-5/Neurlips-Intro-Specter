@@ -42,6 +42,23 @@ Jihan is topping up / issuing your key with this credit — **confirm `limit_rem
 via the probe above before launching E2**; E1 and E3 can start on less. Together key is healthy,
 no top-up needed there.
 
+## 2b. Artifact sync — how experiment outputs move between machines
+
+`outputs/` is gitignored on `main`, but all artifacts travel on the orphan **`artifacts`** branch
+via `scripts/sync_artifacts.sh`. Jihan's full 205 MB `outputs/` tree (including `real/spr/` for
+E1, `rebuttal/experiment_a/` for E3, and the completed bootstrap cells) is already on it — you
+do NOT need any zip files.
+
+```bash
+./scripts/sync_artifacts.sh pull            # before starting work / to get Jihan's artifacts
+./scripts/sync_artifacts.sh push "E1: twowiki cells complete"   # after a run finishes
+```
+
+Always `pull` before `push`. Pull never clobbers a file that is newer on your machine
+(rsync --update), so in-progress runs are safe. One cell = one owner at a time — the branch is
+a transport, not a merge tool. Push after every completed cell so Jihan can verify your
+aggregations against the same artifacts.
+
 ## 3. Ground rules (non-negotiable)
 
 1. **Never type a number into the paper by hand.** Every number comes from an aggregation
