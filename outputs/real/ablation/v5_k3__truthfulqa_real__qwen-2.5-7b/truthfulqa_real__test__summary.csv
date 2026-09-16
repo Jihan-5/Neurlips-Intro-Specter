@@ -1,0 +1,2 @@
+,n,success_rate,violation_rate,tokens_input_mean,tokens_output_mean,latency_ms_mean
+intro_specter_llm,36.0,0.6666666666666666,0.3333333333333333,2336.5555555555557,647.9166666666666,24357.26934494556

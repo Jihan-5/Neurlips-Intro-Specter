@@ -1,0 +1,9 @@
+         Summary — twowiki_real__all  (examples=60 × seeds=1 = 60 rows)         
+┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃           ┃         ┃           ┃        ┃   Δsuccess ┃           ┃          ┃
+┃ method    ┃ success ┃ violation ┃ tokens ┃  vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ intro_sp… │   1.000 │     0.000 │   4827 │          — │         — │        — │
+└───────────┴─────────┴───────────┴────────┴────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/real/spr/twowiki_real__mistral-nemo-12b

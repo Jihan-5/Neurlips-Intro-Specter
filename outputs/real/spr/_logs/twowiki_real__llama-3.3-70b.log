@@ -1,0 +1,9 @@
+         Summary — twowiki_real__all  (examples=60 × seeds=1 = 60 rows)         
+┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃           ┃         ┃           ┃        ┃   Δsuccess ┃           ┃          ┃
+┃ method    ┃ success ┃ violation ┃ tokens ┃  vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ intro_sp… │   0.967 │     0.033 │   4781 │          — │         — │        — │
+└───────────┴─────────┴───────────┴────────┴────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/real/spr/twowiki_real__llama-3.3-70b

@@ -1,0 +1,38 @@
+{
+  "benchmark": "travelplanner_recon__test",
+  "n_examples": 20,
+  "n_total_rows": 180,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "react": {
+      "n": 60,
+      "success_rate": 0.9833333333333333,
+      "violation_rate": 0.016666666666666666,
+      "tokens_input_mean": 1253.3333333333333,
+      "tokens_output_mean": 2162.366666666667,
+      "latency_ms_mean": 6868.833386799936
+    },
+    "selfcheckgpt": {
+      "n": 60,
+      "success_rate": 0.9666666666666667,
+      "violation_rate": 0.03333333333333333,
+      "tokens_input_mean": 4619.316666666667,
+      "tokens_output_mean": 2392.266666666667,
+      "latency_ms_mean": 9746.17690006647
+    },
+    "tot": {
+      "n": 60,
+      "success_rate": 1.0,
+      "violation_rate": 0.0,
+      "tokens_input_mean": 4530.433333333333,
+      "tokens_output_mean": 1904.9833333333333,
+      "latency_ms_mean": 6141.7638159836015
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "benchmark": "twowiki_real__all",
+  "n_examples": 59,
+  "n_total_rows": 59,
+  "seeds": [
+    42
+  ],
+  "split": "all",
+  "mode": null,
+  "methods": {
+    "intro_specter_llm": {
+      "n": 59,
+      "success_rate": 0.9491525423728814,
+      "violation_rate": 0.05084745762711865,
+      "tokens_input_mean": 4622.576271186441,
+      "tokens_output_mean": 718.9661016949152,
+      "latency_ms_mean": 23671.655554442776
+    }
+  }
+}

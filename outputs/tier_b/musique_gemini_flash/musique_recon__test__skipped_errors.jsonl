@@ -1,0 +1,1 @@
+{"task_id": "musique_recon_00080", "seed": 0, "method": "self_refine", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\n  \"critique"}

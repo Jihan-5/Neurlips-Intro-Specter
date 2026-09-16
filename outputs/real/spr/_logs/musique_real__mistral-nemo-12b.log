@@ -1,0 +1,9 @@
+         Summary — musique_real__all  (examples=60 × seeds=1 = 60 rows)         
+┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃           ┃         ┃           ┃        ┃   Δsuccess ┃           ┃          ┃
+┃ method    ┃ success ┃ violation ┃ tokens ┃  vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ intro_sp… │   0.883 │     0.117 │   4998 │          — │         — │        — │
+└───────────┴─────────┴───────────┴────────┴────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/real/spr/musique_real__mistral-nemo-12b

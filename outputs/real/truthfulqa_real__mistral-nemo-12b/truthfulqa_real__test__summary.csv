@@ -1,0 +1,2 @@
+,n,success_rate,violation_rate,tokens_input_mean,tokens_output_mean,latency_ms_mean
+violation_reprompt,36.0,0.6111111111111112,0.3888888888888889,1065.0555555555557,352.8611111111111,2173.952689806255

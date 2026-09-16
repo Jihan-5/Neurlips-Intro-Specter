@@ -1,0 +1,9 @@
+{
+  "n_graphs": 60,
+  "round_budget_matched_to_intro_specter": 3,
+  "intro_specter_pct_both_resolved": 0.0,
+  "reflexion_noop_pct_both_resolved": 0.0,
+  "full_regen_blind_pct_both_resolved": 71.66666666666667,
+  "full_regen_blind_mean_attempts_used": 1.5666666666666667,
+  "full_regen_blind_total_tokens": 125020
+}

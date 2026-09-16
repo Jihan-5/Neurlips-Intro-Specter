@@ -1,0 +1,20 @@
+{
+  "benchmark": "longmemeval_real__all",
+  "n_examples": 60,
+  "n_total_rows": 60,
+  "seeds": [
+    42
+  ],
+  "split": "all",
+  "mode": null,
+  "methods": {
+    "intro_specter_llm": {
+      "n": 60,
+      "success_rate": 0.8166666666666667,
+      "violation_rate": 0.18333333333333332,
+      "tokens_input_mean": 4410.05,
+      "tokens_output_mean": 563.1333333333333,
+      "latency_ms_mean": 38996.30677013242
+    }
+  }
+}

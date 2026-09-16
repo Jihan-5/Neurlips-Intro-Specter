@@ -1,0 +1,4 @@
+{"task_id": "alfworld_recon_00094", "seed": 1, "method": "intro_specter_llm", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{"}
+{"task_id": "alfworld_recon_00096", "seed": 1, "method": "intro_specter_llm", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{"}
+{"task_id": "alfworld_recon_00097", "seed": 1, "method": "intro_specter_llm", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{"}
+{"task_id": "alfworld_recon_00094", "seed": 2, "method": "self_refine", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{"}

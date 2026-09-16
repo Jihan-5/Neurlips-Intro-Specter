@@ -1,0 +1,37 @@
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for musique_real (bench_seed=42), rho=0.0, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0
+Resuming: 51 reflexion rows, 50 intro_specter rows already present, will be skipped.
+Loaded 60 examples for musique_real (bench_seed=42), rho=0.1, seeds=[0]
+  real_musique_00015_3hop1__337705_132457_47686 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4428,1421)
+  real_musique_00016_3hop1__545624_2053_52946 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1798,1252)
+  real_musique_00016_3hop1__545624_2053_52946 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5378,2148)
+  real_musique_00017_3hop1__108833_720914_27537 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,810)
+  real_musique_00017_3hop1__108833_720914_27537 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4565,1498)
+  real_musique_00018_3hop1__527372_339990_54675 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1614,668)
+  real_musique_00018_3hop1__527372_339990_54675 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4231,1557)
+  real_musique_00019_3hop1__365934_87694_64412 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2080,476)
+  real_musique_00019_3hop1__365934_87694_64412 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4956,1233)
+  real_musique_00020_3hop2__132957_379231_40768 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1761,881)
+  real_musique_00020_3hop2__132957_379231_40768 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4875,2550)
+  real_musique_00021_3hop1__438364_443779_52195 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(5940,1400)
+  real_musique_00021_3hop1__438364_443779_52195 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3837,942)
+  real_musique_00022_3hop1__539312_744503_34754 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1773,472)
+  real_musique_00022_3hop1__539312_744503_34754 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4253,1267)
+  real_musique_00023_3hop1__133292_40769_64047 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6478,823)
+  real_musique_00023_3hop1__133292_40769_64047 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4300,565)
+  real_musique_00024_3hop1__79039_131926_90707 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1597,326)
+  real_musique_00024_3hop1__79039_131926_90707 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3755,897)
+
+--- run summary ---
+rows written: 19  errors: 0
+total tokens_input=69305  total tokens_output=21186  grand_total=90491
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for musique_real (bench_seed=42), rho=0.3, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0

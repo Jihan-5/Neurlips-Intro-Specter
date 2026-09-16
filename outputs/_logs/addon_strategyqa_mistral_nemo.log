@@ -1,0 +1,11 @@
+      Summary — strategyqa_recon__test  (examples=20 × seeds=3 = 160 rows)      
+┏━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃            ┃         ┃           ┃        ┃  Δsuccess ┃           ┃          ┃
+┃ method     ┃ success ┃ violation ┃ tokens ┃ vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ react      │   0.550 │     0.450 │   1871 │         — │         — │        — │
+│ selfcheck… │   0.831 │     0.169 │   3667 │         — │         — │        — │
+│ tot        │   0.878 │     0.122 │  27667 │         — │         — │        — │
+└────────────┴─────────┴───────────┴────────┴───────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_b/strategyqa_mistral_nemo

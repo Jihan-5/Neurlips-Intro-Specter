@@ -1,0 +1,25 @@
+    Summary — travelplanner_recon__test  (examples=20 × seeds=3 = 383 rows)     
+┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃           ┃         ┃           ┃        ┃   Δsuccess ┃           ┃          ┃
+┃ method    ┃ success ┃ violation ┃ tokens ┃  vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ direct    │   0.617 │     0.383 │   1177 │          — │         — │        — │
+│ full_reg… │   0.518 │     0.482 │   2407 │     -0.108 │     0.122 │    0.488 │
+│           │         │           │        │   [-0.229, │           │          │
+│           │         │           │        │    +0.012] │           │          │
+│ intro_sp… │   0.817 │     0.183 │   3782 │     +0.194 │  0.000534 │  0.00427 │
+│           │         │           │        │   [+0.097, │           │          │
+│           │         │           │        │    +0.290] │           │          │
+│ reflexion │   0.657 │     0.343 │   4492 │     +0.057 │     0.219 │    0.488 │
+│           │         │           │        │   [+0.000, │           │          │
+│           │         │           │        │    +0.129] │           │          │
+│ self_ref… │   0.481 │     0.519 │   3714 │     -0.130 │    0.0414 │    0.248 │
+│           │         │           │        │   [-0.234, │           │          │
+│           │         │           │        │    -0.026] │           │          │
+└───────────┴─────────┴───────────┴────────┴────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_a/travel_deepseek_v31
+y", line 128, in complete_json
+    raise ProviderError(f"failed to obtain JSON after {retries + 1} attempts: {last_err}")
+intro_specter.models.base.ProviderError: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{

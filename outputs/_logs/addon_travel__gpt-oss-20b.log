@@ -1,0 +1,9 @@
+     Summary — travelplanner_recon__test  (examples=20 × seeds=3 = 58 rows)     
+┏━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃        ┃         ┃           ┃        ┃   Δsuccess vs ┃           ┃          ┃
+┃ method ┃ success ┃ violation ┃ tokens ┃        direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ react  │   0.897 │     0.103 │   5463 │             — │         — │        — │
+└────────┴─────────┴───────────┴────────┴───────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_a/travel_gptoss20b

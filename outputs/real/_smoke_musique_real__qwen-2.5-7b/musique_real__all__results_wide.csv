@@ -1,0 +1,5 @@
+,,success,tokens_input,tokens_output,violation_rate
+method,,direct,direct,direct,direct
+task_id,seed,,,,
+real_musique_00000_3hop1__617062_127905_80487,42,True,1944,388,0.0
+real_musique_00001_3hop1__132968_40769_64047,42,False,1681,307,1.0

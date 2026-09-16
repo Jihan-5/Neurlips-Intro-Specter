@@ -1,0 +1,20 @@
+{
+  "benchmark": "musique_real__all",
+  "n_examples": 2,
+  "n_total_rows": 2,
+  "seeds": [
+    42
+  ],
+  "split": "all",
+  "mode": null,
+  "methods": {
+    "direct": {
+      "n": 2,
+      "success_rate": 0.5,
+      "violation_rate": 0.5,
+      "tokens_input_mean": 1812.5,
+      "tokens_output_mean": 347.5,
+      "latency_ms_mean": 0.15947897918522358
+    }
+  }
+}

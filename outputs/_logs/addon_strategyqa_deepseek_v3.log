@@ -1,0 +1,11 @@
+      Summary — strategyqa_recon__test  (examples=20 × seeds=3 = 180 rows)      
+┏━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃            ┃         ┃           ┃        ┃  Δsuccess ┃           ┃          ┃
+┃ method     ┃ success ┃ violation ┃ tokens ┃ vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ react      │   0.683 │     0.317 │   2051 │         — │         — │        — │
+│ selfcheck… │   0.667 │     0.333 │   3769 │         — │         — │        — │
+│ tot        │   0.733 │     0.267 │   7422 │         — │         — │        — │
+└────────────┴─────────┴───────────┴────────┴───────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_b/strategyqa_deepseek_v3

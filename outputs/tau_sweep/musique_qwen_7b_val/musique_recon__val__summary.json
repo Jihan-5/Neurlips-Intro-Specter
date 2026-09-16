@@ -1,0 +1,62 @@
+{
+  "benchmark": "musique_recon__val",
+  "n_examples": 20,
+  "n_total_rows": 360,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "val",
+  "mode": null,
+  "methods": {
+    "intro_specter_tau000": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 27192.033427817903
+    },
+    "intro_specter_tau010": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 13.909779846047362
+    },
+    "intro_specter_tau020": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 12.5940020622996
+    },
+    "intro_specter_tau030": {
+      "n": 60,
+      "success_rate": 0.7833333333333333,
+      "violation_rate": 0.21666666666666667,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 12.344238193084797
+    },
+    "intro_specter_tau050": {
+      "n": 60,
+      "success_rate": 0.7666666666666667,
+      "violation_rate": 0.23333333333333334,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 12.1103236800991
+    },
+    "intro_specter_tau070": {
+      "n": 60,
+      "success_rate": 0.7,
+      "violation_rate": 0.3,
+      "tokens_input_mean": 1790.2833333333333,
+      "tokens_output_mean": 762.5333333333333,
+      "latency_ms_mean": 12.321761708396176
+    }
+  }
+}

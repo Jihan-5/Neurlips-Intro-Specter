@@ -1,0 +1,32 @@
+Resuming: 53 reflexion rows, 53 intro_specter rows already present, will be skipped.
+Loaded 60 examples for longmemeval_real (bench_seed=42), rho=0.0, seeds=[0]
+  real_lme_00047_f685340e seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(10481,734)
+  real_lme_00047_f685340e seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4246,521)
+  real_lme_00048_dccbc061 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(9579,568)
+  real_lme_00048_dccbc061 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3804,188)
+  real_lme_00049_0862e8bf_abs seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(12034,1006)
+  real_lme_00049_0862e8bf_abs seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4614,324)
+  real_lme_00050_0862e8bf seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1948,147)
+  real_lme_00050_0862e8bf seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4213,562)
+  real_lme_00051_2ebe6c90 seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(11582,1570)
+  real_lme_00051_2ebe6c90 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4265,693)
+  real_lme_00052_1faac195 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1997,308)
+  real_lme_00052_1faac195 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4534,527)
+  real_lme_00053_21d02d0d seed=0 arm=reflexion: true_success=False believed=False abstained=None tokens=(13133,1419)
+  real_lme_00053_21d02d0d seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4887,684)
+
+--- run summary ---
+rows written: 14  errors: 0
+total tokens_input=91317  total tokens_output=9251  grand_total=100568
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for longmemeval_real (bench_seed=42), rho=0.1, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for longmemeval_real (bench_seed=42), rho=0.3, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0

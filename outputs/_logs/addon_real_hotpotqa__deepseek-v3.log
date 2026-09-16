@@ -1,0 +1,10 @@
+       Summary — hotpotqa_real__test  (examples=59 × seeds=3 = 111 rows)        
+┏━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃            ┃         ┃           ┃        ┃  Δsuccess ┃           ┃          ┃
+┃ method     ┃ success ┃ violation ┃ tokens ┃ vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ selfcheck… │   0.754 │     0.246 │  10495 │         — │         — │        — │
+│ tot        │   0.815 │     0.185 │  35607 │         — │         — │        — │
+└────────────┴─────────┴───────────┴────────┴───────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_b/real_hotpotqa_deepseek_v3

@@ -1,0 +1,8 @@
+,n,success_rate,violation_rate,tokens_input_mean,tokens_output_mean,latency_ms_mean,delta_success,delta_success_ci_low,delta_success_ci_high,mcnemar_success_p,delta_tokens,delta_tokens_ci_low,delta_tokens_ci_high,wilcoxon_tokens_p,delta_violation,delta_violation_ci_low,delta_violation_ci_high,mcnemar_violation_p,degradation_rate,delta_success_per_task,holm_success_p_adj,holm_success_reject,holm_tokens_p_adj,holm_tokens_reject,holm_violation_p_adj,holm_violation_reject
+direct,60.0,0.0,1.0,0.0,0.0,0.009152704539398352,,,,,,,,,,,,,,,,,,,,
+full_regen,60,1.0,0.0,600.0,198.0,0.027390988543629646,1.0,1.0,1.0,1.734723475976807e-18,798.0,798.0,798.0,9.485737571073747e-15,-1.0,-1.0,-1.0,1.734723475976807e-18,0.0,1.0,3.122502256758253e-17,True,9.485737571073747e-14,True,3.122502256758253e-17,True
+intro_specter,60,1.0,0.0,0.0,0.0,0.39494999606783193,1.0,1.0,1.0,1.734723475976807e-18,0.0,0.0,0.0,1.0,-1.0,-1.0,-1.0,1.734723475976807e-18,0.0,1.0,3.122502256758253e-17,True,1.0,False,3.122502256758253e-17,True
+oracle_detector,60,1.0,0.0,0.0,0.0,0.33616174090032774,1.0,1.0,1.0,1.734723475976807e-18,0.0,0.0,0.0,1.0,-1.0,-1.0,-1.0,1.734723475976807e-18,0.0,1.0,3.122502256758253e-17,True,1.0,False,3.122502256758253e-17,True
+oracle_repair,60,1.0,0.0,0.0,0.0,0.04308543090398113,1.0,1.0,1.0,1.734723475976807e-18,0.0,0.0,0.0,1.0,-1.0,-1.0,-1.0,1.734723475976807e-18,0.0,1.0,3.122502256758253e-17,True,1.0,False,3.122502256758253e-17,True
+reflexion,60,0.0,1.0,0.0,0.0,0.009495054837316275,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,False,1.0,False,1.0,False
+self_refine,60,0.0,1.0,0.0,0.0,0.008960530006637176,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,False,1.0,False,1.0,False

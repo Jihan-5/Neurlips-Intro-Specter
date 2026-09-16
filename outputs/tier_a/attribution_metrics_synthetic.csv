@@ -1,0 +1,2 @@
+benchmark,n,top1_accuracy,top3_accuracy,mrr,earliest_fault_distance_mean
+synthetic_dag (single_fault),60,1.0,1.0,1.0,0.0

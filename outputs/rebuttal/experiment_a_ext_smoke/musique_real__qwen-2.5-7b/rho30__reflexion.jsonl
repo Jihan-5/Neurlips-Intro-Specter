@@ -1,0 +1,2 @@
+{"task_id": "real_musique_00000_3hop1__617062_127905_80487", "seed": 0, "rho": 0.3, "arm": "reflexion", "true_success": true, "method_believed_success": true, "tokens_input": 6151, "tokens_output": 586, "corrupted_constraint_ids": ["c4"], "abstained": null, "meta_summary": {"trials": 2}}
+{"task_id": "real_musique_00001_3hop1__132968_40769_64047", "seed": 0, "rho": 0.3, "arm": "reflexion", "true_success": true, "method_believed_success": true, "tokens_input": 5076, "tokens_output": 193, "corrupted_constraint_ids": ["c1"], "abstained": null, "meta_summary": {"trials": 2}}

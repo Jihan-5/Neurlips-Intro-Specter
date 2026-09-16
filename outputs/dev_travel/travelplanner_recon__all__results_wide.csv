@@ -1,0 +1,8 @@
+,,success,success,success,tokens_input,tokens_input,tokens_input,tokens_output,tokens_output,tokens_output,violation_rate,violation_rate,violation_rate
+method,,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm
+task_id,seed,,,,,,,,,,,,
+travelplanner_recon_00000,0,True,True,True,565,1130,2233,740,1466,1651,0.0,0.0,0.0
+travelplanner_recon_00001,0,True,True,True,532,1064,2852,1278,1837,1862,0.0,0.0,0.0
+travelplanner_recon_00002,0,True,True,True,585,1170,3024,1323,2255,2111,0.0,0.0,0.0
+travelplanner_recon_00003,0,True,True,True,532,1064,1879,536,1582,1101,0.0,0.0,0.0
+travelplanner_recon_00004,0,True,True,True,592,1184,2592,982,2029,1949,0.0,0.0,0.0

@@ -1,0 +1,62 @@
+{
+  "benchmark": "musique_recon__val",
+  "n_examples": 20,
+  "n_total_rows": 360,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "val",
+  "mode": null,
+  "methods": {
+    "intro_specter_tau000": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 17812.691277789418
+    },
+    "intro_specter_tau010": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 15.365014609415084
+    },
+    "intro_specter_tau020": {
+      "n": 60,
+      "success_rate": 0.7833333333333333,
+      "violation_rate": 0.21666666666666667,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 13.510863832198083
+    },
+    "intro_specter_tau030": {
+      "n": 60,
+      "success_rate": 0.7833333333333333,
+      "violation_rate": 0.21666666666666667,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 13.57200750693058
+    },
+    "intro_specter_tau050": {
+      "n": 60,
+      "success_rate": 0.6666666666666666,
+      "violation_rate": 0.3333333333333333,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 13.900288167254379
+    },
+    "intro_specter_tau070": {
+      "n": 60,
+      "success_rate": 0.6,
+      "violation_rate": 0.4,
+      "tokens_input_mean": 1967.1,
+      "tokens_output_mean": 983.15,
+      "latency_ms_mean": 13.97726385621354
+    }
+  }
+}

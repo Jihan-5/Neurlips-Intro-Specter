@@ -1,0 +1,55 @@
+{
+  "benchmark": "ablation_mistral7b",
+  "n_examples": 20,
+  "n_total_rows": 360,
+  "methods": {
+    "intro_specter_flat_dag": {
+      "n": 60,
+      "success_rate": 0.8666666666666667,
+      "violation_rate": 0.13333333333333333,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 1997.4984118559707
+    },
+    "intro_specter_k3": {
+      "n": 60,
+      "success_rate": 0.9,
+      "violation_rate": 0.1,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 10.984795753999302
+    },
+    "intro_specter_llm": {
+      "n": 60,
+      "success_rate": 0.9,
+      "violation_rate": 0.1,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 10598.69621032461
+    },
+    "intro_specter_no_cost": {
+      "n": 60,
+      "success_rate": 0.9,
+      "violation_rate": 0.1,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 10.687324296062192
+    },
+    "intro_specter_no_likelihood": {
+      "n": 60,
+      "success_rate": 0.9,
+      "violation_rate": 0.1,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 10.275098599959165
+    },
+    "intro_specter_uniform_prior": {
+      "n": 60,
+      "success_rate": 0.9,
+      "violation_rate": 0.1,
+      "tokens_input_mean": 1607.3833333333334,
+      "tokens_output_mean": 509.85,
+      "latency_ms_mean": 11.082988189688573
+    }
+  }
+}

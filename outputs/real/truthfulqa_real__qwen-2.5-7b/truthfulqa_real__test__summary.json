@@ -1,0 +1,22 @@
+{
+  "benchmark": "truthfulqa_real__test",
+  "n_examples": 12,
+  "n_total_rows": 36,
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "violation_reprompt": {
+      "n": 36,
+      "success_rate": 0.4444444444444444,
+      "violation_rate": 0.5555555555555556,
+      "tokens_input_mean": 1105.25,
+      "tokens_output_mean": 332.30555555555554,
+      "latency_ms_mean": 2138.594609943943
+    }
+  }
+}

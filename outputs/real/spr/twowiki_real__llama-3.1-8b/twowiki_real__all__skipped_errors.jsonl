@@ -1,0 +1,1 @@
+{"task_id": "real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122", "seed": 42, "method": "intro_specter_llm", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\n  \"repaired_steps\": [\n    {\n      \"step_id\": 6,\n      \"kind\": \"assumption\",\n      \"text\": \"(repaired by SPR re-executi"}

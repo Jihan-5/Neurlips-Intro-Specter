@@ -1,0 +1,98 @@
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000004 seed=1 attempt 1/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Err summarizes all constraints in JSON, breaks them. No valid recipe meets all constraints.\nTotal time: N/A\nCalories per serving: N/A\nServings: N/A\
+  "); retrying in 3s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000004 seed=1 attempt 2/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Err summarizes all constraints in JSON, breaks them. No valid recipe meets all constraints.\nTotal time: N/A\nCalories per serving: N/A\nServings: N/A\
+  "); retrying in 6s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000004 seed=1 attempt 3/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Err summarizes all constraints in JSON, breaks them. No valid recipe meets all constraints.\nTotal time: N/A\nCalories per serving: N/A\nServings: N/A\
+  "); retrying in 12s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000004 seed=1 attempt 4/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Err summarizes all constraints in JSON, breaks them. No valid recipe meets all constraints.\nTotal time: N/A\nCalories per serving: N/A\nServings: N/A\
+  "); retrying in 24s
+[ERROR] selfcheckgpt failed task=recipes_nonsynth_mf3_000004 seed=1: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Err summarizes all constraints in JSON, breaks them. No valid recipe meets all constraints.\nTotal time: N/A\nCalories per serving: N/A\nServings: N/A\
+  "
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000033 seed=2 attempt 1/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Strawberry Shortcake\n\nIngredients:\n- 2 cups all-purpose flour\n- 1/4 cup granulated sugar\n- 2 1/2 tsp baking powder\n- 1/2 tsp salt\n- 1/2 cup unsalted butter, cold and cubed\n- 1 large egg\n- 1/4 cup heavy cream\n- 1 tsp vanilla extract\n- 2 cups fresh strawberries, hulled and sliced\n- 2 tbsp granulated sugar\n- 1 cup heavy cream, for whipping\n- 3 tbsp powdered sugar\n\nInstructions:\n1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.\n2. In a); retrying in 3s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000033 seed=2 attempt 2/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Strawberry Shortcake\n\nIngredients:\n- 2 cups all-purpose flour\n- 1/4 cup granulated sugar\n- 2 1/2 tsp baking powder\n- 1/2 tsp salt\n- 1/2 cup unsalted butter, cold and cubed\n- 1 large egg\n- 1/4 cup heavy cream\n- 1 tsp vanilla extract\n- 2 cups fresh strawberries, hulled and sliced\n- 2 tbsp granulated sugar\n- 1 cup heavy cream, for whipping\n- 3 tbsp powdered sugar\n\nInstructions:\n1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.\n2. In a); retrying in 6s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000033 seed=2 attempt 3/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Strawberry Shortcake\n\nIngredients:\n- 2 cups all-purpose flour\n- 1/4 cup granulated sugar\n- 2 1/2 tsp baking powder\n- 1/2 tsp salt\n- 1/2 cup unsalted butter, cold and cubed\n- 1 large egg\n- 1/4 cup heavy cream\n- 1 tsp vanilla extract\n- 2 cups fresh strawberries, hulled and sliced\n- 2 tbsp granulated sugar\n- 1 cup heavy cream, for whipping\n- 3 tbsp powdered sugar\n\nInstructions:\n1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.\n2. In a); retrying in 12s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000033 seed=2 attempt 4/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Strawberry Shortcake\n\nIngredients:\n- 2 cups all-purpose flour\n- 1/4 cup granulated sugar\n- 2 1/2 tsp baking powder\n- 1/2 tsp salt\n- 1/2 cup unsalted butter, cold and cubed\n- 1 large egg\n- 1/4 cup heavy cream\n- 1 tsp vanilla extract\n- 2 cups fresh strawberries, hulled and sliced\n- 2 tbsp granulated sugar\n- 1 cup heavy cream, for whipping\n- 3 tbsp powdered sugar\n\nInstructions:\n1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.\n2. In a); retrying in 24s
+[ERROR] selfcheckgpt failed task=recipes_nonsynth_mf3_000033 seed=2: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Strawberry Shortcake\n\nIngredients:\n- 2 cups all-purpose flour\n- 1/4 cup granulated sugar\n- 2 1/2 tsp baking powder\n- 1/2 tsp salt\n- 1/2 cup unsalted butter, cold and cubed\n- 1 large egg\n- 1/4 cup heavy cream\n- 1 tsp vanilla extract\n- 2 cups fresh strawberries, hulled and sliced\n- 2 tbsp granulated sugar\n- 1 cup heavy cream, for whipping\n- 3 tbsp powdered sugar\n\nInstructions:\n1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.\n2. In a
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000049 seed=2 attempt 1/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Iced Coffee!... \
+          \n \
+          1. Brew 4 cups of strong coffee.\n \
+          2. Stir in 1/4 cup of sugar until dissolved.\n \
+          3. Chill in the refrigerator for 20 minutes.\n \
+          4. Pour into glasses filled with ice. Add milk to taste.\n \
+          Total time: 25 minutes\nCalories per serving: 252.8\nServings: 5"
+}); retrying in 3s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000049 seed=2 attempt 2/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Iced Coffee!... \
+          \n \
+          1. Brew 4 cups of strong coffee.\n \
+          2. Stir in 1/4 cup of sugar until dissolved.\n \
+          3. Chill in the refrigerator for 20 minutes.\n \
+          4. Pour into glasses filled with ice. Add milk to taste.\n \
+          Total time: 25 minutes\nCalories per serving: 252.8\nServings: 5"
+}); retrying in 6s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000049 seed=2 attempt 3/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Iced Coffee!... \
+          \n \
+          1. Brew 4 cups of strong coffee.\n \
+          2. Stir in 1/4 cup of sugar until dissolved.\n \
+          3. Chill in the refrigerator for 20 minutes.\n \
+          4. Pour into glasses filled with ice. Add milk to taste.\n \
+          Total time: 25 minutes\nCalories per serving: 252.8\nServings: 5"
+}); retrying in 12s
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf3_000049 seed=2 attempt 4/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Iced Coffee!... \
+          \n \
+          1. Brew 4 cups of strong coffee.\n \
+          2. Stir in 1/4 cup of sugar until dissolved.\n \
+          3. Chill in the refrigerator for 20 minutes.\n \
+          4. Pour into glasses filled with ice. Add milk to taste.\n \
+          Total time: 25 minutes\nCalories per serving: 252.8\nServings: 5"
+}); retrying in 24s
+[ERROR] selfcheckgpt failed task=recipes_nonsynth_mf3_000049 seed=2: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "final_output": "Iced Coffee!... \
+          \n \
+          1. Brew 4 cups of strong coffee.\n \
+          2. Stir in 1/4 cup of sugar until dissolved.\n \
+          3. Chill in the refrigerator for 20 minutes.\n \
+          4. Pour into glasses filled with ice. Add milk to taste.\n \
+          Total time: 25 minutes\nCalories per serving: 252.8\nServings: 5"
+}
+Resuming arm=direct: 180 (task_id, seed) rows already present, will be skipped.
+Resuming arm=self_refine: 180 (task_id, seed) rows already present, will be skipped.
+Resuming arm=full_regen: 180 (task_id, seed) rows already present, will be skipped.
+Resuming arm=react: 180 (task_id, seed) rows already present, will be skipped.
+Resuming arm=selfcheckgpt: 177 (task_id, seed) rows already present, will be skipped.
+Resuming arm=reflexion: 180 (task_id, seed) rows already present, will be skipped.
+Resuming arm=intro_specter: 180 (task_id, seed) rows already present, will be skipped.
+Building 60 recipes native-multi-fault (N=3) examples (bench_seed=42)...
+Built 60 examples. seeds=[0, 1, 2], model=mistral-nemo-12b, arms=['direct', 'self_refine', 'full_regen', 'react', 'selfcheckgpt', 'reflexion', 'intro_specter']
+
+--- run summary (N=3, model=mistral-nemo-12b) ---
+rows written: 0  errors: 3
+total tokens_input=0  total tokens_output=0  grand_total=0

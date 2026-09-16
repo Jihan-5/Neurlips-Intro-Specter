@@ -1,0 +1,81 @@
+wrote /Users/jihanmankani/Neurlips-Intro-Specter/outputs/rebuttal/experiment_personalwab/SUMMARY.md
+# PersonalWAB (WWW'25) single-turn recommendation -- rebuttal experiment
+
+Task: single-turn personalized recommendation on real PersonalWAB user profiles/histories (757-row test recommend split, 60 examples x seeds 0,1,2 per model, bench_seed=42). Success = mechanical ASIN-containment hit@1 (the ground-truth item the user genuinely interacted with; PersonalWAB's own containment criterion). All counts below are read from the JSONL files on disk.
+
+
+## mistral-nemo-12b
+
+| arm | n rows | success rate | mean rounds_used | tokens in | tokens out | est. cost ($) |
+|---|---|---|---|---|---|---|
+| direct | 20 | 20/20 = 1.000 | 1.00 | 92,559 | 8,768 | 0.002 |
+| reflexion | 20 | 20/20 = 1.000 | 1.00 | 92,559 | 8,768 | 0.002 |
+| violation_reprompt | 20 | 20/20 = 1.000 | 1.00 | 92,559 | 8,768 | 0.002 |
+| iter_vrp | 20 | 20/20 = 1.000 | 1.00 | 92,559 | 8,768 | 0.002 |
+| intro_specter | 20 | 20/20 = 1.000 | 1.00 | 199,463 | 17,211 | 0.005 |
+
+Paired exact McNemar, intro_specter vs. baseline (paired on (task_id, seed); delta = IS - baseline, percentage points, with 95% paired-bootstrap CI):
+
+| baseline | n paired | IS wins / baseline wins (discordant) | delta (pp) [95% CI] | McNemar p |
+|---|---|---|---|---|
+| direct | 20 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| reflexion | 20 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| violation_reprompt | 20 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| iter_vrp | 20 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+
+## qwen-2.5-7b
+
+| arm | n rows | success rate | mean rounds_used | tokens in | tokens out | est. cost ($) |
+|---|---|---|---|---|---|---|
+| direct | 27 | 25/27 = 0.926 | 1.00 | 114,338 | 12,963 | 0.006 |
+| reflexion | 27 | 25/27 = 0.926 | 1.07 | 153,126 | 15,569 | 0.008 |
+| violation_reprompt | 27 | 25/27 = 0.926 | 1.07 | 119,970 | 13,361 | 0.006 |
+| iter_vrp | 27 | 25/27 = 0.926 | 1.15 | 125,602 | 13,649 | 0.006 |
+| intro_specter | 27 | 27/27 = 1.000 | 1.00 | 249,132 | 32,487 | 0.013 |
+
+Paired exact McNemar, intro_specter vs. baseline (paired on (task_id, seed); delta = IS - baseline, percentage points, with 95% paired-bootstrap CI):
+
+| baseline | n paired | IS wins / baseline wins (discordant) | delta (pp) [95% CI] | McNemar p |
+|---|---|---|---|---|
+| direct | 27 | 2 / 0 | +7.4 [+0.0, +18.5] | 0.5000 |
+| reflexion | 27 | 2 / 0 | +7.4 [+0.0, +18.5] | 0.5000 |
+| violation_reprompt | 27 | 2 / 0 | +7.4 [+0.0, +18.5] | 0.5000 |
+| iter_vrp | 27 | 2 / 0 | +7.4 [+0.0, +18.5] | 0.5000 |
+
+## llama-3.1-8b
+
+| arm | n rows | success rate | mean rounds_used | tokens in | tokens out | est. cost ($) |
+|---|---|---|---|---|---|---|
+| direct | 11 | 11/11 = 1.000 | 1.00 | 45,769 | 6,630 | 0.001 |
+| reflexion | 11 | 11/11 = 1.000 | 1.00 | 45,769 | 6,630 | 0.001 |
+| violation_reprompt | 11 | 11/11 = 1.000 | 1.00 | 45,769 | 6,630 | 0.001 |
+| iter_vrp | 11 | 11/11 = 1.000 | 1.00 | 45,769 | 6,630 | 0.001 |
+| intro_specter | 9 | 9/9 = 1.000 | 1.00 | 82,714 | 12,366 | 0.002 |
+
+Paired exact McNemar, intro_specter vs. baseline (paired on (task_id, seed); delta = IS - baseline, percentage points, with 95% paired-bootstrap CI):
+
+| baseline | n paired | IS wins / baseline wins (discordant) | delta (pp) [95% CI] | McNemar p |
+|---|---|---|---|---|
+| direct | 9 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| reflexion | 9 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| violation_reprompt | 9 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+| iter_vrp | 9 | 0 / 0 | +0.0 [+0.0, +0.0] | 1.0000 |
+
+## qwen-2.5-7b-together
+
+| arm | n rows | success rate | mean rounds_used | tokens in | tokens out | est. cost ($) |
+|---|---|---|---|---|---|---|
+| direct | 180 | 165/180 = 0.917 | 1.00 | 773,288 | 77,760 | 0.255 |
+| reflexion | 180 | 168/180 = 0.933 | 1.08 | 1,060,571 | 98,259 | 0.348 |
+| violation_reprompt | 180 | 168/180 = 0.933 | 1.08 | 818,799 | 80,339 | 0.270 |
+| iter_vrp | 180 | 168/180 = 0.933 | 1.15 | 854,696 | 82,177 | 0.281 |
+| intro_specter | 180 | 174/180 = 0.967 | 1.04 | 1,677,804 | 207,932 | 0.566 |
+
+Paired exact McNemar, intro_specter vs. baseline (paired on (task_id, seed); delta = IS - baseline, percentage points, with 95% paired-bootstrap CI):
+
+| baseline | n paired | IS wins / baseline wins (discordant) | delta (pp) [95% CI] | McNemar p |
+|---|---|---|---|---|
+| direct | 180 | 9 / 0 | +5.0 [+2.2, +8.3] | 0.0039 |
+| reflexion | 180 | 6 / 0 | +3.3 [+1.1, +6.1] | 0.0312 |
+| violation_reprompt | 180 | 6 / 0 | +3.3 [+1.1, +6.1] | 0.0312 |
+| iter_vrp | 180 | 6 / 0 | +3.3 [+1.1, +6.1] | 0.0312 |

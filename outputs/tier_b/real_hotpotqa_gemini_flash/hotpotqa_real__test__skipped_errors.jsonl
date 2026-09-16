@@ -1,0 +1,1 @@
+{"task_id": "real_hotpotqa_00092_5ae5e852554299546bf82fb8", "seed": 0, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\n  \"next_step\": \"Locate information about \"the fairy tale\" (specifically \"Goldilocks and the Three Bears\") in the provi"}

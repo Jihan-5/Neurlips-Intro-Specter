@@ -1,0 +1,22 @@
+{
+  "benchmark": "travelplanner_recon__test",
+  "n_examples": 20,
+  "n_total_rows": 58,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "react": {
+      "n": 58,
+      "success_rate": 0.896551724137931,
+      "violation_rate": 0.10344827586206896,
+      "tokens_input_mean": 1259.2586206896551,
+      "tokens_output_mean": 4203.362068965517,
+      "latency_ms_mean": 56204.98303163787
+    }
+  }
+}

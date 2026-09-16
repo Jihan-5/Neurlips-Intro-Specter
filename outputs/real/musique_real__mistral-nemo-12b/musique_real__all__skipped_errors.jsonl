@@ -1,0 +1,9 @@
+{"task_id": "real_musique_00002_3hop2__36852_326964_7713", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}
+{"task_id": "real_musique_00014_3hop1__145212_443779_52195", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}
+{"task_id": "real_musique_00020_3hop2__132957_379231_40768", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}
+{"task_id": "real_musique_00021_3hop1__438364_443779_52195", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}
+{"task_id": "real_musique_00023_3hop1__133292_40769_64047", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{{ \"next_step\": \"Determine which luxury division of which company created the RX 350.\" }}"}
+{"task_id": "real_musique_00024_3hop1__79039_131926_90707", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{{\n  \"next_step\": \"Find the city home to the Juicy Lucy.\"\n}}"}
+{"task_id": "real_musique_00025_3hop1__813285_774554_124169", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}
+{"task_id": "real_musique_00039_3hop1__131783_131926_90707", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{{\n  \"next_step\": \"Find out where The Minikahda Club is located.\"\n}}"}
+{"task_id": "real_musique_00047_3hop1__639955_834494_33939", "seed": 42, "method": "tot", "error_class": "AttributeError", "error_msg": "'str' object has no attribute 'get'"}

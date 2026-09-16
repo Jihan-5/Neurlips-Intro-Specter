@@ -1,0 +1,62 @@
+{
+  "benchmark": "musique_recon__test",
+  "n_examples": 20,
+  "n_total_rows": 360,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "intro_specter_flat_dag": {
+      "n": 60,
+      "success_rate": 0.8166666666666667,
+      "violation_rate": 0.18333333333333332,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 5076.250325023041
+    },
+    "intro_specter_k3": {
+      "n": 60,
+      "success_rate": 0.8333333333333334,
+      "violation_rate": 0.16666666666666666,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 14.397463210237524
+    },
+    "intro_specter_llm": {
+      "n": 60,
+      "success_rate": 0.8333333333333334,
+      "violation_rate": 0.16666666666666666,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 62.86165690592801
+    },
+    "intro_specter_no_cost": {
+      "n": 60,
+      "success_rate": 0.8166666666666667,
+      "violation_rate": 0.18333333333333332,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 1102.9385373927653
+    },
+    "intro_specter_no_likelihood": {
+      "n": 60,
+      "success_rate": 0.8333333333333334,
+      "violation_rate": 0.16666666666666666,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 12.320843723136932
+    },
+    "intro_specter_uniform_prior": {
+      "n": 60,
+      "success_rate": 0.8,
+      "violation_rate": 0.2,
+      "tokens_input_mean": 1942.55,
+      "tokens_output_mean": 950.0,
+      "latency_ms_mean": 292.06701261767495
+    }
+  }
+}

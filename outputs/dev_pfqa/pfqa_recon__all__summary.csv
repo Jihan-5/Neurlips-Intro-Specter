@@ -1,0 +1,4 @@
+,n,success_rate,violation_rate,tokens_input_mean,tokens_output_mean,latency_ms_mean,delta_success,delta_success_ci_low,delta_success_ci_high,mcnemar_success_p,delta_tokens,delta_tokens_ci_low,delta_tokens_ci_high,wilcoxon_tokens_p,delta_violation,delta_violation_ci_low,delta_violation_ci_high,mcnemar_violation_p,degradation_rate,delta_success_per_task,holm_success_p_adj,holm_success_reject,holm_tokens_p_adj,holm_tokens_reject,holm_violation_p_adj,holm_violation_reject
+direct,5.0,1.0,0.0,611.4,272.2,0.5275583826005459,,,,,,,,,,,,,,,,,,,,
+full_regen,5,1.0,0.0,1222.8,514.2,11.32494998164475,0.0,0.0,0.0,1.0,853.4,826.0,871.0,0.0625,0.0,0.0,0.0,1.0,0.0,0.0,1.0,False,0.375,False,1.0,False
+intro_specter_llm,5,1.0,0.0,2783.0,565.0,2308.9687165804207,0.0,0.0,0.0,1.0,2464.4,2373.8,2542.2099999999996,0.0625,0.0,0.0,0.0,1.0,0.0,0.0,1.0,False,0.375,False,1.0,False

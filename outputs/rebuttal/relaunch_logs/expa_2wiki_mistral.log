@@ -1,0 +1,135 @@
+Resuming: 57 reflexion rows, 57 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.0, seeds=[0]
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1689,240)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3851,448)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1607,664)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4237,1753)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1415,212)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3255,549)
+
+--- run summary ---
+rows written: 6  errors: 0
+total tokens_input=16054  total tokens_output=3866  grand_total=19920
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.1, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0
+[RETRY] intro_specter task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] intro_specter task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] intro_specter failed task=real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0: Connection error.
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 attempt 1/3 failed (Connection error.); retrying in 2s
+[RETRY] prime task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 attempt 2/3 failed (Connection error.); retrying in 4s
+[ERROR] prime failed task=real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0: Connection error.
+Resuming: 9 reflexion rows, 8 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.3, seeds=[0]
+  real_2wiki_00008_b729a3c80bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3362,763)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1854,251)
+  real_2wiki_00009_a83d0a42087e11ebbd6bac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4192,568)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1708,444)
+  real_2wiki_00010_9dde4d9f089811ebbd77ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4134,769)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1806,293)
+  real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4138,806)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1537,348)
+  real_2wiki_00012_2d72c18c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3675,882)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1588,348)
+  real_2wiki_00013_dd8d20e40bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3777,759)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1817,321)
+  real_2wiki_00014_4c17bba60bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4205,843)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1950,395)
+  real_2wiki_00015_eb7ece320bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4588,895)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1804,371)
+  real_2wiki_00016_94911d640bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4233,702)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1948,367)
+  real_2wiki_00017_1f38945c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4516,877)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1553,394)
+  real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3773,969)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6109,658)
+  real_2wiki_00019_80cea3ec0baf11ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4115,562)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(12622,2026)
+  real_2wiki_00020_5eb8315a089011ebbd72ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4522,1098)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1791,221)
+  real_2wiki_00021_4110745e0bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4014,545)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1318,199)
+  real_2wiki_00022_0963c8b80bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3047,299)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1673,464)
+  real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4105,929)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1931,288)
+  real_2wiki_00024_1fa46e26084911ebbd55ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4447,857)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1659,653)
+  real_2wiki_00025_2ef233a40baf11ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4202,1105)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1603,292)
+  real_2wiki_00026_357b09be0bda11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3751,779)
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(6092,828)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1962,215)
+  real_2wiki_00034_c581990a0bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4350,432)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1897,452)
+  real_2wiki_00035_ec9f5b89092d11ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4520,730)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1221,230)
+  real_2wiki_00036_32fe2e3c08c111ebbd8bac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(2905,541)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1866,536)
+  real_2wiki_00037_44953da6087a11ebbd67ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4606,923)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1565,382)
+  real_2wiki_00038_99abc1cc085511ebbd59ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3785,644)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1694,182)
+  real_2wiki_00039_bd036cfc088811ebbd6eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3781,492)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1915,389)
+  real_2wiki_00040_2ccc68a108fe11ebbdadac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4491,1055)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1811,278)
+  real_2wiki_00041_3f51ca660bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4132,673)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1279,612)
+  real_2wiki_00042_b6adcb55094811ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3526,722)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1525,437)
+  real_2wiki_00043_357b09be0bda11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3803,852)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1529,161)
+  real_2wiki_00044_65645b8c0bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3409,269)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1979,313)
+  real_2wiki_00045_cf34e0600bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4545,805)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1919,354)
+  real_2wiki_00046_eea5851e088c11ebbd70ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4565,1213)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1747,351)
+  real_2wiki_00047_3139e3880bdb11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4099,743)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1645,268)
+  real_2wiki_00048_e8d92a1a0bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3790,543)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1576,325)
+  real_2wiki_00049_f04a80e20bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3728,578)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(5750,940)
+  real_2wiki_00050_36a793e40bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3808,853)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1361,602)
+  real_2wiki_00051_0dc9691b087911ebbd67ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3683,1337)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(2261,466)
+  real_2wiki_00052_5b60c0f80bb011ebab90acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(5263,1075)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1843,350)
+  real_2wiki_00053_8d07caac0bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4288,864)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1535,265)
+  real_2wiki_00054_f76adbb40bdd11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3564,469)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1625,621)
+  real_2wiki_00055_a6202170089911ebbd77ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4251,1867)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1892,500)
+  real_2wiki_00056_a88b9f8e08bc11ebbd89ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4621,957)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1691,410)
+  real_2wiki_00057_21eb30140bde11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4066,720)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1600,622)
+  real_2wiki_00058_150df73c086411ebbd5eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4223,953)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1365,329)
+  real_2wiki_00059_87d1e62a08c511ebbd8eac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3314,871)
+
+--- run summary ---
+rows written: 90  errors: 7
+total tokens_input=282328  total tokens_output=55939  grand_total=338267

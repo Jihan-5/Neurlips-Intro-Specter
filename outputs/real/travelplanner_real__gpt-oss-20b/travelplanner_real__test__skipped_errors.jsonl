@@ -1,0 +1,73 @@
+{"task_id": "travel_real_00048", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00049", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00050", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00051", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00052", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00053", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00055", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00056", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00057", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00058", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00059", "seed": 42, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00048", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00049", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00050", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":8,\"rationale\":\"The reasoning"}
+{"task_id": "travel_real_00051", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":9,\"rationale\":\"The reasoning path clearly outlines a logical plan to produce the required itinerary, respects a"}
+{"task_id": "travel_real_00052", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00053", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00055", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00056", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00057", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\": 2, \"rationale\":\"The reasoning path only identifies hotels and does not provide a full day\u2011by\u2011day plan, meals, "}
+{"task_id": "travel_real_00058", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00059", "seed": 42, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00048", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00049", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00050", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00051", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00052", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00053", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00055", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00056", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00057", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"final_output\":\"Day\u202f1 \u2013 March\u202f27,\u202f2022\\n- Travel: Flight from Denver (DEN) to Palm Springs (PSP) via a single stop (e.g"}
+{"task_id": "travel_real_00058", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00059", "seed": 123, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00048", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":10,\"rationale\":\"The reasoning step clearly outlines a"}
+{"task_id": "travel_real_00049", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":2,\"rationale\":\"The reasoning path only states a high-level plan choice and does not provide the detailed day\u2011by"}
+{"task_id": "travel_real_00050", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00051", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00052", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00053", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00055", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00056", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":9,\"rationale\":\"The step is a logical first step toward constructing a travel plan, it does not violate any hard"}
+{"task_id": "travel_real_00057", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":8,\"rationale"}
+{"task_id": "travel_real_00058", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":"}
+{"task_id": "travel_real_00059", "seed": 123, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":4,\"rationale\":\"The path outlines a single step toward gathering flight cost, which is a necessary part of the i"}
+{"task_id": "travel_real_00052", "seed": 456, "method": "self_refine", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00048", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00049", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00050", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00051", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00052", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00053", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00055", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00056", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00057", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00058", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00059", "seed": 456, "method": "selfcheckgpt", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00048", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00049", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":9,\"rationale\":\"The reasoning path outlines"}
+{"task_id": "travel_real_00050", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00051", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":5,\"rationale\":\"The step identifies cities and attractions, which is a logical first step toward the itinerary, "}
+{"task_id": "travel_real_00052", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":9,\"rationale\":\"The reasoning step correctly identifies the three Texas cities and outlines a logical allocation"}
+{"task_id": "travel_real_00053", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00054", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":"}
+{"task_id": "travel_real_00055", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\""}
+{"task_id": "travel_real_00056", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}
+{"task_id": "travel_real_00057", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":3,\"rationale\":\"The reasoning path only identifies the three cities and states an intention to meet constraints,"}
+{"task_id": "travel_real_00058", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: could not parse JSON from model output:\n{\"score\":1,\"rationale\":\"The reasoning step is only a single bullet that does not provide a day\u2011by\u2011day plan, ignores the "}
+{"task_id": "travel_real_00059", "seed": 456, "method": "tot", "error_class": "ProviderError", "error_msg": "failed to obtain JSON after 3 attempts: empty model output"}

@@ -1,0 +1,241 @@
+model,method,axis,stratum,n,success_rate
+Llama 3.3 70B,direct,condition,factual_irrelevant,30,0.9333333333333333
+Llama 3.3 70B,direct,dietary,pescatarian,12,0.9166666666666666
+Llama 3.3 70B,direct,condition,profile_required,30,1.0
+Llama 3.3 70B,direct,dietary,omnivore,18,0.9444444444444444
+Llama 3.3 70B,direct,dietary,vegetarian,21,1.0
+Llama 3.3 70B,direct,dietary,vegan,9,1.0
+Llama 3.3 70B,full_regen,condition,factual_irrelevant,30,0.9333333333333333
+Llama 3.3 70B,full_regen,dietary,pescatarian,12,0.9166666666666666
+Llama 3.3 70B,full_regen,condition,profile_required,30,0.9666666666666667
+Llama 3.3 70B,full_regen,dietary,omnivore,18,0.9444444444444444
+Llama 3.3 70B,full_regen,dietary,vegetarian,21,1.0
+Llama 3.3 70B,full_regen,dietary,vegan,9,0.8888888888888888
+Llama 3.3 70B,intro_specter_llm,condition,factual_irrelevant,30,0.9666666666666667
+Llama 3.3 70B,intro_specter_llm,dietary,pescatarian,12,1.0
+Llama 3.3 70B,intro_specter_llm,condition,profile_required,30,1.0
+Llama 3.3 70B,intro_specter_llm,dietary,omnivore,18,0.9444444444444444
+Llama 3.3 70B,intro_specter_llm,dietary,vegetarian,21,1.0
+Llama 3.3 70B,intro_specter_llm,dietary,vegan,9,1.0
+Llama 3.3 70B,reflexion,condition,factual_irrelevant,30,0.9666666666666667
+Llama 3.3 70B,reflexion,dietary,pescatarian,12,1.0
+Llama 3.3 70B,reflexion,condition,profile_required,30,1.0
+Llama 3.3 70B,reflexion,dietary,omnivore,18,0.9444444444444444
+Llama 3.3 70B,reflexion,dietary,vegetarian,21,1.0
+Llama 3.3 70B,reflexion,dietary,vegan,9,1.0
+Llama 3.3 70B,self_refine,condition,factual_irrelevant,30,0.43333333333333335
+Llama 3.3 70B,self_refine,dietary,pescatarian,12,0.5
+Llama 3.3 70B,self_refine,condition,profile_required,30,0.4
+Llama 3.3 70B,self_refine,dietary,omnivore,18,0.2222222222222222
+Llama 3.3 70B,self_refine,dietary,vegetarian,21,0.5714285714285714
+Llama 3.3 70B,self_refine,dietary,vegan,9,0.3333333333333333
+Llama 3.1 8B,direct,condition,factual_irrelevant,30,0.9
+Llama 3.1 8B,direct,dietary,pescatarian,12,1.0
+Llama 3.1 8B,direct,condition,profile_required,30,0.8
+Llama 3.1 8B,direct,dietary,omnivore,18,0.8333333333333334
+Llama 3.1 8B,direct,dietary,vegetarian,21,0.8095238095238095
+Llama 3.1 8B,direct,dietary,vegan,9,0.7777777777777778
+Llama 3.1 8B,full_regen,condition,factual_irrelevant,30,0.9666666666666667
+Llama 3.1 8B,full_regen,dietary,pescatarian,12,1.0
+Llama 3.1 8B,full_regen,condition,profile_required,30,0.7
+Llama 3.1 8B,full_regen,dietary,omnivore,18,0.7222222222222222
+Llama 3.1 8B,full_regen,dietary,vegetarian,21,0.8571428571428571
+Llama 3.1 8B,full_regen,dietary,vegan,9,0.7777777777777778
+Llama 3.1 8B,intro_specter_llm,condition,factual_irrelevant,30,0.9666666666666667
+Llama 3.1 8B,intro_specter_llm,dietary,pescatarian,12,1.0
+Llama 3.1 8B,intro_specter_llm,condition,profile_required,30,0.8333333333333334
+Llama 3.1 8B,intro_specter_llm,dietary,omnivore,18,0.8333333333333334
+Llama 3.1 8B,intro_specter_llm,dietary,vegetarian,21,0.8571428571428571
+Llama 3.1 8B,intro_specter_llm,dietary,vegan,9,1.0
+Llama 3.1 8B,reflexion,condition,factual_irrelevant,30,0.9666666666666667
+Llama 3.1 8B,reflexion,dietary,pescatarian,12,1.0
+Llama 3.1 8B,reflexion,condition,profile_required,30,0.8666666666666667
+Llama 3.1 8B,reflexion,dietary,omnivore,18,0.8888888888888888
+Llama 3.1 8B,reflexion,dietary,vegetarian,21,0.9047619047619048
+Llama 3.1 8B,reflexion,dietary,vegan,9,0.8888888888888888
+Llama 3.1 8B,self_refine,condition,factual_irrelevant,30,0.36666666666666664
+Llama 3.1 8B,self_refine,dietary,pescatarian,12,0.5
+Llama 3.1 8B,self_refine,condition,profile_required,30,0.26666666666666666
+Llama 3.1 8B,self_refine,dietary,omnivore,18,0.2777777777777778
+Llama 3.1 8B,self_refine,dietary,vegetarian,21,0.19047619047619047
+Llama 3.1 8B,self_refine,dietary,vegan,9,0.4444444444444444
+DeepSeek V3,direct,condition,factual_irrelevant,30,0.9333333333333333
+DeepSeek V3,direct,dietary,pescatarian,12,1.0
+DeepSeek V3,direct,condition,profile_required,30,0.5666666666666667
+DeepSeek V3,direct,dietary,omnivore,18,0.5
+DeepSeek V3,direct,dietary,vegetarian,21,0.9047619047619048
+DeepSeek V3,direct,dietary,vegan,9,0.5555555555555556
+DeepSeek V3,full_regen,condition,factual_irrelevant,30,0.8666666666666667
+DeepSeek V3,full_regen,dietary,pescatarian,12,1.0
+DeepSeek V3,full_regen,condition,profile_required,30,0.6
+DeepSeek V3,full_regen,dietary,omnivore,18,0.5
+DeepSeek V3,full_regen,dietary,vegetarian,21,0.8095238095238095
+DeepSeek V3,full_regen,dietary,vegan,9,0.6666666666666666
+DeepSeek V3,intro_specter_llm,condition,factual_irrelevant,30,0.9666666666666667
+DeepSeek V3,intro_specter_llm,dietary,pescatarian,12,1.0
+DeepSeek V3,intro_specter_llm,condition,profile_required,30,0.8
+DeepSeek V3,intro_specter_llm,dietary,omnivore,18,0.7222222222222222
+DeepSeek V3,intro_specter_llm,dietary,vegetarian,21,1.0
+DeepSeek V3,intro_specter_llm,dietary,vegan,9,0.7777777777777778
+DeepSeek V3,reflexion,condition,factual_irrelevant,30,0.9666666666666667
+DeepSeek V3,reflexion,dietary,pescatarian,12,1.0
+DeepSeek V3,reflexion,condition,profile_required,30,0.7666666666666667
+DeepSeek V3,reflexion,dietary,omnivore,18,0.6111111111111112
+DeepSeek V3,reflexion,dietary,vegetarian,21,1.0
+DeepSeek V3,reflexion,dietary,vegan,9,0.8888888888888888
+DeepSeek V3,self_refine,condition,factual_irrelevant,30,0.5333333333333333
+DeepSeek V3,self_refine,dietary,pescatarian,12,0.5833333333333334
+DeepSeek V3,self_refine,condition,profile_required,30,0.3333333333333333
+DeepSeek V3,self_refine,dietary,omnivore,18,0.2222222222222222
+DeepSeek V3,self_refine,dietary,vegetarian,21,0.5714285714285714
+DeepSeek V3,self_refine,dietary,vegan,9,0.3333333333333333
+DeepSeek V3.1,direct,condition,factual_irrelevant,30,0.8666666666666667
+DeepSeek V3.1,direct,dietary,pescatarian,12,0.9166666666666666
+DeepSeek V3.1,direct,condition,profile_required,30,0.6333333333333333
+DeepSeek V3.1,direct,dietary,omnivore,18,0.6111111111111112
+DeepSeek V3.1,direct,dietary,vegetarian,21,0.8571428571428571
+DeepSeek V3.1,direct,dietary,vegan,9,0.5555555555555556
+DeepSeek V3.1,full_regen,condition,factual_irrelevant,30,0.9333333333333333
+DeepSeek V3.1,full_regen,dietary,pescatarian,12,0.9166666666666666
+DeepSeek V3.1,full_regen,condition,profile_required,30,0.6666666666666666
+DeepSeek V3.1,full_regen,dietary,omnivore,18,0.7222222222222222
+DeepSeek V3.1,full_regen,dietary,vegetarian,21,0.8571428571428571
+DeepSeek V3.1,full_regen,dietary,vegan,9,0.6666666666666666
+DeepSeek V3.1,intro_specter_llm,condition,factual_irrelevant,30,0.9333333333333333
+DeepSeek V3.1,intro_specter_llm,dietary,pescatarian,12,1.0
+DeepSeek V3.1,intro_specter_llm,condition,profile_required,30,0.7
+DeepSeek V3.1,intro_specter_llm,dietary,omnivore,18,0.6666666666666666
+DeepSeek V3.1,intro_specter_llm,dietary,vegetarian,21,0.9523809523809523
+DeepSeek V3.1,intro_specter_llm,dietary,vegan,9,0.5555555555555556
+DeepSeek V3.1,reflexion,condition,factual_irrelevant,30,0.8666666666666667
+DeepSeek V3.1,reflexion,dietary,pescatarian,12,0.9166666666666666
+DeepSeek V3.1,reflexion,condition,profile_required,30,0.7666666666666667
+DeepSeek V3.1,reflexion,dietary,omnivore,18,0.6111111111111112
+DeepSeek V3.1,reflexion,dietary,vegetarian,21,0.9047619047619048
+DeepSeek V3.1,reflexion,dietary,vegan,9,0.8888888888888888
+DeepSeek V3.1,self_refine,condition,factual_irrelevant,30,0.36666666666666664
+DeepSeek V3.1,self_refine,dietary,pescatarian,12,0.4166666666666667
+DeepSeek V3.1,self_refine,condition,profile_required,30,0.4
+DeepSeek V3.1,self_refine,dietary,omnivore,18,0.2777777777777778
+DeepSeek V3.1,self_refine,dietary,vegetarian,21,0.47619047619047616
+DeepSeek V3.1,self_refine,dietary,vegan,9,0.3333333333333333
+Mistral Nemo 12B,direct,condition,factual_irrelevant,30,0.8666666666666667
+Mistral Nemo 12B,direct,dietary,pescatarian,12,0.75
+Mistral Nemo 12B,direct,condition,profile_required,30,0.6
+Mistral Nemo 12B,direct,dietary,omnivore,18,0.7222222222222222
+Mistral Nemo 12B,direct,dietary,vegetarian,21,0.7142857142857143
+Mistral Nemo 12B,direct,dietary,vegan,9,0.7777777777777778
+Mistral Nemo 12B,full_regen,condition,factual_irrelevant,30,0.8666666666666667
+Mistral Nemo 12B,full_regen,dietary,pescatarian,12,0.9166666666666666
+Mistral Nemo 12B,full_regen,condition,profile_required,30,0.6333333333333333
+Mistral Nemo 12B,full_regen,dietary,omnivore,18,0.7222222222222222
+Mistral Nemo 12B,full_regen,dietary,vegetarian,21,0.7142857142857143
+Mistral Nemo 12B,full_regen,dietary,vegan,9,0.6666666666666666
+Mistral Nemo 12B,intro_specter_llm,condition,factual_irrelevant,30,0.8666666666666667
+Mistral Nemo 12B,intro_specter_llm,dietary,pescatarian,12,0.75
+Mistral Nemo 12B,intro_specter_llm,condition,profile_required,30,0.9333333333333333
+Mistral Nemo 12B,intro_specter_llm,dietary,omnivore,18,0.9444444444444444
+Mistral Nemo 12B,intro_specter_llm,dietary,vegetarian,21,0.9523809523809523
+Mistral Nemo 12B,intro_specter_llm,dietary,vegan,9,0.8888888888888888
+Mistral Nemo 12B,reflexion,condition,factual_irrelevant,30,0.9
+Mistral Nemo 12B,reflexion,dietary,pescatarian,12,0.8333333333333334
+Mistral Nemo 12B,reflexion,condition,profile_required,30,0.6333333333333333
+Mistral Nemo 12B,reflexion,dietary,omnivore,18,0.7222222222222222
+Mistral Nemo 12B,reflexion,dietary,vegetarian,21,0.7619047619047619
+Mistral Nemo 12B,reflexion,dietary,vegan,9,0.7777777777777778
+Mistral Nemo 12B,self_refine,condition,factual_irrelevant,30,0.43333333333333335
+Mistral Nemo 12B,self_refine,dietary,pescatarian,12,0.5
+Mistral Nemo 12B,self_refine,condition,profile_required,30,0.16666666666666666
+Mistral Nemo 12B,self_refine,dietary,omnivore,18,0.16666666666666666
+Mistral Nemo 12B,self_refine,dietary,vegetarian,21,0.23809523809523808
+Mistral Nemo 12B,self_refine,dietary,vegan,9,0.4444444444444444
+Qwen 2.5 7B,direct,condition,factual_irrelevant,30,0.7
+Qwen 2.5 7B,direct,dietary,pescatarian,12,0.75
+Qwen 2.5 7B,direct,condition,profile_required,30,0.4
+Qwen 2.5 7B,direct,dietary,omnivore,18,0.4444444444444444
+Qwen 2.5 7B,direct,dietary,vegetarian,21,0.5238095238095238
+Qwen 2.5 7B,direct,dietary,vegan,9,0.5555555555555556
+Qwen 2.5 7B,full_regen,condition,factual_irrelevant,30,0.6
+Qwen 2.5 7B,full_regen,dietary,pescatarian,12,0.5833333333333334
+Qwen 2.5 7B,full_regen,condition,profile_required,30,0.3
+Qwen 2.5 7B,full_regen,dietary,omnivore,18,0.2222222222222222
+Qwen 2.5 7B,full_regen,dietary,vegetarian,21,0.5238095238095238
+Qwen 2.5 7B,full_regen,dietary,vegan,9,0.5555555555555556
+Qwen 2.5 7B,intro_specter_llm,condition,factual_irrelevant,30,0.8666666666666667
+Qwen 2.5 7B,intro_specter_llm,dietary,pescatarian,12,1.0
+Qwen 2.5 7B,intro_specter_llm,condition,profile_required,30,0.6333333333333333
+Qwen 2.5 7B,intro_specter_llm,dietary,omnivore,18,0.6111111111111112
+Qwen 2.5 7B,intro_specter_llm,dietary,vegetarian,21,0.7619047619047619
+Qwen 2.5 7B,intro_specter_llm,dietary,vegan,9,0.6666666666666666
+Qwen 2.5 7B,reflexion,condition,factual_irrelevant,30,0.7333333333333333
+Qwen 2.5 7B,reflexion,dietary,pescatarian,12,0.8333333333333334
+Qwen 2.5 7B,reflexion,condition,profile_required,30,0.43333333333333335
+Qwen 2.5 7B,reflexion,dietary,omnivore,18,0.4444444444444444
+Qwen 2.5 7B,reflexion,dietary,vegetarian,21,0.5714285714285714
+Qwen 2.5 7B,reflexion,dietary,vegan,9,0.5555555555555556
+Qwen 2.5 7B,self_refine,condition,factual_irrelevant,30,0.5666666666666667
+Qwen 2.5 7B,self_refine,dietary,pescatarian,12,0.5
+Qwen 2.5 7B,self_refine,condition,profile_required,30,0.16666666666666666
+Qwen 2.5 7B,self_refine,dietary,omnivore,18,0.2777777777777778
+Qwen 2.5 7B,self_refine,dietary,vegetarian,21,0.3333333333333333
+Qwen 2.5 7B,self_refine,dietary,vegan,9,0.4444444444444444
+gpt-oss-20b,direct,condition,factual_irrelevant,30,0.5333333333333333
+gpt-oss-20b,direct,dietary,pescatarian,12,0.6666666666666666
+gpt-oss-20b,direct,condition,profile_required,30,0.4666666666666667
+gpt-oss-20b,direct,dietary,omnivore,18,0.2222222222222222
+gpt-oss-20b,direct,dietary,vegetarian,21,0.6666666666666666
+gpt-oss-20b,direct,dietary,vegan,9,0.4444444444444444
+gpt-oss-20b,full_regen,condition,factual_irrelevant,30,0.5333333333333333
+gpt-oss-20b,full_regen,dietary,pescatarian,12,0.5833333333333334
+gpt-oss-20b,full_regen,condition,profile_required,30,0.36666666666666664
+gpt-oss-20b,full_regen,dietary,omnivore,18,0.2777777777777778
+gpt-oss-20b,full_regen,dietary,vegetarian,21,0.5714285714285714
+gpt-oss-20b,full_regen,dietary,vegan,9,0.3333333333333333
+gpt-oss-20b,intro_specter_llm,condition,factual_irrelevant,30,0.7
+gpt-oss-20b,intro_specter_llm,dietary,pescatarian,12,0.8333333333333334
+gpt-oss-20b,intro_specter_llm,condition,profile_required,30,0.5
+gpt-oss-20b,intro_specter_llm,dietary,omnivore,18,0.3333333333333333
+gpt-oss-20b,intro_specter_llm,dietary,vegetarian,21,0.7619047619047619
+gpt-oss-20b,intro_specter_llm,dietary,vegan,9,0.4444444444444444
+gpt-oss-20b,reflexion,condition,factual_irrelevant,30,0.9666666666666667
+gpt-oss-20b,reflexion,dietary,pescatarian,12,1.0
+gpt-oss-20b,reflexion,condition,profile_required,30,0.9666666666666667
+gpt-oss-20b,reflexion,dietary,omnivore,18,0.9444444444444444
+gpt-oss-20b,reflexion,dietary,vegetarian,21,1.0
+gpt-oss-20b,reflexion,dietary,vegan,9,0.8888888888888888
+gpt-oss-20b,self_refine,condition,factual_irrelevant,30,0.5
+gpt-oss-20b,self_refine,dietary,pescatarian,12,0.5833333333333334
+gpt-oss-20b,self_refine,condition,profile_required,30,0.4
+gpt-oss-20b,self_refine,dietary,omnivore,18,0.2222222222222222
+gpt-oss-20b,self_refine,dietary,vegetarian,21,0.6190476190476191
+gpt-oss-20b,self_refine,dietary,vegan,9,0.3333333333333333
+Gemini 2.5 Flash,direct,condition,factual_irrelevant,30,0.5666666666666667
+Gemini 2.5 Flash,direct,dietary,pescatarian,12,0.5833333333333334
+Gemini 2.5 Flash,direct,condition,profile_required,30,0.3333333333333333
+Gemini 2.5 Flash,direct,dietary,omnivore,18,0.3333333333333333
+Gemini 2.5 Flash,direct,dietary,vegetarian,21,0.47619047619047616
+Gemini 2.5 Flash,direct,dietary,vegan,9,0.4444444444444444
+Gemini 2.5 Flash,full_regen,condition,factual_irrelevant,30,0.5666666666666667
+Gemini 2.5 Flash,full_regen,dietary,pescatarian,12,0.6666666666666666
+Gemini 2.5 Flash,full_regen,condition,profile_required,30,0.3
+Gemini 2.5 Flash,full_regen,dietary,omnivore,18,0.2222222222222222
+Gemini 2.5 Flash,full_regen,dietary,vegetarian,21,0.47619047619047616
+Gemini 2.5 Flash,full_regen,dietary,vegan,9,0.4444444444444444
+Gemini 2.5 Flash,intro_specter_llm,condition,factual_irrelevant,30,0.6666666666666666
+Gemini 2.5 Flash,intro_specter_llm,dietary,pescatarian,12,0.6666666666666666
+Gemini 2.5 Flash,intro_specter_llm,condition,profile_required,30,0.5333333333333333
+Gemini 2.5 Flash,intro_specter_llm,dietary,omnivore,18,0.5
+Gemini 2.5 Flash,intro_specter_llm,dietary,vegetarian,21,0.7142857142857143
+Gemini 2.5 Flash,intro_specter_llm,dietary,vegan,9,0.4444444444444444
+Gemini 2.5 Flash,reflexion,condition,factual_irrelevant,30,0.8
+Gemini 2.5 Flash,reflexion,dietary,pescatarian,12,0.9166666666666666
+Gemini 2.5 Flash,reflexion,condition,profile_required,30,0.6666666666666666
+Gemini 2.5 Flash,reflexion,dietary,omnivore,18,0.6111111111111112
+Gemini 2.5 Flash,reflexion,dietary,vegetarian,21,0.8095238095238095
+Gemini 2.5 Flash,reflexion,dietary,vegan,9,0.5555555555555556
+Gemini 2.5 Flash,self_refine,condition,factual_irrelevant,30,0.5333333333333333
+Gemini 2.5 Flash,self_refine,dietary,pescatarian,12,0.5833333333333334
+Gemini 2.5 Flash,self_refine,condition,profile_required,30,0.3
+Gemini 2.5 Flash,self_refine,dietary,omnivore,18,0.2777777777777778
+Gemini 2.5 Flash,self_refine,dietary,vegetarian,21,0.47619047619047616
+Gemini 2.5 Flash,self_refine,dietary,vegan,9,0.3333333333333333

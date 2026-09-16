@@ -1,0 +1,8 @@
+,,success,success,success,tokens_input,tokens_input,tokens_input,tokens_output,tokens_output,tokens_output,violation_rate,violation_rate,violation_rate
+method,,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm,direct,full_regen,intro_specter_llm
+task_id,seed,,,,,,,,,,,,
+taubench_recon_00000,0,True,True,True,621,1242,1704,232,432,499,0.0,0.0,0.0
+taubench_recon_00001,0,True,True,True,621,1242,2043,431,834,962,0.0,0.0,0.0
+taubench_recon_00002,0,True,True,True,621,1242,2020,410,770,856,0.0,0.0,0.0
+taubench_recon_00003,0,True,True,True,621,1242,1702,230,461,497,0.0,0.0,0.0
+taubench_recon_00004,0,True,True,True,630,1260,1786,271,588,672,0.0,0.0,0.0

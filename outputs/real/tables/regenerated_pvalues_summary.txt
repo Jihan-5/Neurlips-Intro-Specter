@@ -1,0 +1,16 @@
+truthfulqa  Llama 8B    : IS= 94.4%, n_max=36, used cascade=False
+truthfulqa  Llama 70B   : IS= 91.7%, n_max=36, used cascade=True
+truthfulqa  Mistral 12B : IS= 86.1%, n_max=36, used cascade=False
+truthfulqa  Qwen 7B     : IS= 77.8%, n_max=36, used cascade=False
+twowiki     Llama 8B    : IS= 93.3%, n_max=60, used cascade=False
+twowiki     Llama 70B   : IS= 96.7%, n_max=60, used cascade=False
+twowiki     Mistral 12B : IS= 96.7%, n_max=60, used cascade=False
+twowiki     Qwen 7B     : IS= 94.9%, n_max=59, used cascade=True
+longmem     Llama 8B    : IS= 78.3%, n_max=60, used cascade=False
+longmem     Llama 70B   : IS= 68.3%, n_max=60, used cascade=True
+longmem     Mistral 12B : IS= 73.3%, n_max=60, used cascade=False
+longmem     Qwen 7B     : IS= 76.7%, n_max=60, used cascade=True
+musique     Llama 8B    : IS= 91.7%, n_max=60, used cascade=False
+musique     Llama 70B   : IS= 96.7%, n_max=60, used cascade=True
+musique     Mistral 12B : IS= 91.7%, n_max=60, used cascade=True
+musique     Qwen 7B     : IS= 85.0%, n_max=60, used cascade=False

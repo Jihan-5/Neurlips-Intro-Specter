@@ -1,0 +1,1425 @@
+task_id,dataset,method,model,seed,success,constraint_satisfied,violation_rate,profile_violation,repair_status,fault_node_predicted,posterior,final_output,tokens_input,tokens_output,tool_calls,latency_ms,extra
+travel_real_00048,travelplanner_real,direct,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Arrival in Detroit
+- Accommodation: Trumbull & Porter Hotel ($150/night)
+- Lunch: Green Space Cafe ($30/person)
+- Attraction: Detroit Institute of Arts (Free)
+- Dinner: Seva Detroit ($40/person)
+- Total cost: $370
+
+Day 2: Detroit
+- Breakfast: The Detroit Institute of Bagels ($10/person)
+- Attraction: Motown Museum ($15/person)
+- Lunch: Drought ($35/person)
+- Attraction: Charles H. Wright Museum of African American History (Free)
+- Dinner: Folk ($45/person)
+- Total cost: $160
+
+Day 3: Travel to Ann Arbor
+- Breakfast: Avalon International Breads ($15/person)
+- Lunch: Packed lunch from Avalon ($20/person)
+- Attraction: University of Michigan Medical Center (Free)
+- Dinner: The Gandy Dancer ($50/person)
+- Total cost: $105
+
+Day 4: Ann Arbor
+- Breakfast: The Laughing Noodle ($15/person)
+- Attraction: Michigan Science Center ($15/person)
+- Lunch: Seva Ann Arbor ($35/person)
+- Attraction: Belle Isle Aquarium (Free)
+- Dinner: The Ravens Club ($50/person)
+- Total cost: $130
+
+Day 5: Departure
+- Breakfast: The Fleetwood Diner ($15/person)
+- Total cost: $15
+
+Total cost: $590",1839,999,0,0.06316718645393848,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1030,1777,812,0,0.025999965146183968,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,direct,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Here's your 3-day itinerary for Wichita:
+
+Day 1:
+- Accommodation: The Ambassador Hotel ($800 for 3 nights)
+- Attraction: Old Cowtown Museum ($7.50 per person)
+- Lunch: The Anchor ($15 per person)
+
+Day 2:
+- Attraction: Museum of World Treasures (free entry)
+- Dinner: Wichita Brewing Co. ($20 per person)
+
+Day 3:
+- Attraction: The Keeper of the Plains (free entry)
+- Lunch: Lola's Bistro ($15 per person)
+
+Total cost: $1010.",1989,935,0,0.0660410150885582,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,direct,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day-by-day plan:
+
+Day 1: The Surfjack Hotel & Swim Club ($1000), Iolani Palace ($20), lunch at 'The Street Food Hall' ($15), total $1035.
+
+Day 2: The Surfjack Hotel & Swim Club ($1000), Bishop Museum ($25), dinner at 'Duke's Waikiki' ($30), total $1055.
+
+Day 3: The Surfjack Hotel & Swim Club ($1000), Honolulu Zoo ($19), lunch at 'Koko Head Café' ($20), total $1039.
+
+Total cost: $3129 ($1035 + $1055 + $1039).",1926,1284,0,0.05266699008643627,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1705.,1864,812,0,0.058999983593821526,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1,275",1767,1195,0,0.052582938224077225,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $716.50.,2012,860,0,0.05862489342689514,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $8500 (Accommodation: $5100, Meals: $2000, Attractions: $1400)",2040,799,0,0.040207989513874054,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1080,1971,850,0,0.16850000247359276,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,direct,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1-2: The Inn on Ferry Street, Detroit. Visit Detroit Institute of Arts ($15), Detroit Historical Museum (free), Campus Martius Park (free). Meals at Seva ($15-$20). Total: $300.
+Day 3-4: The Bowery Inn, Ann Arbor. Visit University of Michigan (free), Matthaei Botanical Gardens ($5). Meals at The Lunch Room ($10-$15). Total: $275.
+Day 5: Departure. Total cost: $575.",2037,701,0,0.5716669838875532,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,direct,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Hotel Phoenix ($200), The Arrogant Butcher ($30), Café Gaetani ($40), Phoenix Art Museum (free).
+Day 2: Hotel Phoenix ($200), Barrio Cafe ($35), Tempe Public Market Cafe ($45), Desert Botanical Garden ($50).
+Day 3: Hotel Phoenix ($200), The Chuckbox ($30), Chelsea's Kitchen ($40), Phoenix Zoo ($49.90).
+Total cost: $1064.90",1958,1200,0,0.050666043534874916,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,direct,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $4,600",2148,821,0,0.060208141803741455,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Arrival in Detroit
+- Accommodation: Trumbull & Porter Hotel ($150/night)
+- Lunch: Green Space Cafe ($30/person)
+- Attraction: Detroit Institute of Arts (Free)
+- Dinner: Seva Detroit ($40/person)
+- Jazz Venue: Baker's Keyboard Lounge ($20/person cover charge)
+- Total cost: $370
+
+Day 2: Detroit
+- Breakfast: The Detroit Institute of Bagels ($10/person)
+- Attraction: Motown Museum ($15/person)
+- Lunch: Drought ($35/person)
+- Attraction: Charles H. Wright Museum of African American History (Free)
+- Dinner: Folk ($45/person)
+- Jazz Venue: Cliff Bell's ($15/person cover charge)
+- Total cost: $160
+
+Day 3: Travel to Ann Arbor
+- Breakfast: Avalon International Breads ($15/person)
+- Lunch: Packed lunch from Avalon ($20/person)
+- Attraction: University of Michigan Medical Center (Free)
+- Dinner: The Gandy Dancer ($50/person)
+- Jazz Venue: The Ark ($20/person cover charge)
+- Total cost: $105
+
+Day 4: Ann Arbor
+- Breakfast: The Laughing Noodle ($15/person)
+- Attraction: Michigan Science Center ($15/person)
+- Lunch: Seva Ann Arbor ($35/person)
+- Attraction: Belle Isle Aquarium (Free)
+- Dinner: The Ravens Club ($50/person)
+- Jazz Venue: The Blind Pig ($10/person cover charge)
+- Total cost: $130
+
+Day 5: Departure
+- Breakfast: The Fleetwood Diner ($15/person)
+- Total cost: $15
+
+Total cost: $590",4814,2639,0,48734.35179097578,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1160,4608,2392,0,42218.795417109504,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Here's your revised 3-day itinerary for Wichita:
+
+Day 1:
+- Accommodation: The Ambassador Hotel ($800 for 3 nights)
+- Transportation: Public transit
+- Attraction: Old Cowtown Museum ($7.50 per person)
+- Lunch: The Anchor ($15 per person)
+
+Day 2:
+- Transportation: Public transit
+- Attraction: Museum of World Treasures (free entry)
+- Dinner: Wichita Brewing Co. ($20 per person)
+
+Day 3:
+- Transportation: Public transit
+- Attraction: The Keeper of the Plains (free entry)
+- Lunch: Lola's Bistro ($15 per person)
+
+Total estimated cost: $800 (hotel) + $105 (Day 1) + $60 (Day 2) + $45 (Day 3) = $1010, but note that I am uncertain about the exact public transit fares.
+
+This itinerary is within your budget of $2700 and uses English only, as per your constraints.",5134,2492,0,38053.87637484819,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day-by-day plan:
+
+Day 1: The Surfjack Hotel & Swim Club ($900), Iolani Palace ($20), lunch at 'The Street Food Hall' ($12), total $932.
+
+Day 2: The Surfjack Hotel & Swim Club ($900), Bishop Museum ($20), dinner at 'Duke's Waikiki' ($25), total $945.
+
+Day 3: The Surfjack Hotel & Swim Club ($900), Honolulu Zoo ($15), lunch at 'Koko Head Café' ($15), total $930.
+
+Total cost: $2807 ($932 + $945 + $930).",5440,3016,0,11974.622417008504,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1700.,4782,2075,0,55012.04216689803,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Summary: Enjoyed vegan meals and free attractions in Colorado Springs and Denver within a $4,700 budget.",5454,3343,0,69092.76470821351,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,True,,,,"Total cost: $675. Single sentence itinerary: Stay at 'Pet-Friendly Studio', Day 1: The Mint Museum & The Stanley, Day 2: Bechtler Museum & The Cowfish, Day 3: Charlotte Museum of History & The Stanley.",5168,2211,0,48614.72591687925,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $8500 (Accommodation: $7083.34, Meals: $1200, Attractions: $216.66, Uncertainty: $0)",5296,2322,0,47755.05062495358,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1060,5034,2199,0,37213.43349991366,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1-2: The Inn on Ferry Street, Detroit. Visit Detroit Institute of Arts ($15), Detroit Historical Museum (free), Campus Martius Park (free). Meal at Seva ($15). Total: $300.
+Day 3-4: The Bowery Inn, Ann Arbor. Visit University of Michigan (free), Matthaei Botanical Gardens ($5), Ann Arbor Hands-On Museum ($12). Meal at The Lunch Room ($10). Total: $267.
+Day 5: Departure. Total cost: $567.",5024,1864,0,24482.187041081488,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,self_refine,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Hotel Phoenix ($200), The Arrogant Butcher ($30), Café Gaetani ($40), Phoenix Art Museum (free).
+Day 2: Hotel Phoenix ($200), Barrio Cafe ($35), Tempe Public Market Cafe ($45), Desert Botanical Garden ($50).
+Day 3: Hotel Phoenix ($200), The Chuckbox ($30), Chelsea's Kitchen ($40), Phoenix Zoo ($49.90).
+Total cost: $1064.90",5358,3004,0,50680.07458304055,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,self_refine,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $3,460. Itinerary: [Detailed day-by-day plan using precise technical terminology]",5338,2502,0,44844.47725000791,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Arrival in Detroit
+- Accommodation: Trumbull & Porter Hotel ($150/night)
+- Lunch: Green Space Cafe ($30/person)
+- Attraction: Detroit Institute of Arts (Free)
+- Dinner: Seva Detroit ($40/person)
+- Total cost: $370
+
+Day 2: Detroit
+- Breakfast: The Detroit Institute of Bagels ($10/person)
+- Attraction: Motown Museum ($15/person)
+- Lunch: Drought ($35/person)
+- Attraction: Charles H. Wright Museum of African American History (Free)
+- Dinner: Folk ($45/person)
+- Total cost: $160
+
+Day 3: Travel to Ann Arbor
+- Breakfast: Avalon International Breads ($15/person)
+- Lunch: Packed lunch from Avalon ($20/person)
+- Attraction: University of Michigan Medical Center (Free)
+- Dinner: The Gandy Dancer ($50/person)
+- Total cost: $105
+
+Day 4: Ann Arbor
+- Breakfast: The Laughing Noodle ($15/person)
+- Attraction: Michigan Science Center ($15/person)
+- Lunch: Seva Ann Arbor ($35/person)
+- Attraction: Belle Isle Aquarium (Free)
+- Dinner: The Ravens Club ($50/person)
+- Total cost: $130
+
+Day 5: Departure
+- Breakfast: The Fleetwood Diner ($15/person)
+- Total cost: $15
+
+Total cost: $590",1839,999,0,14.775500167161226,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,True,,,,"3-Day Travel Plan for White Plains:
+
+Day 1:
+- Accommodation: White Plains Inn
+- Lunch: La Casa Mexican Restaurant ($40)
+- Dinner: Jade Palace Chinese Restaurant ($50)
+- Attraction: J Harvey Turnure Memorial Park (Free)
+
+Day 2:
+- Lunch: The Med (Mediterranean) ($50)
+- Dinner: The American Tavern ($60)
+- Attraction: Druss Park (Free)
+
+Day 3:
+- Lunch: La Casa Mexican Restaurant ($40)
+- Dinner: Jade Palace Chinese Restaurant ($50)
+- Attraction: Battle Hill Park (Free)
+
+Total cost: $1030",7463,2394,0,47869.238334009424,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Here's your 3-day itinerary for Wichita:
+
+Day 1:
+- Accommodation: The Ambassador Hotel ($800 for 3 nights)
+- Attraction: Old Cowtown Museum ($7.50 per person)
+- Lunch: The Anchor ($15 per person)
+
+Day 2:
+- Attraction: Museum of World Treasures (free entry)
+- Dinner: Wichita Brewing Co. ($20 per person)
+
+Day 3:
+- Attraction: The Keeper of the Plains (free entry)
+- Lunch: Lola's Bistro ($15 per person)
+
+Total cost: $1010.",1989,935,0,14.51054192148149,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day-by-day plan:
+
+Day 1: The Surfjack Hotel & Swim Club ($1000), Iolani Palace ($20), lunch at 'The Street Food Hall' ($15), total $1035.
+
+Day 2: The Surfjack Hotel & Swim Club ($1000), Bishop Museum ($25), dinner at 'Duke's Waikiki' ($30), total $1055.
+
+Day 3: The Surfjack Hotel & Swim Club ($1000), Honolulu Zoo ($19), lunch at 'Koko Head Café' ($20), total $1039.
+
+Total cost: $3129 ($1035 + $1055 + $1039).",1926,1284,0,11.079416843131185,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1685. (Verified: Covers all 3 days and mentions Los Angeles),15022,3414,0,100535.24487512186,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1,275. All cities in Colorado visited and all days covered.",18676,5327,0,112211.75670810044,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,,16119,2488,0,16002.659332938492,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $8500 (Accommodation: $5100, Meals: $2000, Attractions: $1400)",16912,4111,0,86782.21308300272,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1130,15937,3974,0,70295.4595410265,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1-2: The Inn on Ferry Street, Detroit. Visit Detroit Institute of Arts ($15), Detroit Historical Museum (free), Campus Martius Park (free). Meals at Seva ($15-$20). Total: $300.
+Day 3-4: The Bowery Inn, Ann Arbor. Visit University of Michigan (free), Matthaei Botanical Gardens ($5). Meals at The Lunch Room ($10-$15). Total: $275.
+Day 5: Departure. Total cost: $575.",2037,701,0,14.251625165343285,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,reflexion,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Hotel Phoenix ($200), The Arrogant Butcher ($30), Café Gaetani ($40), Phoenix Art Museum (free).
+Day 2: Hotel Phoenix ($200), Barrio Cafe ($35), Tempe Public Market Cafe ($45), Desert Botanical Garden ($50).
+Day 3: Hotel Phoenix ($200), The Chuckbox ($30), Chelsea's Kitchen ($40), Phoenix Zoo ($49.90).
+Total cost: $1064.90",1958,1200,0,10.89395908638835,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,reflexion,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $7,200",16724,3516,0,88593.35716697387,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,full_regen,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Arrival in Detroit
+- Accommodation: Trumbull & Porter Hotel (Private Room) - $150
+- Dinner: GreenSpace Cafe - $45/person
+- Total: $240
+
+Day 2: Detroit
+- Breakfast: Detroit Vegan Soul - $15/person
+- Attraction: Detroit Institute of Arts (Free)
+- Lunch: Seva Detroit - $15/person
+- Dinner: The Ladder - $45/person
+- Total: $130
+
+Day 3: Travel to Ann Arbor
+- Lunch: Detroit Vegan Soul (To-Go) - $15/person
+- Transportation: Rental Car - $50
+- Dinner: The Lunch Room - $45/person
+- Total: $110
+
+Day 4: Ann Arbor
+- Breakfast: Seva Ann Arbor - $15/person
+- Attraction: University of Michigan Medical School (Free)
+- Lunch: cheerful cherub - $15/person
+- Dinner: Vedge Cafe & Market - $45/person
+- Total: $90
+
+Day 5: Departure
+- Breakfast: The Lunch Room - $15/person
+- Total: $15
+
+Total cost: $690",3678,1826,0,19509.707709075883,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1480 (Flights: $1200, Accommodation: $900, Restaurants: $280).",3554,1955,0,26321.309874998406,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $2540,3978,1693,0,19515.572083881125,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,full_regen,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: The Surfjack Hotel & Swim Club ($320), Koko Head Café Breakfast ($20), Waikīkī Beach (Free), Koko Head Café Dinner ($20), Total: $360.
+Day 2: The Surfjack Hotel & Swim Club ($320), Koko Head Café Breakfast ($20), Honolulu Zoo ($16), The Beachhouse at the Moana Lunch ($20), The Beachhouse at the Moana Dinner ($20), Total: $396.
+Day 3: The Surfjack Hotel & Swim Club ($320), Koko Head Café Breakfast ($20), Waikīkī Aquarium ($14), The Beachhouse at the Moana Lunch ($20), The Beachhouse at the Moana Dinner ($20), Total: $374.
+Total cost: $1030.",3852,2350,0,42044.34350016527,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1925,3728,1561,0,24496.20937486179,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost for the 5-day trip: $1170 (Accommodation $890, Meals $366, Attractions $214)",3534,2070,0,17094.20970804058,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,The 3-day itinerary for Charlotte costs a total of $1433.,4025,1423,0,14507.132166996598,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"The total cost for the 5-day trip is $788.75, respecting the user's budget, culinary preferences, and allergy constraints.",4080,1569,0,16401.212458033115,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total trip cost for a 5-day vegan-friendly, mobility-accessible trip to Myrtle Beach, South Carolina, starting from Latrobe is $985.",3942,1661,0,19593.355290824547,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"The 5-day travel plan costing $2,694 has been successfully created, considering the user's constraints and preferences.",4074,1587,0,22345.21049982868,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"Total cost: $1333 (Accommodation: $600, Meals: $420, Attractions: $313)
+Remaining budget: $567",3916,2007,0,21733.201291877776,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,full_regen,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $7150,4296,1456,0,21660.429040901363,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,False,,,,5-day itinerary created with a total cost of $5850.,3734,1555,0,26374.984000111,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"I have started planning your trip to White Plains. For accommodations, I have booked 'The White Plains Hotel' at $150 per night. Next, I will find restaurants that serve the cuisines you are interested in.",3610,1255,0,15508.09883303009,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"Based on the user's preferences and budget, I recommend staying at the 'Boutique Hotel Wichita' for $800 for the 3 nights. For meals, I suggest trying out 'The Anchor' for dinner and 'The Anchor' for lunch. For attractions, you can visit the 'Old Cowtown Museum' for $10 per person and the 'Exploration Place' for $12 per person. Total cost: $2640.",4034,1701,0,18028.419750044122,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,react,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Accommodation - The Surfjack Hotel & Swim Club ($1100), Meal - Duke's Waikiki ($30), Attraction - Waikiki Beach (Free). Total for Day 1: $1130. Day 2: Accommodation - The Surfjack Hotel & Swim Club ($1100), Meal - Koko Head Café ($20), Attraction - Honolulu Museum of Art ($20). Total for Day 2: $1140. Day 3: Accommodation - The Surfjack Hotel & Swim Club ($1100), Meal - The Cheesecake Factory ($30), Attraction - Iolani Palace ($20). Total for Day 3: $1150. Total cost for the trip: $3420.",3908,1947,0,15006.08891597949,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Day 1: Griffith Park (free), lunch at 'In-N-Out Burger' ($15), Griffith Observatory (free).
+Day 2: Hollywood Walk of Fame (free), lunch at 'The Original Farmers Market' ($20), Universal Studios ($100).
+Day 3: The Getty (free), lunch at 'Canter's Deli' ($20).
+Total cost: $1700.",3784,1493,0,15760.740207973868,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Your 5-day travel plan includes vegan-friendly accommodations and restaurants in Colorado Springs and Denver, with a total cost of $4680, leaving $20 for miscellaneous expenses.",3590,1642,0,8106.876582838595,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,react,mistralai/mistral-nemo,42,True,True,0.0,True,,,,Your 3-day itinerary in Charlotte includes staying at the Pet-Friendly Inn for $600. Day 1: Visit Freedom Park ($0) and have lunch at The Cowfish Sushi Burger Bar ($30). Day 2: Explore the Levine Museum of the New South ($10 per person) and dinner at The Stanley Restaurant ($40). Day 3: Discover NASCAR Hall of Fame ($29 per person) and have lunch at The Capital Grille ($50). Total cost: $779.,4081,1365,0,14292.694624979049,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,react,mistralai/mistral-nemo,42,True,True,0.0,True,,,,"Here's a 5-day itinerary for your trip to Texas that fits your budget and dietary preferences:
+
+Day 1: Arrival in Dallas
+- Accommodation: The Adolphus Hotel ($250/night)
+- Lunch: The Spice Club (Indian, $30/person)
+- Attraction: The Dallas Museum of Art (Free)
+- Total for Day 1: $830
+
+Day 2: Explore Dallas
+- Breakfast: Meso Maya (Mediterranean, $20/person)
+- Attraction: The Sixth Floor Museum at Dealey Plaza ($16/person)
+- Lunch: Bhavani's (Indian, $25/person)
+- Attraction: Klyde Warren Park (Free)
+- Dinner: Meddlesome Moth (Mediterranean, $40/person)
+- Total for Day 2: $321
+
+Day 3: Dallas Zoo and Arboretum
+- Breakfast: Local Yocal (American, $15/person)
+- Attraction: Dallas Zoo ($20/person)
+- Lunch: Packed from hotel ($10/person)
+- Attraction: Dallas Arboretum and Botanical Garden ($15/person)
+- Dinner: Pakpao Thai (Thai, $35/person)
+- Total for Day 3: $120
+
+Day 4: Travel to Houston
+- Breakfast: Local Yocal (American, $15/person)
+- Transportation: Bus to Houston ($50/person)
+- Lunch: Packed from hotel ($10/person)
+- Attraction: Space Center Houston ($29.95/person)
+- Dinner: Pondicheri (Indian, $40/person)
+- Total for Day 4: $234.95
+
+Day 5: Houston and Departure
+- Breakfast: Local Yocal (American, $15/person)
+- Attraction: Houston Museum of Natural Science ($16/person)
+- Lunch: The Breakfast Klub (American, $20/person)
+- Total for Day 5: $71
+
+Total cost: $1586.95",4136,2298,0,41548.00337506458,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $3950. The trip includes vegan-friendly accommodations, restaurants, and attractions, with no walking tours over 2 km and no down pillows or duvets.",3998,1252,0,10078.30970804207,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"Total cost: $4500 (Accommodation: $3000, Attractions: $800, Meals: $700)",4130,1163,0,9601.588916964829,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,react,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Arrival in Phoenix
+- Accommodation: Hotel Valley Ho
+- Lunch: 'The Chuckbox' (American)
+- Attraction: Phoenix Art Museum
+- Dinner: 'Tempe's' (Mexican)
+- Total cost for Day 1: $350
+
+Day 2:
+- Breakfast: 'The Breakfast Club' (American)
+- Attraction: Desert Botanical Garden
+- Lunch: 'Café Bink's' (French)
+- Attraction: Phoenix Zoo
+- Dinner: 'Taste of India' (Indian)
+- Total cost for Day 2: $400
+
+Day 3:
+- Breakfast: 'The Breakfast Club'
+- Attraction: Heard Museum
+- Lunch: 'Café Bink's'
+- Attraction: Arizona Science Center
+- Dinner: 'Taste of India'
+- Total cost for Day 3: $350
+
+Total cost for the trip: $1100",3972,2412,0,30753.730166936293,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,react,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $7,150",4352,1359,0,15870.268916944042,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"Day 1: Arrival in Detroit
+- Accommodation: Not specified
+- Lunch: Not specified
+- Attraction: Not specified
+- Dinner: Not specified
+- Total cost: Not specified
+
+Day 2: Detroit
+- Breakfast: Not specified
+- Attraction: Not specified
+- Lunch: Not specified
+- Attraction: Not specified
+- Dinner: Not specified
+- Total cost: Not specified
+
+Day 3: Travel to Ann Arbor
+- Breakfast: Not specified
+- Lunch: Not specified
+- Attraction: University of Michigan Medical Center (Free)
+- Dinner: Not specified
+- Total cost: Not specified
+
+Day 4: Ann Arbor
+- Breakfast: Not specified
+- Attraction: Not specified
+- Lunch: Not specified
+- Attraction: Not specified
+- Dinner: Not specified
+- Total cost: Not specified
+
+Day 5: Departure
+- Breakfast: Not specified
+- Total cost: Not specified
+
+Total cost: Not specified",14917,2217,0,92096.05329087935,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Here's a simple 3-day travel plan for two people from West Palm Beach to White Plains with a budget of $2600. We'll use public transportation and stay in non-shared rooms. We'll try Mexican, Chinese, Mediterranean, and American cuisines. Let's go!",13005,2012,0,70306.19833385572,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Here's your 3-day itinerary for Wichita:
+
+Day 1:
+- Accommodation: The Ambassador Hotel ($800 for 3 nights)
+- Attraction: Old Cowtown Museum ($7.50 per person)
+- Lunch: The Anchor ($15 per person)
+
+Day 2:
+- Attraction: Museum of World Treasures (free entry)
+- Dinner: Wichita Brewing Co. ($20 per person)
+
+Day 3:
+- Attraction: The Keeper of the Plains (free entry)
+- Lunch: Lola's Bistro ($15 per person)
+
+Total cost: $1010.",15251,2777,0,118590.6197919976,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day-by-day plan:
+- Day 1: The Surfjack Hotel & Swim Club ($1000), Iolani Palace ($20), lunch at 'The Street Food Hall' ($15), total $1035.
+- Day 2: The Surfjack Hotel & Swim Club ($1000), Bishop Museum ($25), dinner at 'Duke's Waikiki' ($30), total $1055.
+- Day 3: The Surfjack Hotel & Swim Club ($1000), Honolulu Zoo ($19), lunch at 'Koko Head Café' ($20), total $1039.
+- Total cost: $3129 ($1035 + $1055 + $1039).",17354,2667,0,60500.443291151896,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $1700,13178,1565,0,15237.663249950856,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1,275",10580,1679,0,8633.264582837,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Your 3-day trip to Charlotte costs $1,900, including pet-friendly accommodation, meals, and attractions.",14163,1511,0,18758.211208041757,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $8500 (Accommodation: $5100, Meals: $2000, Attractions: $1400)",12898,2018,0,22323.38899979368,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Your 5-day trip to South Carolina starts with a $300 flight from Latrobe to Myrtle Beach, followed by $200/night vegan-friendly accommodations, $50/day for meals, and $100/day for attractions like the SkyWheel ($14) and Ripley's Aquarium ($29.99). Total estimated cost: $1250.",13676,1398,0,15906.014666892588,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,False,,,,"Day 1-2: The Detroit Foundation Hotel. Meals: Vegan Deli, Seva. Attractions: DIA, Detroit Historical Museum. Day 3-4: The Bell Tower Hotel, Ann Arbor. Meals: Vedge Cafe, The Grotto. Attractions: Michigan Science Center, U-M Museum of Natural History. Total cost: $2950.",21960,2459,0,105975.98229208961,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,True,True,0.0,False,,,,"Day 1: Accommodation - Hotel Phoenix ($200), Dinner - The Arrogant Butcher ($30), Lunch - Café Gaetani ($40), Attraction - Phoenix Art Museum (free). Day 2: Accommodation - Hotel Phoenix ($200), Lunch - Barrio Cafe ($35), Dinner - Tempe Public Market Cafe ($45), Attraction - Desert Botanical Garden ($50). Day 3: Accommodation - Hotel Phoenix ($200), Lunch - The Chuckbox ($30), Dinner - Chelsea's Kitchen ($40), Attraction - Phoenix Zoo ($49.90). Total cost: $1064.90",18999,3022,0,86700.17545903102,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $5,800",15333,1696,0,21458.61424994655,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $5900,82166,4120,0,59498.72329086065,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,Total cost: $2550,79501,3926,0,62177.4625829421,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $2700,88348,3972,0,59814.92575001903,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $3200,86232,4456,0,59122.82858393155,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1,700",82748,3754,0,45346.27345902845,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Your 5-day vegan-friendly Colorado trip costs $4,650, visiting Colorado Springs and Manitou Springs, with daily budgets around $930.",78249,4204,0,71445.46924997121,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $1,900",89267,3821,0,83420.85874988697,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $8,500",92624,4144,0,63861.15520889871,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Vegan-friendly accommodations, restaurants, and attractions within 2 km walking distance in Myrtle Beach and Charleston, no down pillows or duvets, total cost: $3,850.",87756,4015,0,93743.57512500137,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $5900,90226,3458,0,76806.96700001135,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,False,,,,Total cost: $1850,86672,3995,0,85931.82370811701,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,tot,mistralai/mistral-nemo,42,False,False,1.0,True,,,,"Total cost: $7,200",95806,4028,0,102203.82329216227,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,True,True,0.0,False,accepted,,,"Day 1: Arrival in Detroit
+- Accommodation: Trumbull & Porter Hotel ($150/night)
+- Lunch: Green Space Cafe ($30/person)
+- Attraction: Detroit Institute of Arts (Free)
+- Dinner: Seva Detroit ($40/person)
+- Total cost: $370
+
+Day 2: Detroit
+- Breakfast: The Detroit Institute of Bagels ($10/person)
+- Attraction: Motown Museum ($15/person)
+- Lunch: Drought ($35/person)
+- Attraction: Charles H. Wright Museum of African American History (Free)
+- Dinner: Folk ($45/person)
+- Total cost: $160
+
+Day 3: Travel to Ann Arbor
+- Breakfast: Avalon International Breads ($15/person)
+- Lunch: Packed lunch from Avalon ($20/person)
+- Attraction: University of Michigan Medical Center (Free)
+- Dinner: The Gandy Dancer ($50/person)
+- Total cost: $105
+
+Day 4: Ann Arbor
+- Breakfast: The Laughing Noodle ($15/person)
+- Attraction: Michigan Science Center ($15/person)
+- Lunch: Seva Ann Arbor ($35/person)
+- Attraction: Belle Isle Aquarium (Free)
+- Dinner: The Ravens Club ($50/person)
+- Total cost: $130
+
+Day 5: Departure
+- Breakfast: The Fleetwood Diner ($15/person)
+- Total cost: $15
+
+Total cost: $590",4966,1522,0,15711.16808312945,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1839, 'prime_tokens_output': 999}"
+travel_real_00049,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a9,"[{'node_id': 'a9', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.14134275618374556}, {'node_id': 'a1', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 9.0, 'posterior': 0.14134275618374556}, {'node_id': 'a4', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.14134275618374556}, {'node_id': 'a2', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.14134275618374556}, {'node_id': 'a7', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.14134275618374556}, {'node_id': 'a8', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.07067137809187278}, {'node_id': 'a6', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.07067137809187278}, {'node_id': 'a5', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.07067137809187278}, {'node_id': 'a3', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.07067137809187278}, {'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 10.0, 'posterior': 0.01060070671378092}]","Total cost: $1212 (Accommodation: $800, Transportation: $300, Meals: $100, Attractions: $0, Local Transportation: $12)",4760,1943,0,148056.7276251968,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1777, 'prime_tokens_output': 812}"
+travel_real_00050,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,True,True,0.0,False,accepted,,,"Here's your 3-day itinerary for Wichita:
+
+Day 1:
+- Accommodation: The Ambassador Hotel ($800 for 3 nights)
+- Attraction: Old Cowtown Museum ($7.50 per person)
+- Lunch: The Anchor ($15 per person)
+
+Day 2:
+- Attraction: Museum of World Treasures (free entry)
+- Dinner: Wichita Brewing Co. ($20 per person)
+
+Day 3:
+- Attraction: The Keeper of the Plains (free entry)
+- Lunch: Lola's Bistro ($15 per person)
+
+Total cost: $1010.",5286,1545,0,18086.670374963433,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1989, 'prime_tokens_output': 935}"
+travel_real_00051,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,True,True,0.0,False,accepted,,,"Day-by-day plan:
+
+Day 1: The Surfjack Hotel & Swim Club ($1000), Iolani Palace ($20), lunch at 'The Street Food Hall' ($15), total $1035.
+
+Day 2: The Surfjack Hotel & Swim Club ($1000), Bishop Museum ($25), dinner at 'Duke's Waikiki' ($30), total $1055.
+
+Day 3: The Surfjack Hotel & Swim Club ($1000), Honolulu Zoo ($19), lunch at 'Koko Head Café' ($20), total $1039.
+
+Total cost: $3129 ($1035 + $1055 + $1039).",5593,1954,0,17062.05612514168,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1926, 'prime_tokens_output': 1284}"
+travel_real_00052,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a9,"[{'node_id': 'a2', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 6.0, 'posterior': 0.4597701149425286}, {'node_id': 'a5', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 0.2298850574712643}, {'node_id': 'a8', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.05747126436781608}, {'node_id': 'a6', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.05747126436781608}, {'node_id': 'a7', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.05747126436781608}, {'node_id': 'a3', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 0.05747126436781608}, {'node_id': 'a9', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.02873563218390805}, {'node_id': 'a1', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 0.017241379310344827}, {'node_id': 'a4', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 6.0, 'posterior': 0.017241379310344827}, {'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 0.017241379310344827}]",Total cost: $1230,4934,1898,0,143574.51066700742,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1864, 'prime_tokens_output': 812}"
+travel_real_00053,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a0,"[{'node_id': 'a0', 'prior': 0.05, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Repaired assumption: (repaired by re-execution prompt),5606,1954,0,39846.303834114224,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1767, 'prime_tokens_output': 1195}"
+travel_real_00054,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a2,"[{'node_id': 'a2', 'prior': 0.05, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]","Total cost: $1,900",5320,1140,0,17167.37495898269,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2012, 'prime_tokens_output': 860}"
+travel_real_00055,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a7,"[{'node_id': 'a7', 'prior': 0.05, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 1.0}]",Total cost: $8500,5448,1571,0,37953.35858291946,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2040, 'prime_tokens_output': 799}"
+travel_real_00056,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a4,"[{'node_id': 'a4', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Total cost: $1165,5186,1429,0,38203.58533295803,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1971, 'prime_tokens_output': 850}"
+travel_real_00057,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,True,True,0.0,False,accepted,,,"Day 1-2: The Inn on Ferry Street, Detroit. Visit Detroit Institute of Arts ($15), Detroit Historical Museum (free), Campus Martius Park (free). Meals at Seva ($15-$20). Total: $300.
+Day 3-4: The Bowery Inn, Ann Arbor. Visit University of Michigan (free), Matthaei Botanical Gardens ($5). Meals at The Lunch Room ($10-$15). Total: $275.
+Day 5: Departure. Total cost: $575.",5176,1156,0,11348.94737508148,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 2037, 'prime_tokens_output': 701}"
+travel_real_00058,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,True,True,0.0,False,accepted,,,"Day 1: Hotel Phoenix ($200), The Arrogant Butcher ($30), Café Gaetani ($40), Phoenix Art Museum (free).
+Day 2: Hotel Phoenix ($200), Barrio Cafe ($35), Tempe Public Market Cafe ($45), Desert Botanical Garden ($50).
+Day 3: Hotel Phoenix ($200), The Chuckbox ($30), Chelsea's Kitchen ($40), Phoenix Zoo ($49.90).
+Total cost: $1064.90",5510,1418,0,6572.145292069763,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1958, 'prime_tokens_output': 1200}"
+travel_real_00059,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,42,False,False,1.0,True,repair_failed,a4,"[{'node_id': 'a2', 'prior': 0.30000000000000004, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.29126213592233013}, {'node_id': 'a1', 'prior': 0.30000000000000004, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.29126213592233013}, {'node_id': 'a3', 'prior': 0.30000000000000004, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.29126213592233013}, {'node_id': 'a4', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.09708737864077667}, {'node_id': 'a0', 'prior': 0.029999999999999992, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.029126213592233}]","Total cost: $4,630",5490,1374,0,75850.95579200424,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2148, 'prime_tokens_output': 821}"
+travel_real_00048,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Day 1: Arrival in Texas - Check-in at [Accommodation], Dinner at [Gluten-free Restaurant]... Day 7: Departure - Check-out from [Accommodation]... Total cost: $14,600",2211,674,0,0.059750163927674294,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $3500,1727,453,0,0.1388341188430786,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost for the trip: $1959,1948,754,0,0.06504193879663944,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Here's a concrete day-by-day plan for your trip:... (detailed plan here)... Total cost: $5,280",2151,551,0,0.06800005212426186,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 3-day trip to Myrtle Beach from Washington, including accommodation, activities, and meals, will cost $480.",1909,604,0,0.07191603071987629,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Day 1: The Ivy Hotel ($500), National Aquarium ($79.90), Dinner at The Capital Grille ($100)
+Day 2: The Ivy Hotel ($500), Fort McHenry National Monument and Historic Shrine (free), Lunch at Miss Shirley's Cafe ($50)
+Day 3: The Ivy Hotel ($500), Walters Art Museum ($30), Dinner at The Food Market ($80)
+Total cost: $1289.90",2038,726,0,0.038207974284887314,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $4850,2332,833,0,0.07945811375975609,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1780,2097,504,0,0.024416949599981308,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,direct,mistralai/mistral-nemo,123,True,True,0.0,False,,,,"Day 1: Arrival & U.S. Space & Rocket Center ($50/person) - Total: $250
+Day 2: Huntsville Botanical Garden ($14/person) & Huntsville Museum of Art ($10/person) - Total: $104
+Day 3: Departure - Total: $900
+Total cost: $1154",2087,584,0,0.03437488339841366,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"The total cost of the trip is $732, leaving $1468 within the budget.",1623,808,0,0.03333296626806259,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $514,1829,733,0,0.012958189472556114,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,direct,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $464.,1777,467,0,0.034207943826913834,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Day 1: Arrival in Dallas - Check-in at [Accessible Accommodation], Lunch at [Gluten-free Restaurant], Visit [Accessible Attraction]... Day 7: Departure from San Antonio - Check-out from [Accessible Accommodation]... Total cost: $14,600",5254,2048,0,27751.218416029587,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $360,4044,1573,0,24390.364208025858,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost for the trip: $1959,4786,2056,0,25882.553834002465,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Here's a single sentence summary of your trip: You'll visit Rochester, Syracuse, and Buffalo, staying at blue-decorated accommodations, dining at vegan-friendly restaurants, and exploring jazz music scenes. Total cost: $5,280 (uncertain due to varying accommodation prices).",4969,1632,0,23228.988791117445,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 3-day trip to Myrtle Beach from Washington, including accommodation, activities, and meals, will cost $480.",4727,1718,0,22848.56062522158,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Day 1: The Ivy Hotel ($500), National Aquarium ($79.90), Dinner at The Capital Grille ($100)
+Day 2: The Ivy Hotel ($500), Fort McHenry National Monument and Historic Shrine (free), Lunch at Miss Shirley's Cafe ($50)
+Day 3: The Ivy Hotel ($500), Walters Art Museum ($30), Dinner at The Food Market ($80)
+Total cost: $1289.90",5079,1917,0,28104.607583023608,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $4750. A 7-day trip to Colorado, visiting Durango, with vegan meals and no walking tours over 2 km.",5914,2255,0,28443.283166037872,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $2110,5003,1844,0,31426.528957905248,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,self_refine,mistralai/mistral-nemo,123,True,True,0.0,False,,,,"Day 1: Arrival & Dinner at The Bottle ($30/person) - Total: $120
+Day 2: U.S. Space & Rocket Center ($50/person) & Lunch at Commerce Kitchen ($20/person) & Huntsville Museum of Art ($10/person) - Total: $260
+Day 3: Departure - Total: $900
+Total cost: $1280",5007,1824,0,25658.79516606219,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"The total cost of the trip is $702, leaving $1498 within the budget. I have clearly marked uncertainty where I am not sure and have verified claims where possible. I have also included skeptical and source-cited information as per the user's preference (c4).",4555,2672,0,38074.910040944815,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $514,4591,1871,0,32872.758499812335,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,self_refine,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $279.99.,4270,1345,0,18897.691374877468,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Day 1: Arrival in Texas - Check-in at [Gluten-free, Accessible Accommodation], Dinner at [Gluten-free Restaurant]... Day 7: Departure - Check-out from [Gluten-free, Accessible Accommodation]... Total cost: $14,600",15547,2741,0,51329.02729185298,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $3500. This 5-day plan covers Texas, starting from Killeen, with 2 nights in Dallas and 3 nights in Austin.",12017,2115,0,48590.217791032046,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost for the trip: $1959,14468,2866,0,54022.42387505248,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Here's a concrete day-by-day plan for your trip to New York:... (detailed plan here)... Total cost: $5,280",14341,2053,0,75403.41949998401,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,reflexion,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Your 3-day trip to Myrtle Beach from Washington includes accommodation, activities, and meals totaling $570. Day 1: SkyWheel and lunch at Thoroughbreds. Day 2: WonderWorks and dinner at The Library. Day 3: Ripley's Aquarium and lunch at Thoroughbreds.",14264,1996,0,67875.22933399305,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,reflexion,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Day 1: The Ivy Hotel ($500), National Aquarium ($79.90), Dinner at The Capital Grille ($100)
+Day 2: The Ivy Hotel ($500), Fort McHenry National Monument and Historic Shrine (free), Lunch at Miss Shirley's Cafe ($50)
+Day 3: The Ivy Hotel ($500), Walters Art Museum ($30), Dinner at The Food Market ($80)
+Total cost: $1289.90
+
+**Baltimore Itinerary**",8129,2154,0,34905.641792109236,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Revised Plan: 7-day trip to Durango, Colorado from March 1st to March 7th, 2022. Total cost: $4850.",18692,4155,0,82921.15124990232,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $1850. Itinerary adheres to all given constraints, including destination, duration, budget, and dietary requirements. It covers 5 days in Wisconsin, as requested.",15728,2669,0,64530.71470791474,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,reflexion,mistralai/mistral-nemo,123,True,True,0.0,False,,,,"Day 1: Arrival & U.S. Space & Rocket Center ($50/person) - Total: $250
+Day 2: Huntsville Botanical Garden ($14/person) & Huntsville Museum of Art ($10/person) - Total: $104
+Day 3: Departure - Total: $900
+Total cost: $1154",2087,584,0,18.246833933517337,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"The total cost of the trip is $757, leaving $1443 within the budget. The itinerary covers all 3 days and mentions Palm Springs by name. Uncertainty is clearly marked where necessary.",14860,3633,0,74290.73829087429,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $414,14095,2870,0,46634.02058300562,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,reflexion,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $754. This itinerary covers 3 days in Orlando, starting from Providence.",12437,1627,0,30475.85641592741,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost for the trip: $9,270",4422,1721,0,28586.154291871935,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1327,3454,1248,0,27815.566207980737,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1150,3896,1471,0,21188.13975015655,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,full_regen,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Day 1: Stay at 'The Standard, High Line' in New York. Dinner at 'Le Bernardin'. Visit the 'Museum of the Moving Image'. Total cost: $350. Day 2: Stay at 'The New York Edition'. Lunch at 'Del Posto'. Visit the 'The Metropolitan Museum of Art'. Dinner at 'RedFarm'. Total cost: $400. Day 3: Stay at 'The Four Seasons Hotel New York'. Brunch at 'The Grill'. Visit the 'Central Park'. Dinner at 'Le Bernardin'. Total cost: $450. Total cost for the trip: $1200.",4302,1393,0,24296.574625186622,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 3-day trip to Myrtle Beach from Washington will cost a total of $640, including accommodation, meals, and attractions.",3818,1280,0,16747.218207921833,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1490,4075,1240,0,7477.892707800493,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $7650,4664,1507,0,17214.12462508306,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost for the trip: $3200,4195,1413,0,16879.206749843433,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,False,,,,Total cost: $3892 (within budget),4174,1519,0,24452.91033317335,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"The 3-day itinerary is planned with consideration for the user's mobility issues and vegan diet, while keeping the total cost under $2200.",3246,1470,0,11682.525750016794,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost for the trip: $683.94.,3658,1516,0,20415.074167074636,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,full_regen,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $785,3554,1006,0,9372.22316605039,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,react,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Here's a day-by-day plan for your trip to Texas:
+
+Day 1: Arrival in Dallas
+- Accommodation: The Adolphus Hotel (Entire room, $300/night)
+- Dinner: The Mansion Restaurant (Gluten-free options available, $100/person)
+- Attraction: The Dallas Museum of Art (Free admission)
+
+Day 2: Dallas
+- Breakfast: Bread Winners Cafe (Gluten-free options available, $50/person)
+- Attraction: The Sixth Floor Museum at Dealey Plaza ($16/person)
+- Lunch: The Rustic (Gluten-free options available, $60/person)
+- Dinner: Pappas Bros. Steakhouse (Gluten-free options available, $150/person)
+
+Day 3: Travel to Houston
+- Transportation: Private transfer ($500)
+- Accommodation: The Houstonian Hotel, Club & Spa (Entire room, $350/night)
+- Dinner: Pappas Bros. Steakhouse (Gluten-free options available, $150/person)
+
+Day 4: Houston
+- Breakfast: The Breakfast Klub (Gluten-free options available, $40/person)
+- Attraction: Space Center Houston ($29.95/person)
+- Lunch: Pappasito's Cantina (Gluten-free options available, $60/person)
+- Dinner: The Capital Grille (Gluten-free options available, $150/person)
+
+Day 5: Travel to San Antonio
+- Transportation: Private transfer ($500)
+- Accommodation: The St. Anthony Hotel (Entire room, $320/night)
+- Dinner: Bliss (Gluten-free options available, $100/person)
+
+Day 6: San Antonio
+- Breakfast: Lulu's Bakery & Cafe (Gluten-free options available, $40/person)
+- Attraction: The Alamo (Free admission)
+- Lunch: Boudro's on the Riverwalk (Gluten-free options available, $60/person)
+- Dinner: Bohanan's Prime Steaks and Seafood (Gluten-free options available, $150/person)
+
+Day 7: Departure
+- Breakfast: Magnolia Pancake Haus (Gluten-free options available, $40/person)
+
+Total cost: $7,469",4478,2384,0,31775.037500075996,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $3450. See itinerary for details.,3510,856,0,8009.837207850069,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $4550,3952,1223,0,8372.853667009622,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Here's a day-by-day plan for your trip: Day 1: Arrival in New York - Accommodation: The Standard High Line (allows visitors, $350/night) - Dinner: L'Artusi (Italian, vegan options available, $50/person) - Total cost: $400. Day 2: - Accommodation: Same as Day 1 - Lunch: Buvette (French, vegan options available, $30/person) - Attraction: The Metropolitan Museum of Art (free with suggested donation) - Dinner: RedFarm (Chinese, vegan options available, $40/person) - Total cost: $110. Day 3: - Accommodation: Same as Day 1 - Lunch: Keens Steakhouse (American, vegan options available, $35/person) - Attraction: Central Park (free) - Dinner: Carbone (Italian, vegan options available, $60/person) - Total cost: $105. Day 4: Departure - Accommodation: Same as Day 1 - Breakfast: Russ & Daughters Cafe (American, vegan options available, $20/person) - Total cost: $20. Total cost: $635.",4358,1753,0,17817.64700007625,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 3-day trip to Myrtle Beach includes staying at The Market Common, visiting SkyWheel Myrtle Beach, and dining at Aspen Grille, The Chemist, and Thoroughbreds Chophouse & Seafood Grille, with a total cost of $1380.",3874,1146,0,10042.690583039075,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,react,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Here's a 3-day travel plan for two people, departing from Cleveland to Baltimore from March 15th to March 17th, 2022, with a budget of $1700:
+
+Day 1:
+- Accommodation: The Ivy Hotel ($500)
+- Lunch: The Food Market ($30)
+- Dinner: The Food Market ($30)
+- Attraction: National Aquarium ($40)
+- Total for Day 1: $600
+
+Day 2:
+- Accommodation: The Ivy Hotel ($500)
+- Lunch: The Food Market ($30)
+- Dinner: The Food Market ($30)
+- Attraction: Fort McHenry National Monument and Historic Shrine (Free)
+- Dessert: The Charmery ($10)
+- Total for Day 2: $540
+
+Day 3:
+- Accommodation: The Ivy Hotel ($500)
+- Lunch: The Food Market ($30)
+- Dinner: The Food Market ($30)
+- Attraction: The Walters Art Museum (Free)
+- Total for Day 3: $560
+
+Total cost: $1700",4132,1463,0,11822.81933305785,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $3,200",4720,1525,0,10690.951250027865,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Day 1-3: Madison. Day 4-5: Milwaukee. Total cost: $3200.,4251,1072,0,7106.70454101637,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,False,,,,"Total cost: $2680 (Accommodation: $450, Meals: $960, Attractions: $480)",4230,1429,0,12520.988707896322,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $485 (Accommodation: $450, Food: $35, Attractions: $0).",3302,1321,0,7412.751167081296,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Day 1: Stay at The Market Common ($465). Visit SkyWheel Myrtle Beach ($14) and have dinner at The Chemist - Craft Cocktails & Modern Cuisine ($30). Total cost for Day 1: $509. Remaining budget: $891.,3714,1138,0,6223.486915929243,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,react,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $775.,3610,1036,0,7658.006499987096,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00049,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Day 1: Killeen to Dallas. Stay at boutique hotel 'The Adolphus'. Dinner at 'The French Room' ($150). Visit 'The Dallas World Aquarium' ($20).,12240,1246,0,12869.716332992539,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00051,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"I can't provide a detailed day-by-day plan due to uncertainty about specific costs and availability. However, I can tell you that your budget allows for a week-long trip for two from Pittsburgh to New York, including accommodation, meals, and attractions, with a total estimated cost of around $5,300.",15048,902,0,10442.226208047941,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 3-day trip to Myrtle Beach from Washington, including boutique hotel with private bathroom, public transit, alcohol-optional meals, and attractions, will cost $1400.",13282,1134,0,15037.117708008736,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00054,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Your 7-day itinerary includes staying at vegan-friendly hotels, dining at Italian, French, Chinese, and American restaurants, and visiting attractions like museums and parks, all within your $7700 budget.",16630,1778,0,19614.772791974247,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1780,14497,892,0,14340.972292004153,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,True,True,0.0,False,,,,Day 1: Arrival & Big Spring International Park (Free) - Total: $0. Day 2: Huntsville Botanical Garden ($14/person) & Huntsville Museum of Art ($10/person) - Total: $104. Day 3: Departure - Total: $900. Total cost: $1004.,15950,1602,0,24254.129541106522,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"The total cost of the trip is $732, leaving $1468 within the budget.",10959,2670,0,54863.536375109106,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00059,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,123,True,True,0.0,True,,,,"Day 1: Fly to Orlando, stay at vegan-friendly hotel. Day 2: Visit SeaWorld ($105), eat at vegan restaurant ($15). Day 3: Explore Harry P Leu Gardens ($10), fly back. Total under $1800.",12402,1075,0,20293.32304187119,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $14,550",99362,4219,0,103178.69441607036,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $3500,76427,3309,0,73699.56837478094,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $4600,87981,4375,0,88381.0630000662,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00052,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Stay at The Anderson Ocean Club, dine at The Chemist, visit Broadway at the Beach. Total cost: $1200.",84820,3497,0,71544.46049989201,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1650,90248,3762,0,130587.91108289734,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Total cost: $7,700",103250,3431,0,46232.375083025545,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $3200,92629,2952,0,46773.44720903784,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,False,,,,Total cost: $2700,92931,3721,0,80173.08116680942,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"{""day1"":{""accommodation"":""V Palm Springs"",""meal"":""Lunch at Luscious Lorraine's Organic Eatery ($15)"",""attraction"":""Palm Springs Art Museum (Free)"",""cost"":""$15""},""day2"":{""accommodation"":""V Palm Springs"",""meal"":""Dinner at Native Foods Cafe ($20)"",""attraction"":""Moorten Botanical Garden ($5)"",""cost"":""$25""},""day3"":{""accommodation"":""V Palm Springs"",""meal"":""Lunch at Palm Greens Cafe ($18)"",""attraction"":""Palm Springs Aerial Tramway ($25)"",""cost"":""$43""},""total_cost"":""$83""}",71767,3503,0,35234.60812494159,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,Total cost: $1350,81663,3788,0,72030.48025001772,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,tot,mistralai/mistral-nemo,123,False,False,1.0,True,,,,"Orlando Vegan Guesthouse ($580, 3 nights)",79427,3443,0,62252.961666090414,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a5,"[{'node_id': 'a4', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.2826855123674912}, {'node_id': 'a2', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.2826855123674912}, {'node_id': 'a1', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.1413427561837456}, {'node_id': 'a5', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.1413427561837456}, {'node_id': 'a3', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.1413427561837456}, {'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 6.0, 'posterior': 0.010600706713780921}]",The final itinerary and cost breakdown will be provided after the re-execution.,5406,1388,0,86911.57366707921,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2211, 'prime_tokens_output': 674}"
+travel_real_00049,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a3,"[{'node_id': 'a3', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 1.0}]",Total cost: $3500,4196,813,0,50723.04679104127,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1727, 'prime_tokens_output': 453}"
+travel_real_00050,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a3,"[{'node_id': 'a3', 'prior': 0.05, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 1.0}]",Total cost for the third day: $39 per person.,4938,1145,0,37390.94895799644,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1948, 'prime_tokens_output': 754}"
+travel_real_00051,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a3,"[{'node_id': 'a3', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]","Total cost: $5,300",5121,917,0,15793.178166961297,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2151, 'prime_tokens_output': 551}"
+travel_real_00052,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a0,"[{'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 1.0}]",Total cost: $1380,4879,1151,0,17659.706291975453,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1909, 'prime_tokens_output': 604}"
+travel_real_00053,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a11,"[{'node_id': 'a11', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Total cost: $1399.95,5231,1838,0,27677.241458091885,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2038, 'prime_tokens_output': 726}"
+travel_real_00054,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a3,"[{'node_id': 'a3', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Repaired trajectory generated successfully,6066,1286,0,18509.88524989225,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2332, 'prime_tokens_output': 833}"
+travel_real_00055,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a6,"[{'node_id': 'a6', 'prior': 0.03, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Total cost: $2010,5155,1341,0,32019.430125132203,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2097, 'prime_tokens_output': 504}"
+travel_real_00056,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,True,True,0.0,False,accepted,,,"Day 1: Arrival & U.S. Space & Rocket Center ($50/person) - Total: $250
+Day 2: Huntsville Botanical Garden ($14/person) & Huntsville Museum of Art ($10/person) - Total: $104
+Day 3: Departure - Total: $900
+Total cost: $1154",5159,1045,0,8249.050291022286,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 2087, 'prime_tokens_output': 584}"
+travel_real_00057,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,True,True,0.0,True,repaired,a4,"[{'node_id': 'a4', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]","Day 1: Arrival, check-in at hotel, dinner at a vegan restaurant.
+Day 2: Visit Palm Springs Art Museum ($12), lunch at a vegan restaurant, visit Moorten Botanical Garden (free), visit Palm Springs Aerial Tramway ($25.95), dinner at a vegan restaurant.
+Day 3: Check-out, departure.
+Total cost: $355.95",4707,1359,0,21893.41749995947,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1623, 'prime_tokens_output': 808}"
+travel_real_00058,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a10,"[{'node_id': 'a6', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.27972027972027974}, {'node_id': 'a7', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.27972027972027974}, {'node_id': 'a2', 'prior': 0.05, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 0.1398601398601399}, {'node_id': 'a10', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.13986013986013987}, {'node_id': 'a5', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.13986013986013987}, {'node_id': 'a1', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 0.020979020979020983}]",Total cost: $550,4743,2006,0,58544.64970808476,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1829, 'prime_tokens_output': 733}"
+travel_real_00059,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,123,False,False,1.0,True,repair_failed,a5,"[{'node_id': 'a5', 'prior': 0.30000000000000004, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.4301075268817205}, {'node_id': 'a4', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 0.2867383512544802}, {'node_id': 'a6', 'prior': 0.059999999999999984, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.08602150537634407}, {'node_id': 'a14', 'prior': 0.05, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.07168458781362007}, {'node_id': 'a10', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a9', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a11', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a13', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a8', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a7', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}, {'node_id': 'a12', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.017921146953405017}]","List of vegan-friendly restaurants in Orlando with public transit access and no walking tours over 2 km, all within the user's budget.",4422,2023,0,119129.33383299969,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1777, 'prime_tokens_output': 467}"
+travel_real_00048,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $2130,1775,834,0,0.06341701373457909,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,direct,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1-3: Grand Junction
+- Accommodation: Grand Junction Hotel
+- Meals: Breakfast at 'The Breakfast Nook', Lunch at 'Main Street Bagel', Dinner at 'Bin 46 Wine Bar & Restaurant'
+- Attraction: Museum of the West ($10 per person)
+Total cost for 3 days: $1500
+
+Day 4-6: Colorado Springs
+- Accommodation: Colorado Springs Inn
+- Meals: Breakfast at 'The Omelette Parlor', Lunch at 'Josh & John's Steakhouse', Dinner at 'The Famous Steak House'
+- Attraction: Cheyenne Mountain Zoo ($12 per person)
+Total cost for 3 days: $1500
+
+Day 7: Denver
+- Accommodation: Denver Lodge
+- Meals: Breakfast at 'Snooze, an A.M. Eatery', Lunch at 'Snarf's Sandwiches', Dinner at 'The Buckhorn Exchange'
+- Attraction: Denver Museum of Nature & Science ($16 per person)
+Total cost for 1 day: $500
+
+Total cost: $3500",2034,1120,0,0.0802918802946806,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1-7: Stay at Belleville Square ($1000). Visit Labor & Industrial Museum ($20), St. Clair County Historical Society (free), and Old Brewery District Mural (free). Travel by bus from Minneapolis to Belleville, Illinois ($400). Total cost: $1420.",2086,772,0,0.12212502770125866,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,direct,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Idaho
+- Accommodation: Vegan-friendly hotel in Boise
+- Lunch: Vegan Italian restaurant in Boise
+- Attraction: Zoo Boise
+- Dinner: Vegan Chinese restaurant in Boise
+Total cost for Day 1: $1,500
+... (similar format for Day 2 to Day 7)
+Total cost for the trip: $22,000",1918,496,0,0.04445808008313179,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1-3: Dallas
+- Accommodation: Hotel ZaZa Dallas - $250/night
+- Meal 1: Cosmic Cafe (Vegan options available) - $50/person
+- Meal 2: Spiral Diner & Bakery (Vegan) - $40/person
+- Attraction: Dallas World Aquarium - $20/person
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16/person
+- Total for 3 days: $3,360
+
+Day 4-5: Austin
+- Accommodation: Omni Austin Hotel Downtown - $200/night
+- Meal 1: Bouldin Creek Cafe (Vegan options available) - $45/person
+- Meal 2: Counter Culture (Vegan) - $45/person
+- Attraction: Austin Zoo - $12/person
+- Attraction: Lady Bird Johnson Wildflower Center - $9/person
+- Total for 2 days: $2,280
+
+Day 6-7: San Antonio
+- Accommodation: Hotel Emma - $280/night
+- Meal 1: Green Vegetarian Cuisine + Bar - $50/person
+- Meal 2: Viva Vegeria (Vegan) - $45/person
+- Attraction: San Antonio Zoo - $14.99/person
+- Attraction: The Alamo - Free
+- Total for 2 days: $2,370
+
+Total cost: $8,010",1825,947,0,0.04733307287096977,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"The total cost for the trip is $3,065.",1970,1065,0,0.03733299672603607,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $555.,2015,508,0,0.04070904105901718,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost for the 3-day trip: $765 * 3 = $2295. However, this exceeds the user's budget of $1900. Please adjust the plan to fit within the budget.",2132,862,0,0.027625123038887978,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $1,557",2070,882,0,0.06874999962747097,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1465,1941,718,0,0.02050003968179226,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,direct,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $10,050",1801,847,0,0.06250012665987015,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,direct,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Dallas
+- Accommodation: Hotel Zaza Dallas (Alcohol-optional, Vegan options available) - $300
+- Lunch: The French Room (French cuisine) - $120
+- Dinner: Yum Yum Truck (Chinese cuisine) - $80
+- Attraction: The Dallas World Aquarium - $160
+Total for Day 1: $660
+
+Day 2: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16
+Total for Day 2: $376
+
+Day 3: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: Reunion Tower - $17
+Total for Day 3: $357
+
+Day 4: Travel to Houston
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Pondicheri (Indian-French fusion) - $160
+- Attraction: Space Center Houston - $29.95
+Total for Day 4: $409.95
+
+Day 5: Houston
+- Breakfast: Local vegan café - $40
+- Lunch: Pondicheri - $160
+- Dinner: Yum Yum Truck - $80
+- Attraction: Houston Museum of Natural Science - $16
+Total for Day 5: $356
+
+Day 6: Travel to Austin
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Gourdough's Public House (Vegan options available) - $120
+- Attraction: Texas State Capitol - Free
+Total for Day 6: $340
+
+Day 7: Austin
+- Breakfast: Local vegan café - $40
+- Lunch: Gourdough's Public House - $120
+- Dinner: Arlo's (BYOB, Vegan options available) - $100
+- Attraction: The Bullock Texas State History Museum - $13
+Total for Day 7: $373
+
+Total cost: $2837.95",2046,1496,0,0.08599995635449886,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $2130,4654,1763,0,19965.993084013462,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,self_refine,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1-3: Grand Junction
+- Accommodation: Grand Junction Hotel
+- Meals: Breakfast at 'The Breakfast Nook', Lunch at 'Main Street Bagel', Dinner at 'Bin 46 Wine Bar & Restaurant'
+- Attraction: Museum of the West ($10 per person)
+Total cost for 3 days: $1250
+
+Day 4-6: Colorado Springs
+- Accommodation: Colorado Springs Inn
+- Meals: Breakfast at 'The Omelette Parlor', Lunch at 'Josh & John's Steakhouse', Dinner at 'The Famous Steak House'
+- Attraction: Cheyenne Mountain Zoo ($12 per person)
+Total cost for 3 days: $1275
+
+Day 7: Denver
+- Accommodation: Denver Lodge
+- Meals: Breakfast at 'Snooze, an A.M. Eatery', Lunch at 'Snarf's Sandwiches', Dinner at 'The Buckhorn Exchange'
+- Attraction: Denver Museum of Nature & Science ($16 per person)
+Total cost for 1 day: $430
+
+Total cost: $3000",5521,2388,0,23027.53800014034,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1-7: Stay at Belleville Square ($1000). Visit Labor & Industrial Museum ($20), St. Clair County Historical Society (free), and Old Brewery District Mural (free). Travel by bus from Minneapolis to Belleville, Illinois ($700). Total cost: $1720.",5305,2163,0,25095.785582903773,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,self_refine,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Idaho
+- Accommodation: Vegan-friendly, alcohol-optional hotel in Boise with blue decor
+- Lunch: Vegan Italian restaurant in Boise that caters to a 6th-grade reading level
+- Attraction: Zoo Boise, where you can learn about animals without jargon
+- Dinner: Vegan Chinese restaurant in Boise that offers alcohol-free drinks
+Total cost for Day 1: $1,450
+... (similar format for Day 2 to Day 7, mentioning Pixel and Byte)
+Total cost for the trip: $22,000",4406,1367,0,16200.39154193364,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1-3: Dallas
+- Accommodation: Hotel ZaZa Dallas - $250/night
+- Meal 1: Cosmic Cafe (Vegan options available) - $50/person
+- Meal 2: Spiral Diner & Bakery (Vegan) - $40/person
+- Attraction: Dallas World Aquarium - $20/person (Verbal descriptions available)
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16/person (Clinically relevant for medical board exam)
+- Activity: Children's Aquarium at Fair Park - $10/person (Family-friendly)
+- Total for 3 days: $3,560
+
+Day 4-5: Austin
+- Accommodation: Omni Austin Hotel Downtown - $200/night
+- Meal 1: Bouldin Creek Cafe (Vegan options available) - $45/person
+- Meal 2: Counter Culture (Vegan) - $45/person
+- Attraction: Austin Zoo - $12/person (Family-friendly)
+- Attraction: Lady Bird Johnson Wildflower Center - $9/person (Verbal descriptions available)
+- Activity: Thinkery - $12/person (Interactive science museum for children)
+- Total for 2 days: $2,540
+
+Day 6-7: San Antonio
+- Accommodation: Hotel Emma - $280/night
+- Meal 1: Green Vegetarian Cuisine + Bar - $50/person
+- Meal 2: Viva Vegeria (Vegan) - $45/person
+- Attraction: San Antonio Zoo - $14.99/person (Family-friendly)
+- Attraction: The Alamo - Free (Clinically relevant for medical board exam)
+- Activity: San Antonio Children's Museum - $9/person
+- Total for 2 days: $2,670
+
+Total cost: $8,770",4706,2395,0,27267.894458957016,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"The total cost for the trip is $3,065. Please note that the hotel and restaurant names are uncertain.",5247,2547,0,26222.6090838667,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $555.,4731,1370,0,12360.421624965966,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the 3-day trip: $585 * 3 = $1755. This plan respects the user's budget of $1900 and all other constraints and preferences.,5375,2135,0,25555.161916883662,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $1,550",5411,2355,0,44330.573374871165,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1385 (estimated),4716,1799,0,53629.66083292849,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,self_refine,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $10,280",4558,1906,0,49771.596083883196,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,self_refine,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Dallas
+- Accommodation: Hotel Zaza Dallas (Alcohol-optional, Vegan options available) - $300
+- Lunch: The French Room (French cuisine) - $120
+- Dinner: Yum Yum Truck (Chinese cuisine) - $80
+- Attraction: The Dallas World Aquarium - $160
+Total for Day 1: $660
+
+Day 2: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16
+Total for Day 2: $376
+
+Day 3: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: Reunion Tower - $17
+Total for Day 3: $357
+
+Day 4: Travel to Houston
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Pondicheri (Indian-French fusion) - $160
+- Attraction: Space Center Houston - $29.95
+Total for Day 4: $409.95
+
+Day 5: Houston
+- Breakfast: Local vegan café - $40
+- Lunch: Pondicheri - $160
+- Dinner: Yum Yum Truck - $80
+- Attraction: Houston Museum of Natural Science - $16
+Total for Day 5: $356
+
+Day 6: Travel to Austin
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Gourdough's Public House (Vegan options available) - $120
+- Attraction: Texas State Capitol - Free
+Total for Day 6: $340
+
+Day 7: Austin
+- Breakfast: Local vegan café - $40
+- Lunch: Gourdough's Public House - $120
+- Dinner: Arlo's (BYOB, Vegan options available) - $100
+- Attraction: The Bullock Texas State History Museum - $13
+Total for Day 7: $373
+
+Total cost: $2837.95
+
+Sources: [List of sources used for the itinerary]",5690,3357,0,70247.48183297925,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Palm Springs Itinerary: Day 1 - Palm Springs Art Museum ($12), Day 2 - Moorten Botanical Garden ($5), Day 3 - Palm Springs Historical Society (Free). Total cost: $2130.",7562,1901,0,13790.060291066766,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1-3: Grand Junction
+- Accommodation: Grand Junction Hotel
+- Meals: Breakfast at 'The Breakfast Nook', Lunch at 'Main Street Bagel', Dinner at 'Bin 46 Wine Bar & Restaurant'
+- Attraction: Museum of the West ($10 per person)
+Total cost for 3 days: $1500
+
+Day 4-6: Colorado Springs
+- Accommodation: Colorado Springs Inn
+- Meals: Breakfast at 'The Omelette Parlor', Lunch at 'Josh & John's Steakhouse', Dinner at 'The Famous Steak House'
+- Attraction: Cheyenne Mountain Zoo ($12 per person)
+Total cost for 3 days: $1500
+
+Day 7: Denver
+- Accommodation: Denver Lodge
+- Meals: Breakfast at 'Snooze, an A.M. Eatery', Lunch at 'Snarf's Sandwiches', Dinner at 'The Buckhorn Exchange'
+- Attraction: Denver Museum of Nature & Science ($16 per person)
+Total cost for 1 day: $500
+
+Total cost: $3500",2034,1120,0,16.07029209844768,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1-3: Stay at Belleville Square ($1000). Visit Labor & Industrial Museum ($20), St. Clair County Historical Society (free), and Old Brewery District Mural (free). Travel by bus from Minneapolis to Belleville, Illinois ($400).
+Day 4-6: Stay at Springfield Marriott Hotel ($1200). Visit Lincoln Home National Historic Site (free) and have dinner at Cozy Dog Drive In ($40).
+Day 7: Travel to Chicago, Illinois by bus ($100 per person). Stay at The Blackstone, Autograph Collection ($1500). Visit Art Institute of Chicago ($50) and have dinner at Lou Malnati's Pizano Pizzeria ($60). Total cost: $4260.",8543,2636,0,81332.8344579786,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Idaho
+- Accommodation: Vegan-friendly hotel in Boise
+- Lunch: Vegan Italian restaurant in Boise
+- Attraction: Zoo Boise
+- Dinner: Vegan Chinese restaurant in Boise
+Total cost for Day 1: $1,500
+... (similar format for Day 2 to Day 7)
+Total cost for the trip: $22,000",1918,496,0,14.102499932050705,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1-3: Dallas, Texas
+- Accommodation: Hotel ZaZa Dallas - $250/night
+- Meal 1: Cosmic Cafe (Vegan options available) - $50/person
+- Meal 2: Spiral Diner & Bakery (Vegan) - $40/person
+- Attraction: Dallas World Aquarium - $20/person
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16/person
+- Total for 3 days: $3,360
+
+Day 4-5: Austin, Texas
+- Accommodation: Omni Austin Hotel Downtown - $200/night
+- Meal 1: Bouldin Creek Cafe (Vegan options available) - $45/person
+- Meal 2: Counter Culture (Vegan) - $45/person
+- Attraction: Austin Zoo - $12/person
+- Attraction: Lady Bird Johnson Wildflower Center - $9/person
+- Total for 2 days: $2,280
+
+Day 6-7: San Antonio, Texas
+- Accommodation: Hotel Emma - $280/night
+- Meal 1: Green Vegetarian Cuisine + Bar - $50/person
+- Meal 2: Viva Vegeria (Vegan) - $45/person
+- Attraction: San Antonio Zoo - $14.99/person
+- Attraction: The Alamo - Free
+- Total for 2 days: $2,370
+
+Total cost: $8,010",7594,1999,0,26334.330500103533,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"The total cost for the trip is $3,065. This itinerary covers all 7 days in Texas and clearly marks uncertainty when unsure.",16706,3878,0,49676.746250130236,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the 3-day trip to Appleton: $555.,13777,2179,0,31150.94770793803,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost for the 3-day trip to Charlotte: $765 * 3 = $2295. However, this exceeds the user's budget of $1900. Please adjust the plan to fit within the budget.",16541,3441,0,45993.04875009693,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $1,557",18342,4601,0,50324.06050013378,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1465,14204,2827,0,27112.82116617076,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,reflexion,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $10,350",12021,3392,0,74525.35904105753,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,reflexion,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Dallas
+- Accommodation: Hotel Zaza Dallas (Alcohol-optional, Vegan options available) - $300
+- Lunch: The French Room (French cuisine) - $120
+- Dinner: Yum Yum Truck (Chinese cuisine) - $80
+- Attraction: The Dallas World Aquarium - $160
+Total for Day 1: $660
+
+Day 2: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16
+Total for Day 2: $376
+
+Day 3: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: Reunion Tower - $17
+Total for Day 3: $357
+
+Day 4: Travel to Houston
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Pondicheri (Indian-French fusion) - $160
+- Attraction: Space Center Houston - $29.95
+Total for Day 4: $409.95
+
+Day 5: Houston
+- Breakfast: Local vegan café - $40
+- Lunch: Pondicheri - $160
+- Dinner: Yum Yum Truck - $80
+- Attraction: Houston Museum of Natural Science - $16
+Total for Day 5: $356
+
+Day 6: Travel to Austin
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Gourdough's Public House (Vegan options available) - $120
+- Attraction: Texas State Capitol - Free
+Total for Day 6: $340
+
+Day 7: Austin
+- Breakfast: Local vegan café - $40
+- Lunch: Gourdough's Public House - $120
+- Dinner: Arlo's (BYOB, Vegan options available) - $100
+- Attraction: The Bullock Texas State History Museum - $13
+Total for Day 7: $373
+
+Total cost: $2837.95",2046,1496,0,14.130875002592802,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,full_regen,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1: The Del Rey ($150), Fresh Juice Bar ($10), Palm Springs Art Museum (Free). Day 2: The Del Rey ($150), Glo Vegetarian ($15), Walk of the Stars (Free). Day 3: The Del Rey ($150), Melvyn's Restaurant ($30), Moorten Botanical Garden (Free). Total cost: $575.",3550,1595,0,13884.027416817844,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,False,,,,Total cost: $6500,4105,1519,0,20448.130416916683,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"The total cost of the trip is $2050, which is within the budget of $8100.",4172,1610,0,14230.77958310023,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,full_regen,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Here's a suggested 7-day itinerary for your trip to Idaho: Day 1-3: Boise - Accommodation: Hotel 43 - Meals: Luna's Italian Restaurant, Golden Dragon - Attractions: Zoo Boise, Boise Art Museum, Old Idaho Penitentiary Site Day 4-5: Twin Falls - Accommodation: Shilo Inn Twin Falls - Meals: Rustic River, JJ's Asian Bistro - Attractions: Shoshone Falls Park, Twin Falls County Historical Museum Day 6-7: Idaho Falls - Accommodation: Best Western Plus Twin Falls Inn - Meals: Gino's Italian Restaurant, Emperor Wok - Attractions: Idaho Falls Zoo, Museum of Idaho Total cost: $20,500",3836,1128,0,13256.980709033087,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,full_regen,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1-3: Dallas
+Accommodation: Family-friendly vegan hotel (e.g., Hotel ZaZa Dallas) - $300/night
+Meals:
+- Breakfast: Local vegan café (e.g., Spiral Diner & Bakery) - $10/person
+- Lunch: Vegan food truck (e.g., Vegan Food House) - $15/person
+- Dinner: Vegan restaurant (e.g., Cosmic Café) - $30/person
+Attractions:
+- The Dallas World Aquarium - $20/adult, $14/child
+- The Sixth Floor Museum at Dealey Plaza - $18/adult, free/child under 6
+Total cost per day: $930
+
+Day 4-6: Austin
+Accommodation: Vegan-friendly hotel with kids' amenities (e.g., Harbor Hotel) - $350/night
+Meals:
+- Breakfast: Vegan brunch spot (e.g., Counter Culture) - $15/person
+- Lunch: Vegan food court (e.g., Arlo's) - $12/person
+- Dinner: Upscale vegan restaurant (e.g., Selena's Vegan Soul Food) - $40/person
+Attractions:
+- Austin Zoo - $12/adult, $9/child
+- Bullock Texas State History Museum - $13/adult, free/child under 6
+Total cost per day: $1,053
+
+Day 7: Houston
+Accommodation: Vegan-friendly hotel with kids' pool (e.g., Hotel ZaZa Houston) - $320/night
+Meals:
+- Breakfast: Vegan bakery (e.g., Verdine) - $10/person
+- Lunch: Vegan deli (e.g., Pondicheri) - $15/person
+- Dinner: Vegan restaurant with clinical relevance theme (e.g., Verdine) - $40/person
+Attractions:
+- Houston Zoo - $24.95/adult, $19.95/child
+- Space Center Houston - $29.95/adult, $24.95/child
+Total cost per day: $1,153
+
+Total cost: $7,966",3650,2313,0,22736.22112488374,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $4850,3940,1795,0,12021.120874909684,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $507.,4030,1095,0,10509.694416075945,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,full_regen,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1: Lunch at 'Pet-friendly Cafe', Dinner at 'Pizza Place that allows pets'. Accommodation: 'Pet-Friendly Apartment in Uptown Charlotte'. Visit 'Levine Museum of the New South', 'Discovery Place Science'.
+Day 2: Lunch at 'Pet-friendly Diner', Dinner at 'Steakhouse with pet area'. Visit 'NASCAR Hall of Fame', 'The Mint Museum'.
+Day 3: Lunch at 'Burger Joint', Dinner at 'BBQ Place with pet seating'. Visit 'Bechtler Museum of Modern Art', 'Ray’s Splash Planet'.
+Total cost: $1,900",4264,1849,0,16774.570500012487,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $2026.50,4140,1395,0,8226.260709110647,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $710,3882,1622,0,14873.612834140658,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $16,280",3602,1475,0,10907.128999941051,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,full_regen,mistralai/mistral-nemo,456,False,False,1.0,False,,,,"Total cost: $4,244. This leaves $11,356 for the group's return to Monterey.",4092,2317,0,14075.445082969964,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Day 1: Arrival & Explore Palm Springs Art Museum. Accommodation: The Willows Historic Palm Springs Inn ($300). Meal: Lunch at Gluten-Free Palm Springs ($15). Attraction: Palm Springs Art Museum ($12). Total cost: $327.
+Day 2: Visit Moorten Botanical Garden & Palm Springs Aerial Tramway. Meal: Dinner at Gluten-Free Palm Springs ($20). Attraction: Moorten Botanical Garden ($15), Palm Springs Aerial Tramway ($25). Total cost: $60.
+Day 3: Indian Canyons & Departure. Meal: Lunch at Gluten-Free Palm Springs ($15). Attraction: Indian Canyons ($10). Total cost: $15.
+Total trip cost: $392.",3606,1325,0,9547.543916851282,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Here's a day-by-day plan for your trip to Colorado:
+
+Day 1: Travel to Grand Junction
+- Accommodation: Grand Junction Inn ($100)
+- Meal: Dinner at Bin 46 Wine Bar & Restaurant ($50)
+- Attraction: Museum of the West ($10 per person)
+- Total: $160
+
+Day 2: Explore Grand Junction
+- Accommodation: Grand Junction Inn ($100)
+- Meal: Lunch at The Rockslide Brewery & Restaurant ($40)
+- Attraction: Eureka! McConnell Science Museum ($15 per person)
+- Total: $155
+
+Day 3: Travel to Colorado Springs
+- Accommodation: The Antlers, A Wyndham Hotel ($150)
+- Meal: Dinner at The Famous Steak House ($60)
+- Attraction: Garden of the Gods ($0)
+- Total: $210
+
+Day 4: Explore Colorado Springs
+- Accommodation: The Antlers, A Wyndham Hotel ($150)
+- Meal: Lunch at Phantom Canyon Brewing Company ($40)
+- Attraction: Colorado Springs Pioneers Museum ($0)
+- Total: $190
+
+Day 5: Travel to Denver
+- Accommodation: The Curtis - a DoubleTree by Hilton Hotel ($200)
+- Meal: Dinner at Vesta ($70)
+- Attraction: Denver Art Museum ($10 per person)
+- Total: $280
+
+Day 6: Explore Denver
+- Accommodation: The Curtis - a DoubleTree by Hilton Hotel ($200)
+- Meal: Lunch at Masterpiece Delicatessen ($40)
+- Attraction: Denver Zoo ($20 per person)
+- Total: $260
+
+Day 7: Departure
+- Total: $0
+
+Total cost: $1245",4124,1885,0,13685.310292057693,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,react,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the trip: $2940 (within budget of $8100),4228,1461,0,10659.312999807298,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Here is a 7-day travel plan for you:
+Day 1: Arrival & Dinner at 'Vegan Delight' (Boise) - $150
+Day 2: Visit Zoo Boise - $10, Lunch at 'Green Leaf' - $60
+Day 3: Explore Julia Davis Park - Free, Dinner at 'Pasta Palace' - $120
+Day 4: Visit Boise Art Museum - $8, Lunch at 'Wok This Way' - $60
+Day 5: Day trip to Old Idaho Penitentiary Site - $7, Dinner at 'Vegan Delight' - $150
+Day 6: Visit Discovery Center of Idaho - $10, Lunch at 'Green Leaf' - $60
+Day 7: Relax at Camel's Back Park - Free, Farewell Dinner at 'Pasta Palace' - $120
+Total cost: $708",3892,1370,0,18205.729499924928,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Here is a 7-day itinerary for your trip to Texas:
+
+Day 1: Arrival in Dallas
+- Accommodation: Family-friendly hotel in Dallas (Cost: $200/night)
+- Lunch: Vegan restaurant in Dallas (Cost: $40)
+- Attraction: Dallas World Aquarium (Cost: $40/person)
+- Dinner: Vegan restaurant in Dallas (Cost: $60)
+
+Day 2: Dallas
+- Breakfast: Vegan breakfast spot (Cost: $20)
+- Attraction: The Sixth Floor Museum at Dealey Plaza (Cost: $16/person)
+- Lunch: Vegan food truck (Cost: $30)
+- Attraction: Reunion Tower (Cost: $17/person)
+- Dinner: Vegan restaurant in Dallas (Cost: $60)
+
+Day 3: Dallas
+- Breakfast: Vegan breakfast spot (Cost: $20)
+- Attraction: Dallas Museum of Art (Cost: $14/person)
+- Lunch: Vegan restaurant in Dallas (Cost: $40)
+- Attraction: Dallas Zoo (Cost: $20/person)
+- Dinner: Vegan restaurant in Dallas (Cost: $60)
+
+Day 4: Travel to San Antonio
+- Transportation: Train to San Antonio (Cost: $100/person)
+- Lunch: Vegan restaurant in San Antonio (Cost: $40)
+- Accommodation: Family-friendly hotel in San Antonio (Cost: $220/night)
+- Dinner: Vegan restaurant in San Antonio (Cost: $60)
+
+Day 5: San Antonio
+- Breakfast: Vegan breakfast spot (Cost: $20)
+- Attraction: The Alamo (Cost: Free)
+- Lunch: Vegan restaurant in San Antonio (Cost: $40)
+- Attraction: San Antonio River Walk (Cost: Free)
+- Dinner: Vegan restaurant in San Antonio (Cost: $60)
+
+Day 6: Travel to Houston
+- Transportation: Train to Houston (Cost: $120/person)
+- Lunch: Vegan restaurant in Houston (Cost: $40)
+- Accommodation: Family-friendly hotel in Houston (Cost: $240/night)
+- Dinner: Vegan restaurant in Houston (Cost: $60)
+
+Day 7: Houston
+- Breakfast: Vegan breakfast spot (Cost: $20)
+- Attraction: Space Center Houston (Cost: $27/person)
+- Lunch: Vegan restaurant in Houston (Cost: $40)
+- Dinner: Vegan restaurant in Houston (Cost: $60)
+
+Total cost: $4,874",3706,3402,0,99702.65225018375,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Here is a 7-day itinerary for 2 people, departing from Albuquerque and visiting 3 cities in Texas from March 8th to March 14th, 2022, with a total cost of $4850:
+
+Day 1: Arrival in Houston
+- Accommodation: Hotel ZaZa Houston Museum District ($150/night)
+- Meal: Dinner at The Capital Grille ($100)
+- Attraction: Downtown Aquarium Houston ($20 per person)
+
+Day 2: Houston
+- Accommodation: Hotel ZaZa Houston Museum District ($150/night)
+- Meal: Lunch at Pappas Bros. Steakhouse ($80)
+- Attraction: Space Center Houston ($25 per person)
+- Meal: Dinner at Vic & Anthony's Steakhouse ($120)
+
+Day 3: Houston
+- Accommodation: Hotel ZaZa Houston Museum District ($150/night)
+- Meal: Lunch at The Breakfast Klub ($30)
+- Attraction: Houston Museum of Natural Science ($16 per person)
+- Meal: Dinner at The Annie Cafe & Bar ($100)
+
+Day 4: Travel to San Antonio
+- Transportation: Train ($200 per person)
+- Accommodation: Hotel Emma ($200/night)
+- Meal: Dinner at Bliss ($80)
+
+Day 5: San Antonio
+- Accommodation: Hotel Emma ($200/night)
+- Meal: Lunch at The Guenther House ($40)
+- Attraction: The Alamo (Free)
+- Meal: Dinner at Bohanan's Prime Steaks and Seafood ($150)
+
+Day 6: Travel to Austin
+- Transportation: Train ($200 per person)
+- Accommodation: Hotel Saint Cecilia ($250/night)
+- Meal: Dinner at Uchi ($100)
+
+Day 7: Austin
+- Accommodation: Hotel Saint Cecilia ($250/night)
+- Meal: Lunch at Franklin Barbecue ($50)
+- Attraction: Texas State Capitol (Free)
+- Meal: Dinner at Jeffrey's ($150)
+
+Total cost: $4850",3996,2657,0,74910.2067919448,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,react,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1150,4086,963,0,8646.102542057633,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,True,,,,"Here is a 3-day itinerary for your trip to Charlotte, adhering to your budget and preferences:
+
+Day 1:
+- Accommodation: Pet-Friendly Inn ($600 for 3 nights, included in the first day)
+- Lunch: The Cowfish Sushi Burger Bar ($100)
+- Attraction: Levine Museum of the New South ($100)
+- Total: $200
+
+Day 2:
+- Dinner: The Stanley ($100)
+- Attraction: Discovery Place Science ($100)
+- Total: $200
+
+Day 3:
+- Lunch: The Asbury ($100)
+- Attraction: NASCAR Hall of Fame ($100)
+- Total: $200
+
+Total cost: $1200",4320,2300,0,24306.589541956782,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,react,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $23800,4196,1423,0,9300.104583147913,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,react,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"I will now create a day-by-day plan for the user, ensuring that the walking tours do not exceed 2 km and preferring cited sources.",3938,1332,0,10184.62529196404,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,react,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1: The Broadmoor, Colorado Springs. Attractions: Garden of the Gods (Free), North Cheyenne Cañon Park (Free). Total cost: $200 (accommodation).",3658,1192,0,5681.884540943429,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,react,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Here is a 7-day itinerary for the user, beginning in Monterey and exploring Dallas, Austin, and Houston in Texas from March 9th to March 15th, 2022, with a budget of $15,600:
+
+Day 1: Arrival in Dallas
+- Accommodation: The Adolphus Hotel ($2,800 for 3 nights)
+- Meal: Dinner at Cosmic Cafe ($100)
+- Attraction: The Dallas World Aquarium ($100)
+Total cost for Day 1: $3,000
+
+Day 2: Dallas
+- Meal: Lunch at Vegan Food Company ($80)
+- Attraction: The Sixth Floor Museum at Dealey Plaza ($16)
+Total cost for Day 2: $846
+
+Day 3: Dallas
+- Meal: Dinner at Spiral Diner & Bakery ($100)
+- Attraction: Reunion Tower ($16)
+Total cost for Day 3: $116
+
+Day 4: Travel to Austin
+- Transportation: Flight from Dallas to Austin ($200)
+- Accommodation: Hotel Saint Cecilia ($2,400 for 3 nights)
+Total cost for Day 4: $2,600
+
+Day 5: Austin
+- Meal: Lunch at Bouldin Creek Cafe ($80)
+- Attraction: Zilker Botanical Garden ($4)
+Total cost for Day 5: $84
+
+Day 6: Austin
+- Meal: Dinner at Counter Culture ($100)
+- Attraction: Texas State Capitol ($0)
+Total cost for Day 6: $100
+
+Day 7: Travel to Houston and Departure
+- Transportation: Flight from Austin to Houston ($200)
+Total cost for Day 7: $200
+
+Total cost for the trip: $10,530",4148,2515,0,21220.304209040478,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Day 1: Stay at 'Boutique Hotel Palm Springs' ($150). Dinner at 'Gluten-Free Palm Springs' ($30). Visit Palm Springs Art Museum ($12). Total: $193.,12577,1616,0,16560.09683315642,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1-3: Grand Junction
+- Accommodation: Grand Junction Hotel
+- Meals: Breakfast at 'The Breakfast Nook', Lunch at 'Main Street Bagel', Dinner at 'Bin 46 Wine Bar & Restaurant'
+- Attraction: Museum of the West ($10 per person)
+Total cost for 3 days: $1500
+
+Day 4-6: Colorado Springs
+- Accommodation: Colorado Springs Inn
+- Meals: Breakfast at 'The Omelette Parlor', Lunch at 'Josh & John's Steakhouse', Dinner at 'The Famous Steak House'
+- Attraction: Cheyenne Mountain Zoo ($12 per person)
+Total cost for 3 days: $1500
+
+Day 7: Denver
+- Accommodation: Denver Lodge
+- Meals: Breakfast at 'Snooze, an A.M. Eatery', Lunch at 'Snarf's Sandwiches', Dinner at 'The Buckhorn Exchange'
+- Attraction: Denver Museum of Nature & Science ($16 per person)
+Total cost for 1 day: $500
+
+Total cost: $3500",14150,2246,0,43506.606583017856,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Day 1-7: Stay at Belleville Tourism ($800). Visit National Shrine of Our Lady of the Snows (free), Stookey Township Park (free), and Frank Holten Park (free). Travel by train from Minneapolis to Belleville, Illinois ($500). Total cost: $1300.",15094,1257,0,34542.04137506895,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,True,True,0.0,False,,,,"Day 1: Arrival in Idaho
+- Accommodation: Vegan-friendly hotel in Boise
+- Lunch: Vegan Italian restaurant in Boise
+- Attraction: Zoo Boise
+- Dinner: Vegan Chinese restaurant in Boise
+Total cost for Day 1: $1,500
+... (similar format for Day 2 to Day 7)
+Total cost for the trip: $22,000",11600,1017,0,13500.982250086963,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Due to the unreliability of the previous claims, I cannot provide a detailed day-by-day plan as requested. However, I can suggest some vegan-friendly restaurants and attractions in Texas that cater to families with children under 10. Please note that the costs are approximate and may vary.",13433,1495,0,47088.19033391774,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"I've created a 7-day travel itinerary for 2 people, departing from Albuquerque and visiting 3 cities in Texas from March 8th to March 14th, 2022. Here's a day-by-day plan, including accommodation, meals, and attractions, with cost details. Please note that the total cost is not provided as it contradicts the given unreliable claim.",14197,2036,0,58449.86758311279,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Your 3-day trip to Appleton includes staying at the vegan-friendly 'The Copper Leaf Bed & Breakfast', visiting The History Museum at the Castle, and dining at 'Vegan Outlet', with a total cost of $1,200.",14059,1080,0,15253.37770814076,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost for the 3-day trip: $1900.,17857,2214,0,35154.299082932994,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $23,800",14191,1180,0,9587.027000030503,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1465,13565,1168,0,59521.01187501103,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,selfcheckgpt,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $16,300",12418,1249,0,11006.873625097796,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00048,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $2200,79033,3743,0,101166.52825009078,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,False,,,,Grand Junction,90413,4131,0,85638.9734169934,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00051,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,False,,,,"Total cost: $22,200",85209,3523,0,93504.99195908196,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $16,800",81534,3913,0,61925.65795802511,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $4850,88086,4299,0,85784.12074991502,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $1,200",89473,3229,0,84877.270166995,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $1900,95523,4064,0,90337.63654204085,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00057,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,Total cost: $3450,86506,3829,0,91248.62491711974,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,True,,,,"Total cost: $16,300",79828,3692,0,73591.53062477708,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,tot,mistralai/mistral-nemo,456,False,False,1.0,False,,,,"Total cost: $15,600",90729,4391,0,59760.79750014469,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"
+travel_real_00048,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a0,"[{'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Total cost: $2200,4806,1163,0,18842.760917032138,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1775, 'prime_tokens_output': 834}"
+travel_real_00049,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,True,True,0.0,False,accepted,,,"Day 1-3: Grand Junction
+- Accommodation: Grand Junction Hotel
+- Meals: Breakfast at 'The Breakfast Nook', Lunch at 'Main Street Bagel', Dinner at 'Bin 46 Wine Bar & Restaurant'
+- Attraction: Museum of the West ($10 per person)
+Total cost for 3 days: $1500
+
+Day 4-6: Colorado Springs
+- Accommodation: Colorado Springs Inn
+- Meals: Breakfast at 'The Omelette Parlor', Lunch at 'Josh & John's Steakhouse', Dinner at 'The Famous Steak House'
+- Attraction: Cheyenne Mountain Zoo ($12 per person)
+Total cost for 3 days: $1500
+
+Day 7: Denver
+- Accommodation: Denver Lodge
+- Meals: Breakfast at 'Snooze, an A.M. Eatery', Lunch at 'Snarf's Sandwiches', Dinner at 'The Buckhorn Exchange'
+- Attraction: Denver Museum of Nature & Science ($16 per person)
+Total cost for 1 day: $500
+
+Total cost: $3500",5673,1385,0,4154.23966711387,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 2034, 'prime_tokens_output': 1120}"
+travel_real_00050,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a7,"[{'node_id': 'a7', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.4}, {'node_id': 'a5', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.2}, {'node_id': 'a3', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.2}, {'node_id': 'a4', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.1}, {'node_id': 'a6', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.1}]","Total cost: $2600 (Transportation: $3200, Accommodation: $1000, Attractions: $200)",5457,1458,0,54020.22508298978,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2086, 'prime_tokens_output': 772}"
+travel_real_00051,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,True,True,0.0,False,accepted,,,"Day 1: Arrival in Idaho
+- Accommodation: Vegan-friendly hotel in Boise
+- Lunch: Vegan Italian restaurant in Boise
+- Attraction: Zoo Boise
+- Dinner: Vegan Chinese restaurant in Boise
+Total cost for Day 1: $1,500
+... (similar format for Day 2 to Day 7)
+Total cost for the trip: $22,000",4558,1057,0,9810.038875089958,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1918, 'prime_tokens_output': 496}"
+travel_real_00052,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a2,"[{'node_id': 'a2', 'prior': 0.11999999999999997, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.5161290322580645}, {'node_id': 'a1', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.43010752688172044}, {'node_id': 'a3', 'prior': 0.0125, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.05376344086021507}]",Search results for family-friendly vegan restaurants and attractions in Texas that are mid-range in cost.,4858,1362,0,32840.49008297734,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1825, 'prime_tokens_output': 947}"
+travel_real_00053,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a9,"[{'node_id': 'a9', 'prior': 0.05, 'likelihood': 1.0, 'cost': 10.0, 'posterior': 1.0}]",Repaired itinerary based on re-execution prompt,5399,2111,0,25731.844125082716,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1970, 'prime_tokens_output': 1065}"
+travel_real_00054,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a4,"[{'node_id': 'a4', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.3773584905660377}, {'node_id': 'a6', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.3773584905660377}, {'node_id': 'a2', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 6.0, 'posterior': 0.09433962264150943}, {'node_id': 'a3', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 0.09433962264150943}, {'node_id': 'a1', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 6.0, 'posterior': 0.028301886792452834}, {'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 0.028301886792452834}, {'node_id': 'a7', 'prior': 0.09999999999999998, 'likelihood': 0.0, 'cost': 1.0, 'posterior': 0.0}, {'node_id': 'a5', 'prior': 0.09999999999999998, 'likelihood': 0.0, 'cost': 2.0, 'posterior': 0.0}]","A detailed day-by-day travel plan for Appleton, emphasizing clinical relevance and vegan options, with a total cost of $1,200.",4883,1445,0,88953.38395796716,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2015, 'prime_tokens_output': 508}"
+travel_real_00055,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a6,"[{'node_id': 'a6', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]",Total cost: $1215,5527,1471,0,27491.631750017405,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2132, 'prime_tokens_output': 862}"
+travel_real_00056,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a5,"[{'node_id': 'a3', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.3174603174603174}, {'node_id': 'a2', 'prior': 0.050000000000000044, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.15873015873015886}, {'node_id': 'a1', 'prior': 0.05, 'likelihood': 1.0, 'cost': 5.0, 'posterior': 0.15873015873015875}, {'node_id': 'a5', 'prior': 0.05, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.15873015873015875}, {'node_id': 'a4', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.1587301587301587}, {'node_id': 'a0', 'prior': 0.014999999999999996, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.0476190476190476}]","Total cost: $1,202",5563,1671,0,69814.0690419823,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 2070, 'prime_tokens_output': 882}"
+travel_real_00057,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a2,"[{'node_id': 'a2', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.4}, {'node_id': 'a0', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.4}, {'node_id': 'a1', 'prior': 0.04999999999999999, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.2}]",Itinerary generated successfully.,4868,1044,0,37410.00683396123,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1941, 'prime_tokens_output': 718}"
+travel_real_00058,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,False,False,1.0,True,repair_failed,a3,"[{'node_id': 'a3', 'prior': 0.19999999999999996, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.6611570247933884}, {'node_id': 'a2', 'prior': 0.05, 'likelihood': 1.0, 'cost': 3.0, 'posterior': 0.16528925619834714}, {'node_id': 'a4', 'prior': 0.024999999999999994, 'likelihood': 1.0, 'cost': 2.0, 'posterior': 0.08264462809917356}, {'node_id': 'a5', 'prior': 0.012500000000000011, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 0.04132231404958682}, {'node_id': 'a1', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.02479338842975207}, {'node_id': 'a0', 'prior': 0.0075, 'likelihood': 1.0, 'cost': 4.0, 'posterior': 0.02479338842975207}]","Total cost: $16,300",4709,1482,0,24740.51950010471,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1801, 'prime_tokens_output': 847}"
+travel_real_00059,travelplanner_real,intro_specter_llm,mistralai/mistral-nemo,456,True,True,0.0,False,accepted,,,"Day 1: Arrival in Dallas
+- Accommodation: Hotel Zaza Dallas (Alcohol-optional, Vegan options available) - $300
+- Lunch: The French Room (French cuisine) - $120
+- Dinner: Yum Yum Truck (Chinese cuisine) - $80
+- Attraction: The Dallas World Aquarium - $160
+Total for Day 1: $660
+
+Day 2: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: The Sixth Floor Museum at Dealey Plaza - $16
+Total for Day 2: $376
+
+Day 3: Dallas
+- Breakfast: Local vegan café - $40
+- Lunch: The French Room - $120
+- Dinner: Yum Yum Truck - $80
+- Attraction: Reunion Tower - $17
+Total for Day 3: $357
+
+Day 4: Travel to Houston
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Pondicheri (Indian-French fusion) - $160
+- Attraction: Space Center Houston - $29.95
+Total for Day 4: $409.95
+
+Day 5: Houston
+- Breakfast: Local vegan café - $40
+- Lunch: Pondicheri - $160
+- Dinner: Yum Yum Truck - $80
+- Attraction: Houston Museum of Natural Science - $16
+Total for Day 5: $356
+
+Day 6: Travel to Austin
+- Transportation: Train - $200
+- Lunch: Packed vegan lunch - $20
+- Dinner: Gourdough's Public House (Vegan options available) - $120
+- Attraction: Texas State Capitol - Free
+Total for Day 6: $340
+
+Day 7: Austin
+- Breakfast: Local vegan café - $40
+- Lunch: Gourdough's Public House - $120
+- Dinner: Arlo's (BYOB, Vegan options available) - $100
+- Attraction: The Bullock Texas State History Museum - $13
+Total for Day 7: $373
+
+Total cost: $2837.95",5842,2141,0,12760.426332941279,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 2046, 'prime_tokens_output': 1496}"

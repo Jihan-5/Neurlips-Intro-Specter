@@ -1,0 +1,70 @@
+{
+  "n_per_cell": 60,
+  "seed": 0,
+  "cells": [
+    {
+      "num_faults": 2,
+      "variant": "unmodified",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 2,
+      "variant": "fixed",
+      "n_graphs": 60,
+      "pct_resolved": 78.33333333333333,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 3,
+      "variant": "unmodified",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 3,
+      "variant": "fixed",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 4,
+      "variant": "unmodified",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 4,
+      "variant": "fixed",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 5,
+      "variant": "unmodified",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    },
+    {
+      "num_faults": 5,
+      "variant": "fixed",
+      "n_graphs": 60,
+      "pct_resolved": 0.0,
+      "pct_all_faults_in_topN_of_posterior": 100.0,
+      "mean_rounds_used": 3.0
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+       Summary — hotpotqa_real__test  (examples=60 × seeds=3 = 119 rows)        
+┏━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃            ┃         ┃           ┃        ┃  Δsuccess ┃           ┃          ┃
+┃ method     ┃ success ┃ violation ┃ tokens ┃ vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ selfcheck… │   0.717 │     0.283 │  11448 │         — │         — │        — │
+│ tot        │   0.729 │     0.271 │  36226 │         — │         — │        — │
+└────────────┴─────────┴───────────┴────────┴───────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_b/real_hotpotqa_gemini_flash

@@ -1,0 +1,10 @@
+{
+  "n_graphs": 60,
+  "pct_both_resolved_within_2_spr_rounds": 0.0,
+  "pct_both_faults_in_top2_posterior": 100.0,
+  "pct_genuinely_interacting": 100.0,
+  "mean_rounds_used": 3.0,
+  "total_tokens_input": 0,
+  "total_tokens_output": 0,
+  "mean_tokens_per_graph": 0.0
+}

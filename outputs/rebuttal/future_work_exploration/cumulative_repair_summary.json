@@ -1,0 +1,16 @@
+{
+  "multi_fault": {
+    "n_graphs": 60,
+    "pct_both_resolved_within_budget": 0.0,
+    "pct_both_faults_in_top2_posterior": 100.0,
+    "mean_rounds_used": 3.0,
+    "baseline_pct_both_resolved_pipeline_py": 0.0
+  },
+  "single_fault_regression": {
+    "n_graphs": 60,
+    "pct_top1_attribution": 100.0,
+    "pct_repaired": 100.0,
+    "paper_reported_top1_attribution": 100.0,
+    "paper_reported_repair_rate": 100.0
+  }
+}

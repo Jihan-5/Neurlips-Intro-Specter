@@ -1,0 +1,24 @@
+       Summary — webshop_recon__test  (examples=20 × seeds=3 = 367 rows)        
+┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┓
+┃           ┃         ┃           ┃        ┃   Δsuccess ┃           ┃          ┃
+┃ method    ┃ success ┃ violation ┃ tokens ┃  vs direct ┃ McNemar p ┃ Holm-adj ┃
+┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━┩
+│ direct    │   0.092 │     0.908 │    879 │          — │         — │        — │
+│ full_reg… │   0.082 │     0.918 │   1765 │     -0.020 │     0.754 │        1 │
+│           │         │           │        │   [-0.078, │           │          │
+│           │         │           │        │    +0.039] │           │          │
+│ intro_sp… │   0.117 │     0.883 │   2660 │     +0.040 │     0.375 │        1 │
+│           │         │           │        │   [-0.013, │           │          │
+│           │         │           │        │    +0.107] │           │          │
+│ reflexion │   0.115 │     0.885 │   6036 │     +0.027 │     0.508 │        1 │
+│           │         │           │        │   [-0.027, │           │          │
+│           │         │           │        │    +0.082] │           │          │
+│ self_ref… │   0.113 │     0.887 │   2473 │     +0.027 │     0.508 │        1 │
+│           │         │           │        │   [-0.027, │           │          │
+│           │         │           │        │    +0.080] │           │          │
+└───────────┴─────────┴───────────┴────────┴────────────┴───────────┴──────────┘
+
+Detailed outputs: outputs/tier_b/webshop_deepseek_v3
+se ProviderError(f"failed to obtain JSON after {retries + 1} attempts: {last_err}")
+intro_specter.models.base.ProviderError: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{

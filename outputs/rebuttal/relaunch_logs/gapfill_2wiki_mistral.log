@@ -1,0 +1,31 @@
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.0, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0
+Resuming: 60 reflexion rows, 60 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.1, seeds=[0]
+
+--- run summary ---
+rows written: 0  errors: 0
+total tokens_input=0  total tokens_output=0  grand_total=0
+Resuming: 54 reflexion rows, 53 intro_specter rows already present, will be skipped.
+Loaded 60 examples for twowiki_real (bench_seed=42), rho=0.3, seeds=[0]
+  real_2wiki_00027_7f6e237109c411ebbdb0ac1f6bf848b6 seed=0 arm=intro_specter: true_success=False believed=False abstained=False tokens=(4013,886)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1686,433)
+  real_2wiki_00028_cc2516f80bd911eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4100,803)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1651,442)
+  real_2wiki_00029_ce3a708808bd11ebbd8aac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4058,1141)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1867,496)
+  real_2wiki_00030_505170320bdc11eba7f7acde48001122 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4526,1211)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1405,447)
+  real_2wiki_00031_f3fa308308af11ebbd84ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3571,1262)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1859,276)
+  real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(4227,782)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 arm=reflexion: true_success=True believed=True abstained=None tokens=(1638,402)
+  real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6 seed=0 arm=intro_specter: true_success=True believed=True abstained=False tokens=(3953,994)
+
+--- run summary ---
+rows written: 13  errors: 0
+total tokens_input=38554  total tokens_output=9575  grand_total=48129

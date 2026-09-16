@@ -1,0 +1,38 @@
+{
+  "benchmark": "strategyqa_recon__test",
+  "n_examples": 20,
+  "n_total_rows": 180,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "react": {
+      "n": 60,
+      "success_rate": 0.7166666666666667,
+      "violation_rate": 0.2833333333333333,
+      "tokens_input_mean": 1363.0,
+      "tokens_output_mean": 885.6333333333333,
+      "latency_ms_mean": 3318.7999000578807
+    },
+    "selfcheckgpt": {
+      "n": 60,
+      "success_rate": 0.6166666666666667,
+      "violation_rate": 0.38333333333333336,
+      "tokens_input_mean": 3602.4666666666667,
+      "tokens_output_mean": 625.55,
+      "latency_ms_mean": 7345.1826804822
+    },
+    "tot": {
+      "n": 60,
+      "success_rate": 0.8333333333333334,
+      "violation_rate": 0.16666666666666666,
+      "tokens_input_mean": 4931.866666666667,
+      "tokens_output_mean": 737.9833333333333,
+      "latency_ms_mean": 9245.88254231494
+    }
+  }
+}

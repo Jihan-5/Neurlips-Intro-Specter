@@ -1,0 +1,446 @@
+task_id,dataset,method,model,seed,success,constraint_satisfied,violation_rate,profile_violation,repair_status,fault_node_predicted,posterior,final_output,tokens_input,tokens_output,tool_calls,latency_ms,extra
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Book of Mormon’s main characters are Mormon missionaries, as described on its Wikipedia page.",1022,215,0,0.045666005462408066,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Because a typical doctorate takes about 8.5 years, a 21-year-old doctor is highly unlikely.",901,589,0,0.021750107407569885,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Four Mothers Society, which included Cherokee members, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",1069,676,0,0.021666986867785454,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Donkeys are part of Christmas celebrations because they appear in popular Christmas songs and movies.",793,327,0,0.010125106200575829,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Eiffel Tower's maximum structural height of 1,063 ft is substantially less than the 18,210 ft depth of the Arctic Ocean's deepest point, so it would be fully submerged.",1001,655,0,0.02587493509054184,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Because New Year's Eve is not a holiday where children ask for treats, unlike Halloween.",1024,449,0,0.013165874406695366,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell does not affect body temperature, so it cannot cure a fever.",968,251,0,0.011542113497853279,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Computers are programmed in machine language, which is binary and governed by Boolean algebra.",937,256,0,0.049416907131671906,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",763,346,0,0.014832941815257072,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no. Tom and Jerry are not featured in a ride at Disneyland because they are owned by Warner Bros., not by Disney, which operates Disneyland.",900,252,0,0.007084105163812637,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Sam Harris does not worship Shiva because he is an atheist and does not believe in deities.",909,217,0,0.014208024367690086,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,direct,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met—this historical detail, while not directly clinical, illustrates the importance of precise timelines in medical history and research.",901,463,0,0.019832979887723923,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Book of Mormon’s main characters are Mormon missionaries, as described on its Wikipedia page.",2216,1225,0,7882.751541910693,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Because a typical doctorate takes about 8.5 years, a 21-year-old doctor is highly unlikely.",2122,1266,0,5336.078834021464,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Four Mothers Society, which included Cherokee members, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",2502,1435,0,5298.839333932847,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,self_refine,openai/gpt-oss-20b,42,False,False,1.0,False,,,,"no
+Donkeys are not part of Christmas celebrations; they only appear in some Christmas-themed songs and movies.",1886,1213,0,125106.19924985804,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Eiffel Tower's maximum structural height of 1,063 ft is substantially less than the 18,210 ft depth of the Arctic Ocean's deepest point, so it would be fully submerged.",2360,1737,0,9327.449708012864,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Because New Year's Eve is not a holiday where children ask for treats, unlike Halloween.",2317,1565,0,7322.887415997684,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell does not affect body temperature, so it cannot cure a fever; this matches standard medical knowledge.",2168,1025,0,7307.337041012943,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Computers are programmed in machine language, which is binary and governed by Boolean algebra.",2029,742,0,4083.9609161484987,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",1817,1211,0,5597.496500005946,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no. Tom and Jerry are not featured in a ride at Disneyland because they are owned by Warner Bros., not by Disney, which operates Disneyland.",1984,1038,0,5162.066582823172,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Sam Harris does not worship Shiva because he is an atheist and does not believe in deities.",2039,581,0,2616.335375001654,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,self_refine,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met—this historical detail, while not directly clinical, illustrates the importance of precise timelines in medical history and research.",2112,1208,0,70502.37891706638,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Book of Mormon’s main characters are Mormon missionaries, as described on its Wikipedia page.",1022,215,0,14.548167120665312,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Because a typical doctorate takes about 8.5 years, a 21-year-old doctor is highly unlikely.",901,589,0,12.088875053450465,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Four Mothers Society, which included Cherokee members, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",1069,676,0,10.33304096199572,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Donkeys are part of Christmas celebrations because they appear in popular Christmas songs and movies.",793,327,0,10.9311668202281,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Eiffel Tower's maximum structural height of 1,063 ft is substantially less than the 18,210 ft depth of the Arctic Ocean's deepest point, so it would be fully submerged.",1001,655,0,10.027207899838686,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Because New Year's Eve is not a holiday where children ask for treats, unlike Halloween.",1024,449,0,9.732833132147789,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell does not affect body temperature, so it cannot cure a fever.",968,251,0,10.218375129625201,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Computers are programmed in machine language, which is binary and governed by Boolean algebra.",937,256,0,9.775500046089292,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",763,346,0,9.64254210703075,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no. Tom and Jerry are not featured in a ride at Disneyland because they are owned by Warner Bros., not by Disney, which operates Disneyland.",900,252,0,9.939041920006275,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Sam Harris does not worship Shiva because he is an atheist and does not believe in deities.",909,217,0,18.129833042621613,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,reflexion,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met—this historical detail, while not directly clinical, illustrates the importance of precise timelines in medical history and research.",901,463,0,10.14516712166369,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The average time to earn a doctorate is 8.5 years, so it is unlikely someone could complete it by age 21.",1837,1175,0,10595.623292028904,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes; the Four Mothers Society, which included Cherokee members, sent a delegation to Congress in 1906 to oppose allotment.",2138,941,0,2392.81175006181,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Donkeys appear in popular Christmas media such as the song 'Dominic The Donkey' and the movie 'Nestor The Ling Eared Christmas Donkey'.",1586,733,0,2599.4444580283016,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The depth of the Arctic Ocean's Challenger Deep (~18,210 ft) far exceeds the Eiffel Tower's structural height (~1,063 ft), allowing complete submersion.",2002,1203,0,4719.336542068049,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+It's not a holiday where children ask for treats, so asking for candy on New Year's Eve is inappropriate.",2083,1174,0,11669.553250074387,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell cannot lower body temperature; fever is treated with medication or rest.",1936,649,0,2802.893292158842,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes. Boolean algebra underlies binary machine language, which is essential for programming the logic that drives clinical decision support systems in medical devices.",1874,735,0,3970.147249987349,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",1526,703,0,3265.020166989416,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+There are no Tom and Jerry rides at Disneyland because they are not Disney-owned characters.",1800,479,0,2504.3490410316736,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Sam Harris is an atheist, so he does not worship Shiva.",1818,328,0,1087.2824999969453,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,full_regen,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in 1804, before Pierce was born, so they could not have met.",1802,993,0,5032.035625074059,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes. The main characters in the popular Broadway musical The Book of Mormon are Mormon missionaries sent to Africa to share their religion with villagers (source: Wikipedia, ""The Book of Mormon (musical)"").",2098,747,0,4747.11012491025,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+It is highly unlikely for a 21-year-old to have completed an 8.5-year doctorate program, given the average age of 33.",1856,1993,0,11196.554665919393,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Cherokee, through the Four Mothers Society, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",2192,1481,0,7806.643666932359,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Donkeys appear in popular Christmas songs and movies, making them part of Christmas celebrations.",1640,1159,0,5356.315083801746,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The deepest point in the Arctic Ocean is 18,210 ft below the surface, which exceeds the Eiffel Tower's 1,063 ft height, so the tower would be fully submerged.",2056,1674,0,8106.252165976912,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+It is not customary to ask neighbors for candy on New Year's Eve, as that holiday is not associated with treat-giving traditions.",2102,993,0,4032.1578751318157,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell does not have a medical effect on fever.",1990,856,0,4833.3167501259595,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Because machine language is binary, which is a form of Boolean algebra.",1928,634,0,2524.954874999821,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia due to their highly sensitive olfactory system.",1580,810,0,4674.947291146964,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Tom and Jerry are owned by Warner Bros. and are not featured in Disneyland rides, which feature Disney-owned characters.",1854,855,0,4777.765959035605,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,no. Sam Harris is an atheist and does not worship any deity.,1872,943,0,5057.653124909848,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,react,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met.",1856,1047,0,4176.964750047773,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Book of Mormon’s main characters are Mormon missionaries, as described on its Wikipedia page.",5903,1643,0,13142.602666048333,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Because a typical doctorate takes about 8.5 years, a 21-year-old doctor is highly unlikely.",5261,2619,0,23527.637166902423,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+The Four Mothers Society, which included Cherokee members, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",6243,2202,0,12314.702000003308,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Donkeys are part of Christmas celebrations because they appear in popular Christmas songs and movies.",4573,1628,0,13529.522250173613,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Because New Year's Eve is not a holiday where children ask for treats, unlike Halloween.",5893,1750,0,11915.425084065646,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+A cowbell does not affect body temperature, so it cannot cure a fever.",5583,1172,0,12557.251000078395,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Computers are programmed in machine language, which is binary and governed by Boolean algebra.",5419,1739,0,12911.610666895285,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",4295,1450,0,8832.845916040242,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no. Tom and Jerry are not featured in a ride at Disneyland because they are owned by Warner Bros., not by Disney, which operates Disneyland.",5188,1538,0,9064.067415893078,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Sam Harris does not worship Shiva because he is an atheist and does not believe in deities.",5240,1262,0,10386.246250011027,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met—this historical detail, while not directly clinical, illustrates the importance of precise timelines in medical history and research.",5306,2241,0,21953.841958893463,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,tot,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no
+Candy asking is specific to Halloween, not New Year's Eve.",7999,2124,0,17799.521249951795,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,tot,openai/gpt-oss-20b,42,True,True,0.0,False,,,,"no. Listening to a cowbell does not cure a fever; fever is treated with medication or rest, not sound.",7552,1638,0,16942.059541121125,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00048_6d4b524b0f555ce5a7ae,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+The Book of Mormon’s main characters are Mormon missionaries, as described on its Wikipedia page.",2369,1409,0,11061.056667007506,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1022, 'prime_tokens_output': 215}"
+strategyqa_real_00049_6d2b70f4dd9eec8ef932,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+Because a typical doctorate takes about 8.5 years, a 21-year-old doctor is highly unlikely.",2275,1396,0,7192.771874833852,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 901, 'prime_tokens_output': 589}"
+strategyqa_real_00050_5c62f57b2fd2423b5f59,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+The Four Mothers Society, which included Cherokee members, dispatched a delegation to Congress in 1906 to oppose the allotment policies of the Curtis and Dawes Acts.",2655,1069,0,3351.080666994676,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1069, 'prime_tokens_output': 676}"
+strategyqa_real_00051_36c497860f72d148e4e8,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+Donkeys are part of Christmas celebrations because they appear in popular Christmas songs and movies.",2004,644,0,2277.8707910329103,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 793, 'prime_tokens_output': 327}"
+strategyqa_real_00052_43da475d5c2db929c458,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+The Eiffel Tower's maximum structural height of 1,063 ft is substantially less than the 18,210 ft depth of the Arctic Ocean's deepest point, so it would be fully submerged.",2513,1899,0,8241.405457956716,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1001, 'prime_tokens_output': 655}"
+strategyqa_real_00053_34146f5ebddcb370c29a,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"no
+Because New Year's Eve is not a holiday where children ask for treats, unlike Halloween.",2470,1356,0,6838.857125025243,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1024, 'prime_tokens_output': 449}"
+strategyqa_real_00054_33d65a4b34005b4ddd62,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"no
+A cowbell does not affect body temperature, so it cannot cure a fever.",2321,583,0,2548.82699996233,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 968, 'prime_tokens_output': 251}"
+strategyqa_real_00055_9d2f5beb0ffe85faf16d,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+Computers are programmed in machine language, which is binary and governed by Boolean algebra.",2182,2600,0,18822.021832922474,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 937, 'prime_tokens_output': 256}"
+strategyqa_real_00056_39e2e14c7916898a717d,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"yes
+Dogs detect ammonia easily due to their sensitive noses.",1970,840,0,4478.1860411167145,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 763, 'prime_tokens_output': 346}"
+strategyqa_real_00057_1eb8a833f2f5f1698b52,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"no. Tom and Jerry are not featured in a ride at Disneyland because they are owned by Warner Bros., not by Disney, which operates Disneyland.",2137,1249,0,6276.802500011399,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 900, 'prime_tokens_output': 252}"
+strategyqa_real_00058_0eb259222f89112e1486,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"no
+Sam Harris does not worship Shiva because he is an atheist and does not believe in deities.",2227,1262,0,17024.565750034526,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 909, 'prime_tokens_output': 217}"
+strategyqa_real_00059_e8b0130e3da885c6a5ab,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,42,True,True,0.0,False,accepted,,,"no
+Kant died in February 1804, before Franklin Pierce was born in November 1804, so they could not have met—this historical detail, while not directly clinical, illustrates the importance of precise timelines in medical history and research.",2230,1441,0,8385.48337481916,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 901, 'prime_tokens_output': 463}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Disney's film adaptations grossed billions, dwarfing the modest earnings of Kipling's original book.",1211,499,0,0.0113749410957098,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Sesame seeds require light, water, and oxygen to germinate, conditions that are absent in the human body, so they cannot grow inside it.",780,220,0,0.01887488178908825,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A stool is unnecessary because the Lusotitan’s height exceeds the almond tree’s height.",884,325,0,0.01191697083413601,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The 23rd Amendment grants voting rights only to residents of Washington, D.C., and Puerto Rico, as a territory, does not receive that right.",959,221,0,0.012499978765845299,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no. Carl Linnaeus is buried in Uppsala Cathedral, whereas Michael Jackson is entombed at Forest Lawn Memorial Park (Wikipedia).",1045,446,0,0.02191704697906971,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No, because Joan Crawford died in 1977, long before JAG premiered in 1995 (see Wikipedia).",1014,454,0,0.024792039766907692,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+They are interred in different cemeteries, one in Sweden and the other in California.",798,346,0,0.016709091141819954,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Niue receives more tourists than Tuvalu, indicating a preference for Niue.",817,338,0,0.009291106835007668,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Nolan’s Batman trilogy is an adaptation of the character originally created by Bob Kane, making him indebted to Kane.",894,374,0,0.011499971151351929,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The Soviet Union dissolved in 1991, so it no longer exists.",1018,328,0,0.017291167750954628,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The home’s 14 bedrooms and 7 bathrooms far exceed the space needed for an average three‑person family.",789,308,0,0.017707934603095055,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,direct,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama, being a person, can fit in a car designed for people.",916,247,0,0.013999873772263527,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Disney's film adaptations grossed billions, dwarfing the modest earnings of Kipling's original book.",2651,1501,0,6780.045917024836,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+In clinical terms, sesame seeds require light, water, and oxygen to germinate, conditions that are absent in the human body, so they cannot grow inside it.",1767,1243,0,69358.23966679163,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A stool is unnecessary because the Lusotitan’s height exceeds the almond tree’s height.",2134,1126,0,6105.655834078789,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The 23rd Amendment grants voting rights only to residents of Washington, D.C.; Puerto Rico, as a territory, does not receive that right.",2155,1418,0,9738.435875158757,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Carl Linnaeus is buried in Uppsala Cathedral, whereas Michael Jackson is entombed at Forest Lawn Memorial Park (Wikipedia).",2428,1622,0,8040.6745409127325,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No, because Joan Crawford died in 1977, long before JAG premiered in 1995 (see Wikipedia).",2337,1083,0,6260.531291831285,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+They are interred in different cemeteries, one in Sweden and the other in California.",1927,1504,0,8895.633165957406,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No, Niue receives more tourists than Tuvalu, indicating a preference for Niue, which may have implications for health service demand.",1872,1389,0,10118.551749968901,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Christopher Nolan’s Batman trilogy is a derivative work of Bob Kane’s original character, analogous to a medical practitioner adopting a mentor’s diagnostic protocol, thereby establishing intellectual indebtedness.",2022,1503,0,10590.255375020206,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The Soviet Union dissolved in 1991, so it no longer exists.",2294,800,0,84189.71345806494,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The home’s 14 bedrooms and 7 bathrooms far exceed the space needed for an average three‑person family, as stated in the prompt’s facts.",1835,1222,0,9403.426584089175,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,self_refine,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama, being a person, can fit in a car designed for people.",2069,737,0,5048.472875030711,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Disney's film adaptations grossed billions, dwarfing the modest earnings of Kipling's original book.",1211,499,0,15.024416847154498,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Sesame seeds require light, water, and oxygen to germinate, conditions that are absent in the human body, so they cannot grow inside it.",780,220,0,11.519375024363399,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A stool is unnecessary because the Lusotitan’s height exceeds the almond tree’s height.",884,325,0,10.141792008653283,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The 23rd Amendment grants voting rights only to residents of Washington, D.C., and Puerto Rico, as a territory, does not receive that right.",959,221,0,10.699332924559712,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no. Carl Linnaeus is buried in Uppsala Cathedral, whereas Michael Jackson is entombed at Forest Lawn Memorial Park (Wikipedia).",1045,446,0,9.546207962557673,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No, because Joan Crawford died in 1977, long before JAG premiered in 1995 (see Wikipedia).",1014,454,0,9.938624920323491,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+They are interred in different cemeteries, one in Sweden and the other in California.",798,346,0,9.97233297675848,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Niue receives more tourists than Tuvalu, indicating a preference for Niue.",817,338,0,10.070125106722116,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Nolan’s Batman trilogy is an adaptation of the character originally created by Bob Kane, making him indebted to Kane.",894,374,0,9.815457975491881,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The Soviet Union dissolved in 1991, so it no longer exists.",1018,328,0,9.638958144932985,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The home’s 14 bedrooms and 7 bathrooms far exceed the space needed for an average three‑person family.",789,308,0,9.625333128497005,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,reflexion,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama, being a person, can fit in a car designed for people.",916,247,0,9.599375072866678,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Disney's blockbuster adaptations earned billions, dwarfing Kipling's modest sales.",2422,785,0,3193.0010421201587,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Because a sesame seed needs light, water, and oxygen to germinate, and the acidic digestive environment of the human body destroys seeds before they can grow.",1560,682,0,4709.002957912162,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A stool would not help because the Lusotitan is already as tall as the almond tree.",1768,858,0,5441.002959152684,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Puerto Rico is not Washington D.C. and therefore cannot vote for president under the 23rd Amendment.",1918,898,0,7289.866334060207,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+They are buried in different locations: Linnaeus in Uppsala Cathedral, Jackson at Forest Lawn Memorial Park (Wikipedia).",2090,1183,0,7344.06179189682,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Joan Crawford died in 1977, long before JAG aired (IMDb, 2023).",2028,810,0,3386.1404578201473,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+They are buried in Uppsala Cathedral and Forest Lawn Memorial Park, respectively.",1596,840,0,4322.901999810711,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Niue receives five times more tourists than Tuvalu.",1634,1239,0,8713.064375100657,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,full_regen,openai/gpt-oss-20b,123,False,False,1.0,False,,,,"no
+Christopher Nolan’s Batman movies are based on a character originally created by Bob Kane, but Nolan was not indebted to Kane for the films.",1788,957,0,5337.844083085656,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No. The Soviet Union dissolved in 1991, ceasing to exist.",2036,851,0,5574.3858341593295,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Adam Sandler's 14‑bedroom home is far larger than the space required by an average three‑person American family.",1578,571,0,3107.257958035916,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,full_regen,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama is a person and cars are designed to accommodate people.",1832,810,0,4896.638917038217,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,yes. Disney captured the majority of the profits from Kipling's work.,2511,1821,0,16557.34720895998,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A sesame seed cannot germinate in the human body because it lacks light, sufficient oxygen, and the acidic digestive environment destroys it.",1614,804,0,6774.234124924988,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no. A Lusotitan is taller than an almond tree, so a stool is not needed.",1822,2793,0,18934.83879091218,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The 23rd Amendment only grants voting rights to residents of Washington, D.C., and does not extend that right to Puerto Rico.",1972,583,0,3435.770124895498,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Michael Jackson and Carl Linnaeus are buried in different locations; Linnaeus rests in Uppsala Cathedral while Jackson is interred at Forest Lawn Memorial Park (source: Wikipedia).",2144,1886,0,10725.570834008977,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Joan Crawford died in 1977, long before JAG premiered in 1995, so she could not have guest starred.",2117,1397,0,18738.342332886532,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Linnaeus is interred in Uppsala Cathedral, while Jackson is entombed at Forest Lawn Memorial Park, so their final resting places differ.",1650,901,0,4193.3914590626955,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Because Niue receives five times more tourists than Tuvalu, indicating greater preference, which also implies higher demand on local health services.",1688,1395,0,14347.996375057846,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+Nolan's Batman trilogy is based on the character created by Bob Kane, making him indebted to Kane for the intellectual property.",1842,1604,0,12812.227708986029,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+The Soviet Union dissolved in 1991.",2090,1328,0,11145.049250219017,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Adam Sandler's home has 14 bedrooms and 7 bathrooms, which is far larger than the average American family home (U.S. Census Bureau, 2020), so it would not be considered too small.",1632,1716,0,14768.507250119,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,react,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama, like any person, can fit in a car.",1886,1455,0,13382.926125079393,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+Sesame seeds require light, water, and oxygen to germinate, conditions that are absent in the human body, so they cannot grow inside it.",4490,1323,0,9773.664999986067,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no
+A stool is unnecessary because the Lusotitan’s height exceeds the almond tree’s height.",5131,2080,0,14352.737542008981,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no. Carl Linnaeus is buried in Uppsala Cathedral, whereas Michael Jackson is entombed at Forest Lawn Memorial Park (Wikipedia).",6120,1935,0,15417.040375061333,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"No, because Joan Crawford died in 1977, long before JAG premiered in 1995 (see Wikipedia).",5948,2182,0,15588.197415927425,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"yes
+The Dalai Lama, being a person, can fit in a car designed for people.",5260,1412,0,14285.742208128795,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,tot,openai/gpt-oss-20b,123,True,True,0.0,False,,,,"no. The 23rd Amendment only granted voting rights to residents of Washington D.C., not Puerto Rico.",7523,1580,0,19364.35579089448,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00048_72c3d20cf35ba7643311,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"yes
+Disney's film adaptations grossed billions, dwarfing the modest earnings of Kipling's original book.",2804,964,0,3536.474083084613,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1211, 'prime_tokens_output': 499}"
+strategyqa_real_00049_150492a2590b8447707b,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+Sesame seeds require light, water, and oxygen to germinate, conditions that are absent in the human body, so they cannot grow inside it.",1885,1453,0,9862.833749968559,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 780, 'prime_tokens_output': 220}"
+strategyqa_real_00050_c5423254bd666acc8a9c,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+A stool is unnecessary because the Lusotitan’s height exceeds the almond tree’s height.",2287,1218,0,5346.443040994927,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 884, 'prime_tokens_output': 325}"
+strategyqa_real_00051_86434d8eecff8b7ddb50,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+The 23rd Amendment grants voting rights only to residents of Washington, D.C., and Puerto Rico, as a territory, does not receive that right.",2308,552,0,2208.398916060105,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 959, 'prime_tokens_output': 221}"
+strategyqa_real_00052_2e586d3aea95150de42b,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no. Carl Linnaeus is buried in Uppsala Cathedral, whereas Michael Jackson is entombed at Forest Lawn Memorial Park (Wikipedia).",2581,946,0,2870.9704999346286,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1045, 'prime_tokens_output': 446}"
+strategyqa_real_00053_1f7ba99375d4fa45119f,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"No, because Joan Crawford died in 1977, long before JAG premiered in 1995 (see Wikipedia).",2490,1183,0,7475.197459105402,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1014, 'prime_tokens_output': 454}"
+strategyqa_real_00054_2e586d3aea95150de42b,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+They are interred in different cemeteries, one in Sweden and the other in California.",2080,751,0,4150.935082929209,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 798, 'prime_tokens_output': 346}"
+strategyqa_real_00055_0fbfd54c87436a2bcfb7,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+Niue receives more tourists than Tuvalu, indicating a preference for Niue.",2060,1677,0,83795.49445817247,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 817, 'prime_tokens_output': 338}"
+strategyqa_real_00056_7f139bf51273517efd4e,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"yes
+Nolan’s Batman trilogy is an adaptation of the character originally created by Bob Kane, making him indebted to Kane.",2175,746,0,27840.06508300081,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 894, 'prime_tokens_output': 374}"
+strategyqa_real_00057_86f441f4f66b4b5eb375,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+The Soviet Union dissolved in 1991, so it no longer exists.",2412,1294,0,8290.901916101575,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1018, 'prime_tokens_output': 328}"
+strategyqa_real_00058_0aa6769cb88143b3dba1,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"no
+The home’s 14 bedrooms and 7 bathrooms far exceed the space needed for an average three‑person family.",1988,728,0,2548.6256249714643,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 789, 'prime_tokens_output': 308}"
+strategyqa_real_00059_0431a3fc727855c8ad83,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,123,True,True,0.0,False,accepted,,,"yes
+The Dalai Lama, being a person, can fit in a car designed for people.",2222,549,0,3062.889208085835,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 916, 'prime_tokens_output': 247}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Leaves become dry and brittle as they change color.",909,430,0,0.02433406189084053,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders were German families, not Italian.",795,248,0,0.012875068932771683,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,direct,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+A child born in 1996 would be four years old in 2000, not one.",1069,479,0,0.041250139474868774,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+No. Living donors can safely donate a kidney; see American Journal of Transplantation, 2020.",1021,597,0,0.011082971468567848,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,direct,openai/gpt-oss-20b,456,False,False,1.0,True,,,,,996,213,0,0.014625024050474167,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+People are permitted to enter the Forbidden City because it is designated as a tourist attraction and historic site, which by definition allows public access.",943,507,0,0.016584061086177826,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+A newt is an amphibian, not a reptile, so the nickname does not refer to a reptile.",1011,376,0,0.01470884308218956,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Models possess requisite physical attributes and acting experience aligning with role demands.",802,281,0,0.009457813575863838,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Aloe vera gel is sometimes kept in plastic packaging, which is derived from petroleum.",959,401,0,0.011292053386569023,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Larry King was born in 1933, long after the Magna Carta was signed in 1215.",1032,393,0,0.01587485894560814,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,direct,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The crash occurred before any robotics companies existed.",1104,269,0,0.017625046893954277,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,direct,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+Black swan formation has no relation to spelling the longest dictionary word.",762,526,0,0.016624806448817253,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Leaves become dry and brittle as they change color.",2106,964,0,4383.499042131007,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders were German families, not Italian.",1787,816,0,4575.1270421314985,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,self_refine,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+A child born in 1996 would be four years old in 2000, not one.",2461,1404,0,5970.198582857847,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Living donors can safely donate a kidney; see American Journal of Transplantation, 2020.",2284,2533,0,14168.01566700451,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,True,,,,"no, because the Clouded leopard’s top speed (≈40 mph) is significantly lower than the Pronghorn’s (≈61 mph), making it unlikely to catch one (source: National Geographic, 2023).",2035,634,0,3571.4545829687268,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+People are permitted to enter the Forbidden City because it is designated as a tourist attraction and historic site, which by definition allows public access.",2174,1384,0,59669.60895899683,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+A newt is a member of the class Amphibia, not Reptilia, so the nickname does not refer to a reptile. [source: provided facts]",2404,1874,0,7937.669374980032,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Models possess requisite physique and acting credentials suitable for the role.",1817,1998,0,8126.894959015772,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Aloe vera gel is sometimes kept in plastic packaging, which is derived from petroleum.",2235,1015,0,5682.4120411183685,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Larry King was born in 1933, long after the Magna Carta was signed in 1215.",2307,955,0,5139.325333060697,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,self_refine,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The crash occurred before any robotics companies existed.",2420,955,0,4492.45912511833,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,self_refine,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+Black swan formation has no relation to spelling the longest dictionary word.",1831,1043,0,4950.409124838188,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Leaves become dry and brittle as they change color.",909,430,0,15.59820887632668,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders were German families, not Italian.",795,248,0,11.391208041459322,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,True,,,,"yes
+A leap year baby born on February 29, 1996 would be considered one year old in 2000 because 2000 is a leap year, aligning the baby's first birthday with a leap day, which is clinically relevant for age-based developmental milestones.",3866,4464,0,32533.84962491691,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+No. Living donors can safely donate a kidney; see American Journal of Transplantation, 2020.",1021,597,0,10.449334047734737,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,True,,,,"no
+The Clouded leopard's top speed of 40 mph is insufficient to catch a Pronghorn antelope that can reach 61 mph (National Geographic, 2023).",3105,768,0,5355.4632919840515,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+People are permitted to enter the Forbidden City because it is designated as a tourist attraction and historic site, which by definition allows public access.",943,507,0,16.896290937438607,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+A newt is an amphibian, not a reptile, so the nickname does not refer to a reptile.",1011,376,0,11.621082900092006,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Models possess requisite physical attributes and acting experience aligning with role demands.",802,281,0,10.113874915987253,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Aloe vera gel is sometimes kept in plastic packaging, which is derived from petroleum.",959,401,0,9.596541058272123,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Larry King was born in 1933, long after the Magna Carta was signed in 1215.",1032,393,0,9.572417009621859,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The crash occurred before any robotics companies existed.",1104,269,0,9.597708005458117,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,reflexion,openai/gpt-oss-20b,456,True,True,0.0,True,,,,"yes
+The V formation of black swans aligns with the letters V, U, and W in the longest word.",2948,1881,0,76369.46199997328,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Leaves become dry and brittle when they change color, so their texture does not remain the same.",1818,762,0,3334.0707500465214,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders of Anaheim were German families, so they spoke German rather than Italian.",1590,585,0,3284.7375839482993,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,full_regen,openai/gpt-oss-20b,456,False,False,1.0,True,,,,,2138,946,0,4803.029207978398,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"No. Living donors can donate a kidney while alive, as documented by transplant registries (e.g., UNOS).",2042,986,0,2861.6256669629365,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,full_regen,openai/gpt-oss-20b,456,False,False,1.0,True,,,,,1992,340,0,1499.9196249991655,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The Forbidden City is a designated tourist attraction, so public access is permitted.",1886,644,0,1866.7822498828173,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+A newt is an amphibian, whereas reptiles have dry, keratinized skin, so the nickname Newt is not a reptile.",2022,814,0,4809.6921250689775,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"Yes.
+Models possess the requisite physical attributes and industry experience aligning with the role's demands.",1604,729,0,4470.644958084449,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"Yes, because aloe vera gel is sometimes enclosed in plastic packaging made from petroleum.",1918,671,0,2530.542500084266,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"No
+Larry King was born in 1933, long after the Magna Carta was signed in 1215.",2064,759,0,3011.6391668561846,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,full_regen,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Because robotics companies were not established until the 1950s, the 1929 crash had no impact on their stocks.",2208,496,0,1936.2282080110162,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,full_regen,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+Black swan's V formation does not contribute letters to the longest word.",1524,878,0,3453.8180420640856,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Leaves become dry and brittle as they change color, so their texture changes.",1872,1220,0,5954.6767910942435,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders were fifty German families, so they spoke German, not Italian.",1644,772,0,5206.084582954645,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,react,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+A child born in 1996 would be four years old in 2000, not one.",2192,1003,0,4572.684457991272,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Living donors can donate a kidney while alive, provided the remaining kidney functions (National Kidney Foundation).",2096,1759,0,10580.738582881168,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,True,,,,"no, because the clouded leopard's top speed of 40 mph is slower than the pronghorn's 61 mph, as reported by National Geographic and the IUCN Red List.",2081,1461,0,17751.80504191667,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no. The Forbidden City is a tourist attraction, so visitors are allowed to enter.",1940,1645,0,12552.86733317189,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Newt Gingrich’s nickname refers to a newt, an amphibian with smooth, sticky skin, which is taxonomically distinct from reptiles that possess dry, keratinized skin (source: Encyclopedia Britannica, ""Newt"" entry).",2076,835,0,5298.341791843995,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Models possess requisite physical attributes and acting experience for the role.",1658,1222,0,7983.586249873042,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"yes
+Aloe vera gel is sometimes packaged in plastic containers, which are petroleum-derived.",1972,977,0,5361.62787489593,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+No, because the Magna Carta was signed by King John in 1215, long before Larry King was born in 1933 (Britannica, 2023).",2118,1311,0,8067.083250032738,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,react,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Because robotics companies were not founded until the 1950s, the 1929 crash could not have affected their stocks.",2262,907,0,5669.410625007004,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,react,openai/gpt-oss-20b,456,False,False,1.0,True,,,,"no
+No, V formation has no relation to spelling the word.",1578,1268,0,4418.03045803681,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The founders were German families, not Italian.",4540,1377,0,40165.80333397724,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,456,False,False,1.0,True,,,,,5496,1687,0,18373.07041697204,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+People are permitted to enter the Forbidden City because it is designated as a tourist attraction and historic site, which by definition allows public access.",5428,1693,0,11557.327041169629,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+A newt is an amphibian, not a reptile, so the nickname does not refer to a reptile.",5899,1844,0,13071.914999978617,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,selfcheckgpt,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+The crash occurred before any robotics companies existed.",6385,1568,0,11686.23987492174,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,tot,openai/gpt-oss-20b,456,True,True,0.0,False,,,,"no
+Larry King was born in 1933, long after the Magna Carta was signed by King John in 1215 (Britannica).",8111,2339,0,22968.40783301741,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00048_3de88c80f0914eb08caf,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+Leaves become dry and brittle as they change color.",2259,2779,0,20572.028833208606,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 909, 'prime_tokens_output': 430}"
+strategyqa_real_00049_95b3654439ebaf17f4da,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+The founders were German families, not Italian.",1940,602,0,3987.2421249747276,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 795, 'prime_tokens_output': 248}"
+strategyqa_real_00050_29551a9093ea19c1e7c3,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,False,False,1.0,True,repair_failed,a0,"[{'node_id': 'a0', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]","No, because a child born on February 29, 1996 would be four years old on February 29, 2000, not one year old.",2614,963,0,53977.78429207392,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 1069, 'prime_tokens_output': 479}"
+strategyqa_real_00051_3e70c2ee8dd1ed87cc09,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+No. Living donors can safely donate a kidney; see American Journal of Transplantation, 2020.",2437,904,0,3590.037333080545,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1021, 'prime_tokens_output': 597}"
+strategyqa_real_00052_03c467f12c3fcc1d91fe,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,False,False,1.0,True,abstain_or_full_regenerate,,[],,2223,406,0,165605.12254200876,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision']}, 'prime_tokens_input': 996, 'prime_tokens_output': 213}"
+strategyqa_real_00053_2fa554b4794001df3629,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+People are permitted to enter the Forbidden City because it is designated as a tourist attraction and historic site, which by definition allows public access.",2292,1411,0,5009.669458027929,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 943, 'prime_tokens_output': 507}"
+strategyqa_real_00054_789b8d1061266869fc86,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+A newt is an amphibian, not a reptile, so the nickname does not refer to a reptile.",2557,1279,0,5362.7874159719795,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1011, 'prime_tokens_output': 376}"
+strategyqa_real_00055_e8c54343164bb850727f,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"yes
+Models possess requisite physical attributes and acting experience aligning with role demands.",1970,1197,0,9097.429167013615,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 802, 'prime_tokens_output': 281}"
+strategyqa_real_00056_65247fed8b1775f3b91c,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"yes
+Aloe vera gel is sometimes kept in plastic packaging, which is derived from petroleum.",2423,703,0,55221.86633385718,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 959, 'prime_tokens_output': 401}"
+strategyqa_real_00057_4532f1bc312eace9bcd6,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+Larry King was born in 1933, long after the Magna Carta was signed in 1215.",2460,1091,0,6876.024166122079,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1032, 'prime_tokens_output': 393}"
+strategyqa_real_00058_64fbc620641915a4a6b4,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,True,True,0.0,False,accepted,,,"no
+The crash occurred before any robotics companies existed.",2573,545,0,2893.5262500308454,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 1104, 'prime_tokens_output': 269}"
+strategyqa_real_00059_81cb69ab13c3195331c4,strategyqa_real,intro_specter_llm,openai/gpt-oss-20b,456,False,False,1.0,True,abstain_or_full_regenerate,,[],"no
+Black swan formation has no relation to spelling the longest dictionary word.",1984,812,0,2740.1567499618977,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision']}, 'prime_tokens_input': 762, 'prime_tokens_output': 526}"

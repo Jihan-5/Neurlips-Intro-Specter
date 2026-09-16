@@ -1,0 +1,38 @@
+{
+  "benchmark": "musique_recon__test",
+  "n_examples": 20,
+  "n_total_rows": 180,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split": "test",
+  "mode": null,
+  "methods": {
+    "react": {
+      "n": 60,
+      "success_rate": 0.8666666666666667,
+      "violation_rate": 0.13333333333333333,
+      "tokens_input_mean": 1262.7333333333333,
+      "tokens_output_mean": 838.95,
+      "latency_ms_mean": 13259.754272864666
+    },
+    "selfcheckgpt": {
+      "n": 60,
+      "success_rate": 0.7833333333333333,
+      "violation_rate": 0.21666666666666667,
+      "tokens_input_mean": 3240.0333333333333,
+      "tokens_output_mean": 427.35,
+      "latency_ms_mean": 6335.845973653098
+    },
+    "tot": {
+      "n": 60,
+      "success_rate": 0.8666666666666667,
+      "violation_rate": 0.13333333333333333,
+      "tokens_input_mean": 6678.483333333334,
+      "tokens_output_mean": 916.05,
+      "latency_ms_mean": 17586.543991634
+    }
+  }
+}

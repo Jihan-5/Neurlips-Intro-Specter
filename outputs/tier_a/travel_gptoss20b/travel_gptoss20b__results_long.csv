@@ -1,0 +1,1475 @@
+task_id,dataset,method,model,seed,success,constraint_satisfied,violation_rate,profile_violation,repair_status,fault_node_predicted,posterior,final_output,tokens_input,tokens_output,tool_calls,latency_ms,extra
+travelplanner_recon_00080,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch at El Nacional (wheelchair accessible, pescatarian options). 
+Morning activity: Visit the Picasso Museum (wheelchair accessible). 
+Lunch: Seafood at La Barca del Salamanca (wheelchair accessible, pescatarian). 
+Afternoon activity: Private wheelchair‑accessible yacht tour of the coast. 
+Dinner: Siam Thai Restaurant (upscale Thai, pescatarian). 
+Hotel: Hotel Arts Barcelona (wheelchair accessible, high‑budget).",592,943,0,0.03554089926183224,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 592, 'prime_tokens_output': 943}"
+travelplanner_recon_00081,travelplanner_recon,direct,openai/gpt-oss-20b,0,False,False,1.0,True,,,,"Breakfast: Café de l'Opera (French-style café, wheelchair accessible). 
+Morning activity: Palau de la Música Catalana (guided tour, wheelchair accessible). 
+Lunch: Le Petit Paris (French restaurant, wheelchair accessible). 
+Afternoon activity: Museu Picasso (wheelchair accessible). 
+Dinner: Le Ciel (Michelin-starred French restaurant, wheelchair accessible). 
+Hotel: Hotel Arts Barcelona (luxury, wheelchair accessible).",573,865,0,0.03474997356534004,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 865}"
+travelplanner_recon_00082,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de Flore (9:00‑10:30, 8th Arrondissement, wheelchair accessible, vegetarian pastries). 
+Morning Activity: Louvre Museum (10:45‑13:00, wheelchair accessible, free wheelchair rental). 
+Lunch: Le Maharaja (13:30‑15:00, 8th Arrondissement, Indian vegetarian, wheelchair accessible). 
+Afternoon Activity: Eiffel Tower (15:30‑17:30, wheelchair accessible via elevator, panoramic views). 
+Dinner: Kohinoor (19:00‑21:00, 9th Arrondissement, Indian vegetarian, wheelchair accessible). 
+Hotel: Four Seasons Hotel George V (check‑in 15:00, wheelchair accessible rooms, high‑budget luxury).",603,1798,0,0.07595890201628208,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1798}"
+travelplanner_recon_00083,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"{""breakfast"":""Café de la Pedrera"",""morning_activity"":""Parc de la Ciutadella"",""lunch"":""Ramen Jiro"",""afternoon_activity"":""Barcelona Cathedral"",""dinner"":""Sushi 3"",""hotel"":""Hostal Barcelona""}",603,960,0,0.0153339933604002,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 960}"
+travelplanner_recon_00084,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Club (Bandra) – Italian‑inspired breakfast with avocado toast, fresh fruit, and cappuccino.
+
+Morning Activity: Marine Drive promenade – scenic walk along the Arabian Sea.
+
+Lunch: Il Gusto (Bandra) – seafood pasta and risotto, pescatarian‑friendly.
+
+Afternoon Activity: Juhu Beach – relax on the beach, enjoy sea breeze.
+
+Dinner: Mamma Mia (Colaba) – Italian seafood dishes, pescatarian options.
+
+Hotel: The Fern Hotel (Bandra) – mid‑range accommodation with good amenities.",563,1301,0,0.041041988879442215,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1301}"
+travelplanner_recon_00085,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de l'Opéra – vegetarian croissant & matcha latte.
+Morning Activity: Visit the Louvre Museum (free entry for under 26, but adult ticket ~15€).
+Lunch: Sushi & Bento – a vegetarian sushi bar in the 1st arrondissement.
+Afternoon Activity: Stroll along the Seine and visit the Notre-Dame Cathedral area.
+Dinner: Kiku – a Japanese izakaya offering vegetarian ramen and tofu dishes (~25€).
+Hotel: Hotel Le Relais – a 3‑star boutique hotel in the 4th arrondissement, mid‑range price (~120€ per night).",573,551,0,0.04537496715784073,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 551}"
+travelplanner_recon_00086,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Vegan Ristorante (Shinjuku) – vegan Italian breakfast menu, wheelchair accessible.
+Morning activity: Tokyo Tower – wheelchair accessible, panoramic view.
+Lunch: Vegan Ristorante (Shinjuku) – vegan Italian lunch menu, wheelchair accessible.
+Afternoon activity: Tokyo Skytree – wheelchair accessible, observation deck.
+Dinner: Vegan Ristorante (Shinjuku) – vegan Italian dinner menu, wheelchair accessible.
+Hotel: The Ritz‑Carlton Tokyo – wheelchair accessible, luxury accommodations.",661,1685,0,0.08820905350148678,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 1685}"
+travelplanner_recon_00087,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Buvette
+Morning Activity: The Metropolitan Museum of Art
+Lunch: L'Artusi
+Afternoon Activity: Spa at The Peninsula New York
+Dinner: Masseria
+Hotel: The Plaza Hotel",575,1252,0,0.04337495192885399,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1252}"
+travelplanner_recon_00088,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Breakfast Club (1st Avenue)
+Morning Activity: Table Mountain cable car
+Lunch: The Pot Luck Club
+Afternoon Activity: V&A Waterfront
+Dinner: Sushi House
+Hotel: The Westin Cape Town",545,951,0,0.04033301956951618,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 951}"
+travelplanner_recon_00089,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Kitchen – Vegan-friendly breakfast in Shinjuku, wheelchair accessible.
+Morning Activity: Tokyo Metropolitan Government Building Observation Deck – wheelchair accessible, free entry.
+Lunch: Anjappar – Vegan Indian restaurant in Shibuya.
+Afternoon Activity: Ueno Park – wheelchair accessible, free.
+Dinner: Gandhi Bhavan – Vegan Indian restaurant in Chiyoda.
+Hotel: Sakura Hotel – budget-friendly, wheelchair accessible, located in Asakusa.",656,808,0,0.05437503568828106,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 656, 'prime_tokens_output': 808}"
+travelplanner_recon_00090,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Breakfast Club (vegetarian). Morning Activity: Gateway of India. Lunch: Thai Orchid (Thai, vegetarian). Afternoon Activity: Marine Drive walk. Dinner: Siam Thai (Thai, vegetarian). Hotel: The Residency Hotel (mid-range).",572,547,0,0.023042084649205208,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 572, 'prime_tokens_output': 547}"
+travelplanner_recon_00091,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Le Potager du Marais – vegan French breakfast with organic ingredients.
+Morning Activity: Private guided tour of the Louvre Museum.
+Lunch: Le Thai – upscale vegan Thai restaurant in the 7th arrondissement.
+Afternoon Activity: Seine River Cruise with gourmet vegan snacks.
+Dinner: Le Ciel du Thai – Michelin-starred vegan Thai dining experience.
+Hotel: Four Seasons George V – luxury accommodation with vegan-friendly amenities.",595,800,0,0.017875107005238533,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 595, 'prime_tokens_output': 800}"
+travelplanner_recon_00092,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Club at The St. Regis Mumbai – wheelchair‑accessible, upscale Italian breakfast menu.
+
+Morning activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) – fully wheelchair accessible with elevators and ramps.
+
+Lunch: Il Gusto at The Leela Palace – high‑budget Italian dining, wheelchair accessible.
+
+Afternoon activity: Phoenix Marketcity, Kurla – large, wheelchair‑friendly mall with a spa and indoor promenade.
+
+Dinner: Mamma Mia at The Taj Mahal Palace – fine‑dining Italian restaurant, wheelchair accessible.
+
+Hotel: The Leela Palace, Mumbai – luxury, fully wheelchair accessible, with elevators and dedicated services.",573,1276,0,0.08774991147220135,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 1276}"
+travelplanner_recon_00093,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Ess-a-Bagel (7th Ave). Morning Activity: The Metropolitan Museum of Art. Lunch: Lombardi's Pizza. Afternoon Activity: The High Line. Dinner: Pizzaiola. Hotel: Pod 51 Hotel.,605,1665,0,0.029624905437231064,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 605, 'prime_tokens_output': 1665}"
+travelplanner_recon_00094,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch at Brunch & Cake – vegetarian pastries and smoothies.
+Morning Activity: Visit Park Güell – free entry, explore Gaudí architecture.
+Lunch: Maharaja – authentic vegetarian Indian cuisine.
+Afternoon Activity: Stroll through the Gothic Quarter – historic sites and local markets.
+Dinner: Café de l'Inde – vegetarian Indian dishes.
+Hotel: Hotel Jazz – 3-star, central location, medium price.",573,694,0,0.028833048418164253,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 694}"
+travelplanner_recon_00095,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Restaurant (Shinjuku) – vegetarian Japanese breakfast
+Morning Activity: Ueno Park – wheelchair-accessible stroll
+Lunch: Shin-Okubo Vegetarian Restaurant – Japanese vegetarian lunch
+Afternoon Activity: Tokyo Skytree – wheelchair-accessible observation deck
+Dinner: Shin-Okubo Vegetarian Restaurant – Japanese vegetarian dinner
+Hotel: Hotel Mystays Asakusa – wheelchair-accessible budget hotel",633,2370,0,0.09333295747637749,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 2370}"
+travelplanner_recon_00096,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Le Meurice – Breakfast at the restaurant (wheelchair accessible, pescatarian options)
+Morning Activity: Seine River Cruise (Bateaux Mouches) – wheelchair accessible cruise
+Lunch: L'Atelier de Joël Robuchon – seafood‑focused menu, wheelchair accessible
+Afternoon Activity: Louvre Museum – wheelchair accessible
+Dinner: La Casa de Mexico – Mexican cuisine, wheelchair accessible
+Hotel: Four Seasons Hotel George V – wheelchair accessible, high‑end",593,1293,0,0.02945796586573124,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 1293}"
+travelplanner_recon_00097,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Bean & Tea Leaf, Bandra
+Morning Activity: Marine Drive promenade walk
+Lunch: Ciao Bella, Bandra
+Afternoon Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya
+Dinner: Pasta House, Colaba
+Hotel: The Park, Bandra",603,867,0,0.044416869059205055,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 867}"
+travelplanner_recon_00098,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: El Toro
+Morning Activity: Tsukiji Outer Market
+Lunch: La Casa
+Afternoon Activity: Asakusa & Senso-ji Temple
+Dinner: El Toro
+Hotel: Hotel Sunroute Plaza Shinjuku",563,1829,0,0.037708086892962456,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1829}"
+travelplanner_recon_00099,travelplanner_recon,direct,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café du Coin; Morning Activity: Musée d'Orsay; Lunch: Le Petit Cler; Afternoon Activity: Seine River Cruise (Standard); Dinner: Bistro du 5ème; Hotel: Hotel ibis Paris Montmartre 18ème,603,790,0,0.03254087641835213,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 790}"
+travelplanner_recon_00080,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café de l'Arc; Morning activity: Barcelona Aquarium; Lunch: Sushi & Thai; Afternoon activity: Casa Batlló; Dinner: Thai Bangkok; Hotel: Hotel Arts Barcelona.,1184,1727,0,8530.83745809272,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 592, 'prime_tokens_output': 730}"
+travelplanner_recon_00081,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café de l'Académie; Morning activity: Sagrada Família; Lunch: Le Petit Paris; Afternoon activity: Poble Espanyol; Dinner: Moments; Hotel: Hotel Arts Barcelona.,1181,2416,0,16495.423084124923,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 1063}"
+travelplanner_recon_00082,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Le Meurice – Breakfast (vegetarian options available)
+
+Morning activity: Louvre Museum – wheelchair‑friendly guided tour
+
+Lunch: Indus – Lunch (vegetarian Indian cuisine)
+
+Afternoon activity: Bateaux Mouches Seine River cruise – wheelchair‑accessible
+
+Dinner: Indus – Dinner (vegetarian Indian cuisine)
+
+Hotel: Four Seasons Hotel George V Paris – wheelchair‑accessible, high‑budget accommodation",1206,2807,0,12717.978250002488,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1230}"
+travelplanner_recon_00083,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,False,False,1.0,False,,,,"Breakfast: Sushi Maki (Carrer de Muntanyola, 12)
+Morning activity: Parc de la Ciutadella
+Lunch: Sushi Maki (Carrer de Muntanyola, 12)
+Afternoon activity: Museu d'Art de Barcelona
+Dinner: Sushi Maki (Carrer de Muntanyola, 12)
+Hotel: Hostal Pajarillo (Carrer de la Rosa, 2)",1206,2066,0,7331.558375153691,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1227}"
+travelplanner_recon_00084,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Mamma Mia Pizzeria, Bandra
+Morning Activity: Boat ride from Gateway of India
+Lunch: Pizzeria Limoncello, Colaba
+Afternoon Activity: Sanjay Gandhi National Park
+Dinner: Mamma Mia Pizzeria, Bandra
+Hotel: The Park Hotel, Bandra",1126,3981,0,34543.75954088755,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1168}"
+travelplanner_recon_00085,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Sushi & Coffee – Japanese café with vegetarian sushi and coffee.
+Morning activity: Seine River Cruise (short €12 ticket).
+Lunch: Koy – vegetarian ramen and sushi (~€15).
+Afternoon activity: Louvre Museum (standard €17 ticket).
+Dinner: Mizutori – vegetarian izakaya dishes (~€20).
+Hotel: Hotel Henriette – boutique accommodation in the 7th arrondissement (~€110/night).",1146,2257,0,18712.931249989197,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 879}"
+travelplanner_recon_00086,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Cafe Pino – a chic vegan Italian café in Shinjuku with wheelchair access.
+Morning Activity: Ghibli Museum – fully wheelchair friendly, a fun cultural stop.
+Lunch: Ristorante Vegano – a high‑budget vegan Italian spot in Roppongi, wheelchair accessible.
+Afternoon Activity: Tokyo Skytree Observation Deck – wheelchair accessible, panoramic views.
+Dinner: Ristorante La Cucina – upscale vegan Italian dining in Ginza, wheelchair friendly.
+Hotel: Park Hyatt Tokyo – luxury, fully wheelchair accessible, located near the Skytree.",1287,3962,0,9272.690834011883,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 3201}"
+travelplanner_recon_00087,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Caffè Sabatini – Classic Italian coffee house with a vegetarian pastry selection.
+
+Morning Activity: Private guided tour of the High Line – Explore the elevated park with a knowledgeable guide.
+
+Lunch: Lupa Osteria Romana – Rustic Italian trattoria with a vegetarian pasta menu.
+
+Afternoon Activity: Visit the Metropolitan Museum of Art – World‑class art collection and exhibits.
+
+Dinner: L'Artusi – Contemporary Italian fine dining featuring a vegetarian tasting menu.
+
+Hotel: The Plaza Hotel – Iconic luxury accommodation in Midtown Manhattan.",1150,1848,0,10220.219666836783,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1053}"
+travelplanner_recon_00088,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Sushi Kappou (Japanese breakfast at 1st Avenue). \nMorning Activity: Table Mountain Cable Car (cable car ride to summit). \nLunch: Umi Japanese (Sea Point). \nAfternoon Activity: Kirstenbosch Botanical Gardens (walk and photo). \nDinner: Kazu Japanese (Woodstock). \nHotel: The Silo Hotel (mid-range, Cape Town).",1090,1595,0,13355.222916929051,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 605}"
+travelplanner_recon_00089,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Vegan Curry House (Shinjuku) – vegan Indian breakfast, wheelchair accessible, ~¥1,200
+Morning Activity: Ueno Park – wheelchair-friendly paths, free
+Lunch: Annapurna (Shibuya) – budget vegan Indian, wheelchair accessible, ~¥1,500
+Afternoon Activity: Odaiba Seaside Park – wheelchair accessible, free
+Dinner: Kale (Ikebukuro) – affordable vegan Indian, wheelchair accessible, ~¥1,800
+Hotel: Sakura Hotel (Asakusa) – low‑budget, wheelchair friendly, ~¥6,000/night",1312,2177,0,15432.657999917865,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 656, 'prime_tokens_output': 924}"
+travelplanner_recon_00090,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Club (Bandra) – vegetarian breakfast menu.
+Morning Activity: Walk along Gateway of India.
+Lunch: Thai Kitchen (Bandra) – vegetarian Thai dishes.
+Afternoon Activity: Stroll on Marine Drive.
+Dinner: The Thai Room (Andheri) – vegetarian Thai dinner.
+Hotel: The Park Bandra – medium‑budget accommodation.",1144,6988,0,7832.17183384113,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 572, 'prime_tokens_output': 6314}"
+travelplanner_recon_00091,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: L'Atelier du Pain – vegan pastries and coffee.
+Morning activity: Private Seine River cruise with gourmet vegan snacks.
+Lunch: Le Thai (15 Rue de la Paix) – vegan Thai menu.
+Afternoon activity: Private guided tour of Musée d'Orsay.
+Dinner: Le Thai – vegan Thai dinner.
+Hotel: Four Seasons Hotel George V – luxury accommodation with vegan dining options.",1190,5689,0,18450.783042004332,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 595, 'prime_tokens_output': 4015}"
+travelplanner_recon_00092,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Oberoi, Mumbai – Italian Breakfast
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Museum)
+Lunch: L'Asino (Bandra) – Italian
+Afternoon Activity: Gateway of India & Marine Drive promenade
+Dinner: L'Ange – Italian fine dining
+Hotel: The Taj Mahal Palace, Mumbai",1181,3375,0,14982.111375080422,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 1991}"
+travelplanner_recon_00093,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,False,False,1.0,False,,,,,1210,2024,0,9699.445416918024,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 605, 'prime_tokens_output': 1159}"
+travelplanner_recon_00094,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch & Cake
+Morning Activity: Guided tour of Sagrada Família
+Lunch: IndiT
+Afternoon Activity: Stroll through Park Güell
+Dinner: Sajjan
+Hotel: Hotel Jazz",1146,1749,0,15926.312499912456,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 723}"
+travelplanner_recon_00095,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Tsukiji Outer Market – Vegetarian sushi rolls (budget-friendly, wheelchair accessible).
+
+Morning activity: Imperial Palace East Gardens – wheelchair-accessible walking path (free).
+
+Lunch: Ramen Nagi – vegetarian ramen (budget-friendly, wheelchair accessible).
+
+Afternoon activity: Ueno Park – wheelchair-accessible paths, free entry.
+
+Dinner: Matsuri – vegetarian Japanese dinner (budget-friendly, wheelchair accessible).
+
+Hotel: Sakura Hotel – budget-friendly, wheelchair-accessible rooms.",1266,3226,0,20280.841832980514,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 1751}"
+travelplanner_recon_00096,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Le Jules Verne (Eiffel Tower) – wheelchair accessible, pescatarian menu.
+Morning activity: Private Seine River Cruise (Bateaux Mouches) – wheelchair accessible.
+Lunch: L'Atelier de Joël Robuchon (Hôtel de Crillon) – high‑budget pescatarian cuisine.
+Afternoon activity: Musée d'Orsay – wheelchair accessible.
+Dinner: El Tizón – high‑budget Mexican, pescatarian-friendly.
+Hotel: Four Seasons Hotel George V – wheelchair accessible, high‑budget.",1221,3994,0,37306.82975007221,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 915}"
+travelplanner_recon_00097,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Club, Bandra (wheelchair accessible, vegetarian-friendly breakfast).
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (museum, wheelchair accessible).
+Lunch: Mamma Mia, Bandra (Italian vegetarian menu, wheelchair accessible).
+Afternoon Activity: Aga Khan Palace, Mahalaxmi (historical site, wheelchair accessible).
+Dinner: Il Forno, Colaba (Italian cuisine, vegetarian options, wheelchair accessible).
+Hotel: The Park, Bandra (medium‑budget, wheelchair accessible).",1206,5010,0,11684.552958002314,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 4035}"
+travelplanner_recon_00098,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,False,False,1.0,False,,,,"Breakfast: Tsukiji Kiyomura Sushi Zanmai (sashimi & grilled salmon set). Morning Activity: teamLab Borderless Museum. Lunch: El Charro Mexican Restaurant (seafood tacos & ceviche). Afternoon Activity: Tokyo Skytree Observation Deck. Dinner: La Hacienda Mexican Restaurant (grilled fish, shrimp enchiladas, and fish tacos). Hotel: Shinjuku Granbell Hotel.",1126,2753,0,13795.058165909722,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1465}"
+travelplanner_recon_00099,travelplanner_recon,full_regen,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café Populaire (Montmartre – wheelchair accessible, affordable croissants). 
+Morning activity: Musée d'Orsay (wheelchair accessible, free entry after 6 pm). 
+Lunch: Le Petit Cler (Rue Cler – inexpensive French bistro, wheelchair accessible). 
+Afternoon activity: Latin Quarter walking tour (accessible, visit Sorbonne and Pantheon). 
+Dinner: Chez L'Ami (Montparnasse – budget French brasserie, wheelchair accessible). 
+Hotel: Hôtel ibis Paris Montmartre 18ème (budget, wheelchair accessible, near Montmartre).",1206,3031,0,17642.985208891332,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1581}"
+travelplanner_recon_00080,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Brunch at Cinc Sentits (high‑end, wheelchair accessible, pescatarian menu). 
+Morning Activity: Picasso Museum (wheelchair accessible indoor exhibit). 
+Lunch: La Barca del Salamanca (seafood, high‑budget, wheelchair accessible). 
+Afternoon Activity: Private wheelchair‑accessible boat tour of Port Vell. 
+Dinner: Siam Thai Restaurant (high‑budget Thai, wheelchair accessible). 
+Hotel: Hotel Arts Barcelona (luxury, wheelchair accessible).",1843,1476,0,114877.22833291627,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 592, 'prime_tokens_output': 730}"
+travelplanner_recon_00081,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Brunch at Hotel Arts Barcelona.
+Morning activity: Visit Picasso Museum.
+Lunch: L'Atelier de Joël Robuchon.
+Afternoon activity: Ride Montjuïc Cable Car.
+Dinner: Le Ciel de l'Hotel Arts.
+Hotel: Hotel Arts Barcelona.",1719,1619,0,6135.918583953753,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 608, 'prime_tokens_output': 1063}"
+travelplanner_recon_00082,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,Breakfast: Café L'Atelier; Morning activity: Seine River Cruise (wheelchair-accessible); Lunch: Le Petit Indien; Afternoon activity: Luxembourg Gardens; Dinner: Madhur; Hotel: Four Seasons Hotel George V,2089,2084,0,9920.748833101243,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 1230}"
+travelplanner_recon_00083,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café de la Pedrera (wheelchair accessible, low cost). Morning activity: Parc de la Ciutadella (wheelchair accessible, free). Lunch: Sushi Kyo (Japanese, wheelchair accessible, low cost). Afternoon activity: MACBA (wheelchair accessible, free entry on certain days). Dinner: Sushi Kyo (Japanese, wheelchair accessible, low cost). Hotel: Hotel Barcelona (budget, wheelchair accessible).",1796,1905,0,8371.149166021496,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 1227}"
+travelplanner_recon_00084,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: The Coffee Club, Bandra – Italian coffee and pastries (pescatarian).
+Morning Activity: Stroll along Marine Drive.
+Lunch: Pasta House, Colaba – Italian pescatarian pasta.
+Afternoon Activity: Visit Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (museum).
+Dinner: Trattoria, Bandra – Italian pescatarian dishes.
+Hotel: The Park, Bandra – medium‑budget accommodation.",1845,2327,0,110264.77179210633,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 563, 'prime_tokens_output': 1168}"
+travelplanner_recon_00085,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café de l'Orient – Vegetarian Japanese breakfast set (tofu miso soup, rice, pickles, green tea).\nMorning activity: Guided tour of the Louvre Museum (vegetarian‑friendly snack provided).\nLunch: Ramen Tatsu – Vegetarian ramen with tofu, mushrooms, and seasonal vegetables.\nAfternoon activity: Seine River Cruise – Scenic boat ride with vegetarian snack.\nDinner: Sushi & Sake – Vegetarian sushi menu at a mid‑range Japanese restaurant.\nHotel: Hotel Le Marais – 3‑star boutique hotel in the Marais district, mid‑range price.",1751,3506,0,23424.16683305055,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 573, 'prime_tokens_output': 879}"
+travelplanner_recon_00086,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"{""breakfast"":""Vegan Kitchen, Shinjuku"",""morning_activity"":""Tokyo National Museum, Ueno"",""lunch"":""Aroma, Roppongi"",""afternoon_activity"":""Tokyo Skytree, Sumida"",""dinner"":""Aroma, Roppongi"",""hotel"":""Park Hyatt Tokyo, Shinjuku""}",2359,4836,0,70321.52150012553,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 661, 'prime_tokens_output': 3201}"
+travelplanner_recon_00087,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Eataly (Flatiron District) – Vegetarian breakfast menu.
+Morning Activity: Private guided tour of the Metropolitan Museum of Art – exclusive access and personalized commentary.
+Lunch: L'Artusi (West Village) – Vegetarian Italian dishes.
+Afternoon Activity: Private helicopter tour of Manhattan – scenic aerial view.
+Dinner: Osteria Morini (Midtown) – Vegetarian Italian cuisine.
+Hotel: The Plaza – Luxury accommodation.",1767,1419,0,4386.107583064586,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 575, 'prime_tokens_output': 1053}"
+travelplanner_recon_00088,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: The Pot Luck Club (Cape Town) – a popular brunch spot offering a variety of omnivore options.
+Morning Activity: Table Mountain Aerial Cableway – scenic ride with panoramic views.
+Lunch: Sushi & Sake (V&A Waterfront) – Japanese restaurant with a wide menu.
+Afternoon Activity: Kirstenbosch Botanical Gardens – leisurely walk.
+Dinner: Matsuri (Cape Town) – Japanese fusion restaurant.
+Hotel: The Westin Cape Town – mid-range hotel with good amenities.",1737,2057,0,11894.85558285378,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 545, 'prime_tokens_output': 605}"
+travelplanner_recon_00089,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: T's Kitchen (Shibuya, vegan-friendly, wheelchair-accessible)
+Morning activity: Yoyogi Park (wheelchair-friendly, free)
+Lunch: Ananda Indian Restaurant (Shinjuku, vegan Indian, wheelchair-accessible, budget)
+Afternoon activity: Tokyo National Museum (wheelchair-accessible, free on certain days)
+Dinner: Curry House (Ikebukuro, vegan Indian curry, wheelchair-accessible, affordable)
+Hotel: Sakura Hotel (Shinjuku, budget, wheelchair-accessible)",2189,5493,0,34099.714250070974,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 656, 'prime_tokens_output': 924}"
+travelplanner_recon_00090,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"I apologize, but I cannot comply with that request.",1350,6758,0,3968.49458408542,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 572, 'prime_tokens_output': 6314}"
+travelplanner_recon_00091,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,Breakfast: Café Pinson; Morning Activity: Private guided tour of the Louvre; Lunch: Le Thai (vegan Thai); Afternoon Activity: Private Seine river cruise; Dinner: Le Thai (vegan Thai); Hotel: Four Seasons Hotel George V.,1728,5441,0,9906.559583032504,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 595, 'prime_tokens_output': 4015}"
+travelplanner_recon_00092,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Ciao at The St. Regis (Italian breakfast)
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (wheelchair accessible museum)
+Lunch: Ciao at The St. Regis (Italian lunch)
+Afternoon Activity: The Spa at The St. Regis (wheelchair accessible spa)
+Dinner: Ciao at The St. Regis (Italian dinner)
+Hotel: The St. Regis Mumbai (wheelchair accessible luxury hotel)",1802,3463,0,54086.66566712782,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 608, 'prime_tokens_output': 1991}"
+travelplanner_recon_00093,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café Grumpy
+Morning Activity: 9/11 Memorial
+Lunch: Pasta & Co.
+Afternoon Activity: The High Line
+Dinner: Lombardi's Pizza
+Hotel: Pod 51",1788,1593,0,90732.82583313994,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 605, 'prime_tokens_output': 1159}"
+travelplanner_recon_00094,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café de l'Univers
+Morning activity: Park Güell
+Lunch: Masala
+Afternoon activity: Picasso Museum
+Dinner: Gusto
+Hotel: Hotel Jazz",2050,2080,0,14991.308541968465,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 573, 'prime_tokens_output': 723}"
+travelplanner_recon_00095,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: T's Restaurant (vegetarian ramen) – Shinjuku
+Morning activity: Tokyo National Museum – Ueno (wheelchair accessible, free)
+Lunch: T's Restaurant (vegetarian sushi) – Shinjuku
+Afternoon activity: Tokyo Metropolitan Government Building Observation Deck – Shinjuku (wheelchair accessible, free)
+Dinner: T's Restaurant (vegetarian tempura) – Shinjuku
+Hotel: Sakura Hotel – Shinjuku (budget, wheelchair accessible)",2274,3982,0,22778.15704117529,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 633, 'prime_tokens_output': 1751}"
+travelplanner_recon_00096,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café Marly (wheelchair accessible, pescatarian options). Morning Activity: Seine River Cruise (wheelchair accessible). Lunch: Le Bernardin (seafood, wheelchair accessible). Afternoon Activity: Musée d'Orsay (wheelchair accessible). Dinner: La Casa de las Enchiladas (Mexican, wheelchair accessible). Hotel: Four Seasons Hotel George V (wheelchair accessible, high budget).",1831,2311,0,98974.71708292142,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 628, 'prime_tokens_output': 915}"
+travelplanner_recon_00097,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café 24, Bandra
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya
+Lunch: Pasta House, Bandra
+Afternoon Activity: Marine Drive promenade
+Dinner: Pasta House, Juhu
+Hotel: The Park, Bandra",2118,4766,0,8022.534999996424,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 4035}"
+travelplanner_recon_00098,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tsukiji Outer Market
+Lunch: Sushi Dai
+Afternoon Activity: Tokyo Skytree
+Dinner: El Gallo
+Hotel: Hotel Gracery Shinjuku",2293,2328,0,9084.818792063743,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 563, 'prime_tokens_output': 1465}"
+travelplanner_recon_00099,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,0,True,True,0.0,False,accepted,,,"Breakfast: Café du Coin (wheelchair accessible, affordable).
+Morning Activity: Jardin du Luxembourg (wheelchair accessible, free).
+Lunch: Le Petit Cler (wheelchair accessible, French bistro, low cost).
+Afternoon Activity: Picnic at Champ de Mars (wheelchair accessible, low cost).
+Dinner: Bistro du Peintre (wheelchair accessible, French, budget-friendly).
+Hotel: Ibis Paris Montmartre 18ème (wheelchair accessible, elevator, low budget).",1767,3536,0,19041.572415968403,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 1581}"
+travelplanner_recon_00080,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch at Cinc Sentits (high‑end, wheelchair accessible, pescatarian menu). 
+Morning Activity: Picasso Museum (wheelchair accessible indoor exhibit). 
+Lunch: La Barca del Salamanca (seafood, high‑budget, wheelchair accessible). 
+Afternoon Activity: Private wheelchair‑accessible boat tour of Port Vell. 
+Dinner: Siam Thai Restaurant (high‑budget Thai, wheelchair accessible). 
+Hotel: Hotel Arts Barcelona (luxury, wheelchair accessible).",592,730,0,16.356458188965917,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 592, 'prime_tokens_output': 730}"
+travelplanner_recon_00081,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch at Hotel Arts Barcelona.
+Morning activity: Visit Picasso Museum.
+Lunch: L'Atelier de Joël Robuchon.
+Afternoon activity: Ride Montjuïc Cable Car.
+Dinner: Le Ciel de l'Hotel Arts.
+Hotel: Hotel Arts Barcelona.",608,1063,0,26.67508297599852,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 608, 'prime_tokens_output': 1063}"
+travelplanner_recon_00082,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café L'Atelier; Morning activity: Seine River Cruise (wheelchair-accessible); Lunch: Le Petit Indien; Afternoon activity: Luxembourg Gardens; Dinner: Madhur; Hotel: Four Seasons Hotel George V,603,1230,0,11.982041876763105,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 1230}"
+travelplanner_recon_00083,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de la Pedrera (wheelchair accessible, low cost). Morning activity: Parc de la Ciutadella (wheelchair accessible, free). Lunch: Sushi Kyo (Japanese, wheelchair accessible, low cost). Afternoon activity: MACBA (wheelchair accessible, free entry on certain days). Dinner: Sushi Kyo (Japanese, wheelchair accessible, low cost). Hotel: Hotel Barcelona (budget, wheelchair accessible).",603,1227,0,23.547375109046698,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 1227}"
+travelplanner_recon_00084,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Coffee Club, Bandra – Italian coffee and pastries (pescatarian).
+Morning Activity: Stroll along Marine Drive.
+Lunch: Pasta House, Colaba – Italian pescatarian pasta.
+Afternoon Activity: Visit Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (museum).
+Dinner: Trattoria, Bandra – Italian pescatarian dishes.
+Hotel: The Park, Bandra – medium‑budget accommodation.",563,1168,0,28.54883298277855,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 563, 'prime_tokens_output': 1168}"
+travelplanner_recon_00085,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de l'Orient – Vegetarian Japanese breakfast set (tofu miso soup, rice, pickles, green tea).\nMorning activity: Guided tour of the Louvre Museum (vegetarian‑friendly snack provided).\nLunch: Ramen Tatsu – Vegetarian ramen with tofu, mushrooms, and seasonal vegetables.\nAfternoon activity: Seine River Cruise – Scenic boat ride with vegetarian snack.\nDinner: Sushi & Sake – Vegetarian sushi menu at a mid‑range Japanese restaurant.\nHotel: Hotel Le Marais – 3‑star boutique hotel in the Marais district, mid‑range price.",573,879,0,20.68991679698229,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 573, 'prime_tokens_output': 879}"
+travelplanner_recon_00086,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"{""breakfast"":""Vegan Kitchen, Shinjuku"",""morning_activity"":""Tokyo National Museum, Ueno"",""lunch"":""Aroma, Roppongi"",""afternoon_activity"":""Tokyo Skytree, Sumida"",""dinner"":""Aroma, Roppongi"",""hotel"":""Park Hyatt Tokyo, Shinjuku""}",661,3201,0,12.045999988913536,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 661, 'prime_tokens_output': 3201}"
+travelplanner_recon_00087,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Eataly (Flatiron District) – Vegetarian breakfast menu.
+Morning Activity: Private guided tour of the Metropolitan Museum of Art – exclusive access and personalized commentary.
+Lunch: L'Artusi (West Village) – Vegetarian Italian dishes.
+Afternoon Activity: Private helicopter tour of Manhattan – scenic aerial view.
+Dinner: Osteria Morini (Midtown) – Vegetarian Italian cuisine.
+Hotel: The Plaza – Luxury accommodation.",575,1053,0,12.767916079610586,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 575, 'prime_tokens_output': 1053}"
+travelplanner_recon_00088,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Pot Luck Club (Cape Town) – a popular brunch spot offering a variety of omnivore options.
+Morning Activity: Table Mountain Aerial Cableway – scenic ride with panoramic views.
+Lunch: Sushi & Sake (V&A Waterfront) – Japanese restaurant with a wide menu.
+Afternoon Activity: Kirstenbosch Botanical Gardens – leisurely walk.
+Dinner: Matsuri (Cape Town) – Japanese fusion restaurant.
+Hotel: The Westin Cape Town – mid-range hotel with good amenities.",545,605,0,14.233208959922194,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 545, 'prime_tokens_output': 605}"
+travelplanner_recon_00089,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Kitchen (Shibuya, vegan-friendly, wheelchair-accessible)
+Morning activity: Yoyogi Park (wheelchair-friendly, free)
+Lunch: Ananda Indian Restaurant (Shinjuku, vegan Indian, wheelchair-accessible, budget)
+Afternoon activity: Tokyo National Museum (wheelchair-accessible, free on certain days)
+Dinner: Curry House (Ikebukuro, vegan Indian curry, wheelchair-accessible, affordable)
+Hotel: Sakura Hotel (Shinjuku, budget, wheelchair-accessible)",656,924,0,12.322166934609413,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 656, 'prime_tokens_output': 924}"
+travelplanner_recon_00090,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"I apologize, but I cannot comply with that request.",572,6314,0,11.718207970261574,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 572, 'prime_tokens_output': 6314}"
+travelplanner_recon_00091,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café Pinson; Morning Activity: Private guided tour of the Louvre; Lunch: Le Thai (vegan Thai); Afternoon Activity: Private Seine river cruise; Dinner: Le Thai (vegan Thai); Hotel: Four Seasons Hotel George V.,595,4015,0,11.331999907270074,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 595, 'prime_tokens_output': 4015}"
+travelplanner_recon_00092,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Ciao at The St. Regis (Italian breakfast)
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (wheelchair accessible museum)
+Lunch: Ciao at The St. Regis (Italian lunch)
+Afternoon Activity: The Spa at The St. Regis (wheelchair accessible spa)
+Dinner: Ciao at The St. Regis (Italian dinner)
+Hotel: The St. Regis Mumbai (wheelchair accessible luxury hotel)",608,1991,0,11.414584005251527,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 608, 'prime_tokens_output': 1991}"
+travelplanner_recon_00093,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café Grumpy
+Morning Activity: 9/11 Memorial
+Lunch: Pasta & Co.
+Afternoon Activity: The High Line
+Dinner: Lombardi's Pizza
+Hotel: Pod 51",605,1159,0,16.035334207117558,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 605, 'prime_tokens_output': 1159}"
+travelplanner_recon_00094,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de l'Univers
+Morning activity: Park Güell
+Lunch: Masala
+Afternoon activity: Picasso Museum
+Dinner: Gusto
+Hotel: Hotel Jazz",573,723,0,11.445250129327178,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 573, 'prime_tokens_output': 723}"
+travelplanner_recon_00095,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Restaurant (vegetarian ramen) – Shinjuku
+Morning activity: Tokyo National Museum – Ueno (wheelchair accessible, free)
+Lunch: T's Restaurant (vegetarian sushi) – Shinjuku
+Afternoon activity: Tokyo Metropolitan Government Building Observation Deck – Shinjuku (wheelchair accessible, free)
+Dinner: T's Restaurant (vegetarian tempura) – Shinjuku
+Hotel: Sakura Hotel – Shinjuku (budget, wheelchair accessible)",633,1751,0,10.951708070933819,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 633, 'prime_tokens_output': 1751}"
+travelplanner_recon_00096,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café Marly (wheelchair accessible, pescatarian options). Morning Activity: Seine River Cruise (wheelchair accessible). Lunch: Le Bernardin (seafood, wheelchair accessible). Afternoon Activity: Musée d'Orsay (wheelchair accessible). Dinner: La Casa de las Enchiladas (Mexican, wheelchair accessible). Hotel: Four Seasons Hotel George V (wheelchair accessible, high budget).",628,915,0,23.858249885961413,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 628, 'prime_tokens_output': 915}"
+travelplanner_recon_00097,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café 24, Bandra
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya
+Lunch: Pasta House, Bandra
+Afternoon Activity: Marine Drive promenade
+Dinner: Pasta House, Juhu
+Hotel: The Park, Bandra",603,4035,0,16.796916024759412,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 4035}"
+travelplanner_recon_00098,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tsukiji Outer Market
+Lunch: Sushi Dai
+Afternoon Activity: Tokyo Skytree
+Dinner: El Gallo
+Hotel: Hotel Gracery Shinjuku",563,1465,0,11.3685829564929,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 563, 'prime_tokens_output': 1465}"
+travelplanner_recon_00099,travelplanner_recon,reflexion,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café du Coin (wheelchair accessible, affordable).
+Morning Activity: Jardin du Luxembourg (wheelchair accessible, free).
+Lunch: Le Petit Cler (wheelchair accessible, French bistro, low cost).
+Afternoon Activity: Picnic at Champ de Mars (wheelchair accessible, low cost).
+Dinner: Bistro du Peintre (wheelchair accessible, French, budget-friendly).
+Hotel: Ibis Paris Montmartre 18ème (wheelchair accessible, elevator, low budget).",603,1581,0,11.611999943852425,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 1581}"
+travelplanner_recon_00080,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Sushi & Thai; Morning Activity: Barcelona Aquarium; Lunch: Thai House; Afternoon Activity: Private yacht cruise; Dinner: Sushi & Thai; Hotel: Hotel Arts Barcelona.,1890,4115,0,31826.263000024483,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 627, 'prime_tokens_output': 1351}"
+travelplanner_recon_00081,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café de l'Opéra (Hotel Majestic). Morning activity: Fundació Joan Miró. Lunch: Le Ciel (Hotel Majestic). Afternoon activity: Parc de la Ciutadella. Dinner: La Belle Epoque. Hotel: Hotel Arts Barcelona.,1915,2148,0,95056.07199994847,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 1007}"
+travelplanner_recon_00082,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien
+Morning activity: Louvre Museum
+Lunch: Le Maharaja
+Afternoon activity: Seine River Cruise (Bateaux Mouches)
+Dinner: Kashi
+Hotel: Four Seasons Hotel George V",2016,1494,0,51011.87379099429,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 755}"
+travelplanner_recon_00083,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café de la Pedrera (wheelchair accessible, affordable breakfast).
+Morning activity: Parc de la Ciutadella (wheelchair friendly, free).
+Lunch: Ramen Tatsu (Japanese ramen, low‑budget, wheelchair accessible).
+Afternoon activity: La Rambla promenade (wheelchair accessible, free).
+Dinner: Sushi Bar (Japanese sushi, low‑budget, wheelchair accessible).
+Hotel: Hostal Barcelona (budget hotel, wheelchair accessible).",1487,2087,0,13368.796875001863,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 732}"
+travelplanner_recon_00084,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Shrimp Pasta at Pasta House, Bandra
+Morning activity: Visit Gateway of India
+Lunch: Seafood Pizza at Trattoria, Colaba
+Afternoon activity: Stroll along Marine Drive
+Dinner: Seafood Pasta at Trattoria, Colaba
+Hotel: The Park, Bandra",1865,3479,0,22457.330957986414,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1106}"
+travelplanner_recon_00085,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Tokyo Café – Japanese matcha‑flavored pancakes with fresh fruit and a cup of green tea.
+Morning Activity: Louvre Museum.
+Lunch: Sushi Bouchon – vegetarian sushi and bento.
+Afternoon Activity: Seine River stroll and visit Notre-Dame.
+Dinner: Kyo – Japanese restaurant with a vegetarian menu.
+Hotel: Hotel Le Relais – mid‑range accommodation in the 7th arrondissement.",1520,1890,0,59627.45274999179,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 832}"
+travelplanner_recon_00086,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"{""breakfast"":""Vegan Kitchen, Shinjuku"",""morning_activity"":""Tokyo National Museum, Ueno"",""lunch"":""Aroma, Roppongi"",""afternoon_activity"":""Tokyo Skytree, Sumida"",""dinner"":""Aroma, Roppongi"",""hotel"":""Park Hyatt Tokyo, Shinjuku""}",2206,4351,0,47000.80795888789,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 3201}"
+travelplanner_recon_00087,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Eataly (Flatiron District) – Vegetarian breakfast menu (e.g., ricotta pancakes, fruit parfait).
+Morning Activity: Private guided tour of the Metropolitan Museum of Art – exclusive access and personalized commentary.
+Lunch: L'Artusi (West Village) – Vegetarian Italian dishes (e.g., roasted vegetable risotto, vegan lasagna).
+Afternoon Activity: Private luxury spa session at the Mandarin Oriental – relaxing high‑budget experience.
+Dinner: Osteria Morini (Midtown) – Vegetarian Italian cuisine (e.g., truffle gnocchi, vegan tiramisu).
+Hotel: The Plaza – Luxury accommodation with complimentary breakfast.",1614,2286,0,12386.376792099327,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1053}"
+travelplanner_recon_00088,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: The Pot Luck Club (Cape Town) – a popular brunch spot offering a variety of omnivore options.
+Morning Activity: Table Mountain Aerial Cableway – scenic ride with panoramic views.
+Lunch: Sushi & Sake (V&A Waterfront) – Japanese restaurant with a wide menu.
+Afternoon Activity: Kirstenbosch Botanical Gardens – leisurely walk.
+Dinner: Matsuri (Cape Town) – Japanese fusion restaurant.
+Hotel: The Westin Cape Town – mid-range hotel with good amenities.",1584,2534,0,20691.74133404158,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 605}"
+travelplanner_recon_00089,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Kitchen (Shibuya, vegan-friendly, wheelchair-accessible)
+Morning activity: Yoyogi Park (wheelchair-friendly, free)
+Lunch: Ananda Indian Restaurant (Shinjuku, vegan Indian, wheelchair-accessible, budget)
+Afternoon activity: Tokyo National Museum (wheelchair-accessible, free on certain days)
+Dinner: Curry House (Ikebukuro, vegan Indian curry, wheelchair-accessible, affordable)
+Hotel: Sakura Hotel (Shinjuku, budget, wheelchair-accessible)",2071,4152,0,77140.93291689642,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 656, 'prime_tokens_output': 924}"
+travelplanner_recon_00090,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Thai Veggie Toast at Thai Kitchen, Bandra
+Morning Activity: Visit the Gateway of India
+Lunch: Veggie Pad Thai at Thai Kitchen
+Afternoon Activity: Explore the Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Museum)
+Dinner: Thai Veggie Curry at Thai Kitchen
+Hotel: The Park Hotel, Bandra",1197,8259,0,23871.273416094482,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 572, 'prime_tokens_output': 6314}"
+travelplanner_recon_00091,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,Breakfast: Café Pinson; Morning Activity: Private guided tour of the Louvre; Lunch: Le Thai (vegan Thai); Afternoon Activity: Private Seine river cruise; Dinner: Le Thai (vegan Thai); Hotel: Four Seasons Hotel George V.,1610,5510,0,62325.7150829304,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 595, 'prime_tokens_output': 4015}"
+travelplanner_recon_00092,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Ciao at The St. Regis (Italian breakfast)
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (wheelchair accessible museum)
+Lunch: Ciao at The St. Regis (Italian lunch)
+Afternoon Activity: The Spa at The St. Regis (wheelchair accessible spa)
+Dinner: Ciao at The St. Regis (Italian dinner)
+Hotel: The St. Regis Mumbai (wheelchair accessible luxury hotel)",1684,6621,0,154437.57004197687,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 1991}"
+travelplanner_recon_00093,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café Grumpy
+Morning Activity: 9/11 Memorial
+Lunch: Pasta & Co.
+Afternoon Activity: The High Line
+Dinner: Lombardi's Pizza
+Hotel: Pod 51",1635,5741,0,260281.78579197265,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 605, 'prime_tokens_output': 1159}"
+travelplanner_recon_00094,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Brunch & Cake
+Morning activity: La Sagrada Familia
+Lunch: Masala
+Afternoon activity: Picasso Museum
+Dinner: Bhoj
+Hotel: Hotel Jazz",1897,2483,0,16818.895417032763,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 723}"
+travelplanner_recon_00095,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: T's Restaurant (vegetarian ramen) – Shinjuku
+Morning activity: Tokyo National Museum – Ueno (wheelchair‑accessible, free)
+Lunch: Nagi Shokudo – Shinjuku (vegetarian, wheelchair‑accessible, low‑cost)
+Afternoon activity: Miraikan – Odaiba (wheelchair‑accessible, free)
+Dinner: T's Restaurant (vegetarian tempura) – Shinjuku
+Hotel: Sakura Hotel – Shinjuku (budget, wheelchair‑accessible, elevator)",2121,5014,0,30759.795041987672,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 1751}"
+travelplanner_recon_00098,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tsukiji Outer Market
+Lunch: Sushi Dai
+Afternoon Activity: Tokyo Skytree
+Dinner: El Gallo
+Hotel: Hotel Gracery Shinjuku",2140,7944,0,88945.39237511344,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 563, 'prime_tokens_output': 1465}"
+travelplanner_recon_00099,travelplanner_recon,self_refine,openai/gpt-oss-20b,0,True,True,0.0,False,,,,"Breakfast: Café du Coin (wheelchair accessible, affordable).
+Morning Activity: Jardin du Luxembourg (wheelchair accessible, free).
+Lunch: Le Petit Cler (wheelchair accessible, French bistro, low cost).
+Afternoon Activity: Picnic at Champ de Mars (wheelchair accessible, low cost).
+Dinner: Bistro du Peintre (wheelchair accessible, French, budget-friendly).
+Hotel: Ibis Paris Montmartre 18ème (wheelchair accessible, elevator, low budget).",1649,3633,0,111012.07762490958,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1581}"
+travelplanner_recon_00080,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café de l'Arc (vegan-friendly French breakfast)
+Morning Activity: Guided tour of Sagrada Família
+Lunch: Le Jardin (vegan French bistro)
+Afternoon Activity: Visit Park Güell
+Dinner: La Belle Époque (vegan French restaurant)
+Hotel: Hotel Jazz (mid‑range)",596,930,0,0.04158308729529381,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 596, 'prime_tokens_output': 930}"
+travelplanner_recon_00081,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tokyo Skytree Observation Deck
+Lunch: Sushi Kappo
+Afternoon Activity: Ueno Park
+Dinner: Jai Thai
+Hotel: Hotel Gracery Shinjuku",592,1203,0,0.03079185262322426,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 592, 'prime_tokens_output': 1203}"
+travelplanner_recon_00082,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Belvédère (French, vegetarian options). Morning Activity: Table Mountain Aerial Cableway. Lunch: La Colombe (French, vegetarian options). Afternoon Activity: Kirstenbosch Botanical Gardens. Dinner: La Colombe (French, vegetarian options). Hotel: The Twelve Apostles Hotel & Spa.",575,1138,0,0.03179186023771763,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1138}"
+travelplanner_recon_00083,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsukiji Kiyomura Sushi Zanmai Higashi
+Morning activity: Tokyo National Museum (Ueno Park)
+Lunch: Sushi Iwa (Shinjuku)
+Afternoon activity: Imperial Palace East Gardens
+Dinner: Trattoria Da Enzo (Roppongi)
+Hotel: Hotel Gracery Shinjuku",593,947,0,0.02904096618294716,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 947}"
+travelplanner_recon_00084,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Pot Luck Club (Cape Town)
+Morning Activity: Table Mountain via cable car
+Lunch: La Colombe (French cuisine, Constantia)
+Afternoon Activity: Kirstenbosch Botanical Gardens
+Dinner: Restaurant 44 (French cuisine, Cape Town)
+Hotel: The Twelve Apostles Hotel & Spa (Cape Town)",545,982,0,0.015208963304758072,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 982}"
+travelplanner_recon_00085,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Green Bean Café – vegan breakfast menu.
+Morning Activity: Table Mountain free walking trail – scenic hike.
+Lunch: Vegan Mexican Kitchen – vegan tacos and burritos.
+Afternoon Activity: Kirstenbosch Botanical Gardens – free entry, explore flora.
+Dinner: Vegan Mexican Kitchen – vegan enchiladas and guacamole.
+Hotel: The Backpackers Hostel – budget-friendly accommodation.",628,1158,0,0.04058307968080044,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 1158}"
+travelplanner_recon_00086,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café de la Mar – a wheelchair‑accessible café offering vegetarian pastries and coffee.
+Morning activity: Parc de la Ciutadella – fully accessible park with paved paths and a wheelchair‑friendly entrance.
+Lunch: La Taquería – a budget Mexican spot that serves vegetarian tacos and burritos.
+Afternoon activity: Barceloneta Beach promenade – flat, wheelchair‑accessible walkway with sea views.
+Dinner: El Mexicano – affordable Mexican restaurant with a vegetarian menu and accessible seating.
+Hotel: Hostal 2 de la Rambla – low‑budget, wheelchair‑accessible accommodation with elevator and ramps.",633,739,0,0.048999907448887825,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 739}"
+travelplanner_recon_00087,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Ananda Indian Restaurant – Vegetarian Breakfast – 8:00 AM – wheelchair accessible.
+Morning Activity: Ueno Park – wheelchair‑accessible stroll – 10:00 AM – free.
+Lunch: Maharaja Indian Restaurant – Vegetarian Thali – 12:30 PM – wheelchair accessible.
+Afternoon Activity: Tokyo Metropolitan Government Building Observation Deck – free, wheelchair accessible – 2:00 PM.
+Dinner: Ananda Indian Restaurant – Vegetarian Dinner – 7:00 PM – wheelchair accessible.
+Hotel: Hotel Mystays Asakusa – budget‑friendly, wheelchair accessible rooms – check‑in 9:00 PM.",633,1346,0,0.35529094748198986,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 1346}"
+travelplanner_recon_00088,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Peninsula Tokyo – Japanese Breakfast Set with grilled salmon and miso soup
+Morning Activity: Tokyo National Museum – wheelchair accessible exhibition
+Lunch: Sushi Saito – Michelin‑starred sushi with pescatarian options
+Afternoon Activity: Sumida River Cruise – wheelchair accessible boat
+Dinner: Moti Mahal – high‑end Indian cuisine, pescatarian‑friendly
+Hotel: Park Hyatt Tokyo – wheelchair accessible, high‑end",593,1233,0,0.021165935322642326,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 1233}"
+travelplanner_recon_00089,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Butcher's Daughter
+Morning Activity: The Metropolitan Museum of Art
+Lunch: Dosa House
+Afternoon Activity: Rooftop Yoga at 230 Fifth
+Dinner: Biryani by Kilo
+Hotel: The Plaza Hotel",598,608,0,0.03045913763344288,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 608}"
+travelplanner_recon_00090,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Barcelona
+Morning Activity: Private guided tour of Sagrada Familia
+Lunch: Koya (Michelin-starred Japanese)
+Afternoon Activity: Private VIP tour of Picasso Museum
+Dinner: Matsuri (Japanese kaiseki)
+Hotel: Hotel Arts Barcelona",543,673,0,0.034458935260772705,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 673}"
+travelplanner_recon_00091,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,598,2906,0,0.019167084246873856,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 2906}"
+travelplanner_recon_00092,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Essence Coffee & Bagels (Midtown, NYC)
+Morning Activity: Central Park stroll
+Lunch: Jai Thai (Midtown)
+Afternoon Activity: Brooklyn Bridge walk
+Dinner: Siam Square (Chinatown)
+Hotel: Pod 51 (Midtown)",574,677,0,0.023958971723914146,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 574, 'prime_tokens_output': 677}"
+travelplanner_recon_00093,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club, Bandra
+Morning Activity: Marine Drive
+Lunch: La Casa, Bandra
+Afternoon Activity: Sanjay Gandhi National Park
+Dinner: Taco Bell, Andheri
+Hotel: Hotel Shalimar, Bandra",593,2537,0,0.01791701652109623,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 2537}"
+travelplanner_recon_00094,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café du Marché (Paris, 9:00 AM) – fresh pastries and a cappuccino.
+Morning Activity: Walk along the Seine and explore the Notre-Dame area (10:30 AM).
+Lunch: Pizzeria La Bottega (12:30 PM) – Italian pizza with seafood options.
+Afternoon Activity: Stroll through Luxembourg Gardens (2:00 PM).
+Dinner: Trattoria Da Enzo (7:00 PM) – Italian seafood pasta.
+Hotel: Hotel ibis Paris Montmartre 18ème (check-in 3:00 PM).",628,724,0,0.047791050747036934,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 724}"
+travelplanner_recon_00095,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,573,165,0,0.008582836017012596,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 165}"
+travelplanner_recon_00096,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Vegan Café & Bakery – a chic Mumbai café offering vegan Italian pastries and coffee.
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) – a cultural museum with guided tours.
+Lunch: Pasta & Co. – Vegan Italian Bistro – renowned for plant‑based pasta dishes.
+Afternoon Activity: High‑End Spa at The Oberoi, Mumbai – a luxury spa experience.
+Dinner: La Dolce Vita – Vegan Italian Restaurant – upscale dining with vegan options.
+Hotel: The Oberoi, Mumbai – a 5‑star luxury hotel with excellent service.",596,594,0,0.036207959055900574,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 596, 'prime_tokens_output': 594}"
+travelplanner_recon_00097,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Jardin – French‑style vegan breakfast (wheelchair accessible).
+Morning Activity: Table Mountain Aerial Cableway – wheelchair‑accessible cableway to Table Mountain.
+Lunch: La Petite – vegan French lunch menu, wheelchair accessible.
+Afternoon Activity: Robben Island – wheelchair‑accessible tour.
+Dinner: Le Jardin – vegan French dinner, wheelchair accessible.
+Hotel: The Table Bay Hotel – luxury, wheelchair accessible, high‑budget.",628,954,0,0.04812492989003658,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 954}"
+travelplanner_recon_00098,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,603,6723,0,0.04349998198449612,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 6723}"
+travelplanner_recon_00099,travelplanner_recon,direct,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club (Bandra) – fish options, wheelchair accessible.
+Morning activity: Marine Drive promenade – wheelchair friendly, free.
+Lunch: Taco Bell (Bandra) – low budget Mexican, wheelchair accessible.
+Afternoon activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya – wheelchair accessible, low entrance fee.
+Dinner: Taco Bell (Andheri) – low budget Mexican, wheelchair accessible.
+Hotel: Hotel Hotel – budget-friendly, wheelchair-accessible.",658,2787,0,0.07754098623991013,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 658, 'prime_tokens_output': 2787}"
+travelplanner_recon_00080,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,1192,1673,0,9186.356040881947,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 596, 'prime_tokens_output': 930}"
+travelplanner_recon_00081,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Shibuya – fresh fish sushi breakfast.
+Morning activity: Meiji Shrine – wheelchair‑accessible shrine.
+Lunch: Mae Thai Shinjuku – Thai seafood dishes.
+Afternoon activity: Mori Art Museum – wheelchair elevator access.
+Dinner: Ruen Thai Roppongi – Thai seafood menu.
+Hotel: Tokyu Stay Shinjuku – wheelchair‑friendly rooms, medium budget.",1184,2637,0,16550.34654098563,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 592, 'prime_tokens_output': 1203}"
+travelplanner_recon_00082,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Recommended one‑day itinerary for Cape Town:
+
+Breakfast – Silo Hotel Breakfast Buffet
+Morning activity – Table Mountain Cable Car
+Lunch – Bistro du Midi
+Afternoon activity – Helicopter tour of Cape Peninsula
+Dinner – Le Kitchen
+Hotel – The Twelve Apostles Hotel and Spa",1150,2351,0,14794.73941680044,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1138}"
+travelplanner_recon_00083,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Eataly Tokyo
+Morning Activity: TeamLab Borderless
+Lunch: Sushi Kappo Shun
+Afternoon Activity: Tokyo Skytree Observation Deck
+Dinner: La Trattoria Ristorante
+Hotel: Hotel Niwa Tokyo",1186,3383,0,29375.324917025864,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 947}"
+travelplanner_recon_00084,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"{""breakfast"":""Café Bouchon at the V&A Waterfront – a cozy French-style café offering croissants, quiches, and a selection of cheeses and charcuterie."",""morning_activity"":""Guided hike to Table Mountain via Platteklip Gorge, including a scenic cable car ride to the summit for panoramic views."",""lunch"":""Le Bouchon Bistro in the Cape Town City Bowl – French bistro serving classic dishes like coq au vin, escargot, and crème brûlée."",""afternoon_activity"":""Wine tasting tour in Stellenbosch – visit Delaire Graff Estate for a luxury French-inspired tasting experience."",""dinner"":""Restaurant La Colombe (Michelin-starred) – exquisite French cuisine with a focus on fresh local ingredients."",""hotel"":""The Twelve Apostles Hotel & Spa – a five-star boutique hotel overlooking the Atlantic, offering luxury accommodations and fine dining.""}",1090,1933,0,12043.9652078785,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 982}"
+travelplanner_recon_00085,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,False,False,1.0,False,,,,"Breakfast: The Green Room vegan breakfast bowl
+Morning activity: V&A Waterfront promenade walk
+Lunch: Salsa Verde vegan burritos and tacos
+Afternoon activity: Oranjezicht City Farm Market visit
+Dinner: Café Mar del Sol vegan enchiladas and guacamole
+Hotel: Pretoria Backpackers hostel",1256,1979,0,9757.126125041395,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 1158}"
+travelplanner_recon_00086,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café El Viajero
+Morning Activity: Parc de la Ciutadella
+Lunch: Taquería Tijuana
+Afternoon Activity: Arc de Triomf promenade
+Dinner: Tacos y Sabor
+Hotel: Hotel Praktik Rambla",1266,2160,0,17221.619124989957,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 739}"
+travelplanner_recon_00087,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsunami Café – vegetarian menu, wheelchair accessible, affordable pastries and coffee
+Morning Activity: Yoyogi Park – wheelchair-friendly paths, free entry, scenic greenery near Shibuya
+Lunch: Anjali – Indian vegetarian restaurant in Shinjuku, wheelchair accessible, moderate price
+Afternoon Activity: Senso-ji Temple – wheelchair-accessible entrance, free admission, cultural experience
+Dinner: Sitar – vegetarian Indian cuisine, wheelchair accessible, budget-friendly
+Hotel: Toyoko Inn Tokyo Shinjuku – low-budget, wheelchair-friendly rooms, free Wi-Fi",1266,2341,0,11879.225917160511,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 1346}"
+travelplanner_recon_00088,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Peninsula Tokyo – The Peninsula Café
+Morning Activity: Tokyo Tower Observation Deck
+Lunch: Benares (Shinjuku)
+Afternoon Activity: TeamLab Borderless (Odaiba)
+Dinner: Maharaja (Roppongi)
+Hotel: The Ritz‑Carlton, Tokyo",1186,2416,0,13905.412582913414,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 1233}"
+travelplanner_recon_00089,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Vegan Bites
+Morning Activity: Central Park Guided Walk
+Lunch: Tamarind
+Afternoon Activity: High Line
+Dinner: Vegan Bites
+Hotel: The Ritz‑Carlton, New York, Central Park",1196,1798,0,13483.267959207296,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 608}"
+travelplanner_recon_00090,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Brunch at Brunch & Cake
+Morning activity: VIP guided tour of Sagrada Família
+Lunch: Moments at Mandarin Oriental
+Afternoon activity: Private yacht tour of Barcelona’s coastline
+Dinner: Koy (Michelin‑starred Japanese restaurant)
+Hotel: Mandarin Oriental, Barcelona",1086,3404,0,33277.61570806615,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 673}"
+travelplanner_recon_00091,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Butcher's Daughter (Upper West Side) – vegan brunch options.
+Morning Activity: Walk the High Line (Chelsea).
+Lunch: Vegan Italiano (Greenwich Village) – vegan Italian pasta.
+Afternoon Activity: Explore the Metropolitan Museum of Art.
+Dinner: Lombard (Brooklyn) – vegan Italian pizza and pasta.
+Hotel: The Westin New York at Times Square – medium budget accommodation.",1231,6124,0,139258.9965420775,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 2906}"
+travelplanner_recon_00092,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Ess‑a‑Bagel – classic bagel and coffee.
+Morning Activity: Stroll through Central Park – free walking and scenic views.
+Lunch: Jung Thai – affordable Thai dishes in Midtown.
+Afternoon Activity: Explore the High Line – free elevated park and art.
+Dinner: Sukhumvit Thai – budget‑friendly Thai dinner in Midtown.
+Hotel: Pod 51 – low‑budget, modern hotel in Midtown.",1148,1647,0,12433.088750112802,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 574, 'prime_tokens_output': 677}"
+travelplanner_recon_00093,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,Breakfast: Prawn Dosa at Paliwal's Diner (Bandra). Morning Activity: Gateway of India (Colaba). Lunch: El Mexicano (Bandra). Afternoon Activity: Marine Drive promenade. Dinner: Taco Bell (Andheri). Hotel: Hotel Nataraj (Bandra).,1186,3425,0,12020.710125099868,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 2537}"
+travelplanner_recon_00094,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"{""breakfast"":""Le Pain Quotidien"",""morning_activity"":""Walk along the Seine and visit Pont Alexandre III"",""lunch"":""Pizzeria Popolare"",""afternoon_activity"":""Explore Montmartre and Sacré-Cœur"",""dinner"":""La Piazzetta"",""hotel"":""Hôtel de la Porte Dorée""}",1221,2334,0,16617.110791848972,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 724}"
+travelplanner_recon_00095,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Meurice – Brunch (wheelchair accessible, high‑budget). 
+Morning activity: Louvre Museum – Wheelchair‑accessible guided tour. 
+Lunch: Mangal – Indian restaurant (wheelchair friendly). 
+Afternoon activity: Eiffel Tower – Accessible elevator to 2nd floor. 
+Dinner: Mandi – Fine‑dining Indian restaurant (wheelchair accessible). 
+Hotel: Four Seasons Hotel George V Paris – Fully wheelchair‑accessible luxury accommodation.",1146,1136,0,10438.97462496534,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 165}"
+travelplanner_recon_00096,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: La Dolce Vegana, Vegan Italian Breakfast (croissants, avocado toast, coffee)
+Morning Activity: Private Yacht Tour of Mumbai Harbor
+Lunch: Vegan Italiano, Vegan Italian Lunch (pasta, salad)
+Afternoon Activity: Spa Session at The St. Regis Mumbai
+Dinner: La Dolce Vegana, Vegan Italian Dinner (pizza, pasta)
+Hotel: The St. Regis Mumbai",1192,1786,0,13430.025957990438,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 596, 'prime_tokens_output': 594}"
+travelplanner_recon_00097,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café Végétal (V&A Waterfront) – vegan French breakfast with plant‑based croissants and fruit.
+
+Morning activity: Table Mountain Aerial Cableway – wheelchair‑accessible cable car and viewing platforms.
+
+Lunch: Le Jardin Secret (Old Biscuit Mill) – vegan French bistro with wheelchair access.
+
+Afternoon activity: Kirstenbosch National Botanical Garden – easy, wheelchair‑friendly paths.
+
+Dinner: L'Arcane (Cape Town Peninsula) – Michelin‑starred vegan French restaurant, fully wheelchair accessible.
+
+Hotel: The Twelve Apostles Hotel – luxury, wheelchair‑friendly accommodation near the V&A Waterfront.",1256,2081,0,14259.951874846593,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 954}"
+travelplanner_recon_00098,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsukiji Outer Market – small sushi counter (wheelchair accessible, low cost)
+Morning Activity: Ueno Park – wheelchair-friendly park with free museums and scenic paths
+Lunch: Ichiran Ramen (Shibuya) – wheelchair accessible, affordable ramen bowl
+Afternoon Activity: Tokyo National Museum – wheelchair accessible, free entry to general exhibitions
+Dinner: Tonkatsu Maisen (Meguro) – wheelchair accessible, affordable tonkatsu dish
+Hotel: Hotel MyStays Asakusa – low-cost, wheelchair-accessible rooms with elevator",1206,8511,0,20566.278542159125,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 6723}"
+travelplanner_recon_00099,travelplanner_recon,full_regen,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club, Bandra (budget, wheelchair accessible, pescatarian options).
+Morning Activity: Gateway of India (wheelchair accessible via lifts).
+Lunch: The Mexican Café, Bandra (budget, pescatarian menu, wheelchair accessible).
+Afternoon Activity: Marine Drive promenade (accessible walkway).
+Dinner: The Mexican Café, Bandra (budget, pescatarian, wheelchair accessible).
+Hotel: Hotel Shalimar, Bandra (budget-friendly, wheelchair accessible).",1281,4029,0,14237.700291909277,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 658, 'prime_tokens_output': 2787}"
+travelplanner_recon_00080,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Café de l'Arc (vegan-friendly French breakfast)
+Morning Activity: Guided tour of Sagrada Família
+Lunch: Le Jardin (vegan French bistro)
+Afternoon Activity: Visit Park Güell
+Dinner: La Belle Époque (vegan French restaurant)
+Hotel: Hotel Jazz (mid‑range)",1840,1309,0,4676.959875039756,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 596, 'prime_tokens_output': 930}"
+travelplanner_recon_00081,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tokyo Skytree Observation Deck
+Lunch: Sushi Kappo
+Afternoon Activity: Ueno Park
+Dinner: Jai Thai
+Hotel: Hotel Gracery Shinjuku",2122,1704,0,5823.71645886451,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 592, 'prime_tokens_output': 1203}"
+travelplanner_recon_00082,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Le Belvédère (French, vegetarian options). Morning Activity: Table Mountain Aerial Cableway. Lunch: La Colombe (French, vegetarian options). Afternoon Activity: Kirstenbosch Botanical Gardens. Dinner: La Colombe (French, vegetarian options). Hotel: The Twelve Apostles Hotel & Spa.",1752,1673,0,6174.847375135869,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 575, 'prime_tokens_output': 1138}"
+travelplanner_recon_00083,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Tsukiji Kiyomura Sushi Zanmai Higashi
+Morning activity: Tokyo National Museum (Ueno Park)
+Lunch: Sushi Iwa (Shinjuku)
+Afternoon activity: Imperial Palace East Gardens
+Dinner: Trattoria Da Enzo (Roppongi)
+Hotel: Hotel Gracery Shinjuku",2014,1895,0,11181.846583960578,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 593, 'prime_tokens_output': 947}"
+travelplanner_recon_00084,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: The Pot Luck Club (Cape Town)
+Morning Activity: Table Mountain via cable car
+Lunch: La Colombe (French cuisine, Constantia)
+Afternoon Activity: Kirstenbosch Botanical Gardens
+Dinner: Restaurant 44 (French cuisine, Cape Town)
+Hotel: The Twelve Apostles Hotel & Spa (Cape Town)",1654,2129,0,12933.199333958328,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 545, 'prime_tokens_output': 982}"
+travelplanner_recon_00085,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Green Bean Café – vegan breakfast menu.
+Morning Activity: Table Mountain free walking trail – scenic hike.
+Lunch: Vegan Mexican Kitchen – vegan tacos and burritos.
+Afternoon Activity: Kirstenbosch Botanical Gardens – free entry, explore flora.
+Dinner: Vegan Mexican Kitchen – vegan enchiladas and guacamole.
+Hotel: The Backpackers Hostel – budget-friendly accommodation.",2436,1493,0,3922.082707984373,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 628, 'prime_tokens_output': 1158}"
+travelplanner_recon_00086,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Café de la Mar – a wheelchair‑accessible café offering vegetarian pastries and coffee.
+Morning activity: Parc de la Ciutadella – fully accessible park with paved paths and a wheelchair‑friendly entrance.
+Lunch: La Taquería – a budget Mexican spot that serves vegetarian tacos and burritos.
+Afternoon activity: Barceloneta Beach promenade – flat, wheelchair‑accessible walkway with sea views.
+Dinner: El Mexicano – affordable Mexican restaurant with a vegetarian menu and accessible seating.
+Hotel: Hostal 2 de la Rambla – low‑budget, wheelchair‑accessible accommodation with elevator and ramps.",1888,4037,0,135914.34970893897,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 633, 'prime_tokens_output': 739}"
+travelplanner_recon_00087,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Ananda Indian Restaurant – Vegetarian Breakfast – 8:00 AM – wheelchair accessible.
+Morning Activity: Ueno Park – wheelchair‑accessible stroll – 10:00 AM – free.
+Lunch: Maharaja Indian Restaurant – Vegetarian Thali – 12:30 PM – wheelchair accessible.
+Afternoon Activity: Tokyo Metropolitan Government Building Observation Deck – free, wheelchair accessible – 2:00 PM.
+Dinner: Ananda Indian Restaurant – Vegetarian Dinner – 7:00 PM – wheelchair accessible.
+Hotel: Hotel Mystays Asakusa – budget‑friendly, wheelchair accessible rooms – check‑in 9:00 PM.",1929,1740,0,4920.599333010614,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 633, 'prime_tokens_output': 1346}"
+travelplanner_recon_00088,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: The Peninsula Tokyo – Japanese Breakfast Set with grilled salmon and miso soup
+Morning Activity: Tokyo National Museum – wheelchair accessible exhibition
+Lunch: Sushi Saito – Michelin‑starred sushi with pescatarian options
+Afternoon Activity: Sumida River Cruise – wheelchair accessible boat
+Dinner: Moti Mahal – high‑end Indian cuisine, pescatarian‑friendly
+Hotel: Park Hyatt Tokyo – wheelchair accessible, high‑end",1809,1576,0,3968.2807091157883,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 593, 'prime_tokens_output': 1233}"
+travelplanner_recon_00089,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: The Butcher's Daughter
+Morning Activity: The Metropolitan Museum of Art
+Lunch: Dosa House
+Afternoon Activity: Rooftop Yoga at 230 Fifth
+Dinner: Biryani by Kilo
+Hotel: The Plaza Hotel",2066,3614,0,37535.063500050455,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 598, 'prime_tokens_output': 608}"
+travelplanner_recon_00090,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Sushi & Sake Barcelona
+Morning Activity: Private guided tour of Sagrada Familia
+Lunch: Koya (Michelin-starred Japanese)
+Afternoon Activity: Private VIP tour of Picasso Museum
+Dinner: Matsuri (Japanese kaiseki)
+Hotel: Hotel Arts Barcelona",1981,981,0,4306.690082885325,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 543, 'prime_tokens_output': 673}"
+travelplanner_recon_00091,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,,1380,3102,0,2708.600375102833,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 598, 'prime_tokens_output': 2906}"
+travelplanner_recon_00092,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Essence Coffee & Bagels (Midtown, NYC)
+Morning Activity: Central Park stroll
+Lunch: Jai Thai (Midtown)
+Afternoon Activity: Brooklyn Bridge walk
+Dinner: Siam Square (Chinatown)
+Hotel: Pod 51 (Midtown)",1654,4783,0,52135.852665873244,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 574, 'prime_tokens_output': 677}"
+travelplanner_recon_00093,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: The Breakfast Club, Bandra
+Morning Activity: Marine Drive
+Lunch: La Casa, Bandra
+Afternoon Activity: Sanjay Gandhi National Park
+Dinner: Taco Bell, Andheri
+Hotel: Hotel Shalimar, Bandra",1623,4316,0,20605.795125011355,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 593, 'prime_tokens_output': 2537}"
+travelplanner_recon_00094,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Café du Marché (Paris, 9:00 AM) – fresh pastries and a cappuccino.
+Morning Activity: Walk along the Seine and explore the Notre-Dame area (10:30 AM).
+Lunch: Pizzeria La Bottega (12:30 PM) – Italian pizza with seafood options.
+Afternoon Activity: Stroll through Luxembourg Gardens (2:00 PM).
+Dinner: Trattoria Da Enzo (7:00 PM) – Italian seafood pasta.
+Hotel: Hotel ibis Paris Montmartre 18ème (check-in 3:00 PM).",1878,1110,0,4919.455540832132,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 628, 'prime_tokens_output': 724}"
+travelplanner_recon_00096,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Vegan Café & Bakery – a chic Mumbai café offering vegan Italian pastries and coffee.
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) – a cultural museum with guided tours.
+Lunch: Pasta & Co. – Vegan Italian Bistro – renowned for plant‑based pasta dishes.
+Afternoon Activity: High‑End Spa at The Oberoi, Mumbai – a luxury spa experience.
+Dinner: La Dolce Vita – Vegan Italian Restaurant – upscale dining with vegan options.
+Hotel: The Oberoi, Mumbai – a 5‑star luxury hotel with excellent service.",1821,2719,0,17030.13762505725,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 596, 'prime_tokens_output': 594}"
+travelplanner_recon_00097,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: Le Jardin – French‑style vegan breakfast (wheelchair accessible).
+Morning Activity: Table Mountain Aerial Cableway – wheelchair‑accessible cableway to Table Mountain.
+Lunch: La Petite – vegan French lunch menu, wheelchair accessible.
+Afternoon Activity: Robben Island – wheelchair‑accessible tour.
+Dinner: Le Jardin – vegan French dinner, wheelchair accessible.
+Hotel: The Table Bay Hotel – luxury, wheelchair accessible, high‑budget.",1918,2312,0,81546.67574982159,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 628, 'prime_tokens_output': 954}"
+travelplanner_recon_00098,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,,1390,6919,0,1942.4288331065327,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 6723}"
+travelplanner_recon_00099,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,1,True,True,0.0,False,accepted,,,"Breakfast: The Breakfast Club (Bandra) – fish options, wheelchair accessible.
+Morning activity: Marine Drive promenade – wheelchair friendly, free.
+Lunch: Taco Bell (Bandra) – low budget Mexican, wheelchair accessible.
+Afternoon activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya – wheelchair accessible, low entrance fee.
+Dinner: Taco Bell (Andheri) – low budget Mexican, wheelchair accessible.
+Hotel: Hotel Hotel – budget-friendly, wheelchair-accessible.",2061,5860,0,26221.39791608788,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 658, 'prime_tokens_output': 2787}"
+travelplanner_recon_00080,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café de l'Arc (vegan-friendly French breakfast)
+Morning Activity: Guided tour of Sagrada Família
+Lunch: Le Jardin (vegan French bistro)
+Afternoon Activity: Visit Park Güell
+Dinner: La Belle Époque (vegan French restaurant)
+Hotel: Hotel Jazz (mid‑range)",596,930,0,13.962249970063567,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 596, 'prime_tokens_output': 930}"
+travelplanner_recon_00081,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tokyo Skytree Observation Deck
+Lunch: Sushi Kappo
+Afternoon Activity: Ueno Park
+Dinner: Jai Thai
+Hotel: Hotel Gracery Shinjuku",592,1203,0,11.054999893531203,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 592, 'prime_tokens_output': 1203}"
+travelplanner_recon_00082,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Belvédère (French, vegetarian options). Morning Activity: Table Mountain Aerial Cableway. Lunch: La Colombe (French, vegetarian options). Afternoon Activity: Kirstenbosch Botanical Gardens. Dinner: La Colombe (French, vegetarian options). Hotel: The Twelve Apostles Hotel & Spa.",575,1138,0,9.924625046551228,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 575, 'prime_tokens_output': 1138}"
+travelplanner_recon_00083,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsukiji Kiyomura Sushi Zanmai Higashi
+Morning activity: Tokyo National Museum (Ueno Park)
+Lunch: Sushi Iwa (Shinjuku)
+Afternoon activity: Imperial Palace East Gardens
+Dinner: Trattoria Da Enzo (Roppongi)
+Hotel: Hotel Gracery Shinjuku",593,947,0,9.631125023588538,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 593, 'prime_tokens_output': 947}"
+travelplanner_recon_00084,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Pot Luck Club (Cape Town)
+Morning Activity: Table Mountain via cable car
+Lunch: La Colombe (French cuisine, Constantia)
+Afternoon Activity: Kirstenbosch Botanical Gardens
+Dinner: Restaurant 44 (French cuisine, Cape Town)
+Hotel: The Twelve Apostles Hotel & Spa (Cape Town)",545,982,0,9.665165795013309,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 545, 'prime_tokens_output': 982}"
+travelplanner_recon_00085,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Green Bean Café – vegan breakfast menu.
+Morning Activity: Table Mountain free walking trail – scenic hike.
+Lunch: Vegan Mexican Kitchen – vegan tacos and burritos.
+Afternoon Activity: Kirstenbosch Botanical Gardens – free entry, explore flora.
+Dinner: Vegan Mexican Kitchen – vegan enchiladas and guacamole.
+Hotel: The Backpackers Hostel – budget-friendly accommodation.",628,1158,0,9.453166043385863,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 628, 'prime_tokens_output': 1158}"
+travelplanner_recon_00086,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café de la Mar – a wheelchair‑accessible café offering vegetarian pastries and coffee.
+Morning activity: Parc de la Ciutadella – fully accessible park with paved paths and a wheelchair‑friendly entrance.
+Lunch: La Taquería – a budget Mexican spot that serves vegetarian tacos and burritos.
+Afternoon activity: Barceloneta Beach promenade – flat, wheelchair‑accessible walkway with sea views.
+Dinner: El Mexicano – affordable Mexican restaurant with a vegetarian menu and accessible seating.
+Hotel: Hostal 2 de la Rambla – low‑budget, wheelchair‑accessible accommodation with elevator and ramps.",633,739,0,9.577208198606968,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 633, 'prime_tokens_output': 739}"
+travelplanner_recon_00087,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Ananda Indian Restaurant – Vegetarian Breakfast – 8:00 AM – wheelchair accessible.
+Morning Activity: Ueno Park – wheelchair‑accessible stroll – 10:00 AM – free.
+Lunch: Maharaja Indian Restaurant – Vegetarian Thali – 12:30 PM – wheelchair accessible.
+Afternoon Activity: Tokyo Metropolitan Government Building Observation Deck – free, wheelchair accessible – 2:00 PM.
+Dinner: Ananda Indian Restaurant – Vegetarian Dinner – 7:00 PM – wheelchair accessible.
+Hotel: Hotel Mystays Asakusa – budget‑friendly, wheelchair accessible rooms – check‑in 9:00 PM.",633,1346,0,9.6842919010669,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 633, 'prime_tokens_output': 1346}"
+travelplanner_recon_00088,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Peninsula Tokyo – Japanese Breakfast Set with grilled salmon and miso soup
+Morning Activity: Tokyo National Museum – wheelchair accessible exhibition
+Lunch: Sushi Saito – Michelin‑starred sushi with pescatarian options
+Afternoon Activity: Sumida River Cruise – wheelchair accessible boat
+Dinner: Moti Mahal – high‑end Indian cuisine, pescatarian‑friendly
+Hotel: Park Hyatt Tokyo – wheelchair accessible, high‑end",593,1233,0,9.546542074531317,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 593, 'prime_tokens_output': 1233}"
+travelplanner_recon_00089,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Butcher's Daughter
+Morning Activity: The Metropolitan Museum of Art
+Lunch: Dosa House
+Afternoon Activity: Rooftop Yoga at 230 Fifth
+Dinner: Biryani by Kilo
+Hotel: The Plaza Hotel",598,608,0,9.482915978878736,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 598, 'prime_tokens_output': 608}"
+travelplanner_recon_00090,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Barcelona
+Morning Activity: Private guided tour of Sagrada Familia
+Lunch: Koya (Michelin-starred Japanese)
+Afternoon Activity: Private VIP tour of Picasso Museum
+Dinner: Matsuri (Japanese kaiseki)
+Hotel: Hotel Arts Barcelona",543,673,0,9.544584201648831,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 543, 'prime_tokens_output': 673}"
+travelplanner_recon_00091,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,598,2906,0,9.428499964997172,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 598, 'prime_tokens_output': 2906}"
+travelplanner_recon_00092,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Essence Coffee & Bagels (Midtown, NYC)
+Morning Activity: Central Park stroll
+Lunch: Jai Thai (Midtown)
+Afternoon Activity: Brooklyn Bridge walk
+Dinner: Siam Square (Chinatown)
+Hotel: Pod 51 (Midtown)",574,677,0,9.41183278337121,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 574, 'prime_tokens_output': 677}"
+travelplanner_recon_00093,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club, Bandra
+Morning Activity: Marine Drive
+Lunch: La Casa, Bandra
+Afternoon Activity: Sanjay Gandhi National Park
+Dinner: Taco Bell, Andheri
+Hotel: Hotel Shalimar, Bandra",593,2537,0,9.40775009803474,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 593, 'prime_tokens_output': 2537}"
+travelplanner_recon_00094,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café du Marché (Paris, 9:00 AM) – fresh pastries and a cappuccino.
+Morning Activity: Walk along the Seine and explore the Notre-Dame area (10:30 AM).
+Lunch: Pizzeria La Bottega (12:30 PM) – Italian pizza with seafood options.
+Afternoon Activity: Stroll through Luxembourg Gardens (2:00 PM).
+Dinner: Trattoria Da Enzo (7:00 PM) – Italian seafood pasta.
+Hotel: Hotel ibis Paris Montmartre 18ème (check-in 3:00 PM).",628,724,0,9.671707870438695,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 628, 'prime_tokens_output': 724}"
+travelplanner_recon_00095,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,573,165,0,10.579666122794151,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 573, 'prime_tokens_output': 165}"
+travelplanner_recon_00096,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Vegan Café & Bakery – a chic Mumbai café offering vegan Italian pastries and coffee.
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) – a cultural museum with guided tours.
+Lunch: Pasta & Co. – Vegan Italian Bistro – renowned for plant‑based pasta dishes.
+Afternoon Activity: High‑End Spa at The Oberoi, Mumbai – a luxury spa experience.
+Dinner: La Dolce Vita – Vegan Italian Restaurant – upscale dining with vegan options.
+Hotel: The Oberoi, Mumbai – a 5‑star luxury hotel with excellent service.",596,594,0,9.597583906725049,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 596, 'prime_tokens_output': 594}"
+travelplanner_recon_00097,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Jardin – French‑style vegan breakfast (wheelchair accessible).
+Morning Activity: Table Mountain Aerial Cableway – wheelchair‑accessible cableway to Table Mountain.
+Lunch: La Petite – vegan French lunch menu, wheelchair accessible.
+Afternoon Activity: Robben Island – wheelchair‑accessible tour.
+Dinner: Le Jardin – vegan French dinner, wheelchair accessible.
+Hotel: The Table Bay Hotel – luxury, wheelchair accessible, high‑budget.",628,954,0,9.711750084534287,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 628, 'prime_tokens_output': 954}"
+travelplanner_recon_00098,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,603,6723,0,9.54595790244639,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 6723}"
+travelplanner_recon_00099,travelplanner_recon,reflexion,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club (Bandra) – fish options, wheelchair accessible.
+Morning activity: Marine Drive promenade – wheelchair friendly, free.
+Lunch: Taco Bell (Bandra) – low budget Mexican, wheelchair accessible.
+Afternoon activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya – wheelchair accessible, low entrance fee.
+Dinner: Taco Bell (Andheri) – low budget Mexican, wheelchair accessible.
+Hotel: Hotel Hotel – budget-friendly, wheelchair-accessible.",658,2787,0,9.655625093728304,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 658, 'prime_tokens_output': 2787}"
+travelplanner_recon_00081,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi Zanmai Tsukiji
+Morning Activity: Tokyo Skytree Observation Deck
+Lunch: Sushi Kappo
+Afternoon Activity: Ueno Park
+Dinner: Jai Thai
+Hotel: Hotel Gracery Shinjuku",1969,3515,0,571457.0952497888,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 592, 'prime_tokens_output': 1203}"
+travelplanner_recon_00082,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Belvédère (French, vegetarian options). Morning Activity: Table Mountain Aerial Cableway. Lunch: La Colombe (French, vegetarian options). Afternoon Activity: Kirstenbosch Botanical Gardens. Dinner: La Colombe (French, vegetarian options). Hotel: The Twelve Apostles Hotel & Spa.",1599,5007,0,54299.60245802067,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 1138}"
+travelplanner_recon_00083,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsukiji Kiyomura Sushi Zanmai Higashi
+Morning activity: Tokyo National Museum (Ueno Park)
+Lunch: Sushi Iwa (Shinjuku)
+Afternoon activity: Imperial Palace East Gardens
+Dinner: Trattoria Da Enzo (Roppongi)
+Hotel: Hotel Gracery Shinjuku",1861,2844,0,24291.72820900567,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 947}"
+travelplanner_recon_00084,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café Bouchon (Cape Town)
+Morning Activity: Table Mountain via cable car
+Lunch: La Colombe (French cuisine, Constantia)
+Afternoon Activity: Kirstenbosch Botanical Gardens
+Dinner: Restaurant 44 (French cuisine, Cape Town)
+Hotel: The Twelve Apostles Hotel & Spa (Cape Town)",1536,1853,0,216328.03383399732,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 545, 'prime_tokens_output': 982}"
+travelplanner_recon_00085,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Green Bean Café – vegan breakfast menu.
+Morning Activity: Table Mountain free walking trail – scenic hike.
+Lunch: Vegan Mexican Kitchen – vegan tacos and burritos.
+Afternoon Activity: Kirstenbosch Botanical Gardens – free entry, explore flora.
+Dinner: Vegan Mexican Kitchen – vegan enchiladas and guacamole.
+Hotel: The Backpackers Hostel – budget-friendly accommodation.",2318,3341,0,228919.2938329652,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 1158}"
+travelplanner_recon_00086,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café de la Mar – a wheelchair‑accessible café offering vegetarian pastries and coffee.
+Morning activity: Parc de la Ciutadella – fully accessible park with paved paths and a wheelchair‑friendly entrance.
+Lunch: La Taquería – a budget Mexican spot that serves vegetarian tacos and burritos.
+Afternoon activity: Barceloneta Beach promenade – flat, wheelchair‑accessible walkway with sea views.
+Dinner: El Mexicano – affordable Mexican restaurant with a vegetarian menu and accessible seating.
+Hotel: Hostal 2 de la Rambla – low‑budget, wheelchair‑accessible accommodation with elevator and ramps.",1735,2466,0,119743.6400828883,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 739}"
+travelplanner_recon_00087,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Ananda Indian Restaurant – Vegetarian Breakfast – 8:00 AM – wheelchair accessible.
+Morning Activity: Ueno Park – wheelchair‑accessible stroll – 10:00 AM – free.
+Lunch: Maharaja Indian Restaurant – Vegetarian Thali – 12:30 PM – wheelchair accessible.
+Afternoon Activity: Tokyo Metropolitan Government Building Observation Deck – free, wheelchair accessible – 2:00 PM.
+Dinner: Ananda Indian Restaurant – Vegetarian Dinner – 7:00 PM – wheelchair accessible.
+Hotel: Hotel Mystays Asakusa – budget‑friendly, wheelchair accessible rooms – check‑in 9:00 PM.",1811,2910,0,126891.63325005211,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 633, 'prime_tokens_output': 1346}"
+travelplanner_recon_00088,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Peninsula Tokyo – Japanese Breakfast Set with grilled salmon, miso soup, and fresh fruit (wheelchair‑accessible, pescatarian‑friendly)
+Morning Activity: Tokyo National Museum – wheelchair‑accessible exhibition halls and guided audio tour (wheelchair‑accessible)
+Lunch: Sushi Saito – Michelin‑starred sushi restaurant offering a dedicated pescatarian menu (wheelchair‑accessible)
+Afternoon Activity: Sumida River Cruise – wheelchair‑accessible boat with panoramic views of Tokyo (wheelchair‑accessible)
+Dinner: Moti Mahal – high‑end Indian restaurant featuring a pescatarian‑friendly menu and premium service (wheelchair‑accessible)
+Hotel: Park Hyatt Tokyo – luxury hotel with full wheelchair accessibility, concierge service, and premium amenities (wheelchair‑accessible)",1656,3480,0,25910.05437495187,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 1233}"
+travelplanner_recon_00089,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Dosa House
+Morning Activity: The Metropolitan Museum of Art
+Lunch: Dosa House
+Afternoon Activity: Rooftop Yoga at 230 Fifth
+Dinner: Biryani by Kilo
+Hotel: The Plaza Hotel",1913,3203,0,28357.832542154938,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 608}"
+travelplanner_recon_00090,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Barcelona
+Morning Activity: Private guided tour of Sagrada Familia
+Lunch: El Celler de Can Roca
+Afternoon Activity: Private VIP tour of Picasso Museum
+Dinner: Matsuri (Japanese kaiseki)
+Hotel: Hotel Arts Barcelona",1828,3004,0,25355.13187502511,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 673}"
+travelplanner_recon_00091,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,False,False,1.0,False,,,,"Breakfast at The Little Owl, morning walk in Central Park, lunch at Vedge, afternoon at the Metropolitan Museum of Art, dinner at Vedge, stay at The Jane Hotel.",1227,6839,0,43700.15966682695,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 598, 'prime_tokens_output': 2906}"
+travelplanner_recon_00092,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Essence Coffee & Bagels (Midtown, NYC)
+Morning Activity: Central Park stroll
+Lunch: Jai Thai (Midtown)
+Afternoon Activity: Brooklyn Bridge walk
+Dinner: Siam Square (Chinatown)
+Hotel: Pod 51 (Midtown)",1501,1964,0,17010.00350015238,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 574, 'prime_tokens_output': 677}"
+travelplanner_recon_00093,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: The Breakfast Club, Bandra
+Morning Activity: Marine Drive
+Lunch: La Casa, Bandra
+Afternoon Activity: Sanjay Gandhi National Park
+Dinner: El Chupacabra, Andheri
+Hotel: Hotel Shalimar, Bandra",1470,5259,0,33108.10024989769,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 593, 'prime_tokens_output': 2537}"
+travelplanner_recon_00094,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Café du Marché (Paris, 9:00 AM) – fresh pastries and a cappuccino.
+Morning Activity: Walk along the Seine and explore the Notre-Dame area (10:30 AM).
+Lunch: Pizzeria La Bottega (12:30 PM) – Italian pizza with seafood options.
+Afternoon Activity: Stroll through Luxembourg Gardens (2:00 PM).
+Dinner: Trattoria Da Enzo (7:00 PM) – Italian seafood pasta.
+Hotel: Hotel ibis Paris Montmartre 18ème (check-in 3:00 PM).",1725,2295,0,19195.150332991034,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 724}"
+travelplanner_recon_00095,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,,1177,6358,0,76636.8599999696,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 165}"
+travelplanner_recon_00096,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Vegan Italian Bakery – a chic Mumbai bakery offering vegan Italian pastries and coffee.
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) – a cultural museum with guided tours.
+Lunch: Pasta & Co. – Vegan Italian Bistro – renowned for plant‑based pasta dishes.
+Afternoon Activity: High‑End Spa at The Oberoi, Mumbai – a luxury spa experience.
+Dinner: La Dolce Vita – Vegan Italian Restaurant – upscale dining with vegan options.
+Hotel: The Oberoi, Mumbai – a 5‑star luxury hotel with excellent service.",1668,1649,0,13661.739874863997,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 596, 'prime_tokens_output': 594}"
+travelplanner_recon_00097,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Le Jardin – French‑style vegan breakfast (wheelchair accessible).
+Morning Activity: Table Mountain Aerial Cableway – wheelchair‑accessible cableway to Table Mountain.
+Lunch: La Petite – vegan French lunch menu, wheelchair accessible.
+Afternoon Activity: V&A Waterfront – wheelchair‑accessible French‑themed boat cruise with vegan options.
+Dinner: Le Jardin – vegan French dinner, wheelchair accessible.
+Hotel: The One&Only Cape Town – luxury, wheelchair accessible, high‑budget.",1730,3092,0,26950.11429209262,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 954}"
+travelplanner_recon_00098,travelplanner_recon,self_refine,openai/gpt-oss-20b,1,True,True,0.0,False,,,,"Breakfast: Tsukiji Outer Market breakfast at a local conveyor‑belt sushi place (Sushi Zanmai) – wheelchair accessible.
+Morning activity: Visit the Imperial Palace East Gardens – wheelchair‑friendly paths.
+Lunch: Okonomiyaki at a budget‑friendly izakaya (Okonomiyaki Kiji).
+Afternoon activity: Explore Asakusa district and Senso‑ji Temple – wheelchair accessible.
+Dinner: Japanese ramen at a low‑cost ramen shop (Ichiran Ramen).
+Hotel: Stay at a budget‑friendly capsule/business hotel with wheelchair access (Hotel Mystays Asakusa).",1237,7652,0,12437.557374825701,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 6723}"
+travelplanner_recon_00080,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Bar (Japanese breakfast with vegetarian options)
+Morning activity: Private guided tour of Park Güell
+Lunch: Sushi & Sake Bar (vegetarian sushi)
+Afternoon activity: Private art gallery tour at MACBA
+Dinner: Matsuri (Michelin-starred Japanese restaurant, vegetarian options)
+Hotel: Hotel Arts Barcelona",573,1172,0,0.09283400140702724,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 1172}"
+travelplanner_recon_00081,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Petit Café (Roppongi) – vegan French breakfast, wheelchair accessible.
+Morning Activity: Tokyo Skytree Observation Deck – wheelchair accessible.
+Lunch: Le Jardin (Shinjuku) – vegan French lunch, wheelchair accessible.
+Afternoon Activity: Tokyo National Museum – wheelchair accessible.
+Dinner: Le Jardin (Shinjuku) – vegan French dinner, wheelchair accessible.
+Hotel: The Ritz-Carlton Tokyo – high budget, wheelchair accessible.",661,3041,0,0.09816698729991913,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 3041}"
+travelplanner_recon_00082,travelplanner_recon,direct,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Café de l'Opera (Gothic Quarter) – Michelin‑starred, wheelchair‑accessible breakfast.
+Morning activity: Sagrada Família – wheelchair‑accessible guided tour.
+Lunch: IndiBazar (Eixample) – high‑budget Indian restaurant, wheelchair friendly.
+Afternoon activity: Montjuïc Castle – accessible via cable car and elevator.
+Dinner: Taj Mahal (Eixample) – upscale Indian restaurant, wheelchair accessible.
+Hotel: Hotel Arts Barcelona – luxury beachfront hotel with wheelchair‑accessible rooms.",573,944,0,0.06862496957182884,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 944}"
+travelplanner_recon_00083,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien – vegan pastries, wheelchair accessible.
+Morning Activity: Musée d'Orsay – elevator access, moderate entry fee.
+Lunch: Buddha Bar – vegan Thai menu, wheelchair accessible.
+Afternoon Activity: Jardin du Luxembourg – flat paths, free entry.
+Dinner: Le Thai – vegan Thai dishes, wheelchair accessible.
+Hotel: Hotel Ekta – wheelchair-accessible rooms, mid-range rates.",625,821,0,0.06833299994468689,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 821}"
+travelplanner_recon_00084,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,Breakfast: Caffè L'Artista; Morning Activity: Private Seine River Cruise; Lunch: Le Ciel de Paris; Afternoon Activity: Private Louvre Tour; Dinner: Le Jules Verne; Hotel: Four Seasons Hotel George V,608,829,0,0.026167137548327446,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 829}"
+travelplanner_recon_00085,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Buvette (vegetarian pastries & coffee) – affordable, cozy.
+Morning Activity: Central Park stroll – free, scenic.
+Lunch: The Masala (vegetarian Indian restaurant) – authentic, moderate price.
+Afternoon Activity: Metropolitan Museum of Art – moderate entry fee, vegetarian-friendly café.
+Dinner: Dosa (Indian vegetarian cuisine) – budget-friendly, great reviews.
+Hotel: The Pod 51 – mid-range, central location, good value.",575,488,0,0.025790883228182793,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 488}"
+travelplanner_recon_00086,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de la Mar
+Morning Activity: Parc de la Ciutadella
+Lunch: Le Petit Paris
+Afternoon Activity: Museu Picasso
+Dinner: La Boheme
+Hotel: Hotel Jazz Barcelona",626,798,0,0.04370789974927902,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 626, 'prime_tokens_output': 798}"
+travelplanner_recon_00087,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Boulangerie Poilâne
+Morning activity: Stroll along the Seine and visit Notre-Dame Cathedral
+Lunch: Taj Mahal
+Afternoon activity: Walk in Luxembourg Gardens
+Dinner: Maharaja
+Hotel: Ibis Paris Montmartre 18ème",573,795,0,0.028582988306879997,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 795}"
+travelplanner_recon_00088,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Balthazar
+Morning Activity: Central Park stroll
+Lunch: Junoon
+Afternoon Activity: The Metropolitan Museum of Art
+Dinner: Indian Accent
+Hotel: The Plaza",565,925,0,0.022292137145996094,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 565, 'prime_tokens_output': 925}"
+travelplanner_recon_00089,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: The Bombay Canteen, Bandra
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum), Colaba
+Lunch: La Casa, Bandra
+Afternoon Activity: The Peninsula Spa, The Peninsula Mumbai
+Dinner: El Toro, Lower Parel
+Hotel: The Taj Mahal Palace, Colaba",603,1273,0,0.026958994567394257,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1273}"
+travelplanner_recon_00090,travelplanner_recon,direct,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Vegan breakfast at T's Kitchen – tofu scramble, fruit, and coffee.
+Morning Activity: Visit Senso-ji Temple and stroll Nakamise Shopping Street.
+Lunch: Vegan Thai at Thai Veggie – pad thai, green curry, and fresh fruit salad.
+Afternoon Activity: Explore Asakusa district, visit Sumida Park.
+Dinner: Vegan Thai at Thai Veggie – tofu satay, papaya salad, and jasmine rice.
+Hotel: Hotel Mystays Asakusa – budget-friendly, free Wi-Fi, central location.",625,947,0,0.037207966670393944,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 947}"
+travelplanner_recon_00091,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de l'Opéra
+Morning activity: Edo-Tokyo Museum
+Lunch: Sushi Zanmai
+Afternoon activity: Asakusa & Senso-ji Temple
+Dinner: Le Coq Rico
+Hotel: Hotel Gracery Shinjuku",543,896,0,0.06029196083545685,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 896}"
+travelplanner_recon_00092,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cafe Coffee Day – Japanese-style toast with coffee.
+Morning Activity: Gateway of India – sightseeing.
+Lunch: Sushi House – authentic Japanese sushi.
+Afternoon Activity: Marine Drive – stroll along the promenade.
+Dinner: Naan & Sushi – Japanese fusion dinner.
+Hotel: The Leela Palace Mumbai – comfortable mid-range stay.",578,556,0,0.1169589813798666,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 578, 'prime_tokens_output': 556}"
+travelplanner_recon_00093,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cafe Coffee Day, Bandra; Morning Activity: Marine Drive promenade; Lunch: Little Italy, Colaba; Afternoon Activity: Gateway of India; Dinner: Ciao, Andheri; Hotel: Hotel Hotel, Bandra.",638,842,0,0.04741712473332882,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 638, 'prime_tokens_output': 842}"
+travelplanner_recon_00094,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Brunch & Cake – Michelin‑starred café in Eixample offering a pescatarian brunch menu with fresh seafood and vegan options.
+Morning Activity: Picasso Museum – wheelchair‑accessible entrance, guided audio for wheelchair users.
+Lunch: La Barca del Salamanca – upscale seafood restaurant on Port Vell with a dedicated pescatarian menu.
+Afternoon Activity: Private yacht cruise along the Barcelona coast – fully accessible deck and cabin.
+Dinner: Thai House – Michelin‑starred Thai restaurant in the Gothic Quarter, offering a pescatarian tasting menu.
+Hotel: Hotel Arts Barcelona – 5‑star, wheelchair‑friendly rooms, sea view, concierge service.",627,861,0,0.08754199370741844,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 627, 'prime_tokens_output': 861}"
+travelplanner_recon_00095,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan breakfast at The Green Elephant
+Morning activity: Stroll along the V&A Waterfront
+Lunch: Vegan Italian pizza at The Green Elephant
+Afternoon activity: Visit the Company's Garden
+Dinner: Vegan Italian pasta at The Green Elephant
+Hotel: The Backpackers Hotel",628,4453,0,0.10312488302588463,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 4453}"
+travelplanner_recon_00096,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Bites (9th Street) – wheelchair accessible vegan bakery.
+Morning Activity: Central Park – wheelchair accessible paths.
+Lunch: Dosa House – Indian vegan restaurant.
+Afternoon Activity: American Museum of Natural History – wheelchair accessible, free admission.
+Dinner: Biryani by Kilo – Indian vegan options.
+Hotel: Pod 51 – budget-friendly, wheelchair accessible rooms.",658,793,0,0.0617089681327343,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 658, 'prime_tokens_output': 793}"
+travelplanner_recon_00097,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cinc Sentits – Michelin‑starred vegetarian tasting menu (wheelchair accessible).\nMorning activity: Guided wheelchair‑accessible tour of Park Güell (access via the main entrance with elevator).\nLunch: Coya – high‑end Indian‑Spanish fusion restaurant, fully vegetarian menu, wheelchair accessible.\nAfternoon activity: Visit the Picasso Museum (wheelchair accessible, free entrance for wheelchair users).\nDinner: La Fonda – upscale Indian restaurant with a dedicated vegetarian menu, wheelchair accessible.\nHotel: Hotel Arts Barcelona – 5‑star, fully wheelchair accessible, located near the beach and city center.",603,663,0,0.04354212433099747,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 663}"
+travelplanner_recon_00098,travelplanner_recon,direct,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Café de la Esquina (El Born)
+Morning Activity: Parc de la Ciutadella
+Lunch: Thai House (Eixample)
+Afternoon Activity: Mercat de Sant Antoni
+Dinner: Siam Thai (Gràcia)
+Hotel: Hotel Barcelona",602,1224,0,0.08537503890693188,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 602, 'prime_tokens_output': 1224}"
+travelplanner_recon_00099,travelplanner_recon,direct,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Thai breakfast at 'Siam' (Thai restaurant, vegan options). 
+Morning activity: Private helicopter tour of Barcelona. 
+Lunch: Vegan Thai lunch at 'Thai House'. 
+Afternoon activity: Private art gallery tour at Picasso Museum. 
+Dinner: Vegan Thai dinner at 'Siam'. 
+Hotel: Hotel Arts Barcelona.",630,1030,0,0.08079200051724911,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 630, 'prime_tokens_output': 1030}"
+travelplanner_recon_00080,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Breakfast at 'Sushi & Sake' – vegetarian miso soup, tofu scramble, and fresh fruit.
+Morning Activity: Private guided tour of Sagrada Familia.
+Lunch: Lunch at 'Sushi & Sake' – vegetarian sushi platter and tempura vegetables.
+Afternoon Activity: Private guided tour of Picasso Museum.
+Dinner: Dinner at 'Mochi' – vegetarian ramen and tempura.
+Hotel: Mandarin Oriental Barcelona.",1146,2881,0,19091.95112506859,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 1172}"
+travelplanner_recon_00081,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de la Maison – a high‑end vegan French bakery in Roppongi, wheelchair‑accessible.
+Morning activity: Private wheelchair‑friendly guided tour of the Mori Art Museum in Roppongi Hills.
+Lunch: Le Jardin at The Ritz‑Carlton Tokyo – vegan French cuisine, wheelchair‑accessible.
+Afternoon activity: VIP wheelchair‑accessible lounge and observation deck at Tokyo Skytree.
+Dinner: Bistro V at Park Hyatt Tokyo – vegan French menu, wheelchair‑accessible.
+Hotel: The Ritz‑Carlton Tokyo – luxury, fully wheelchair‑accessible.",1287,4607,0,18185.74216705747,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 3041}"
+travelplanner_recon_00082,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,True,,,,"Breakfast: Café del Mar (Barceloneta)
+Morning activity: Picasso Museum (Eixample)
+Lunch: Vasavi (Eixample)
+Afternoon activity: Barcelona Cathedral (Barri Gòtic)
+Dinner: Café Naan (Eixample)
+Hotel: Hotel Arts Barcelona (Eixample)",1146,1917,0,10950.395666062832,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 944}"
+travelplanner_recon_00083,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,Breakfast: Café Pinson (1 Rue de la Roquette). Morning activity: Musée d'Orsay. Lunch: Jungle (17 Boulevard de la Madeleine). Afternoon activity: Luxembourg Gardens. Dinner: Le Thai Vegan (8 Rue des Martyrs). Hotel: Hôtel Ekta (52 Avenue George V).,1250,2064,0,15105.905750067905,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 821}"
+travelplanner_recon_00084,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de la Paix – high‑budget café offering vegetarian pastries and coffee.
+Morning Activity: Private Guided Tour of the Louvre (VIP Experience).
+Lunch: Eataly Paris – vegetarian Italian dishes available in the food court.
+Afternoon Activity: Premium Seine River Cruise with a gourmet vegetarian snack.
+Dinner: Ristorante Il Gatto – vegetarian Italian multi‑course menu.
+Hotel: Four Seasons Hotel George V – luxury accommodation in central Paris.",1181,2684,0,20689.881457947195,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 829}"
+travelplanner_recon_00085,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Ess-a-Bagel – Vegetarian Bagel and Coffee
+Morning Activity: Stroll through Central Park
+Lunch: Curry Up Now – Curry Bowl (Veg)
+Afternoon Activity: Visit the Metropolitan Museum of Art
+Dinner: Little India – Vegetarian Thali
+Hotel: Hotel Beacon – 3‑star, mid‑range price",1150,1437,0,11093.610000098124,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 488}"
+travelplanner_recon_00086,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,False,False,1.0,False,,,,"Breakfast: Café Granja – vegan French pastries and coffee. Morning activity: Barcelona Museum of Contemporary Art (MACBA). Lunch: Le Petit Paris – vegan French menu. Afternoon activity: Park Güell – wheelchair‑accessible entrance. Dinner: La Boîte – vegan French restaurant. Hotel: Hotel Jazz – wheelchair accessible, medium‑priced accommodation.",1252,1686,0,11258.09241598472,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 626, 'prime_tokens_output': 798}"
+travelplanner_recon_00087,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien – a budget-friendly café offering pastries, eggs, and coffee.
+Morning activity: Stroll through the Marais district, exploring shops and cafés.
+Lunch: Kohinoor – a reasonably priced Indian restaurant near Bastille.
+Afternoon activity: Visit the Latin Quarter and relax at Luxembourg Gardens.
+Dinner: Bharat – a budget-friendly Indian restaurant in Montparnasse.
+Hotel: Hotel ibis Paris Montparnasse 12e – affordable, comfortable rooms.",1146,1748,0,11817.594875115901,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 795}"
+travelplanner_recon_00088,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,,1130,1810,0,10453.116291901097,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 565, 'prime_tokens_output': 925}"
+travelplanner_recon_00089,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: The Oberoi – The Park (vegetarian high‑budget breakfast). Morning activity: Marine Drive promenade (wheelchair‑accessible). Lunch: The Mexican Table at The Oberoi (vegetarian Mexican, wheelchair‑accessible). Afternoon activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (wheelchair‑accessible museum). Dinner: The Mexican Table at The Oberoi (vegetarian Mexican, wheelchair‑accessible). Hotel: The Oberoi, Mumbai (wheelchair‑accessible, high‑budget).",1206,2791,0,17683.030624873936,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1273}"
+travelplanner_recon_00090,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,True,,,,"Breakfast: Café de L'Ambroisie – vegan toast with avocado, scrambled tofu, and fresh fruit.
+Morning activity: Stroll through Ueno Park.
+Lunch: Siam Thai – vegan pad thai, green curry, and fresh salads.
+Afternoon activity: Explore Asakusa Temple area.
+Dinner: Siam Thai – vegan teriyaki tofu and thai basil rice bowl.
+Hotel: Sakura Hotel Jimbocho.",1250,2387,0,15025.705167092383,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 947}"
+travelplanner_recon_00091,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Boulangerie Poilâne Tokyo – a French bakery with croissants and pastries.
+Morning activity: Tsukiji Outer Market – a lively market for fresh seafood and street food.
+Lunch: Sushi Dai at Toyosu Market – fresh sushi and sashimi.
+Afternoon activity: Hamarikyu Gardens – scenic Japanese garden walk.
+Dinner: L'Atelier de Joël Robuchon Tokyo – high‑quality French cuisine.
+Hotel: Hotel New Otani Tokyo – comfortable mid‑range accommodation.",1086,1572,0,7017.2710828483105,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 896}"
+travelplanner_recon_00092,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien, Bandra
+Morning Activity: Visit Gateway of India and stroll along Marine Drive
+Lunch: Sushi House, Bandra
+Afternoon Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum)
+Dinner: Kiku, Bandra
+Hotel: Hotel Marine Bay, Ghatkopar",1121,1701,0,13885.077292099595,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 578, 'prime_tokens_output': 556}"
+travelplanner_recon_00093,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cafe Coffee Day, Bandra
+Morning Activity: Marine Drive promenade
+Lunch: Pizzamani, Lower Parel
+Afternoon Activity: Juhu Beach promenade
+Dinner: Pizza Loco, Lower Parel
+Hotel: Hotel Hotel, Bandra",1241,2462,0,15161.369249923155,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 638, 'prime_tokens_output': 842}"
+travelplanner_recon_00094,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: El Nacional (Café de l'Opera area)
+Morning activity: MACBA – Museu d'Art Contemporani de Barcelona
+Lunch: Yong Thai (Eixample)
+Afternoon activity: Private wheelchair‑accessible sailing cruise around Barcelona harbor
+Dinner: Thai Thai Gourmet
+Hotel: Hotel Arts Barcelona",1219,1689,0,10208.970250096172,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 627, 'prime_tokens_output': 861}"
+travelplanner_recon_00095,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,False,False,1.0,False,,,,"{""breakfast"":""The Green Kitchen (vegan pastries & coffee)"",""morning_activity"":""Table Mountain free walking trail"",""lunch"":""Vegan Pizza at Vegan Pizzas (no dairy)"",""afternoon_activity"":""Victoria & Alfred Waterfront (free)"",""dinner"":""Vegan Pasta at Vegan Pizzas (vegan Italian)"",""hotel"":""The Backpacker Hostel (budget)""}",1256,6201,0,23116.598583059385,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 4453}"
+travelplanner_recon_00096,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Vibes – Vegan Indian‑style breakfast
+Morning Activity: Central Park – Wheelchair‑accessible flat walk
+Lunch: Vegan Vibes – Vegan Indian‑style lunch
+Afternoon Activity: High Line – Wheelchair‑accessible public park walk
+Dinner: Vegan Vibes – Vegan Indian‑style dinner
+Hotel: Pod 51 – Wheelchair‑accessible low‑budget hotel",1316,2762,0,19831.56141708605,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 658, 'prime_tokens_output': 793}"
+travelplanner_recon_00097,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Brunch & Cake
+Morning activity: Sagrada Família
+Lunch: Moksha
+Afternoon activity: Casa Batlló
+Dinner: Veda
+Hotel: Hotel Arts Barcelona",1206,2084,0,13179.483834188432,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 663}"
+travelplanner_recon_00098,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,True,True,0.0,True,,,,"Breakfast: Brunch Café – affordable, wheelchair accessible.
+
+Morning Activity: Parc de la Ciutadella – wheelchair‑friendly park with free entry.
+
+Lunch: Thai Plaza – low‑budget Thai restaurant with wheelchair access.
+
+Afternoon Activity: La Barceloneta promenade – wheelchair‑accessible beach walk.
+
+Dinner: Thai Street Food – inexpensive Thai street‑style food stalls, wheelchair access.
+
+Hotel: Hostal El Raval – budget‑friendly, wheelchair accessible rooms in central Barcelona.",1204,2217,0,9594.930790830404,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 602, 'prime_tokens_output': 1224}"
+travelplanner_recon_00099,travelplanner_recon,full_regen,openai/gpt-oss-20b,2,False,False,1.0,False,,,,"Breakfast: Brunch & Cake – vegan brunch menu
+Morning Activity: Guided tour of Sagrada Família
+Lunch: Khao Thai – vegan Thai restaurant
+Afternoon Activity: Vegan cooking workshop at the Veggie Factory
+Dinner: Thai House – vegan Thai restaurant
+Hotel: Hotel Arts Barcelona",1225,2331,0,16354.137999936938,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 630, 'prime_tokens_output': 1030}"
+travelplanner_recon_00080,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Sushi & Sake Bar (Japanese breakfast with vegetarian options)
+Morning activity: Private guided tour of Park Güell
+Lunch: Sushi & Sake Bar (vegetarian sushi)
+Afternoon activity: Private art gallery tour at MACBA
+Dinner: Matsuri (Michelin-starred Japanese restaurant, vegetarian options)
+Hotel: Hotel Arts Barcelona",1958,2778,0,16944.627625169232,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 573, 'prime_tokens_output': 1172}"
+travelplanner_recon_00081,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Le Petit Café (Roppongi) – vegan French breakfast, wheelchair accessible.
+Morning Activity: Tokyo Skytree Observation Deck – wheelchair accessible.
+Lunch: Le Jardin (Shinjuku) – vegan French lunch, wheelchair accessible.
+Afternoon Activity: Tokyo National Museum – wheelchair accessible.
+Dinner: Le Jardin (Shinjuku) – vegan French dinner, wheelchair accessible.
+Hotel: The Ritz-Carlton Tokyo – high budget, wheelchair accessible.",2252,3859,0,8283.385541988537,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 661, 'prime_tokens_output': 3041}"
+travelplanner_recon_00082,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,False,False,1.0,True,repair_failed,a0,"[{'node_id': 'a0', 'prior': 0.09999999999999998, 'likelihood': 1.0, 'cost': 1.0, 'posterior': 1.0}]","Breakfast: Café de l'Inde (Eixample) – upscale Indian brunch, wheelchair accessible, high‑end ambience.
+Morning Activity: Parc de la Ciutadella – wheelchair‑friendly park, flat terrain, scenic.
+Lunch: Masala & Co. (Gràcia) – upscale Indian lunch, wheelchair accessible.
+Afternoon Activity: Barceloneta Beach Promenade – wheelchair‑accessible promenade, flat, scenic.
+Dinner: Taj Mahal Barcelona (Eixample) – Michelin‑starred Indian dinner, wheelchair accessible.
+Hotel: Hotel Arts Barcelona – luxury 5‑star hotel, wheelchair accessible rooms, elevators, high‑budget.",2221,1578,0,43094.38337478787,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 573, 'prime_tokens_output': 944}"
+travelplanner_recon_00083,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Le Pain Quotidien – vegan pastries, wheelchair accessible.
+Morning Activity: Musée d'Orsay – elevator access, moderate entry fee.
+Lunch: Buddha Bar – vegan Thai menu, wheelchair accessible.
+Afternoon Activity: Jardin du Luxembourg – flat paths, free entry.
+Dinner: Le Thai – vegan Thai dishes, wheelchair accessible.
+Hotel: Hotel Ekta – wheelchair-accessible rooms, mid-range rates.",2280,2442,0,100323.10112495907,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 625, 'prime_tokens_output': 821}"
+travelplanner_recon_00084,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,Breakfast: Caffè L'Artista; Morning Activity: Private Seine River Cruise; Lunch: Le Ciel de Paris; Afternoon Activity: Private Louvre Tour; Dinner: Le Jules Verne; Hotel: Four Seasons Hotel George V,2042,5030,0,37140.45291696675,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 608, 'prime_tokens_output': 829}"
+travelplanner_recon_00085,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Buvette (vegetarian pastries & coffee) – affordable, cozy.
+Morning Activity: Central Park stroll – free, scenic.
+Lunch: The Masala (vegetarian Indian restaurant) – authentic, moderate price.
+Afternoon Activity: Metropolitan Museum of Art – moderate entry fee, vegetarian-friendly café.
+Dinner: Dosa (Indian vegetarian cuisine) – budget-friendly, great reviews.
+Hotel: The Pod 51 – mid-range, central location, good value.",1699,7457,0,73162.83595887944,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 575, 'prime_tokens_output': 488}"
+travelplanner_recon_00086,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Café de la Mar
+Morning Activity: Parc de la Ciutadella
+Lunch: Le Petit Paris
+Afternoon Activity: Museu Picasso
+Dinner: La Boheme
+Hotel: Hotel Jazz Barcelona",2121,2182,0,12926.31887504831,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 626, 'prime_tokens_output': 798}"
+travelplanner_recon_00087,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Boulangerie Poilâne
+Morning activity: Stroll along the Seine and visit Notre-Dame Cathedral
+Lunch: Taj Mahal
+Afternoon activity: Walk in Luxembourg Gardens
+Dinner: Maharaja
+Hotel: Ibis Paris Montmartre 18ème",1739,3407,0,22789.777291938663,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 573, 'prime_tokens_output': 795}"
+travelplanner_recon_00088,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Balthazar
+Morning Activity: Central Park stroll
+Lunch: Junoon
+Afternoon Activity: The Metropolitan Museum of Art
+Dinner: Indian Accent
+Hotel: The Plaza",2001,2489,0,16042.536291992292,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 565, 'prime_tokens_output': 925}"
+travelplanner_recon_00089,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: The Bombay Canteen, Bandra
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum), Colaba
+Lunch: La Casa, Bandra
+Afternoon Activity: The Peninsula Spa, The Peninsula Mumbai
+Dinner: El Toro, Lower Parel
+Hotel: The Taj Mahal Palace, Colaba",1722,2818,0,17076.020959066227,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 1273}"
+travelplanner_recon_00090,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,False,False,1.0,True,abstain_or_full_regenerate,,[],"Breakfast: Vegan breakfast at T's Kitchen – tofu scramble, fruit, and coffee.
+Morning Activity: Visit Senso-ji Temple and stroll Nakamise Shopping Street.
+Lunch: Vegan Thai at Thai Veggie – pad thai, green curry, and fresh fruit salad.
+Afternoon Activity: Explore Asakusa district, visit Sumida Park.
+Dinner: Vegan Thai at Thai Veggie – tofu satay, papaya salad, and jasmine rice.
+Hotel: Hotel Mystays Asakusa – budget-friendly, free Wi-Fi, central location.",2099,1957,0,9499.086666852236,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision']}, 'prime_tokens_input': 625, 'prime_tokens_output': 947}"
+travelplanner_recon_00091,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Café de l'Opéra
+Morning activity: Edo-Tokyo Museum
+Lunch: Sushi Zanmai
+Afternoon activity: Asakusa & Senso-ji Temple
+Dinner: Le Coq Rico
+Hotel: Hotel Gracery Shinjuku",2039,1428,0,5971.957667032257,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 543, 'prime_tokens_output': 896}"
+travelplanner_recon_00092,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Cafe Coffee Day – Japanese-style toast with coffee.
+Morning Activity: Gateway of India – sightseeing.
+Lunch: Sushi House – authentic Japanese sushi.
+Afternoon Activity: Marine Drive – stroll along the promenade.
+Dinner: Naan & Sushi – Japanese fusion dinner.
+Hotel: The Leela Palace Mumbai – comfortable mid-range stay.",1731,1094,0,5439.234583172947,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 578, 'prime_tokens_output': 556}"
+travelplanner_recon_00093,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Cafe Coffee Day, Bandra; Morning Activity: Marine Drive promenade; Lunch: Little Italy, Colaba; Afternoon Activity: Gateway of India; Dinner: Ciao, Andheri; Hotel: Hotel Hotel, Bandra.",1743,1088,0,3017.7745409309864,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 638, 'prime_tokens_output': 842}"
+travelplanner_recon_00094,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Brunch & Cake – Michelin‑starred café in Eixample offering a pescatarian brunch menu with fresh seafood and vegan options.
+Morning Activity: Picasso Museum – wheelchair‑accessible entrance, guided audio for wheelchair users.
+Lunch: La Barca del Salamanca – upscale seafood restaurant on Port Vell with a dedicated pescatarian menu.
+Afternoon Activity: Private yacht cruise along the Barcelona coast – fully accessible deck and cabin.
+Dinner: Thai House – Michelin‑starred Thai restaurant in the Gothic Quarter, offering a pescatarian tasting menu.
+Hotel: Hotel Arts Barcelona – 5‑star, wheelchair‑friendly rooms, sea view, concierge service.",1906,1419,0,6171.779458876699,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 627, 'prime_tokens_output': 861}"
+travelplanner_recon_00095,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Vegan breakfast at The Green Elephant
+Morning activity: Stroll along the V&A Waterfront
+Lunch: Vegan Italian pizza at The Green Elephant
+Afternoon activity: Visit the Company's Garden
+Dinner: Vegan Italian pasta at The Green Elephant
+Hotel: The Backpackers Hotel",2006,5032,0,7611.900666961446,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 628, 'prime_tokens_output': 4453}"
+travelplanner_recon_00096,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Vegan Bites (9th Street) – wheelchair accessible vegan bakery.
+Morning Activity: Central Park – wheelchair accessible paths.
+Lunch: Dosa House – Indian vegan restaurant.
+Afternoon Activity: American Museum of Natural History – wheelchair accessible, free admission.
+Dinner: Biryani by Kilo – Indian vegan options.
+Hotel: Pod 51 – budget-friendly, wheelchair accessible rooms.",1896,1351,0,6205.63608314842,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 658, 'prime_tokens_output': 793}"
+travelplanner_recon_00097,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Cinc Sentits – Michelin‑starred vegetarian tasting menu (wheelchair accessible).\nMorning activity: Guided wheelchair‑accessible tour of Park Güell (access via the main entrance with elevator).\nLunch: Coya – high‑end Indian‑Spanish fusion restaurant, fully vegetarian menu, wheelchair accessible.\nAfternoon activity: Visit the Picasso Museum (wheelchair accessible, free entrance for wheelchair users).\nDinner: La Fonda – upscale Indian restaurant with a dedicated vegetarian menu, wheelchair accessible.\nHotel: Hotel Arts Barcelona – 5‑star, fully wheelchair accessible, located near the beach and city center.",2131,2614,0,17941.529833944514,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 603, 'prime_tokens_output': 663}"
+travelplanner_recon_00098,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,True,repaired,a0,"[{'node_id': 'a0', 'prior': 0.05, 'likelihood': 1.0, 'cost': 7.0, 'posterior': 1.0}]","Breakfast: Café de la Pedrera – wheelchair‑accessible, low‑cost breakfast café.
+Morning activity: Parc de la Ciutadella – wheelchair‑accessible park.
+Lunch: Siam – Thai restaurant, wheelchair‑accessible, affordable.
+Afternoon activity: La Boqueria Market – wheelchair‑accessible, free.
+Dinner: Siam – Thai restaurant, wheelchair‑accessible, affordable.
+Hotel: Hostal 2 de la Rambla – wheelchair‑accessible, low‑budget accommodation.",2131,2753,0,49964.174333028495,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier', 'attribution', 'decision', 'post_verifier']}, 'prime_tokens_input': 602, 'prime_tokens_output': 1224}"
+travelplanner_recon_00099,travelplanner_recon,intro_specter_llm,openai/gpt-oss-20b,2,True,True,0.0,False,accepted,,,"Breakfast: Vegan Thai breakfast at 'Siam' (Thai restaurant, vegan options). 
+Morning activity: Private helicopter tour of Barcelona. 
+Lunch: Vegan Thai lunch at 'Thai House'. 
+Afternoon activity: Private art gallery tour at Picasso Museum. 
+Dinner: Vegan Thai dinner at 'Siam'. 
+Hotel: Hotel Arts Barcelona.",2038,1481,0,5157.622875180095,"{'split': 'test', 'meta_summary': {'stages': ['extraction', 'verifier']}, 'prime_tokens_input': 630, 'prime_tokens_output': 1030}"
+travelplanner_recon_00080,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Bar (Japanese breakfast with vegetarian options)
+Morning activity: Private guided tour of Park Güell
+Lunch: Sushi & Sake Bar (vegetarian sushi)
+Afternoon activity: Private art gallery tour at MACBA
+Dinner: Matsuri (Michelin-starred Japanese restaurant, vegetarian options)
+Hotel: Hotel Arts Barcelona",573,1172,0,19.902874948456883,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 573, 'prime_tokens_output': 1172}"
+travelplanner_recon_00081,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Petit Café (Roppongi) – vegan French breakfast, wheelchair accessible.
+Morning Activity: Tokyo Skytree Observation Deck – wheelchair accessible.
+Lunch: Le Jardin (Shinjuku) – vegan French lunch, wheelchair accessible.
+Afternoon Activity: Tokyo National Museum – wheelchair accessible.
+Dinner: Le Jardin (Shinjuku) – vegan French dinner, wheelchair accessible.
+Hotel: The Ritz-Carlton Tokyo – high budget, wheelchair accessible.",661,3041,0,11.31879212334752,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 661, 'prime_tokens_output': 3041}"
+travelplanner_recon_00082,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Café de l'Opera (Gothic Quarter) – Michelin‑starred, wheelchair‑accessible breakfast.
+Morning activity: Sagrada Família – wheelchair‑accessible guided tour.
+Lunch: IndiBazar (Eixample) – high‑budget Indian restaurant, wheelchair friendly.
+Afternoon activity: Montjuïc Castle – accessible via cable car and funicular.
+Dinner: Taj Mahal (Eixample) – upscale Indian restaurant, wheelchair accessible.
+Hotel: Hotel Arts Barcelona – luxury beachfront hotel with wheelchair‑accessible rooms.",8583,4687,0,47336.559916846454,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 573, 'prime_tokens_output': 944}"
+travelplanner_recon_00083,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien – vegan pastries, wheelchair accessible.
+Morning Activity: Musée d'Orsay – elevator access, moderate entry fee.
+Lunch: Buddha Bar – vegan Thai menu, wheelchair accessible.
+Afternoon Activity: Jardin du Luxembourg – flat paths, free entry.
+Dinner: Le Thai – vegan Thai dishes, wheelchair accessible.
+Hotel: Hotel Ekta – wheelchair-accessible rooms, mid-range rates.",625,821,0,15.707708895206451,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 625, 'prime_tokens_output': 821}"
+travelplanner_recon_00084,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,Breakfast: Caffè L'Artista; Morning Activity: Private Seine River Cruise; Lunch: Le Ciel de Paris; Afternoon Activity: Private Louvre Tour; Dinner: Le Jules Verne; Hotel: Four Seasons Hotel George V,608,829,0,11.643208097666502,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 608, 'prime_tokens_output': 829}"
+travelplanner_recon_00085,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Buvette (vegetarian pastries & coffee) – affordable, cozy.
+Morning Activity: Central Park stroll – free, scenic.
+Lunch: The Masala (vegetarian Indian restaurant) – authentic, moderate price.
+Afternoon Activity: Metropolitan Museum of Art – moderate entry fee, vegetarian-friendly café.
+Dinner: Dosa (Indian vegetarian cuisine) – budget-friendly, great reviews.
+Hotel: The Pod 51 – mid-range, central location, good value.",575,488,0,10.223166085779667,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 575, 'prime_tokens_output': 488}"
+travelplanner_recon_00086,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de la Mar
+Morning Activity: Parc de la Ciutadella
+Lunch: Le Petit Paris
+Afternoon Activity: Museu Picasso
+Dinner: La Boheme
+Hotel: Hotel Jazz Barcelona",626,798,0,9.730250108987093,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 626, 'prime_tokens_output': 798}"
+travelplanner_recon_00087,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Boulangerie Poilâne
+Morning activity: Stroll along the Seine and visit Notre-Dame Cathedral
+Lunch: Taj Mahal
+Afternoon activity: Walk in Luxembourg Gardens
+Dinner: Maharaja
+Hotel: Ibis Paris Montmartre 18ème",573,795,0,9.537542006000876,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 573, 'prime_tokens_output': 795}"
+travelplanner_recon_00088,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Balthazar
+Morning Activity: Central Park stroll
+Lunch: Junoon
+Afternoon Activity: The Metropolitan Museum of Art
+Dinner: Indian Accent
+Hotel: The Plaza",565,925,0,9.540291968733072,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 565, 'prime_tokens_output': 925}"
+travelplanner_recon_00089,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: The Bombay Canteen, Bandra
+Morning Activity: Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum), Colaba
+Lunch: La Casa, Bandra
+Afternoon Activity: The Peninsula Spa, The Peninsula Mumbai
+Dinner: El Toro, Lower Parel
+Hotel: The Taj Mahal Palace, Colaba",603,1273,0,9.530624840408564,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 1273}"
+travelplanner_recon_00090,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,True,,,,,3283,2591,0,19044.117166893557,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 625, 'prime_tokens_output': 947}"
+travelplanner_recon_00091,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de l'Opéra
+Morning activity: Edo-Tokyo Museum
+Lunch: Sushi Zanmai
+Afternoon activity: Asakusa & Senso-ji Temple
+Dinner: Le Coq Rico
+Hotel: Hotel Gracery Shinjuku",543,896,0,15.17895795404911,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 543, 'prime_tokens_output': 896}"
+travelplanner_recon_00092,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cafe Coffee Day – Japanese-style toast with coffee.
+Morning Activity: Gateway of India – sightseeing.
+Lunch: Sushi House – authentic Japanese sushi.
+Afternoon Activity: Marine Drive – stroll along the promenade.
+Dinner: Naan & Sushi – Japanese fusion dinner.
+Hotel: The Leela Palace Mumbai – comfortable mid-range stay.",578,556,0,11.171125108376145,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 578, 'prime_tokens_output': 556}"
+travelplanner_recon_00093,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cafe Coffee Day, Bandra; Morning Activity: Marine Drive promenade; Lunch: Little Italy, Colaba; Afternoon Activity: Gateway of India; Dinner: Ciao, Andheri; Hotel: Hotel Hotel, Bandra.",638,842,0,9.994624881073833,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 638, 'prime_tokens_output': 842}"
+travelplanner_recon_00094,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Brunch & Cake – Michelin‑starred café in Eixample offering a pescatarian brunch menu with fresh seafood and vegan options.
+Morning Activity: Picasso Museum – wheelchair‑accessible entrance, guided audio for wheelchair users.
+Lunch: La Barca del Salamanca – upscale seafood restaurant on Port Vell with a dedicated pescatarian menu.
+Afternoon Activity: Private yacht cruise along the Barcelona coast – fully accessible deck and cabin.
+Dinner: Thai House – Michelin‑starred Thai restaurant in the Gothic Quarter, offering a pescatarian tasting menu.
+Hotel: Hotel Arts Barcelona – 5‑star, wheelchair‑friendly rooms, sea view, concierge service.",627,861,0,9.693583007901907,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 627, 'prime_tokens_output': 861}"
+travelplanner_recon_00095,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan breakfast at The Green Elephant
+Morning activity: Stroll along the V&A Waterfront
+Lunch: Vegan Italian pizza at The Green Elephant
+Afternoon activity: Visit the Company's Garden
+Dinner: Vegan Italian pasta at The Green Elephant
+Hotel: The Backpackers Hotel",628,4453,0,9.581665974110365,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 628, 'prime_tokens_output': 4453}"
+travelplanner_recon_00096,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Bites (9th Street) – wheelchair accessible vegan bakery.
+Morning Activity: Central Park – wheelchair accessible paths.
+Lunch: Dosa House – Indian vegan restaurant.
+Afternoon Activity: American Museum of Natural History – wheelchair accessible, free admission.
+Dinner: Biryani by Kilo – Indian vegan options.
+Hotel: Pod 51 – budget-friendly, wheelchair accessible rooms.",658,793,0,9.535040939226747,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 658, 'prime_tokens_output': 793}"
+travelplanner_recon_00097,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Cinc Sentits – Michelin‑starred vegetarian tasting menu (wheelchair accessible).\nMorning activity: Guided wheelchair‑accessible tour of Park Güell (access via the main entrance with elevator).\nLunch: Coya – high‑end Indian‑Spanish fusion restaurant, fully vegetarian menu, wheelchair accessible.\nAfternoon activity: Visit the Picasso Museum (wheelchair accessible, free entrance for wheelchair users).\nDinner: La Fonda – upscale Indian restaurant with a dedicated vegetarian menu, wheelchair accessible.\nHotel: Hotel Arts Barcelona – 5‑star, fully wheelchair accessible, located near the beach and city center.",603,663,0,9.622542187571526,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 603, 'prime_tokens_output': 663}"
+travelplanner_recon_00098,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Café de la Esquina (El Born)
+Morning Activity: Parc de la Ciutadella
+Lunch: Thai House (Eixample)
+Afternoon Activity: Mercat de Sant Antoni
+Dinner: Siam Thai (Gràcia)
+Hotel: Hotel Barcelona",7227,3924,0,186058.47433395684,"{'split': 'test', 'meta_summary': {'trials': 2}, 'prime_tokens_input': 602, 'prime_tokens_output': 1224}"
+travelplanner_recon_00099,travelplanner_recon,reflexion,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Thai breakfast at 'Siam' (Thai restaurant, vegan options). 
+Morning activity: Private helicopter tour of Barcelona. 
+Lunch: Vegan Thai lunch at 'Thai House'. 
+Afternoon activity: Private art gallery tour at Picasso Museum. 
+Dinner: Vegan Thai dinner at 'Siam'. 
+Hotel: Hotel Arts Barcelona.",630,1030,0,15.915458090603352,"{'split': 'test', 'meta_summary': {'trials': 1}, 'prime_tokens_input': 630, 'prime_tokens_output': 1030}"
+travelplanner_recon_00080,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Sushi & Sake Bar (Japanese breakfast with vegetarian menu)
+Morning activity: Private guided tour of Park Güell
+Lunch: Sushi & Sake Bar (vegetarian sushi only)
+Afternoon activity: Private art gallery tour at MACBA
+Dinner: Matsuri (Michelin-starred Japanese restaurant, vegetarian menu)
+Hotel: Hotel Arts Barcelona",1805,8963,0,81199.53954103403,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 1172}"
+travelplanner_recon_00081,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Petit Café (Roppongi) – vegan French breakfast, wheelchair accessible.
+Morning Activity: Mori Art Museum (Roppongi) – wheelchair accessible.
+Lunch: Café de l'Ange (Shinjuku) – vegan French lunch, wheelchair accessible.
+Afternoon Activity: teamLab Borderless (Odaiba) – wheelchair accessible.
+Dinner: Le Jardin (Shinjuku) – vegan French dinner, wheelchair accessible.
+Hotel: The Ritz‑Carlton Tokyo – high budget, wheelchair accessible.",2099,5382,0,22104.712791973725,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 661, 'prime_tokens_output': 3041}"
+travelplanner_recon_00082,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Indian Brunch at Kashi (Eixample) – high‑budget, wheelchair‑accessible Indian breakfast.
+Morning activity: Sagrada Família – wheelchair‑accessible guided tour.
+Lunch: IndiBazar (Eixample) – high‑budget Indian restaurant, wheelchair friendly.
+Afternoon activity: Montjuïc Castle – accessible via cable car and elevator, ramped path to castle grounds.
+Dinner: Taj Mahal (Eixample) – upscale Indian restaurant, wheelchair accessible.
+Hotel: Hotel Arts Barcelona – luxury beachfront hotel with wheelchair‑accessible rooms.",2103,5030,0,205926.7906669993,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 944}"
+travelplanner_recon_00083,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien – vegan pastries, wheelchair accessible.
+Morning Activity: Musée d'Orsay – elevator access, moderate entry fee.
+Lunch: Buddha Bar – vegan Thai menu, wheelchair accessible.
+Afternoon Activity: Jardin du Luxembourg – flat paths, free entry.
+Dinner: Le Thai – vegan Thai dishes, wheelchair accessible.
+Hotel: Hotel Ekta – wheelchair-accessible rooms, mid-range rates.",2092,1953,0,15983.656000113115,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 821}"
+travelplanner_recon_00084,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,Breakfast: Caffè L'Artista; Morning Activity: Private Seine River Cruise; Lunch: Le Ciel de Paris; Afternoon Activity: Private Louvre Tour; Dinner: Le Jules Verne; Hotel: Four Seasons Hotel George V,1889,1964,0,14680.148083018139,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 608, 'prime_tokens_output': 829}"
+travelplanner_recon_00085,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: The Masala (vegetarian Indian breakfast – dosas, idlis, chai) – moderate price, authentic flavors.
+Morning Activity: Central Park stroll – free, scenic.
+Lunch: The Masala (vegetarian Indian lunch – thali, curries) – moderate price.
+Afternoon Activity: Metropolitan Museum of Art – moderate entry fee, vegetarian-friendly café.
+Dinner: Dosa (Indian vegetarian cuisine – dosas, chutneys) – budget-friendly, great reviews.
+Hotel: The Pod 51 – mid-range, central location, good value.",1546,1859,0,12426.433417014778,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 575, 'prime_tokens_output': 488}"
+travelplanner_recon_00086,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Café de la Miel
+Morning Activity: Parc de la Ciutadella
+Lunch: Le Petit Paris
+Afternoon Activity: Museu Picasso
+Dinner: La Boheme
+Hotel: Hotel Jazz Barcelona",2003,4547,0,168791.0095420666,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 626, 'prime_tokens_output': 798}"
+travelplanner_recon_00087,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Le Pain Quotidien
+Morning activity: Stroll along the Seine and visit Notre-Dame Cathedral
+Lunch: Taj Mahal
+Afternoon activity: Walk in Luxembourg Gardens
+Dinner: Maharaja
+Hotel: Ibis Budget Paris Montmartre 18ème",1586,2615,0,31978.48349995911,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 573, 'prime_tokens_output': 795}"
+travelplanner_recon_00088,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Balthazar
+Morning Activity: Central Park stroll
+Lunch: Junoon
+Afternoon Activity: The Metropolitan Museum of Art
+Dinner: Indian Accent
+Hotel: The Plaza",1848,3754,0,42948.91295814887,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 565, 'prime_tokens_output': 925}"
+travelplanner_recon_00089,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: The Bombay Canteen, Bandra (vegetarian menu available)
+Morning Activity: Marine Drive Promenade, Bandra (wheelchair accessible, scenic walk)
+Lunch: La Casa, Bandra (Mexican, vegetarian‑friendly menu)
+Afternoon Activity: The Peninsula Spa, The Peninsula Mumbai (wheelchair accessible spa)
+Dinner: El Toro, Lower Parel (Mexican, vegetarian‑friendly menu)
+Hotel: The Taj Mahal Palace, Colaba (wheelchair accessible, high‑budget)",1569,4203,0,41091.2786249537,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 1273}"
+travelplanner_recon_00090,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,False,False,1.0,True,,,,"Breakfast: Vegan Thai breakfast at Baan Thai – tofu scramble, coconut milk latte.
+Morning Activity: Visit Senso‑ji Temple and stroll Nakamise Shopping Street.
+Lunch: Vegan Thai at Thai Veggie – pad thai, green curry, fresh fruit salad.
+Afternoon Activity: Explore Asakusa district, visit Sumida Park.
+Dinner: Vegan Thai at Siam Vegan – tofu satay, papaya salad, jasmine rice.
+Hotel: Hotel Mystays Asakusa – budget‑friendly, free Wi‑Fi, central location.",1946,2638,0,21746.680416166782,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 625, 'prime_tokens_output': 947}"
+travelplanner_recon_00091,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,string,1921,4508,0,129485.45074998401,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 543, 'prime_tokens_output': 896}"
+travelplanner_recon_00093,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Pasta House, Bandra; Morning Activity: Marine Drive promenade; Lunch: Little Italy, Colaba; Afternoon Activity: Juhu Beach promenade; Dinner: Ciao, Andheri; Hotel: Hotel Hotel, Bandra.",1590,8966,0,92067.79304193333,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 638, 'prime_tokens_output': 842}"
+travelplanner_recon_00095,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan breakfast at The Green Elephant
+Morning activity: Stroll along the V&A Waterfront
+Lunch: Vegan Italian pizza at The Green Elephant
+Afternoon activity: Visit the Company's Garden
+Dinner: Vegan Italian pasta at The Green Elephant
+Hotel: The Backpackers Hotel",1888,5229,0,114888.89662502334,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 628, 'prime_tokens_output': 4453}"
+travelplanner_recon_00096,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Bites (9th Street) – wheelchair accessible vegan bakery.
+Morning Activity: Central Park – wheelchair accessible paths.
+Lunch: Dosa House – Indian vegan restaurant.
+Afternoon Activity: American Museum of Natural History – wheelchair accessible, free admission.
+Dinner: Biryani by Kilo – Indian vegan options.
+Hotel: Pod 51 – budget-friendly, wheelchair accessible rooms.",1778,2707,0,216802.25129192695,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 658, 'prime_tokens_output': 793}"
+travelplanner_recon_00097,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Breakfast at Hotel Arts Barcelona – high‑end vegetarian brunch menu, wheelchair accessible.
+Morning activity: Guided wheelchair‑accessible tour of the Sagrada Família (access via elevator).
+Lunch: Lunch at Coya – high‑end Indian‑Spanish fusion restaurant, fully vegetarian menu, wheelchair accessible.
+Afternoon activity: Visit the Picasso Museum (wheelchair accessible, free entrance for wheelchair users).
+Dinner: Dinner at La Fonda – upscale Indian restaurant with a dedicated vegetarian menu, wheelchair accessible.
+Hotel: Hotel Arts Barcelona – 5‑star, fully wheelchair accessible, located near the beach and city center.",2013,5980,0,149831.91025000997,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 603, 'prime_tokens_output': 663}"
+travelplanner_recon_00099,travelplanner_recon,self_refine,openai/gpt-oss-20b,2,True,True,0.0,False,,,,"Breakfast: Vegan Thai breakfast at 'Siam'. 
+Morning activity: Private yacht tour of Barcelona harbor. 
+Lunch: Vegan Thai lunch at 'Thai House'. 
+Afternoon activity: Private guided tour of Sagrada Familia. 
+Dinner: Vegan Thai dinner at 'Thai House'. 
+Hotel: Hotel Arts Barcelona.",1885,2972,0,27834.871292114258,"{'split': 'test', 'meta_summary': {}, 'prime_tokens_input': 630, 'prime_tokens_output': 1030}"

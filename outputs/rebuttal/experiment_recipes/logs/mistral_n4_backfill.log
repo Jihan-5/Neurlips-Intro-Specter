@@ -1,0 +1,693 @@
+Resuming arm=direct: 38 (task_id, seed) rows already present, will be skipped.
+Resuming arm=self_refine: 38 (task_id, seed) rows already present, will be skipped.
+Resuming arm=full_regen: 38 (task_id, seed) rows already present, will be skipped.
+Resuming arm=react: 38 (task_id, seed) rows already present, will be skipped.
+Resuming arm=selfcheckgpt: 37 (task_id, seed) rows already present, will be skipped.
+Resuming arm=reflexion: 38 (task_id, seed) rows already present, will be skipped.
+Resuming arm=intro_specter: 38 (task_id, seed) rows already present, will be skipped.
+Building 60 recipes native-multi-fault (N=4) examples (bench_seed=42)...
+Built 60 examples. seeds=[0, 1, 2], model=mistral-nemo-12b, arms=['direct', 'self_refine', 'full_regen', 'react', 'selfcheckgpt', 'reflexion', 'intro_specter']
+  N=4 recipes_nonsynth_mf4_000013 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(10462,1586)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(937,707)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2723,1732)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1874,1185)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1930,1529)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(10381,1874)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=reflexion: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(9416,2522)
+  N=4 recipes_nonsynth_mf4_000013 seed=2 arm=intro_specter: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2875,1450)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(933,799)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2751,1732)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1866,1197)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1922,1586)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(13296,2544)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4735,2277)
+  N=4 recipes_nonsynth_mf4_000014 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2903,1335)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(933,799)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2751,1732)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1866,1211)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1922,1586)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(12998,2242)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4735,2277)
+  N=4 recipes_nonsynth_mf4_000014 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2903,1335)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(933,454)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2435,1256)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1866,1215)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=react: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1922,1507)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(6058,1404)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(7758,1696)
+  N=4 recipes_nonsynth_mf4_000014 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2586,807)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(926,346)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2395,976)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1853,807)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1909,1179)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(6007,1332)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(926,346)
+  N=4 recipes_nonsynth_mf4_000015 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2548,1072)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(926,346)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2395,976)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1852,771)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1909,1179)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(5757,1062)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(926,346)
+  N=4 recipes_nonsynth_mf4_000015 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2548,1072)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(927,754)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2750,1718)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1854,1180)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1910,1388)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(10860,2052)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=reflexion: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(7476,2473)
+  N=4 recipes_nonsynth_mf4_000015 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2902,1274)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(948,623)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2605,1373)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1896,1182)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1952,1680)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(12735,2249)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4310,1376)
+  N=4 recipes_nonsynth_mf4_000016 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2757,1172)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(948,623)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2605,1373)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1896,1307)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1952,1680)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(12101,2068)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4310,1376)
+  N=4 recipes_nonsynth_mf4_000016 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2757,1172)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(948,524)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2506,1274)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1896,1370)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1952,1252)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(12771,2116)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(7036,3502)
+  N=4 recipes_nonsynth_mf4_000016 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2658,1069)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(946,492)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2610,1492)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1892,684)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1948,1133)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8504,2040)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(946,492)
+  N=4 recipes_nonsynth_mf4_000017 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2762,980)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(946,492)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2610,1492)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1892,1127)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1948,1133)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(9054,2090)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(946,492)
+  N=4 recipes_nonsynth_mf4_000017 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2762,980)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(946,645)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2735,1398)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1893,1092)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1948,1159)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(7231,1300)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9406,2223)
+  N=4 recipes_nonsynth_mf4_000017 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2887,983)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(948,828)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2950,2188)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1896,1815)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1952,1568)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(12984,2359)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10376,3224)
+  N=4 recipes_nonsynth_mf4_000018 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(3102,1832)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(948,828)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2950,2188)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1896,1370)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1952,1568)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(12397,2259)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10376,3224)
+  N=4 recipes_nonsynth_mf4_000018 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(3102,1832)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(948,841)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2963,2072)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1896,1725)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1952,1408)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(14052,2655)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10395,3508)
+  N=4 recipes_nonsynth_mf4_000018 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(3115,1578)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(908,503)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2545,1522)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1816,1017)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1871,845)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10943,1775)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(8656,2548)
+  N=4 recipes_nonsynth_mf4_000019 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2697,1136)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(908,503)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2545,1522)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1816,1236)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1871,845)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10945,1691)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(8656,2548)
+  N=4 recipes_nonsynth_mf4_000019 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2697,1136)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(908,388)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2430,1114)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1816,813)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1872,1187)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(6032,1538)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(7992,1861)
+  N=4 recipes_nonsynth_mf4_000019 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2582,597)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(953,704)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2724,1888)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1906,1523)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1437)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(12522,2384)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9242,2326)
+  N=4 recipes_nonsynth_mf4_000020 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2876,1293)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(953,704)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2724,1888)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1906,1158)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1437)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(11680,1896)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9242,2326)
+  N=4 recipes_nonsynth_mf4_000020 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2876,1293)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(953,671)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2762,1614)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1906,978)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1962,1153)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(5978,1470)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(953,671)
+  N=4 recipes_nonsynth_mf4_000020 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2913,1250)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(937,756)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2772,1879)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1874,1443)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1930,1563)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(10501,1940)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(8631,1845)
+  N=4 recipes_nonsynth_mf4_000021 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2924,1492)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(937,756)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2772,1879)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1874,1021)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1930,1563)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(11763,2160)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(8631,1845)
+  N=4 recipes_nonsynth_mf4_000021 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2924,1492)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(937,702)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2718,1725)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1874,1408)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1930,1310)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(10371,1897)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9298,2726)
+  N=4 recipes_nonsynth_mf4_000021 seed=2 arm=intro_specter: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2870,1355)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(924,634)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2680,1578)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1848,1387)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1904,1295)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(8243,1561)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(8979,2481)
+  N=4 recipes_nonsynth_mf4_000022 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2832,1270)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(924,634)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2680,1578)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1848,1191)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1904,1295)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(12171,2334)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(8979,2481)
+  N=4 recipes_nonsynth_mf4_000022 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2832,1270)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(924,798)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2844,1945)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1848,1381)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1904,1597)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(10293,1954)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(9942,2962)
+  N=4 recipes_nonsynth_mf4_000022 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2996,1440)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(953,517)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2537,1174)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1906,887)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1176)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(12103,1959)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8347,1836)
+  N=4 recipes_nonsynth_mf4_000023 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2689,1162)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(953,517)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2537,1174)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1906,1481)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1176)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(12007,1893)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8347,1836)
+  N=4 recipes_nonsynth_mf4_000023 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2689,1162)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(953,783)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2894,1936)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1906,1314)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1962,1369)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(10542,1941)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(9765,1823)
+  N=4 recipes_nonsynth_mf4_000023 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(3046,1109)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(931,546)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2578,1342)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1862,854)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1918,1150)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(6711,1283)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8629,2154)
+  N=4 recipes_nonsynth_mf4_000024 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2730,762)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(931,546)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2578,1342)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1862,1206)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1918,1150)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(7015,1673)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8629,2154)
+  N=4 recipes_nonsynth_mf4_000024 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2730,762)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(931,660)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2664,1730)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1862,1346)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1918,1629)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(5960,1554)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9002,2537)
+  N=4 recipes_nonsynth_mf4_000024 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2816,1426)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(941,1100)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(3145,2578)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1882,1467)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1938,2097)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(11680,2493)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(5399,2456)
+  N=4 recipes_nonsynth_mf4_000025 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(3297,1961)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(941,1100)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(3145,2578)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1882,2532)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1938,2097)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(13042,2743)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(5399,2456)
+  N=4 recipes_nonsynth_mf4_000025 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(3297,1961)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(941,872)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(3001,2179)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1882,1451)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1938,1560)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(6362,2158)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10619,3407)
+  N=4 recipes_nonsynth_mf4_000025 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(3153,1234)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(955,1103)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(3218,2614)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1910,1677)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1966,2019)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(13455,2765)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(11770,4005)
+  N=4 recipes_nonsynth_mf4_000026 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(3370,1358)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(955,1103)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(3218,2614)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1910,1940)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1966,2019)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(12473,2407)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(11770,4005)
+  N=4 recipes_nonsynth_mf4_000026 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(3370,1358)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(955,717)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2713,1780)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1910,1456)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1966,1729)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(13995,2462)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9914,3405)
+  N=4 recipes_nonsynth_mf4_000026 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2865,1651)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(924,522)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2484,1321)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1848,963)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=react: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1904,1246)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(10648,1544)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8658,2417)
+  N=4 recipes_nonsynth_mf4_000027 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2636,852)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(924,522)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2484,1321)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1848,899)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=react: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1904,1246)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(9210,1431)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8658,2417)
+  N=4 recipes_nonsynth_mf4_000027 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2636,852)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(924,560)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2522,1553)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1848,982)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=react: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1904,1374)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(10981,1854)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=reflexion: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(8403,2109)
+  N=4 recipes_nonsynth_mf4_000027 seed=2 arm=intro_specter: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2674,778)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(938,528)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2574,1410)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1876,1061)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1932,1311)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(6640,1362)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4255,1285)
+  N=4 recipes_nonsynth_mf4_000028 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2726,1294)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(938,528)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2574,1410)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1876,969)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1932,1311)
+[RETRY] selfcheckgpt task=recipes_nonsynth_mf4_000029 seed=0 attempt 1/5 failed (provider returned no choices for 'mistralai/mistral-nemo': None); retrying in 3s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=0 attempt 1/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 3s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=0 attempt 2/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 6s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=0 attempt 3/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 12s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=0 attempt 4/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 24s
+[ERROR] intro_specter failed task=recipes_nonsynth_mf4_000029 seed=0: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=1 attempt 1/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 3s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=1 attempt 2/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 6s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=1 attempt 3/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 12s
+[RETRY] intro_specter task=recipes_nonsynth_mf4_000029 seed=1 attempt 4/5 failed (failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    ); retrying in 24s
+[ERROR] intro_specter failed task=recipes_nonsynth_mf4_000029 seed=1: failed to obtain JSON after 3 attempts: could not parse JSON from model output:
+{
+  "nodes": [
+    {
+      "id": "a0",
+      "step_id": 1,
+      "assumption": "The user wants a recipe in the category: Chicken.",
+      "provenance": "profile",
+      "profile_span_ids": ["category"],
+      "confidence": 1,
+      "depends_on": []
+    },
+    {
+      "id": "a1",
+      "step_id": 2,
+      "assumption": "The total prep+cook time must not exceed 112 minutes.",
+      "provenance": "profile",
+      "profile_span_ids": ["time_limit"],
+      "confidence": 1,
+      "depends_on": []
+    
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(5788,1188)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4255,1285)
+  N=4 recipes_nonsynth_mf4_000028 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2726,1294)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(938,718)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2736,1693)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1875,1145)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1932,1518)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(7989,1572)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9330,2677)
+  N=4 recipes_nonsynth_mf4_000028 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2888,1562)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(906,1078)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(3242,2638)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(1812,1843)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1868,1889)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(6792,2127)
+  N=4 recipes_nonsynth_mf4_000029 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(11988,4013)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(906,1078)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(3242,2638)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1812,1603)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(1868,1889)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(6614,1929)
+  N=4 recipes_nonsynth_mf4_000029 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(11988,4013)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(906,556)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2538,1450)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1812,1235)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1868,1386)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(6987,1828)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(4336,1400)
+  N=4 recipes_nonsynth_mf4_000029 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2690,901)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(948,732)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2742,1724)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1896,1158)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1952,1694)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(13720,2640)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9454,2658)
+  N=4 recipes_nonsynth_mf4_000030 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2894,999)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(948,732)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2742,1724)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1896,1194)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1952,1694)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(12928,2356)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9454,2658)
+  N=4 recipes_nonsynth_mf4_000030 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2894,999)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(948,754)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2764,1759)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1896,1579)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1952,1592)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(13407,2521)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(9243,2614)
+  N=4 recipes_nonsynth_mf4_000030 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2916,1083)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(928,494)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2429,1411)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1856,1174)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1912,1347)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(11274,1927)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8004,2265)
+  N=4 recipes_nonsynth_mf4_000031 seed=0 arm=intro_specter: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2581,800)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(928,494)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2429,1411)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1856,880)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1912,1347)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(10065,1528)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8004,2265)
+  N=4 recipes_nonsynth_mf4_000031 seed=1 arm=intro_specter: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2581,800)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(928,364)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(2298,947)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1856,867)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1911,1088)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(5652,961)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(928,364)
+  N=4 recipes_nonsynth_mf4_000031 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(2451,647)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(937,755)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2855,1834)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1874,1043)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1930,1188)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(5863,1500)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(9835,1723)
+  N=4 recipes_nonsynth_mf4_000032 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(3007,1618)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(937,755)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2855,1834)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1874,1227)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(1930,1188)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(5910,1496)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=reflexion: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(9835,1723)
+  N=4 recipes_nonsynth_mf4_000032 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(3007,1618)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(937,830)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2867,1980)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1873,1426)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=react: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1930,1462)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(9650,1867)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(10196,3275)
+  N=4 recipes_nonsynth_mf4_000032 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(3019,1620)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(949,640)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2688,1346)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(1898,772)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1954,1336)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(7740,1250)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(9013,2625)
+  N=4 recipes_nonsynth_mf4_000033 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2804,1130)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(949,640)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2688,1346)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1898,1040)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1954,1336)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(13313,2146)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(9013,2625)
+  N=4 recipes_nonsynth_mf4_000033 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(2804,1130)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(949,699)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=self_refine: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2711,1673)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(1898,1219)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=react: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1954,1572)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(13601,2267)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(8982,2255)
+  N=4 recipes_nonsynth_mf4_000033 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(2862,1056)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(981,983)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(3108,2236)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1564)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2018,1388)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(7781,2770)
+[RETRY] full_regen task=recipes_nonsynth_mf4_000034 seed=1 attempt 1/5 failed (provider returned no choices for 'mistralai/mistral-nemo': None); retrying in 3s
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=reflexion: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(10400,2735)
+  N=4 recipes_nonsynth_mf4_000034 seed=0 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(3260,1499)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(981,983)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=1/4 tokens=(3108,2236)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=full_regen: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1962,1968)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=3/4 tokens=(2018,1388)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(7782,2811)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=reflexion: per_fault={'time_limit': False, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(10400,2735)
+  N=4 recipes_nonsynth_mf4_000034 seed=1 arm=intro_specter: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': True} all_resolved=False n_resolved=2/4 tokens=(3260,1499)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(981,769)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2808,1858)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1962,1690)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(2018,1883)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(12684,2340)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(9824,3006)
+  N=4 recipes_nonsynth_mf4_000034 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2960,1481)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(912,459)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2398,1542)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=full_regen: per_fault={'time_limit': True, 'calories': False, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1824,829)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1880,1070)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(5921,1453)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(7765,1488)
+  N=4 recipes_nonsynth_mf4_000035 seed=0 arm=intro_specter: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2549,905)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=direct: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(912,459)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2398,1542)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=full_regen: per_fault={'time_limit': False, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1824,946)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=react: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(1880,1070)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=selfcheckgpt: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(6573,1353)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(7765,1488)
+  N=4 recipes_nonsynth_mf4_000035 seed=1 arm=intro_specter: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2549,905)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=direct: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(912,713)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2616,1582)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=full_regen: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(1824,1298)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=react: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(1880,1357)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=selfcheckgpt: per_fault={'time_limit': True, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=1/4 tokens=(9507,1595)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=reflexion: per_fault={'time_limit': True, 'calories': True, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=2/4 tokens=(9179,2528)
+  N=4 recipes_nonsynth_mf4_000035 seed=2 arm=intro_specter: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': False} all_resolved=False n_resolved=3/4 tokens=(2768,1177)
+  N=4 recipes_nonsynth_mf4_000036 seed=0 arm=direct: per_fault={'time_limit': True, 'calories': True, 'servings': True, 'excl_ingredient_1': True} all_resolved=True n_resolved=4/4 tokens=(922,648)
+  N=4 recipes_nonsynth_mf4_000036 seed=0 arm=self_refine: per_fault={'time_limit': False, 'calories': False, 'servings': False, 'excl_ingredient_1': False} all_resolved=False n_resolved=0/4 tokens=(2662,1620)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
