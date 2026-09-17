@@ -345,6 +345,12 @@ def main() -> None:
                          "3 parallel model processes)")
     ap.add_argument("--output-dir", default="outputs/rebuttal/experiment_personalwab")
     ap.add_argument("--smoke", action="store_true", help="n=2 examples, 1 seed, then stop")
+    ap.add_argument("--dump-traces", action="store_true",
+                    help="also write one full-trajectory JSON per (task, seed, arm) "
+                         "to {output-dir}/{model}/traces/ (E1 annotation study). "
+                         "Rows already in the JSONLs are re-run only to backfill "
+                         "missing traces — with a warm cache this is ~free — and "
+                         "are NOT appended again.")
     args = ap.parse_args()
 
     if args.smoke:
@@ -382,6 +388,10 @@ def main() -> None:
               + " already present, will be skipped.")
 
     files = {arm: p.open("a") for arm, p in paths.items()}
+    traces_dir = out_dir / "traces"
+
+    def _trace_path(arm: str, task_id: str, seed: int) -> Path:
+        return traces_dir / f"{arm}__seed{seed}__{task_id}.json"
 
     examples = _load_examples(n_examples)
     print(f"Loaded {len(examples)} PersonalWAB recommend examples "
@@ -394,7 +404,11 @@ def main() -> None:
 
     for example in examples:
         for seed in seeds:
-            pending_arms = [a for a in arms if (example.task_id, seed) not in done[a]]
+            pending_arms = [
+                a for a in arms
+                if (example.task_id, seed) not in done[a]
+                or (args.dump_traces and not _trace_path(a, example.task_id, seed).exists())
+            ]
             if not pending_arms:
                 continue
 
@@ -439,8 +453,26 @@ def main() -> None:
                     "rounds_used": arm_out["rounds_used"],
                     "meta_summary": arm_out["meta_summary"],
                 }
-                files[arm].write(json.dumps(row, default=str) + "\n")
-                files[arm].flush()
+                if (example.task_id, seed) not in done[arm]:
+                    files[arm].write(json.dumps(row, default=str) + "\n")
+                    files[arm].flush()
+                tpath = _trace_path(arm, example.task_id, seed)
+                if args.dump_traces and not tpath.exists():
+                    traces_dir.mkdir(parents=True, exist_ok=True)
+                    trace = {
+                        "task_id": example.task_id,
+                        "dataset": example.dataset,
+                        "method": arm,
+                        "model": args.model,
+                        "seed": seed,
+                        "success": success,
+                        "task": example.task,
+                        "profile": example.profile.model_dump(mode="json"),
+                        "primed_trajectory": primed.model_dump(mode="json"),
+                        "final_trajectory": arm_out["final_trajectory"].model_dump(mode="json"),
+                        "fault_node_predicted": arm_out.get("fault_node"),
+                    }
+                    tpath.write_text(json.dumps(trace, default=str))
                 total_tokens_in += tokens_input
                 total_tokens_out += tokens_output
                 n_rows += 1

@@ -67,6 +67,14 @@ def main() -> None:
 @click.option("--cache", "cache_path", default="cache/completions.sqlite")
 @click.option("--verifier-provider", default=None)
 @click.option("--verifier-model", default="")
+@click.option(
+    "--dump-traces",
+    is_flag=True,
+    default=False,
+    help="Also write one full-trajectory JSON per (task, seed, method) to "
+    "<output>/traces/ (E1 annotation study). Reruns over existing JSONLs "
+    "backfill missing traces via the completions cache.",
+)
 def run_cmd(
     config: str | None,
     benchmark: str,
@@ -81,6 +89,7 @@ def run_cmd(
     cache_path: str,
     verifier_provider: str | None,
     verifier_model: str,
+    dump_traces: bool,
 ) -> None:
     if config:
         spec = _spec_from_yaml(Path(config))
@@ -104,6 +113,9 @@ def run_cmd(
                 for m in methods
             ],
         )
+
+    if dump_traces:
+        spec.dump_traces = True
 
     summary = run(spec)
     _render_summary(summary, spec.output_dir)

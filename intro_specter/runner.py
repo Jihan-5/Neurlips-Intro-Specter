@@ -202,6 +202,7 @@ def run_method_on_example(
     verifier_provider_name: str | None = None,
     verifier_model: str = "",
     seed_override: int | None = None,
+    trace_sink: dict[str, Any] | None = None,
 ) -> RunResult:
     method_seed = seed_override if seed_override is not None else method.seed
 
@@ -234,6 +235,7 @@ def run_method_on_example(
 
     fault_node_predicted: str | None = None
     repair_status: str | None = None
+    dag_dump: dict[str, Any] | None = None
     posterior_dump: list[dict[str, Any]] | None = None
 
     t0 = time.perf_counter()
@@ -480,6 +482,8 @@ def run_method_on_example(
         )
         repair_status = is_result.status
         fault_node_predicted = is_result.fault_node
+        if trace_sink is not None and getattr(is_result, "dag", None) is not None:
+            dag_dump = is_result.dag.model_dump(mode="json")
         if is_result.posterior is not None:
             posterior_dump = [c.model_dump(mode="json") for c in is_result.posterior.candidates]
         result = BaselineResult(
@@ -495,6 +499,24 @@ def run_method_on_example(
 
     latency_ms = (time.perf_counter() - t0) * 1000.0
     success = _success(result, example)
+
+    if trace_sink is not None:
+        # Full per-task record for the E1 annotation study: everything a human
+        # needs to read the run (see JAZZ_HUMAN_ANNOTATOR_INSTRUCTIONS.md).
+        trace_sink.update(
+            task_id=example.task_id,
+            dataset=example.dataset,
+            method=method.name,
+            model=method.model,
+            seed=method_seed,
+            success=success,
+            task=example.task,
+            profile=example.profile.model_dump(mode="json"),
+            primed_trajectory=example.trajectory.model_dump(mode="json"),
+            final_trajectory=result.final_trajectory.model_dump(mode="json"),
+            fault_node_predicted=fault_node_predicted,
+            extracted_dag=dag_dump,
+        )
 
     return RunResult(
         task_id=example.task_id,
@@ -575,6 +597,10 @@ class RunSpec:
     cache_path: str = "cache/completions.sqlite"
     verifier_provider: str | None = None
     verifier_model: str = ""
+    # E1 annotation study: also write one full-trajectory JSON per
+    # (task, seed, method) to <output_dir>/traces/. With a warm completions
+    # cache this makes a rerun over existing JSONLs a ~free trace backfill.
+    dump_traces: bool = False
 
 
 def _build_benchmark(spec: RunSpec, seed: int) -> Iterable[BenchmarkExample]:
@@ -717,10 +743,17 @@ def run(spec: RunSpec) -> dict[str, Any]:
         for method in spec.methods:
             path = out_dir / f"{label}__seed{seed}__{method.name}.jsonl"
             done = _existing_task_ids(path)
+            traces_dir = out_dir / "traces"
             with path.open("a") as f:
                 for example in bench_examples:
-                    if example.task_id in done:
+                    trace_path = traces_dir / (
+                        f"{label}__seed{seed}__{method.name}__{example.task_id}.json"
+                    )
+                    need_row = example.task_id not in done
+                    need_trace = spec.dump_traces and not trace_path.exists()
+                    if not need_row and not need_trace:
                         continue
+                    trace_sink: dict[str, Any] | None = {} if need_trace else None
                     try:
                         res = run_method_on_example(
                             method,
@@ -729,6 +762,7 @@ def run(spec: RunSpec) -> dict[str, Any]:
                             verifier_provider_name=spec.verifier_provider,
                             verifier_model=spec.verifier_model,
                             seed_override=seed,
+                            trace_sink=trace_sink,
                         )
                     except Exception as e:
                         # Don't let one bad task kill the whole run — log and
@@ -741,8 +775,12 @@ def run(spec: RunSpec) -> dict[str, Any]:
                             "error_msg": str(e)[:200],
                         })
                         continue
-                    f.write(json.dumps(res.model_dump(mode="json"), default=str) + "\n")
-                    f.flush()
+                    if need_row:
+                        f.write(json.dumps(res.model_dump(mode="json"), default=str) + "\n")
+                        f.flush()
+                    if need_trace and trace_sink:
+                        traces_dir.mkdir(parents=True, exist_ok=True)
+                        trace_path.write_text(json.dumps(trace_sink, default=str))
     if skipped_errors:
         with (out_dir / f"{label}__skipped_errors.jsonl").open("w") as f:
             for e in skipped_errors:

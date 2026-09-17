@@ -146,15 +146,20 @@ Put these in `orchestration/e1_prereg.md`, commit, and never edit after the main
 Sample **naturally-failed** (NOT injected-fault) trajectories, pooled across arms, with a
 deterministic seed (42), from:
 
-- **PersonalWAB:** `outputs/rebuttal/experiment_personalwab/{llama-3.1-8b,mistral-nemo-12b,qwen-2.5-7b-together}/`
-  (per-example artifacts; filter to failed tasks; ⚠️ plain `qwen-2.5-7b/` cells may be
-  poisoned by the OpenRouter JSON-drift bug — prefer the `-together` runs, and treat
-  zero-score qwen rows as suspect, see memory/`openrouter-qwen-json-drift`).
-- **TravelPlanner-native:** `outputs/dev_travel/travelplanner_recon__all__seed0__*.jsonl`
-  (the `intro_specter_llm`, `direct`, `full_regen` arms; failed rows only).
+- **TravelPlanner-real (PRIMARY pool — 1,043 failures / 2,016 rows):**
+  `outputs/real/travelplanner_real__{deepseek-v3,llama-3.1-8b,mistral-nemo-12b,...}/`.
+  (Correction 2026-09-17: `outputs/dev_travel/` is a 5-row dev cell with zero failures —
+  useless for sampling; the real cells are the pool.)
+- **PersonalWAB (131 failures / 2,835 rows):** `outputs/rebuttal/experiment_personalwab/`
+  — ⚠️ BLOCKED pending the §11 integrity decision. Plain `qwen-2.5-7b/` cells may also be
+  poisoned by the OpenRouter JSON-drift bug — prefer the `-together` runs.
 - Reserve pool: +30 extra items from the same sources.
-- Attention-check items: draw ~10 injected-fault trajectories with known ground truth from
-  `outputs/synthetic_single_fault/` and reformat identically to the natural items.
+- Attention-check items: ~10 injected-fault trajectories with known ground truth from
+  `outputs/synthetic_single_fault/` (or any injected-fault cell), reformatted identically.
+
+**The summary JSONLs do not contain step-level trajectories.** Full traces are produced by
+the new `--dump-traces` backfill (§10) — with a warm completions cache the rerun is
+near-free and appends nothing to the existing JSONLs.
 
 `outputs/` travels on the `artifacts` branch — `./scripts/sync_artifacts.sh pull` first
 (see JAZZ_INSTRUCTIONS §2b).
@@ -246,3 +251,87 @@ advantages argued elsewhere. The only unpublishable outcome is an unrun study.
 3. Any escalation trigger from §7.
 4. Final headline number — **send it raw; what the paper claims branches on it. Do not
    reconcile against paper text yourself** (same rule as E1-SPR in JAZZ_INSTRUCTIONS).
+5. The §11 PersonalWAB decision (blocks the PersonalWAB half of the pool).
+
+---
+
+## 10. BUILD STATUS + runbook (2026-09-17)
+
+Built and tested this session (branch `worktree-jazz-annotator-instructions`):
+
+| Piece | Status |
+|---|---|
+| `orchestration/e1_codebook.md` (v1, 11 worked examples) | ✅ written — needs Jihan sanity-read |
+| `orchestration/e1_prereg.md` (frozen rules, DRAFT until pilot) | ✅ written |
+| `scripts/e1_compute_agreement.py` (κ, α, screening, consensus) | ✅ tested on fixtures |
+| `--dump-traces` in `intro_specter/runner.py` + CLI | ✅ smoke-tested end-to-end on dev_travel: full steps/profile/DAG dumped, zero new API spend, no JSONL duplication |
+| `--dump-traces` in `scripts/rebuttal_experiment_personalwab.py` | ✅ implemented (same backfill semantics), not yet run |
+| `scripts/e1_sample_annotation_set.py` (stratified, seed 42) | ✅ tested |
+| `scripts/e1_blind_trajectories.py` (blinding, keymap, assignments) | ✅ tested — no identity leaks in items/pages |
+| `scripts/e1_make_annotation_pages.py` (offline HTML, autosave, download) | ✅ tested; answers round-trip into the agreement script |
+| `scripts/prep_personalwab_compact.py` (rebuild lost data file) | ✅ task-id verification PASSES 60/60 (see §11) |
+| `scripts/e1_attribution_vs_human.py`, `e1_package_dataset.py` | ⬜ not yet written (needed at study end, ~day 13) |
+
+**Runbook to annotation-ready (order):**
+
+```bash
+set -a; source .env.local; set +a
+# 1. Trace backfill over the TravelPlanner-real cells (warm cache => ~free;
+#    verify configs' cache_path matches the cache used originally):
+for m in deepseek-v3 llama-3.1-8b mistral-nemo-12b; do
+  intro-specter run --config configs/real/real_travelplanner_real__${m}.yaml --dump-traces
+done
+# also one injected-fault cell for attention checks, e.g.:
+intro-specter run --config <synthetic_single_fault config> --dump-traces
+
+# 2. Sample + blind + pages:
+python3 scripts/e1_sample_annotation_set.py \
+  --traces outputs/real/travelplanner_real__*/traces \
+  --n 135 --reserve 30 \
+  --attention-traces <injected traces dir> --n-attention 10 \
+  --attention-gt <gt json>  \
+  --out outputs/iclr/e1_dataset/raw_pool.jsonl
+python3 scripts/e1_blind_trajectories.py --pool outputs/iclr/e1_dataset/raw_pool.jsonl \
+  --out-dir outputs/iclr/e1_dataset --annotators 8 --pilot 15 --checks-per-annotator 5
+python3 scripts/e1_make_annotation_pages.py --dataset-dir outputs/iclr/e1_dataset
+
+# 3. Send each person their personN_pilot.html + codebook + their copy of
+#    PERSON1_ANNOTATOR_INSTRUCTIONS.md (name-swapped). keymap.json stays PRIVATE.
+```
+
+Attention-check ground truth: injected-fault traces know the true fault node; map it to
+(category, step) once per item into the `--attention-gt` JSON by hand-checking ~10 items.
+
+---
+
+## 11. ⚠️ PersonalWAB integrity finding (2026-09-17) — decision needed from Jihan
+
+While rebuilding the lost PersonalWAB compact data file (it lived in a session /tmp
+scratchpad and was deleted; the prep script was never committed), verification against the
+completion cache surfaced this:
+
+- The Jul 27 runs behind `outputs/rebuttal/experiment_personalwab/` were made with
+  **unfiltered user histories**: profile spans included purchases with timestamps AFTER
+  the task, proven by a cached completion for `pwab_real_00000_BT2IRYMQ` whose
+  purchase-history observation lists the Gootium bag bought post-task. The current
+  loader's `ts < task_ts` + target-exclusion filter (with the comment "excluding it
+  avoids leaking the label") was added later and was NOT active for those runs.
+- Since the target interaction sits in the user's history at the task timestamp, the
+  **target item itself was very likely present in the profile shown to the model** —
+  i.e., the recommend-task numbers in §4.7 may be inflated by label leakage.
+- Byte-exact reconstruction of those runs is not possible: the Jul-27 runtime code was
+  never committed (the Sep 9 commit squashed everything after later fixes). A
+  `legacy_unfiltered_history` forensic flag was added to the loader to document the
+  behavior; cache-key probes still miss on other unknowable formatting details.
+- The rebuilt compact file itself is GOOD: `scripts/prep_personalwab_compact.py` passes
+  the task-id check 60/60 (row order/count/user selection provably correct). Regenerate
+  it any time with the commands in that script's docstring; set `PERSONALWAB_COMPACT`.
+
+**Decision fork (Jihan):**
+- (a) **Rerun PersonalWAB with the current fixed loader** + rebuilt compact +
+  `--dump-traces` (real API cost, cheap models; produces clean trajectories for E1 AND
+  leak-free numbers that would replace §4.7's if they differ), or
+- (b) keep E1 on the TravelPlanner-real pool only (1,043 failures is ample) and handle
+  the PersonalWAB question separately.
+Either way: **flag, don't fix silently** — the current §4.7 numbers and the rebuttal
+claims rest on the leaky runs.
