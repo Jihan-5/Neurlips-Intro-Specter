@@ -30,6 +30,11 @@ def require_complete_recovery() -> None:
         raise SystemExit("amended E2 recovery does not have ten passing integrity reports")
 
 
+def require_prose_worktree() -> None:
+    if not (PROSE / "paper_final.tex").is_file():
+        raise SystemExit(f"required prose manuscript worktree is absent: {PROSE}")
+
+
 def receipt(name: str, command: list[str]) -> None:
     run(command)
     target = OUT / "validation" / name
@@ -39,19 +44,27 @@ def receipt(name: str, command: list[str]) -> None:
 
 def main() -> None:
     require_complete_recovery()
+    require_prose_worktree()
+    # Every attempt must freshly prove transport after regenerating artifacts;
+    # never inherit completion evidence from an interrupted prior attempt.
+    (OUT / "JAZZ_DONE").unlink(missing_ok=True)
+    (OUT / "validation/artifact_transport_passed").unlink(missing_ok=True)
     run([sys.executable, "scripts/generate_e2_e3_sections.py"])
     run([sys.executable, "scripts/audit_jazz_consistency.py"])
     receipt("jazz_tests_passed", [str(ROOT / ".venv/bin/pytest"), "-q", "tests/test_jazz_workflow.py"])
     receipt("full_tests_passed", [str(ROOT / ".venv/bin/pytest"), "-q"])
     run(["tectonic", "paper_final.tex", "--outdir", str(OUT / "build")])
-    if PROSE.exists():
-        run(["tectonic", "paper_final.tex", "--outdir", str(OUT / "build/prose")], cwd=PROSE)
+    run(["tectonic", "paper_final.tex", "--outdir", str(OUT / "build/prose")], cwd=PROSE)
     run([sys.executable, "scripts/write_overnight_status.py"])
+    receipt("artifact_transport_passed", [
+        sys.executable, "scripts/sync_artifacts_safe.py", "push",
+        "E2 amended recovery complete; F2 and Jazz validation artifacts",
+        "--include", "outputs/rebuttal/profile_bootstrap_recovery_v1",
+        "--include", "outputs/jazz",
+    ])
+    # The completion sentinel is last: it cannot claim success before artifact
+    # publication has returned successfully and left its local receipt.
     run([sys.executable, "scripts/jazz_final_gate.py", "--create-done"])
-    run([sys.executable, "scripts/sync_artifacts_safe.py", "push",
-         "E2 amended recovery complete; F2 and Jazz validation artifacts",
-         "--include", "outputs/rebuttal/profile_bootstrap_recovery_v1",
-         "--include", "outputs/jazz"])
 
 
 if __name__ == "__main__":

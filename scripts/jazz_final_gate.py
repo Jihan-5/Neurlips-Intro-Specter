@@ -10,6 +10,11 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outputs/jazz"
+PROSE = ROOT.parent / "Neurlips-Intro-Specter-prose"
+
+
+def current_build(build: Path, source: Path) -> bool:
+    return source.is_file() and build.is_file() and build.stat().st_mtime >= source.stat().st_mtime
 
 
 def main() -> None:
@@ -29,6 +34,8 @@ def main() -> None:
     unresolved = {finding["code"] for finding in audit["findings"]}
     build = OUT / "build/paper_final.pdf"
     paper = ROOT / "paper_final.tex"
+    prose_build = OUT / "build/prose/paper_final.pdf"
+    prose_paper = PROSE / "paper_final.tex"
     gates = {
         "E1_pure_SPR_artifact": e1["scope"] == 12 and e1["n"] == 648,
         "F1_both_reserved_scope_packages": all((OUT / f"build/jazz_{scope}/review.pdf").exists() for scope in (12, 16)),
@@ -41,9 +48,11 @@ def main() -> None:
         "E4_exploratory_proxy": e4.get("analysis", "").startswith("EXPLORATORY") and e4.get("n_users") == 1000,
         "F4_only_reserved_findings": unresolved <= reserved and not audit["undefined_citations"]
                                      and all(not value["stale_sources"] for value in audit["generated_packages"].values()),
-        "manuscript_build_current": build.exists() and build.stat().st_mtime >= paper.stat().st_mtime,
+        "manuscript_build_current": current_build(build, paper),
+        "manuscript_build_prose": current_build(prose_build, prose_paper),
         "jazz_regression_tests": (OUT / "validation/jazz_tests_passed").exists(),
         "full_test_suite": (OUT / "validation/full_tests_passed").exists(),
+        "artifact_transport": (OUT / "validation/artifact_transport_passed").exists(),
         "sleep_assertion": bool(status["sleep_prevention"]["asserted"]),
     }
     complete = all(gates.values())
@@ -62,8 +71,10 @@ def main() -> None:
         "E4_exploratory_proxy": "`outputs/jazz/personalwab_contradictions.json`; `scripts/aggregate_personalwab_contradictions.py`",
         "F4_only_reserved_findings": "`outputs/jazz/consistency_audit.json`; `scripts/audit_jazz_consistency.py`",
         "manuscript_build_current": "`tectonic paper_final.tex --outdir outputs/jazz/build`",
+        "manuscript_build_prose": "`tectonic paper_final.tex --outdir outputs/jazz/build/prose` from the prose worktree",
         "jazz_regression_tests": "`.venv/bin/pytest -q tests/test_jazz_workflow.py`",
         "full_test_suite": "`.venv/bin/pytest -q`",
+        "artifact_transport": "`scripts/sync_artifacts_safe.py push`; `outputs/jazz/validation/artifact_transport_passed`",
         "sleep_assertion": "`pmset -g assertions`; `outputs/jazz/overnight_status.json`",
     }
     for name, passed in gates.items():
@@ -71,7 +82,7 @@ def main() -> None:
     lines += ["", "## Brief-by-brief audit", "",
               "| Brief item | Status | Exact artifact / validation |", "|---|---|---|",
               "| Setup / credentials hygiene | PASS | `.env.local` was loaded only into process environments and is gitignored; staged diffs were scanned for credential patterns. |",
-              "| Artifact transport | PASS for completed E1/E3/E4 | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; the safe transport excludes active bootstrap trees and never resets a worktree. |",
+              f"| Artifact transport | {'PASS' if gates['artifact_transport'] else 'PENDING'} | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; final E2/Jazz transport must succeed before the completion sentinel. |",
               "| Frozen protocol constants | PASS | E2: 100 variants, generation seed 0, tau 0.0; E3 manifests record benchmark seed 42, generation seed 0, rho 0/.1/.3, and Llama-8B-for-Qwen disclosure. |",
               "| Unattended execution | PASS | `scripts/jazz_campaign.py`, `outputs/jazz/campaign_status.json`, ledger/history/log, per-cell locks, bounded single resume, and `caffeinate -i` assertion in `overnight_status.json`. |",
               "| Live ETAs / >6h handling | PASS | `outputs/jazz/overnight_status.json` derives row/hour and ETA from observed deltas. Active inherited writers overlap the logical keyspace, so deterministic disjoint sharding is not safe and was not launched. |",
@@ -85,8 +96,8 @@ def main() -> None:
               "| E4 PersonalWAB proxy | PASS | `.venv/bin/python scripts/aggregate_personalwab_contradictions.py`; `outputs/jazz/personalwab_contradictions.json`; explicitly exploratory brand discordance, not general contradiction. |",
               "| F1 statistics/tables/cost/SelfCheck/ties | PASS, headline insertion reserved | `.venv/bin/python scripts/generate_jazz_results.py`; standalone review PDFs for scopes 12/16; SelfCheck panel on prose branch. |",
               f"| F4 consistency and citations | {'PASS' if gates['F4_only_reserved_findings'] else 'PENDING'} | `.venv/bin/python scripts/audit_jazz_consistency.py`; only allowed reference-audit keys; no undefined citations or stale package hashes. |",
-              f"| Regression tests | {'PASS' if gates['jazz_regression_tests'] and gates['full_test_suite'] else 'PENDING'} | Jazz workflow 5 passed; full suite 57 passed; receipts in `outputs/jazz/validation/`. |",
-              f"| Full manuscript build | {'PASS' if gates['manuscript_build_current'] else 'PENDING'} | `tectonic paper_final.tex --outdir outputs/jazz/build`; prose-branch build independently validated. |",
+              f"| Regression tests | {'PASS' if gates['jazz_regression_tests'] and gates['full_test_suite'] else 'PENDING'} | Passing receipts in `outputs/jazz/validation/`. |",
+              f"| Both manuscript builds | {'PASS' if gates['manuscript_build_current'] and gates['manuscript_build_prose'] else 'PENDING'} | Current-tree and prose-worktree PDFs are independently rebuilt and freshness-checked. |",
               f"| Final completion sentinel | {'PASS' if complete else 'NOT CREATED'} | `outputs/jazz/JAZZ_DONE` is emitted only when every gate above is true. |"]
     lines += ["", "## Remaining human-only decisions", "",
               "- Jihan must choose the 12-cell pure-SPR or separately labeled 16-cell mixed/archival headline scope.",

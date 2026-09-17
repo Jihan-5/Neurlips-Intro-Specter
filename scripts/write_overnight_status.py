@@ -148,9 +148,9 @@ def write() -> dict:
     tmp = OUT / "overnight_status.json.tmp"
     tmp.write_text(json.dumps(state, indent=2) + "\n")
     tmp.replace(OUT / "overnight_status.json")
-    # The final gate is deliberately conservative and idempotent. It may
-    # create JAZZ_DONE only after every required non-reserved gate passes.
-    subprocess.run([sys.executable, "scripts/jazz_final_gate.py", "--create-done"],
+    # Refresh the report, but leave sentinel creation to the finalizer after
+    # both manuscript builds and artifact transport have succeeded.
+    subprocess.run([sys.executable, "scripts/jazz_final_gate.py"],
                    cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return state
 

@@ -227,3 +227,46 @@ def test_e2_campaign_treats_partial_state_snapshot_as_absent(tmp_path, monkeypat
     state.parent.mkdir(parents=True)
     state.write_text("")
     assert campaign.shard_state("cell", 0, 1) is None
+
+
+def test_e2_finalizer_requires_both_builds_and_transports_before_gate(tmp_path, monkeypatch):
+    import e2_recovery_finalize as finalize
+    recovery = tmp_path / "recovery"
+    for index in range(10):
+        cell = recovery / f"cell-{index}__model"
+        cell.mkdir(parents=True)
+        (cell / "integrity.json").write_text(json.dumps({"complete": True}))
+    prose = tmp_path / "prose"
+    prose.mkdir()
+    (prose / "paper_final.tex").write_text("manuscript")
+    out = tmp_path / "out"
+    calls = []
+
+    monkeypatch.setattr(finalize, "RECOVERY", recovery)
+    monkeypatch.setattr(finalize, "PROSE", prose)
+    monkeypatch.setattr(finalize, "OUT", out)
+    monkeypatch.setattr(finalize, "run",
+                        lambda command, **kwargs: calls.append(("run", command, kwargs.get("cwd"))))
+    monkeypatch.setattr(finalize, "receipt",
+                        lambda name, command: calls.append(("receipt", name, command)))
+    finalize.main()
+
+    tectonic = [call for call in calls if call[0] == "run" and call[1][0] == "tectonic"]
+    assert len(tectonic) == 2 and tectonic[1][2] == prose
+    transport = next(i for i, call in enumerate(calls)
+                     if call[0] == "receipt" and call[1] == "artifact_transport_passed")
+    gate = next(i for i, call in enumerate(calls)
+                if call[0] == "run" and call[1][-1] == "--create-done")
+    assert transport < gate
+
+
+def test_jazz_final_gate_requires_fresh_current_and_prose_builds(tmp_path):
+    import jazz_final_gate as gate
+    source = tmp_path / "paper.tex"
+    build = tmp_path / "paper.pdf"
+    source.write_text("source")
+    assert not gate.current_build(build, source)
+    build.write_text("pdf")
+    assert gate.current_build(build, source)
+    source.touch()
+    assert not gate.current_build(build, source)
