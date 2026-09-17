@@ -1,0 +1,31 @@
+{
+  "dataset": "hotpotqa_real",
+  "model": "mistral-nemo-12b",
+  "model_id": "mistralai/mistral-nemo",
+  "seed": 0,
+  "benchmark_seed": 42,
+  "tau_abstain": 0.0,
+  "rhos": [
+    0.0,
+    0.1,
+    0.3
+  ],
+  "expected_tasks": [
+    "real_hotpotqa_00048_5ae164685542997b2ef7d1cb",
+    "real_hotpotqa_00049_5ae5736e5542990ba0bbb2b3",
+    "real_hotpotqa_00050_5ae1452c554299422ee99654",
+    "real_hotpotqa_00051_5a70f4695542994082a3e435",
+    "real_hotpotqa_00052_5ae234e85542994d89d5b395",
+    "real_hotpotqa_00053_5ae4ec1e5542990ba0bbb19b",
+    "real_hotpotqa_00054_5ab7ef0f5542991d322237ca",
+    "real_hotpotqa_00055_5a8fb3af5542997ba9cb32ee",
+    "real_hotpotqa_00056_5a78e86f55429974737f78fb",
+    "real_hotpotqa_00057_5a89e2785542992e4fca843d",
+    "real_hotpotqa_00058_5a72ac8a5542992359bc3164",
+    "real_hotpotqa_00059_5a77c15f5542997042120b1c"
+  ],
+  "mechanism": "all_profile_nodes_v1",
+  "smoke": false,
+  "qwen_substitution": "llama-3.1-8b",
+  "candidate_note": "Default already admits profile ancestors; flag adds remaining profile nodes."
+}
