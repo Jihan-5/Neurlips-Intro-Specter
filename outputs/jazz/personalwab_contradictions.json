@@ -1,0 +1,339 @@
+{
+  "analysis": "EXPLORATORY brand-preference/history discordance, not all semantic contradictions",
+  "n_users": 1000,
+  "n_history_users": 1000,
+  "users_with_matched_brand_history": 989,
+  "matched_brands": 16516,
+  "matched_reviews": 18407,
+  "users_with_discordance": 25,
+  "fraction": 0.025,
+  "evidence": [
+    {
+      "user_sha256": "b11c0e8ec42ff7f6fb5d0e24f5196733824ce26bfd97e4428c82c6b2d847c7bf",
+      "brands": [
+        "cottoncraft"
+      ],
+      "ratings": {
+        "cottoncraft": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "e9da5ed6c0c28099b5aff5eadae359961c8245f2d5a255e7ce78560bf3a0233c",
+      "brands": [
+        "tatesbakeshop"
+      ],
+      "ratings": {
+        "tatesbakeshop": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "79a04fa6e342ee9f8313bb6959951ecebe41f30450846722aa1bdd420a21b045",
+      "brands": [
+        "jefferiessocks"
+      ],
+      "ratings": {
+        "jefferiessocks": [
+          2.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "8bf1e653a4c63b05a68e1bf8e9abaccf89cb7f30a316c416695398dcca4ded42",
+      "brands": [
+        "kathyvanzeeland"
+      ],
+      "ratings": {
+        "kathyvanzeeland": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "70380a668ee772fba73537472df351e8ff2c40cc05f811599285166d2259307f",
+      "brands": [
+        "amazon"
+      ],
+      "ratings": {
+        "amazon": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "1da6ec0da09204b32e50914b30e13fdc2b5dffc2404e74c03cb312bad82793d2",
+      "brands": [
+        "clarks"
+      ],
+      "ratings": {
+        "clarks": [
+          2.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "d99ad76c3d0fa1938d9cdf0b6c29db273486ef1eb31d6dc33f246835ddf3e3bc",
+      "brands": [
+        "nikon"
+      ],
+      "ratings": {
+        "nikon": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "032f7e4d23437264a465e00166194f5e5df907dba8eb53d8b7789d84ec730490",
+      "brands": [
+        "logitech"
+      ],
+      "ratings": {
+        "logitech": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "b206c8ff22226b03f99977ffa9a6ecce95d2757dd39393ee99ecdd36b22e0638",
+      "brands": [
+        "hoover"
+      ],
+      "ratings": {
+        "hoover": [
+          2.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "0c8c24231f1b08b09bbcb5eec3ab4b8e0d1a516d8611c1ab8ec21577d5df070b",
+      "brands": [
+        "yehuda"
+      ],
+      "ratings": {
+        "yehuda": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "15a0dc98f2afe312d5a00347ba474ef5eb789bf502f6628caebed62add6cedcb",
+      "brands": [
+        "uucovers"
+      ],
+      "ratings": {
+        "uucovers": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "7db6db6d66323cbd3b372ce83be2386b8df4135a4b4236af3bec5f8cbd464869",
+      "brands": [
+        "amazon"
+      ],
+      "ratings": {
+        "amazon": [
+          2.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "7e72133840f30b50ca5bd13a3e77aad98d36e4a6fd5e769519bb5805626a49af",
+      "brands": [
+        "acorn"
+      ],
+      "ratings": {
+        "acorn": [
+          1.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "b5a2c7a6e66d42cad925ca3271f7856f8eded7b8f7f0f8d61c2ab7127bde71c6",
+      "brands": [
+        "nationaltreecompany"
+      ],
+      "ratings": {
+        "nationaltreecompany": [
+          2.0,
+          1.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "cc6c986fa8c21846392205155657714a3fbc0d478bf13ea366d2706bbb749bcf",
+      "brands": [
+        "rockdove"
+      ],
+      "ratings": {
+        "rockdove": [
+          2.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "b224f89c8418db0cf931f881b6c4e6eb4efb813789dd66a6c4c747749465a200",
+      "brands": [
+        "luzianne"
+      ],
+      "ratings": {
+        "luzianne": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "d2712a927e9bfbbb5844556cbe96af4e41acc6edc99f4fe35bdff43c6adab1fa",
+      "brands": [
+        "westbend"
+      ],
+      "ratings": {
+        "westbend": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "c65d43048db1577d84a3b680808edcf523550b4ad1d8d5933156fbb331779009",
+      "brands": [
+        "enjoylifefoods",
+        "lorann"
+      ],
+      "ratings": {
+        "enjoylifefoods": [
+          1.0,
+          2.0
+        ],
+        "lorann": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "c2b86627791427f0a630945b8ef6e0f82181c349ab5b160a3033127e19a655f8",
+      "brands": [
+        "amazon"
+      ],
+      "ratings": {
+        "amazon": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "69d2b2ab51be5dea17643fe14353f40c02f7f84ee3f488d8f2ff09faa77b4678",
+      "brands": [
+        "akribosxxiv"
+      ],
+      "ratings": {
+        "akribosxxiv": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "3b376a19842fb5c49097c5cdf276fc6b7b05a790e1065091dc180e869cc0cbf2",
+      "brands": [
+        "netgear"
+      ],
+      "ratings": {
+        "netgear": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "8d7a416d262961ccfae621ea07e3150239829dbe08df0244d66e7a10135b8625",
+      "brands": [
+        "bissell",
+        "sony"
+      ],
+      "ratings": {
+        "bissell": [
+          1.0,
+          2.0,
+          1.0
+        ],
+        "sony": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "65b2e3df728400d7853eaa74ac2751a4a0cc1a1c785e59d9833c8e1148fd49bd",
+      "brands": [
+        "russellathletic",
+        "yankeecandle"
+      ],
+      "ratings": {
+        "russellathletic": [
+          1.0,
+          1.0
+        ],
+        "yankeecandle": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "e4b0e84f6b74a6117899737c03eb6ca18103d9981fab90bb9c8cf941757e3d8a",
+      "brands": [
+        "amazonbasics"
+      ],
+      "ratings": {
+        "amazonbasics": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "user_sha256": "153333a5bda475ef9687621ff70e01a1571b25adbf194bf0768ddcfcfe40aa3b",
+      "brands": [
+        "ring"
+      ],
+      "ratings": {
+        "ring": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    }
+  ],
+  "source_sha256": {
+    "user_profiles.json": "05392a4376beb8877b4b47d2f3e4b1f2504f217139085607b34c35c2934f0b53",
+    "user_history_part_1.json": "d642af531ad5622f63719599e07034bcc00043b04ad90b55f13caab653506142",
+    "user_history_part_2.json": "0297c464de412648f17fa520da9b99656e03612f146189029f080d8cc0ec5270",
+    "user_history_part_3.json": "fbc12a3b43597bea2f2b1a9a47fae1d05d91663386ef4b181c688b096f226efb"
+  },
+  "protocol": "orchestration/personalwab_contradiction_protocol.md"
+}
