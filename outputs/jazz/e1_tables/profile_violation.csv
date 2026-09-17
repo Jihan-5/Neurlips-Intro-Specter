@@ -1,0 +1,5 @@
+dataset,method,profile_violation_rate,n
+longmemeval_real,intro_specter_llm,0.23333333333333334,180
+musique_real,intro_specter_llm,0.07777777777777778,180
+truthfulqa_real,intro_specter_llm,0.08333333333333333,108
+twowiki_real,intro_specter_llm,0.022222222222222223,180

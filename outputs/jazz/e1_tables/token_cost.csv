@@ -1,0 +1,5 @@
+dataset,method,mean_tokens,median_tokens,std_tokens,n
+longmemeval_real,intro_specter_llm,5043.4111111111115,5032.5,508.45347494997293,180
+musique_real,intro_specter_llm,5151.777777777777,4992.0,639.320847362363,180
+truthfulqa_real,intro_specter_llm,3046.685185185185,3086.0,449.0446483670283,108
+twowiki_real,intro_specter_llm,4877.966666666666,4838.5,629.3235430108347,180

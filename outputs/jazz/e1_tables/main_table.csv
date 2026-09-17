@@ -1,0 +1,13 @@
+dataset,model,direct_n,direct_success,react_n,react_success,self_refine_n,self_refine_success,reflexion_n,reflexion_success,full_regen_n,full_regen_success,tot_n,tot_success,selfcheckgpt_n,selfcheckgpt_success,intro_specter_llm_n,intro_specter_llm_success
+longmemeval_real,llama-3.1-8b,0,,0,,0,,0,,0,,0,,0,,60,0.8833333333333333
+longmemeval_real,llama-3.3-70b,0,,0,,0,,0,,0,,0,,0,,60,0.6
+longmemeval_real,mistral-nemo-12b,0,,0,,0,,0,,0,,0,,0,,60,0.8166666666666667
+musique_real,llama-3.1-8b,0,,0,,0,,0,,0,,0,,0,,60,0.95
+musique_real,llama-3.3-70b,0,,0,,0,,0,,0,,0,,0,,60,0.9333333333333333
+musique_real,mistral-nemo-12b,0,,0,,0,,0,,0,,0,,0,,60,0.8833333333333333
+truthfulqa_real,llama-3.1-8b,0,,0,,0,,0,,0,,0,,0,,36,0.9444444444444444
+truthfulqa_real,llama-3.3-70b,0,,0,,0,,0,,0,,0,,0,,36,0.9444444444444444
+truthfulqa_real,mistral-nemo-12b,0,,0,,0,,0,,0,,0,,0,,36,0.8611111111111112
+twowiki_real,llama-3.1-8b,0,,0,,0,,0,,0,,0,,0,,60,0.9666666666666667
+twowiki_real,llama-3.3-70b,0,,0,,0,,0,,0,,0,,0,,60,0.9666666666666667
+twowiki_real,mistral-nemo-12b,0,,0,,0,,0,,0,,0,,0,,60,1.0

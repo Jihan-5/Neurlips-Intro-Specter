@@ -1,0 +1,24 @@
+
+Wrote 7 tables to outputs/jazz/e1_tables/
+
+Datasets: ['longmemeval_real', 'musique_real', 'truthfulqa_real', 'twowiki_real']
+Models:   ['llama-3.1-8b', 'llama-3.3-70b', 'mistral-nemo-12b']
+
+Main table rows: 12
+Head-to-head rows: 0
+
+| cell | successes | rows | success (%) |
+|---|---:|---:|---:|
+| longmemeval_real__llama-3.1-8b | 53 | 60 | 88.3333 |
+| longmemeval_real__llama-3.3-70b | 36 | 60 | 60.0000 |
+| longmemeval_real__mistral-nemo-12b | 49 | 60 | 81.6667 |
+| musique_real__llama-3.1-8b | 57 | 60 | 95.0000 |
+| musique_real__llama-3.3-70b | 56 | 60 | 93.3333 |
+| musique_real__mistral-nemo-12b | 53 | 60 | 88.3333 |
+| truthfulqa_real__llama-3.1-8b | 34 | 36 | 94.4444 |
+| truthfulqa_real__llama-3.3-70b | 34 | 36 | 94.4444 |
+| truthfulqa_real__mistral-nemo-12b | 31 | 36 | 86.1111 |
+| twowiki_real__llama-3.1-8b | 58 | 60 | 96.6667 |
+| twowiki_real__llama-3.3-70b | 58 | 60 | 96.6667 |
+| twowiki_real__mistral-nemo-12b | 60 | 60 | 100.0000 |
+| POOLED | 579 | 648 | 89.3519 |
