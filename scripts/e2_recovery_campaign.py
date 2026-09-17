@@ -68,6 +68,28 @@ def pid_matches(pid: int, cell: str, shard: int, count: int) -> bool:
             and str(RECOVERY) in command)
 
 
+def discover_worker_pid(cell: str, shard: int, count: int) -> int | None:
+    """Find an exact live shard owner even if a coordinator died before ledger flush."""
+    try:
+        listing = subprocess.check_output(["ps", "-axo", "pid=,command="], text=True)
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    matches = []
+    for line in listing.splitlines():
+        fields = line.strip().split(None, 1)
+        if len(fields) != 2:
+            continue
+        pid_text, command = fields
+        if ("e2_recovery.py worker" in command and f"--cell {cell}" in command
+                and f"--shard-index {shard}" in command and f"--num-shards {count}" in command
+                and str(RECOVERY) in command):
+            matches.append(int(pid_text))
+    if len(matches) > 1:
+        event("duplicate_live_workers_detected", key=job_key(cell, shard, count), pids=matches)
+        raise RuntimeError(f"multiple live writers for {job_key(cell, shard, count)}: {matches}")
+    return matches[0] if matches else None
+
+
 def provider_health() -> dict:
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key: return {"ok": False, "reason": "OPENROUTER_API_KEY unavailable"}
@@ -93,7 +115,15 @@ def job_key(cell: str, shard: int, count: int) -> str:
 
 def shard_state(cell: str, shard: int, count: int) -> dict | None:
     path = RECOVERY / cell / "shards" / f"shard-{shard:03d}-of-{count:03d}.state.json"
-    return json.loads(path.read_text()) if path.exists() else None
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        # A worker status snapshot can be interrupted independently of its
+        # append-only JSONL. Treat it as absent; the worker/merge reconstructs
+        # truth from logical keys rather than trusting a partial status file.
+        return None
 
 
 def initialize_log_offsets() -> dict[str, int]:
@@ -233,12 +263,19 @@ def launch(cell: str, shard: int, count: int, ledger: dict) -> subprocess.Popen:
 def main() -> None:
     if not (RECOVERY / "prepare_manifest.json").exists(): raise SystemExit("prepare manifest absent")
     ledger = load_ledger(); active: dict[str, subprocess.Popen] = {}
-    # Adopt exact live workers recorded by a previous coordinator; do not duplicate them.
+    # Adopt exact live workers, including a launch whose coordinator died before
+    # its next atomic ledger flush. Never rely on a stale recorded PID alone.
     for cell in CELLS:
         for index in range(SHARDS[cell]):
             key = job_key(cell, index, SHARDS[cell]); record = ledger["jobs"].get(key, {})
             pid = record.get("pid")
-            if pid and pid_matches(pid, cell, index, SHARDS[cell]):
+            if not (pid and pid_matches(pid, cell, index, SHARDS[cell])):
+                pid = discover_worker_pid(cell, index, SHARDS[cell])
+                if pid:
+                    record = ledger["jobs"].setdefault(key, {"attempts": 0})
+                    record["pid"] = pid
+                    record["discovered_utc"] = utc()
+            if pid:
                 active[key] = None  # type: ignore[assignment]
                 event("worker_adopted", key=key, pid=pid)
     last_health = 0.0

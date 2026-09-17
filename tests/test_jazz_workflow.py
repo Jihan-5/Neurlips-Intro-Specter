@@ -180,3 +180,21 @@ def test_e2_campaign_rate_limit_scanner_ignores_historical_log_text(tmp_path, mo
         handle.write("new HTTP 429\n")
     assert campaign.newly_observed_rate_limits(offsets) == 1
     assert campaign.newly_observed_rate_limits(offsets) == 0
+
+
+def test_e2_campaign_discovers_unflushed_worker_pid(monkeypatch):
+    import e2_recovery_campaign as campaign
+    command = (f"4321 {campaign.PYTHON} {campaign.SCRIPT} worker "
+               f"--cell truthfulqa_real__llama-3.1-8b --shard-index 0 --num-shards 2 "
+               f"--output-root {campaign.RECOVERY}\n")
+    monkeypatch.setattr(campaign.subprocess, "check_output", lambda *args, **kwargs: command)
+    assert campaign.discover_worker_pid("truthfulqa_real__llama-3.1-8b", 0, 2) == 4321
+
+
+def test_e2_campaign_treats_partial_state_snapshot_as_absent(tmp_path, monkeypatch):
+    import e2_recovery_campaign as campaign
+    monkeypatch.setattr(campaign, "RECOVERY", tmp_path)
+    state = (tmp_path / "cell" / "shards" / "shard-000-of-001.state.json")
+    state.parent.mkdir(parents=True)
+    state.write_text("")
+    assert campaign.shard_state("cell", 0, 1) is None
