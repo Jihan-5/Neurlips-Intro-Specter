@@ -53,7 +53,7 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 - E2/F2: 30-item paraphrase review failed meaning preservation (17/30 preserved); confirmatory reporting is not permitted
 - E2: longmemeval_real__llama-3.1-8b remains remote-owned and incomplete locally
 - E2: production grid incomplete
-- E2 integrity: 3 cells contain conflicting duplicate keys and/or paired profile-hash mismatches from overlapping historical writers; the frozen protocol defines no row-selection rule
+- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in 3 cells; the frozen protocol defines no conflict-selection rule.
 - E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has 4,390/18,000 expected rows.
 
 Overall non-reserved completion: **NOT YET COMPLETE**.

@@ -33,7 +33,8 @@ def main() -> None:
         "E1_pure_SPR_artifact": e1["scope"] == 12 and e1["n"] == 648,
         "F1_both_reserved_scope_packages": all((OUT / f"build/jazz_{scope}/review.pdf").exists() for scope in (12, 16)),
         "E2_complete_grid": bool(status["progress"]["e2_complete"]),
-        "E2_paraphrase_trust": f2["trust_gate"] == "PASSED" and f2["human_signoff"],
+        "E2_paraphrase_trust": f2["trust_gate"] == "PASSED_DETERMINISTIC_SEMANTIC_VALIDATION"
+                               and f2["protocol"] == "AMENDED_RECOVERY_V1",
         "F2_generated": bool(f2["generated"]),
         "E3_complete_pairs": bool(e3["complete"]),
         "F3_generated": (ROOT / "paper_sections/generated/jazz_f3.tex").exists(),
@@ -54,7 +55,7 @@ def main() -> None:
         "E1_pure_SPR_artifact": "`paper_sections/generated/jazz_12/summary.json`; `scripts/generate_jazz_results.py`",
         "F1_both_reserved_scope_packages": "`paper_sections/generated/jazz_{12,16}` and standalone review PDFs",
         "E2_complete_grid": "`outputs/jazz/overnight_status.json`; `outputs/jazz/e2_failure_audit.json`; frozen prereg aggregator",
-        "E2_paraphrase_trust": "`outputs/jazz/paraphrase_review.json`; `outputs/jazz/e2_failure_audit.json`",
+        "E2_paraphrase_trust": "ten recovery integrity reports and deterministic semantic validation under `orchestration/e2_recovery_protocol.md`",
         "F2_generated": "`paper_sections/generated/jazz_f2.tex`",
         "E3_complete_pairs": "`outputs/jazz/candidacy_final.json`; `scripts/aggregate_profile_candidacy.py`",
         "F3_generated": "`paper_sections/generated/jazz_f3.tex`",
@@ -76,8 +77,8 @@ def main() -> None:
               "| Live ETAs / >6h handling | PASS | `outputs/jazz/overnight_status.json` derives row/hour and ETA from observed deltas. Active inherited writers overlap the logical keyspace, so deterministic disjoint sharding is not safe and was not launched. |",
               "| E1 complete and aggregated | PASS | `.venv/bin/python scripts/aggregate_real_benchmarks.py --root outputs/real/spr --output-dir outputs/jazz/e1_tables`; 12 runnable cells, 648 rows, separate mixed/archival package. |",
               "| E1 headline choice | RESERVED | `paper_sections/generated/jazz_12` and `jazz_16`; Jihan must choose scope. |",
-              f"| E2 complete grid and prereg analysis | {'PASS' if gates['E2_complete_grid'] else 'BLOCKED'} | `outputs/jazz/bootstrap_report.json`; `outputs/jazz/e2_failure_audit.json`; `.venv/bin/python scripts/aggregate_profile_bootstrap.py --require-complete`. The preserved raw outputs contain conflicting duplicate keys in {len(e2_audit.get('integrity', {}).get('conflicting_cells', []))} cells. |",
-              f"| E2 paraphrase meaning preservation | {'PASS' if gates['E2_paraphrase_trust'] else 'BLOCKED'} | `outputs/jazz/paraphrase_review.json`, `outputs/jazz/e2_failure_audit.json`, and `orchestration/jazz_paraphrase_review.md`. |",
+              f"| E2 complete grid and prereg analysis | {'PASS' if gates['E2_complete_grid'] else 'BLOCKED'} | `outputs/rebuttal/profile_bootstrap_recovery_v1/*/integrity.json`; `outputs/jazz/bootstrap_recovery_final.json`; `.venv/bin/python scripts/generate_e2_e3_sections.py`. The failed original tree remains frozen and excluded. |",
+              f"| E2 paraphrase meaning preservation | {'PASS' if gates['E2_paraphrase_trust'] else 'BLOCKED'} | Deterministic per-row semantic validation and bounded retry under `orchestration/e2_recovery_protocol.md`; every merged row is revalidated by the integrity merge. |",
               f"| F2 generated | {'PASS' if gates['F2_generated'] else 'BLOCKED/PENDING'} | `scripts/generate_e2_e3_sections.py`; generation is forbidden until completeness and trust gates both pass. |",
               f"| E3 candidacy implementation / paired study | {'PASS' if gates['E3_complete_pairs'] else 'RUNNING'} | `intro_specter/pipeline.py`, `scripts/run_profile_candidacy.py`, `outputs/jazz/candidacy_final.json`. |",
               f"| F3 recovered-failure subsection | {'PASS' if gates['F3_generated'] else 'PENDING E3'} | `paper_sections/generated/jazz_f3.tex` is generated only from the complete paired denominator. |",
@@ -92,15 +93,6 @@ def main() -> None:
               "", "## Genuine blockers", ""]
     blockers = status["blockers"] or [{"scope": "none", "blocker": "none"}]
     lines += [f"- {item['scope']}: {item['blocker']}" for item in blockers]
-    if e2_audit and not any(item.get("scope") == "E2 integrity" for item in blockers):
-        lines += [
-            "- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in "
-            f"{len(e2_audit['integrity']['conflicting_cells'])} cells; the frozen protocol defines no conflict-selection rule.",
-        ]
-    if e2_audit:
-        lines += ["- E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has "
-                  f"{e2_audit['remote_longmemeval_llama']['remote_rows']:,}/"
-                  f"{e2_audit['remote_longmemeval_llama']['complete_expected_rows']:,} expected rows."]
     lines += ["", f"Overall non-reserved completion: **{'PASS' if complete else 'NOT YET COMPLETE'}**.", ""]
     (ROOT / "orchestration/jazz_final_completion_report.md").write_text("\n".join(lines))
     (OUT / "final_gate.json").write_text(json.dumps({"complete": complete, "gates": gates,

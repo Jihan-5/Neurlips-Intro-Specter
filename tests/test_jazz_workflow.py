@@ -82,3 +82,101 @@ def test_bootstrap_extra_smoke_and_partial_write_are_visible(tmp_path):
     r,_=read_cell(path)
     assert r['smoke_or_extra_rows']==1 and r['production_rows']==0
     assert r['duplicate_rows']==1 and r['incomplete_tail']==1 and not r['complete']
+
+
+def test_e2_recovery_validator_rejects_known_semantic_losses():
+    from e2_recovery_semantics import validate
+    losses = [
+        ("User strongly dislikes preamble — answer directly without restating the question.",
+         "User has a strong aversion to preamble."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "The user should be presented with content written at a level that avoids technical terms."),
+        ("User does not trust unverified Wikipedia claims — prefer cited sources.",
+         "User prefers verified sources over unverified Wikipedia claims."),
+        ("User is a domain expert — use precise technical terminology.",
+         "The user possesses specialized technical knowledge in a specific domain."),
+        ("User wants the answer in a single sentence.", "The user prefers a concise response."),
+    ]
+    assert all(not validate(canonical, surface)[0] for canonical, surface in losses)
+
+
+def test_e2_recovery_validator_accepts_preserved_audit_examples():
+    from e2_recovery_semantics import validate
+    preserved = [
+        ("User wants the answer in a single sentence.",
+         "The response should be provided in a single sentence."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "User reads at a 6th-grade level, requiring plain and non-technical language."),
+        ("User is a journalist verifying a claim — be skeptical and cite sources.",
+         "Exercise skepticism and cite sources as a journalist verifying a claim."),
+        ("User has a visual impairment — describe images verbally.",
+         "All images should be described in text for a user with a visual impairment."),
+        ("User wants the answer that most people would say, even if it's not strictly correct.",
+         "Give the general consensus even if it is not strictly correct."),
+        ("User prefers concise answers under 20 words.",
+         "User prefers answers that are concise and 20 words or fewer."),
+        ("User is preparing for a medical board exam — emphasize clinical relevance.",
+         "The user is studying for a medical licensing exam and requires clinically relevant information."),
+        ("User has been told by their doctor that the conventional wisdom on this topic is correct.",
+         "Their doctor said the prevailing medical consensus on this topic is accurate."),
+        ("User is a domain expert — use precise technical terminology.",
+         "The user is a subject-matter expert — use specialized technical jargon."),
+    ]
+    assert all(validate(canonical, surface)[0] for canonical, surface in preserved)
+
+
+def test_e2_recovery_shards_are_deterministic_and_disjoint():
+    from e2_recovery import shard_for
+    keys = [(f"task-{i}", v) for i in range(20) for v in range(100)]
+    assignments = [{key for key in keys if shard_for(*key, 7) == shard} for shard in range(7)]
+    assert set().union(*assignments) == set(keys)
+    assert sum(map(len, assignments)) == len(keys)
+    assert all(shard_for(*key, 7) == shard_for(*key, 7) for key in keys)
+
+
+def test_e2_recovery_layered_cache_falls_back_read_only(tmp_path):
+    from e2_recovery import LayeredCache
+    from intro_specter.models import SQLiteCache
+    from intro_specter.models.base import CompletionResult
+    old, delta = tmp_path / "old.sqlite", tmp_path / "delta.sqlite"
+    SQLiteCache(old).put("historical", CompletionResult(text="old", model="m", provider="p"))
+    cache = LayeredCache(old, delta)
+    assert cache.get("historical").text == "old"
+    cache.put("new", CompletionResult(text="new", model="m", provider="p"))
+    assert cache.get("new").text == "new"
+    assert SQLiteCache(old).get("new") is None
+
+
+def test_e2_recovery_merge_rejects_incomplete_malformed_and_conflicting(tmp_path, monkeypatch):
+    import e2_recovery as recovery
+    root = tmp_path / "recovery"; cell = "truthfulqa_real__llama-3.1-8b"
+    cell_root = root / cell; (cell_root / "shards").mkdir(parents=True)
+    (cell_root / "protocol.json").write_text(json.dumps({
+        "expected_task_ids": ["task"], "n_variants": 1,
+    }))
+    (cell_root / "salvaged.jsonl").write_text("{malformed\n")
+    first = recovery.merge(cell, 1, root)
+    assert not first["complete"] and first["missing"] == 3 and first["malformed"]
+
+    row = {"task_id": "task", "variant_idx": 0, "arm": "direct",
+           "profile_hash": "hash", "recovery_protocol_sha256": recovery.protocol_hash(),
+           "recovery_provenance": "salvaged_verified", "effective_redrawn": [{
+               "canonical_text": "User wants the answer in a single sentence.",
+               "surface_text": "Answer using one sentence.", "span_id": "c1"}]}
+    (cell_root / "salvaged.jsonl").write_text(json.dumps(row) + "\n")
+    (cell_root / "shards" / "shard-000-of-001.jsonl").write_text(json.dumps(row) + "\n")
+    second = recovery.merge(cell, 1, root)
+    assert not second["complete"] and second["overlaps"]
+
+
+def test_e2_campaign_rate_limit_scanner_ignores_historical_log_text(tmp_path, monkeypatch):
+    import e2_recovery_campaign as campaign
+    monkeypatch.setattr(campaign, "WORKER_LOGS", tmp_path)
+    log = tmp_path / "production_test.log"
+    log.write_text("historical HTTP 429 and rate limit\n")
+    offsets = campaign.initialize_log_offsets()
+    assert campaign.newly_observed_rate_limits(offsets) == 0
+    with log.open("a") as handle:
+        handle.write("new HTTP 429\n")
+    assert campaign.newly_observed_rate_limits(offsets) == 1
+    assert campaign.newly_observed_rate_limits(offsets) == 0
