@@ -183,6 +183,18 @@ def test_e2_campaign_rate_limit_scanner_ignores_historical_log_text(tmp_path, mo
     assert campaign.newly_observed_rate_limits(offsets) == 0
 
 
+def test_e2_campaign_rate_limit_scanner_ignores_429_inside_task_ids(tmp_path, monkeypatch):
+    import e2_recovery_campaign as campaign
+    monkeypatch.setattr(campaign, "WORKER_LOGS", tmp_path)
+    monkeypatch.setattr(campaign, "RECOVERY", tmp_path / "recovery")
+    log = tmp_path / "production_test.log"
+    log.write_text("")
+    offsets = campaign.initialize_log_offsets()
+    with log.open("a") as handle:
+        handle.write('{"task_id":"real_hotpotqa_00429_deadbeef","kind":"invalid_paraphrase_exhausted"}\n')
+    assert campaign.newly_observed_rate_limits(offsets) == 0
+
+
 def test_e2_campaign_scans_new_shard_rate_limit_errors(tmp_path, monkeypatch):
     import e2_recovery_campaign as campaign
     logs = tmp_path / "logs"; logs.mkdir()
