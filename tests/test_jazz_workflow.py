@@ -172,6 +172,7 @@ def test_e2_recovery_merge_rejects_incomplete_malformed_and_conflicting(tmp_path
 def test_e2_campaign_rate_limit_scanner_ignores_historical_log_text(tmp_path, monkeypatch):
     import e2_recovery_campaign as campaign
     monkeypatch.setattr(campaign, "WORKER_LOGS", tmp_path)
+    monkeypatch.setattr(campaign, "RECOVERY", tmp_path / "recovery")
     log = tmp_path / "production_test.log"
     log.write_text("historical HTTP 429 and rate limit\n")
     offsets = campaign.initialize_log_offsets()
@@ -180,6 +181,22 @@ def test_e2_campaign_rate_limit_scanner_ignores_historical_log_text(tmp_path, mo
         handle.write("new HTTP 429\n")
     assert campaign.newly_observed_rate_limits(offsets) == 1
     assert campaign.newly_observed_rate_limits(offsets) == 0
+
+
+def test_e2_campaign_scans_new_shard_rate_limit_errors(tmp_path, monkeypatch):
+    import e2_recovery_campaign as campaign
+    logs = tmp_path / "logs"; logs.mkdir()
+    recovery = tmp_path / "recovery"
+    errors = recovery / "cell__model" / "shards" / "shard-000-of-001.errors.jsonl"
+    errors.parent.mkdir(parents=True)
+    errors.write_text('{"failures":["provider:RateLimitError"]}\n')
+    monkeypatch.setattr(campaign, "WORKER_LOGS", logs)
+    monkeypatch.setattr(campaign, "RECOVERY", recovery)
+    offsets = campaign.initialize_log_offsets()
+    assert campaign.newly_observed_rate_limits(offsets) == 0
+    with errors.open("a") as handle:
+        handle.write('{"error":"HTTP 429"}\n')
+    assert campaign.newly_observed_rate_limits(offsets) == 1
 
 
 def test_e2_campaign_discovers_unflushed_worker_pid(monkeypatch):

@@ -128,13 +128,20 @@ def shard_state(cell: str, shard: int, count: int) -> dict | None:
 
 def initialize_log_offsets() -> dict[str, int]:
     """Start at EOF so historical log tails can never influence concurrency."""
-    return {str(path): path.stat().st_size for path in WORKER_LOGS.glob("production_*.log")}
+    return {str(path): path.stat().st_size for path in rate_limit_sources()}
+
+
+def rate_limit_sources() -> list[Path]:
+    """Return append-only streams that can record provider throttling."""
+    logs = list(WORKER_LOGS.glob("production_*.log"))
+    errors = list(RECOVERY.glob("*__*/shards/*.errors.jsonl"))
+    return logs + errors
 
 
 def newly_observed_rate_limits(offsets: dict[str, int]) -> int:
     """Count rate-limit messages written since the preceding supervisor sample."""
     observed = 0
-    for path in WORKER_LOGS.glob("production_*.log"):
+    for path in rate_limit_sources():
         key = str(path)
         try:
             size = path.stat().st_size
