@@ -32,6 +32,7 @@ RAMP_INTERVAL_SECONDS = 120
 RATE_LIMIT_WINDOW_SECONDS = 300
 RATE_LIMIT_BACKOFF_THRESHOLD = 3
 MAX_SHARD_ATTEMPTS = 16
+MAX_FINALIZE_ATTEMPTS = 3
 RATE_LIMIT_RE = re.compile(r"(?:\b429\b|rate[ -]?limit)", re.IGNORECASE)
 
 
@@ -292,6 +293,7 @@ def main() -> None:
     target = max(MIN_CONCURRENCY, min(MAX_CONCURRENCY, target))
     last_adjustment = float(adaptive.get("last_adjustment", time.time()))
     rate_limit_events = [float(value) for value in adaptive.get("rate_limit_events", [])]
+    finalize_attempts = 0
     while True:
         # Adopted processes have no Popen handle; poll them by exact command identity.
         for key, proc in list(active.items()):
@@ -361,8 +363,19 @@ def main() -> None:
             event("recovery_grid_complete")
             finalize = ROOT / "scripts/e2_recovery_finalize.py"
             if finalize.exists():
+                finalize_attempts += 1
                 result = subprocess.run([str(PYTHON), str(finalize)], cwd=ROOT, env=os.environ)
-                event("finalize_exited", exit_code=result.returncode)
+                event("finalize_exited", exit_code=result.returncode, attempt=finalize_attempts)
+                if result.returncode == 0:
+                    return
+                if finalize_attempts < MAX_FINALIZE_ATTEMPTS:
+                    time.sleep(60)
+                    continue
+                event("campaign_blocked", blockers=[
+                    f"finalizer failed {MAX_FINALIZE_ATTEMPTS} idempotent attempts"
+                ])
+                return
+            event("campaign_blocked", blockers=["finalizer script absent"])
             return
         if snapshot["blockers"] and not active:
             event("campaign_blocked", blockers=snapshot["blockers"])
