@@ -1,0 +1,9 @@
+% F1: restore the existing SelfCheckGPT baseline to the comparison figure.
+\begin{tikzpicture}[>=Latex, node distance=7mm,
+  stage/.style={draw,rounded corners,align=center,font=\scriptsize,inner sep=4pt}]
+  \node[stage] (samples) {SelfCheckGPT\\sample alternative outputs};
+  \node[stage,right=of samples] (consistency) {cross-sample\\consistency check};
+  \node[stage,right=of consistency] (response) {accept or regenerate\\the answer};
+  \draw[->] (samples) -- (consistency);
+  \draw[->] (consistency) -- (response);
+\end{tikzpicture}
