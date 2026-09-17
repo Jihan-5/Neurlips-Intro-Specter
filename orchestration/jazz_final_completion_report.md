@@ -25,7 +25,7 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 | Brief item | Status | Exact artifact / validation |
 |---|---|---|
 | Setup / credentials hygiene | PASS | `.env.local` was loaded only into process environments and is gitignored; staged diffs were scanned for credential patterns. |
-| Artifact transport | PASS for completed E1/E4 | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; the safe transport excludes active bootstrap trees and never resets a worktree. |
+| Artifact transport | PASS for completed E1/E3/E4 | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; the safe transport excludes active bootstrap trees and never resets a worktree. |
 | Frozen protocol constants | PASS | E2: 100 variants, generation seed 0, tau 0.0; E3 manifests record benchmark seed 42, generation seed 0, rho 0/.1/.3, and Llama-8B-for-Qwen disclosure. |
 | Unattended execution | PASS | `scripts/jazz_campaign.py`, `outputs/jazz/campaign_status.json`, ledger/history/log, per-cell locks, bounded single resume, and `caffeinate -i` assertion in `overnight_status.json`. |
 | Live ETAs / >6h handling | PASS | `outputs/jazz/overnight_status.json` derives row/hour and ETA from observed deltas. Active inherited writers overlap the logical keyspace, so deterministic disjoint sharding is not safe and was not launched. |
@@ -53,7 +53,7 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 - E2/F2: 30-item paraphrase review failed meaning preservation (17/30 preserved); confirmatory reporting is not permitted
 - E2: longmemeval_real__llama-3.1-8b remains remote-owned and incomplete locally
 - E2: production grid incomplete
-- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in 3 cells; the frozen protocol defines no conflict-selection rule.
+- E2 integrity: 3 cells contain conflicting duplicate keys and/or paired profile-hash mismatches from overlapping historical writers; the frozen protocol defines no row-selection rule
 - E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has 4,390/18,000 expected rows.
 
 Overall non-reserved completion: **NOT YET COMPLETE**.

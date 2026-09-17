@@ -92,14 +92,15 @@ def main() -> None:
               "", "## Genuine blockers", ""]
     blockers = status["blockers"] or [{"scope": "none", "blocker": "none"}]
     lines += [f"- {item['scope']}: {item['blocker']}" for item in blockers]
-    if e2_audit:
+    if e2_audit and not any(item.get("scope") == "E2 integrity" for item in blockers):
         lines += [
             "- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in "
             f"{len(e2_audit['integrity']['conflicting_cells'])} cells; the frozen protocol defines no conflict-selection rule.",
-            "- E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has "
-            f"{e2_audit['remote_longmemeval_llama']['remote_rows']:,}/"
-            f"{e2_audit['remote_longmemeval_llama']['complete_expected_rows']:,} expected rows.",
         ]
+    if e2_audit:
+        lines += ["- E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has "
+                  f"{e2_audit['remote_longmemeval_llama']['remote_rows']:,}/"
+                  f"{e2_audit['remote_longmemeval_llama']['complete_expected_rows']:,} expected rows."]
     lines += ["", f"Overall non-reserved completion: **{'PASS' if complete else 'NOT YET COMPLETE'}**.", ""]
     (ROOT / "orchestration/jazz_final_completion_report.md").write_text("\n".join(lines))
     (OUT / "final_gate.json").write_text(json.dumps({"complete": complete, "gates": gates,

@@ -90,6 +90,16 @@ def write() -> dict:
     ]
     if not bootstrap["complete"]:
         blockers.append({"scope": "E2", "blocker": "production grid incomplete"})
+    conflict_cells = [cell["cell"] for cell in e2
+                      if cell.get("conflicting_duplicates") or cell.get("paired_hash_mismatches")]
+    if conflict_cells:
+        blockers.append({
+            "scope": "E2 integrity",
+            "blocker": (f"{len(conflict_cells)} cells contain conflicting duplicate keys and/or "
+                        "paired profile-hash mismatches from overlapping historical writers; "
+                        "the frozen protocol defines no row-selection rule"),
+            "cells": conflict_cells,
+        })
     if len(candidacy) != 10 or not all(cell.get("complete") for cell in candidacy):
         blockers.append({"scope": "E3", "blocker": "paired candidacy grid incomplete"})
     state = {
@@ -99,7 +109,7 @@ def write() -> dict:
                              "evidence": assertions},
         "active_jobs": active,
         "coordinator_heartbeat": campaign.get("updated_utc"),
-        "handoff": "hardened coordinator waits on the inherited flock; no duplicate owner",
+        "handoff": "hardened coordinator owns the campaign flock; inherited E2 workers are monitored read-only and each has one current output owner",
         "progress": {"e2": e2, "e2_complete": bootstrap["complete"],
                      "e3": candidacy,
                      "e3_complete": len(candidacy) == 10 and all(cell.get("complete") for cell in candidacy)},
