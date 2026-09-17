@@ -42,6 +42,7 @@ check of variant generation + rule regeneration only):
 from __future__ import annotations
 
 import argparse
+import fcntl
 import functools
 import hashlib
 import importlib.util
@@ -300,6 +301,13 @@ def main() -> None:
 
     out_dir = Path(args.output_dir) / f"{args.dataset}__{args.model}"
     out_dir.mkdir(parents=True, exist_ok=True)
+    # One cell has exactly one writer. A mistaken second launch fails before
+    # it can append duplicate rows.
+    writer_lock = (out_dir / ".writer.lock").open("a")
+    try:
+        fcntl.flock(writer_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        raise SystemExit(f"writer already active for {out_dir.name}") from exc
     out_path = out_dir / "variants.jsonl"
 
     done: set[tuple[str, int, str]] = set()
@@ -308,7 +316,12 @@ def main() -> None:
             line = line.strip()
             if not line:
                 continue
-            row = json.loads(line)
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                # Preserve an unterminated tail after a killed append. The
+                # integrity report exposes it and the missing key can resume.
+                continue
             done.add((row["task_id"], row["variant_idx"], row["arm"]))
     if done:
         print(f"Resuming: {len(done)} (task_id, variant_idx, arm) rows already present, skipped.")

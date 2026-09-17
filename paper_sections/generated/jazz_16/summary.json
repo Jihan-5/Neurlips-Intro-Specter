@@ -1,0 +1,15 @@
+{
+  "scope": 16,
+  "n": 866,
+  "successes": 757,
+  "success_rate": 0.874133949191686,
+  "paired_n": 866,
+  "paired_is": 0.874133949191686,
+  "paired_reflexion": 0.8533487297921478,
+  "delta": 0.020785219399538146,
+  "wins": 10,
+  "ties": 2,
+  "losses": 4,
+  "significant_wins": 0,
+  "significant_losses": 0
+}

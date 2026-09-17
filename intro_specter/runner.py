@@ -461,6 +461,7 @@ def run_method_on_example(
             uniform_prior=bool(method.extra.get("uniform_prior", False)),
             skip_likelihood=bool(method.extra.get("skip_likelihood", False)),
             disable_cost=bool(method.extra.get("disable_cost", False)),
+            allow_profile_candidates=bool(method.extra.get("allow_profile_candidates", False)),
             use_confidence_in_prior=bool(method.extra.get("use_confidence_in_prior", True)),
             spr_max_rounds=int(method.extra.get("spr_max_rounds", 2)),
             spr_decay_alpha=float(method.extra.get("spr_decay_alpha", 0.1)),
