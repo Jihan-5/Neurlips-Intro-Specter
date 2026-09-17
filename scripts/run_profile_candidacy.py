@@ -42,8 +42,17 @@ def run_cell(dataset, model, root, cache_path, *, smoke=False):
     path = cell / 'paired.jsonl'
     done = {}
     if path.exists():
-        for line in path.read_text().splitlines():
-            r = json.loads(line)
+        raw = path.read_bytes()
+        # Never truncate a killed append. Separate its partial tail from all
+        # future rows and let the integrity aggregator report it explicitly.
+        if raw and not raw.endswith(b'\n'):
+            with path.open('ab') as repair_separator:
+                repair_separator.write(b'\n')
+        for line in raw.splitlines():
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
             done[(r['task_id'], r['rho'], r['allow_profile_candidates'])] = r
     errors = 0
     with path.open('a') as output, (cell / 'errors.jsonl').open('a') as error_file:

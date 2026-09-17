@@ -54,6 +54,15 @@ def test_recovery_requires_clean_success_corrupt_failure_and_mechanism_success(t
     assert not aggregate_cell(cell)['complete']
 
 
+def test_candidacy_malformed_tail_is_visible(tmp_path):
+    cell=tmp_path/'cell'; cell.mkdir()
+    (cell/'protocol.json').write_text(json.dumps({'expected_tasks':[]}))
+    (cell/'paired.jsonl').write_bytes(b'{"partial":')
+    report=aggregate_cell(cell)
+    assert report['malformed_rows']==1
+    assert not report['complete']
+
+
 def test_bootstrap_worst_tail_and_pool_pairing():
     arms={a:{} for a in ARMS}
     for v in range(100):

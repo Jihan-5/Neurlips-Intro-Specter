@@ -9,18 +9,24 @@ from pathlib import Path
 def aggregate_cell(cell):
     protocol = json.loads((cell / 'protocol.json').read_text())
     records = {}
-    duplicates = 0
-    for line in (cell / 'paired.jsonl').read_text().splitlines():
-        row = json.loads(line)
+    duplicates = malformed = conflicts = 0
+    lines = (cell / 'paired.jsonl').read_bytes().splitlines(keepends=True)
+    for index, line in enumerate(lines):
+        try:
+            row = json.loads(line)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            malformed += 1
+            continue
         key = (row['task_id'], row['seed'], row['rho'], row['allow_profile_candidates'])
         if key in records:
             if records[key] != row:
-                raise ValueError(f'Conflicting duplicate {cell.name}: {key}')
+                conflicts += 1
             duplicates += 1
         records[key] = row
     counts = dict(cell=cell.name, rows=len(records), expected=len(protocol['expected_tasks']) * 5,
                   paired=0, eligible=0, recovered=0, regressions=0, missing_pairs=0,
-                  added_candidates=0, duplicate_rows=duplicates)
+                  added_candidates=0, duplicate_rows=duplicates,
+                  malformed_rows=malformed, conflicting_duplicates=conflicts)
     for task in protocol['expected_tasks']:
         clean = records.get((task, 0, 0.0, False))
         for rho in (0.1, 0.3):
@@ -39,7 +45,8 @@ def aggregate_cell(cell):
             if clean['true_success'] and not baseline['true_success'] and baseline['corrupted_constraint_ids']:
                 counts['eligible'] += 1
                 counts['recovered'] += mechanism['true_success']
-    counts['complete'] = counts['rows'] == counts['expected'] and counts['missing_pairs'] == 0
+    counts['complete'] = (counts['rows'] == counts['expected'] and counts['missing_pairs'] == 0
+                          and malformed == 0 and conflicts == 0)
     counts['recovery_rate'] = counts['recovered'] / counts['eligible'] if counts['eligible'] else None
     counts['error_attempts'] = sum(1 for _ in (cell / 'errors.jsonl').open()) if (cell / 'errors.jsonl').exists() else 0
     return counts
