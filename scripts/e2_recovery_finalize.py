@@ -62,8 +62,14 @@ def main() -> None:
         "--include", "outputs/rebuttal/profile_bootstrap_recovery_v1",
         "--include", "outputs/jazz",
     ])
-    # The completion sentinel is last: it cannot claim success before artifact
-    # publication has returned successfully and left its local receipt.
+    # Generate the completed report without its sentinel, publish that report
+    # and the transport receipt, and only then assert local completion.
+    run([sys.executable, "scripts/jazz_final_gate.py"])
+    run([
+        sys.executable, "scripts/sync_artifacts_safe.py", "push",
+        "Jazz final validation report and transport receipt",
+        "--include", "outputs/jazz",
+    ])
     run([sys.executable, "scripts/jazz_final_gate.py", "--create-done"])
 
 

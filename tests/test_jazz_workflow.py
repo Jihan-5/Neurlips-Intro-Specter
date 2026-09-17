@@ -255,9 +255,13 @@ def test_e2_finalizer_requires_both_builds_and_transports_before_gate(tmp_path, 
     assert len(tectonic) == 2 and tectonic[1][2] == prose
     transport = next(i for i, call in enumerate(calls)
                      if call[0] == "receipt" and call[1] == "artifact_transport_passed")
+    report_gate = next(i for i, call in enumerate(calls)
+                       if call[0] == "run" and call[1][-1] == "scripts/jazz_final_gate.py")
+    report_transport = next(i for i, call in enumerate(calls)
+                            if call[0] == "run" and call[1][-2:] == ["--include", "outputs/jazz"])
     gate = next(i for i, call in enumerate(calls)
                 if call[0] == "run" and call[1][-1] == "--create-done")
-    assert transport < gate
+    assert transport < report_gate < report_transport < gate
 
 
 def test_jazz_final_gate_requires_fresh_current_and_prose_builds(tmp_path):
