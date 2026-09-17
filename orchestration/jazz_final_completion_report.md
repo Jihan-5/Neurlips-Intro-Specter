@@ -8,11 +8,11 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 |---|---|---|
 | E1_pure_SPR_artifact | PASS | `paper_sections/generated/jazz_12/summary.json`; `scripts/generate_jazz_results.py` |
 | F1_both_reserved_scope_packages | PASS | `paper_sections/generated/jazz_{12,16}` and standalone review PDFs |
-| E2_complete_grid | PENDING/BLOCKED | `outputs/jazz/overnight_status.json`; frozen prereg aggregator |
-| E2_paraphrase_trust | PENDING/BLOCKED | `outputs/jazz/paraphrase_review.json` |
+| E2_complete_grid | PENDING/BLOCKED | `outputs/jazz/overnight_status.json`; `outputs/jazz/e2_failure_audit.json`; frozen prereg aggregator |
+| E2_paraphrase_trust | PENDING/BLOCKED | `outputs/jazz/paraphrase_review.json`; `outputs/jazz/e2_failure_audit.json` |
 | F2_generated | PENDING/BLOCKED | `paper_sections/generated/jazz_f2.tex` |
-| E3_complete_pairs | PENDING/BLOCKED | `outputs/jazz/candidacy_final.json`; `scripts/aggregate_profile_candidacy.py` |
-| F3_generated | PENDING/BLOCKED | `paper_sections/generated/jazz_f3.tex` |
+| E3_complete_pairs | PASS | `outputs/jazz/candidacy_final.json`; `scripts/aggregate_profile_candidacy.py` |
+| F3_generated | PASS | `paper_sections/generated/jazz_f3.tex` |
 | E4_exploratory_proxy | PASS | `outputs/jazz/personalwab_contradictions.json`; `scripts/aggregate_personalwab_contradictions.py` |
 | F4_only_reserved_findings | PASS | `outputs/jazz/consistency_audit.json`; `scripts/audit_jazz_consistency.py` |
 | manuscript_build_current | PASS | `tectonic paper_final.tex --outdir outputs/jazz/build` |
@@ -31,15 +31,15 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 | Live ETAs / >6h handling | PASS | `outputs/jazz/overnight_status.json` derives row/hour and ETA from observed deltas. Active inherited writers overlap the logical keyspace, so deterministic disjoint sharding is not safe and was not launched. |
 | E1 complete and aggregated | PASS | `.venv/bin/python scripts/aggregate_real_benchmarks.py --root outputs/real/spr --output-dir outputs/jazz/e1_tables`; 12 runnable cells, 648 rows, separate mixed/archival package. |
 | E1 headline choice | RESERVED | `paper_sections/generated/jazz_12` and `jazz_16`; Jihan must choose scope. |
-| E2 complete grid and prereg analysis | PENDING | `outputs/jazz/bootstrap_report.json`; `.venv/bin/python scripts/aggregate_profile_bootstrap.py --require-complete`. |
-| E2 paraphrase meaning preservation | BLOCKED | `outputs/jazz/paraphrase_review.json` and `orchestration/jazz_paraphrase_review.md`. |
+| E2 complete grid and prereg analysis | BLOCKED | `outputs/jazz/bootstrap_report.json`; `outputs/jazz/e2_failure_audit.json`; `.venv/bin/python scripts/aggregate_profile_bootstrap.py --require-complete`. The preserved raw outputs contain conflicting duplicate keys in 3 cells. |
+| E2 paraphrase meaning preservation | BLOCKED | `outputs/jazz/paraphrase_review.json`, `outputs/jazz/e2_failure_audit.json`, and `orchestration/jazz_paraphrase_review.md`. |
 | F2 generated | BLOCKED/PENDING | `scripts/generate_e2_e3_sections.py`; generation is forbidden until completeness and trust gates both pass. |
-| E3 candidacy implementation / paired study | RUNNING | `intro_specter/pipeline.py`, `scripts/run_profile_candidacy.py`, `outputs/jazz/candidacy_final.json`. |
-| F3 recovered-failure subsection | PENDING E3 | `paper_sections/generated/jazz_f3.tex` is generated only from the complete paired denominator. |
+| E3 candidacy implementation / paired study | PASS | `intro_specter/pipeline.py`, `scripts/run_profile_candidacy.py`, `outputs/jazz/candidacy_final.json`. |
+| F3 recovered-failure subsection | PASS | `paper_sections/generated/jazz_f3.tex` is generated only from the complete paired denominator. |
 | E4 PersonalWAB proxy | PASS | `.venv/bin/python scripts/aggregate_personalwab_contradictions.py`; `outputs/jazz/personalwab_contradictions.json`; explicitly exploratory brand discordance, not general contradiction. |
 | F1 statistics/tables/cost/SelfCheck/ties | PASS, headline insertion reserved | `.venv/bin/python scripts/generate_jazz_results.py`; standalone review PDFs for scopes 12/16; SelfCheck panel on prose branch. |
 | F4 consistency and citations | PASS | `.venv/bin/python scripts/audit_jazz_consistency.py`; only allowed reference-audit keys; no undefined citations or stale package hashes. |
-| Regression tests | PASS | Jazz workflow 5 passed; full suite 56 passed; receipts in `outputs/jazz/validation/`. |
+| Regression tests | PASS | Jazz workflow 5 passed; full suite 57 passed; receipts in `outputs/jazz/validation/`. |
 | Full manuscript build | PASS | `tectonic paper_final.tex --outdir outputs/jazz/build`; prose-branch build independently validated. |
 | Final completion sentinel | NOT CREATED | `outputs/jazz/JAZZ_DONE` is emitted only when every gate above is true. |
 
@@ -53,6 +53,7 @@ The two headline-scope findings are reserved for Jihan and are not silently reso
 - E2/F2: 30-item paraphrase review failed meaning preservation (17/30 preserved); confirmatory reporting is not permitted
 - E2: longmemeval_real__llama-3.1-8b remains remote-owned and incomplete locally
 - E2: production grid incomplete
-- E3: paired candidacy grid incomplete
+- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in 3 cells; the frozen protocol defines no conflict-selection rule.
+- E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has 4,390/18,000 expected rows.
 
 Overall non-reserved completion: **NOT YET COMPLETE**.

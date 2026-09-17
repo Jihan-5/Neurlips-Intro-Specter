@@ -23,6 +23,8 @@ def main() -> None:
     f2 = json.loads((OUT / "f2_generation_status.json").read_text())
     e3 = json.loads((OUT / "candidacy_final.json").read_text())
     e4 = json.loads((OUT / "personalwab_contradictions.json").read_text())
+    e2_audit_path = OUT / "e2_failure_audit.json"
+    e2_audit = json.loads(e2_audit_path.read_text()) if e2_audit_path.exists() else {}
     reserved = {"HEADLINE_SCOPE", "HEADLINE_CELL_RECORD"}
     unresolved = {finding["code"] for finding in audit["findings"]}
     build = OUT / "build/paper_final.pdf"
@@ -51,8 +53,8 @@ def main() -> None:
     evidence = {
         "E1_pure_SPR_artifact": "`paper_sections/generated/jazz_12/summary.json`; `scripts/generate_jazz_results.py`",
         "F1_both_reserved_scope_packages": "`paper_sections/generated/jazz_{12,16}` and standalone review PDFs",
-        "E2_complete_grid": "`outputs/jazz/overnight_status.json`; frozen prereg aggregator",
-        "E2_paraphrase_trust": "`outputs/jazz/paraphrase_review.json`",
+        "E2_complete_grid": "`outputs/jazz/overnight_status.json`; `outputs/jazz/e2_failure_audit.json`; frozen prereg aggregator",
+        "E2_paraphrase_trust": "`outputs/jazz/paraphrase_review.json`; `outputs/jazz/e2_failure_audit.json`",
         "F2_generated": "`paper_sections/generated/jazz_f2.tex`",
         "E3_complete_pairs": "`outputs/jazz/candidacy_final.json`; `scripts/aggregate_profile_candidacy.py`",
         "F3_generated": "`paper_sections/generated/jazz_f3.tex`",
@@ -68,21 +70,21 @@ def main() -> None:
     lines += ["", "## Brief-by-brief audit", "",
               "| Brief item | Status | Exact artifact / validation |", "|---|---|---|",
               "| Setup / credentials hygiene | PASS | `.env.local` was loaded only into process environments and is gitignored; staged diffs were scanned for credential patterns. |",
-              "| Artifact transport | PASS for completed E1/E4 | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; the safe transport excludes active bootstrap trees and never resets a worktree. |",
+              "| Artifact transport | PASS for completed E1/E3/E4 | `origin/artifacts` commits are recorded in `orchestration/team_status.md`; the safe transport excludes active bootstrap trees and never resets a worktree. |",
               "| Frozen protocol constants | PASS | E2: 100 variants, generation seed 0, tau 0.0; E3 manifests record benchmark seed 42, generation seed 0, rho 0/.1/.3, and Llama-8B-for-Qwen disclosure. |",
               "| Unattended execution | PASS | `scripts/jazz_campaign.py`, `outputs/jazz/campaign_status.json`, ledger/history/log, per-cell locks, bounded single resume, and `caffeinate -i` assertion in `overnight_status.json`. |",
               "| Live ETAs / >6h handling | PASS | `outputs/jazz/overnight_status.json` derives row/hour and ETA from observed deltas. Active inherited writers overlap the logical keyspace, so deterministic disjoint sharding is not safe and was not launched. |",
               "| E1 complete and aggregated | PASS | `.venv/bin/python scripts/aggregate_real_benchmarks.py --root outputs/real/spr --output-dir outputs/jazz/e1_tables`; 12 runnable cells, 648 rows, separate mixed/archival package. |",
               "| E1 headline choice | RESERVED | `paper_sections/generated/jazz_12` and `jazz_16`; Jihan must choose scope. |",
-              f"| E2 complete grid and prereg analysis | {'PASS' if gates['E2_complete_grid'] else 'PENDING'} | `outputs/jazz/bootstrap_report.json`; `.venv/bin/python scripts/aggregate_profile_bootstrap.py --require-complete`. |",
-              f"| E2 paraphrase meaning preservation | {'PASS' if gates['E2_paraphrase_trust'] else 'BLOCKED'} | `outputs/jazz/paraphrase_review.json` and `orchestration/jazz_paraphrase_review.md`. |",
+              f"| E2 complete grid and prereg analysis | {'PASS' if gates['E2_complete_grid'] else 'BLOCKED'} | `outputs/jazz/bootstrap_report.json`; `outputs/jazz/e2_failure_audit.json`; `.venv/bin/python scripts/aggregate_profile_bootstrap.py --require-complete`. The preserved raw outputs contain conflicting duplicate keys in {len(e2_audit.get('integrity', {}).get('conflicting_cells', []))} cells. |",
+              f"| E2 paraphrase meaning preservation | {'PASS' if gates['E2_paraphrase_trust'] else 'BLOCKED'} | `outputs/jazz/paraphrase_review.json`, `outputs/jazz/e2_failure_audit.json`, and `orchestration/jazz_paraphrase_review.md`. |",
               f"| F2 generated | {'PASS' if gates['F2_generated'] else 'BLOCKED/PENDING'} | `scripts/generate_e2_e3_sections.py`; generation is forbidden until completeness and trust gates both pass. |",
               f"| E3 candidacy implementation / paired study | {'PASS' if gates['E3_complete_pairs'] else 'RUNNING'} | `intro_specter/pipeline.py`, `scripts/run_profile_candidacy.py`, `outputs/jazz/candidacy_final.json`. |",
               f"| F3 recovered-failure subsection | {'PASS' if gates['F3_generated'] else 'PENDING E3'} | `paper_sections/generated/jazz_f3.tex` is generated only from the complete paired denominator. |",
               "| E4 PersonalWAB proxy | PASS | `.venv/bin/python scripts/aggregate_personalwab_contradictions.py`; `outputs/jazz/personalwab_contradictions.json`; explicitly exploratory brand discordance, not general contradiction. |",
               "| F1 statistics/tables/cost/SelfCheck/ties | PASS, headline insertion reserved | `.venv/bin/python scripts/generate_jazz_results.py`; standalone review PDFs for scopes 12/16; SelfCheck panel on prose branch. |",
               f"| F4 consistency and citations | {'PASS' if gates['F4_only_reserved_findings'] else 'PENDING'} | `.venv/bin/python scripts/audit_jazz_consistency.py`; only allowed reference-audit keys; no undefined citations or stale package hashes. |",
-              f"| Regression tests | {'PASS' if gates['jazz_regression_tests'] and gates['full_test_suite'] else 'PENDING'} | Jazz workflow 5 passed; full suite 56 passed; receipts in `outputs/jazz/validation/`. |",
+              f"| Regression tests | {'PASS' if gates['jazz_regression_tests'] and gates['full_test_suite'] else 'PENDING'} | Jazz workflow 5 passed; full suite 57 passed; receipts in `outputs/jazz/validation/`. |",
               f"| Full manuscript build | {'PASS' if gates['manuscript_build_current'] else 'PENDING'} | `tectonic paper_final.tex --outdir outputs/jazz/build`; prose-branch build independently validated. |",
               f"| Final completion sentinel | {'PASS' if complete else 'NOT CREATED'} | `outputs/jazz/JAZZ_DONE` is emitted only when every gate above is true. |"]
     lines += ["", "## Remaining human-only decisions", "",
@@ -90,6 +92,14 @@ def main() -> None:
               "", "## Genuine blockers", ""]
     blockers = status["blockers"] or [{"scope": "none", "blocker": "none"}]
     lines += [f"- {item['scope']}: {item['blocker']}" for item in blockers]
+    if e2_audit:
+        lines += [
+            "- E2 integrity: overlapping top-level writers created conflicting duplicate logical keys in "
+            f"{len(e2_audit['integrity']['conflicting_cells'])} cells; the frozen protocol defines no conflict-selection rule.",
+            "- E2 artifact transport: the fetched `origin/artifacts` LongMemEval/Llama artifact has "
+            f"{e2_audit['remote_longmemeval_llama']['remote_rows']:,}/"
+            f"{e2_audit['remote_longmemeval_llama']['complete_expected_rows']:,} expected rows.",
+        ]
     lines += ["", f"Overall non-reserved completion: **{'PASS' if complete else 'NOT YET COMPLETE'}**.", ""]
     (ROOT / "orchestration/jazz_final_completion_report.md").write_text("\n".join(lines))
     (OUT / "final_gate.json").write_text(json.dumps({"complete": complete, "gates": gates,

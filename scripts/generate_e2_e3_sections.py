@@ -58,11 +58,16 @@ def main() -> None:
     if complete:
         rate = 100 * pooled["recovery_rate"] if pooled["recovery_rate"] is not None else 0
         text = ("\\subsection{When the profile itself is at fault}\n"
-                f"In the paired candidacy study, the expanded candidate set recovered "
+                "The synthetic diagnostic above tests localization when the gold fault node is "
+                "known by construction. Complementing that evidence, the paired candidacy study "
+                "tests whether broadening the extracted candidate set can recover failures under "
+                "the stored benchmark trajectories. It recovered "
                 f"{pooled['recovered']} of {pooled['eligible']} clean-solved, corruption-associated "
                 f"default failures ({rate:.1f}\\%). The denominator requires the clean control to "
                 "succeed and the matched corrupted default arm to fail; this is a recovered-failure "
-                "quantity, not a claim that every failure is causally traceable to one node.\n")
+                "quantity, not a claim that every failure is causally traceable to one node. This "
+                "distinction is consistent with the inferred-component limitation summarized in "
+                "Table~\\ref{tab:classical}.\n")
         (GEN / "jazz_f3.tex").write_text(text)
         sources = {str(path): sha(path) for path in cand_root.glob("*__*/paired.jsonl")}
         (GEN / "jazz_f3_provenance.json").write_text(json.dumps({
