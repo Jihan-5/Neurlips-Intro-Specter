@@ -31,7 +31,7 @@ MAX_CONCURRENCY = 32
 RAMP_INTERVAL_SECONDS = 120
 RATE_LIMIT_WINDOW_SECONDS = 300
 RATE_LIMIT_BACKOFF_THRESHOLD = 3
-MAX_SHARD_ATTEMPTS = 8
+MAX_SHARD_ATTEMPTS = 16
 RATE_LIMIT_RE = re.compile(r"(?:\b429\b|rate[ -]?limit)", re.IGNORECASE)
 
 
@@ -334,6 +334,14 @@ def main() -> None:
                     if record["attempts"] >= MAX_SHARD_ATTEMPTS:
                         continue
                     archive_blocked_attempt(cell, index, count, record["attempts"])
+                elif state is None and record["attempts"]:
+                    # A process can exit before writing state (for example,
+                    # ENOSPC) after recording errors. Preserve that attempt and
+                    # retry missing keys with a fresh shard-owned delta cache.
+                    errors = (RECOVERY / cell / "shards"
+                              / f"shard-{index:03d}-of-{count:03d}.errors.jsonl")
+                    if errors.exists() and errors.stat().st_size:
+                        archive_blocked_attempt(cell, index, count, record["attempts"])
                 if record["attempts"] >= MAX_SHARD_ATTEMPTS: continue
                 active[key] = launch(cell, index, count, ledger)
         # Merge only after every shard in a cell completed successfully.
