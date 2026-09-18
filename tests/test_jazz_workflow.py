@@ -422,6 +422,7 @@ def test_e2_campaign_rejects_duplicate_live_writers(monkeypatch):
                f"--output-root {campaign.RECOVERY}\n")
     monkeypatch.setattr(campaign.subprocess, "check_output",
                         lambda *args, **kwargs: command + command.replace("4321", "4322", 1))
+    monkeypatch.setattr(campaign, "event", lambda *args, **kwargs: None)
     with pytest.raises(RuntimeError, match="multiple live writers"):
         campaign.discover_worker_pid("truthfulqa_real__llama-3.1-8b", 0, 2)
 
