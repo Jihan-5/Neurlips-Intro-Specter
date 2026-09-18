@@ -1,5 +1,17 @@
 # Jazz — you own ALL remaining experiments + the results rewrite (Tracks E & F)
 
+> **🟢 GO — 2026-09-18.** Credit landed: key limit raised to $100, `limit_remaining` verified
+> **$46.68** (≥ the $35 launch threshold) — **launch E2 now.** All reserved blockers are
+> decided in `orchestration/jihan_decisions_2026-09-18.md` (conflict rule, paraphrase two-tier,
+> E1 headline scope, LongMemEval×Llama cell is yours — pull artifacts first, commit `306fff9`).
+>
+> **Also now on main: the E1 human-annotation study.** Read `JAZZ_HUMAN_ANNOTATOR_INSTRUCTIONS.md`
+> (complete how-to, addressed to you) + `PERSON1_ANNOTATOR_INSTRUCTIONS.md` (per-annotator
+> template), with `orchestration/e1_prereg.md`, `orchestration/e1_codebook.md`, and
+> `scripts/e1_{sample_annotation_set,blind_trajectories,make_annotation_pages,compute_agreement}.py`.
+> This is camera-ready commitment #2; the ~2-week annotation window targets ~Oct 1, so start
+> recruiting the 8 volunteers and run the pilot gate ASAP.
+
 Self-contained brief, handed off 2026-09-15. Point every Claude Code session at THIS file first
 ("read JAZZ_INSTRUCTIONS.md, then estimate wall-clock + API cost for the track I paste next").
 Background docs if a session needs them: `orchestration/ICLR_2027_submission_plan.md` (goal,
