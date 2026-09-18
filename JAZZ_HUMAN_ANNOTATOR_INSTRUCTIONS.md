@@ -35,7 +35,18 @@ line in §2 saying recruiting is "done" is wrong. The study runs with **two anno
   adjudication-rule-before-batch — stands exactly as written below.
 
 **Your immediate actions:** run §6 items 1–5 (sampling, blinding, codebook freeze, pages),
-do the pilot with Mahfuza, then the main batch. Start today; the window still targets ~Oct 1.
+do the pilot with Mahfuza, then the main batch.
+
+**⏰ TIMELINE OVERRIDE 2026-09-18: annotations must be DONE by Sep 21 (3 days), not ~Oct 1.**
+Jazz has confirmed he'll put in whatever hours it takes. Compressed schedule:
+- **Day 0 (today):** sampling → blinding → codebook freeze → pages → pilot (both annotators)
+  → κ check, all same day. If κ < 0.6, fix codebook tonight and re-pilot in the morning.
+- **Days 1–2:** main batch. Use the pre-authorized **N=100 floor** from the start
+  (~25 h/annotator ≈ 12–13 h/day) unless the pace clearly supports N=130.
+- **Day 3 (Sep 21):** Jihan adjudicates flagged disagreements per the frozen §4 rule,
+  final κ, attribution-vs-human comparison, dataset packaging.
+- **Critical dependency:** Mahfuza must start Day 0/1 and match the same daily volume —
+  Jihan confirms her TODAY or names a replacement; without annotator 2 there is no κ.
 
 ---
 
