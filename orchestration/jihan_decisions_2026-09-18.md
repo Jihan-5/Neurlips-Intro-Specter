@@ -56,6 +56,21 @@ Jihan is raising the OpenRouter key limit $70 → $90 (probe showed $16.68 remai
 2026-09-18; wave 2 needs ≥ $35 headroom per JAZZ_INSTRUCTIONS §2). Re-probe
 `limit_remaining` before launching; do not launch E2 until it shows ≥ $35.
 
+## D6 — E1 human-annotation study: no recruiting; two named annotators
+
+The 8-volunteer design in `JAZZ_HUMAN_ANNOTATOR_INSTRUCTIONS.md` is superseded (banner added
+there): **Jazz is annotator 1** (primary, non-author — independence claim rests on him),
+**Mahfuza or a lab member she designates is annotator 2** (affiliation disclosed in the
+paper), both label all items, **Jihan adjudicates disagreements strictly by the frozen §4
+rule**. Load is ~30–35 h per annotator at N≈130; N=100 floor pre-authorized if infeasible,
+with the wider CI reported. Pilot gate (κ ≥ 0.6), blinding, attention checks, and taxonomy
+unchanged. This still satisfies the on-record commitment "two annotators, 5-category labels,
+adjudication, Cohen's κ". Jihan's action: confirm Mahfuza within 48h.
+
+## D5 status update (2026-09-18, later)
+
+Credit landed: key limit $100, `limit_remaining` $46.68 verified live. E2 launch is GO.
+
 ## Net effect on the final gate
 
 | Gate item | Was | Now |

@@ -12,6 +12,33 @@ Point every Claude Code session at THIS file first. Background docs if needed:
 
 ---
 
+## ⚠️ DESIGN REVISION 2026-09-18 (Jihan, authoritative — supersedes §1/§2 where they conflict)
+
+**There is no volunteer recruiting.** The 8-volunteer design below was aspirational; the
+line in §2 saying recruiting is "done" is wrong. The study runs with **two annotators**:
+
+- **Annotator 1 (primary): YOU, Jazz** — non-author, so the independence claim survives;
+  you are the *external* annotator the Aug-5 redesign made primary.
+- **Annotator 2: Mahfuza (or a lab member she designates)** — author/lab affiliation
+  **disclosed in the paper**; Jihan is arranging this, escalate to him if she hasn't
+  confirmed within 48h.
+- **Both annotators label ALL items** → 2 labels/item, Cohen's κ computable, commitment
+  ("two annotators, 5-category labels, adjudication, Cohen's κ") fully met.
+- **Disagreements:** no 3rd annotator; Jihan adjudicates strictly by the frozen §4 rule
+  (rule-based, written before the main batch, disclosed as author adjudication).
+- **Load (real, plan for it):** N≈130 × ~15 min ≈ **30–35 h per annotator over 2 weeks**.
+  If that proves infeasible, Jihan pre-authorizes a floor of **N=100** (report the wider CI
+  honestly; never below 100).
+- **Reporting:** overall κ, plus Jazz-vs-lab agreement separately; annotator roles and
+  affiliations stated in the datasheet. Everything else — pilot gate (10–20 items, both
+  annotators, κ ≥ 0.6), attention checks (5 injected items each), blinding, taxonomy,
+  adjudication-rule-before-batch — stands exactly as written below.
+
+**Your immediate actions:** run §6 items 1–5 (sampling, blinding, codebook freeze, pages),
+do the pilot with Mahfuza, then the main batch. Start today; the window still targets ~Oct 1.
+
+---
+
 ## 0. Why this study exists (read once, then it's obvious)
 
 Reviewer **Mahh** (score 3, maintained) had one surviving objection: Intro-Specter's central
@@ -40,10 +67,10 @@ deliberately finishes ~Oct 1 — after the Sep 25 crunch, in time for either bra
 
 | Decision | Value | Why |
 |---|---|---|
-| Annotators | **8 unpaid volunteers, NONE of them paper authors** | Independence is the entire point; "the authors labeled their own system" kills the study in one review sentence. Free is fine — the design, not the payment, buys independence. |
+| Annotators | ~~8 unpaid volunteers~~ **REVISED 2026-09-18: Jazz (non-author, primary) + Mahfuza/lab member (disclosed) — see banner above** | Independence is carried by the non-author primary annotator; the author/lab second annotator is disclosed, and Jazz-vs-lab agreement is reported separately. |
 | N (trajectories) | **120–150** | ±8pp CI at N≈130 vs ±13pp at N=50. Slices (per-benchmark, vs floors) and exclusions eat sample; start at 50 and you report N=38. |
 | Labels per item | **2 independent + 3rd only on disagreement** | Cheapest design that yields Cohen's κ and a consensus label. |
-| Per-annotator load | **~30–45 items ≈ 8–10 hours over 2 weeks** | 240 base labels + ~60 tiebreaks ÷ 8 people; ~15 min/item. |
+| Per-annotator load | ~~30–45 items~~ **REVISED: all items each — ~30–35 hours over 2 weeks per annotator** | 2 annotators × N≈130 items × ~15 min/item; N=100 floor pre-authorized if infeasible. |
 | Blinding | **Annotators NEVER see the method's output** | Non-negotiable. They see the trajectory only — no arm names, no repair artifacts, no diagnosis. |
 | Adjudication rule | **Written BEFORE the main batch** (§4 below) | Post-hoc rules are unfalsifiable; a reviewer will ask. |
 | Pilot gate | **10–20 items, all annotators; proceed only if κ (or α) ≥ 0.6** | If humans can't agree with each other, method-vs-human accuracy is meaningless. Fix the codebook, not the data. |
@@ -63,19 +90,20 @@ exploratory, never as claims.
  [Claude/Jazz: automated]                    [Humans]
  1. sample_annotation_set.py      →  trajectory pool (deterministic seed)
  2. blind_trajectories.py         →  stripped, shuffled, ID-keyed items
- 3. codebook (draft → frozen)     →  Jihan distributes to 8 annotators
+ 3. codebook (draft → frozen)     →  distributed to the 2 annotators (Jazz + Mahfuza)
  4. annotation pages (HTML/forms) →  PILOT (10–20 items, everyone)
  5. compute_agreement.py on pilot →  κ ≥ 0.6? — else revise codebook, re-pilot
                                   →  MAIN BATCH (2 labels/item, ~2 weeks)
- 6. assignment tracker            →  3rd labels on disagreements
- 7. adjudication per frozen rule  →  consensus label per item
+ 6. assignment tracker            →  disagreements flagged (no 3rd annotator)
+ 7. Jihan adjudicates per frozen rule →  consensus label per item
  8. compute_agreement.py (final)  →  Cohen's κ, exclusions applied
  9. attribution_vs_human.py       →  method accuracy vs consensus + floors + MRR
 10. package_e1_dataset.py         →  outputs/iclr/e1_dataset/ + datasheet
 ```
 
 Humans touch steps 4–6 only. Everything else is scripted. **Jihan's only manual jobs:**
-recruit the 8 people (done), send each their item batch + codebook, chase stragglers.
+confirm Mahfuza as annotator 2, adjudicate disagreements per the frozen rule, chase stragglers.
+(The old "recruit 8 people (done)" line was wrong — no recruiting happened or will.)
 
 ---
 

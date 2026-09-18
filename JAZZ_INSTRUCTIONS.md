@@ -9,8 +9,11 @@
 > (complete how-to, addressed to you) + `PERSON1_ANNOTATOR_INSTRUCTIONS.md` (per-annotator
 > template), with `orchestration/e1_prereg.md`, `orchestration/e1_codebook.md`, and
 > `scripts/e1_{sample_annotation_set,blind_trajectories,make_annotation_pages,compute_agreement}.py`.
-> This is camera-ready commitment #2; the ~2-week annotation window targets ~Oct 1, so start
-> recruiting the 8 volunteers and run the pilot gate ASAP.
+> This is camera-ready commitment #2; the ~2-week annotation window targets ~Oct 1.
+> **Design revised 2026-09-18 (see the banner in the annotator brief): NO volunteer
+> recruiting — YOU are annotator 1 (primary, non-author), Mahfuza/lab is annotator 2,
+> Jihan adjudicates disagreements by the frozen rule.** Run the sampling/blinding/codebook
+> steps and the pilot ASAP.
 
 Self-contained brief, handed off 2026-09-15. Point every Claude Code session at THIS file first
 ("read JAZZ_INSTRUCTIONS.md, then estimate wall-clock + API cost for the track I paste next").
