@@ -213,6 +213,9 @@ def generate_f2(full: dict[str, Any], tiers: dict[str, Any], reports: list[dict[
 
 def write_status() -> None:
     monitor = json.loads((OUT / "e2_a1_a2_status.json").read_text())
+    e3 = json.loads((OUT / "candidacy_final.json").read_text())
+    if not e3.get("complete"):
+        raise RuntimeError("E3 aggregation is not complete; refusing final gate")
     status = {
         "schema_version": 2, "updated_utc": monitor["updated_utc"],
         "sleep_prevention": {"required": "caffeinate -i", "asserted": True,
@@ -258,10 +261,14 @@ def main() -> None:
          "--include", "outputs/jazz"])
     (OUT / "validation/artifact_transport_passed").write_text(
         "PASS: A1/A2 E2, two-tier F2, and validation artifacts pushed\n")
-    run([sys.executable, "scripts/jazz_final_gate.py"])
-    run([sys.executable, "scripts/sync_artifacts_safe.py", "push",
-         "Jazz A1/A2 final gate and transport receipt", "--include", "outputs/jazz"])
     run([sys.executable, "scripts/jazz_final_gate.py", "--create-done"])
+    try:
+        run([sys.executable, "scripts/sync_artifacts_safe.py", "push",
+             "Jazz A1/A2 final gate, completion sentinel, and transport receipt",
+             "--include", "outputs/jazz"])
+    except Exception:
+        (OUT / "JAZZ_DONE").unlink(missing_ok=True)
+        raise
 
     tracked = [
         "scripts/profile_bootstrap_study.py", "scripts/prepare_e2_a1_a2.py",

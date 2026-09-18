@@ -102,6 +102,13 @@ def main() -> None:
         raise SystemExit("A1/A2 monitor already active") from exc
     launched = time.time()
     samples: list[tuple[float, int]] = [(launched, BASELINE_ROWS)]
+    if STATUS.exists():
+        try:
+            previous_samples = json.loads(STATUS.read_text()).get("samples", [])
+            if previous_samples:
+                samples = [(float(ts), int(count)) for ts, count in previous_samples]
+        except (OSError, ValueError, TypeError, json.JSONDecodeError):
+            pass
     last_balance: dict[str, float] | None = None
     last_balance_at = 0.0
 
@@ -171,9 +178,20 @@ def main() -> None:
                 stop_screens(live)
             raise SystemExit(blocker)
         if total == EXPECTED:
-            subprocess.run([sys.executable, "scripts/e2_a1_a2_finalize.py"],
-                           cwd=ROOT, check=True,
-                           env={**os.environ, "HF_DATASETS_OFFLINE": "1", "HF_HUB_OFFLINE": "1"})
+            try:
+                subprocess.run([sys.executable, "scripts/e2_a1_a2_finalize.py"],
+                               cwd=ROOT, check=True,
+                               env={**os.environ, "HF_DATASETS_OFFLINE": "1", "HF_HUB_OFFLINE": "1"})
+            except Exception as exc:
+                status["blocker"] = f"finalization_or_integrity_failure: {type(exc).__name__}: {exc}"
+                status["updated_utc"] = utc()
+                atomic_json(STATUS, status)
+                with HISTORY.open("a") as handle:
+                    handle.write(json.dumps({"updated_utc": status["updated_utc"],
+                                             "rows": total, "remaining": 0,
+                                             "active_workers": 0,
+                                             "blocker": status["blocker"]}) + "\n")
+                raise
             return
         time.sleep(300)
 
