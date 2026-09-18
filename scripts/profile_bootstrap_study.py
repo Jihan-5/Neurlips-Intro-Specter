@@ -310,6 +310,16 @@ def main() -> None:
         raise SystemExit(f"writer already active for {out_dir.name}") from exc
     out_path = out_dir / "variants.jsonl"
 
+    # Amendment A1: keys discarded because multiple historical writers
+    # produced conflicting objects are rerun under the single-writer lock and
+    # explicitly labeled.  The preparation manifest is immutable audit input;
+    # ordinary logically-missing rows remain recovered=false.
+    recovered_keys: set[tuple[str, int, str]] = set()
+    recovered_path = out_dir / "a1_conflict_keys.json"
+    if recovered_path.exists():
+        for item in json.loads(recovered_path.read_text()):
+            recovered_keys.add((item["task_id"], int(item["variant_idx"]), item["arm"]))
+
     done: set[tuple[str, int, str]] = set()
     if out_path.exists():
         for line in out_path.open():
@@ -402,6 +412,7 @@ def main() -> None:
                     "banned_substrings": info["banned_substrings"],
                     "paraphrased": paraphrase_fn is not None,
                     "meta_summary": arm_out["meta_summary"],
+                    "recovered": (example.task_id, v, arm) in recovered_keys,
                 }
                 out_f.write(json.dumps(row, default=str) + "\n")
                 out_f.flush()
