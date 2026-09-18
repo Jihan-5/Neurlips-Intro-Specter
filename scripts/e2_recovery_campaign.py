@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import fcntl
 import os
 import re
 import signal
@@ -19,6 +20,7 @@ RECOVERY = ROOT / "outputs/rebuttal/profile_bootstrap_recovery_v1"
 STATUS = ROOT / "outputs/jazz/e2_recovery_status.json"
 LEDGER = ROOT / "outputs/jazz/e2_recovery_campaign_state.json"
 LOG = ROOT / "outputs/jazz/e2_recovery_campaign.log"
+COORDINATOR_LOCK = ROOT / "outputs/jazz/e2_recovery_campaign.lock"
 WORKER_LOGS = ROOT / "outputs/jazz/e2_recovery_logs"
 PYTHON = ROOT / ".venv/bin/python"
 SCRIPT = ROOT / "scripts/e2_recovery.py"
@@ -290,6 +292,12 @@ def launch(cell: str, shard: int, count: int, ledger: dict) -> subprocess.Popen:
 
 
 def main() -> None:
+    COORDINATOR_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    coordinator_lock = COORDINATOR_LOCK.open("a")
+    try:
+        fcntl.flock(coordinator_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        raise SystemExit("E2 recovery coordinator already active") from exc
     if not (RECOVERY / "prepare_manifest.json").exists(): raise SystemExit("prepare manifest absent")
     ledger = load_ledger(); active: dict[str, subprocess.Popen] = {}
     # Adopt exact live workers, including a launch whose coordinator died before
