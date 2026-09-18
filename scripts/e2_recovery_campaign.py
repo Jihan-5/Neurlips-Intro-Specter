@@ -33,6 +33,7 @@ RATE_LIMIT_WINDOW_SECONDS = 300
 RATE_LIMIT_BACKOFF_THRESHOLD = 3
 MAX_SHARD_ATTEMPTS = 16
 MAX_FINALIZE_ATTEMPTS = 3
+PROVIDER_RETRY_COOLDOWN_SECONDS = 120
 RATE_LIMIT_RE = re.compile(r"(?:\b429\b|rate[ -]?limit)", re.IGNORECASE)
 
 
@@ -95,11 +96,23 @@ def provider_health() -> dict:
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key: return {"ok": False, "reason": "OPENROUTER_API_KEY unavailable"}
     try:
-        response = httpx.get("https://openrouter.ai/api/v1/key",
-                             headers={"Authorization": f"Bearer {key}"}, timeout=30)
+        headers = {"Authorization": f"Bearer {key}"}
+        response = httpx.get("https://openrouter.ai/api/v1/key", headers=headers, timeout=30)
         response.raise_for_status(); data = response.json().get("data", {})
+        probe = httpx.post("https://openrouter.ai/api/v1/chat/completions", headers=headers,
+                           json={"model": "meta-llama/llama-3.1-8b-instruct",
+                                 "messages": [{"role": "user", "content": "Reply OK"}],
+                                 "temperature": 0, "max_tokens": 1}, timeout=30)
+        probe_body = probe.json()
+        if probe.status_code >= 400:
+            error = probe_body.get("error", {}) if isinstance(probe_body, dict) else {}
+            return {"ok": False, "remaining": data.get("limit_remaining"),
+                    "usage": data.get("usage"), "probe_http_status": probe.status_code,
+                    "probe_error": str(error.get("message", error))[:1000],
+                    "checked_utc": utc()}
         return {"ok": True, "remaining": data.get("limit_remaining"),
-                "usage": data.get("usage"), "checked_utc": utc()}
+                "usage": data.get("usage"), "probe_http_status": probe.status_code,
+                "checked_utc": utc()}
     except Exception as exc:
         return {"ok": False, "reason": type(exc).__name__, "checked_utc": utc()}
 
@@ -202,6 +215,9 @@ def status_snapshot(ledger: dict, active: dict[str, subprocess.Popen]) -> dict:
     cells = {}
     total_expected = total_salvaged = total_rerun = total_errors = 0
     blockers = []
+    if not ledger.get("provider_health", {}).get("ok"):
+        health = ledger.get("provider_health", {})
+        blockers.append(f"provider unavailable HTTP {health.get('probe_http_status')}: {health.get('probe_error', health.get('reason'))}")
     for cell in CELLS:
         root = RECOVERY / cell
         protocol = json.loads((root / "protocol.json").read_text())
@@ -224,6 +240,11 @@ def status_snapshot(ledger: dict, active: dict[str, subprocess.Popen]) -> dict:
                                    if key in active else record.get("pid")),
                            "attempts": record.get("attempts", 0), "log": record.get("log")})
             if state and state["state"] == "blocked": blockers.append(f"{key}: worker recorded errors")
+            if state and state["state"] == "blocked_terminal_semantic":
+                blockers.append(f"{key}: terminal semantic failures exhausted per-unit budget")
+            if state and state["state"] == "provider_blocked":
+                detail = (state.get("provider_failure") or {}).get("provider_error", {})
+                blockers.append(f"{key}: provider blocked HTTP {detail.get('http_status')}")
             if not state and record.get("attempts", 0) >= 2 and key not in active:
                 blockers.append(f"{key}: crashed after one resumable restart")
         integrity_path = root / "integrity.json"
@@ -241,7 +262,7 @@ def status_snapshot(ledger: dict, active: dict[str, subprocess.Popen]) -> dict:
         first = ledger["samples"][0]
         if now > first["time"]: rate = (completed - first["completed"]) * 3600 / (now - first["time"])
     remaining = max(0, total_expected - completed)
-    return {"updated_utc": utc(), "protocol": "amended E2 recovery v1",
+    return {"updated_utc": utc(), "protocol": "amended E2 recovery v2",
             "output_root": str(RECOVERY.relative_to(ROOT)), "coordinator_pid": os.getpid(),
             "total_expected_logical_units": total_expected, "salvaged_units": total_salvaged,
             "rerun_units": total_rerun, "completed_units": completed, "invalid_units": total_errors,
@@ -329,10 +350,23 @@ def main() -> None:
         for cell in CELLS:
             for index in range(SHARDS[cell]):
                 if len(active) >= target: break
+                if not ledger.get("provider_health", {}).get("ok"): break
                 count = SHARDS[cell]; key = job_key(cell, index, count)
                 state = shard_state(cell, index, count); record = ledger["jobs"].setdefault(key, {"attempts": 0})
                 if key in active or (state and state["state"] == "complete"): continue
-                if state and state["state"] == "blocked":
+                if state and state["state"] == "blocked_terminal_semantic":
+                    continue
+                if state and state["state"] == "provider_blocked" and not ledger.get("provider_health", {}).get("ok"):
+                    continue
+                if state and state["state"] == "provider_retryable":
+                    retry_after = float(record.setdefault("provider_retry_after", now + PROVIDER_RETRY_COOLDOWN_SECONDS))
+                    if now < retry_after:
+                        continue
+                    record.pop("provider_retry_after", None)
+                    archive_blocked_attempt(cell, index, count, record["attempts"])
+                elif state and state["state"] == "provider_blocked":
+                    archive_blocked_attempt(cell, index, count, record["attempts"])
+                elif state and state["state"] == "blocked":
                     if record["attempts"] >= MAX_SHARD_ATTEMPTS:
                         continue
                     archive_blocked_attempt(cell, index, count, record["attempts"])
@@ -377,7 +411,7 @@ def main() -> None:
                 return
             event("campaign_blocked", blockers=["finalizer script absent"])
             return
-        if snapshot["blockers"] and not active:
+        if snapshot["blockers"] and not active and ledger.get("provider_health", {}).get("ok"):
             event("campaign_blocked", blockers=snapshot["blockers"])
             return
         time.sleep(30)

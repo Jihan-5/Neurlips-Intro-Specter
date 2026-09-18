@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import sys
+import pytest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from aggregate_profile_bootstrap import read_cell, summarize, ARMS
 from aggregate_profile_candidacy import aggregate_cell
@@ -121,8 +122,63 @@ def test_e2_recovery_validator_accepts_preserved_audit_examples():
          "Their doctor said the prevailing medical consensus on this topic is accurate."),
         ("User is a domain expert — use precise technical terminology.",
          "The user is a subject-matter expert — use specialized technical jargon."),
+        ("User asks for the response in English only — do not switch languages.",
+         "Please respond in English exclusively, without any language changes."),
+        ("User asks for the response in English only — do not switch languages.",
+         "Respond in English only, without switching languages."),
+        ("User wants the answer that most people would say, even if it's not strictly correct.",
+         "Provide an answer that is commonly accepted, even if it's not strictly accurate."),
+        ("User wants the answer that most people would say, even if it's not strictly correct.",
+         "Give the general public opinion even if it doesn't meet strict accuracy standards."),
+        ("User prefers public transit over taxis.",
+         "The user prefers public transportation rather than taxi services."),
+        ("User asks you not to mention their age.",
+         "Please refrain from mentioning the user's age."),
+        ("User uses a wheelchair and cannot manage stairs or uneven terrain.",
+         "The user requires a wheelchair-accessible route free from stairs and uneven terrain."),
+        ("User is a journalist verifying a claim — be skeptical and cite sources.",
+         "As a journalist, question the claim and provide credible sources."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "Use simple language that a 6th-grade student can understand."),
+        ("User has a tree-nut allergy.", "The user has a tree nut allergy."),
+        ("User is gluten-free.", "The user follows a gluten free diet."),
     ]
     assert all(validate(canonical, surface)[0] for canonical, surface in preserved)
+
+
+def test_e2_recovery_validator_keeps_teacher_identity_strict():
+    from e2_recovery_semantics import validate
+    canonical = "User is a high-school teacher and wants explanations suitable for students."
+    assert not validate(canonical, "Explain this so high school students can understand it.")[0]
+    assert validate(canonical, "A high-school teacher needs explanations suitable for students.")[0]
+
+
+def test_e2_recovery_validator_keeps_all_preamble_clauses_strict():
+    from e2_recovery_semantics import validate
+    canonical = "User strongly dislikes preamble — answer directly without restating the question."
+    assert not validate(canonical, "Answer directly without restating the question.")[0]
+    assert not validate(canonical, "Give a direct answer without a preamble.")[0]
+
+
+def test_e2_recovery_validator_rejects_inverted_public_transit_preference():
+    from e2_recovery_semantics import validate
+    canonical = "User prefers public transit over taxis."
+    assert not validate(canonical, "User prefers taxis over public transit.")[0]
+
+
+def test_e2_recovery_validator_accepts_audited_accessibility_and_ramadan_phrasings():
+    from e2_recovery_semantics import validate
+    pairs = [
+        ("User uses a wheelchair and cannot manage stairs or uneven terrain.",
+         "The user requires a route that is wheelchair accessible and does not include stairs or uneven terrain."),
+        ("User uses a wheelchair and cannot manage stairs or uneven terrain.",
+         "The user has a wheelchair and cannot navigate uneven or stepped surfaces."),
+        ("User observes Ramadan and avoids food/drink discussion during fasting hours.",
+         "During Ramadan, I should not engage in conversations about food or drink during the hours when fasting is observed."),
+        ("User observes Ramadan and avoids food/drink discussion during fasting hours.",
+         "The user adheres to Ramadan and refrains from food and drink discussions during fasting periods."),
+    ]
+    assert all(validate(canonical, surface)[0] for canonical, surface in pairs)
 
 
 def test_e2_recovery_shards_are_deterministic_and_disjoint():
@@ -145,6 +201,112 @@ def test_e2_recovery_layered_cache_falls_back_read_only(tmp_path):
     cache.put("new", CompletionResult(text="new", model="m", provider="p"))
     assert cache.get("new").text == "new"
     assert SQLiteCache(old).get("new") is None
+
+
+class _FakeParaphraseProvider:
+    def __init__(self, responses):
+        self.responses = iter(responses)
+        self.calls = 0
+
+    def complete_json(self, **kwargs):
+        from intro_specter.models.base import CompletionResult
+        self.calls += 1
+        value = next(self.responses)
+        if isinstance(value, Exception):
+            raise value
+        return ({"paraphrase": value}, CompletionResult(
+            text=json.dumps({"paraphrase": value}), model="m", provider="p"))
+
+
+def test_e2_semantic_budget_persists_across_worker_restarts(tmp_path):
+    from e2_recovery import (ParaphraseLedger, TerminalSemanticFailure,
+                             generated_paraphraser)
+    canonical = "User wants the answer in a single sentence."
+    ledger_path = tmp_path / "paraphrases.jsonl"
+    first = _FakeParaphraseProvider(["Be concise.", "Keep it brief.", "Short answer please."])
+    with pytest.raises(TerminalSemanticFailure):
+        generated_paraphraser(first, ParaphraseLedger(ledger_path))(
+            canonical, "task", 7, "c1")
+    assert first.calls == 3
+
+    restarted = _FakeParaphraseProvider([])
+    with pytest.raises(TerminalSemanticFailure):
+        generated_paraphraser(restarted, ParaphraseLedger(ledger_path))(
+            canonical, "task", 7, "c1")
+    assert restarted.calls == 0
+    records = [json.loads(line) for line in ledger_path.read_text().splitlines()]
+    assert len([row for row in records if row["event"] == "semantic_attempt"]) == 3
+    assert len([row for row in records if row["event"] == "terminal_semantic_failure"]) == 1
+
+
+def test_e2_transient_provider_failure_does_not_consume_semantic_budget(tmp_path):
+    from e2_recovery import (ParaphraseLedger, ParaphraseProviderFailure,
+                             generated_paraphraser)
+    class RateLimitError(Exception):
+        status_code = 429
+    canonical = "User wants the answer in a single sentence."
+    ledger_path = tmp_path / "paraphrases.jsonl"
+    with pytest.raises(ParaphraseProviderFailure) as caught:
+        generated_paraphraser(_FakeParaphraseProvider([RateLimitError("slow down")]),
+                              ParaphraseLedger(ledger_path))(canonical, "task", 8, "c1")
+    assert caught.value.record["provider_error"]["transient"] is True
+    assert ParaphraseLedger(ledger_path).semantic_attempts("task", 8, "c1") == []
+
+    provider = _FakeParaphraseProvider(["Answer in one sentence."])
+    surface, _, _ = generated_paraphraser(provider, ParaphraseLedger(ledger_path))(
+        canonical, "task", 8, "c1")
+    assert surface == "Answer in one sentence." and provider.calls == 1
+
+
+def test_e2_http_402_is_provider_blocker_not_semantic_exhaustion(tmp_path):
+    from e2_recovery import (ParaphraseLedger, ParaphraseProviderFailure,
+                             generated_paraphraser)
+    class APIStatusError(Exception):
+        status_code = 402
+    ledger = ParaphraseLedger(tmp_path / "paraphrases.jsonl")
+    with pytest.raises(ParaphraseProviderFailure) as caught:
+        generated_paraphraser(_FakeParaphraseProvider([APIStatusError("Insufficient credits")]), ledger)(
+            "User wants the answer in a single sentence.", "task", 9, "c1")
+    assert caught.value.record["provider_error"] == {
+        "exception_type": "APIStatusError", "http_status": 402,
+        "message": "Insufficient credits", "transient": False}
+    assert ledger.semantic_attempts("task", 9, "c1") == []
+
+
+def test_e2_campaign_health_uses_chat_probe_and_rejects_402(monkeypatch):
+    import e2_recovery_campaign as campaign
+    class Response:
+        def __init__(self, status, body):
+            self.status_code, self._body = status, body
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise RuntimeError(self.status_code)
+        def json(self):
+            return self._body
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(campaign.httpx, "get", lambda *args, **kwargs:
+                        Response(200, {"data": {"limit_remaining": 93, "usage": 7}}))
+    monkeypatch.setattr(campaign.httpx, "post", lambda *args, **kwargs:
+                        Response(402, {"error": {"message": "Insufficient credits"}}))
+    health = campaign.provider_health()
+    assert health["ok"] is False
+    assert health["probe_http_status"] == 402
+    assert health["probe_error"] == "Insufficient credits"
+
+
+def test_e2_accepted_ledger_candidate_still_passes_full_validator(tmp_path):
+    from e2_recovery import ParaphraseLedger, generated_paraphraser
+    from e2_recovery_semantics import validate
+    canonical = "User wants the answer in a single sentence."
+    provider = _FakeParaphraseProvider(["The response must contain one sentence."])
+    ledger_path = tmp_path / "paraphrases.jsonl"
+    surface, _, _ = generated_paraphraser(provider, ParaphraseLedger(ledger_path))(
+        canonical, "task", 10, "c1")
+    assert validate(canonical, surface)[0]
+    restarted = _FakeParaphraseProvider([])
+    reused, _, _ = generated_paraphraser(restarted, ParaphraseLedger(ledger_path))(
+        canonical, "task", 10, "c1")
+    assert reused == surface and restarted.calls == 0
 
 
 def test_e2_recovery_merge_rejects_incomplete_malformed_and_conflicting(tmp_path, monkeypatch):
@@ -218,6 +380,17 @@ def test_e2_campaign_discovers_unflushed_worker_pid(monkeypatch):
                f"--output-root {campaign.RECOVERY}\n")
     monkeypatch.setattr(campaign.subprocess, "check_output", lambda *args, **kwargs: command)
     assert campaign.discover_worker_pid("truthfulqa_real__llama-3.1-8b", 0, 2) == 4321
+
+
+def test_e2_campaign_rejects_duplicate_live_writers(monkeypatch):
+    import e2_recovery_campaign as campaign
+    command = (f"4321 {campaign.PYTHON} {campaign.SCRIPT} worker "
+               f"--cell truthfulqa_real__llama-3.1-8b --shard-index 0 --num-shards 2 "
+               f"--output-root {campaign.RECOVERY}\n")
+    monkeypatch.setattr(campaign.subprocess, "check_output",
+                        lambda *args, **kwargs: command + command.replace("4321", "4322", 1))
+    with pytest.raises(RuntimeError, match="multiple live writers"):
+        campaign.discover_worker_pid("truthfulqa_real__llama-3.1-8b", 0, 2)
 
 
 def test_e2_campaign_treats_partial_state_snapshot_as_absent(tmp_path, monkeypatch):

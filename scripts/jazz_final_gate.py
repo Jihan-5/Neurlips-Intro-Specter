@@ -41,7 +41,7 @@ def main() -> None:
         "F1_both_reserved_scope_packages": all((OUT / f"build/jazz_{scope}/review.pdf").exists() for scope in (12, 16)),
         "E2_complete_grid": bool(status["progress"]["e2_complete"]),
         "E2_paraphrase_trust": f2["trust_gate"] == "PASSED_DETERMINISTIC_SEMANTIC_VALIDATION"
-                               and f2["protocol"] == "AMENDED_RECOVERY_V1",
+                               and f2["protocol"] == "AMENDED_RECOVERY_V2",
         "F2_generated": bool(f2["generated"]),
         "E3_complete_pairs": bool(e3["complete"]),
         "F3_generated": (ROOT / "paper_sections/generated/jazz_f3.tex").exists(),

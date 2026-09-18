@@ -32,7 +32,7 @@ def main() -> None:
     e2_status = {"grid_complete": e2["complete"], "integrity_complete": integrity_complete,
                  "trust_gate": ("PASSED_DETERMINISTIC_SEMANTIC_VALIDATION"
                                 if e2["complete"] and integrity_complete else "PENDING"),
-                 "human_signoff": False, "protocol": "AMENDED_RECOVERY_V1",
+                 "human_signoff": False, "protocol": "AMENDED_RECOVERY_V2",
                  "original_run_disposition": "frozen failed-run audit artifact; not aggregated",
                  "generated": False}
     if e2["complete"]:
@@ -60,7 +60,7 @@ def main() -> None:
         sources[str(protocol.relative_to(ROOT))] = sha(protocol)
         (GEN / "jazz_f2_provenance.json").write_text(json.dumps({
             "command": ".venv/bin/python scripts/e2_recovery_finalize.py",
-            "protocol": "amended recovery v1", "sources": sources,
+            "protocol": "amended recovery v2", "sources": sources,
             "aggregation": "outputs/jazz/bootstrap_recovery_final.json",
             "original_run_used": False}, indent=2) + "\n")
         e2_status["generated"] = True
