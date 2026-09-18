@@ -104,7 +104,8 @@ def materialize_complete() -> list[dict[str, Any]]:
         for dataset, model in (*AUTHORIZED_CELLS, *TRUTHFUL):
             cell = f"{dataset}__{model}"
             source_root = MANAGED if (dataset, model) in AUTHORIZED_CELLS else ORIGINAL
-            source = source_root / cell / "variants.jsonl"
+            merged = source_root / cell / "variants.merged.jsonl"
+            source = merged if merged.exists() else source_root / cell / "variants.jsonl"
             conflict = source_root / cell / "a1_conflict_keys.json"
             report = validate_cell(cell, source, conflict if source_root == MANAGED else None)
             target_dir = tmp / cell

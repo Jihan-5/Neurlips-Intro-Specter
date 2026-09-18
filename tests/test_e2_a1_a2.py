@@ -4,6 +4,32 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import prepare_e2_a1_a2 as prep
+from e2_a1_a2_shard_monitor import provider_rate_limit_count
+
+
+def test_shard_cache_reads_frozen_base_and_writes_only_delta(tmp_path):
+    from intro_specter.models import SQLiteCache
+    from intro_specter.models.base import CompletionResult
+    from profile_bootstrap_study import ReadThroughCache
+
+    base = tmp_path / "base.sqlite"
+    delta = tmp_path / "delta.sqlite"
+    SQLiteCache(base).put("old", CompletionResult(text="base", model="m", provider="p"))
+    cache = ReadThroughCache(base, delta)
+    assert cache.get("old").text == "base"
+    cache.put("new", CompletionResult(text="delta", model="m", provider="p"))
+    assert cache.get("new").text == "delta"
+    assert SQLiteCache(base).get("new") is None
+
+
+def test_shard_monitor_counts_only_real_provider_429_records():
+    text = "\n".join([
+        "Warning: set HF_TOKEN to enable higher rate limits and faster downloads.",
+        "row tokens=(4291,406)",
+        "[RETRY] arm attempt 2/5 failed (APIStatusError: Error code: 429 - rate limit)",
+        "[ERROR] prime failed: HTTP status 429 Too Many Requests",
+    ])
+    assert provider_rate_limit_count(text) == 2
 
 
 def _write(path: Path, rows: list[dict]) -> None:
