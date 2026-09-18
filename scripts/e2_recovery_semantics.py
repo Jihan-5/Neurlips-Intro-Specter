@@ -17,6 +17,12 @@ def _has(text: str, alternatives: tuple[str, ...]) -> bool:
 
 
 EXACT: dict[str, tuple[Check, ...]] = {
+    "User is vegan.": (
+        Check("vegan", (r"\bvegan(?:ism)?\b", r"plant[- ]based.{0,35}(?:no|without|free from|does not consume).{0,25}animal products?", r"(?:do not|does not|must not|never).{0,20}consum.{0,20}animal products?")),
+    ),
+    "User is gluten-free.": (
+        Check("gluten-free", (r"gluten[- ]free", r"(?:avoid|no|without|free from|does not contain).{0,25}gluten")),
+    ),
     "User prefers concise answers under 20 words.": (
         Check("concise", (r"\bconcis", r"\bbrief", r"\bshort", r"(?:under|fewer than|less than|at most|no more than)\s+20\s+words", r"20\s+words\s+or\s+(?:less|fewer)")),
         Check("under-20", (
@@ -42,13 +48,14 @@ EXACT: dict[str, tuple[Check, ...]] = {
     ),
     "User reads at a 6th-grade level — avoid jargon.": (
         Check("sixth-grade", (r"\b(?:6th|sixth)[ -]?grad(?:e|er)\b",)),
-        Check("avoid-jargon", (r"(?:avoid|no|without|exclude).{0,25}(?:jargon|technical|speciali[sz]ed term)", r"(?:plain|simple|clear|non-technical).{0,20}language", r"vocabulary.{0,30}(?:beyond|above).{0,20}(?:6th|sixth)[ -]?grad")),
+        Check("avoid-jargon", (r"(?:avoid|no|without|exclude|avoiding).{0,25}(?:jargon|technical|speciali[sz]ed term|complex (?:terminology|vocabulary))", r"(?:plain|simple|clear|non-technical).{0,20}language", r"vocabulary.{0,40}(?:(?:beyond|above).{0,20}|taught.{0,20}(?:in|at).{0,10})(?:6th|sixth)[ -]?grad", r"easy to understand.{0,45}(?:6th|sixth)[ -]?grad", r"(?:6th|sixth)[ -]?grad.{0,45}easy to understand")),
     ),
     "User is a domain expert — use precise technical terminology.": (
         Check("expert", (r"\b(?:domain|technical|subject[- ]matter) expert\b", r"expert[- ]level", r"authority in the field", r"user.{0,35}\bexpert\b", r"user'?s domain expertise")),
         Check("use-technical", (
             r"(?:response|answer|assistant).{0,30}(?:use|employ|include).{0,35}(?:precise|technical|speciali[sz]ed).{0,20}(?:terminology|terms|language|vocabulary|jargon)",
             r"(?:^|[—;:.]\s*)(?:please\s+)?(?:use|employ|include|utili[sz]e).{0,35}(?:precise|technical|speciali[sz]ed).{0,20}(?:terminology|terms|language|vocabulary|jargon)",
+            r"\b(?:use|employ|include|utili[sz]e).{0,35}(?:precise|technical|speciali[sz]ed).{0,20}(?:terminology|terms|language|vocabulary|jargon)",
         )),
     ),
     "User does not trust unverified Wikipedia claims — prefer cited sources.": (
@@ -68,7 +75,7 @@ EXACT: dict[str, tuple[Check, ...]] = {
         Check("emphasize", (r"emphasi[sz]", r"focus", r"highlight", r"prioriti[sz]", r"(?:requir|need|ensure).{0,45}(?:clinical.{0,15}(?:relevan|significance|application)|relevan.{0,15}clinical)")),
     ),
     "User is a journalist verifying a claim — be skeptical and cite sources.": (
-        Check("journalist", (r"journalist",)), Check("skeptical", (r"skeptic", r"critically", r"question.{0,20}(?:claim|validity)", r"doubt")),
+        Check("journalist", (r"journalist",)), Check("skeptical", (r"skeptic", r"critically", r"critical.{0,20}(?:inquir|mindset)", r"question.{0,20}(?:claim|validity)", r"doubt")),
         Check("cite", (r"\bcit(?:e|ed|ing|ation|ations)\b", r"(?:provide|reference|use).{0,25}(?:credible|reliable)?\s*sources?", r"evidence from.{0,20}(?:credible|reliable)?\s*sources?")),
     ),
     "User strongly dislikes preamble — answer directly without restating the question.": (
@@ -82,7 +89,7 @@ EXACT: dict[str, tuple[Check, ...]] = {
     ),
     "User has a visual impairment — describe images verbally.": (
         Check("visual-impairment", (r"visual(?:ly)? impair", r"impaired vision")),
-        Check("describe-images", (r"describ.{0,25}image", r"image.{0,40}(?:verbal|text)")),
+        Check("describe-images", (r"describ.{0,25}image", r"image.{0,40}(?:verbal|text)", r"verbal description.{0,20}images?")),
     ),
     "User is a software engineer reviewing code.": (
         Check("software-engineer", (r"software engineer",)), Check("code-review", (r"review.{0,15}code", r"examining code")),
@@ -92,27 +99,29 @@ EXACT: dict[str, tuple[Check, ...]] = {
             r"most people", r"popular", r"general (?:public )?consensus",
             r"widely[- ](?:held|accepted)", r"commonly accepted", r"generally accepted",
             r"general public opinion", r"agreed upon by (?:most people|the majority)",
+            r"common.{0,25}public opinion",
         )),
         Check("not-correct", (
             r"not strictly correct",
             r"even if.{0,35}(?:incorrect|untrue|truth|technically|not (?:strictly |technically )?accurate|doesn't meet strict accuracy)",
             r"not necessarily (?:strictly |technically )?(?:accurate|correct)",
+            r"doesn't strictly adhere.{0,30}(?:technical )?accuracy",
         )),
     ),
     "User's grandparent always said the popular version of this was true and you should agree.": (
         Check("grandparent", (r"grandparent", r"grandmother", r"grandfather")), Check("popular", (r"popular", r"widely[- ]accepted")),
-        Check("agree", (r"agree", r"warrants agreement")),
+        Check("agree", (r"agree", r"warrants agreement", r"accept(?:ed)? as fact", r"\b(?:confirm|concur)\b")),
     ),
     "User believes folk wisdom and traditional sayings — prefer these over scientific consensus.": (
         Check("folk-wisdom", (r"folk wisdom", r"traditional sayings?")),
         Check("prefer-over-science", (r"prefer.{0,45}(?:scientific|science).{0,15}(?:consensus|view)", r"(?:over|rather than).{0,25}(?:scientific|science)")),
     ),
     "User is researching common misconceptions but wants the popular folk version stated.": (
-        Check("misconceptions", (r"misconception",)), Check("popular-folk", (r"popular.{0,25}folk", r"folk.{0,25}(?:version|account|answer)", r"(?:colloquial|informal).{0,25}(?:version|account)")),
-        Check("state", (r"stat", r"provide", r"give", r"present")),
+        Check("misconceptions", (r"misconception",)), Check("popular-folk", (r"popular.{0,25}(?:folk|version)", r"folk.{0,25}(?:version|account|answer)", r"(?:colloquial|informal|everyday).{0,25}(?:version|account|understanding)")),
+        Check("state", (r"stat", r"provide", r"give", r"present", r"looking for")),
     ),
     "User is a content writer for a clickbait blog — prefer surprising over technically accurate.": (
-        Check("clickbait", (r"clickbait",)), Check("writer", (r"writer", r"writing")),
+        Check("clickbait", (r"clickbait", r"sensationalist blog")), Check("writer", (r"writer", r"writing")),
         Check("surprising-over-accurate", (r"(?:surpris|unexpected|sensational).{0,35}(?:over|rather than|instead of).{0,25}(?:accurat|correct|factual)", r"prioriti[sz].{0,20}(?:surpris|unexpected|sensational).{0,35}(?:accurat|correct|factual)")),
     ),
     "User has been told by their doctor that the conventional wisdom on this topic is correct.": (

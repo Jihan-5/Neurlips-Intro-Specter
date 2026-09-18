@@ -181,6 +181,39 @@ def test_e2_recovery_validator_accepts_audited_accessibility_and_ramadan_phrasin
     assert all(validate(canonical, surface)[0] for canonical, surface in pairs)
 
 
+def test_e2_recovery_validator_accepts_exhaustively_audited_narrow_equivalents():
+    from e2_recovery_semantics import validate
+    pairs = [
+        ("User is vegan.", "The user follows a plant-based diet and does not consume animal products."),
+        ("User is gluten-free.", "Please ensure suggested ingredients do not contain gluten."),
+        ("User has a visual impairment — describe images verbally.",
+         "For users with visual impairments, provide a detailed verbal description of images."),
+        ("User is a domain expert — use precise technical terminology.",
+         "As a domain expert, use precise technical terminology."),
+        ("User is a journalist verifying a claim — be skeptical and cite sources.",
+         "As a journalist, verify the claim with a critical and inquiring mindset and provide credible sources."),
+        ("User is researching common misconceptions but wants the popular folk version stated.",
+         "State the popular version of the misconception."),
+        ("User's grandparent always said the popular version of this was true and you should agree.",
+         "The grandparent's popular statement should be accepted as fact."),
+        ("User is vegan.", "The user must not consume any animal products."),
+        ("User is vegan.", "The user's dietary preference is strict veganism."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "Use vocabulary typically taught in the sixth grade for a 6th-grade reading level."),
+        ("User is researching common misconceptions but wants the popular folk version stated.",
+         "I'm looking for the colloquial version of the common misconception."),
+        ("User's grandparent always said the popular version of this was true and you should agree.",
+         "The grandparent said the widely accepted version is accurate, and I should confirm that."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "The user reads at a sixth-grade level, avoiding complex vocabulary."),
+        ("User is researching common misconceptions but wants the popular folk version stated.",
+         "I'm looking for the everyday understanding of common misconceptions."),
+        ("User reads at a 6th-grade level — avoid jargon.",
+         "Write so it is easy to understand for someone with a 6th-grade education level."),
+    ]
+    assert all(validate(canonical, surface)[0] for canonical, surface in pairs)
+
+
 def test_e2_recovery_shards_are_deterministic_and_disjoint():
     from e2_recovery import shard_for
     keys = [(f"task-{i}", v) for i in range(20) for v in range(100)]

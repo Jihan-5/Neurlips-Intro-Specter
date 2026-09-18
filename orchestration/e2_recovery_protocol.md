@@ -51,6 +51,23 @@ audit evidence:
    preferences remain strict: "taxis over public transit" is not equivalent to
    "public transit over taxis" and affected rows are regenerated rather than
    grandfathered.
+   Exhaustive revalidation of all imported terminal candidates further admits
+   only explicit equivalents: vegan as plant-based plus no animal products,
+   gluten-free as an explicit gluten prohibition, verbal image description,
+   precise technical terminology for an identified domain expert, a critical
+   and inquiring journalistic mindset, and accepting a grandparent's popular
+   claim as fact. Implicit identity or missing clauses remain failures.
+   The same exhaustive pass accepts explicit non-consumption of animal products,
+   grade-taught vocabulary, a request phrased as "looking for" the folk version,
+   and confirmation/concurrence with a grandparent's claim. Evidence without a
+   source, journalist-free skepticism, and canonical text copied verbatim remain
+   failures.
+   "Everyday understanding" is accepted only when common misconceptions remain
+   explicit, and "avoiding complex vocabulary" only when the sixth-grade level
+   remains explicit.
+   "Easy to understand" is likewise accepted only when the sixth-grade level is
+   explicit in the same candidate.
+   The direct nominal form "veganism" is equivalent to "vegan."
 5. Every cached v1 candidate is reconstructed and revalidated under v2 before it
    can be imported. Existing accepted rows are retained byte-for-byte only when
    every effective redraw passes the complete v2 semantic validator. A failing

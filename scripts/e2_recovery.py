@@ -666,6 +666,65 @@ def migrate_retry_ledgers(audit_path: Path, output_root: Path = RECOVERY,
     print(json.dumps(report, indent=2)); return report
 
 
+def refresh_protocol_metadata(output_root: Path = RECOVERY) -> dict:
+    """Rehash v2 after a documented validator amendment and revalidate ledgers."""
+    current_hash = protocol_hash()
+    accepted = terminal = retryable = 0
+    for cell in CELLS:
+        root = output_root / cell
+        protocol_path = root / "protocol.json"
+        protocol = json.loads(protocol_path.read_text())
+        old = str(protocol.get("protocol_sha256", ""))
+        legacy = set(map(str, protocol.get("accepted_legacy_protocol_sha256", [])))
+        if old and old != current_hash:
+            legacy.add(old)
+        protocol.update(protocol_version="AMENDED_RECOVERY_V2",
+                        protocol_sha256=current_hash,
+                        accepted_legacy_protocol_sha256=sorted(legacy))
+        protocol_path.write_text(json.dumps(protocol, indent=2) + "\n")
+        for path in (root / "shards").glob("*.paraphrases.jsonl"):
+            ledger = ParaphraseLedger(path)
+            keys = {ledger.key(row["task_id"], row["variant_idx"], row["span_id"])
+                    for row in ledger.records}
+            for task, variant, span in keys:
+                rows = ledger.for_unit(task, variant, span)
+                canonical = str(rows[0]["canonical_text"])
+                if ledger.accepted(canonical, task, variant, span):
+                    accepted += 1
+                elif len(ledger.semantic_attempts(task, variant, span)) >= PARAPHRASE_RETRIES:
+                    terminal += 1
+                else:
+                    retryable += 1
+    manifest_path = output_root / "prepare_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    old = str(manifest.get("protocol_sha256", ""))
+    legacy = set(map(str, manifest.get("accepted_legacy_protocol_sha256", [])))
+    if old and old != current_hash:
+        legacy.add(old)
+    manifest.update(protocol_version="AMENDED_RECOVERY_V2",
+                    protocol_sha256=current_hash,
+                    accepted_legacy_protocol_sha256=sorted(legacy))
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    report_path = ROOT / "outputs/jazz/e2_retry_migration_report.json"
+    report = json.loads(report_path.read_text())
+    source_audit = ROOT / str(report["source_audit"])
+    logical_units = len(json.loads(source_audit.read_text())["logical_units"])
+    retryable = logical_units - accepted - terminal
+    if retryable < 0:
+        raise RuntimeError("ledger revalidation exceeds audited logical-unit count")
+    report["protocol_sha256"] = current_hash
+    report["post_amendment_revalidation"] = {
+        "accepted_units": accepted, "terminal_semantic_units": terminal,
+        "retryable_units": retryable,
+        "updated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    }
+    report_path.write_text(json.dumps(report, indent=2) + "\n")
+    result = {"protocol_sha256": current_hash,
+              "accepted_units": accepted, "terminal_semantic_units": terminal,
+              "retryable_units": retryable}
+    print(json.dumps(result, indent=2)); return result
+
+
 def merge(cell: str, num_shards: int, output_root: Path = RECOVERY) -> dict:
     root = output_root / cell; protocol = json.loads((root / "protocol.json").read_text())
     expected = {(task, v, arm) for task in protocol["expected_task_ids"] for v in range(protocol["n_variants"]) for arm in ARMS}
@@ -719,9 +778,11 @@ def main() -> None:
     work=sub.add_parser("worker");work.add_argument("--cell",required=True,choices=CELLS);work.add_argument("--shard-index",type=int,required=True);work.add_argument("--num-shards",type=int,required=True);work.add_argument("--output-root",type=Path,default=RECOVERY)
     mer=sub.add_parser("merge");mer.add_argument("--cell",required=True,choices=CELLS);mer.add_argument("--num-shards",type=int,required=True);mer.add_argument("--output-root",type=Path,default=RECOVERY)
     mig=sub.add_parser("migrate-retry-ledgers");mig.add_argument("--audit",type=Path,default=ROOT/"outputs/jazz/e2_retry_convergence_audit.json");mig.add_argument("--output-root",type=Path,default=RECOVERY);mig.add_argument("--verify-only",action="store_true")
+    refresh=sub.add_parser("refresh-protocol-metadata");refresh.add_argument("--output-root",type=Path,default=RECOVERY)
     args=ap.parse_args()
     if args.cmd=="prepare": prepare(args.limit_variants,args.limit_tasks,args.output_root)
     elif args.cmd=="migrate-retry-ledgers": migrate_retry_ledgers(args.audit,args.output_root,args.verify_only)
+    elif args.cmd=="refresh-protocol-metadata": refresh_protocol_metadata(args.output_root)
     elif args.cmd=="worker": worker(args.cell,args.shard_index,args.num_shards,args.output_root)
     else: merge(args.cell,args.num_shards,args.output_root)
 
