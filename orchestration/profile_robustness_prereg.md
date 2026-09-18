@@ -21,3 +21,19 @@ Per cell and pooled:
 
 ## Reporting commitment
 Results are reported as observed, including any cell where the effect is negative, its bottom decile flips sign, or variance across draws is large. This document may be appended to but not edited after commit.
+
+## Amendments (appended 2026-09-18, authorized by Jihan — see orchestration/jihan_decisions_2026-09-18.md)
+
+**A1 — Duplicate-key conflict rule.** Overlapping top-level writers produced conflicting
+duplicate rows for some logical keys `(task_id, variant_idx, arm)` in 3 cells. Rule: all
+conflicting copies of a key are discarded and the key is re-run fresh under a single-writer
+coordinator; no rule selects among conflicting values. Re-run rows carry `recovered: true`.
+Byte-identical duplicates keep one copy. Appended before the pooled analysis has run.
+
+**A2 — Strict-fidelity confirmatory subgroup.** The 30-item paraphrase review
+(orchestration/jazz_paraphrase_review.md; 17/30 preserved) failed the trust gate. The gate
+stands. The pre-registered analyses will additionally be computed on the subgroup of variants
+whose canonical template type was judged meaning-preserved in that review; this subgroup is
+the confirmatory tier. The full grid is reported as the exploratory tier with the review
+result disclosed verbatim. Subgroup membership is fixed by the already-committed review
+table; this amendment is appended before wave-2 completion and before any pooled analysis.

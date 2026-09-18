@@ -94,8 +94,15 @@ single highest-stakes number in the campaign (Gate 1 in the plan).
   Jihan immediately**; what the paper claims branches on it.
 
 ### E2. Bootstrap wave 2 — 7 remaining cells (waits on the $30 credit)
-- ⚠️ `longmemeval_real × llama-3.1-8b` is STILL RUNNING on Jihan's machine (4,249/18,000 rows
-  as of Sep 15) — do not duplicate that cell.
+- **UPDATE 2026-09-18:** all reserved E2 blockers are resolved in
+  `orchestration/jihan_decisions_2026-09-18.md` (read it first) with prereg amendments A1/A2
+  in `orchestration/profile_robustness_prereg.md`. In short: duplicate-key conflicts →
+  discard-and-rerun under a single writer; paraphrase gate → two-tier reporting
+  (strict-fidelity confirmatory subgroup + disclosed exploratory full grid); F2 unblocked
+  under that structure; E1 headline = 12-cell pure-SPR.
+- `longmemeval_real × llama-3.1-8b` is now **yours**: Jihan's local run is dead at
+  4,919/18,000 rows, pushed to `origin/artifacts` (commit `306fff9`). Pull artifacts, then
+  resume that cell with the others — the old "do not duplicate" warning is void.
 - Smoke first: one `--smoke` invocation per (dataset, model) pair; confirm rows written,
   non-empty outputs, zero `[ERROR]`, distinct profile hashes. Then launch:
 
