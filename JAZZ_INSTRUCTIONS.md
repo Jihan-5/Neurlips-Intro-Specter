@@ -9,7 +9,7 @@
 > (complete how-to, addressed to you) + `PERSON1_ANNOTATOR_INSTRUCTIONS.md` (per-annotator
 > template), with `orchestration/e1_prereg.md`, `orchestration/e1_codebook.md`, and
 > `scripts/e1_{sample_annotation_set,blind_trajectories,make_annotation_pages,compute_agreement}.py`.
-> This is camera-ready commitment #2; the ~2-week annotation window targets ~Oct 1.
+> This is camera-ready commitment #2; **DEADLINE OVERRIDE: annotations done by Sep 21 — 3 days.**
 > **Design revised 2026-09-18 (see the banner in the annotator brief): NO volunteer
 > recruiting — YOU are annotator 1 (primary, non-author), Mahfuza/lab is annotator 2,
 > Jihan adjudicates disagreements by the frozen rule.** Run the sampling/blinding/codebook
