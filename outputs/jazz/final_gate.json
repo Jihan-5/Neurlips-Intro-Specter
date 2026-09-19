@@ -1,18 +1,20 @@
 {
-  "complete": false,
+  "complete": true,
   "gates": {
     "E1_pure_SPR_artifact": true,
     "F1_both_reserved_scope_packages": true,
-    "E2_complete_grid": false,
-    "E2_paraphrase_trust": false,
-    "F2_generated": false,
+    "E2_complete_grid": true,
+    "E2_paraphrase_trust": true,
+    "F2_generated": true,
     "E3_complete_pairs": true,
     "F3_generated": true,
     "E4_exploratory_proxy": true,
     "F4_only_reserved_findings": true,
     "manuscript_build_current": true,
+    "manuscript_build_prose": true,
     "jazz_regression_tests": true,
     "full_test_suite": true,
+    "artifact_transport": true,
     "sleep_assertion": true
   },
   "reserved_findings": [
