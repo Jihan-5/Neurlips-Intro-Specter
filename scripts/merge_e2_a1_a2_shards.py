@@ -32,7 +32,16 @@ def main() -> None:
         records: dict[tuple[str, int, str], tuple[bytes, dict[str, Any], str]] = {}
         duplicates = []
         malformed = []
+        cell_dir = RUN / cell["cell"]
+        repair = cell_dir / "a1_integrity_repair.jsonl"
+        repair_keys = set()
+        if repair.exists():
+            for raw in repair.read_bytes().splitlines():
+                row = json.loads(raw)
+                repair_keys.add((str(row["task_id"]), int(row["variant_idx"]), str(row["arm"])))
         sources = [ROOT / cell["base_output"]] + [ROOT / s["output"] for s in cell["shards"]]
+        if repair.exists():
+            sources.append(repair)
         base = sources[0]
         if sha(base) != cell["base_sha256"]:
             raise RuntimeError(f"frozen base changed for {cell['cell']}")
@@ -45,6 +54,8 @@ def main() -> None:
                     key = (str(row["task_id"]), int(row["variant_idx"]), str(row["arm"]))
                 except Exception as exc:
                     malformed.append({"source": str(source), "line": line_no, "error": str(exc)})
+                    continue
+                if source == base and key in repair_keys:
                     continue
                 if key in records:
                     duplicates.append({"key": list(key), "first": records[key][2],

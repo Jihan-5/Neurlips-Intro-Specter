@@ -375,7 +375,12 @@ def main() -> None:
                 # Preserve an unterminated tail after a killed append. The
                 # integrity report exposes it and the missing key can resume.
                 continue
-            done.add((row["task_id"], row["variant_idx"], row["arm"]))
+            key = (row["task_id"], int(row["variant_idx"]), row["arm"])
+            # A1 keeps quarantined originals in the immutable base for audit,
+            # but only a replacement in the shard-local output is resumable.
+            if args.base_output and done_path == Path(args.base_output) and key in recovered_keys:
+                continue
+            done.add(key)
     if done:
         print(f"Resuming: {len(done)} (task_id, variant_idx, arm) rows already present, skipped.")
 

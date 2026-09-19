@@ -5,6 +5,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import prepare_e2_a1_a2 as prep
 from e2_a1_a2_shard_monitor import provider_rate_limit_count
+import e2_a1_a2_finalize as finalize
 
 
 def test_shard_cache_reads_frozen_base_and_writes_only_delta(tmp_path):
@@ -30,6 +31,25 @@ def test_shard_monitor_counts_only_real_provider_429_records():
         "[ERROR] prime failed: HTTP status 429 Too Many Requests",
     ])
     assert provider_rate_limit_count(text) == 2
+
+
+def test_materialize_expected_source_quarantines_out_of_grid_rows(tmp_path, monkeypatch):
+    source = tmp_path / "source.jsonl"
+    target = tmp_path / "target"
+    target.mkdir()
+    wanted = {"task_id": "wanted", "variant_idx": 0, "arm": "direct"}
+    extra = {"task_id": "smoke", "variant_idx": 0, "arm": "direct"}
+    source.write_text("".join(json.dumps(row) + "\n" for row in (wanted, extra)))
+    monkeypatch.setattr(finalize, "_expected", lambda dataset, variants: {
+        ("wanted", 0, "direct")
+    })
+    monkeypatch.setattr(finalize, "ROOT", tmp_path)
+    monkeypatch.setattr(finalize, "COMPLETE", tmp_path / "complete")
+    audit = finalize.materialize_expected_source(
+        "truthfulqa_real__llama-3.1-8b", source, target)
+    assert [json.loads(x) for x in (target / "variants.jsonl").read_text().splitlines()] == [wanted]
+    assert [json.loads(x) for x in (target / "out_of_grid_quarantine.jsonl").read_text().splitlines()] == [extra]
+    assert audit["out_of_grid_rows_quarantined"] == 1
 
 
 def _write(path: Path, rows: list[dict]) -> None:

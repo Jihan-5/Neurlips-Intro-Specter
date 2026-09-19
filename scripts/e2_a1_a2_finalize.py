@@ -94,6 +94,37 @@ def validate_cell(cell: str, path: Path, conflict_path: Path | None) -> dict[str
     return report
 
 
+def materialize_expected_source(cell: str, source: Path, target_dir: Path) -> dict[str, Any]:
+    """Copy only frozen-grid keys while preserving out-of-grid source rows as audit evidence."""
+    dataset, _ = cell.split("__", 1)
+    expected = _expected(dataset, 100)
+    kept: list[bytes] = []
+    quarantined: list[bytes] = []
+    for line_no, raw in enumerate(source.read_bytes().splitlines(), 1):
+        try:
+            row = json.loads(raw)
+            key = (str(row["task_id"]), int(row["variant_idx"]), str(row["arm"]))
+        except Exception as exc:
+            raise RuntimeError(f"malformed upstream source row {source}:{line_no}: {exc}") from exc
+        (kept if key in expected else quarantined).append(raw)
+    target = target_dir / "variants.jsonl"
+    with target.open("wb") as handle:
+        for raw in kept:
+            handle.write(raw + b"\n")
+    quarantine = target_dir / "out_of_grid_quarantine.jsonl"
+    with quarantine.open("wb") as handle:
+        for raw in quarantined:
+            handle.write(raw + b"\n")
+    return {
+        "upstream_source": str(source.relative_to(ROOT)),
+        "upstream_source_sha256": sha(source),
+        "out_of_grid_rows_quarantined": len(quarantined),
+        "out_of_grid_quarantine": str(
+            (COMPLETE / target_dir.name / quarantine.name).relative_to(ROOT)),
+        "out_of_grid_quarantine_sha256": sha(quarantine),
+    }
+
+
 def materialize_complete() -> list[dict[str, Any]]:
     if COMPLETE.exists():
         raise RuntimeError(f"refusing to overwrite existing complete root: {COMPLETE}")
@@ -107,10 +138,21 @@ def materialize_complete() -> list[dict[str, Any]]:
             merged = source_root / cell / "variants.merged.jsonl"
             source = merged if merged.exists() else source_root / cell / "variants.jsonl"
             conflict = source_root / cell / "a1_conflict_keys.json"
-            report = validate_cell(cell, source, conflict if source_root == MANAGED else None)
             target_dir = tmp / cell
             target_dir.mkdir()
-            shutil.copy2(source, target_dir / "variants.jsonl")
+            source_audit = None
+            if source_root == ORIGINAL:
+                source_audit = materialize_expected_source(cell, source, target_dir)
+                validation_source = target_dir / "variants.jsonl"
+            else:
+                shutil.copy2(source, target_dir / "variants.jsonl")
+                validation_source = source
+            report = validate_cell(
+                cell, validation_source, conflict if source_root == MANAGED else None)
+            if source_audit:
+                report["source"] = str(
+                    (COMPLETE / cell / "variants.jsonl").relative_to(ROOT))
+                report.update(source_audit)
             (target_dir / "integrity.json").write_text(json.dumps(report, indent=2) + "\n")
             reports.append(report)
         tmp.replace(COMPLETE)
@@ -274,6 +316,7 @@ def main() -> None:
     tracked = [
         "scripts/profile_bootstrap_study.py", "scripts/prepare_e2_a1_a2.py",
         "scripts/e2_a1_a2_monitor.py", "scripts/e2_a1_a2_finalize.py",
+        "scripts/merge_e2_a1_a2_shards.py", "scripts/repair_e2_a1_conflict.py",
         "tests/test_e2_a1_a2.py", "scripts/jazz_final_gate.py",
         "paper_sections/generated/jazz_f2.tex",
         "paper_sections/generated/jazz_f2_provenance.json",
