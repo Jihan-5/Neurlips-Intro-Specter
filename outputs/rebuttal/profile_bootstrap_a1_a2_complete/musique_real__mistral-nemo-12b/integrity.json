@@ -1,0 +1,17 @@
+{
+  "cell": "musique_real__mistral-nemo-12b",
+  "source": "outputs/rebuttal/profile_bootstrap_a1_a2_final/musique_real__mistral-nemo-12b/variants.merged.jsonl",
+  "source_sha256": "43a902c23d78ce62c7032ec78d79463a1abca1de6150ad7fededc9ef4eeb9e45",
+  "expected_rows": 18000,
+  "rows": 18000,
+  "missing": 0,
+  "unexpected": 0,
+  "duplicates": [],
+  "malformed": [],
+  "bad_arm_or_hash_triples": [],
+  "a1_conflict_keys": 310,
+  "a1_conflicts_rerun_and_labeled": 310,
+  "recovered_missing_or_unlabeled": [],
+  "recovered_true_outside_a1": [],
+  "complete": true
+}

@@ -1,0 +1,21 @@
+{
+  "dataset": "truthfulqa_real",
+  "model": "mistral-nemo-12b",
+  "model_id": "mistralai/mistral-nemo",
+  "seed": 0,
+  "benchmark_seed": 42,
+  "tau_abstain": 0.0,
+  "rhos": [
+    0.0,
+    0.1,
+    0.3
+  ],
+  "expected_tasks": [
+    "truthfulqa_00048",
+    "truthfulqa_00049"
+  ],
+  "mechanism": "all_profile_nodes_v1",
+  "smoke": true,
+  "qwen_substitution": "llama-3.1-8b",
+  "candidate_note": "Default already admits profile ancestors; flag adds remaining profile nodes."
+}

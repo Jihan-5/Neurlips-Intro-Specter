@@ -1,0 +1,17 @@
+{
+  "cell": "longmemeval_real__mistral-nemo-12b",
+  "source": "outputs/rebuttal/profile_bootstrap_a1_a2_final/longmemeval_real__mistral-nemo-12b/variants.merged.jsonl",
+  "source_sha256": "5c24ec5d1de83dba71a08e9201270ef5a65765f21cb0e4891c9c4bdc3ae90592",
+  "expected_rows": 18000,
+  "rows": 18000,
+  "missing": 0,
+  "unexpected": 0,
+  "duplicates": [],
+  "malformed": [],
+  "bad_arm_or_hash_triples": [],
+  "a1_conflict_keys": 168,
+  "a1_conflicts_rerun_and_labeled": 168,
+  "recovered_missing_or_unlabeled": [],
+  "recovered_true_outside_a1": [],
+  "complete": true
+}

@@ -1,0 +1,335 @@
+{
+  "created_utc": "2026-09-18T02:53:51Z",
+  "protocol_version": "AMENDED_RECOVERY_V2",
+  "protocol_sha256": "2d61cf500bfcaad6d13c2da328abaab830b2b555133f4b40f832926cb6655758",
+  "legacy_protocol_sha256": [
+    "a1737b6cc904b5f4bb674875773c294f6e325349e61b30524361a74d206c06d7"
+  ],
+  "accepted_rows_seen": 25739,
+  "accepted_rows_revalidated": 25730,
+  "invalid_accepted_rows_removed": [
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "direct",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "reflexion",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "intro_specter",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "direct",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "reflexion",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/salvaged.jsonl",
+      "task_id": "real_2wiki_00023_7ee9577e088611ebbd6dac1f6bf848b6",
+      "variant_idx": 73,
+      "arm": "intro_specter",
+      "failures": [
+        {
+          "span_id": "c4",
+          "canonical_text": "User prefers public transit over taxis.",
+          "surface_text": "User prefers taxis over public transit.",
+          "failures": [
+            "over-taxis"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/shard-002-of-008.jsonl",
+      "task_id": "real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6",
+      "variant_idx": 54,
+      "arm": "direct",
+      "failures": [
+        {
+          "span_id": "c3",
+          "canonical_text": "User observes Ramadan and avoids food/drink discussion during fasting hours.",
+          "surface_text": "During Ramadan, the user observes fasting and refrains from food and drink discussions.",
+          "failures": [
+            "fasting-hours"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/shard-002-of-008.jsonl",
+      "task_id": "real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6",
+      "variant_idx": 54,
+      "arm": "reflexion",
+      "failures": [
+        {
+          "span_id": "c3",
+          "canonical_text": "User observes Ramadan and avoids food/drink discussion during fasting hours.",
+          "surface_text": "During Ramadan, the user observes fasting and refrains from food and drink discussions.",
+          "failures": [
+            "fasting-hours"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/shard-002-of-008.jsonl",
+      "task_id": "real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6",
+      "variant_idx": 54,
+      "arm": "intro_specter",
+      "failures": [
+        {
+          "span_id": "c3",
+          "canonical_text": "User observes Ramadan and avoids food/drink discussion during fasting hours.",
+          "surface_text": "During Ramadan, the user observes fasting and refrains from food and drink discussions.",
+          "failures": [
+            "fasting-hours"
+          ]
+        }
+      ]
+    }
+  ],
+  "imported": {
+    "semantic_attempts": 19404,
+    "accepted_cached_units": 5328,
+    "terminal_semantic_units": 4331,
+    "retryable_units": 8577
+  },
+  "ledger_files": 32,
+  "source_audit": "outputs/jazz/e2_retry_convergence_audit.json",
+  "source_audit_sha256": "8c8f6776b4bb401b9e0fff2cb66e158878be27b43b26dfbe0919a60bf72317e1",
+  "verify_only": false,
+  "archived_files": [
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/salvaged.jsonl.pre-v2-invalid-accepted",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/salvaged.jsonl.pre-v2-invalid-accepted",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-002-of-008.jsonl.pre-v2-invalid-accepted",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/truthfulqa_real__llama-3.1-8b/shards/failed_attempts/shard-000-of-002.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/truthfulqa_real__llama-3.1-8b/shards/failed_attempts/shard-001-of-002.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/truthfulqa_real__mistral-nemo-12b/shards/failed_attempts/shard-000-of-002.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/truthfulqa_real__mistral-nemo-12b/shards/failed_attempts/shard-001-of-002.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/truthfulqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/hotpotqa_real__llama-3.1-8b/shards/failed_attempts/shard-000-of-002.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/hotpotqa_real__llama-3.1-8b/shards/failed_attempts/shard-001-of-002.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-000-of-002.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__llama-3.1-8b/failed_attempts/shard-001-of-002.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/hotpotqa_real__mistral-nemo-12b/shards/failed_attempts/shard-000-of-002.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/hotpotqa_real__mistral-nemo-12b/shards/failed_attempts/shard-001-of-002.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-000-of-002.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/hotpotqa_real__mistral-nemo-12b/failed_attempts/shard-001-of-002.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-000-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-001-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-002-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-003-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-004-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-005-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-006-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__llama-3.1-8b/shards/failed_attempts/shard-007-of-008.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-000-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-001-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-002-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-003-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-004-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-005-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-006-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/twowiki_real__mistral-nemo-12b/shards/failed_attempts/shard-007-of-008.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-000-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-001-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-001-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-001-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-002-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-002-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-002-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-003-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-003-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-003-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-004-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-004-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-004-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-005-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-005-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-005-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-006-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-006-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-006-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-007-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-007-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/twowiki_real__mistral-nemo-12b/failed_attempts/shard-007-of-008.pre-v2.sqlite-shm",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-000-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-001-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-002-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-003-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-004-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-005-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-006-of-008.errors.pre-v2.jsonl",
+    "outputs/rebuttal/profile_bootstrap_recovery_v1/musique_real__llama-3.1-8b/shards/failed_attempts/shard-007-of-008.errors.pre-v2.jsonl",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-000-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-001-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-002-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-003-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-004-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-005-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-006-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__llama-3.1-8b/failed_attempts/shard-007-of-008.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/musique_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/musique_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/musique_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/longmemeval_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/longmemeval_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/longmemeval_real__llama-3.1-8b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm",
+    "cache/e2_recovery_v1/longmemeval_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite",
+    "cache/e2_recovery_v1/longmemeval_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-wal",
+    "cache/e2_recovery_v1/longmemeval_real__mistral-nemo-12b/failed_attempts/shard-000-of-001.pre-v2.sqlite-shm"
+  ],
+  "post_amendment_revalidation": {
+    "accepted_units": 5684,
+    "terminal_semantic_units": 3975,
+    "retryable_units": 8577,
+    "updated_utc": "2026-09-18T03:07:41Z"
+  }
+}

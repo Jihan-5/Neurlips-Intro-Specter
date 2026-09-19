@@ -1,0 +1,116 @@
+note: Running TeX ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: paper_final.tex:39: Underfull \hbox (badness 4634) in paragraph at lines 39--39
+warning: paper_final.tex:454: Underfull \hbox (badness 4967) in paragraph at lines 454--454
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 454--455
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 455--455
+warning: paper_final.tex:455: Underfull \hbox (badness 7925) in paragraph at lines 455--455
+warning: paper_final.tex:456: Underfull \hbox (badness 1635) in paragraph at lines 455--456
+warning: paper_final.tex:456: Underfull \hbox (badness 2617) in paragraph at lines 456--456
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 456--457
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 457--457
+warning: paper_final.tex:458: Overfull \hbox (14.7099pt too wide) in paragraph at lines 452--458
+warning: paper_final.tex:508: Overfull \hbox (74.74666pt too wide) in paragraph at lines 500--508
+warning: paper_final.tex:537: Underfull \hbox (badness 10000) in paragraph at lines 536--537
+warning: paper_final.tex:539: Underfull \hbox (badness 3364) in paragraph at lines 538--539
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 6236) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 1742) in paragraph at lines 542--543
+warning: paper_final.tex:551: Underfull \hbox (badness 1173) in paragraph at lines 550--551
+warning: paper_final.tex:583: Overfull \hbox (34.51453pt too wide) in paragraph at lines 583--583
+warning: paper_final.tex:618: Overfull \hbox (12.91455pt too wide) in paragraph at lines 618--618
+warning: paper_final.tex:655: Overfull \hbox (18.31454pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (2.11456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (7.51456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (12.91455pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:706: Overfull \hbox (27.5954pt too wide) in paragraph at lines 700--706
+warning: paper_final.tex:717: Overfull \hbox (27.27597pt too wide) in paragraph at lines 711--717
+warning: paper_final.tex:728: Overfull \hbox (64.14786pt too wide) in paragraph at lines 722--728
+warning: paper_final.tex:739: Overfull \hbox (51.67139pt too wide) in paragraph at lines 733--739
+note: Rerunning TeX because "paper_final.out" changed ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: paper_final.tex:39: Underfull \hbox (badness 4634) in paragraph at lines 39--39
+warning: paper_final.tex:66: Underfull \vbox (badness 7869) has occurred while \output is active
+warning: paper_final.tex:133: Overfull \hbox (6.20656pt too wide) in paragraph at lines 122--133
+warning: paper_final.tex:335: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:454: Underfull \hbox (badness 4967) in paragraph at lines 454--454
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 454--455
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 455--455
+warning: paper_final.tex:455: Underfull \hbox (badness 7925) in paragraph at lines 455--455
+warning: paper_final.tex:456: Underfull \hbox (badness 1635) in paragraph at lines 455--456
+warning: paper_final.tex:456: Underfull \hbox (badness 2617) in paragraph at lines 456--456
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 456--457
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 457--457
+warning: paper_final.tex:458: Overfull \hbox (14.7099pt too wide) in paragraph at lines 452--458
+warning: paper_final.tex:496: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:508: Overfull \hbox (74.74666pt too wide) in paragraph at lines 500--508
+warning: paper_final.tex:537: Underfull \hbox (badness 10000) in paragraph at lines 536--537
+warning: paper_final.tex:539: Underfull \hbox (badness 3364) in paragraph at lines 538--539
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 6236) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 1742) in paragraph at lines 542--543
+warning: paper_final.tex:550: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:551: Underfull \hbox (badness 1173) in paragraph at lines 550--551
+warning: paper_final.tex:583: Overfull \hbox (34.51453pt too wide) in paragraph at lines 583--583
+warning: paper_final.tex:618: Overfull \hbox (12.91455pt too wide) in paragraph at lines 618--618
+warning: paper_final.tex:655: Overfull \hbox (18.31454pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (2.11456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (7.51456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (12.91455pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:706: Overfull \hbox (27.5954pt too wide) in paragraph at lines 700--706
+warning: paper_final.tex:717: Overfull \hbox (27.27597pt too wide) in paragraph at lines 711--717
+warning: paper_final.tex:728: Overfull \hbox (64.14786pt too wide) in paragraph at lines 722--728
+warning: paper_final.tex:739: Overfull \hbox (51.67139pt too wide) in paragraph at lines 733--739
+note: Rerunning TeX because "paper_final.aux" changed ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: paper_final.tex:39: Underfull \hbox (badness 4634) in paragraph at lines 39--39
+warning: paper_final.tex:66: Underfull \vbox (badness 7869) has occurred while \output is active
+warning: paper_final.tex:133: Overfull \hbox (6.20656pt too wide) in paragraph at lines 122--133
+warning: paper_final.tex:335: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:454: Underfull \hbox (badness 4967) in paragraph at lines 454--454
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 454--455
+warning: paper_final.tex:455: Underfull \hbox (badness 10000) in paragraph at lines 455--455
+warning: paper_final.tex:455: Underfull \hbox (badness 7925) in paragraph at lines 455--455
+warning: paper_final.tex:456: Underfull \hbox (badness 1635) in paragraph at lines 455--456
+warning: paper_final.tex:456: Underfull \hbox (badness 2617) in paragraph at lines 456--456
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 456--457
+warning: paper_final.tex:457: Underfull \hbox (badness 10000) in paragraph at lines 457--457
+warning: paper_final.tex:458: Overfull \hbox (14.7099pt too wide) in paragraph at lines 452--458
+warning: paper_final.tex:496: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:508: Overfull \hbox (74.74666pt too wide) in paragraph at lines 500--508
+warning: paper_final.tex:537: Underfull \hbox (badness 10000) in paragraph at lines 536--537
+warning: paper_final.tex:539: Underfull \hbox (badness 3364) in paragraph at lines 538--539
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 6236) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 10000) in paragraph at lines 542--543
+warning: paper_final.tex:543: Underfull \hbox (badness 1742) in paragraph at lines 542--543
+warning: paper_final.tex:550: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: paper_final.tex:551: Underfull \hbox (badness 1173) in paragraph at lines 550--551
+warning: paper_final.tex:583: Overfull \hbox (34.51453pt too wide) in paragraph at lines 583--583
+warning: paper_final.tex:618: Overfull \hbox (12.91455pt too wide) in paragraph at lines 618--618
+warning: paper_final.tex:655: Overfull \hbox (18.31454pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (2.11456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (7.51456pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:655: Overfull \hbox (12.91455pt too wide) in paragraph at lines 655--655
+warning: paper_final.tex:706: Overfull \hbox (27.5954pt too wide) in paragraph at lines 700--706
+warning: paper_final.tex:717: Overfull \hbox (27.27597pt too wide) in paragraph at lines 711--717
+warning: paper_final.tex:728: Overfull \hbox (64.14786pt too wide) in paragraph at lines 722--728
+warning: paper_final.tex:739: Overfull \hbox (51.67139pt too wide) in paragraph at lines 733--739
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `outputs/jazz/build/paper_final.pdf` (736.3857421875 KiB)
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)

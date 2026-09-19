@@ -1,0 +1,4 @@
+Command 1: tectonic paper_final.tex --outdir outputs/jazz/build
+Command 2: tectonic paper_final.tex --outdir outputs/jazz/build/prose (cwd: designated prose worktree)
+Result: both builds passed; paper_final.pdf files written
+Validated: 2026-09-18T14:22Z

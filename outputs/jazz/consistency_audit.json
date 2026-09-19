@@ -1,0 +1,3182 @@
+{
+  "paper_sha256": "7d61e7b98498a29c12df49b18dbb7092474c5eedc3d988e19be4d5de09be3a44",
+  "numeric_inventory": [
+    {
+      "line": 7,
+      "section": "preamble",
+      "numbers": [
+        "027"
+      ],
+      "text": "\\usepackage{iclr2027_conference,times}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 20,
+      "section": "preamble",
+      "numbers": [
+        "51"
+      ],
+      "text": "\\newcommand{\\cmark}{\\ding{51}}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 21,
+      "section": "preamble",
+      "numbers": [
+        "55"
+      ],
+      "text": "\\newcommand{\\xmark}{\\ding{55}}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 24,
+      "section": "preamble",
+      "numbers": [
+        "1.18"
+      ],
+      "text": "\\pgfplotsset{compat=1.18}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 45,
+      "section": "preamble",
+      "numbers": [
+        "16",
+        "864",
+        "15",
+        "16",
+        "12",
+        "63.9",
+        "86.1",
+        "+22.2",
+        "12",
+        "71.7",
+        "91.7",
+        "+20.0",
+        "14.7"
+      ],
+      "text": "Across four benchmarks and four LLMs (16 cells; 864 paired observations), \\method achieves the highest or tied-highest task success on \\textbf{15 of 16} cells with \\textbf{zero significant losses} against any of seven baselines. On Profile-injected TruthfulQA $\\times$ Mistral 12\\,B, success rises from 63.9\\% (Direct) to \\textbf{86.1\\%} (+22.2\\,pp); on MuSiQue $\\times$ Mistral 12\\,B, from 71.7\\% to \\textbf{91.7\\%} (+20.0\\,pp). Pooled across the seven-baseline comparison, \\method outperforms the baseline mean by \\textbf{14.7\\,pp}.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 52,
+      "section": "Introduction",
+      "numbers": [
+        "2.8",
+        "3.1"
+      ],
+      "text": "We introduce \\method, a framework for counterfactual fault attribution in user-conditioned agent trajectories. \\method represents a trajectory as a provenance-typed Assumption-DAG (profile, tool, model-inferred, world) over observable trajectory artifacts. When a profile-grounded violation is detected, the system estimates an attribution score over candidate faulty ancestors using counterfactual repair trials and selects a repair point by trading off fault probability against downstream edit cost; if the post-repair verifier still rejects the trajectory, Sequential Posterior Refinement (SPR; Eq.~\\ref{eq:spr-update}) treats that rejection as additional counterfactual evidence and updates the same posterior in closed form, retargeting the next-best ancestor without invoking any auxiliary mechanism. None of our components is new in isolation: abductive diagnosis, dependency graphs, and counterfactual intervention each have a multi-decade history in model-based diagnosis and software fault localization (\\S\\ref{sec:related}). The contribution is the setting-driven construction that makes those classical principles applicable to a single stochastic agent trajectory---and the closed loop they form once applied. Concretely: (i) \\textbf{a construction that transfers classical abductive diagnosis to LLM agent trajectories by synthesizing the execution spectrum classical methods presuppose}---fault localization \\`a la Tarantula/Ochiai requires many executions with pass/fail labels over shared components, while a trajectory supplies one execution and one failure; our counterfactual repair trials manufacture that missing spectrum (Eq.~\\ref{eq:repair-evidence}), over a component set (the Assumption-DAG) that is itself \\emph{inferred} rather than given---a failure mode no classical setting faces, which is why extraction quality is a first-class metric here (Appendix~\\ref{app:dag-quality}); (ii) \\textbf{the closed loop in which repair execution is the diagnostic evidence}: the likelihood proxy \\emph{is} the repair attempt (Eq.~\\ref{eq:repair-evidence}), that score selects the repair point against downstream edit cost (Eq.~\\ref{eq:mcgr}), and verifier rejection re-enters as evidence on the same posterior (Eq.~\\ref{eq:spr-update}); no prior fault-attribution system closes this loop---localization elsewhere terminates in a judgment---and our ablations show the loop is load-bearing, not compositional (removing the DAG costs 2.8\\,pp, uniform priors 3.1\\,pp, and disabling SPR drops pooled success below the Reflexion baseline; \\S\\ref{sec:ablations}); (iii) \\textbf{a falsifiable operating envelope}: attribution requires at least one uncorrupted anchor---a clean evidence span, untouched constraint, or genuine user history---against which a counterfactual repair can be validated; our saturation experiments confirm the boundary in both directions (\\S\\ref{sec:multifault}, \\S\\ref{sec:limitations}); and (iv) \\textbf{a paired evaluation} across benchmarks and LLMs, including real user histories (\\S\\ref{sec:personalwab}) and multi-fault stress tests (\\S\\ref{sec:multifault}), with losses and saturation regimes reported alongside wins.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 55,
+      "section": "Introduction",
+      "numbers": [
+        "0.82"
+      ],
+      "text": "  \\includegraphics[width=0.82\\textwidth]{B1_figure_redraw_package/figure2_comparison_overlay.pdf}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 63,
+      "section": "\\method",
+      "numbers": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "0",
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "text": "Let $x$ denote a user task and $P = \\{p_1, \\ldots, p_m\\}$ a structured user profile. An agent produces a trajectory $\\tau = (s_1, u_1, o_1, \\ldots, s_T, u_T, o_T, y)$ with steps $s_t$, actions or tool calls $u_t$, observations $o_t$, and final output $y$. A profile-grounded verifier $V(P, x, \\tau, y) \\in \\{0,1\\}$ returns 1 when the trajectory or output violates the profile (a \\emph{profile-grounded violation}); a reference-free task-success evaluator $S(x, \\tau, y) \\in \\{0,1\\}$ judges task-appropriateness from observable trajectory artifacts without access to ground-truth labels (an LLM-based coherence and constraint-satisfaction check, not the gold-answer substring matcher used for benchmark scoring; \\S\\ref{sec:experiments}). A profile-grounded violation is a \\emph{user-specific hallucination} when at least one assumption used in producing $\\tau$ or $y$ is unsupported by, contradicted by, or improperly generalized from $P$.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 65,
+      "section": "\\method",
+      "numbers": [
+        "0",
+        "1"
+      ],
+      "text": "\\paragraph{Assumption-DAG.} \\method represents the latent commitments of a trajectory as a directed acyclic graph $G = (A, E)$, where each node $a_i \\in A$ is an assumption $a_i = (c_i, \\rho_i, t_i, \\ell_i)$ with one-sentence commitment $c_i$, provenance $\\rho_i \\in \\{\\text{profile}, \\text{tool}, \\text{model}, \\text{world}\\}$, trajectory step $t_i$, and confidence $\\ell_i \\in [0,1]$; edges encode dependency. An LLM-based extractor is prompted with $(P, x, \\tau)$ and returns JSON containing each assumption's commitment, step, provenance, profile evidence spans, confidence, and dependency list. Edges are added when one assumption justifies, specializes, or enables another. Cycles, when detected, are resolved by removing the edge whose source node has the lowest confidence; the cycle-removal rate is logged. Extraction precision and recall on synthetic diagnostics (where the gold graph is known by construction) are reported in Appendix~\\ref{app:dag-quality}; full prompt in Appendix~\\ref{app:prompts}.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 71,
+      "section": "\\method",
+      "numbers": [
+        "1",
+        "1",
+        "1",
+        "0",
+        "1",
+        "1"
+      ],
+      "text": "  r_i = \\frac{1}{M} \\sum_{j=1}^{M} \\mathbf{1}[V(P,x,\\tau^{(i,j)},y^{(i,j)})=0] \\cdot \\mathbf{1}[S(x,\\tau^{(i,j)},y^{(i,j)})=1],\\label{eq:repair-evidence}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 77,
+      "section": "\\method",
+      "numbers": [
+        "0"
+      ],
+      "text": "where $\\pi_{\\rho_i}$ is a provenance-dependent prior ($\\pi_{\\text{model}} > \\pi_{\\text{world}} > \\pi_{\\text{tool}}$; values in Table~\\ref{tab:hparams}). When $\\sum_k \\pi_{\\rho_k} r_k = 0$ (no counterfactual sample removed the violation), we fall back to prior-only attribution $q_i = \\pi_{\\rho_i} / \\sum_k \\pi_{\\rho_k}$. We refer to $q_i$ as an \\emph{attribution score} rather than a calibrated posterior: $r_i$ is a Monte Carlo estimate from intervention trials, not a calibrated likelihood, and $q$ is not calibrated to the true generative process.",
+      "table_refs": [
+        "tab:hparams"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 83,
+      "section": "\\method",
+      "numbers": [
+        "1"
+      ],
+      "text": "  C(a_i, G) = w_n \\frac{|D_i|}{|A|} + w_t \\frac{\\hat{T}_i}{T_{\\max}} + w_c \\frac{\\hat{K}_i}{K_{\\max}} + w_p \\,\\mathbf{1}[a_i \\text{ precedes a verified tool observation}],\\label{eq:edit-cost}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 91,
+      "section": "\\method",
+      "numbers": [
+        "0",
+        "1"
+      ],
+      "text": "\\paragraph{Sequential Posterior Refinement (SPR).} When the post-repair verifier rejects $\\tau^{\\text{repair}}$, that rejection is partial evidence against $a^\\star$: it is consistent with both ``wrong candidate'' and ``right candidate, bad repair''. Rather than permanently excluding tried candidates, we down-weight them by a Bayesian decay factor $\\alpha \\in [0,1)$ and renormalize:",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 93,
+      "section": "\\method",
+      "numbers": [
+        "1"
+      ],
+      "text": "  q^{(t+1)}_i = \\begin{cases} \\alpha \\cdot q^{(t)}_i \\big/ Z^{(t)} & a_i \\in \\mathcal{T}^{(t)} \\\\ q^{(t)}_i \\big/ Z^{(t)} & \\text{otherwise,} \\end{cases} \\quad Z^{(t)} = \\alpha \\!\\!\\sum_{a_j \\in \\mathcal{T}^{(t)}}\\! q^{(t)}_j + \\!\\!\\sum_{a_j \\notin \\mathcal{T}^{(t)}}\\! q^{(t)}_j,\\label{eq:spr-update}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 95,
+      "section": "\\method",
+      "numbers": [
+        "0.1",
+        "0",
+        "0.3",
+        "1",
+        "0"
+      ],
+      "text": "where $\\mathcal{T}^{(t)}$ is the set of candidates whose repair $V$ has already rejected. We use $\\alpha = 0.1$ throughout, frozen on the Profile-X dev split (Appendix~\\ref{app:hparams}); the second-round selector is insensitive to $\\alpha \\in [0, 0.3]$ at our cell sizes. We then re-select $a^\\star$ via Eq.~\\ref{eq:mcgr} on $q^{(t+1)}$, re-execute, and re-verify; the loop runs for at most $T_{\\text{spr}}$ rounds. SPR is strictly sequential abductive inference over the same Assumption-DAG and posterior framework as the first round---no auxiliary model, no verbal critique, no full re-generation. Disabling SPR ($T_{\\text{spr}}=0$) reverts \\method to the targeted-repair-only configuration (Appendix~\\ref{app:spr-impl}, Table~\\ref{tab:spr-impact}).",
+      "table_refs": [
+        "tab:spr-impact"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 99,
+      "section": "\\method",
+      "numbers": [
+        "1"
+      ],
+      "text": "\\begin{algorithmic}[1]",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 103,
+      "section": "\\method",
+      "numbers": [
+        "0"
+      ],
+      "text": "  \\For{$t = 0, \\ldots, T_{\\text{spr}}$}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 105,
+      "section": "\\method",
+      "numbers": [
+        "1"
+      ],
+      "text": "    \\State $\\mathcal{T} \\gets \\mathcal{T} \\cup \\{a^\\star\\}$;\\ \\ update $q^{(t+1)}$ via Eq.~\\ref{eq:spr-update}.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 113,
+      "section": "Experiments",
+      "numbers": [
+        "28",
+        "817",
+        "12",
+        "36",
+        "2",
+        "60",
+        "60",
+        "60"
+      ],
+      "text": "\\paragraph{Tasks.} We evaluate \\method on four canonical benchmarks spanning adversarial truthfulness, two-hop factual reasoning, three-hop reasoning, and long-context conversational recall, plus a native planning benchmark in Appendix~\\ref{app:travel}. Datasets are loaded from HuggingFace with unmodified questions, contexts, and gold labels; the only modification is the injection of a synthetic user profile drawn from a bank of 28 realistic constraint templates (dietary, language, accessibility, expertise, budget). Profile assignment is deterministic per (\\texttt{task\\_id}, seed). Half the injected constraints are \\emph{relevant} (must be respected); half are \\emph{irrelevant distractors} (must not bias the factual answer). \\textbf{Profile-injected TruthfulQA}~\\cite{lin2021truthfulqa}: 817 imitative-falsehood questions; the frozen loader selects 12 held-out questions and evaluates three configuration seeds, yielding $n{=}36$ paired observations per cell. \\textbf{Profile-injected 2WikiMultiHopQA}~\\cite{ho2020twowiki}: $n{=}60$ two-hop questions per cell, single configuration seed. \\textbf{Profile-injected LongMemEval}~\\cite{wu2024longmemeval}: $n{=}60$ oracle-mode questions per cell over long conversational histories. \\textbf{Profile-injected MuSiQue}~\\cite{trivedi2022musique}: $n{=}60$ three-hop questions per cell.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 115,
+      "section": "Experiments",
+      "numbers": [
+        "7",
+        "-70",
+        "3.1",
+        "8",
+        "12",
+        "2.5",
+        "7",
+        "3.3",
+        "70"
+      ],
+      "text": "\\paragraph{Models.} Four LLMs across three training families and a 7--70\\,B parameter range: Llama 3.1 8\\,B Instruct~\\cite{dubey2024llama3}, Mistral Nemo 12\\,B Instruct~\\cite{jiang2023mistral}, Qwen 2.5 7\\,B Instruct~\\cite{yang2024qwen2.5} via OpenRouter; Llama 3.3 70\\,B Instruct~\\cite{dubey2024llama3} via Together AI.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 117,
+      "section": "Experiments",
+      "numbers": [
+        "95",
+        "10",
+        "000",
+        "2",
+        "2"
+      ],
+      "text": "\\paragraph{Baselines and protocol.} We compare \\method against seven baselines on every (dataset, model) cell with an identical agent prompt; only the post-generation correction pipeline differs (Table~\\ref{tab:methods}). The same example IDs, profiles, and configuration seeds are paired across methods. A trial is successful iff both: (i) a \\emph{factual check} (substring match of the gold answer for QA tasks, predicate satisfaction for planning) and (ii) a \\emph{profile-violation check} (deterministic predicates plus calibrated LLM verification for semantic cases) pass; this benchmark scorer is used only for reporting and is distinct from the reference-free inference-time $S$ in Eq.~\\ref{eq:repair-evidence}. TruthfulQA stores three configuration seeds per held-out question; the other headline cells store one. Each stored binary row is a paired observation, and no seed averaging precedes McNemar's exact test. For each (model, benchmark) cell we report a paired-bootstrap 95\\% CI (10{,}000 resamples) for $\\Delta = \\text{IS} - \\text{baseline}$ and McNemar's exact test on the paired $2{\\times}2$ contingency table; Holm correction is applied within each baseline family across the selected cells. All \\method hyperparameters are frozen on Profile-X validation splits with no per-cell tuning (Appendix~\\ref{app:hparams}).",
+      "table_refs": [
+        "tab:methods"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 124,
+      "section": "Experiments",
+      "numbers": [
+        "1"
+      ],
+      "text": "Direct & Single forward pass, no correction & 1 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 125,
+      "section": "Experiments",
+      "numbers": [
+        "2"
+      ],
+      "text": "Self-Refine~\\cite{madaan2023selfrefine} & Single critique-and-revise pass & 2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 126,
+      "section": "Experiments",
+      "numbers": [
+        "2",
+        "3"
+      ],
+      "text": "Reflexion~\\cite{shinn2023reflexion} & Verbal post-mortem then retry (max 2 trials) & ${\\sim}3$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 127,
+      "section": "Experiments",
+      "numbers": [
+        "1"
+      ],
+      "text": "Full-Regen & Discard trajectory, re-sample from scratch & 1 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 128,
+      "section": "Experiments",
+      "numbers": [
+        "4",
+        "4"
+      ],
+      "text": "ReAct~\\cite{yao2022react} & Thought-Action-Observation loop (4 steps) & 4 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 129,
+      "section": "Experiments",
+      "numbers": [
+        "5",
+        "10"
+      ],
+      "text": "SelfCheckGPT~\\cite{manakul2023selfcheckgpt} & $N{=}5$ sampling + per-claim consistency & ${\\sim}10$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 130,
+      "section": "Experiments",
+      "numbers": [
+        "3",
+        "2",
+        "4",
+        "49"
+      ],
+      "text": "ToT~\\cite{yao2023tot} & BFS, $k{=}3$, beam${=}2$, depth${=}4$ & ${\\sim}49$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 131,
+      "section": "Experiments",
+      "numbers": [
+        "1",
+        "2"
+      ],
+      "text": "Violation-Reprompt & Re-prompt with violated profile span as feedback (1 round) & 2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 132,
+      "section": "Experiments",
+      "numbers": [
+        "5"
+      ],
+      "text": "\\method & \\dagg $\\to$ attribution $\\to$ \\mcgr & ${\\sim}5$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 140,
+      "section": "Results",
+      "numbers": [
+        "36",
+        "12",
+        "8",
+        "3"
+      ],
+      "text": "\\caption{Profile-injected TruthfulQA. Per-cell paired observations: 36 ($n{=}12$ examples that completed across all 8 methods $\\times$ 3 dataset seeds). Success rate (\\%).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 141,
+      "section": "Results",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:truthfulqa}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 144,
+      "section": "Results",
+      "numbers": [
+        "38.9",
+        "22.2",
+        "83.3",
+        "36.1",
+        "33.3",
+        "47.2",
+        "52.8",
+        "41.7"
+      ],
+      "text": "deepseek-v3 & 38.9 & 22.2 & \\textbf{83.3} & 36.1 & 33.3 & 47.2 & 52.8 & 41.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 145,
+      "section": "Results",
+      "numbers": [
+        "2.5",
+        "41.7",
+        "33.3",
+        "75.0",
+        "36.1",
+        "30.6",
+        "41.7",
+        "36.1",
+        "44.4"
+      ],
+      "text": "gemini-2.5-flash & 41.7 & 33.3 & \\textbf{75.0} & 36.1 & 30.6 & 41.7 & 36.1 & 44.4 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 146,
+      "section": "Results",
+      "numbers": [
+        "20",
+        "63.9",
+        "69.4",
+        "91.7",
+        "72.2",
+        "72.2",
+        "66.7",
+        "66.7",
+        "72.2"
+      ],
+      "text": "gpt-oss-20b & 63.9 & 69.4 & \\textbf{91.7} & 72.2 & 72.2 & 66.7 & 66.7 & 72.2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 147,
+      "section": "Results",
+      "numbers": [
+        "8",
+        "80.6",
+        "61.1",
+        "94.4",
+        "86.1",
+        "72.2",
+        "91.7",
+        "77.8",
+        "94.4"
+      ],
+      "text": "Llama 8B & 80.6 & 61.1 & \\textbf{94.4} & 86.1 & 72.2 & 91.7 & 77.8 & \\textbf{94.4} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 148,
+      "section": "Results",
+      "numbers": [
+        "70",
+        "83.3",
+        "61.1",
+        "91.7",
+        "80.6",
+        "75.0",
+        "83.3",
+        "80.6",
+        "83.3"
+      ],
+      "text": "Llama 70B & 83.3 & 61.1 & \\textbf{91.7} & 80.6 & 75.0 & 83.3 & 80.6 & 83.3 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 149,
+      "section": "Results",
+      "numbers": [
+        "12",
+        "63.9",
+        "61.1",
+        "80.6",
+        "69.4",
+        "63.9",
+        "72.7",
+        "56.5",
+        "86.1"
+      ],
+      "text": "Mistral 12B & 63.9 & 61.1 & 80.6 & 69.4 & 63.9 & 72.7 & 56.5 & \\textbf{86.1} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 150,
+      "section": "Results",
+      "numbers": [
+        "7",
+        "63.2",
+        "34.2",
+        "68.4",
+        "58.3",
+        "52.6",
+        "65.8",
+        "45.5",
+        "78.9"
+      ],
+      "text": "Qwen 7B & 63.2 & 34.2 & 68.4 & 58.3 & 52.6 & 65.8 & 45.5 & \\textbf{78.9} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 154,
+      "section": "Results",
+      "numbers": [
+        "2",
+        "60"
+      ],
+      "text": "\\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Success rate (\\%).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 155,
+      "section": "Results",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:2wiki}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 158,
+      "section": "Results",
+      "numbers": [
+        "93.2",
+        "86.4",
+        "96.6",
+        "89.7",
+        "87.9",
+        "87.9",
+        "92.9",
+        "93.2"
+      ],
+      "text": "deepseek-v3 & 93.2 & 86.4 & \\textbf{96.6} & 89.7 & 87.9 & 87.9 & 92.9 & 93.2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 159,
+      "section": "Results",
+      "numbers": [
+        "2.5",
+        "80.0",
+        "85.0",
+        "90.0",
+        "83.3",
+        "83.3",
+        "81.7",
+        "90.0",
+        "83.3"
+      ],
+      "text": "gemini-2.5-flash & 80.0 & 85.0 & \\textbf{90.0} & 83.3 & 83.3 & 81.7 & \\textbf{90.0} & 83.3 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 160,
+      "section": "Results",
+      "numbers": [
+        "20",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "text": "gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 161,
+      "section": "Results",
+      "numbers": [
+        "8",
+        "86.7",
+        "76.7",
+        "93.3",
+        "78.3",
+        "76.7",
+        "66.7",
+        "80.0",
+        "93.3"
+      ],
+      "text": "Llama 8B & 86.7 & 76.7 & \\textbf{93.3} & 78.3 & 76.7 & 66.7 & 80.0 & \\textbf{93.3} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 162,
+      "section": "Results",
+      "numbers": [
+        "70",
+        "96.7",
+        "91.7",
+        "96.7",
+        "95.0",
+        "95.0",
+        "93.3",
+        "90.0",
+        "96.7"
+      ],
+      "text": "Llama 70B & \\textbf{96.7} & 91.7 & \\textbf{96.7} & 95.0 & 95.0 & 93.3 & 90.0 & \\textbf{96.7} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 163,
+      "section": "Results",
+      "numbers": [
+        "12",
+        "91.7",
+        "86.7",
+        "95.0",
+        "90.0",
+        "86.7",
+        "89.8",
+        "92.2",
+        "96.7"
+      ],
+      "text": "Mistral 12B & 91.7 & 86.7 & 95.0 & 90.0 & 86.7 & 89.8 & 92.2 & \\textbf{96.7} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 164,
+      "section": "Results",
+      "numbers": [
+        "7",
+        "81.7",
+        "80.0",
+        "91.7",
+        "85.0",
+        "76.7",
+        "85.0",
+        "90.9",
+        "90.0"
+      ],
+      "text": "Qwen 7B & 81.7 & 80.0 & \\textbf{91.7} & 85.0 & 76.7 & 85.0 & 90.9 & 90.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 168,
+      "section": "Results",
+      "numbers": [
+        "60"
+      ],
+      "text": "\\caption{Profile-injected LongMemEval ($n{=}60$). Success rate (\\%).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 169,
+      "section": "Results",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:longmemeval}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 172,
+      "section": "Results",
+      "numbers": [
+        "36.2",
+        "25.9",
+        "43.1",
+        "36.2",
+        "31.0",
+        "39.6",
+        "43.2",
+        "45.6"
+      ],
+      "text": "deepseek-v3 & 36.2 & 25.9 & 43.1 & 36.2 & 31.0 & 39.6 & 43.2 & \\textbf{45.6} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 173,
+      "section": "Results",
+      "numbers": [
+        "2.5",
+        "28.3",
+        "23.3",
+        "33.3",
+        "30.0",
+        "25.4",
+        "26.7",
+        "26.7",
+        "30.0"
+      ],
+      "text": "gemini-2.5-flash & 28.3 & 23.3 & \\textbf{33.3} & 30.0 & 25.4 & 26.7 & 26.7 & 30.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 174,
+      "section": "Results",
+      "numbers": [
+        "20",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "text": "gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 175,
+      "section": "Results",
+      "numbers": [
+        "8",
+        "63.3",
+        "51.7",
+        "76.7",
+        "63.3",
+        "61.7",
+        "50.0",
+        "55.0",
+        "78.3"
+      ],
+      "text": "Llama 8B & 63.3 & 51.7 & 76.7 & 63.3 & 61.7 & 50.0 & 55.0 & \\textbf{78.3} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 176,
+      "section": "Results",
+      "numbers": [
+        "70",
+        "43.3",
+        "48.3",
+        "70.0",
+        "45.0",
+        "40.0",
+        "33.3",
+        "30.0",
+        "56.7"
+      ],
+      "text": "Llama 70B & 43.3 & 48.3 & \\textbf{70.0} & 45.0 & 40.0 & 33.3 & 30.0 & 56.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 177,
+      "section": "Results",
+      "numbers": [
+        "12",
+        "55.0",
+        "50.0",
+        "73.3",
+        "58.3",
+        "58.3",
+        "53.3",
+        "67.9",
+        "73.3"
+      ],
+      "text": "Mistral 12B & 55.0 & 50.0 & \\textbf{73.3} & 58.3 & 58.3 & 53.3 & 67.9 & \\textbf{73.3} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 178,
+      "section": "Results",
+      "numbers": [
+        "7",
+        "70.0",
+        "66.7",
+        "76.7",
+        "66.7",
+        "63.3",
+        "75.0",
+        "25.0",
+        "71.7"
+      ],
+      "text": "Qwen 7B & 70.0 & 66.7 & \\textbf{76.7} & 66.7 & 63.3 & 75.0 & 25.0 & 71.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 182,
+      "section": "Results",
+      "numbers": [
+        "60"
+      ],
+      "text": "\\caption{Profile-injected MuSiQue ($n{=}60$). Success rate (\\%).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 183,
+      "section": "Results",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:musique}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 186,
+      "section": "Results",
+      "numbers": [
+        "56.7",
+        "55.0",
+        "71.7",
+        "56.7",
+        "66.7",
+        "63.3",
+        "61.7",
+        "61.7"
+      ],
+      "text": "deepseek-v3 & 56.7 & 55.0 & \\textbf{71.7} & 56.7 & 66.7 & 63.3 & 61.7 & 61.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 187,
+      "section": "Results",
+      "numbers": [
+        "2.5",
+        "51.7",
+        "41.7",
+        "68.3",
+        "55.0",
+        "41.7",
+        "51.7",
+        "63.3",
+        "60.0"
+      ],
+      "text": "gemini-2.5-flash & 51.7 & 41.7 & \\textbf{68.3} & 55.0 & 41.7 & 51.7 & 63.3 & 60.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 188,
+      "section": "Results",
+      "numbers": [
+        "20",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "text": "gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 189,
+      "section": "Results",
+      "numbers": [
+        "8",
+        "76.7",
+        "66.7",
+        "90.0",
+        "76.7",
+        "66.7",
+        "51.7",
+        "71.7",
+        "91.7"
+      ],
+      "text": "Llama 8B & 76.7 & 66.7 & 90.0 & 76.7 & 66.7 & 51.7 & 71.7 & \\textbf{91.7} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 190,
+      "section": "Results",
+      "numbers": [
+        "70",
+        "83.3",
+        "78.3",
+        "96.7",
+        "81.7",
+        "81.7",
+        "70.0",
+        "55.0",
+        "93.3"
+      ],
+      "text": "Llama 70B & 83.3 & 78.3 & \\textbf{96.7} & 81.7 & 81.7 & 70.0 & 55.0 & 93.3 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 191,
+      "section": "Results",
+      "numbers": [
+        "12",
+        "71.7",
+        "61.7",
+        "85.0",
+        "71.7",
+        "68.3",
+        "75.0",
+        "68.6",
+        "81.7"
+      ],
+      "text": "Mistral 12B & 71.7 & 61.7 & \\textbf{85.0} & 71.7 & 68.3 & 75.0 & 68.6 & 81.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 192,
+      "section": "Results",
+      "numbers": [
+        "7",
+        "80.0",
+        "63.3",
+        "83.3",
+        "80.0",
+        "65.0",
+        "75.0",
+        "77.3",
+        "85.0"
+      ],
+      "text": "Qwen 7B & 80.0 & 63.3 & 83.3 & 80.0 & 65.0 & 75.0 & 77.3 & \\textbf{85.0} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 196,
+      "section": "Results",
+      "numbers": [
+        "1.000"
+      ],
+      "text": "\\caption{Aggregate outcomes across sixteen (dataset, model) cells. ``NS losses'' are paired-McNemar non-significant losses (the single NS loss in this matrix has $p = 1.000$).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 200,
+      "section": "Results",
+      "numbers": [
+        "2",
+        "2",
+        "0",
+        "0"
+      ],
+      "text": "Prof.-inj.\\ TruthfulQA & 2 & 2 & 0 & 0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 201,
+      "section": "Results",
+      "numbers": [
+        "2",
+        "2",
+        "2",
+        "0",
+        "0"
+      ],
+      "text": "Prof.-inj.\\ 2Wiki & 2 & 2 & 0 & 0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 202,
+      "section": "Results",
+      "numbers": [
+        "1",
+        "2",
+        "1",
+        "0"
+      ],
+      "text": "Prof.-inj.\\ LongMemEval & 1 & 2 & 1 & 0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 203,
+      "section": "Results",
+      "numbers": [
+        "3",
+        "1",
+        "0",
+        "0"
+      ],
+      "text": "Prof.-inj.\\ MuSiQue & 3 & 1 & 0 & 0 \\\\\\midrule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 204,
+      "section": "Results",
+      "numbers": [
+        "16",
+        "8",
+        "7",
+        "1",
+        "0"
+      ],
+      "text": "\\textbf{Total (16 cells)} & \\textbf{8} & \\textbf{7} & \\textbf{1} & \\textbf{0} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 207,
+      "section": "Results",
+      "numbers": [
+        "15",
+        "16",
+        "70",
+        "-1.7",
+        "1.000",
+        "-11.7",
+        "+8.3",
+        "12",
+        "91.7",
+        "+6.7",
+        "0.012",
+        "12",
+        "86.1",
+        "+5.5",
+        "0.012",
+        "7",
+        "77.8",
+        "+8.4",
+        "2",
+        "7",
+        "94.9",
+        "+3.2"
+      ],
+      "text": "\\paragraph{Per-cell outcomes.} \\method achieves the highest or tied-highest success on \\textbf{15 of 16} cells. The single non-significant loss is LongMemEval$\\times$Llama 70\\,B at $-1.7$\\,pp ($p = 1.000$, paired-bootstrap CI $[-11.7, +8.3]$). Strict wins over the strongest self-correction baseline (Reflexion) include MuSiQue$\\times$Mistral 12\\,B (\\textbf{91.7\\%}, +6.7\\,pp, $p{=}0.012$), TruthfulQA$\\times$Mistral 12\\,B (\\textbf{86.1\\%}, +5.5\\,pp, $p{=}0.012$), TruthfulQA$\\times$Qwen 7\\,B (\\textbf{77.8\\%}, +8.4\\,pp), and 2Wiki$\\times$Qwen 7\\,B (\\textbf{94.9\\%}, +3.2\\,pp); on the remaining cells \\method ties or numerically leads Reflexion. On TravelPlanner (Appendix~\\ref{app:travel}), \\method records one numerical win and three NS losses against Reflexion; we attribute the gap to short trajectories with few model-inferred assumption nodes and disclaim the absolute numbers as uncalibrated against the official strict evaluator.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 209,
+      "section": "Results",
+      "numbers": [
+        "864",
+        "4",
+        "36",
+        "144",
+        "4",
+        "60",
+        "240",
+        "87.0",
+        "85.4",
+        "1.6",
+        "84.3",
+        "87.0",
+        "7",
+        "-12",
+        "3.3",
+        "70",
+        "2",
+        "-1.7",
+        "70",
+        "70",
+        "1"
+      ],
+      "text": "\\paragraph{Pooled performance and regime structure.} Pooled across 864 paired observations (TruthfulQA contributes $4 \\times 36 = 144$; the other three benchmarks $4 \\times 60 = 240$ each), \\method reaches \\textbf{87.0\\%}, exceeding Reflexion (85.4\\%) by 1.6\\,pp; single-round attribution alone yields 84.3\\%, and SPR (Eq.~\\ref{eq:spr-update}, Table~\\ref{tab:spr-impact}) lifts this to 87.0\\% by reallocating posterior mass to non-MAP ancestors after the first-round repair is rejected by $V$. On the three mid-tier models (7--12\\,B), \\method is top or tied-top on twelve of twelve cells; on Llama 3.3 70\\,B, \\method ties Reflexion on three of four benchmarks (TruthfulQA, 2Wiki, MuSiQue) and trails on LongMemEval ($-1.7$\\,pp, NS). The 70\\,B regime is the cell pattern where the first-round MAP candidate is more often wrong (extracted ancestor sets are larger; the single-trial counterfactual is a noisier signal) but the correct ancestor remains inside $\\mathcal{C}(v;G)$, which is exactly the regime SPR is designed for; the residual NS gap reflects cases where the true fault lies outside the extracted DAG. The 70\\,B regime is represented by a single model family ($n{=}1$).",
+      "table_refs": [
+        "tab:spr-impact"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 214,
+      "section": "Mechanism Diagnostics",
+      "numbers": [
+        "60",
+        "100",
+        "1",
+        "1.0",
+        "100",
+        "0"
+      ],
+      "text": "On synthetic \\dagg tasks with known fault nodes ($n{=}60$), \\method achieves 100\\% top-1 attribution (MRR${=}1.0$) and 100\\% repair success in \\texttt{single\\_fault} mode. Forward-only baselines score 0\\% on this diagnostic. In \\texttt{multi\\_valid} mode, \\method selects the minimum-cost valid repair on every trial.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 223,
+      "section": "Cost Analysis",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:cost-full}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 225,
+      "section": "Cost Analysis",
+      "numbers": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "text": "& \\multicolumn{2}{c}{Direct} & \\multicolumn{2}{c}{Rfx} & \\multicolumn{2}{c}{SChk} & \\multicolumn{2}{c}{ToT} & \\multicolumn{2}{c}{\\method} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 226,
+      "section": "Cost Analysis",
+      "numbers": [
+        "2",
+        "-3",
+        "4",
+        "-5",
+        "6",
+        "-7",
+        "8",
+        "-9",
+        "10",
+        "-11"
+      ],
+      "text": "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-9}\\cmidrule(lr){10-11}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 228,
+      "section": "Cost Analysis",
+      "numbers": [
+        "1.2",
+        "0.39",
+        "2.6",
+        "0.84",
+        "5.9",
+        "1.90",
+        "36.5",
+        "11.8",
+        "3.1",
+        "1.00"
+      ],
+      "text": "TruthfulQA  & 1.2k & 0.39 & 2.6k & 0.84 & 5.9k & 1.90 & 36.5k & 11.8 & \\textbf{3.1k} & 1.00 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 229,
+      "section": "Cost Analysis",
+      "numbers": [
+        "2",
+        "2.0",
+        "0.40",
+        "2.9",
+        "0.58",
+        "10.4",
+        "2.08",
+        "56.2",
+        "11.2",
+        "5.0",
+        "1.00"
+      ],
+      "text": "2Wiki       & 2.0k & 0.40 & 2.9k & 0.58 & 10.4k & 2.08 & 56.2k & 11.2 & \\textbf{5.0k} & 1.00 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 230,
+      "section": "Cost Analysis",
+      "numbers": [
+        "2.2",
+        "0.34",
+        "5.9",
+        "0.91",
+        "12.1",
+        "1.86",
+        "73.2",
+        "11.3",
+        "6.5",
+        "1.00"
+      ],
+      "text": "LongMemEval & 2.2k & 0.34 & 5.9k & 0.91 & 12.1k & 1.86 & 73.2k & 11.3 & \\textbf{6.5k} & 1.00 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 231,
+      "section": "Cost Analysis",
+      "numbers": [
+        "2.1",
+        "0.38",
+        "4.0",
+        "0.73",
+        "11.3",
+        "2.05",
+        "73.1",
+        "13.3",
+        "5.5",
+        "1.00"
+      ],
+      "text": "MuSiQue     & 2.1k & 0.38 & 4.0k & 0.73 & 11.3k & 2.05 & 73.1k & 13.3 & \\textbf{5.5k} & 1.00 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 234,
+      "section": "Cost Analysis",
+      "numbers": [
+        "11.2",
+        "-13.3",
+        "3.1",
+        "-6.5",
+        "2.6",
+        "-5.9",
+        "5.9",
+        "-12.1"
+      ],
+      "text": "On the released harness counters, ToT and SelfCheckGPT use more recorded tokens and do not achieve higher accuracy than \\method on any cell. Across all four benchmarks, ToT records 11.2--13.3$\\times$ the tokens of \\method. \\method records 3.1--6.5\\,k tokens per task, between Reflexion (2.6--5.9\\,k) and SelfCheckGPT (5.9--12.1\\,k). The additional recorded work is concentrated on cells where SPR fires; when the first repair satisfies the verifier, SPR adds no re-execution round. These counters omit some internal provider calls, so they support a recorded-token comparison rather than a complete billing-cost claim.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 242,
+      "section": "Ablations",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\label{tab:ablations}\\setlength{\\tabcolsep}{3pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 244,
+      "section": "Ablations",
+      "numbers": [
+        "2"
+      ],
+      "text": "Variant & \\makecell{TruthQA\\\\$\\times$Mist.} & \\makecell{TruthQA\\\\$\\times$Qwen} & \\makecell{2Wiki\\\\$\\times$Mist.} & \\makecell{LongMem\\\\$\\times$Llama8B} & Mean \\\\\\midrule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 245,
+      "section": "Ablations",
+      "numbers": [
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "text": "Full \\method     & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 246,
+      "section": "Ablations",
+      "numbers": [
+        "-8.3",
+        "-2.8",
+        "0.0",
+        "0.0",
+        "-2.8"
+      ],
+      "text": "No \\dagg (flat)  & $-8.3$ & $-2.8$ & $0.0$ & $0.0$ & $-2.8$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 247,
+      "section": "Ablations",
+      "numbers": [
+        "-5.6",
+        "-8.3",
+        "0.0",
+        "+1.7",
+        "-3.1"
+      ],
+      "text": "Uniform prior    & $-5.6$ & $-8.3$ & $0.0$ & $+1.7$ & $-3.1$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 248,
+      "section": "Ablations",
+      "numbers": [
+        "-2.8",
+        "-8.3",
+        "+1.7",
+        "+3.3",
+        "-1.5"
+      ],
+      "text": "No counterfactual & $-2.8$ & $-8.3$ & $+1.7$ & $+3.3$ & $-1.5$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 249,
+      "section": "Ablations",
+      "numbers": [
+        "-2.8",
+        "-2.8",
+        "0.0",
+        "+3.3",
+        "-0.6"
+      ],
+      "text": "No edit cost     & $-2.8$ & $-2.8$ & $0.0$ & $+3.3$ & $-0.6$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 250,
+      "section": "Ablations",
+      "numbers": [
+        "3",
+        "-5.6",
+        "-11.1",
+        "0.0",
+        "-3.3",
+        "-5.0"
+      ],
+      "text": "$M{=}3$ samples  & $-5.6$ & $-11.1$ & $0.0$ & $-3.3$ & $-5.0$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 255,
+      "section": "Ablations",
+      "numbers": [
+        "2.8",
+        "-8.3",
+        "3.1",
+        "-8.3",
+        "1.5",
+        "8.3"
+      ],
+      "text": "\\textbf{Single-round attribution components (Table~\\ref{tab:ablations}).} Three components are load-bearing on the cells where the first-round repair is the deciding stage: removing the \\dagg drops mean accuracy by 2.8\\,pp ($-8.3$\\,pp on TruthfulQA$\\times$Mistral); replacing provenance-weighted priors with uniform priors drops 3.1\\,pp ($-8.3$\\,pp on TruthfulQA$\\times$Qwen); skipping the counterfactual likelihood drops 1.5\\,pp on average but 8.3\\,pp on the most affected cell.",
+      "table_refs": [
+        "tab:ablations"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 257,
+      "section": "Ablations",
+      "numbers": [
+        "+3.3",
+        "+11.7",
+        "+7.2",
+        "84.3",
+        "87.0"
+      ],
+      "text": "\\textbf{Sequential Posterior Refinement (Appendix~\\ref{app:spr-impl}, Table~\\ref{tab:spr-impact}).} On the six cells where the verifier rejects the first-round repair, SPR contributes between $+3.3$ and $+11.7$\\,pp ($+7.2$\\,pp on average); pooled, this lifts \\method from 84.3\\% to 87.0\\%. SPR derives its lift entirely from re-using the same posterior framework conditioned on the failure of the first repair (Eq.~\\ref{eq:spr-update})---not from a different self-correction method---and is the methodological contrast with Reflexion (verbal critiques) vs.\\ SPR (counterfactual evidence inside the same DAG-grounded posterior).",
+      "table_refs": [
+        "tab:spr-impact"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 259,
+      "section": "Ablations",
+      "numbers": [
+        "1",
+        "3",
+        "5.0",
+        "1",
+        "3",
+        "5",
+        "5",
+        "1",
+        "1",
+        "1",
+        "0.6"
+      ],
+      "text": "Two further findings warrant brief comment. First, increasing $M$ from 1 to 3 \\emph{degrades} mean accuracy by 5.0\\,pp; the full $M{\\in}\\{1,3,5\\}$ sweep is non-monotone with a recovery at $M{=}5$ on one cell (Appendix~\\ref{app:m-sweep}). The pattern is incompatible with an i.i.d.\\ Bernoulli model of $r_{i,j}$ (which predicts monotone variance reduction $\\propto 1/M$); we attribute it to within-candidate trial correlation (shared prompt context, shared decoding trace), so $M{=}1$ is the empirical operating point of the framework given the LLM generator's actual non-i.i.d.\\ behaviour, not a statistically optimal estimator. Variance-reduced or seed-diversified counterfactual sampling are the right next steps to enable $M{>}1$ to provide net benefit. Second, the cost-aware repair objective contributes only $0.6$\\,pp to raw accuracy; its operational value lies in bounded edit cost (\\S\\ref{sec:cost}), not in higher success rate.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 267,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "4"
+      ],
+      "text": "\\label{tab:vrp}\\setlength{\\tabcolsep}{4pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 270,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "63.9",
+        "80.6",
+        "61.1",
+        "86.1",
+        "+25.0",
+        "0.012"
+      ],
+      "text": "TruthQA $\\times$ Mist & 63.9 & 80.6 & 61.1 & \\textbf{86.1} & $+25.0\\,(p{=}0.012)^{\\checkmark}$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 271,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "63.9",
+        "69.4",
+        "44.4",
+        "77.8",
+        "+33.3",
+        "001"
+      ],
+      "text": "TruthQA $\\times$ Qwen & 63.9 & 69.4 & 44.4 & \\textbf{77.8} & $+33.3\\,(p{<}.001)^{\\checkmark}$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 272,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "2",
+        "91.7",
+        "95.0",
+        "96.7",
+        "96.7",
+        "+0",
+        "0.0",
+        "1.000"
+      ],
+      "text": "2Wiki $\\times$ Mist   & 91.7 & 95.0 & 96.7 & \\textbf{96.7} & $\\phantom{+0}0.0\\,(p{=}1.000)$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 273,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "63.3",
+        "76.7",
+        "76.7",
+        "78.3",
+        "+1.7",
+        "1.000"
+      ],
+      "text": "LongMem $\\times$ Llama8B & 63.3 & 76.7 & 76.7 & \\textbf{78.3} & $+1.7\\,(p{=}1.000)$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 276,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "61.1",
+        "63.9",
+        "44.4",
+        "63.9",
+        "2"
+      ],
+      "text": "On the two TruthfulQA cells where \\method has its largest gains, VRP does not just underperform \\method---it performs \\emph{worse} than Direct (61.1 vs.\\ 63.9 on Mistral; 44.4 vs.\\ 63.9 on Qwen). Without typed attribution, feeding the violated profile span back as feedback sometimes drives the model to over-correct in ways that introduce new errors. On 2Wiki (saturation ceiling) and LongMemEval (where the prior already strongly discriminates), VRP and \\method are statistically tied, consistent with the failure-taxonomy observation that the DAG matters most when the prior is uncertain (\\S\\ref{sec:ablations}).",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 278,
+      "section": "Is the Assumption-DAG Necessary? Violation-Aware Reprompt",
+      "numbers": [
+        "8",
+        "73.3",
+        "88.9",
+        "180",
+        "+15.6",
+        "0.001",
+        "1.66",
+        "1.27",
+        "2",
+        "95.0",
+        "99.4",
+        "180",
+        "+4.4",
+        "0.022",
+        "1.13",
+        "1.00",
+        "78.4",
+        "81.1",
+        "75.0",
+        "75.0",
+        "37"
+      ],
+      "text": "\\paragraph{Matched-budget control (Iter-VRP).} VRP is single-round; \\method is multi-round. To isolate the DAG contribution from the retry budget, we run \\emph{Iter-VRP}: DAG-free flat-text violation feedback at \\method's exact retry budget, on paired examples, seeds, and initial trajectories. Iter-VRP trails or ties \\method on all four ablation cells while consuming \\emph{more} repair rounds: LongMemEval$\\times$Llama-8B 73.3 vs.\\ 88.9 ($n{=}180$, $+15.6$pp, exact McNemar $p{<}0.001$; 1.66 vs.\\ 1.27 mean rounds), 2Wiki$\\times$Mistral 95.0 vs.\\ 99.4 ($n{=}180$, $+4.4$pp, $p{=}0.022$; 1.13 vs.\\ 1.00), TruthfulQA$\\times$Mistral 78.4 vs.\\ 81.1 and TruthfulQA$\\times$Qwen 75.0 vs.\\ 75.0 (both $n{\\le}37$, below the per-cell minimum detectable effect at these sizes---underpowered by construction rather than negative). Retry budget alone therefore does not account for \\method's behavior: typed attribution changes \\emph{where} revision is applied, not merely how often revision occurs.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 286,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "2",
+        "5",
+        "1",
+        "76",
+        "2",
+        "78.6",
+        "71.5",
+        "81.4",
+        "71.6",
+        "62.4",
+        "57.2",
+        "65.3",
+        "57.7",
+        "36.6",
+        "34.1"
+      ],
+      "text": "The main matrix injects a single fault per example. To test whether the advantage survives---or collapses---when errors compound, we extend injection to $N{=}2$--$5$ simultaneous faults per example (one factual context distractor plus $N{-}1$ independent profile-constraint corruptions; dataset-native multi-hop fact corruptions where structure permits), across five benchmarks $\\times$ four LLMs $\\times$ seven methods ($\\sim$76k trajectories). Pooled over $N$ and models, \\method leads all six baselines on all five datasets: 2WikiMultiHop 78.6 vs.\\ 71.5 (Reflexion, best baseline), HotpotQA 81.4 vs.\\ 71.6, MuSiQue 62.4 vs.\\ 57.2, LongMemEval 65.3 vs.\\ 57.7, TravelPlanner 36.6 vs.\\ 34.1 (Self-Refine, best baseline). Table~\\ref{tab:multifault} reports the per-fault-count breakdown.",
+      "table_refs": [
+        "tab:multifault"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 289,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "660",
+        "720"
+      ],
+      "text": "\\caption{Success (\\%) by simultaneous fault count $N$, pooled over four LLMs (\\method{} / Reflexion; $n{\\approx}660$--$720$ paired per cell). The margin \\emph{widens} as faults stack until whole-chain saturation.}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 292,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "text": " & $N{=}2$ & $N{=}3$ & $N{=}4$ & $N{=}5$ \\\\\\midrule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 293,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "84.8",
+        "84.1",
+        "79.9",
+        "68.3",
+        "79.6",
+        "62.3"
+      ],
+      "text": "HotpotQA      & 84.8 / 84.1 & 79.9 / 68.3 & 79.6 / 62.3 & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 294,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "2",
+        "90.6",
+        "89.0",
+        "88.0",
+        "78.9",
+        "88.4",
+        "73.4",
+        "34.6",
+        "33.7"
+      ],
+      "text": "2WikiMultiHop & 90.6 / 89.0 & 88.0 / 78.9 & 88.4 / 73.4 & 34.6 / 33.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 295,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "73.9",
+        "71.7",
+        "66.0",
+        "57.9",
+        "56.1",
+        "43.6"
+      ],
+      "text": "LongMemEval   & 73.9 / 71.7 & 66.0 / 57.9 & 56.1 / 43.6 & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 296,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "85.6",
+        "79.9",
+        "80.8",
+        "73.5",
+        "44.3",
+        "42.4",
+        "39.0",
+        "33.2"
+      ],
+      "text": "MuSiQue       & 85.6 / 79.9 & 80.8 / 73.5 & 44.3 / 42.4 & 39.0 / 33.2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 299,
+      "section": "Robustness to Multiple Simultaneous Faults",
+      "numbers": [
+        "2",
+        "5",
+        "4"
+      ],
+      "text": "Two boundary behaviors are reported rather than omitted. First, when every fact in a reasoning chain is corrupted at once (2Wiki $N{=}5$; MuSiQue $N{\\ge}4$), all seven methods converge toward statistical ties: with no uncorrupted anchor left against which a counterfactual repair can be validated, attribution has nothing to attribute against, and full regeneration is the appropriate tool. Second, on TravelPlanner---short trajectories with globally-cascading constraints---all methods sit within a few points of each other at every $N$. Both boundaries are instances of the operating envelope stated in \\S\\ref{sec:limitations}: the advantage requires at least one uncorrupted anchor and at least one localizable fault.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 303,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "1",
+        "000",
+        "1",
+        "20",
+        "180",
+        "540"
+      ],
+      "text": "The construction above is synthetic by design. To test the failure mode where user-conditioning arises from \\emph{real} behavior, we evaluate on PersonalWAB, whose 1{,}000 users carry profiles grounded in real purchase, rating, and review histories (profiles are synthesized over these real behaviors by the benchmark's authors, not by us); ground truth is the item the real user genuinely interacted with, scored hit@1 over a 20-candidate real-product slate. Three LLMs $\\times$ 180 paired examples $\\times$ five arms, pooled over 540 paired units:",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 306,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "540"
+      ],
+      "text": "\\caption{PersonalWAB (real user histories), pooled over three LLMs, 540 paired units. Discordant = paired units where exactly one of \\{\\method{}, arm\\} succeeds (\\method-win\\,/\\,\\method-loss); $p$ from exact McNemar.}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 310,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "93.2",
+        "26",
+        "0"
+      ],
+      "text": "Direct              & 93.2 & 26 / 0 & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 311,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "94.6",
+        "18",
+        "0"
+      ],
+      "text": "VRP (single-round)  & 94.6 & 18 / 0 & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 312,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "95.2",
+        "18",
+        "3",
+        "0.0015"
+      ],
+      "text": "Iter-VRP (matched budget) & 95.2 & 18 / 3 & 0.0015 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 313,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "96.3",
+        "12",
+        "3",
+        "0.035"
+      ],
+      "text": "Reflexion           & 96.3 & 12 / 3 & 0.035 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 314,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "98.0"
+      ],
+      "text": "\\method             & \\textbf{98.0} & --- & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 317,
+      "section": "Real User Histories: PersonalWAB",
+      "numbers": [
+        "46",
+        "3.7",
+        "2.0",
+        "1.04",
+        "1.15",
+        "18",
+        "540",
+        "10",
+        "18",
+        "3",
+        "1",
+        "10"
+      ],
+      "text": "With success rates near ceiling, the discordant counts are the informative statistic: every discordant comparison across all three models favors \\method, a 46\\% relative reduction in remaining error against the strongest baseline (3.7\\%$\\to$2.0\\%), achieved at \\emph{fewer} mean repair rounds than the budget-matched control (1.04 vs.\\ 1.15). A per-example view sharpens the targeting claim: 18 of the 540 units are failed jointly by all three revision baselines (VRP, Iter-VRP, Reflexion); \\method solves 10 of those 18, while the reverse---some revision baseline succeeding where \\method fails---occurs on 3 units in the entire benchmark. Protocol disclosures: our scorer replicates the benchmark's ASIN-containment criterion at hit@1 rather than its trained-recommender top-10, and the ground-truth interaction is excluded from the visible history to prevent leakage.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 332,
+      "section": "Limitations",
+      "numbers": [
+        "60",
+        "36",
+        "0.05",
+        "13",
+        "864",
+        "70",
+        "-1.7"
+      ],
+      "text": "At $n{=}60$ per cell ($n{=}36$ for TruthfulQA's frozen held-out split), the per-cell paired-McNemar MDE at $\\alpha{=}0.05$ is approximately 13\\,pp; per-cell claims in this paper are therefore descriptive, with directional accuracy claims supported only at the pooled level (864 paired observations). Human-annotated fault labels on natural trajectories are the highest-priority follow-up. Profile-injected variants of public benchmarks shift the construct from pure factuality to factuality-plus-profile-following, controlled within a row by paired sampling; native user-conditioned benchmarks (Appendix~\\ref{app:travel}) provide a complementary evaluation track but do not reproduce the gains seen on Profile-injected QA. The relationship to Reflexion is conceptually parallel and mechanistically distinct: SPR conditions on the same DAG-grounded posterior $q$ as round one (Eq.~\\ref{eq:spr-update}) and re-targets the next-best ancestor's downstream subgraph---no verbal critique, no full re-generation, no Reflexion subroutine call. The single NS loss (LongMemEval$\\times$Llama 70\\,B, $-1.7$\\,pp) is consistent with an extracted-candidate limitation, but the present artifacts do not establish a unique causal explanation. The matched-budget Iter-VRP control is reported in \u00a7\\ref{sec:vrp}.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 340,
+      "section": "Conclusion",
+      "numbers": [
+        "87.0",
+        "85.4",
+        "1.6",
+        "11.8",
+        "14.9"
+      ],
+      "text": "Across sixteen (dataset, model) cells, \\method achieves the best or tied-best task success on fifteen with no significant losses, reaches a pooled mean of 87.0\\% that exceeds the strongest baseline (Reflexion, 85.4\\%) by 1.6\\,pp, and matches or exceeds Tree-of-Thoughts accuracy at $11.8$--$14.9\\times$ lower token cost. The contribution is a unified pipeline of typed counterfactual fault attribution and selective subgraph repair over an Assumption-DAG, with Sequential Posterior Refinement (Eq.~\\ref{eq:spr-update}) reusing the same posterior, prior, and re-execution prompt to close the residual gap when the first-round MAP candidate misidentifies the fault.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 342,
+      "section": "Conclusion",
+      "numbers": [
+        "027"
+      ],
+      "text": "\\bibliographystyle{iclr2027_conference}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 454,
+      "section": "Classical Diagnosis Comparison",
+      "numbers": [
+        "3.1",
+        "3.4",
+        "2.9",
+        "3.4"
+      ],
+      "text": "\\begin{tabular}{p{3.1cm}p{3.4cm}p{2.9cm}p{3.4cm}}\\toprule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 464,
+      "section": "Classical Diagnosis Comparison",
+      "numbers": [
+        "0.82"
+      ],
+      "text": "  \\includegraphics[width=0.82\\textwidth]{B2_worked_example_crm_package/figure_worked_example_crm.pdf}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 465,
+      "section": "Classical Diagnosis Comparison",
+      "numbers": [
+        "1",
+        "2",
+        "3",
+        "1",
+        "3",
+        "4",
+        "4",
+        "7",
+        "5"
+      ],
+      "text": "  \\caption{Worked example of \\method on an enterprise CRM follow-up task. The user profile records that the client has already renewed, prefers email-only contact, and has opted out of upsell outreach. \\textbf{(1)}~The agent shortlists three follow-up actions ranked by model-inferred priors. \\textbf{(2)}~Three violations are detected on the top action. \\textbf{(3)}~Ancestor assumptions are traced; profile nodes ($a_1$--$a_3$) are immutable. \\textbf{(4)}~Counterfactual repair trials score each candidate; the algorithm proceeds via sequential single-node repair, with re-verification detecting residual violations between passes (here resolving $a_4$ then $a_7$). \\textbf{(5)}~The repaired output satisfies all profile constraints.}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 472,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "8",
+        "13",
+        "1",
+        "0",
+        "2",
+        "0",
+        "0.3",
+        "10"
+      ],
+      "text": "\\paragraph{Implementation notes.} During counterfactual trials (Algorithm~\\ref{alg:intro-specter}, Line~8), the repaired trajectories are cached; the final re-execution (Line~13) reuses the cached trajectory of $a^\\star$ rather than regenerating it. The worked example in Figure~\\ref{fig:worked-example} depicts a multi-fault scenario; in the current implementation this is handled by a sequential single-node pass: after repairing $a^\\star$, re-verification may detect a residual violation triggering a second single-node repair. All hyperparameters ($M$, provenance priors, cost weights, $\\delta$, $\\lambda$, $T_{\\text{spr}}$, $\\alpha$) are fixed on Profile-X development splits before any Profile-injected-X evaluation; values are listed in Appendix~\\ref{app:hparams}. The decay $\\alpha$ encodes our credence that a verifier rejection is partial rather than conclusive evidence: $\\alpha{\\to}1$ recovers the prior (no learning from failure), $\\alpha{\\to}0$ recovers hard exclusion (which over-commits to ``wrong fault'' over the alternative ``right fault, bad repair''). At $T_{\\text{spr}} = 2$ and our cell sizes, the second-round selector is essentially insensitive to $\\alpha \\in [0, 0.3]$ once the rejected candidate's mass is reduced by $10\\times$ or more. The routing signal (``did $V$ accept the repaired output?'') uses no gold labels; SPR addresses what we call the \\emph{single-handed} regime---failures where the first-round MAP candidate misidentifies the fault but the true fault is still inside the original ancestor set $\\mathcal{C}(v;G)$.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 476,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "1"
+      ],
+      "text": "\\begin{algorithmic}[1]",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 489,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "0"
+      ],
+      "text": "  \\State $\\mathcal{T} \\gets \\emptyset$;\\quad $q^{(0)} \\gets q$.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 490,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "0",
+        "1"
+      ],
+      "text": "  \\For{$t = 0, 1, \\ldots, T_{\\text{spr}}$}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 493,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "1"
+      ],
+      "text": "    \\State $\\mathcal{T} \\gets \\mathcal{T} \\cup \\{a^\\star\\}$;\\quad update $q^{(t+1)}$ via Eq.~\\ref{eq:spr-update}.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 500,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "0"
+      ],
+      "text": "\\caption{SPR contribution: the six cells where SPR fires (i.e., the first-round repair was rejected by the verifier). Disabling SPR ($T_{\\text{spr}}=0$) reverts \\method to the single-round configuration. Cells: success rate (\\%); $\\Delta$ = full \\method $-$ no-SPR variant; $p$ = paired McNemar.}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 501,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "4"
+      ],
+      "text": "\\label{tab:spr-impact}\\setlength{\\tabcolsep}{4pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 503,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "0",
+        "2",
+        "1"
+      ],
+      "text": "Cell & Direct & Reflexion & No SPR ($T_{\\text{spr}}=0$) & Full \\method ($T_{\\text{spr}}=2$) & \\multicolumn{1}{c}{$\\Delta$} & Verdict vs.\\ Rfx \\\\\\midrule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 504,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "70",
+        "83.3",
+        "91.7",
+        "83.3",
+        "91.7",
+        "+8.3"
+      ],
+      "text": "TruthQA $\\times$ Llama 70B & 83.3 & 91.7 & 83.3 & 91.7 & $+8.3$ & TIE \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 505,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "2",
+        "7",
+        "81.7",
+        "91.7",
+        "89.8",
+        "94.9",
+        "+5.1",
+        "+3.2"
+      ],
+      "text": "2Wiki $\\times$ Qwen 7B     & 81.7 & 91.7 & 89.8 & 94.9 & $+5.1$ & \\textbf{WIN $+3.2$\\,pp} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 506,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "70",
+        "43.3",
+        "70.0",
+        "56.7",
+        "68.3",
+        "+11.7",
+        "-1.7"
+      ],
+      "text": "LongMem $\\times$ Llama 70B & 43.3 & 70.0 & 56.7 & 68.3 & $+11.7$ & NS loss $-1.7$\\,pp \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 507,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "7",
+        "70.0",
+        "76.7",
+        "71.7",
+        "76.7",
+        "+5.0"
+      ],
+      "text": "LongMem $\\times$ Qwen 7B   & 70.0 & 76.7 & 71.7 & 76.7 & $+5.0$ & TIE \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 508,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "70",
+        "83.3",
+        "96.7",
+        "93.3",
+        "96.7",
+        "+3.3"
+      ],
+      "text": "MuSiQue $\\times$ Llama 70B & 83.3 & 96.7 & 93.3 & 96.7 & $+3.3$ & TIE \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 509,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "71.7",
+        "85.0",
+        "81.7",
+        "91.7",
+        "+10.0",
+        "+6.7"
+      ],
+      "text": "MuSiQue $\\times$ Mistral   & 71.7 & 85.0 & 81.7 & 91.7 & $+10.0$ & \\textbf{WIN $+6.7$\\,pp} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 512,
+      "section": "Algorithm and SPR Implementation Details",
+      "numbers": [
+        "-1.1",
+        "+1.6",
+        "0"
+      ],
+      "text": "On the ten cells where the first-round repair satisfies the verifier, SPR never fires and the rest of the matrix is unchanged. SPR is the difference between trailing Reflexion in pooled mean ($-1.1$\\,pp) and exceeding it ($+1.6$\\,pp); disabling SPR ($T_{\\text{spr}}=0$) does not break the method, it simply forfeits the second round of attribution, so the ablation is a clean isolation of the iterated-update contribution.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 521,
+      "section": "Hyperparameters",
+      "numbers": [
+        "1"
+      ],
+      "text": "$M$ & Counterfactual repairs per candidate & 1 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 522,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.45"
+      ],
+      "text": "$\\pi_{\\text{model}}$ & Prior: model-inferred assumptions & 0.45 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 523,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.33"
+      ],
+      "text": "$\\pi_{\\text{world}}$ & Prior: world-knowledge assumptions & 0.33 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 524,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.22"
+      ],
+      "text": "$\\pi_{\\text{tool}}$ & Prior: tool-derived assumptions & 0.22 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 525,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.3"
+      ],
+      "text": "$\\lambda$ & \\mcgr cost weight (Eq.~\\ref{eq:mcgr}) & 0.3 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 526,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.4",
+        "0.3",
+        "0.2",
+        "0.1"
+      ],
+      "text": "$(w_n, w_t, w_c, w_p)$ & Edit-cost weights (Eq.~\\ref{eq:edit-cost}) & $(0.4, 0.3, 0.2, 0.1)$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 527,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.0"
+      ],
+      "text": "$\\delta$ & Abstention threshold & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 528,
+      "section": "Hyperparameters",
+      "numbers": [
+        "2"
+      ],
+      "text": "$T_{\\text{spr}}$ & SPR rounds (Eq.~\\ref{eq:spr-update}) & 2 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 529,
+      "section": "Hyperparameters",
+      "numbers": [
+        "0.1"
+      ],
+      "text": "$\\alpha$ & SPR Bayesian decay (Eq.~\\ref{eq:spr-update}) & 0.1 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 536,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "3.3",
+        "70",
+        "3.1",
+        "8",
+        "12",
+        "2.5",
+        "7",
+        "16",
+        "70",
+        "2026",
+        "3.11"
+      ],
+      "text": "\\paragraph{Inference infrastructure.} All LLM calls are issued via remote provider APIs, not local GPU inference: Llama 3.3 70\\,B Instruct through Together AI's hosted inference; Llama 3.1 8\\,B Instruct, Mistral Nemo 12\\,B Instruct, and Qwen 2.5 7\\,B Instruct through OpenRouter's hosted inference. We do not maintain a local GPU cluster; the only local compute used is a single laptop (Apple Silicon) for orchestration and metric aggregation. Total API spend across all 16 cells, the synthetic diagnostics, the ablations, and the SPR overlay reruns: approximately USD 70 (cumulative across the run window of March--May 2026). The orchestration laptop ran Python 3.11 in a virtual environment; pinned package versions are in \\texttt{requirements.txt} in the released code.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 538,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "256"
+      ],
+      "text": "\\paragraph{Caching and determinism.} All model calls are cached by SHA-256 hash of \\texttt{(provider, model, temperature, system\\_prompt, user\\_prompt, max\\_tokens, seed)}. Cache hits return identical bytes; the same (\\texttt{task\\_id}, seed) pair therefore yields identical method outputs across reruns. Cache database is shipped as a single SQLite file alongside the released code, so an external reviewer can re-execute the metric pipeline end-to-end without paying any API cost.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 540,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "42",
+        "42",
+        "123",
+        "456",
+        "42",
+        "0"
+      ],
+      "text": "\\paragraph{Seeds.} Example sampling uses benchmark seed 42. Each stored row is one paired task/configuration seed and McNemar tests pair on \\texttt{(task\\_id, seed)} without averaging stochastic outcomes into a binary observation. TruthfulQA's frozen SPR YAMLs use configuration seeds $\\{42,123,456\\}$; the other SPR cells use seed 42. The E2/E3 protocols introduced after review use generation seed 0 as separately frozen.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 542,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "0.0",
+        "0.7",
+        "8192",
+        "4096",
+        "2048",
+        "1.0"
+      ],
+      "text": "\\paragraph{Inference parameters.} Temperature is 0.0 for deterministic baselines (Direct, ReAct) and for the \\method extraction, verifier, counterfactual, and re-execution prompts; 0.7 for stochastic-by-design baselines (Self-Refine, Reflexion, Full-Regen, ToT). Max-tokens is 8192 for the agent prompt and trajectory regeneration calls (raised from 4096 after we observed truncation on long ALFWorld and TravelPlanner plans), 2048 for the verifier and counterfactual prompts. Default top-p is 1.0; we do not modify it.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 544,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "2026"
+      ],
+      "text": "\\paragraph{Run window and orchestration.} All evaluation runs occurred between March and May 2026 against the provider models available at that time. Each cell is run by a single \\texttt{run\\_real\\_benchmark.py} invocation that reads a YAML config (\\texttt{configs/real/}), iterates over methods and seeds, and writes one JSONL row per task to \\texttt{outputs/real/<dataset>\\_\\_<model>/}. Per-cell aggregation (\\texttt{scripts/aggregate\\_real\\_benchmarks.py}) and p-value regeneration (\\texttt{scripts/regen\\_pvalue\\_tables.py}) consume those JSONLs to produce the tables in this paper.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 546,
+      "section": "Reproducibility Details",
+      "numbers": [
+        "16"
+      ],
+      "text": "\\paragraph{Repository contents.} The released code includes: full prompts (Appendix~\\ref{app:prompts}), all benchmark loaders, all baseline implementations, the SPR pipeline, the verifier, the cost model, the SQLite cache file, all 16 cell YAML configs, the aggregation and regeneration scripts, the per-cell JSONL outputs that produced the headline tables, and a single notebook reproducing every figure and table in this paper.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 552,
+      "section": "Prompts",
+      "numbers": [
+        "1"
+      ],
+      "text": "\\paragraph{1. Assumption extraction.} System prompt invoked once per trajectory to construct the Assumption-DAG (\\S\\ref{sec:method}).",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 574,
+      "section": "Prompts",
+      "numbers": [
+        "0",
+        "1"
+      ],
+      "text": "- confidence: number from 0 to 1",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 587,
+      "section": "Prompts",
+      "numbers": [
+        "2"
+      ],
+      "text": "\\paragraph{2. Profile-grounded verification.} System prompt invoked to detect violations against the profile (\\S\\ref{sec:verifier}).",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 609,
+      "section": "Prompts",
+      "numbers": [
+        "0",
+        "1"
+      ],
+      "text": "      \"confidence\": number from 0 to 1,",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 622,
+      "section": "Prompts",
+      "numbers": [
+        "3"
+      ],
+      "text": "\\paragraph{3. Counterfactual repair generation.} System prompt invoked once per candidate ancestor to test whether a minimal change at that node removes the violation (\\S\\ref{sec:attribution}).",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 636,
+      "section": "Prompts",
+      "numbers": [
+        "3"
+      ],
+      "text": "Generate 3 counterfactual repairs that minimally change the candidate node",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 659,
+      "section": "Prompts",
+      "numbers": [
+        "4"
+      ],
+      "text": "\\paragraph{4. Downstream re-execution.} System prompt invoked once per selected repair candidate (round one and each SPR round) to regenerate only the descendants of the repaired node (\\S\\ref{sec:mcgr}).",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 697,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "95",
+        "0.05",
+        "10",
+        "000"
+      ],
+      "text": "Tables~\\ref{tab:pvalues-tqa}--\\ref{tab:pvalues-musique} report McNemar exact-test $p$-values and 95\\% paired-bootstrap confidence intervals for $\\Delta = \\text{IS} - \\text{baseline}$ (in pp; positive favors \\method). Checkmark $\\checkmark$ = \\method significantly better at $p{<}0.05$ (uncorrected). CIs from 10{,}000 paired-bootstrap resamples. All entries are regenerated by \\texttt{scripts/regen\\_pvalue\\_tables.py} from the same per-cell JSONLs that produce the headline success rates in Tables~\\ref{tab:truthfulqa}--\\ref{tab:musique}; \\method numbers reflect the full pipeline (single-round attribution + SPR).",
+      "table_refs": [
+        "tab:pvalues-tqa",
+        "tab:pvalues-musique",
+        "tab:truthfulqa",
+        "tab:musique"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 700,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "36",
+        "12",
+        "3"
+      ],
+      "text": "\\caption{Profile-injected TruthfulQA. Cells: $p$\\,[CI\\textsubscript{low}, CI\\textsubscript{high}]. Per-cell paired observations: 36 (12 held-out examples $\\times$ 3 configuration seeds).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 701,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "2"
+      ],
+      "text": "\\label{tab:pvalues-tqa}\\setlength{\\tabcolsep}{2pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 704,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "8",
+        "0.062",
+        "+3",
+        "+25",
+        "001",
+        "+19",
+        "+50",
+        "1.000",
+        "+0",
+        "+0",
+        "0.250",
+        "+0",
+        "+19",
+        "0.008",
+        "+8",
+        "+36",
+        "1.000",
+        "+0",
+        "+8",
+        "0.031",
+        "+6",
+        "+31"
+      ],
+      "text": "Llama 8B    & $0.062$\\,[+3,+25] & $<\\!.001$\\checkmark\\,[+19,+50] & $1.000$\\,[+0,+0] & $0.250$\\,[+0,+19] & $0.008$\\checkmark\\,[+8,+36] & $1.000$\\,[+0,+8] & $0.031$\\checkmark\\,[+6,+31] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 705,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "70",
+        "0.250",
+        "+0",
+        "+19",
+        "001",
+        "+17",
+        "+47",
+        "1.000",
+        "8",
+        "+8",
+        "0.125",
+        "+3",
+        "+22",
+        "0.031",
+        "+6",
+        "+31",
+        "0.250",
+        "+0",
+        "+19",
+        "0.219",
+        "+0",
+        "+25"
+      ],
+      "text": "Llama 70B   & $0.250$\\,[+0,+19] & $<\\!.001$\\checkmark\\,[+17,+47] & $1.000$\\,[$-$8,+8] & $0.125$\\,[+3,+22] & $0.031$\\checkmark\\,[+6,+31] & $0.250$\\,[+0,+19] & $0.219$\\,[+0,+25] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 706,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "12",
+        "0.008",
+        "+8",
+        "+36",
+        "0.012",
+        "+8",
+        "+42",
+        "0.625",
+        "6",
+        "+17",
+        "0.070",
+        "+3",
+        "+31",
+        "0.021",
+        "+8",
+        "+39",
+        "0.219",
+        "+0",
+        "+27",
+        "0.016",
+        "+13",
+        "+48"
+      ],
+      "text": "Mistral 12B & $0.008$\\checkmark\\,[+8,+36] & $0.012$\\checkmark\\,[+8,+42] & $0.625$\\,[$-$6,+17] & $0.070$\\,[+3,+31] & $0.021$\\checkmark\\,[+8,+39] & $0.219$\\,[+0,+27] & $0.016$\\checkmark\\,[+13,+48] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 707,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "7",
+        "0.062",
+        "+3",
+        "+25",
+        "001",
+        "+25",
+        "+58",
+        "0.375",
+        "3",
+        "+19",
+        "0.016",
+        "+8",
+        "+33",
+        "0.004",
+        "+11",
+        "+39",
+        "0.125",
+        "+3",
+        "+22",
+        "0.250",
+        "+0",
+        "+67"
+      ],
+      "text": "Qwen 7B     & $0.062$\\,[+3,+25] & $<\\!.001$\\checkmark\\,[+25,+58] & $0.375$\\,[$-$3,+19] & $0.016$\\checkmark\\,[+8,+33] & $0.004$\\checkmark\\,[+11,+39] & $0.125$\\,[+3,+22] & $0.250$\\,[+0,+67] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 711,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "2",
+        "60"
+      ],
+      "text": "\\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Cells: $p$\\,[CI\\textsubscript{low}, CI\\textsubscript{high}].}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 712,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "2"
+      ],
+      "text": "\\label{tab:pvalues-2wiki}\\setlength{\\tabcolsep}{2pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 715,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "8",
+        "0.125",
+        "+2",
+        "+13",
+        "0.002",
+        "+8",
+        "+27",
+        "1.000",
+        "5",
+        "+5",
+        "0.012",
+        "+5",
+        "+25",
+        "0.006",
+        "+7",
+        "+27",
+        "001",
+        "+17",
+        "+38",
+        "0.021",
+        "+3",
+        "+23"
+      ],
+      "text": "Llama 8B    & $0.125$\\,[+2,+13] & $0.002$\\checkmark\\,[+8,+27] & $1.000$\\,[$-$5,+5] & $0.012$\\checkmark\\,[+5,+25] & $0.006$\\checkmark\\,[+7,+27] & $<\\!.001$\\checkmark\\,[+17,+38] & $0.021$\\checkmark\\,[+3,+23] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 716,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "70",
+        "1.000",
+        "+0",
+        "+0",
+        "0.250",
+        "+0",
+        "+12",
+        "1.000",
+        "+0",
+        "+0",
+        "1.000",
+        "3",
+        "+8",
+        "1.000",
+        "+0",
+        "+5",
+        "0.500",
+        "+0",
+        "+8",
+        "0.125",
+        "+2",
+        "+13"
+      ],
+      "text": "Llama 70B   & $1.000$\\,[+0,+0] & $0.250$\\,[+0,+12] & $1.000$\\,[+0,+0] & $1.000$\\,[$-$3,+8] & $1.000$\\,[+0,+5] & $0.500$\\,[+0,+8] & $0.125$\\,[+2,+13] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 717,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "12",
+        "0.250",
+        "+0",
+        "+12",
+        "0.031",
+        "+3",
+        "+18",
+        "1.000",
+        "3",
+        "+8",
+        "0.125",
+        "+2",
+        "+13",
+        "0.070",
+        "+2",
+        "+20",
+        "0.125",
+        "+2",
+        "+14",
+        "0.625",
+        "4",
+        "+12"
+      ],
+      "text": "Mistral 12B & $0.250$\\,[+0,+12] & $0.031$\\checkmark\\,[+3,+18] & $1.000$\\,[$-$3,+8] & $0.125$\\,[+2,+13] & $0.070$\\,[+2,+20] & $0.125$\\,[+2,+14] & $0.625$\\,[$-$4,+12] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 718,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "7",
+        "0.021",
+        "+3",
+        "+24",
+        "0.012",
+        "+5",
+        "+25",
+        "0.625",
+        "3",
+        "+10",
+        "0.031",
+        "+3",
+        "+19",
+        "0.002",
+        "+8",
+        "+27",
+        "0.070",
+        "+2",
+        "+20",
+        "1.000",
+        "27",
+        "+27"
+      ],
+      "text": "Qwen 7B     & $0.021$\\checkmark\\,[+3,+24] & $0.012$\\checkmark\\,[+5,+25] & $0.625$\\,[$-$3,+10] & $0.031$\\checkmark\\,[+3,+19] & $0.002$\\checkmark\\,[+8,+27] & $0.070$\\,[+2,+20] & $1.000$\\,[$-$27,+27] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 722,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "60",
+        "7"
+      ],
+      "text": "\\caption{Profile-injected LongMemEval ($n{=}60$). Cells: $p$\\,[CI\\textsubscript{low}, CI\\textsubscript{high}]. ToT for Qwen 7B is omitted (insufficient paired completions to compute exact McNemar).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 723,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "2"
+      ],
+      "text": "\\label{tab:pvalues-lme}\\setlength{\\tabcolsep}{2pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 726,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "8",
+        "0.004",
+        "+7",
+        "+25",
+        "001",
+        "+15",
+        "+38",
+        "1.000",
+        "7",
+        "+10",
+        "0.012",
+        "+5",
+        "+25",
+        "0.006",
+        "+7",
+        "+27",
+        "001",
+        "+17",
+        "+40",
+        "001",
+        "+12",
+        "+35"
+      ],
+      "text": "Llama 8B    & $0.004$\\checkmark\\,[+7,+25] & $<\\!.001$\\checkmark\\,[+15,+38] & $1.000$\\,[$-$7,+10] & $0.012$\\checkmark\\,[+5,+25] & $0.006$\\checkmark\\,[+7,+27] & $<\\!.001$\\checkmark\\,[+17,+40] & $<\\!.001$\\checkmark\\,[+12,+35] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 727,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "70",
+        "001",
+        "+15",
+        "+37",
+        "0.002",
+        "+10",
+        "+32",
+        "1.000",
+        "12",
+        "+8",
+        "001",
+        "+13",
+        "+35",
+        "001",
+        "+17",
+        "+40",
+        "001",
+        "+23",
+        "+47",
+        "001",
+        "+27",
+        "+50"
+      ],
+      "text": "Llama 70B   & $<\\!.001$\\checkmark\\,[+15,+37] & $0.002$\\checkmark\\,[+10,+32] & $1.000$\\,[$-$12,+8] & $<\\!.001$\\checkmark\\,[+13,+35] & $<\\!.001$\\checkmark\\,[+17,+40] & $<\\!.001$\\checkmark\\,[+23,+47] & $<\\!.001$\\checkmark\\,[+27,+50] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 728,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "12",
+        "001",
+        "+8",
+        "+28",
+        "001",
+        "+13",
+        "+35",
+        "1.000",
+        "10",
+        "+10",
+        "0.022",
+        "+3",
+        "+27",
+        "0.012",
+        "+5",
+        "+25",
+        "0.002",
+        "+10",
+        "+32",
+        "0.375",
+        "2",
+        "+15"
+      ],
+      "text": "Mistral 12B & $<\\!.001$\\checkmark\\,[+8,+28] & $<\\!.001$\\checkmark\\,[+13,+35] & $1.000$\\,[$-$10,+10] & $0.022$\\checkmark\\,[+3,+27] & $0.012$\\checkmark\\,[+5,+25] & $0.002$\\checkmark\\,[+10,+32] & $0.375$\\,[$-$2,+15] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 729,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "7",
+        "0.125",
+        "+2",
+        "+13",
+        "0.070",
+        "+2",
+        "+18",
+        "1.000",
+        "7",
+        "+7",
+        "0.031",
+        "+3",
+        "+18",
+        "0.008",
+        "+5",
+        "+22",
+        "1.000",
+        "3",
+        "+8"
+      ],
+      "text": "Qwen 7B     & $0.125$\\,[+2,+13] & $0.070$\\,[+2,+18] & $1.000$\\,[$-$7,+7] & $0.031$\\checkmark\\,[+3,+18] & $0.008$\\checkmark\\,[+5,+22] & $1.000$\\,[$-$3,+8] & --- \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 733,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "60"
+      ],
+      "text": "\\caption{Profile-injected MuSiQue ($n{=}60$). Cells: $p$\\,[CI\\textsubscript{low}, CI\\textsubscript{high}].}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 734,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "2"
+      ],
+      "text": "\\label{tab:pvalues-musique}\\setlength{\\tabcolsep}{2pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 737,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "8",
+        "0.004",
+        "+7",
+        "+25",
+        "001",
+        "+15",
+        "+37",
+        "1.000",
+        "3",
+        "+8",
+        "0.012",
+        "+5",
+        "+25",
+        "001",
+        "+15",
+        "+37",
+        "001",
+        "+28",
+        "+52",
+        "001",
+        "+10",
+        "+30"
+      ],
+      "text": "Llama 8B    & $0.004$\\checkmark\\,[+7,+25] & $<\\!.001$\\checkmark\\,[+15,+37] & $1.000$\\,[$-$3,+8] & $0.012$\\checkmark\\,[+5,+25] & $<\\!.001$\\checkmark\\,[+15,+37] & $<\\!.001$\\checkmark\\,[+28,+52] & $<\\!.001$\\checkmark\\,[+10,+30] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 738,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "70",
+        "0.008",
+        "+5",
+        "+23",
+        "001",
+        "+10",
+        "+28",
+        "1.000",
+        "5",
+        "+5",
+        "0.004",
+        "+7",
+        "+25",
+        "0.004",
+        "+7",
+        "+25",
+        "001",
+        "+17",
+        "+38",
+        "001",
+        "+30",
+        "+55"
+      ],
+      "text": "Llama 70B   & $0.008$\\checkmark\\,[+5,+23] & $<\\!.001$\\checkmark\\,[+10,+28] & $1.000$\\,[$-$5,+5] & $0.004$\\checkmark\\,[+7,+25] & $0.004$\\checkmark\\,[+7,+25] & $<\\!.001$\\checkmark\\,[+17,+38] & $<\\!.001$\\checkmark\\,[+30,+55] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 739,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "12",
+        "001",
+        "+10",
+        "+30",
+        "001",
+        "+18",
+        "+42",
+        "0.219",
+        "+0",
+        "+15",
+        "0.002",
+        "+8",
+        "+32",
+        "001",
+        "+13",
+        "+35",
+        "0.006",
+        "+7",
+        "+27",
+        "0.007",
+        "+8",
+        "+35"
+      ],
+      "text": "Mistral 12B & $<\\!.001$\\checkmark\\,[+10,+30] & $<\\!.001$\\checkmark\\,[+18,+42] & $0.219$\\,[+0,+15] & $0.002$\\checkmark\\,[+8,+32] & $<\\!.001$\\checkmark\\,[+13,+35] & $0.006$\\checkmark\\,[+7,+27] & $0.007$\\checkmark\\,[+8,+35] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 740,
+      "section": "Full Per-Cell Statistical Tables",
+      "numbers": [
+        "7",
+        "0.250",
+        "+0",
+        "+12",
+        "0.002",
+        "+10",
+        "+33",
+        "1.000",
+        "3",
+        "+7",
+        "0.508",
+        "5",
+        "+15",
+        "001",
+        "+10",
+        "+30",
+        "0.146",
+        "2",
+        "+22",
+        "1.000",
+        "14",
+        "+23"
+      ],
+      "text": "Qwen 7B     & $0.250$\\,[+0,+12] & $0.002$\\checkmark\\,[+10,+33] & $1.000$\\,[$-$3,+7] & $0.508$\\,[$-$5,+15] & $<\\!.001$\\checkmark\\,[+10,+30] & $0.146$\\,[$-$2,+22] & $1.000$\\,[$-$14,+23] \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 744,
+      "section": "Synthetic Benchmark Details",
+      "numbers": [
+        "8",
+        "-15",
+        "2.0",
+        "60"
+      ],
+      "text": "The synthetic \\dagg generator constructs random DAGs of 8--15 nodes by sampling node provenances from the empirical mix observed in development trajectories, sampling edges to satisfy a target average in-degree of 2.0, and injecting one or more known faulty assumptions whose downstream effects propagate to a deterministic verifier. The verifier checks whether the trajectory output satisfies a set of compositional constraints derived from the gold graph. We generate 60 such graphs per condition. In \\texttt{single\\_fault}, exactly one ancestor is faulty; in \\texttt{multi\\_valid}, multiple ancestors can each independently resolve the violation but at different downstream edit costs.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 751,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "36"
+      ],
+      "text": "\\caption{Real-TravelPlanner ($n{=}36$ per cell after merging seeds; success rate \\%).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 754,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "8",
+        "52.8",
+        "52.8",
+        "80.6",
+        "47.2",
+        "52.8",
+        "74.2",
+        "63.6",
+        "66.7"
+      ],
+      "text": "Llama 8B    & 52.8 & 52.8 & \\textbf{80.6} & 47.2 & 52.8 & \\underline{74.2} & 63.6 & 66.7 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 755,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "70",
+        "25.0",
+        "22.2",
+        "25.0",
+        "25.0",
+        "41.7",
+        "34.5",
+        "36.1",
+        "33.3"
+      ],
+      "text": "Llama 70B   & 25.0 & 22.2 & 25.0 & 25.0 & \\textbf{41.7} & 34.5 & 36.1 & \\underline{33.3} \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 756,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "12",
+        "25.0",
+        "27.8",
+        "41.7",
+        "19.4",
+        "36.1",
+        "22.6",
+        "0.0",
+        "27.8"
+      ],
+      "text": "Mistral 12B & 25.0 & 27.8 & \\textbf{41.7} & 19.4 & \\underline{36.1} & 22.6 & 0.0 & 27.8 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 757,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "7",
+        "41.7",
+        "41.7",
+        "66.7",
+        "38.9",
+        "52.8",
+        "34.4",
+        "36.1",
+        "54.3"
+      ],
+      "text": "Qwen 7B     & 41.7 & 41.7 & \\textbf{66.7} & 38.9 & \\underline{52.8} & 34.4 & 36.1 & 54.3 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 760,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "70",
+        "33.3",
+        "25.0",
+        "0.180"
+      ],
+      "text": "\\method records one numerical win on Llama 70\\,B (33.3\\% vs.\\ Reflexion 25.0\\%) and three NS losses (all $p \\geq 0.180$). Short trajectories with few model-inferred assumption nodes reduce the value of structured attribution.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 762,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "44.4",
+        "94.4",
+        "91.1"
+      ],
+      "text": "\\paragraph{Calibration to the official TravelPlanner evaluator.} We caveat the absolute numbers above. Our success criterion is a permissive subset of the official TravelPlanner evaluator: we apply only the dataset's hard-constraint predicates (budget, allergies, transportation rules, room counts, and accommodation/cuisine includes) plus our injected profile-violation predicates. We do \\emph{not} apply the official evaluator's commonsense-constraint pass (e.g., realistic transit times, consistent attraction-to-attraction scheduling, no overnight transit between cities) nor the environmental-constraint pass (validity of the returned restaurants, attractions, and accommodations against the dataset's reference databases). The official evaluator's \\emph{Final Pass Rate} requires all three layers (hard + commonsense + environmental) to pass simultaneously; under that stricter rubric, recent specialized planners (ATLAS~\\cite{choi2025atlas}: 44.4\\%, Behavior Forest~\\cite{yuan2026behaviorforest}: up to 94.4\\%, TriFlow~\\cite{chen2026triflow}: 91.1\\%) substantially outperform any general-purpose self-correction baseline including \\method.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 764,
+      "section": "TravelPlanner Results",
+      "numbers": [
+        "80.6",
+        "8"
+      ],
+      "text": "The 80.6\\% Reflexion rate on Llama 8\\,B in our table should not be read as a state-of-the-art TravelPlanner result---it reflects only that, on the subset of constraints we score, Reflexion's full-trajectory regeneration tends to satisfy the explicit hard constraints we retained. This appendix is included to complete the per-method comparison on user-conditioned benchmarks, not to claim a TravelPlanner accuracy result. The relevant comparison is the within-row $\\Delta$ between methods evaluated on the identical predicate set; the absolute level is uncalibrated against the official benchmark.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 770,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "1",
+        "3",
+        "1",
+        "3",
+        "5",
+        "3",
+        "1",
+        "5"
+      ],
+      "text": "To examine the non-obvious finding that $M{=}1$ outperforms $M{=}3$, we extend the sweep to $M \\in \\{1, 3, 5\\}$ on the four ablation cells. Holding all other components at their default values, the mean success rate decreases at $M{=}3$ and remains below the $M{=}1$ baseline at $M{=}5$, but the per-cell pattern is non-monotone (Table~\\ref{tab:m-sweep}).",
+      "table_refs": [
+        "tab:m-sweep"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 773,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "1",
+        "36",
+        "5",
+        "60",
+        "180"
+      ],
+      "text": "\\caption{$M$-sweep on the four ablation cells. Cells are absolute success rate (\\%); right column is the mean delta vs $M{=}1$. The TruthfulQA cells use $n{=}36$ paired trials per cell at $M{=}5$ due to API-budget exhaustion during the sweep (other rows use the full $n{=}60$ or $n{=}180$).}",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 774,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "4"
+      ],
+      "text": "\\label{tab:m-sweep}\\setlength{\\tabcolsep}{4pt}",
+      "table_refs": [],
+      "status": "LAYOUT_OR_SYNTAX"
+    },
+    {
+      "line": 776,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "2"
+      ],
+      "text": "$M$ & TruthQA$\\times$Mist & TruthQA$\\times$Qwen & 2Wiki$\\times$Mist & LongMem$\\times$Llama8B & Mean $\\Delta$ \\\\\\midrule",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 777,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "1",
+        "86.1",
+        "77.8",
+        "96.7",
+        "78.3",
+        "0.0"
+      ],
+      "text": "1 (default) & 86.1 & 77.8 & 96.7 & 78.3 & 0.0 \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 778,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "3",
+        "80.6",
+        "66.7",
+        "96.7",
+        "75.0",
+        "-5.0"
+      ],
+      "text": "3           & 80.6 & 66.7 & 96.7 & 75.0 & $-5.0$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 779,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "5",
+        "72.2",
+        "66.7",
+        "96.7",
+        "78.3",
+        "-6.3"
+      ],
+      "text": "5           & 72.2 & 66.7 & 96.7 & 78.3 & $-6.3$ \\\\",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "line": 782,
+      "section": "$M$-Sweep Detail",
+      "numbers": [
+        "86.1",
+        "80.6",
+        "72.2",
+        "3",
+        "2",
+        "8",
+        "3",
+        "1",
+        "5",
+        "1",
+        "2",
+        "1"
+      ],
+      "text": "The mean trend is decreasing in $M$ but the per-cell pattern is non-monotone, which is the diagnostic signal we discuss in \u00a7\\ref{sec:ablations}. Per-cell behavior: TruthfulQA $\\times$ Mistral shows a monotone decrease (86.1 $\\to$ 80.6 $\\to$ 72.2); TruthfulQA $\\times$ Qwen drops at $M{=}3$ then plateaus; 2Wiki $\\times$ Mistral is at the saturation ceiling and does not move; \\textbf{LongMemEval $\\times$ Llama 8B drops at $M{=}3$ then recovers to the $M{=}1$ value at $M{=}5$}. The recovery on LongMemEval is the diagnostic that rules out a simple i.i.d.\\ Bernoulli interpretation: under that model, $\\hat{r}_i$ would have variance $\\theta_i(1-\\theta_i)/M$, monotone-decreasing in $M$, and accuracy should improve (or at minimum not recover non-monotonically) as $M$ grows. The pattern is more consistent with the within-candidate trials being correlated rather than independent (shared prompt context, shared decoding trace), so larger $M$ does not realize the variance reduction the i.i.d.\\ model would predict and instead introduces small misranking events on cells with closely matched priors (TruthfulQA), while having negligible net effect on cells where the prior already strongly discriminates (2Wiki and LongMemEval). Variance-reduced or seed-diversified counterfactual sampling are the natural next steps; we use $M{=}1$ as the empirical operating point of the current framework.",
+      "table_refs": [],
+      "status": "REVIEW_REQUIRED"
+    }
+  ],
+  "findings": [
+    {
+      "code": "HEADLINE_SCOPE",
+      "lines": [
+        209,
+        257,
+        340
+      ],
+      "status": "BLOCKED",
+      "reason": "Jihan owns reconciliation; pure SPR and mixed provenance are separate review packages.",
+      "source": "paper_sections/generated/jazz_12/summary.json; jazz_16/summary.json"
+    },
+    {
+      "code": "HEADLINE_CELL_RECORD",
+      "lines": [
+        45,
+        207
+      ],
+      "status": "BLOCKED",
+      "reason": "Historical cell record disagrees with generated comparison counts; preserve until Jihan chooses scope.",
+      "source": "paper_sections/generated/jazz_12/paired.csv; jazz_16/paired.csv"
+    }
+  ],
+  "undefined_citations": [],
+  "generated_packages": {
+    "12": {
+      "summary": {
+        "scope": 12,
+        "n": 648,
+        "successes": 579,
+        "success_rate": 0.8935185185185185,
+        "paired_n": 648,
+        "paired_is": 0.8935185185185185,
+        "paired_reflexion": 0.8672839506172839,
+        "delta": 0.026234567901234573,
+        "wins": 8,
+        "ties": 2,
+        "losses": 2,
+        "significant_wins": 0,
+        "significant_losses": 0
+      },
+      "stale_sources": []
+    },
+    "16": {
+      "summary": {
+        "scope": 16,
+        "n": 866,
+        "successes": 757,
+        "success_rate": 0.874133949191686,
+        "paired_n": 866,
+        "paired_is": 0.874133949191686,
+        "paired_reflexion": 0.8533487297921478,
+        "delta": 0.020785219399538146,
+        "wins": 10,
+        "ties": 2,
+        "losses": 4,
+        "significant_wins": 0,
+        "significant_losses": 0
+      },
+      "stale_sources": []
+    }
+  },
+  "headline_decision": "RESERVED_FOR_JIHAN",
+  "complete": false
+}

@@ -1,0 +1,430 @@
+{
+  "adaptive_concurrency": {
+    "last_adjustment": 1789669507.66013,
+    "rate_limit_events": [],
+    "recent_rate_limit_events": 0,
+    "target": 32,
+    "updated_utc": "2026-09-18T18:36:22.632572+00:00"
+  },
+  "created_utc": "2026-09-17T14:03:45.852915+00:00",
+  "jobs": {
+    "hotpotqa_real__llama-3.1-8b:000-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.125911+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__llama-3.1-8b_shard-000-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33455
+    },
+    "hotpotqa_real__llama-3.1-8b:001-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.129058+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__llama-3.1-8b_shard-001-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33456
+    },
+    "hotpotqa_real__mistral-nemo-12b:000-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.134247+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__mistral-nemo-12b_shard-000-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33457
+    },
+    "hotpotqa_real__mistral-nemo-12b:001-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.139817+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__mistral-nemo-12b_shard-001-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33458
+    },
+    "longmemeval_real__llama-3.1-8b:000-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T18:23:30.620721+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_longmemeval_real__llama-3.1-8b_shard-000-of-008.log",
+      "pid": 36635
+    },
+    "longmemeval_real__llama-3.1-8b:001-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T18:23:30.624454+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_longmemeval_real__llama-3.1-8b_shard-001-of-008.log",
+      "pid": 36636
+    },
+    "musique_real__llama-3.1-8b:000-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.343133+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-000-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33475
+    },
+    "musique_real__llama-3.1-8b:001-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.367331+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-001-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33476
+    },
+    "musique_real__llama-3.1-8b:002-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.375824+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-002-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33477
+    },
+    "musique_real__llama-3.1-8b:003-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.393294+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-003-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33478
+    },
+    "musique_real__llama-3.1-8b:004-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.428617+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-004-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33479
+    },
+    "musique_real__llama-3.1-8b:005-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.450844+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-005-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33480
+    },
+    "musique_real__llama-3.1-8b:006-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.482106+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-006-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33481
+    },
+    "musique_real__llama-3.1-8b:007-of-008": {
+      "attempts": 2,
+      "launched_utc": "2026-09-18T16:32:42.681656+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-007-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 35142,
+      "provider_retry_after": 1789755928.908798
+    },
+    "musique_real__mistral-nemo-12b:000-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:37:23.348111+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-000-of-008.log",
+      "pid": 33830
+    },
+    "musique_real__mistral-nemo-12b:001-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:37:53.478731+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-001-of-008.log",
+      "pid": 33836
+    },
+    "musique_real__mistral-nemo-12b:002-of-008": {
+      "attempts": 2,
+      "launched_utc": "2026-09-18T16:41:45.123704+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-002-of-008.log",
+      "pid": 35364
+    },
+    "musique_real__mistral-nemo-12b:003-of-008": {
+      "attempts": 2,
+      "launched_utc": "2026-09-18T16:44:46.725125+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-003-of-008.log",
+      "pid": 35503
+    },
+    "musique_real__mistral-nemo-12b:004-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T16:34:13.132637+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-004-of-008.log",
+      "pid": 35165
+    },
+    "musique_real__mistral-nemo-12b:005-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T16:46:17.129893+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-005-of-008.log",
+      "pid": 35534
+    },
+    "musique_real__mistral-nemo-12b:006-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T16:57:20.547474+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-006-of-008.log",
+      "pid": 35943
+    },
+    "musique_real__mistral-nemo-12b:007-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T18:23:30.616263+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-007-of-008.log",
+      "pid": 36634
+    },
+    "truthfulqa_real__llama-3.1-8b:000-of-002": {
+      "attempts": 1,
+      "discovered_utc": "2026-09-17T19:12:24.804543+00:00",
+      "launched_utc": "2026-09-18T15:33:21.109051+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__llama-3.1-8b_shard-000-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33451,
+      "provider_retry_after": 1789755928.908798
+    },
+    "truthfulqa_real__llama-3.1-8b:001-of-002": {
+      "attempts": 2,
+      "launched_utc": "2026-09-18T16:32:42.634949+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__llama-3.1-8b_shard-001-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 35140
+    },
+    "truthfulqa_real__mistral-nemo-12b:000-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.119395+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__mistral-nemo-12b_shard-000-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33453
+    },
+    "truthfulqa_real__mistral-nemo-12b:001-of-002": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.123245+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__mistral-nemo-12b_shard-001-of-002.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33454
+    },
+    "twowiki_real__llama-3.1-8b:000-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.142955+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-000-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33459,
+      "provider_retry_after": 1789755928.908798
+    },
+    "twowiki_real__llama-3.1-8b:001-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.146788+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-001-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33460
+    },
+    "twowiki_real__llama-3.1-8b:002-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.158757+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-002-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33461
+    },
+    "twowiki_real__llama-3.1-8b:003-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.171719+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-003-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33462
+    },
+    "twowiki_real__llama-3.1-8b:004-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.180674+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-004-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33463
+    },
+    "twowiki_real__llama-3.1-8b:005-of-008": {
+      "attempts": 16,
+      "launched_utc": "2026-09-18T16:44:16.589215+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-005-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 35492
+    },
+    "twowiki_real__llama-3.1-8b:006-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.221648+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-006-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33465
+    },
+    "twowiki_real__llama-3.1-8b:007-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.230251+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-007-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33466
+    },
+    "twowiki_real__mistral-nemo-12b:000-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.237803+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-000-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33467
+    },
+    "twowiki_real__mistral-nemo-12b:001-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.244847+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-001-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33468
+    },
+    "twowiki_real__mistral-nemo-12b:002-of-008": {
+      "attempts": 16,
+      "launched_utc": "2026-09-18T16:33:42.992269+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-002-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 35161
+    },
+    "twowiki_real__mistral-nemo-12b:003-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.287082+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-003-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33470
+    },
+    "twowiki_real__mistral-nemo-12b:004-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.294177+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-004-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33471
+    },
+    "twowiki_real__mistral-nemo-12b:005-of-008": {
+      "attempts": 16,
+      "launched_utc": "2026-09-18T16:56:50.395920+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-005-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 35938
+    },
+    "twowiki_real__mistral-nemo-12b:006-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.311099+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-006-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33473
+    },
+    "twowiki_real__mistral-nemo-12b:007-of-008": {
+      "attempts": 1,
+      "launched_utc": "2026-09-18T15:33:21.320766+00:00",
+      "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-007-of-008.log",
+      "migrated_retry_v2_utc": "2026-09-18T02:53:51Z",
+      "pid": 33474
+    }
+  },
+  "provider_health": {
+    "checked_utc": "2026-09-18T18:33:51.720128+00:00",
+    "ok": true,
+    "probe_http_status": 200,
+    "remaining": 91.956811407,
+    "usage": 8.043188593
+  },
+  "retry_protocol_version": "AMENDED_RECOVERY_V2",
+  "samples": [
+    {
+      "completed": 32624,
+      "time": 1789755286.697509
+    },
+    {
+      "completed": 32651,
+      "time": 1789755359.1933172
+    },
+    {
+      "completed": 32651,
+      "time": 1789755526.0317929
+    },
+    {
+      "completed": 32675,
+      "time": 1789755556.212645
+    },
+    {
+      "completed": 32678,
+      "time": 1789755810.77046
+    },
+    {
+      "completed": 32688,
+      "time": 1789755858.4123352
+    },
+    {
+      "completed": 32707,
+      "time": 1789755888.570414
+    },
+    {
+      "completed": 32739,
+      "time": 1789755918.735035
+    },
+    {
+      "completed": 32779,
+      "time": 1789755948.890047
+    },
+    {
+      "completed": 32820,
+      "time": 1789755979.0443158
+    },
+    {
+      "completed": 32841,
+      "time": 1789756009.206719
+    },
+    {
+      "completed": 32859,
+      "time": 1789756039.3664079
+    },
+    {
+      "completed": 32866,
+      "time": 1789756069.556256
+    },
+    {
+      "completed": 32899,
+      "time": 1789756099.73385
+    },
+    {
+      "completed": 32909,
+      "time": 1789756129.889888
+    },
+    {
+      "completed": 32928,
+      "time": 1789756160.0401971
+    },
+    {
+      "completed": 32945,
+      "time": 1789756190.19362
+    },
+    {
+      "completed": 32955,
+      "time": 1789756220.364578
+    },
+    {
+      "completed": 32971,
+      "time": 1789756250.525098
+    },
+    {
+      "completed": 32995,
+      "time": 1789756280.690088
+    },
+    {
+      "completed": 33024,
+      "time": 1789756310.865152
+    },
+    {
+      "completed": 33052,
+      "time": 1789756341.022453
+    },
+    {
+      "completed": 33090,
+      "time": 1789756371.1677032
+    },
+    {
+      "completed": 33143,
+      "time": 1789756401.313726
+    },
+    {
+      "completed": 33216,
+      "time": 1789756431.891249
+    },
+    {
+      "completed": 33277,
+      "time": 1789756462.063689
+    },
+    {
+      "completed": 33327,
+      "time": 1789756492.308673
+    },
+    {
+      "completed": 33390,
+      "time": 1789756522.468433
+    },
+    {
+      "completed": 33432,
+      "time": 1789756552.621908
+    },
+    {
+      "completed": 33481,
+      "time": 1789756582.760074
+    }
+  ]
+}

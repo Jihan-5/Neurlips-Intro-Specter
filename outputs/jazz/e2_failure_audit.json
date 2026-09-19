@@ -1,0 +1,161 @@
+{
+  "generated_utc": "2026-09-17T12:49:35.704969+00:00",
+  "analysis_only": true,
+  "mutated_experiment_outputs": false,
+  "integrity": {
+    "cells": [
+      {
+        "cell": "hotpotqa_real__llama-3.1-8b",
+        "physical_rows": 3609,
+        "unique_rows": 3609,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 1,
+        "source_sha256": "cc5d01785a035ce35dfd90aa2c7ac40ad42ef9dba65e837b2bcf488186625014"
+      },
+      {
+        "cell": "hotpotqa_real__mistral-nemo-12b",
+        "physical_rows": 3609,
+        "unique_rows": 3609,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 1,
+        "source_sha256": "71700154bc5601e81617c1e564df38b1f94c0a0ec865523bec604d94d96a821d"
+      },
+      {
+        "cell": "longmemeval_real__llama-3.1-8b",
+        "physical_rows": 4390,
+        "unique_rows": 4390,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 0,
+        "source_sha256": "9bbc7e4c65b44d99482920d4e25e6e7914d9b86a2ad61723123900110bb8240e"
+      },
+      {
+        "cell": "longmemeval_real__mistral-nemo-12b",
+        "physical_rows": 8334,
+        "unique_rows": 8166,
+        "duplicate_keys": 168,
+        "extra_rows": 168,
+        "conflicting_duplicate_keys": 168,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 2,
+        "source_sha256": "af7bc0eeb5ea4d7fccaf20c8c23e5593f81af3a3ece15090c3151cee32f18ee6"
+      },
+      {
+        "cell": "musique_real__llama-3.1-8b",
+        "physical_rows": 7793,
+        "unique_rows": 7793,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 2,
+        "source_sha256": "bc235f77309b847c1da05384a9f7686e64993fcbf088b33e6657ed17aa2e3d86"
+      },
+      {
+        "cell": "musique_real__mistral-nemo-12b",
+        "physical_rows": 9580,
+        "unique_rows": 9270,
+        "duplicate_keys": 310,
+        "extra_rows": 310,
+        "conflicting_duplicate_keys": 310,
+        "profile_hash_conflicts": 6,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 2,
+        "source_sha256": "2658c79cbf7a9e18a09ecaa22b4c77fe54328c22b0f2a6ebf2b8cfebcf5cd57f"
+      },
+      {
+        "cell": "truthfulqa_real__llama-3.1-8b",
+        "physical_rows": 3609,
+        "unique_rows": 3609,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 0,
+        "source_sha256": "251497d9f2334f11974e2cec024c19cd19021c2a4629caa9c6725ec5e30d9db3"
+      },
+      {
+        "cell": "truthfulqa_real__mistral-nemo-12b",
+        "physical_rows": 3600,
+        "unique_rows": 3600,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 0,
+        "source_sha256": "b79b47abd9a91d7c2c9438e0077fd15a58c56e23115b5f8050babb3b288f9c96"
+      },
+      {
+        "cell": "twowiki_real__llama-3.1-8b",
+        "physical_rows": 8666,
+        "unique_rows": 8666,
+        "duplicate_keys": 0,
+        "extra_rows": 0,
+        "conflicting_duplicate_keys": 0,
+        "profile_hash_conflicts": 0,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 2,
+        "source_sha256": "954c70cd590e96cebacf384cfbd7b0a7077ca8d73bf1c757f119dde78537ad90"
+      },
+      {
+        "cell": "twowiki_real__mistral-nemo-12b",
+        "physical_rows": 13058,
+        "unique_rows": 12647,
+        "duplicate_keys": 411,
+        "extra_rows": 411,
+        "conflicting_duplicate_keys": 407,
+        "profile_hash_conflicts": 9,
+        "malformed_rows": 0,
+        "observed_top_level_launch_headers": 2,
+        "source_sha256": "c32b47a83668b5cfa384543c21119b43ddc97db547975ee2d62ea2c1bd678909"
+      }
+    ],
+    "conflicting_cells": [
+      "longmemeval_real__mistral-nemo-12b",
+      "musique_real__mistral-nemo-12b",
+      "twowiki_real__mistral-nemo-12b"
+    ],
+    "root_cause": "Two top-level workers were launched against the same append-only cell output. Their resume snapshots overlapped, producing interleaved duplicate logical keys.",
+    "disposition": "Do not select first/last conflicting rows or publish F2; the frozen protocol does not define conflict resolution. Preserve raw files for audit."
+  },
+  "paraphrase_trust": {
+    "reviewed": 30,
+    "preserved": 17,
+    "changed": 13,
+    "human_signoff": false,
+    "trust_gate": "FAILED_MEANING_PRESERVATION",
+    "failed_canonical_counts": {
+      "User strongly dislikes preamble \u2014 answer directly without restating the question.": 7,
+      "User reads at a 6th-grade level \u2014 avoid jargon.": 1,
+      "User does not trust unverified Wikipedia claims \u2014 prefer cited sources.": 1,
+      "User is a domain expert \u2014 use precise technical terminology.": 3,
+      "User wants the answer in a single sentence.": 1
+    },
+    "root_cause": "The generation prompt requests equivalent wording, but acceptance checks only that output is non-empty and no more than four times the input length. It has no entailment or constraint-value preservation check. Multi-clause templates are therefore accepted when the paraphrase retains a premise but drops an imperative.",
+    "disposition": "The current frozen E2 run fails its preregistered meaning-preservation gate. A validator/retry policy would constitute a new protocol and output root.",
+    "review_sha256": "078f4b08d3c23d5efcd40b0d6cfa06fd27da8419dd6d29c0b438031b4cf706ab",
+    "sample_sha256": "eacda823e701ad1cc954dc0930842a73519c744574900f16ba0d33b61424fe51"
+  },
+  "remote_longmemeval_llama": {
+    "checked_ref": "origin/artifacts fetched 2026-09-17",
+    "remote_rows": 4390,
+    "complete_expected_rows": 18000,
+    "complete_artifact_available": false
+  },
+  "f2_permitted": false
+}

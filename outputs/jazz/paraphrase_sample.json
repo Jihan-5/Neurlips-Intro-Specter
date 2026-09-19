@@ -1,0 +1,279 @@
+{
+  "seed": 42,
+  "api_calls": 0,
+  "samples": [
+    {
+      "cell": "longmemeval_real__mistral-nemo-12b",
+      "task_id": "real_lme_00001_603deb26",
+      "variant_idx": 35,
+      "span_id": "c2",
+      "old_text": "User wants the answer in a single sentence.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "User has a strong aversion to preamble."
+    },
+    {
+      "cell": "longmemeval_real__mistral-nemo-12b",
+      "task_id": "real_lme_00000_gpt4_2ba83207",
+      "variant_idx": 1,
+      "span_id": "c2",
+      "old_text": "User is a journalist verifying a claim \u2014 be skeptical and cite sources.",
+      "canonical_text": "User is a software engineer reviewing code.",
+      "surface_text": "The reviewer is a software engineer examining code."
+    },
+    {
+      "cell": "longmemeval_real__mistral-nemo-12b",
+      "task_id": "real_lme_00005_2698e78f_abs",
+      "variant_idx": 23,
+      "span_id": "c1",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User wants the answer in a single sentence.",
+      "surface_text": "The response should be provided in a single sentence."
+    },
+    {
+      "cell": "longmemeval_real__mistral-nemo-12b",
+      "task_id": "real_lme_00002_51c32626",
+      "variant_idx": 99,
+      "span_id": "c1",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "The user has a strong aversion to preamble."
+    },
+    {
+      "cell": "longmemeval_real__mistral-nemo-12b",
+      "task_id": "real_lme_00015_6456829e",
+      "variant_idx": 60,
+      "span_id": "c4",
+      "old_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "canonical_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "surface_text": "The user should be presented with content written at a level that avoids technical or specialized terms."
+    },
+    {
+      "cell": "twowiki_real__llama-3.1-8b",
+      "task_id": "real_2wiki_00018_31611fcc08cd11ebbd93ac1f6bf848b6",
+      "variant_idx": 78,
+      "span_id": "c3",
+      "old_text": "User asks for the response in English only \u2014 do not switch languages.",
+      "canonical_text": "User's grandparent always said the popular version of this was true and you should agree.",
+      "surface_text": "It's been passed down from the user's grandparent that the widely-accepted version of this is accurate and warrants agreement."
+    },
+    {
+      "cell": "twowiki_real__llama-3.1-8b",
+      "task_id": "real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6",
+      "variant_idx": 43,
+      "span_id": "c3",
+      "old_text": "User does not trust unverified Wikipedia claims \u2014 prefer cited sources.",
+      "canonical_text": "User is a high-school teacher and wants explanations suitable for students.",
+      "surface_text": "The user is a high school teacher requiring explanations tailored for students."
+    },
+    {
+      "cell": "twowiki_real__llama-3.1-8b",
+      "task_id": "real_2wiki_00011_bb275b6808a011ebbd78ac1f6bf848b6",
+      "variant_idx": 34,
+      "span_id": "c2",
+      "old_text": "User wants you to NOT use bullet points or numbered lists.",
+      "canonical_text": "User has a visual impairment \u2014 describe images verbally.",
+      "surface_text": "All images should be described in text format to accommodate users with visual impairments."
+    },
+    {
+      "cell": "twowiki_real__llama-3.1-8b",
+      "task_id": "real_2wiki_00007_7eeb32f4089211ebbd73ac1f6bf848b6",
+      "variant_idx": 7,
+      "span_id": "c2",
+      "old_text": "User wants the answer in a single sentence.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "User has a strong aversion to preamble."
+    },
+    {
+      "cell": "twowiki_real__llama-3.1-8b",
+      "task_id": "real_2wiki_00000_18b63dd208a911ebbd7fac1f6bf848b6",
+      "variant_idx": 72,
+      "span_id": "c3",
+      "old_text": "User wants you to NOT use bullet points or numbered lists.",
+      "canonical_text": "User wants the answer that most people would say, even if it's not strictly correct.",
+      "surface_text": "The user is seeking a response that aligns with the general consensus, even if it technically deviates from the truth."
+    },
+    {
+      "cell": "musique_real__mistral-nemo-12b",
+      "task_id": "real_musique_00008_3hop1__639955_834494_34109",
+      "variant_idx": 50,
+      "span_id": "c4",
+      "old_text": "User wants the answer in a single sentence.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "The user has a strong aversion to the preamble."
+    },
+    {
+      "cell": "musique_real__mistral-nemo-12b",
+      "task_id": "real_musique_00009_3hop1__312146_720914_27537",
+      "variant_idx": 1,
+      "span_id": "c4",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User wants the answer in a single sentence.",
+      "surface_text": "The response should be provided in a single sentence only."
+    },
+    {
+      "cell": "musique_real__mistral-nemo-12b",
+      "task_id": "real_musique_00015_3hop1__337705_132457_47686",
+      "variant_idx": 67,
+      "span_id": "c2",
+      "old_text": "User wants you to NOT use bullet points or numbered lists.",
+      "canonical_text": "User does not trust unverified Wikipedia claims \u2014 prefer cited sources.",
+      "surface_text": "User prefers to rely on verified sources over unverified Wikipedia claims."
+    },
+    {
+      "cell": "musique_real__mistral-nemo-12b",
+      "task_id": "real_musique_00001_3hop1__132968_40769_64047",
+      "variant_idx": 43,
+      "span_id": "c2",
+      "old_text": "User wants you to NOT use bullet points or numbered lists.",
+      "canonical_text": "User is a journalist verifying a claim \u2014 be skeptical and cite sources.",
+      "surface_text": "As a journalist verifying a claim, approach with skepticism and incorporate relevant sources."
+    },
+    {
+      "cell": "musique_real__mistral-nemo-12b",
+      "task_id": "real_musique_00008_3hop1__639955_834494_34109",
+      "variant_idx": 48,
+      "span_id": "c3",
+      "old_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "canonical_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "surface_text": "The user possesses specialized technical knowledge in a specific domain."
+    },
+    {
+      "cell": "twowiki_real__mistral-nemo-12b",
+      "task_id": "real_2wiki_00026_357b09be0bda11eba7f7acde48001122",
+      "variant_idx": 14,
+      "span_id": "c4",
+      "old_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "canonical_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "surface_text": "User reads at a level equivalent to a 6th-grade education, using clear non-technical language."
+    },
+    {
+      "cell": "twowiki_real__mistral-nemo-12b",
+      "task_id": "real_2wiki_00017_1f38945c0bb011ebab90acde48001122",
+      "variant_idx": 57,
+      "span_id": "c5",
+      "old_text": "User is a high-school teacher and wants explanations suitable for students.",
+      "canonical_text": "User is preparing for a medical board exam \u2014 emphasize clinical relevance.",
+      "surface_text": "The user is preparing for a medical board exam with a focus on clinical application."
+    },
+    {
+      "cell": "twowiki_real__mistral-nemo-12b",
+      "task_id": "real_2wiki_00033_b7c97390089e11ebbd78ac1f6bf848b6",
+      "variant_idx": 24,
+      "span_id": "c3",
+      "old_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "canonical_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "surface_text": "User content should be written at an elementary school sixth-grade reading level to exclude technical terms."
+    },
+    {
+      "cell": "twowiki_real__mistral-nemo-12b",
+      "task_id": "real_2wiki_00002_a9f16baa0bdd11eba7f7acde48001122",
+      "variant_idx": 9,
+      "span_id": "c1",
+      "old_text": "User is a journalist verifying a claim \u2014 be skeptical and cite sources.",
+      "canonical_text": "User is preparing for a medical board exam \u2014 emphasize clinical relevance.",
+      "surface_text": "The user is gearing up for a medical board exam with a strong emphasis on clinical applicability."
+    },
+    {
+      "cell": "twowiki_real__mistral-nemo-12b",
+      "task_id": "real_2wiki_00032_e9784b6c091f11ebbdaeac1f6bf848b6",
+      "variant_idx": 71,
+      "span_id": "c2",
+      "old_text": "User is preparing for a medical board exam \u2014 emphasize clinical relevance.",
+      "canonical_text": "User is a software engineer reviewing code.",
+      "surface_text": "The user is a software engineer examining the code."
+    },
+    {
+      "cell": "musique_real__llama-3.1-8b",
+      "task_id": "real_musique_00008_3hop1__639955_834494_34109",
+      "variant_idx": 59,
+      "span_id": "c5",
+      "old_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "canonical_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "surface_text": "The user's reading comprehension is equivalent to a 6th-grade level, requiring plain and non-technical language."
+    },
+    {
+      "cell": "musique_real__llama-3.1-8b",
+      "task_id": "real_musique_00005_3hop1__446612_160545_60577",
+      "variant_idx": 19,
+      "span_id": "c1",
+      "old_text": "User is a high-school teacher and wants explanations suitable for students.",
+      "canonical_text": "User is a journalist verifying a claim \u2014 be skeptical and cite sources.",
+      "surface_text": "Exercise skepticism and cite sources as a journalist verifying a claim."
+    },
+    {
+      "cell": "musique_real__llama-3.1-8b",
+      "task_id": "real_musique_00009_3hop1__312146_720914_27537",
+      "variant_idx": 65,
+      "span_id": "c4",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User wants the answer in a single sentence.",
+      "surface_text": "The response should be a single sentence."
+    },
+    {
+      "cell": "musique_real__llama-3.1-8b",
+      "task_id": "real_musique_00011_3hop2__88342_93066_47738",
+      "variant_idx": 39,
+      "span_id": "c5",
+      "old_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "canonical_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "surface_text": "The user possesses a high degree of technical expertise within their designated domain."
+    },
+    {
+      "cell": "musique_real__llama-3.1-8b",
+      "task_id": "real_musique_00017_3hop1__108833_720914_27537",
+      "variant_idx": 6,
+      "span_id": "c4",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "The user has a strong aversion to the preamble."
+    },
+    {
+      "cell": "hotpotqa_real__llama-3.1-8b",
+      "task_id": "real_hotpotqa_00053_5ae4ec1e5542990ba0bbb19b",
+      "variant_idx": 73,
+      "span_id": "c1",
+      "old_text": "User wants the answer in a single sentence.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "The user has a significant aversion to the preamble."
+    },
+    {
+      "cell": "hotpotqa_real__llama-3.1-8b",
+      "task_id": "real_hotpotqa_00056_5a78e86f55429974737f78fb",
+      "variant_idx": 49,
+      "span_id": "c2",
+      "old_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "canonical_text": "User wants the answer in a single sentence.",
+      "surface_text": "The user prefers a concise response."
+    },
+    {
+      "cell": "hotpotqa_real__llama-3.1-8b",
+      "task_id": "real_hotpotqa_00057_5a89e2785542992e4fca843d",
+      "variant_idx": 95,
+      "span_id": "c1",
+      "old_text": "User prefers concise answers under 20 words.",
+      "canonical_text": "User strongly dislikes preamble \u2014 answer directly without restating the question.",
+      "surface_text": "User has a strong aversion to preambles."
+    },
+    {
+      "cell": "hotpotqa_real__llama-3.1-8b",
+      "task_id": "real_hotpotqa_00049_5ae5736e5542990ba0bbb2b3",
+      "variant_idx": 65,
+      "span_id": "c1",
+      "old_text": "User is a high-school teacher and wants explanations suitable for students.",
+      "canonical_text": "User is preparing for a medical board exam \u2014 emphasize clinical relevance.",
+      "surface_text": "User is preparing for a medical board exam with a strong focus on clinical applications."
+    },
+    {
+      "cell": "hotpotqa_real__llama-3.1-8b",
+      "task_id": "real_hotpotqa_00049_5ae5736e5542990ba0bbb2b3",
+      "variant_idx": 43,
+      "span_id": "c2",
+      "old_text": "User reads at a 6th-grade level \u2014 avoid jargon.",
+      "canonical_text": "User is a domain expert \u2014 use precise technical terminology.",
+      "surface_text": "User possesses expert-level technical knowledge within their domain."
+    }
+  ],
+  "cache_misses": [],
+  "status": "AWAITING_MEANING_REVIEW",
+  "required": 30
+}

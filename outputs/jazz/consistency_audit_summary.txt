@@ -1,0 +1,9 @@
+{
+  "numeric_lines": 202,
+  "unresolved_findings": 2,
+  "undefined_citations": [],
+  "stale_generated_sources": {
+    "12": [],
+    "16": []
+  }
+}

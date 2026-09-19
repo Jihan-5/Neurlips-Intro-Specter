@@ -1,0 +1,24 @@
+{
+  "frozen_utc": "2026-09-17T13:23:00Z",
+  "root": "outputs/rebuttal/profile_bootstrap",
+  "immutable_failed_run": true,
+  "termination": {
+    "signal": "SIGTERM",
+    "writer_pids": [65587, 65588, 65589, 65590, 65591],
+    "all_stopped_gracefully": true,
+    "open_output_descriptors_after_stop": 0,
+    "coordinator_pid_preserved": 36510
+  },
+  "files": [
+    {"cell":"hotpotqa_real__llama-3.1-8b","physical_rows":3609,"unique_keys":3609,"sha256":"cc5d01785a035ce35dfd90aa2c7ac40ad42ef9dba65e837b2bcf488186625014"},
+    {"cell":"hotpotqa_real__mistral-nemo-12b","physical_rows":3609,"unique_keys":3609,"sha256":"71700154bc5601e81617c1e564df38b1f94c0a0ec865523bec604d94d96a821d"},
+    {"cell":"longmemeval_real__llama-3.1-8b","physical_rows":4390,"unique_keys":4390,"sha256":"9bbc7e4c65b44d99482920d4e25e6e7914d9b86a2ad61723123900110bb8240e"},
+    {"cell":"longmemeval_real__mistral-nemo-12b","physical_rows":8499,"unique_keys":8331,"sha256":"affda6308866335093179ece2c39ed814509996aefc4f5c8cc5bc0f229596308"},
+    {"cell":"musique_real__llama-3.1-8b","physical_rows":7952,"unique_keys":7952,"sha256":"33d613a91b481fc6b60e04dc441e26ba46416379303dffa77015dfdbe375b79f"},
+    {"cell":"musique_real__mistral-nemo-12b","physical_rows":9725,"unique_keys":9415,"sha256":"51fdba53c92430237e976ee74b43475d111fdab73a700b501524b2bcaf208650"},
+    {"cell":"truthfulqa_real__llama-3.1-8b","physical_rows":3609,"unique_keys":3609,"sha256":"251497d9f2334f11974e2cec024c19cd19021c2a4629caa9c6725ec5e30d9db3"},
+    {"cell":"truthfulqa_real__mistral-nemo-12b","physical_rows":3600,"unique_keys":3600,"sha256":"b79b47abd9a91d7c2c9438e0077fd15a58c56e23115b5f8050babb3b288f9c96"},
+    {"cell":"twowiki_real__llama-3.1-8b","physical_rows":8828,"unique_keys":8828,"sha256":"1fe2c6971dc4f1ba9768c98550ae0e39596078a39f523ffb7d71cee184988b05"},
+    {"cell":"twowiki_real__mistral-nemo-12b","physical_rows":13245,"unique_keys":12834,"sha256":"f6ec5095c157d7091c5cb524f518c3c16960f9887b5e33db59ff8fa3e00aee2a"}
+  ]
+}

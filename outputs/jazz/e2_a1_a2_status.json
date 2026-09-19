@@ -1,0 +1,507 @@
+{
+  "active_workers": 0,
+  "balance": {
+    "limit": 100.0,
+    "limit_remaining": 86.059352639,
+    "usage": 13.940647361
+  },
+  "balance_error": null,
+  "blocker": null,
+  "cells": {
+    "longmemeval_real__llama-3.1-8b": {
+      "base_rows": 5230,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1598,
+          "index": 0,
+          "rows": 1598
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 1,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 2,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 3,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 4,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 5,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 6,
+          "rows": 1596
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1596,
+          "index": 7,
+          "rows": 1596
+        }
+      ]
+    },
+    "longmemeval_real__mistral-nemo-12b": {
+      "base_rows": 8319,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1614,
+          "index": 0,
+          "rows": 1614
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1614,
+          "index": 1,
+          "rows": 1614
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1614,
+          "index": 2,
+          "rows": 1614
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1614,
+          "index": 3,
+          "rows": 1614
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1614,
+          "index": 4,
+          "rows": 1614
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1611,
+          "index": 5,
+          "rows": 1611
+        }
+      ]
+    },
+    "musique_real__llama-3.1-8b": {
+      "base_rows": 8298,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 0,
+          "rows": 1617
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 1,
+          "rows": 1617
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 2,
+          "rows": 1617
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 3,
+          "rows": 1617
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 4,
+          "rows": 1617
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1617,
+          "index": 5,
+          "rows": 1617
+        }
+      ]
+    },
+    "musique_real__mistral-nemo-12b": {
+      "base_rows": 9437,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1428,
+          "index": 0,
+          "rows": 1428
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1428,
+          "index": 1,
+          "rows": 1428
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1428,
+          "index": 2,
+          "rows": 1428
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1428,
+          "index": 3,
+          "rows": 1428
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1426,
+          "index": 4,
+          "rows": 1426
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1425,
+          "index": 5,
+          "rows": 1425
+        }
+      ]
+    },
+    "twowiki_real__llama-3.1-8b": {
+      "base_rows": 9115,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1482,
+          "index": 0,
+          "rows": 1482
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1482,
+          "index": 1,
+          "rows": 1482
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1482,
+          "index": 2,
+          "rows": 1482
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1481,
+          "index": 3,
+          "rows": 1481
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1479,
+          "index": 4,
+          "rows": 1479
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1479,
+          "index": 5,
+          "rows": 1479
+        }
+      ]
+    },
+    "twowiki_real__mistral-nemo-12b": {
+      "base_rows": 12861,
+      "expected": 18000,
+      "remaining": 0,
+      "rows": 18000,
+      "shards": [
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1287,
+          "index": 0,
+          "rows": 1287
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1284,
+          "index": 1,
+          "rows": 1284
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1284,
+          "index": 2,
+          "rows": 1284
+        },
+        {
+          "active": false,
+          "complete": true,
+          "expected": 1284,
+          "index": 3,
+          "rows": 1284
+        }
+      ]
+    }
+  },
+  "duplicate_keys": 0,
+  "errors": 34,
+  "eta_seconds": 0.0,
+  "eta_utc": null,
+  "expected": 115200,
+  "malformed_rows": 0,
+  "post_launch_spend": 5.813376603,
+  "protocol": "A1/A2 deterministic disjoint sharding",
+  "rate_limit_events": 0,
+  "recent_rate_limit_events_15m": 0,
+  "remaining": 0,
+  "retries": 70,
+  "rows": 115200,
+  "rows_per_hour": 314.8555987927501,
+  "samples": [
+    [
+      1789834086.684829,
+      114694
+    ],
+    [
+      1789834207.284875,
+      114738
+    ],
+    [
+      1789834327.765005,
+      114762
+    ],
+    [
+      1789834448.2491782,
+      114776
+    ],
+    [
+      1789834568.760513,
+      114792
+    ],
+    [
+      1789834689.2415822,
+      114811
+    ],
+    [
+      1789834809.872343,
+      114832
+    ],
+    [
+      1789834930.375956,
+      114853
+    ],
+    [
+      1789835050.8443332,
+      114873
+    ],
+    [
+      1789835171.3043442,
+      114884
+    ],
+    [
+      1789835291.7688498,
+      114895
+    ],
+    [
+      1789835412.365393,
+      114896
+    ],
+    [
+      1789835532.8254879,
+      114905
+    ],
+    [
+      1789835653.316654,
+      114911
+    ],
+    [
+      1789835773.8054311,
+      114917
+    ],
+    [
+      1789835894.3233511,
+      114927
+    ],
+    [
+      1789836014.959611,
+      114936
+    ],
+    [
+      1789836135.45968,
+      114946
+    ],
+    [
+      1789836255.9544919,
+      114947
+    ],
+    [
+      1789836376.44157,
+      114953
+    ],
+    [
+      1789836496.956507,
+      114962
+    ],
+    [
+      1789836617.539575,
+      114974
+    ],
+    [
+      1789836738.073359,
+      114976
+    ],
+    [
+      1789836858.5423691,
+      114980
+    ],
+    [
+      1789836979.118536,
+      114990
+    ],
+    [
+      1789837099.628105,
+      114998
+    ],
+    [
+      1789837220.258233,
+      115007
+    ],
+    [
+      1789837340.8110468,
+      115011
+    ],
+    [
+      1789837943.741441,
+      115018
+    ],
+    [
+      1789838064.255039,
+      115025
+    ],
+    [
+      1789838184.7404869,
+      115053
+    ],
+    [
+      1789838305.245139,
+      115056
+    ],
+    [
+      1789838425.872054,
+      115076
+    ],
+    [
+      1789838546.3438652,
+      115086
+    ],
+    [
+      1789838666.843116,
+      115112
+    ],
+    [
+      1789838787.3577511,
+      115124
+    ],
+    [
+      1789838907.837573,
+      115133
+    ],
+    [
+      1789839028.577158,
+      115142
+    ],
+    [
+      1789839149.028995,
+      115163
+    ],
+    [
+      1789839269.510227,
+      115182
+    ],
+    [
+      1789839389.984874,
+      115187
+    ],
+    [
+      1789839510.460851,
+      115189
+    ],
+    [
+      1789839631.06646,
+      115190
+    ],
+    [
+      1789839872.194145,
+      115200
+    ]
+  ],
+  "spend_cap": 30.0,
+  "total_shards": 36,
+  "updated_utc": "2026-09-19T17:44:32Z"
+}

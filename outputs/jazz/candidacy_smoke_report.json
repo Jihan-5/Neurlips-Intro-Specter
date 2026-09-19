@@ -1,0 +1,33 @@
+{
+  "cells": [
+    {
+      "cell": "truthfulqa_real__mistral-nemo-12b",
+      "rows": 10,
+      "expected": 10,
+      "paired": 4,
+      "eligible": 0,
+      "recovered": 0,
+      "regressions": 0,
+      "missing_pairs": 0,
+      "added_candidates": 2,
+      "duplicate_rows": 0,
+      "complete": true,
+      "recovery_rate": null,
+      "error_attempts": 0
+    }
+  ],
+  "pooled": {
+    "rows": 10,
+    "expected": 10,
+    "paired": 4,
+    "eligible": 0,
+    "recovered": 0,
+    "regressions": 0,
+    "missing_pairs": 0,
+    "added_candidates": 2,
+    "error_attempts": 0,
+    "recovery_rate": null
+  },
+  "complete": false,
+  "caveat": "Clean-solved corruption-associated failures; the original diagnostic does not establish 100% causal node traceability. Default code already includes profile ancestors."
+}

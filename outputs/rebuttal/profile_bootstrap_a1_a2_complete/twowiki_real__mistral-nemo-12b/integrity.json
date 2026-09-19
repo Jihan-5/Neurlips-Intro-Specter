@@ -1,0 +1,17 @@
+{
+  "cell": "twowiki_real__mistral-nemo-12b",
+  "source": "outputs/rebuttal/profile_bootstrap_a1_a2_final/twowiki_real__mistral-nemo-12b/variants.merged.jsonl",
+  "source_sha256": "9897a94d72ddcd45b85b4dfd4d1ace2778a02aa8656c9673c94ae6ea59e899e2",
+  "expected_rows": 18000,
+  "rows": 18000,
+  "missing": 0,
+  "unexpected": 0,
+  "duplicates": [],
+  "malformed": [],
+  "bad_arm_or_hash_triples": [],
+  "a1_conflict_keys": 407,
+  "a1_conflicts_rerun_and_labeled": 407,
+  "recovered_missing_or_unlabeled": [],
+  "recovered_true_outside_a1": [],
+  "complete": true
+}

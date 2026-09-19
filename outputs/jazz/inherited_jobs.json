@@ -1,0 +1,11 @@
+{
+  "e2:longmemeval_real__mistral-nemo-12b": {"pid": 36510, "log": "", "administrative_state": "disabled_original_e2_root", "former_writer_pid": 65587},
+  "e2:musique_real__llama-3.1-8b": {"pid": 36510, "log": "", "administrative_state": "disabled_original_e2_root", "former_writer_pid": 65588},
+  "e2:musique_real__mistral-nemo-12b": {"pid": 36510, "log": "", "administrative_state": "disabled_original_e2_root", "former_writer_pid": 65589},
+  "e2:twowiki_real__llama-3.1-8b": {"pid": 36510, "log": "", "administrative_state": "disabled_original_e2_root", "former_writer_pid": 65590},
+  "e2:twowiki_real__mistral-nemo-12b": {"pid": 36510, "log": "", "administrative_state": "disabled_original_e2_root", "former_writer_pid": 65591},
+  "coordinator:inherited": {"pid": 16065, "log": "outputs/jazz/logs/campaign.log"},
+  "caffeinate:inherited_coordinator": {"pid": 16066, "log": "outputs/jazz/logs/campaign.log"},
+  "coordinator:hardened_handoff": {"pid": 36510, "log": ""},
+  "caffeinate:hardened_handoff": {"pid": 36511, "log": ""}
+}

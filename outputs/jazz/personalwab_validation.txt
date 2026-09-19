@@ -1,0 +1,11 @@
+{
+  "analysis": "EXPLORATORY brand-preference/history discordance, not all semantic contradictions",
+  "n_users": 1000,
+  "n_history_users": 1000,
+  "users_with_matched_brand_history": 989,
+  "matched_brands": 16516,
+  "matched_reviews": 18407,
+  "users_with_discordance": 25,
+  "fraction": 0.025,
+  "protocol": "orchestration/personalwab_contradiction_protocol.md"
+}

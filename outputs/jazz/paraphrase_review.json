@@ -1,0 +1,161 @@
+{
+  "sample_sha256": "eacda823e701ad1cc954dc0930842a73519c744574900f16ba0d33b61424fe51",
+  "reviewer": "Codex qualitative inspection (not human sign-off)",
+  "n_reviewed": 30,
+  "n_preserved": 17,
+  "n_meaning_changed": 13,
+  "human_signoff": false,
+  "trust_gate": "FAILED_MEANING_PRESERVATION",
+  "decisions": [
+    {
+      "index": 0,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 1,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 2,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 3,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 4,
+      "preserved": false,
+      "note": "Drops the explicit sixth-grade reading level."
+    },
+    {
+      "index": 5,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 6,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 7,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 8,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 9,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 10,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 11,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 12,
+      "preserved": false,
+      "note": "Changes prefer cited sources to prefer verified sources; citation requirement omitted."
+    },
+    {
+      "index": 13,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 14,
+      "preserved": false,
+      "note": "Drops the instruction to use precise technical terminology."
+    },
+    {
+      "index": 15,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 16,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 17,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 18,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 19,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 20,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 21,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 22,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 23,
+      "preserved": false,
+      "note": "Drops the instruction to use precise technical terminology."
+    },
+    {
+      "index": 24,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 25,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 26,
+      "preserved": false,
+      "note": "Single-sentence hard format becomes a soft preference for concision."
+    },
+    {
+      "index": 27,
+      "preserved": false,
+      "note": "Drops answer-directly and no-question-restatement requirements."
+    },
+    {
+      "index": 28,
+      "preserved": true,
+      "note": "Constraint meaning retained."
+    },
+    {
+      "index": 29,
+      "preserved": false,
+      "note": "Drops the instruction to use precise technical terminology."
+    }
+  ]
+}

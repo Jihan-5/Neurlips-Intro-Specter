@@ -1,0 +1,644 @@
+{
+  "active_jobs": 32,
+  "blockers": [
+    "hotpotqa_real__llama-3.1-8b:000-of-002: terminal semantic failures exhausted per-unit budget",
+    "hotpotqa_real__llama-3.1-8b:001-of-002: terminal semantic failures exhausted per-unit budget",
+    "hotpotqa_real__mistral-nemo-12b:000-of-002: terminal semantic failures exhausted per-unit budget",
+    "hotpotqa_real__mistral-nemo-12b:001-of-002: terminal semantic failures exhausted per-unit budget",
+    "twowiki_real__llama-3.1-8b:005-of-008: crashed after one resumable restart",
+    "twowiki_real__mistral-nemo-12b:002-of-008: crashed after one resumable restart",
+    "twowiki_real__mistral-nemo-12b:005-of-008: crashed after one resumable restart"
+  ],
+  "cells": {
+    "hotpotqa_real__llama-3.1-8b": {
+      "completed": 2328,
+      "expected": 3600,
+      "integrity": null,
+      "invalid_or_error_rows": 424,
+      "rerun": 1521,
+      "salvaged": 807,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 233,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__llama-3.1-8b_shard-000-of-002.log",
+          "pid": 33455,
+          "rows": 738,
+          "state": "blocked_terminal_semantic"
+        },
+        {
+          "attempts": 1,
+          "errors": 191,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__llama-3.1-8b_shard-001-of-002.log",
+          "pid": 33456,
+          "rows": 783,
+          "state": "blocked_terminal_semantic"
+        }
+      ]
+    },
+    "hotpotqa_real__mistral-nemo-12b": {
+      "completed": 2328,
+      "expected": 3600,
+      "integrity": null,
+      "invalid_or_error_rows": 424,
+      "rerun": 1578,
+      "salvaged": 750,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 231,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__mistral-nemo-12b_shard-000-of-002.log",
+          "pid": 33457,
+          "rows": 777,
+          "state": "blocked_terminal_semantic"
+        },
+        {
+          "attempts": 1,
+          "errors": 193,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_hotpotqa_real__mistral-nemo-12b_shard-001-of-002.log",
+          "pid": 33458,
+          "rows": 801,
+          "state": "blocked_terminal_semantic"
+        }
+      ]
+    },
+    "longmemeval_real__llama-3.1-8b": {
+      "completed": 114,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 46,
+      "rerun": 114,
+      "salvaged": 0,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 34,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_longmemeval_real__llama-3.1-8b_shard-000-of-008.log",
+          "pid": 36635,
+          "rows": 72,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 12,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_longmemeval_real__llama-3.1-8b_shard-001-of-008.log",
+          "pid": 36636,
+          "rows": 42,
+          "state": "running"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 2,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 3,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 4,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 5,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 6,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 7,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        }
+      ]
+    },
+    "longmemeval_real__mistral-nemo-12b": {
+      "completed": 1536,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 0,
+      "rerun": 0,
+      "salvaged": 1536,
+      "shards": [
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 0,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 1,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 2,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 3,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 4,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 5,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 6,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "errors": 0,
+          "index": 7,
+          "log": null,
+          "pid": null,
+          "rows": 0,
+          "state": "pending"
+        }
+      ]
+    },
+    "musique_real__llama-3.1-8b": {
+      "completed": 5924,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 1250,
+      "rerun": 4673,
+      "salvaged": 1251,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 168,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-000-of-008.log",
+          "pid": 33475,
+          "rows": 608,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 170,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-001-of-008.log",
+          "pid": 33476,
+          "rows": 605,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 145,
+          "index": 2,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-002-of-008.log",
+          "pid": 33477,
+          "rows": 487,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 165,
+          "index": 3,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-003-of-008.log",
+          "pid": 33478,
+          "rows": 573,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 131,
+          "index": 4,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-004-of-008.log",
+          "pid": 33479,
+          "rows": 513,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 141,
+          "index": 5,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-005-of-008.log",
+          "pid": 33480,
+          "rows": 665,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 168,
+          "index": 6,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-006-of-008.log",
+          "pid": 33481,
+          "rows": 604,
+          "state": "running"
+        },
+        {
+          "attempts": 2,
+          "errors": 162,
+          "index": 7,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__llama-3.1-8b_shard-007-of-008.log",
+          "pid": 35142,
+          "rows": 618,
+          "state": "provider_retryable"
+        }
+      ]
+    },
+    "musique_real__mistral-nemo-12b": {
+      "completed": 1958,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 39,
+      "rerun": 465,
+      "salvaged": 1493,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 5,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-000-of-008.log",
+          "pid": 33830,
+          "rows": 81,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 12,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-001-of-008.log",
+          "pid": 33836,
+          "rows": 119,
+          "state": "running"
+        },
+        {
+          "attempts": 2,
+          "errors": 10,
+          "index": 2,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-002-of-008.log",
+          "pid": 35364,
+          "rows": 54,
+          "state": "running"
+        },
+        {
+          "attempts": 2,
+          "errors": 1,
+          "index": 3,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-003-of-008.log",
+          "pid": 35503,
+          "rows": 26,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 8,
+          "index": 4,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-004-of-008.log",
+          "pid": 35165,
+          "rows": 94,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 1,
+          "index": 5,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-005-of-008.log",
+          "pid": 35534,
+          "rows": 45,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 2,
+          "index": 6,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-006-of-008.log",
+          "pid": 35943,
+          "rows": 32,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 0,
+          "index": 7,
+          "log": "outputs/jazz/e2_recovery_logs/production_musique_real__mistral-nemo-12b_shard-007-of-008.log",
+          "pid": 36634,
+          "rows": 14,
+          "state": "running"
+        }
+      ]
+    },
+    "truthfulqa_real__llama-3.1-8b": {
+      "completed": 2969,
+      "expected": 3600,
+      "integrity": null,
+      "invalid_or_error_rows": 184,
+      "rerun": 2969,
+      "salvaged": 0,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 84,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__llama-3.1-8b_shard-000-of-002.log",
+          "pid": 33451,
+          "rows": 1506,
+          "state": "provider_retryable"
+        },
+        {
+          "attempts": 2,
+          "errors": 100,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__llama-3.1-8b_shard-001-of-002.log",
+          "pid": 35140,
+          "rows": 1463,
+          "state": "running"
+        }
+      ]
+    },
+    "truthfulqa_real__mistral-nemo-12b": {
+      "completed": 1892,
+      "expected": 3600,
+      "integrity": null,
+      "invalid_or_error_rows": 2,
+      "rerun": 1892,
+      "salvaged": 0,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 1,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__mistral-nemo-12b_shard-000-of-002.log",
+          "pid": 33453,
+          "rows": 931,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 1,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_truthfulqa_real__mistral-nemo-12b_shard-001-of-002.log",
+          "pid": 33454,
+          "rows": 961,
+          "state": "running"
+        }
+      ]
+    },
+    "twowiki_real__llama-3.1-8b": {
+      "completed": 7800,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 1227,
+      "rerun": 5964,
+      "salvaged": 1836,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 202,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-000-of-008.log",
+          "pid": 33459,
+          "rows": 843,
+          "state": "provider_retryable"
+        },
+        {
+          "attempts": 1,
+          "errors": 218,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-001-of-008.log",
+          "pid": 33460,
+          "rows": 990,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 154,
+          "index": 2,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-002-of-008.log",
+          "pid": 33461,
+          "rows": 786,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 167,
+          "index": 3,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-003-of-008.log",
+          "pid": 33462,
+          "rows": 728,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 148,
+          "index": 4,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-004-of-008.log",
+          "pid": 33463,
+          "rows": 663,
+          "state": "running"
+        },
+        {
+          "attempts": 16,
+          "errors": 0,
+          "index": 5,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-005-of-008.log",
+          "pid": 35492,
+          "rows": 507,
+          "state": "pending"
+        },
+        {
+          "attempts": 1,
+          "errors": 175,
+          "index": 6,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-006-of-008.log",
+          "pid": 33465,
+          "rows": 725,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 163,
+          "index": 7,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__llama-3.1-8b_shard-007-of-008.log",
+          "pid": 33466,
+          "rows": 722,
+          "state": "running"
+        }
+      ]
+    },
+    "twowiki_real__mistral-nemo-12b": {
+      "completed": 6632,
+      "expected": 18000,
+      "integrity": null,
+      "invalid_or_error_rows": 757,
+      "rerun": 4224,
+      "salvaged": 2408,
+      "shards": [
+        {
+          "attempts": 1,
+          "errors": 139,
+          "index": 0,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-000-of-008.log",
+          "pid": 33467,
+          "rows": 493,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 126,
+          "index": 1,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-001-of-008.log",
+          "pid": 33468,
+          "rows": 530,
+          "state": "running"
+        },
+        {
+          "attempts": 16,
+          "errors": 0,
+          "index": 2,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-002-of-008.log",
+          "pid": 35161,
+          "rows": 422,
+          "state": "pending"
+        },
+        {
+          "attempts": 1,
+          "errors": 119,
+          "index": 3,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-003-of-008.log",
+          "pid": 33470,
+          "rows": 572,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 105,
+          "index": 4,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-004-of-008.log",
+          "pid": 33471,
+          "rows": 533,
+          "state": "running"
+        },
+        {
+          "attempts": 16,
+          "errors": 0,
+          "index": 5,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-005-of-008.log",
+          "pid": 35938,
+          "rows": 475,
+          "state": "pending"
+        },
+        {
+          "attempts": 1,
+          "errors": 123,
+          "index": 6,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-006-of-008.log",
+          "pid": 33473,
+          "rows": 581,
+          "state": "running"
+        },
+        {
+          "attempts": 1,
+          "errors": 145,
+          "index": 7,
+          "log": "outputs/jazz/e2_recovery_logs/production_twowiki_real__mistral-nemo-12b_shard-007-of-008.log",
+          "pid": 33474,
+          "rows": 618,
+          "state": "running"
+        }
+      ]
+    }
+  },
+  "completed_units": 33481,
+  "completion_conditions": [
+    "all shard states complete",
+    "all ten integrity merges complete",
+    "zero missing/overlap/conflict/malformed/invalid/error rows",
+    "preregistered analysis and F2 generated",
+    "tests and both manuscript builds pass",
+    "final Jazz completion audit passes"
+  ],
+  "coordinator_pid": 26837,
+  "eta_hours": 37.35400855824067,
+  "invalid_units": 4353,
+  "observed_rows_per_hour": 2380.440638957437,
+  "output_root": "outputs/rebuttal/profile_bootstrap_recovery_v1",
+  "protocol": "amended E2 recovery v2",
+  "provider_credit_health": {
+    "checked_utc": "2026-09-18T18:33:51.720128+00:00",
+    "ok": true,
+    "probe_http_status": 200,
+    "remaining": 91.956811407,
+    "usage": 8.043188593
+  },
+  "rerun_units": 23400,
+  "salvaged_units": 10081,
+  "total_expected_logical_units": 122400,
+  "updated_utc": "2026-09-18T18:36:22.760086+00:00"
+}
