@@ -326,16 +326,17 @@ intro-specter run --config <synthetic_single_fault config> --dump-traces
 # 2. Sample + blind + pages:
 python3 scripts/e1_sample_annotation_set.py \
   --traces outputs/real/travelplanner_real__*/traces \
-  --n 135 --reserve 30 \
+  --n 100 --reserve 30 \
   --attention-traces <injected traces dir> --n-attention 10 \
   --attention-gt <gt json>  \
   --out outputs/iclr/e1_dataset/raw_pool.jsonl
 python3 scripts/e1_blind_trajectories.py --pool outputs/iclr/e1_dataset/raw_pool.jsonl \
-  --out-dir outputs/iclr/e1_dataset --annotators 8 --pilot 15 --checks-per-annotator 5
+  --out-dir outputs/iclr/e1_dataset --annotator-ids jazz mahfuza \
+  --pilot 15 --checks-per-annotator 5
 python3 scripts/e1_make_annotation_pages.py --dataset-dir outputs/iclr/e1_dataset
 
-# 3. Send each person their personN_pilot.html + codebook + their copy of
-#    PERSON1_ANNOTATOR_INSTRUCTIONS.md (name-swapped). keymap.json stays PRIVATE.
+# 3. Give Jazz and Mahfuza only their named pilot page + codebook + named instruction
+#    file. keymap.json stays PRIVATE.
 ```
 
 Attention-check ground truth: injected-fault traces know the true fault node; map it to

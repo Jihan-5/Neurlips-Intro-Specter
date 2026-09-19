@@ -287,6 +287,9 @@ class PersonalWABReal:
     n_candidates: int = 20
     max_history_spans: int = 12
     fault_inject: bool = False  # real profiles; no synthetic faults (see module docstring)
+    # Forensic reconstruction of the pre-fix Jul-2026 profile construction
+    # (no ts filter, target included). See comment at the history filter.
+    legacy_unfiltered_history: bool = False
 
     @property
     def name(self) -> str:
@@ -336,9 +339,17 @@ class PersonalWABReal:
         # verified during data acquisition -- excluding it avoids leaking
         # the label through the profile).
         full_hist = data["history"].get(user_id, [])
-        prior = [h for h in full_hist
-                 if h.get("ts") is not None and h["ts"] < task_ts
-                 and h["asin"] != target_asin]
+        if self.legacy_unfiltered_history:
+            # FORENSIC ONLY: reproduces the pre-fix (Jul 2026) behavior that
+            # produced outputs/rebuttal/experiment_personalwab/ -- history
+            # spans include post-task purchases and the target interaction
+            # (label leak). Needed to regenerate those exact trajectories for
+            # the E1 annotation study; NEVER use for new experiment numbers.
+            prior = list(full_hist)
+        else:
+            prior = [h for h in full_hist
+                     if h.get("ts") is not None and h["ts"] < task_ts
+                     and h["asin"] != target_asin]
         hist_rows = prior[-self.max_history_spans:]
         hist_asins = {h["asin"] for h in full_hist}
 
