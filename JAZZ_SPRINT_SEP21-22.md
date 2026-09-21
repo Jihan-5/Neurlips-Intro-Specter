@@ -34,38 +34,38 @@ Re-run clean. This is background work — launch it, then go label.
    the abstract has one sentence waiting on it. If the delta flips sign or loses
    significance: report it exactly as observed, immediately — no interpretation.
 
-## Track A — E1 annotation labels (ALL yours — Mahfuza is OUT, revision 2026-09-21)
+## Track A — E1 annotation labels (SEQUENTIAL two-annotator plan, revision 2 — 2026-09-21)
 
-Everything is staged (`outputs/iclr/e1_trace_pool` frozen, pages verified). What's missing
-is labels. **You own the whole study now, including annotator 2.** One thing is
-non-negotiable math: Cohen's κ requires two INDEPENDENT people — you cannot label twice
-yourself. So:
+Everything is staged (`outputs/iclr/e1_trace_pool` frozen, pages verified). Per Jihan:
+annotators are **Jazz 1** (you first) and **Jazz 2** (starts when you finish). Sequential
+is fine for κ — independence is about blinding, not timing. Hard rules that make the κ
+real: **Jazz 1 and Jazz 2 must be two different humans** (the same person labeling twice
+is not two annotators and will not be presented as such); Jazz 2 never sees Jazz 1's
+labels, notes, or the method's outputs — only their own pages + the codebook. Regenerate
+pages with `scripts/e1_blind_trajectories.py --annotator-ids jazz1 jazz2` +
+`e1_make_annotation_pages.py` (deterministic — same items, fresh per-annotator shuffle
+and private keymap). Record both names/roles for the datasheet.
 
-- **First, this morning:** recruit annotator 2 yourself — any adult non-author who can
-  follow the codebook for ~20 h over two days (labmate, friend; unpaid is fine, name and
-  role recorded for the datasheet). Regenerate their pages with
-  `scripts/e1_blind_trajectories.py --annotator-ids jazz <name>` +
-  `e1_make_annotation_pages.py` (deterministic — same items, new keymap). They see ONLY
-  their pages + codebook; never the method's outputs, never your labels.
-- **Fallback if nobody is labeling by Sep 21 evening (pre-authorized by Jihan):** run
-  SINGLE-annotator — you label everything, attention checks stay as the only quality
-  control, and the deliverable is honestly labeled "single-annotator preliminary; κ and
-  adjudication deferred to a second annotator pass" in the summary JSON. No fake second
-  set, no self-relabeling passed off as agreement.
-- **TODAY Sep 21, morning (in parallel with recruiting):** label the 15-item pilot
-  yourself (~4 h); annotator 2 does the same the moment they're onboard.
-- **TODAY, evening:** `scripts/e1_compute_agreement.py` on the pilot. κ ≥ 0.6 → start the
-  main batch TONIGHT. κ < 0.6 → send Jihan the confusion table, tighten the codebook
-  tonight (category boundary notes only — no taxonomy changes), re-pilot from the 30-item
-  reserve first thing Sep 22. Two failures → escalate; Jihan decides the collapsed-taxonomy
-  fallback.
-- **Sep 21 night → Sep 22:** main batch, 90 items each (85 natural + 5 hidden attention
-  checks). At ~10–12 min/item that is ~16–18 h — split it: ~5 h tonight, the rest through
-  Sep 22. Do NOT discuss items with annotator 2 mid-batch; disagreements get flagged,
-  never self-resolved.
-- **Sep 22, by ~20:00:** both label sets complete. Run agreement → κ, apply the pre-written
-  attention-check exclusion rule mechanically, emit the flagged-disagreement list, and send
-  it to Jihan the moment it exists (he adjudicates same evening — that's his lane).
+**Sequencing (κ pilot gate moves to Jazz 2's entry, since it needs both pilots):**
+
+- **TODAY Sep 21:** Jazz 1 labels the 15-item pilot (~3–4 h), then continues straight
+  into the main 90 items (85 natural + 5 hidden attention checks). Target: pilot by
+  midday, ~half the main batch tonight (~10–12 min/item).
+- **Sep 22, morning:** Jazz 1 finishes the main batch. **Jazz 2 starts the moment Jazz 1's
+  pilot exists** if they're available sooner — earlier overlap is better, sequential is
+  the latest-allowed schedule, not the goal.
+- **Jazz 2 entry gate:** Jazz 2 labels the 15-item pilot first →
+  `scripts/e1_compute_agreement.py` on the two pilots. κ ≥ 0.6 → Jazz 2 proceeds to the
+  main 90. κ < 0.6 → send Jihan the confusion table; tighten codebook boundary notes
+  (no taxonomy changes), both re-pilot from the 30-item reserve. Second failure →
+  escalate to Jihan.
+- **Sep 22, by ~22:00:** both label sets complete. Run final agreement → κ, apply the
+  pre-written attention-check exclusion rule mechanically, emit the flagged-disagreement
+  list to Jihan the moment it exists (he adjudicates — his lane).
+- **Fallback (pre-authorized, NOTIFY Jihan first):** if Jazz 2 cannot finish by Sep 22
+  night, ship Jazz 1's complete set as "single-annotator preliminary" with Jazz 2's
+  partial progress recorded; κ completes when Jazz 2 finishes (camera-ready window). No
+  fake second set, ever.
 
 ## Track G — final numbers + packaging (Sep 22 night, after Jihan's adjudication lands)
 
@@ -83,11 +83,11 @@ yourself. So:
 
 ```
 Sep 21 09:00  P1-P2: clean rebuild + leak check + launch all cells (background)
-Sep 21 10:00  A: pilot labeling (you) ∥ annotator-2 recruiting + onboarding
+Sep 21 10:00  A: Jazz 1 pilot → main batch part 1 (Jazz 2 onboarded, waiting or overlapping)
 Sep 21 15:00  A: pilot κ gate → main batch starts (or codebook fix path)
 Sep 21 night  A: main batch part 1 (~5h)   ∥  P: cells running
-Sep 22 day    A: main batch to completion  ∥  P3-P4: aggregate + push when cells finish
-Sep 22 20:00  A: final labels + flags → Jihan (adjudication, his lane)
+Sep 22 day    A: Jazz 1 finishes main ─ Jazz 2 pilot → κ gate → Jazz 2 main  ∥  P3-P4: aggregate + push when cells finish
+Sep 22 22:00  A: both sets done → final κ + flags → Jihan (adjudication, his lane)
 Sep 22 night  G: final κ, attribution-vs-human, packaging, artifact push — DONE
 ```
 
