@@ -3,21 +3,21 @@
 (annotator, phase). No server, no accounts, no external assets.
 
 Reads items/ + assignments.json (from e1_blind_trajectories.py) and writes
-annotation_pages/personN_pilot.html and personN_main.html. With --phase
-tiebreak and --queue (from e1_compute_agreement.py --emit-adjudication-queue)
-it builds tiebreak pages instead.
+annotation_pages/<annotator>_pilot.html and <annotator>_main.html. With --phase
+adjudication and --queue (from e1_compute_agreement.py
+--emit-adjudication-queue) it builds Jihan's rule-based adjudication page.
 
 The page autosaves to localStorage and downloads answers as JSON in exactly
 the schema scripts/e1_compute_agreement.py consumes:
-  {"annotator": "person1", "phase": "pilot", "answers": [
+  {"annotator": "jazz", "phase": "pilot", "answers": [
       {"item_id": "e1_0042", "category": 3, "step": 5, "comment": ""}]}
 
 Usage:
   python3 scripts/e1_make_annotation_pages.py \
       --dataset-dir outputs/iclr/e1_dataset --phase pilot main
   python3 scripts/e1_make_annotation_pages.py \
-      --dataset-dir outputs/iclr/e1_dataset --phase tiebreak \
-      --queue outputs/iclr/e1_dataset/tiebreak_queue.json --annotators person3
+      --dataset-dir outputs/iclr/e1_dataset --phase adjudication \
+      --queue outputs/iclr/e1_dataset/adjudication_queue.json --annotators jihan
 """
 
 import argparse
@@ -248,8 +248,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dataset-dir", required=True)
     ap.add_argument("--phase", nargs="+", default=["pilot", "main"],
-                    choices=["pilot", "main", "tiebreak"])
-    ap.add_argument("--queue", help="tiebreak item-id list (JSON) for --phase tiebreak")
+                    choices=["pilot", "main", "adjudication"])
+    ap.add_argument("--queue", help="item-id list (JSON) for --phase adjudication")
     ap.add_argument("--annotators", nargs="*",
                     help="subset of annotators (default: all in assignments.json)")
     args = ap.parse_args()
@@ -266,12 +266,12 @@ def main():
     who = args.annotators or sorted(assignments)
     for phase in args.phase:
         for a in who:
-            if phase == "tiebreak":
+            if phase == "adjudication":
                 if not args.queue:
-                    raise SystemExit("--phase tiebreak requires --queue")
+                    raise SystemExit("--phase adjudication requires --queue")
                 ids = json.loads(Path(args.queue).read_text())
-                # a tiebreaker must not have labeled the item already:
-                # caller passes --annotators explicitly per queue slice
+                # D6 assigns every disagreement to Jihan for rule-based
+                # adjudication; caller passes --annotators jihan explicitly.
             else:
                 ids = assignments[a][phase]
             items = [load_item(i) for i in ids]

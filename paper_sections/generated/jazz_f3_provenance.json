@@ -1,0 +1,16 @@
+{
+  "command": ".venv/bin/python scripts/generate_e2_e3_sections.py",
+  "sources": {
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/longmemeval_real__mistral-nemo-12b/paired.jsonl": "6fc4a33566125c572e62e815646f590a3f24f1284c452734ef25ca39f10bd80f",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/twowiki_real__llama-3.1-8b/paired.jsonl": "b942d64222a0706780e1c52aacad20c6e9d7bb74adc0b0aff0fb2da63f537533",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/musique_real__mistral-nemo-12b/paired.jsonl": "ff7bbd60be20731a6038a7f8a01f5deb2a476f67c401234d3093b5f5bf007862",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/twowiki_real__mistral-nemo-12b/paired.jsonl": "c67215b7b1371b98e5a63ec3ac460cc921ba6bc053f0fec51e13ee9d1dbc35fe",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/hotpotqa_real__llama-3.1-8b/paired.jsonl": "0d44287e7febbac7dab15e694b75d3a9ec9440f8c9a1a7fac315f0ad1ec230ab",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/hotpotqa_real__mistral-nemo-12b/paired.jsonl": "bd4251e8ff0949f4026250ff514163515a6b5c96b6f4713356e00f8d03f6156f",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/truthfulqa_real__llama-3.1-8b/paired.jsonl": "013c33e4dcfe06b287b6cad9dbe3b344cd44d49956290254e8bccf5fe068abb8",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/longmemeval_real__llama-3.1-8b/paired.jsonl": "992d2e524897be07a1b0abf59ca61839508634804d55c9b831b353c1a2ca2ea6",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/musique_real__llama-3.1-8b/paired.jsonl": "b02a9fb49e9e2da1552498ef9cf535da1f57c76b2ea15215ab9178b91277784e",
+    "/Users/jas/Downloads/Neurlips-Intro-Specter/outputs/rebuttal/profile_candidacy/truthfulqa_real__mistral-nemo-12b/paired.jsonl": "586479140e9a123b805d6ba0aa9935cb83ad7c8dbf690075a08648bf94aeaee7"
+  },
+  "aggregation": "outputs/jazz/candidacy_final.json"
+}

@@ -24,6 +24,7 @@ Outputs (under `outputs/real/tables/`):
 from __future__ import annotations
 
 import json
+import argparse
 import sys
 from pathlib import Path
 from typing import Any
@@ -104,7 +105,7 @@ def main_table(df: pd.DataFrame, datasets: list[str], models: list[str]) -> pd.D
     return pd.DataFrame(rows)
 
 
-def head_to_head(df: pd.DataFrame, target: str = "intro_specter_llm") -> pd.DataFrame:
+def head_to_head(df: pd.DataFrame, target: str = "intro_specter_llm", *, family: str = "all") -> pd.DataFrame:
     """Pairwise McNemar IS-vs-each-baseline, Holm-corrected across all cells."""
     baselines = [m for m in METHODS if m != target]
     rows: list[dict] = []
@@ -146,6 +147,11 @@ def head_to_head(df: pd.DataFrame, target: str = "intro_specter_llm") -> pd.Data
         rejected, adjusted = holm_bonferroni(pvals, alpha=0.05)
         out["p_holm"] = adjusted
         out["holm_reject"] = rejected
+        if family == "baseline":
+            for _, group in out.groupby("baseline"):
+                rejected, adjusted = holm_bonferroni(group["p_raw"].tolist())
+                out.loc[group.index, "p_holm"] = adjusted
+                out.loc[group.index, "holm_reject"] = rejected
     return out
 
 
@@ -235,12 +241,16 @@ def when_fails(h2h: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> int:
-    df = load_results()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=Path("outputs/real"))
+    parser.add_argument("--output-dir", type=Path)
+    args = parser.parse_args()
+    df = load_results(args.root)
     if df.empty:
         print("No results found in outputs/real/")
         return 0
 
-    out_dir = Path("outputs/real/tables")
+    out_dir = args.output_dir or args.root / "tables"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     datasets = sorted(df["dataset"].unique())
@@ -252,7 +262,7 @@ def main() -> int:
     h2h = head_to_head(df)
     h2h.to_csv(out_dir / "head_to_head.csv", index=False)
 
-    sig = h2h[h2h.get("holm_reject", pd.Series([False]*len(h2h))) & (h2h["delta"] > 0)]
+    sig = h2h[h2h["holm_reject"] & (h2h["delta"] > 0)] if not h2h.empty else pd.DataFrame()
     sig.to_csv(out_dir / "intro_specter_wins.csv", index=False)
 
     attr = attribution_table(df)
@@ -272,6 +282,13 @@ def main() -> int:
     print(f"Models:   {models}")
     print(f"\nMain table rows: {len(main_t)}")
     print(f"Head-to-head rows: {len(h2h)}")
+    target = df[df["method"] == "intro_specter_llm"]
+    if not target.empty:
+        print("\n| cell | successes | rows | success (%) |")
+        print("|---|---:|---:|---:|")
+        for (dataset, model), cell in target.groupby(["dataset", "model"]):
+            print(f"| {dataset}__{model} | {int(cell.success.sum())} | {len(cell)} | {100 * cell.success.mean():.4f} |")
+        print(f"| POOLED | {int(target.success.sum())} | {len(target)} | {100 * target.success.mean():.4f} |")
     if not h2h.empty and "holm_reject" in h2h.columns:
         print(f"\n=== IS-vs-baseline (Holm-significant @ 0.05) ===")
         for b in [m for m in METHODS if m != "intro_specter_llm"]:

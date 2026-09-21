@@ -52,7 +52,7 @@ def _load_hotpot(split: str) -> Any:
     global _HF_DATASET
     if _HF_DATASET is None or _HF_DATASET[0] != split:
         from datasets import load_dataset
-        ds = load_dataset("hotpot_qa", "distractor", split=split, trust_remote_code=False)
+        ds = load_dataset("hotpotqa/hotpot_qa", "distractor", split=split, trust_remote_code=False)
         _HF_DATASET = (split, ds)
     return _HF_DATASET[1]
 

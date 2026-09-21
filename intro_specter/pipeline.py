@@ -55,7 +55,8 @@ class IntroSpecterConfig:
     flat_dag: bool = False           # drop dependency edges before attribution
     uniform_prior: bool = False      # all candidates get equal prior (1.0)
     skip_likelihood: bool = False    # posterior = prior only (no counterfactual sampling)
-    disable_cost: bool = False       # choose_repair_node picks argmax posterior, ignores cost
+    disable_cost: bool = False       # choose argmax posterior, ignoring cost
+    allow_profile_candidates: bool = False  # also admit profile nodes outside ancestor closure
     use_confidence_in_prior: bool = True  # multiply prior by (1 - confidence)
     # ---- Sequential Posterior Refinement (SPR) ----
     # When the first targeted repair does not satisfy the verifier, that failure is
@@ -155,6 +156,13 @@ def run_intro_specter(
 
     # ---- Layer 2b: posterior attribution ----
     candidates = candidate_nodes_for_violations(dag, verifier_result.violations)
+    if config.allow_profile_candidates:
+        # The released default already includes PROFILE ancestors. Preserve it:
+        # the opt-in extension admits profile nodes missed by graph extraction.
+        existing_ids = {n.id for n in candidates}
+        for n in dag.nodes:
+            if n.provenance == Provenance.PROFILE and n.id not in existing_ids:
+                candidates.append(n)
     if config.skip_likelihood:
         # Ablation: prior-only posterior (no counterfactual sampling).
         from .attribution import (

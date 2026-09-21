@@ -3,7 +3,7 @@
 screening, adjudication queue, and consensus labels.
 
 Consumes the answer JSONs downloaded from the annotation pages:
-    {"annotator": "person1", "phase": "pilot"|"main"|"tiebreak",
+    {"annotator": "jazz", "phase": "pilot"|"main"|"adjudication",
      "answers": [{"item_id": "e1_0042", "category": 1..7,
                   "step": <int|null>, "comment": "..."}]}
 
@@ -18,16 +18,17 @@ Rules implemented here are frozen in orchestration/e1_prereg.md:
   - attention checks: >2 wrong of an annotator's checks => ALL their labels
     excluded (mechanical, no discretion).
   - Q2 agreement: fraction of pairs within +/-1 step (None matches only None).
-  - consensus (with --tiebreaks): Q1 majority; Q2 earlier-of-two if within 1
-    step, else median-of-three if any two within 1 step; else unresolved.
+  - consensus: Q1 agreements stand; Q2 indices within one step resolve to the
+    earlier index. D6 sends all remaining disagreements to Jihan for
+    rule-based adjudication, not to a third annotator for majority voting.
 
 Usage:
   python3 scripts/e1_compute_agreement.py --answers outputs/iclr/e1_dataset/answers/*.json \
-      --keymap outputs/iclr/e1_dataset/keymap.json --phase pilot
+      --keymap outputs/iclr/e1_dataset/private/keymap.json --phase pilot
   python3 scripts/e1_compute_agreement.py --answers ... --phase main \
-      --emit-adjudication-queue outputs/iclr/e1_dataset/tiebreak_queue.json
+      --emit-adjudication-queue outputs/iclr/e1_dataset/adjudication_queue.json
   python3 scripts/e1_compute_agreement.py --answers ... --phase main \
-      --tiebreaks outputs/iclr/e1_dataset/answers_tiebreak/*.json \
+      --adjudications outputs/iclr/e1_dataset/answers/jihan_adjudication_answers.json \
       --emit-consensus outputs/iclr/e1_dataset/consensus.json
 """
 
@@ -119,48 +120,42 @@ def step_match(sa, sb):
     return abs(sa - sb) <= 1
 
 
-def build_consensus(item_labels, tiebreak_labels):
+def build_consensus(item_labels, adjudication_labels):
     """item_labels: {item_id: [(ann, cat, step)]} with exactly the base labels.
-    tiebreak_labels: {item_id: (ann, cat, step)} third labels.
-    Returns {item_id: {"category":..,"step":..,"status": "agreed"|"tiebroken"|"unresolved"}}."""
+    adjudication_labels: {item_id: (ann, cat, step)} decisions by Jihan.
+    Returns statuses "agreed", "needs_adjudication", or "adjudicated"."""
     out = {}
     for item_id, labels in sorted(item_labels.items()):
         if len(labels) < 2:
             out[item_id] = {"status": "unlabeled"}
             continue
         (a1, c1, s1), (a2, c2, s2) = labels[:2]
-        cats = [c1, c2]
-        steps = [s1, s2]
-        tb = tiebreak_labels.get(item_id)
         cat_agree = c1 == c2
         step_agree = step_match(s1, s2)
         if cat_agree and step_agree:
-            step = None if s1 is None else min(x for x in steps if x is not None)
+            step = None if s1 is None else min(s1, s2)
             out[item_id] = {"category": c1, "step": step, "status": "agreed"}
             continue
-        if tb is None:
-            out[item_id] = {"status": "needs_tiebreak"}
+        adjudication = adjudication_labels.get(item_id)
+        if adjudication is None:
+            out[item_id] = {"status": "needs_adjudication"}
             continue
-        _, c3, s3 = tb
-        cats.append(c3)
-        steps.append(s3)
-        # Q1: majority of three
-        top, top_n = Counter(cats).most_common(1)[0]
-        if top_n < 2:
-            out[item_id] = {"status": "unresolved"}
-            continue
-        # Q2: median of three if any two within 1 step
-        concrete = [s for s in steps if s is not None]
-        if all(s is None for s in steps):
-            step = None
-        elif len(concrete) >= 2 and any(
-            abs(a - b) <= 1 for a, b in itertools.combinations(concrete, 2)
-        ):
-            step = int(statistics.median(concrete))
-        else:
-            out[item_id] = {"status": "unresolved"}
-            continue
-        out[item_id] = {"category": top, "step": step, "status": "tiebroken"}
+        adjudicator, adjudicated_cat, adjudicated_step = adjudication
+        if adjudicator != "jihan":
+            raise ValueError(
+                f"{item_id}: D6 adjudicator must be jihan, got {adjudicator}"
+            )
+        category = c1 if cat_agree else adjudicated_cat
+        step = (
+            (None if s1 is None else min(s1, s2))
+            if step_agree else adjudicated_step
+        )
+        out[item_id] = {
+            "category": category,
+            "step": step,
+            "status": "adjudicated",
+            "adjudicator": "jihan",
+        }
     return out
 
 
@@ -169,7 +164,7 @@ def main():
     ap.add_argument("--answers", nargs="+", required=True)
     ap.add_argument("--keymap", required=True)
     ap.add_argument("--phase", choices=["pilot", "main"], required=True)
-    ap.add_argument("--tiebreaks", nargs="*", default=[])
+    ap.add_argument("--adjudications", nargs="*", default=[])
     ap.add_argument("--emit-adjudication-queue")
     ap.add_argument("--emit-consensus")
     args = ap.parse_args()
@@ -221,22 +216,31 @@ def main():
         frac = sum(step_pairs) / len(step_pairs)
         print(f"== Q2 within-1-step agreement = {frac:.3f} (n={len(step_pairs)}) ==")
 
-    tiebreaks = {}
-    for blob_path in args.tiebreaks:
+    adjudications = {}
+    for blob_path in args.adjudications:
         blob = json.loads(Path(blob_path).read_text())
-        if blob.get("phase") != "tiebreak":
+        if blob.get("phase") != "adjudication":
             continue
+        if blob.get("annotator") != "jihan":
+            sys.exit(f"D6 adjudication file must name annotator=jihan: {blob_path}")
         for a in blob["answers"]:
             step = a.get("step")
             step = None if step in (None, "", "None") else int(step)
-            tiebreaks[a["item_id"]] = (blob["annotator"], int(a["category"]), step)
+            if a["item_id"] in adjudications:
+                sys.exit(f"duplicate adjudication for {a['item_id']}")
+            adjudications[a["item_id"]] = (
+                blob["annotator"], int(a["category"]), step
+            )
 
-    consensus = build_consensus(item_labels, tiebreaks)
+    consensus = build_consensus(item_labels, adjudications)
     status_counts = Counter(v["status"] for v in consensus.values())
     print(f"== consensus status == {dict(status_counts)}")
 
     if args.emit_adjudication_queue:
-        queue = [i for i, v in consensus.items() if v["status"] == "needs_tiebreak"]
+        queue = [
+            i for i, v in consensus.items()
+            if v["status"] == "needs_adjudication"
+        ]
         Path(args.emit_adjudication_queue).write_text(json.dumps(queue, indent=1))
         print(f"wrote {len(queue)} items -> {args.emit_adjudication_queue}")
 

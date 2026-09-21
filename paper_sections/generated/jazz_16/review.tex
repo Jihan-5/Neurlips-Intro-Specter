@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{booktabs,graphicx,amsmath}
+\newcommand{\method}{\textsc{Intro-Specter}}
+% Keep the standalone audit build independent of scaled legacy bitmap fonts.
+% The manuscript may still use graphicx's real resizebox when a scope is chosen.
+\renewcommand{\resizebox}[3]{#3}
+\begin{document}
+\section*{Jazz results review: scope 16}
+\input{summary.tex}
+\input{main_tables.tex}
+\clearpage
+\input{paired_tables.tex}
+\clearpage
+\input{cost_table.tex}
+\end{document}

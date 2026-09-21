@@ -42,11 +42,13 @@ check of variant generation + rule regeneration only):
 from __future__ import annotations
 
 import argparse
+import fcntl
 import functools
 import hashlib
 import importlib.util
 import json
 import random
+import sqlite3
 import sys
 from dataclasses import replace
 from pathlib import Path
@@ -63,6 +65,7 @@ from intro_specter.benchmarks import (  # noqa: E402
 )
 from intro_specter.benchmarks.base import BenchmarkExample  # noqa: E402
 from intro_specter.models import SQLiteCache, build_provider  # noqa: E402
+from intro_specter.models.base import CompletionResult  # noqa: E402
 from intro_specter.profile_corruption import _same_family_pool  # noqa: E402
 from intro_specter.schemas import Trajectory, TrajectoryStep  # noqa: E402
 
@@ -110,6 +113,32 @@ PARAPHRASE_SYSTEM = (
     "identical — only the phrasing may change. Keep it one sentence, same "
     "language (English). Respond with JSON only: {\"paraphrase\": \"...\"}"
 )
+
+
+class ReadThroughCache:
+    """Read a frozen base cache and write only to a shard-local delta cache."""
+
+    def __init__(self, base: str | Path, delta: str | Path) -> None:
+        self.base = Path(base)
+        if not self.base.exists():
+            raise FileNotFoundError(self.base)
+        self.delta = SQLiteCache(delta)
+
+    def get(self, key: str) -> CompletionResult | None:
+        hit = self.delta.get(key)
+        if hit is not None:
+            return hit
+        uri = self.base.resolve().as_uri() + "?mode=ro"
+        with sqlite3.connect(uri, uri=True) as conn:
+            row = conn.execute("SELECT payload FROM completions WHERE key = ?", (key,)).fetchone()
+        if row is None:
+            return None
+        result = CompletionResult(**json.loads(row[0]))
+        result.cache_hit = True
+        return result
+
+    def put(self, key: str, result: CompletionResult) -> None:
+        self.delta.put(key, result)
 
 
 def _variant_seed(task_id: str, variant_idx: int) -> int:
@@ -265,7 +294,14 @@ def main() -> None:
     ap.add_argument("--tau-abstain", type=float, default=0.0,
                     help="IS abstain threshold; the study protocol fixes 0.0 (clean-run match)")
     ap.add_argument("--cache-path", default="cache/completions.sqlite")
+    ap.add_argument("--cache-read-only-base",
+                    help="frozen cache consulted before shard-local --cache-path")
     ap.add_argument("--output-dir", default="outputs/rebuttal/profile_bootstrap")
+    ap.add_argument("--output-file", help="explicit shard-local JSONL output path")
+    ap.add_argument("--base-output", help="frozen base JSONL whose keys are already complete")
+    ap.add_argument("--assignment-file",
+                    help="JSON list of disjoint {task_id, variant_idx, arms} units")
+    ap.add_argument("--conflict-file", help="A1 conflict-key JSON used for recovered labels")
     ap.add_argument("--smoke", action="store_true", help="2 examples x 3 variants, then stop")
     ap.add_argument("--dry-run", action="store_true",
                     help="generate variants + regenerate rules only; zero provider calls "
@@ -279,7 +315,9 @@ def main() -> None:
         n_variants = args.n_variants
 
     provider_name, model_id = expa.MODEL_TABLE[args.model]
-    cache = SQLiteCache(args.cache_path) if not args.dry_run else None
+    cache = (ReadThroughCache(args.cache_read_only_base, args.cache_path)
+             if args.cache_read_only_base and not args.dry_run
+             else SQLiteCache(args.cache_path) if not args.dry_run else None)
 
     paraphrase_fn = None
     if args.paraphrase and not args.dry_run:
@@ -298,27 +336,76 @@ def main() -> None:
         print("Dry run complete: variant generation + rule regeneration OK, no provider calls made.")
         return
 
-    out_dir = Path(args.output_dir) / f"{args.dataset}__{args.model}"
+    out_dir = (Path(args.output_file).parent if args.output_file
+               else Path(args.output_dir) / f"{args.dataset}__{args.model}")
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "variants.jsonl"
+    # One cell has exactly one writer. A mistaken second launch fails before
+    # it can append duplicate rows.
+    out_path = Path(args.output_file) if args.output_file else out_dir / "variants.jsonl"
+    writer_lock = out_path.with_suffix(out_path.suffix + ".writer.lock").open("a")
+    try:
+        fcntl.flock(writer_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        raise SystemExit(f"writer already active for {out_dir.name}") from exc
+    # Amendment A1: keys discarded because multiple historical writers
+    # produced conflicting objects are rerun under the single-writer lock and
+    # explicitly labeled.  The preparation manifest is immutable audit input;
+    # ordinary logically-missing rows remain recovered=false.
+    recovered_keys: set[tuple[str, int, str]] = set()
+    recovered_path = (Path(args.conflict_file) if args.conflict_file
+                      else out_dir / "a1_conflict_keys.json")
+    if recovered_path.exists():
+        for item in json.loads(recovered_path.read_text()):
+            recovered_keys.add((item["task_id"], int(item["variant_idx"]), item["arm"]))
 
     done: set[tuple[str, int, str]] = set()
-    if out_path.exists():
-        for line in out_path.open():
+    done_sources = [out_path]
+    if args.base_output:
+        done_sources.insert(0, Path(args.base_output))
+    for done_path in done_sources:
+        if not done_path.exists():
+            continue
+        for line in done_path.open():
             line = line.strip()
             if not line:
                 continue
-            row = json.loads(line)
-            done.add((row["task_id"], row["variant_idx"], row["arm"]))
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                # Preserve an unterminated tail after a killed append. The
+                # integrity report exposes it and the missing key can resume.
+                continue
+            key = (row["task_id"], int(row["variant_idx"]), row["arm"])
+            # A1 keeps quarantined originals in the immutable base for audit,
+            # but only a replacement in the shard-local output is resumable.
+            if args.base_output and done_path == Path(args.base_output) and key in recovered_keys:
+                continue
+            done.add(key)
     if done:
         print(f"Resuming: {len(done)} (task_id, variant_idx, arm) rows already present, skipped.")
+
+    assignments: dict[tuple[str, int], set[str]] | None = None
+    if args.assignment_file:
+        assignments = {}
+        for item in json.loads(Path(args.assignment_file).read_text()):
+            unit = (str(item["task_id"]), int(item["variant_idx"]))
+            if unit in assignments:
+                raise SystemExit(f"duplicate assigned unit: {unit}")
+            arms = {str(arm) for arm in item["arms"]}
+            if not arms or not arms <= set(ARMS):
+                raise SystemExit(f"invalid assigned arms for {unit}: {sorted(arms)}")
+            assignments[unit] = arms
 
     out_f = out_path.open("a")
     total_in = total_out = para_total = n_rows = n_errors = 0
 
     for example in examples:
         for v in range(n_variants):
-            pending = [a for a in ARMS if (example.task_id, v, a) not in done]
+            if assignments is not None and (example.task_id, v) not in assignments:
+                continue
+            allowed = assignments[(example.task_id, v)] if assignments is not None else set(ARMS)
+            pending = [a for a in ARMS
+                       if a in allowed and (example.task_id, v, a) not in done]
             if not pending:
                 continue
 
@@ -389,6 +476,7 @@ def main() -> None:
                     "banned_substrings": info["banned_substrings"],
                     "paraphrased": paraphrase_fn is not None,
                     "meta_summary": arm_out["meta_summary"],
+                    "recovered": (example.task_id, v, arm) in recovered_keys,
                 }
                 out_f.write(json.dumps(row, default=str) + "\n")
                 out_f.flush()

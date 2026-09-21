@@ -45,7 +45,7 @@ def _load(split: str = "validation") -> Any:
     global _HF_DATASET
     if _HF_DATASET is None or _HF_DATASET[0] != split:
         from datasets import load_dataset
-        ds = load_dataset("truthful_qa", "generation", split=split)
+        ds = load_dataset("truthfulqa/truthful_qa", "generation", split=split)
         _HF_DATASET = (split, ds)
     return _HF_DATASET[1]
 

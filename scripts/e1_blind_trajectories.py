@@ -6,12 +6,12 @@ Reads raw_pool.jsonl (from e1_sample_annotation_set.py) and writes:
   items/e1_XXXX.json   blinded items — task, profile spans, numbered steps,
                        final output. NO method/arm/model/dataset names, no
                        fault_node_predicted, no DAG, no success flag wording.
-  keymap.json          PRIVATE item_id -> provenance + attention-check ground
+  private/keymap.json  PRIVATE item_id -> provenance + attention-check ground
                        truth. Never share with annotators; stays out of the
-                       release until after adjudication.
-  assignments.json     per-annotator item lists: pilot items go to everyone;
-                       each main item gets exactly 2 annotators; each annotator
-                       gets ~n-attention checks interleaved at random positions.
+                       annotation-pages directory and release until adjudication.
+  assignments.json     per-annotator item lists: pilot items go to both named
+                       annotators; both label every natural item; each gets
+                       n-attention checks interleaved at random positions.
 
 Annotators see the FINAL trajectory of the failed run (the run that actually
 failed); blinding is by omission of identity fields, not by editing step text.
@@ -20,11 +20,10 @@ Usage:
   python3 scripts/e1_blind_trajectories.py \
       --pool outputs/iclr/e1_dataset/raw_pool.jsonl \
       --out-dir outputs/iclr/e1_dataset \
-      --annotators 8 --pilot 15 --checks-per-annotator 5
+      --annotator-ids jazz mahfuza --pilot 15 --checks-per-annotator 5
 """
 
 import argparse
-import itertools
 import json
 import random
 from pathlib import Path
@@ -64,7 +63,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pool", required=True)
     ap.add_argument("--out-dir", required=True)
-    ap.add_argument("--annotators", type=int, default=8)
+    ap.add_argument(
+        "--annotator-ids", nargs="+", default=["jazz", "mahfuza"],
+        help="D6 named annotator IDs; exactly two are required",
+    )
     ap.add_argument("--pilot", type=int, default=15,
                     help="first K main items (after shuffle) form the pilot, "
                          "labeled by ALL annotators")
@@ -105,21 +107,17 @@ def main():
         )
 
     # ---- assignments ----
-    annotators = [f"person{i + 1}" for i in range(args.annotators)]
+    annotators = list(args.annotator_ids)
+    if len(annotators) != 2 or len(set(annotators)) != 2:
+        raise SystemExit("Amendment D6 requires exactly two distinct annotator IDs")
     main_ids = [t["_item_id"] for t in mains]
     rng.shuffle(main_ids)
     pilot_ids = main_ids[: args.pilot]
     batch_ids = main_ids[args.pilot :]
     check_ids = [t["_item_id"] for t in checks]
 
-    # each batch item -> exactly 2 annotators, balanced round-robin over pairs
-    pairs = list(itertools.combinations(range(args.annotators), 2))
-    rng.shuffle(pairs)
-    per = {a: [] for a in annotators}
-    for i, item in enumerate(batch_ids):
-        a, b = pairs[i % len(pairs)]
-        per[annotators[a]].append(item)
-        per[annotators[b]].append(item)
+    # D6: the same two named annotators label every natural item.
+    per = {a: list(batch_ids) for a in annotators}
 
     assignments = {}
     for a in annotators:
@@ -128,13 +126,14 @@ def main():
         rng.shuffle(batch)  # checks land at random positions
         assignments[a] = {"pilot": list(pilot_ids), "main": batch}
 
-    (out / "keymap.json").write_text(json.dumps(keymap, indent=1))
+    (out / "private").mkdir(exist_ok=True)
+    (out / "private" / "keymap.json").write_text(json.dumps(keymap, indent=1))
     (out / "assignments.json").write_text(json.dumps(assignments, indent=1))
     loads = {a: len(v["main"]) for a, v in assignments.items()}
     print(f"items: {len(everything)} ({len(pilot_ids)} pilot, {len(batch_ids)} batch, "
           f"{len(reserves)} reserve, {len(check_ids)} attention)")
     print(f"per-annotator main load (incl. checks): {loads}")
-    print(f"wrote {out}/items, keymap.json (PRIVATE), assignments.json")
+    print(f"wrote {out}/items, private/keymap.json, assignments.json")
 
 
 if __name__ == "__main__":

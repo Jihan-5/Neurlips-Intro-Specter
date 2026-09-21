@@ -463,6 +463,7 @@ def run_method_on_example(
             uniform_prior=bool(method.extra.get("uniform_prior", False)),
             skip_likelihood=bool(method.extra.get("skip_likelihood", False)),
             disable_cost=bool(method.extra.get("disable_cost", False)),
+            allow_profile_candidates=bool(method.extra.get("allow_profile_candidates", False)),
             use_confidence_in_prior=bool(method.extra.get("use_confidence_in_prior", True)),
             spr_max_rounds=int(method.extra.get("spr_max_rounds", 2)),
             spr_decay_alpha=float(method.extra.get("spr_decay_alpha", 0.1)),
@@ -503,6 +504,13 @@ def run_method_on_example(
     if trace_sink is not None:
         # Full per-task record for the E1 annotation study: everything a human
         # needs to read the run (see JAZZ_HUMAN_ANNOTATOR_INSTRUCTIONS.md).
+        gold_fault_step = None
+        if example.gold.fault_node_id:
+            gold_node = next(
+                (node for node in example.dag.nodes if node.id == example.gold.fault_node_id),
+                None,
+            )
+            gold_fault_step = None if gold_node is None else gold_node.step_id
         trace_sink.update(
             task_id=example.task_id,
             dataset=example.dataset,
@@ -516,6 +524,12 @@ def run_method_on_example(
             final_trajectory=result.final_trajectory.model_dump(mode="json"),
             fault_node_predicted=fault_node_predicted,
             extracted_dag=dag_dump,
+            # The controlled single-fault benchmark injects a profile-constraint
+            # violation, so it can supply objective attention-check ground truth.
+            gold_fault_category=(
+                1 if example.dataset == "synthetic_dag_single_fault" else None
+            ),
+            gold_fault_step=gold_fault_step,
         )
 
     return RunResult(

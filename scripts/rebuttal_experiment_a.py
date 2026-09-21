@@ -225,6 +225,7 @@ def _run_intro_specter_arm(
     seed: int,
     cache: SQLiteCache | None,
     tau_abstain: float = 0.25,
+    allow_profile_candidates: bool = False,
 ) -> dict[str, Any]:
     provider = build_provider(provider_name, cache=cache)
     verifier = HybridVerifier(rules=list(example.rules))
@@ -245,6 +246,7 @@ def _run_intro_specter_arm(
         # attribution scores sit below it), so those cells pass 0.0 via
         # --tau-abstain to match the clean-run protocol.
         tau_abstain=tau_abstain,
+        allow_profile_candidates=allow_profile_candidates,
         cost_lambda=0.0,
         n_counterfactual_trials=1,  # matches real config's `extra.n_counterfactual_trials`
         # all other fields left at IntroSpecterConfig dataclass defaults (Table 11)
@@ -267,6 +269,10 @@ def _run_intro_specter_arm(
         "tokens_output": int(is_result.meta.get("tokens_output", 0)),
         "abstained": is_result.status == "abstain_or_full_regenerate",
         "meta_summary": _meta_summary(is_result.meta),
+        "candidate_ids": [c.node_id for c in is_result.posterior.candidates] if is_result.posterior else [],
+        "profile_node_ids": [n.id for n in is_result.dag.nodes if n.provenance.value == "profile"],
+        "profile_node_spans": {n.id: n.profile_span_ids for n in is_result.dag.nodes if n.provenance.value == "profile"},
+        "fault_node": is_result.fault_node,
     }
 
 

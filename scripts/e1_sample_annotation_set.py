@@ -15,7 +15,7 @@ Usage:
   python3 scripts/e1_sample_annotation_set.py \
       --traces outputs/real/travelplanner_real__deepseek-v3/traces \
                outputs/rebuttal/experiment_personalwab/llama-3.1-8b/traces \
-      --n 135 --reserve 30 \
+      --n 100 --reserve 30 \
       --attention-traces outputs/synthetic_single_fault/traces \
       --n-attention 10 \
       --out outputs/iclr/e1_dataset/raw_pool.jsonl
@@ -73,7 +73,7 @@ def stratified_sample(pool, n, rng):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--traces", nargs="+", required=True)
-    ap.add_argument("--n", type=int, default=135)
+    ap.add_argument("--n", type=int, default=100)
     ap.add_argument("--reserve", type=int, default=30)
     ap.add_argument("--attention-traces", nargs="*", default=[])
     ap.add_argument("--n-attention", type=int, default=10)
@@ -95,10 +95,17 @@ def main():
     for c, k in sorted(per_cell.items()):
         print(f"  {c}: {k} failures")
 
-    want = args.n + args.reserve
-    picked = stratified_sample(failed, want, rng)
-    main_items, reserve_items = picked[: args.n], picked[args.n :]
-    print(f"sampled {len(main_items)} main + {len(reserve_items)} reserve (want {want})")
+    # Draw the analysis sample and reserve separately. Slicing a cell-grouped
+    # N+reserve draw would accidentally push lexically later cells into the
+    # reserve and break proportionality of the actual N.
+    main_items = stratified_sample(failed, args.n, rng)
+    chosen = {t["_source_path"] for t in main_items}
+    remaining = [t for t in failed if t["_source_path"] not in chosen]
+    reserve_items = stratified_sample(remaining, args.reserve, rng)
+    print(
+        f"sampled {len(main_items)} main + {len(reserve_items)} reserve "
+        f"(want {args.n + args.reserve})"
+    )
 
     checks = []
     if args.attention_traces:
@@ -128,6 +135,12 @@ def main():
         "n_reserve": len(reserve_items),
         "n_attention": len(checks),
         "per_cell_failures": {str(k): v for k, v in sorted(per_cell.items())},
+        "per_cell_main": {
+            str(k): v for k, v in sorted(Counter(cell_of(t) for t in main_items).items())
+        },
+        "per_cell_reserve": {
+            str(k): v for k, v in sorted(Counter(cell_of(t) for t in reserve_items).items())
+        },
         "trace_dirs": args.traces,
     }
     out.with_suffix(".manifest.json").write_text(json.dumps(manifest, indent=1))
