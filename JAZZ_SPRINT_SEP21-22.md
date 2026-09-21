@@ -84,8 +84,7 @@ and private keymap). Record both names/roles for the datasheet.
 ```
 Sep 21 09:00  P1-P2: clean rebuild + leak check + launch all cells (background)
 Sep 21 10:00  A: Jazz 1 pilot → main batch part 1 (Jazz 2 onboarded, waiting or overlapping)
-Sep 21 15:00  A: pilot κ gate → main batch starts (or codebook fix path)
-Sep 21 night  A: main batch part 1 (~5h)   ∥  P: cells running
+Sep 21 night  A: Jazz 1 main batch continues (~5h more)   ∥  P: cells running
 Sep 22 day    A: Jazz 1 finishes main ─ Jazz 2 pilot → κ gate → Jazz 2 main  ∥  P3-P4: aggregate + push when cells finish
 Sep 22 22:00  A: both sets done → final κ + flags → Jihan (adjudication, his lane)
 Sep 22 night  G: final κ, attribution-vs-human, packaging, artifact push — DONE
