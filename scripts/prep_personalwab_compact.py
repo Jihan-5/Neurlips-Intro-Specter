@@ -1,40 +1,45 @@
 #!/usr/bin/env python3
-"""Rebuild the PersonalWAB compact data file (compact_recommend.json).
+"""Rebuild a leak-free PersonalWAB compact recommendation file.
 
 The original compact file lived in a session /tmp scratchpad (default path in
 intro_specter/benchmarks/personalwab_real.py) and was LOST when that
 scratchpad was cleaned; the prep script that built it was never committed.
 This script rebuilds it from the public benchmark repo and — crucially —
-VERIFIES the rebuild against artifacts the original file produced:
+stores a separate visible history on every recommendation row.  That history
+contains only interactions whose integer Unix-millisecond timestamp is
+strictly less than that row's task timestamp, and excludes every occurrence
+of that row's target ASIN.  The cutoff is deliberately per task, not per user:
+the test split contains users with multiple recommendation tasks.
+
+The clean rebuild is verified with:
 
   1. task-id check: PersonalWABReal(n=60, seed=42) over the rebuilt file must
      yield exactly the 60 task_ids present in
      outputs/rebuttal/experiment_personalwab/<model>/direct.jsonl
      (task ids embed both the sampled row index-selection and user ids, which
      depend on the row COUNT and ORDER of recommend_test — a strong check).
-  2. cache-key probe: recompute the prime-call cache key (sha256 over
-     provider/model/system/user/temperature/seed/max_tokens) for sampled
-     examples and require hits in cache/completions_personalwab_<model>.sqlite.
-     A hit proves the rebuilt profiles/prompts are BYTE-IDENTICAL to the
-     originals.
+  2. fail-closed target-ASIN leak check: for every sampled task, require every
+     visible history timestamp to be strictly pre-task and require the target
+     ASIN to be absent from both the raw visible history and every rendered
+     profile/history span.
 
 Usage:
   git clone --depth 1 https://github.com/HongruCai/PersonalWAB.git /tmp/pwab
   python3 scripts/prep_personalwab_compact.py \
       --raw-dir /tmp/pwab/PersonalWAB/envs/pwab/data \
-      --out data/personalwab/compact_recommend.json \
-      --verify-artifacts outputs/rebuttal/experiment_personalwab/llama-1.1... \
-      --verify-cache cache/completions_personalwab_llama-3.1-8b.sqlite \
-      --verify-model llama-3.1-8b
-  export PERSONALWAB_COMPACT=$PWD/data/personalwab/compact_recommend.json
+      --out data/personalwab/compact_recommend_clean.json \
+      --verify-artifacts outputs/rebuttal/experiment_personalwab/llama-3.1-8b/direct.jsonl \
+      --verify-leaks
+  export PERSONALWAB_COMPACT=$PWD/data/personalwab/compact_recommend_clean.json
 
-If verification fails with one --feature-join / --history-order combination,
-try the others (the original prep's exact formatting choices are unknown);
-the cache probe is the arbiter.
+The old completion-cache probe is retained only as an optional forensic aid
+for contaminated historical builds.  Clean prompts are expected to miss that
+cache and cache equality is not a clean-build verification condition.
 """
 
 import argparse
 import json
+import random
 import sys
 from pathlib import Path
 
@@ -72,28 +77,20 @@ def build_compact(raw_dir: Path, feature_join: str, history_order: str) -> dict:
             "feature": feat(p),
         }
 
-    recommend_test = []
-    for r in ui["test"]:
-        if r.get("type") != "recommend":
-            continue
-        pi = r["target"]["product_info"]
-        recommend_test.append({
-            "user_id": r["user_id"],
-            "task": r["task"],
-            "timestamp": r["timestamp"],
-            "target_asin": pi["parent_asin"],
-            "target_title": pi.get("title", ""),
-            "target_category": pi.get("main_category", ""),
-        })
-
     history = {}
     for uid, entries in history_raw.items():
         rows = []
         for e in entries:
             rev = e.get("review") or {}
             pi = e.get("product_info") or {}
+            ts = rev.get("timestamp")
+            if not isinstance(ts, int):
+                raise ValueError(
+                    f"history timestamp must be integer Unix milliseconds: "
+                    f"user={uid!r}, value={ts!r}"
+                )
             rows.append({
-                "ts": rev.get("timestamp"),
+                "ts": ts,
                 "asin": rev.get("parent_asin") or pi.get("parent_asin"),
                 "title": pi.get("title", ""),
                 "category": pi.get("main_category", ""),
@@ -103,17 +100,51 @@ def build_compact(raw_dir: Path, feature_join: str, history_order: str) -> dict:
             rows.sort(key=lambda h: (h["ts"] is None, h["ts"]))
         history[uid] = rows
 
+    recommend_test = []
+    for r in ui["test"]:
+        if r.get("type") != "recommend":
+            continue
+        pi = r["target"]["product_info"]
+        task_ts = r["timestamp"]
+        if not isinstance(task_ts, int):
+            raise ValueError(
+                f"task timestamp must be integer Unix milliseconds: "
+                f"user={r.get('user_id')!r}, value={task_ts!r}"
+            )
+        target_asin = pi["parent_asin"]
+        # Per-task D7 cutoff.  Do not precompute one cutoff per user: 152 of
+        # the 504 recommendation users have multiple test tasks (up to nine).
+        visible_history = [
+            h for h in history.get(r["user_id"], [])
+            if h["ts"] < task_ts and h["asin"] != target_asin
+        ]
+        recommend_test.append({
+            "user_id": r["user_id"],
+            "task": r["task"],
+            "timestamp": task_ts,
+            "target_asin": target_asin,
+            "target_title": pi.get("title", ""),
+            "target_category": pi.get("main_category", ""),
+            "visible_history": visible_history,
+        })
+
     profiles = {uid: v.get("user_profile", v) for uid, v in profiles_raw.items()}
 
     return {
+        "schema_version": 2,
+        "history_policy": {
+            "scope": "per_recommendation_task",
+            "timestamp_unit": "unix_milliseconds",
+            "predicate": "history.ts < task.timestamp",
+            "target_asin_excluded": True,
+        },
         "recommend_test": recommend_test,
-        "history": history,
         "profiles": profiles,
         "catalog": catalog,
     }
 
 
-def verify_task_ids(compact_path: Path, artifact_jsonl: Path) -> bool:
+def _reload_benchmark(compact_path: Path):
     import os
 
     os.environ["PERSONALWAB_COMPACT"] = str(compact_path)
@@ -124,18 +155,63 @@ def verify_task_ids(compact_path: Path, artifact_jsonl: Path) -> bool:
             del sys.modules[m]
     from intro_specter.benchmarks.personalwab_real import PersonalWABReal
 
+    return PersonalWABReal
+
+
+def verify_task_ids(compact_path: Path, artifact_jsonl: Path) -> bool:
+    PersonalWABReal = _reload_benchmark(compact_path)
+
     want = set()
     for line in artifact_jsonl.open():
         line = line.strip()
         if line:
             want.add(json.loads(line)["task_id"])
-    got = {ex.task_id for ex in PersonalWABReal(n_examples=60, seed=42, split="all")}
+    examples = list(PersonalWABReal(n_examples=60, seed=42, split="all"))
+    got = {ex.task_id for ex in examples}
     missing, extra = want - got, got - want
-    print(f"task-id check: artifacts={len(want)} rebuilt={len(got)} "
+    ok = len(examples) == len(got) == len(want) == 60 and not missing and not extra
+    print(f"task-id check: {len(got & want)}/60 matched; "
+          f"artifacts={len(want)} rebuilt={len(got)} "
           f"missing={len(missing)} extra={len(extra)}")
     if missing:
         print("  e.g. missing:", sorted(missing)[:5])
-    return not missing
+    if extra:
+        print("  e.g. extra:", sorted(extra)[:5])
+    return ok
+
+
+def verify_no_target_leaks(compact_path: Path, n_examples: int = 60) -> bool:
+    """Fail closed if sampled tasks expose their target ASIN or non-prior history."""
+    PersonalWABReal = _reload_benchmark(compact_path)
+    compact = json.loads(compact_path.read_text())
+    rows = compact["recommend_test"]
+    failures: list[str] = []
+    examples = list(PersonalWABReal(n_examples=n_examples, seed=42, split="all"))
+
+    for idx, ex in enumerate(examples):
+        rng = random.Random(42 * 1_000_037 + idx)
+        row = rows[rng.randint(0, len(rows) - 1)]
+        target = row["target_asin"].upper()
+        visible = row.get("visible_history")
+        if not isinstance(visible, list):
+            failures.append(f"{ex.task_id}: missing row-local visible_history")
+            continue
+        bad_ts = [h.get("ts") for h in visible
+                  if not isinstance(h.get("ts"), int) or h["ts"] >= row["timestamp"]]
+        raw_text = json.dumps(visible, sort_keys=True).upper()
+        profile_text = "\n".join(span.text for span in ex.profile.spans).upper()
+        if bad_ts:
+            failures.append(f"{ex.task_id}: non-prior timestamps {bad_ts[:3]}")
+        if target in raw_text:
+            failures.append(f"{ex.task_id}: target ASIN in raw visible history")
+        if target in profile_text:
+            failures.append(f"{ex.task_id}: target ASIN in rendered profile/history")
+
+    passed = len(examples) - len({f.split(":", 1)[0] for f in failures})
+    print(f"target-ASIN leak check: {passed}/{len(examples)} tasks leak-free")
+    for failure in failures[:10]:
+        print("  ", failure)
+    return len(examples) == n_examples and not failures
 
 
 def verify_cache(compact_path: Path, cache_path: Path, model_key: str,
@@ -195,13 +271,18 @@ def main():
                     help="existing arm JSONL, e.g. outputs/rebuttal/"
                          "experiment_personalwab/llama-3.1-8b/direct.jsonl")
     ap.add_argument("--verify-cache",
-                    help="e.g. cache/completions_personalwab_llama-3.1-8b.sqlite")
+                    help="FORENSIC ONLY: probe an old cache; clean builds are "
+                         "expected to miss and should not use this as a gate")
     ap.add_argument("--verify-model", default="llama-3.1-8b")
+    ap.add_argument("--verify-leaks", action="store_true",
+                    help="fail unless all 60 sampled tasks have strictly prior "
+                         "history and no target ASIN in visible profile/history")
     args = ap.parse_args()
 
     compact = build_compact(Path(args.raw_dir), args.feature_join, args.history_order)
+    n_visible = sum(len(r["visible_history"]) for r in compact["recommend_test"])
     print(f"built: {len(compact['recommend_test'])} recommend_test rows, "
-          f"{len(compact['history'])} users w/ history, "
+          f"{n_visible} task-local visible history entries, "
           f"{len(compact['profiles'])} profiles, {len(compact['catalog'])} products")
 
     out = Path(args.out)
@@ -212,9 +293,11 @@ def main():
     ok = True
     if args.verify_artifacts:
         ok &= verify_task_ids(out, Path(args.verify_artifacts))
+    if args.verify_leaks:
+        ok &= verify_no_target_leaks(out)
     if args.verify_cache:
         ok &= verify_cache(out, Path(args.verify_cache), args.verify_model)
-    if args.verify_artifacts or args.verify_cache:
+    if args.verify_artifacts or args.verify_leaks or args.verify_cache:
         print("VERIFICATION:", "PASS" if ok else "FAIL")
         sys.exit(0 if ok else 1)
 

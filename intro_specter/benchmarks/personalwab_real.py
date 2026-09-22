@@ -27,7 +27,7 @@ The PersonalWAB repo ships its data in-tree at
   timestamp in their history).
 * `all_products_part_*.json` -- 35,772 real Amazon products.
 
-This module reads a slimmed one-file snapshot (`compact_recommend.json`,
+This module reads a slimmed one-file snapshot (`compact_recommend_clean.json`,
 built deterministically from the raw files by the campaign prep script;
 same counts as above) to keep per-process memory small -- 3 model
 processes run in parallel on a swap-tight machine. Set
@@ -334,11 +334,18 @@ class PersonalWABReal:
         target_asin = row["target_asin"]
         task_ts = row["timestamp"]
 
-        # History strictly BEFORE the task timestamp, target excluded
-        # (the target interaction itself sits in user_history at task_ts;
-        # verified during data acquisition -- excluding it avoids leaking
-        # the label through the profile).
-        full_hist = data["history"].get(user_id, [])
+        # Clean schema v2 stores history per recommendation task.  This is
+        # essential because the test split has multiple tasks for many users;
+        # one global per-user cutoff would give at least one task the wrong
+        # temporal view.  Keep the old-schema fallback solely so historical
+        # compact files remain readable.
+        row_history = row.get("visible_history")
+        full_hist = data.get("history", {}).get(user_id, [])
+        if self.legacy_unfiltered_history and row_history is not None:
+            raise ValueError(
+                "legacy_unfiltered_history requires a historical schema-v1 "
+                "compact with top-level unfiltered history"
+            )
         if self.legacy_unfiltered_history:
             # FORENSIC ONLY: reproduces the pre-fix (Jul 2026) behavior that
             # produced outputs/rebuttal/experiment_personalwab/ -- history
@@ -346,12 +353,26 @@ class PersonalWABReal:
             # (label leak). Needed to regenerate those exact trajectories for
             # the E1 annotation study; NEVER use for new experiment numbers.
             prior = list(full_hist)
+        elif row_history is not None:
+            prior = list(row_history)
+            bad = [h for h in prior
+                   if not isinstance(h.get("ts"), int) or h["ts"] >= task_ts
+                   or h.get("asin") == target_asin]
+            if bad:
+                raise ValueError(
+                    f"clean PersonalWAB row {idx} contains non-prior or "
+                    f"target history entries"
+                )
         else:
             prior = [h for h in full_hist
                      if h.get("ts") is not None and h["ts"] < task_ts
                      and h["asin"] != target_asin]
         hist_rows = prior[-self.max_history_spans:]
-        hist_asins = {h["asin"] for h in full_hist}
+        # Candidate construction must not peek at future interactions either.
+        # On clean schema v2, exclude only interactions visible at task time.
+        hist_asins = {h["asin"] for h in (
+            prior if row_history is not None else full_hist
+        )}
 
         pw_profile = data["profiles"].get(user_id, {})
         profile = _profile_spans(user_id, pw_profile, hist_rows)
