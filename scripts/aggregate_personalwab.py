@@ -17,6 +17,7 @@ Additive-only: new file, touches nothing existing.
 from __future__ import annotations
 
 import json
+import argparse
 import sys
 from pathlib import Path
 
@@ -42,9 +43,9 @@ PRICES = {
 }
 
 
-def load_rows(model: str, arm: str) -> dict[tuple[str, int], dict]:
+def load_rows(model: str, arm: str, root: Path = ROOT) -> dict[tuple[str, int], dict]:
     """Last-write-wins dedup on (task_id, seed), matching the runner's resume key."""
-    path = ROOT / model / f"{arm}.jsonl"
+    path = root / model / f"{arm}.jsonl"
     rows: dict[tuple[str, int], dict] = {}
     if not path.exists():
         return rows
@@ -58,6 +59,18 @@ def load_rows(model: str, arm: str) -> dict[tuple[str, int], dict]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT,
+                        help="experiment output root (default: historical contaminated root)")
+    parser.add_argument("--models", default=",".join(MODELS),
+                        help="comma-separated model directory names")
+    parser.add_argument("--output", type=Path, default=None,
+                        help="summary path (default: ROOT/SUMMARY.md)")
+    args = parser.parse_args()
+    root = args.root
+    models = [m.strip() for m in args.models.split(",") if m.strip()]
+    out = args.output or root / "SUMMARY.md"
+
     lines: list[str] = []
     lines.append("# PersonalWAB (WWW'25) single-turn recommendation -- rebuttal experiment\n")
     lines.append(
@@ -68,9 +81,9 @@ def main() -> None:
         "own containment criterion). All counts below are read from the JSONL "
         "files on disk.\n")
 
-    for model in MODELS:
+    for model in models:
         lines.append(f"\n## {model}\n")
-        per_arm = {arm: load_rows(model, arm) for arm in ARMS}
+        per_arm = {arm: load_rows(model, arm, root) for arm in ARMS}
 
         lines.append("| arm | n rows | success rate | mean rounds_used | tokens in | tokens out | est. cost ($) |")
         lines.append("|---|---|---|---|---|---|---|")
@@ -114,7 +127,6 @@ def main() -> None:
                     f"| {ci.point * 100:+.1f} [{ci.low * 100:+.1f}, {ci.high * 100:+.1f}] "
                     f"| {test.pvalue:.4f} |")
 
-    out = ROOT / "SUMMARY.md"
     out.write_text("\n".join(lines) + "\n")
     print(f"wrote {out}")
     print("\n".join(lines))
