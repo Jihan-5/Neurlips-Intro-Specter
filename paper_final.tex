@@ -38,11 +38,7 @@
 \maketitle
 
 \begin{abstract}
-LLM-based agents increasingly execute multi-step tasks conditioned on a structured profile of user constraints. When such an agent adopts an incorrect assumption about the user early in its trajectory, the error propagates silently through subsequent steps, producing an output that violates the user's explicitly stated constraints. State-of-the-art self-correction methods such as Reflexion and Tree-of-Thoughts retry the full task or search alternative reasoning paths, yet none identify \emph{which specific assumption} introduced the failure.
-
-We propose \method, a framework that extracts the assumptions an agent relied upon, structures them into a provenance-aware dependency graph, and conducts targeted counterfactual repair experiments to isolate the root-cause assumption and correct only the affected portion of the trajectory.
-
-Across four benchmarks and four LLMs (16 cells; 864 paired observations), \method achieves the highest or tied-highest task success on \textbf{15 of 16} cells with \textbf{zero significant losses} against any of seven baselines. On Profile-injected TruthfulQA $\times$ Mistral 12\,B, success rises from 63.9\% (Direct) to \textbf{86.1\%} (+22.2\,pp); on MuSiQue $\times$ Mistral 12\,B, from 71.7\% to \textbf{91.7\%} (+20.0\,pp). Pooled across the seven-baseline comparison, \method outperforms the baseline mean by \textbf{14.7\,pp}.
+Self-correction lets an LLM agent recover a failed trajectory without retraining, but existing methods retry the task, search alternative reasoning paths, or re-prompt against the violated constraint, and fault-attribution methods localize failures to steps or agents without modeling the assumptions that caused them or repairing the trajectory. We study trajectories conditioned on a structured profile of user constraints, where a single incorrect assumption adopted early propagates silently and surfaces only as a terminal violation. \method extracts the assumptions a trajectory relied on, organizes them into a provenance-aware dependency graph, isolates the root-cause assumption by counterfactual intervention, and regenerates only the dependent suffix. On injected faults it recovers the true root cause in 100\% of trajectories (top-1, MRR${=}1.0$). In single-fault settings it maintains parity with the strongest baselines (89.4\% pooled over 648 paired observations). Across five benchmarks, four LLMs, and ${\sim}81{,}000$ trajectories carrying two to five simultaneous faults, it outperforms six baselines on every dataset, with margins that grow with fault count (up to $+17.3$\,pp over the strongest baseline on HotpotQA at four concurrent faults). Under 100 seeded re-draws of every user profile (40{,}800 paired outcomes), its advantage over Reflexion is $+2.1$\,pp and favorable in 95 of 100 draws. On real, non-injected user histories (PersonalWAB), it exceeds direct prompting by $+8.1$\,pp ($p<10^{-4}$) and iterative reprompting baselines by $+3.3$--$4.4$\,pp ($p\le0.03$), and is statistically indistinguishable from Reflexion ($-0.8$\,pp, $p=0.61$).
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -134,88 +130,17 @@ Violation-Reprompt & Re-prompt with violated profile span as feedback (1 round) 
 
 \section{Results}\label{sec:results}
 
-Tables~\ref{tab:truthfulqa}--\ref{tab:musique} report per-cell task success (\%). \textbf{Bold} = highest per row; \underline{underline} = second. Full McNemar $p$-value tables are in Appendix~\ref{app:full-tables}.
+\paragraph{Scope.} The primary single-fault matrix comprises the twelve (dataset, model) cells with SPR-enabled runs on the three runnable models (Llama 3.1 8\,B, Llama 3.3 70\,B, Mistral Nemo 12\,B); Qwen 2.5 7\,B became unavailable at every serving provider before the rerun, and its archival no-SPR results, together with three exploratory models, are reported in Appendix~\ref{app:archival-matrix} under a mixed-configuration label. Tables~\ref{tab:truthfulqa}--\ref{tab:musique} report per-cell success (\%); \textbf{bold} marks all tied numerical maxima. Paired-statistics tables are in Appendix~\ref{app:full-tables}.
 
-\begin{table}[t]\centering\small
-\caption{Profile-injected TruthfulQA. Per-cell paired observations: 36 ($n{=}12$ examples that completed across all 8 methods $\times$ 3 dataset seeds). Success rate (\%).}
-\label{tab:truthfulqa}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{l cccccccc}\toprule
-& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
-deepseek-v3 & 38.9 & 22.2 & \textbf{83.3} & 36.1 & 33.3 & 47.2 & 52.8 & 41.7 \\
-gemini-2.5-flash & 41.7 & 33.3 & \textbf{75.0} & 36.1 & 30.6 & 41.7 & 36.1 & 44.4 \\
-gpt-oss-20b & 63.9 & 69.4 & \textbf{91.7} & 72.2 & 72.2 & 66.7 & 66.7 & 72.2 \\
-Llama 8B & 80.6 & 61.1 & \textbf{94.4} & 86.1 & 72.2 & 91.7 & 77.8 & \textbf{94.4} \\
-Llama 70B & 83.3 & 61.1 & \textbf{91.7} & 80.6 & 75.0 & 83.3 & 80.6 & 83.3 \\
-Mistral 12B & 63.9 & 61.1 & 80.6 & 69.4 & 63.9 & 72.7 & 56.5 & \textbf{86.1} \\
-Qwen 7B & 63.2 & 34.2 & 68.4 & 58.3 & 52.6 & 65.8 & 45.5 & \textbf{78.9} \\
-\bottomrule\end{tabular}\end{table}
+\input{paper_sections/generated/jazz_12/main_tables.tex}
 
-\begin{table}[t]\centering\small
-\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Success rate (\%).}
-\label{tab:2wiki}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{l cccccccc}\toprule
-& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
-deepseek-v3 & 93.2 & 86.4 & \textbf{96.6} & 89.7 & 87.9 & 87.9 & 92.9 & 93.2 \\
-gemini-2.5-flash & 80.0 & 85.0 & \textbf{90.0} & 83.3 & 83.3 & 81.7 & \textbf{90.0} & 83.3 \\
-gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
-Llama 8B & 86.7 & 76.7 & \textbf{93.3} & 78.3 & 76.7 & 66.7 & 80.0 & \textbf{93.3} \\
-Llama 70B & \textbf{96.7} & 91.7 & \textbf{96.7} & 95.0 & 95.0 & 93.3 & 90.0 & \textbf{96.7} \\
-Mistral 12B & 91.7 & 86.7 & 95.0 & 90.0 & 86.7 & 89.8 & 92.2 & \textbf{96.7} \\
-Qwen 7B & 81.7 & 80.0 & \textbf{91.7} & 85.0 & 76.7 & 85.0 & 90.9 & 90.0 \\
-\bottomrule\end{tabular}\end{table}
-
-\begin{table}[t]\centering\small
-\caption{Profile-injected LongMemEval ($n{=}60$). Success rate (\%).}
-\label{tab:longmemeval}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{l cccccccc}\toprule
-& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
-deepseek-v3 & 36.2 & 25.9 & 43.1 & 36.2 & 31.0 & 39.6 & 43.2 & \textbf{45.6} \\
-gemini-2.5-flash & 28.3 & 23.3 & \textbf{33.3} & 30.0 & 25.4 & 26.7 & 26.7 & 30.0 \\
-gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
-Llama 8B & 63.3 & 51.7 & 76.7 & 63.3 & 61.7 & 50.0 & 55.0 & \textbf{78.3} \\
-Llama 70B & 43.3 & 48.3 & \textbf{70.0} & 45.0 & 40.0 & 33.3 & 30.0 & 56.7 \\
-Mistral 12B & 55.0 & 50.0 & \textbf{73.3} & 58.3 & 58.3 & 53.3 & 67.9 & \textbf{73.3} \\
-Qwen 7B & 70.0 & 66.7 & \textbf{76.7} & 66.7 & 63.3 & 75.0 & 25.0 & 71.7 \\
-\bottomrule\end{tabular}\end{table}
-
-\begin{table}[t]\centering\small
-\caption{Profile-injected MuSiQue ($n{=}60$). Success rate (\%).}
-\label{tab:musique}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{l cccccccc}\toprule
-& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
-deepseek-v3 & 56.7 & 55.0 & \textbf{71.7} & 56.7 & 66.7 & 63.3 & 61.7 & 61.7 \\
-gemini-2.5-flash & 51.7 & 41.7 & \textbf{68.3} & 55.0 & 41.7 & 51.7 & 63.3 & 60.0 \\
-gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
-Llama 8B & 76.7 & 66.7 & 90.0 & 76.7 & 66.7 & 51.7 & 71.7 & \textbf{91.7} \\
-Llama 70B & 83.3 & 78.3 & \textbf{96.7} & 81.7 & 81.7 & 70.0 & 55.0 & 93.3 \\
-Mistral 12B & 71.7 & 61.7 & \textbf{85.0} & 71.7 & 68.3 & 75.0 & 68.6 & 81.7 \\
-Qwen 7B & 80.0 & 63.3 & 83.3 & 80.0 & 65.0 & 75.0 & 77.3 & \textbf{85.0} \\
-\bottomrule\end{tabular}\end{table}
-
-\begin{table}[t]\centering\small
-\caption{Aggregate outcomes across sixteen (dataset, model) cells. ``NS losses'' are paired-McNemar non-significant losses (the single NS loss in this matrix has $p = 1.000$).}
-\label{tab:summary}
-\begin{tabular}{lcccc}\toprule
-\textbf{Dataset} & \textbf{Wins} & \textbf{Ties} & \textbf{NS losses} & \textbf{Sig.\ losses} \\\midrule
-Prof.-inj.\ TruthfulQA & 2 & 2 & 0 & 0 \\
-Prof.-inj.\ 2Wiki & 2 & 2 & 0 & 0 \\
-Prof.-inj.\ LongMemEval & 1 & 2 & 1 & 0 \\
-Prof.-inj.\ MuSiQue & 3 & 1 & 0 & 0 \\\midrule
-\textbf{Total (16 cells)} & \textbf{8} & \textbf{7} & \textbf{1} & \textbf{0} \\
-\bottomrule\end{tabular}\end{table}
-
-\paragraph{Per-cell outcomes.} \method achieves the highest or tied-highest success on \textbf{15 of 16} cells. The single non-significant loss is LongMemEval$\times$Llama 70\,B at $-1.7$\,pp ($p = 1.000$, paired-bootstrap CI $[-11.7, +8.3]$). Strict wins over the strongest self-correction baseline (Reflexion) include MuSiQue$\times$Mistral 12\,B (\textbf{91.7\%}, +6.7\,pp, $p{=}0.012$), TruthfulQA$\times$Mistral 12\,B (\textbf{86.1\%}, +5.5\,pp, $p{=}0.012$), TruthfulQA$\times$Qwen 7\,B (\textbf{77.8\%}, +8.4\,pp), and 2Wiki$\times$Qwen 7\,B (\textbf{94.9\%}, +3.2\,pp); on the remaining cells \method ties or numerically leads Reflexion. On TravelPlanner (Appendix~\ref{app:travel}), \method records one numerical win and three NS losses against Reflexion; we attribute the gap to short trajectories with few model-inferred assumption nodes and disclaim the absolute numbers as uncalibrated against the official strict evaluator.
-
-\paragraph{Pooled performance and regime structure.} Pooled across 864 paired observations (TruthfulQA contributes $4 \times 36 = 144$; the other three benchmarks $4 \times 60 = 240$ each), \method reaches \textbf{87.0\%}, exceeding Reflexion (85.4\%) by 1.6\,pp; single-round attribution alone yields 84.3\%, and SPR (Eq.~\ref{eq:spr-update}, Table~\ref{tab:spr-impact}) lifts this to 87.0\% by reallocating posterior mass to non-MAP ancestors after the first-round repair is rejected by $V$. On the three mid-tier models (7--12\,B), \method is top or tied-top on twelve of twelve cells; on Llama 3.3 70\,B, \method ties Reflexion on three of four benchmarks (TruthfulQA, 2Wiki, MuSiQue) and trails on LongMemEval ($-1.7$\,pp, NS). The 70\,B regime is the cell pattern where the first-round MAP candidate is more often wrong (extracted ancestor sets are larger; the single-trial counterfactual is a noisier signal) but the correct ancestor remains inside $\mathcal{C}(v;G)$, which is exactly the regime SPR is designed for; the residual NS gap reflects cases where the true fault lies outside the extracted DAG. The 70\,B regime is represented by a single model family ($n{=}1$).
+\paragraph{Per-cell outcomes and pooled performance.} Across the twelve cells \method records 579/648 successes (\textbf{89.35\%}); against Reflexion (86.73\% on the same 648 matched observations) the difference is $+2.62$\,pp, with a cell record of 8 numerical wins, 2 ties, and 2 losses (LongMemEval and MuSiQue on Llama 70\,B). No individual cell survives Holm adjustment in either direction, so per-cell claims are descriptive. Two protocol caveats apply throughout: baseline rows are archival runs paired by (task, seed) keys, and pairing does not remove provider drift between run windows; missing observations are excluded, never scored as failures. Read as designed, the single-fault matrix is a parity-to-modest-lead result at matched cost---consistent with the mechanism: with exactly one injected fault and a strong retry baseline, whole-trajectory regeneration and targeted repair converge, and the regimes where they separate are tested in \S\ref{sec:multifault}--\S\ref{sec:personalwab}. On the two mid-tier models \method is top or tied-top on eight of eight cells; both losses fall on Llama 3.3 70\,B, the regime where extracted ancestor sets are larger, the single-trial counterfactual is a noisier signal, and the true fault more often lies outside the extracted DAG (a single model family, $n{=}1$; descriptive).
 
 
 \subsection{Mechanism Diagnostics}
 
 On synthetic \dagg tasks with known fault nodes ($n{=}60$), \method achieves 100\% top-1 attribution (MRR${=}1.0$) and 100\% repair success in \texttt{single\_fault} mode. Forward-only baselines score 0\% on this diagnostic. In \texttt{multi\_valid} mode, \method selects the minimum-cost valid repair on every trial.
 
-\IfFileExists{paper_sections/generated/jazz_f2.tex}{\input{paper_sections/generated/jazz_f2.tex}}{}
-
-\input{paper_sections/generated/jazz_f3.tex}
 
 \subsection{Cost Analysis}\label{sec:cost}
 \begin{table}[t]\centering\small
@@ -254,7 +179,7 @@ The contribution of each component is summarized in two complementary ablations:
 
 \textbf{Single-round attribution components (Table~\ref{tab:ablations}).} Three components are load-bearing on the cells where the first-round repair is the deciding stage: removing the \dagg drops mean accuracy by 2.8\,pp ($-8.3$\,pp on TruthfulQA$\times$Mistral); replacing provenance-weighted priors with uniform priors drops 3.1\,pp ($-8.3$\,pp on TruthfulQA$\times$Qwen); skipping the counterfactual likelihood drops 1.5\,pp on average but 8.3\,pp on the most affected cell.
 
-\textbf{Sequential Posterior Refinement (Appendix~\ref{app:spr-impl}, Table~\ref{tab:spr-impact}).} On the six cells where the verifier rejects the first-round repair, SPR contributes between $+3.3$ and $+11.7$\,pp ($+7.2$\,pp on average); pooled, this lifts \method from 84.3\% to 87.0\%. SPR derives its lift entirely from re-using the same posterior framework conditioned on the failure of the first repair (Eq.~\ref{eq:spr-update})---not from a different self-correction method---and is the methodological contrast with Reflexion (verbal critiques) vs.\ SPR (counterfactual evidence inside the same DAG-grounded posterior).
+\textbf{Sequential Posterior Refinement (Appendix~\ref{app:spr-impl}, Table~\ref{tab:spr-impact}).} On the six archival-matrix cells where the verifier rejects the first-round repair, SPR contributes between $+3.3$ and $+11.7$\,pp ($+7.2$\,pp on average); pooled over that matrix it lifts \method from 84.3\% to 87.0\%, and on the primary twelve-cell rerun the same contrast appears as 85.2\% for the released no-SPR configuration versus 89.35\% SPR-enabled on identical cells. SPR derives its lift entirely from re-using the same posterior framework conditioned on the failure of the first repair (Eq.~\ref{eq:spr-update})---not from a different self-correction method---and is the methodological contrast with Reflexion (verbal critiques) vs.\ SPR (counterfactual evidence inside the same DAG-grounded posterior).
 
 Two further findings warrant brief comment. First, increasing $M$ from 1 to 3 \emph{degrades} mean accuracy by 5.0\,pp; the full $M{\in}\{1,3,5\}$ sweep is non-monotone with a recovery at $M{=}5$ on one cell (Appendix~\ref{app:m-sweep}). The pattern is incompatible with an i.i.d.\ Bernoulli model of $r_{i,j}$ (which predicts monotone variance reduction $\propto 1/M$); we attribute it to within-candidate trial correlation (shared prompt context, shared decoding trace), so $M{=}1$ is the empirical operating point of the framework given the LLM generator's actual non-i.i.d.\ behaviour, not a statistically optimal estimator. Variance-reduced or seed-diversified counterfactual sampling are the right next steps to enable $M{>}1$ to provide net benefit. Second, the cost-aware repair objective contributes only $0.6$\,pp to raw accuracy; its operational value lies in bounded edit cost (\S\ref{sec:cost}), not in higher success rate.
 
@@ -283,7 +208,7 @@ We use five diagnostic buckets for \method failures: (i)~verifier miss, (ii)~wro
 
 \subsection{Robustness to Multiple Simultaneous Faults}\label{sec:multifault}
 
-The main matrix injects a single fault per example. To test whether the advantage survives---or collapses---when errors compound, we extend injection to $N{=}2$--$5$ simultaneous faults per example (one factual context distractor plus $N{-}1$ independent profile-constraint corruptions; dataset-native multi-hop fact corruptions where structure permits), across five benchmarks $\times$ four LLMs $\times$ seven methods ($\sim$76k trajectories). Pooled over $N$ and models, \method leads all six baselines on all five datasets: 2WikiMultiHop 78.6 vs.\ 71.5 (Reflexion, best baseline), HotpotQA 81.4 vs.\ 71.6, MuSiQue 62.4 vs.\ 57.2, LongMemEval 65.3 vs.\ 57.7, TravelPlanner 36.6 vs.\ 34.1 (Self-Refine, best baseline). Table~\ref{tab:multifault} reports the per-fault-count breakdown.
+The main matrix injects a single fault per example. To test whether the advantage survives---or collapses---when errors compound, we extend injection to $N{=}2$--$5$ simultaneous faults per example (one factual context distractor plus $N{-}1$ independent profile-constraint corruptions; dataset-native multi-hop fact corruptions where structure permits), across five benchmarks $\times$ four LLMs $\times$ seven methods (${\sim}81{,}000$ trajectories). Pooled over $N$ and models, \method leads all six baselines on all five datasets: 2WikiMultiHop 78.6 vs.\ 71.5 (Reflexion, best baseline), HotpotQA 81.4 vs.\ 71.6, MuSiQue 62.4 vs.\ 57.2, LongMemEval 65.3 vs.\ 57.7, TravelPlanner 36.6 vs.\ 34.1 (Self-Refine, best baseline). Table~\ref{tab:multifault} reports the per-fault-count breakdown.
 
 \begin{table}[t]\centering\small
 \caption{Success (\%) by simultaneous fault count $N$, pooled over four LLMs (\method{} / Reflexion; $n{\approx}660$--$720$ paired per cell). The margin \emph{widens} as faults stack until whole-chain saturation.}
@@ -298,23 +223,34 @@ MuSiQue       & 85.6 / 79.9 & 80.8 / 73.5 & 44.3 / 42.4 & 39.0 / 33.2 \\
 
 Two boundary behaviors are reported rather than omitted. First, when every fact in a reasoning chain is corrupted at once (2Wiki $N{=}5$; MuSiQue $N{\ge}4$), all seven methods converge toward statistical ties: with no uncorrupted anchor left against which a counterfactual repair can be validated, attribution has nothing to attribute against, and full regeneration is the appropriate tool. Second, on TravelPlanner---short trajectories with globally-cascading constraints---all methods sit within a few points of each other at every $N$. Both boundaries are instances of the operating envelope stated in \S\ref{sec:limitations}: the advantage requires at least one uncorrupted anchor and at least one localizable fault.
 
+\IfFileExists{paper_sections/generated/jazz_f2.tex}{\input{paper_sections/generated/jazz_f2.tex}}{}
+
 \subsection{Real User Histories: PersonalWAB}\label{sec:personalwab}
 
-The construction above is synthetic by design. To test the failure mode where user-conditioning arises from \emph{real} behavior, we evaluate on PersonalWAB~\cite{cai2025personalwab}, whose 1{,}000 users carry profiles grounded in real purchase, rating, and review histories (profiles are synthesized over these real behaviors by the benchmark's authors, not by us); ground truth is the item the real user genuinely interacted with, scored hit@1 over a 20-candidate real-product slate. Three LLMs $\times$ 180 paired examples $\times$ five arms, pooled over 540 paired units:
+The construction above is synthetic by design. To test the failure mode where user-conditioning arises from \emph{real} behavior, we evaluate on PersonalWAB~\cite{cai2025personalwab}, whose 1{,}000 users carry profiles grounded in real purchase, rating, and review histories (profiles are synthesized over these real behaviors by the benchmark's authors, not by us); ground truth is the item the real user genuinely interacted with, scored by the benchmark's ASIN-containment criterion at hit@1. Visible histories are truncated strictly before each task's timestamp, and a fail-closed check verifies that no ground-truth item appears in any visible profile or history. Two LLMs $\times$ 180 paired examples $\times$ five arms, pooled over 360 paired units:
 
 \begin{table}[t]\centering\small
-\caption{PersonalWAB (real user histories), pooled over three LLMs, 540 paired units. Discordant = paired units where exactly one of \{\method{}, arm\} succeeds (\method-win\,/\,\method-loss); $p$ from exact McNemar.}
+\caption{PersonalWAB (real user histories, before-task-truncated), pooled over two LLMs, 360 paired units. Discordant = paired units where exactly one of \{\method{}, arm\} succeeds (\method-win\,/\,\method-loss); $p$ from exact McNemar vs.\ \method.}
 \label{tab:personalwab}
 \begin{tabular}{lccc}\toprule
 Arm & Success (\%) & Discordant & $p$ \\\midrule
-Direct              & 93.2 & 26 / 0 & --- \\
-VRP (single-round)  & 94.6 & 18 / 0 & --- \\
-Iter-VRP (matched budget) & 95.2 & 18 / 3 & 0.0015 \\
-Reflexion           & 96.3 & 12 / 3 & 0.035 \\
-\method             & \textbf{98.0} & --- & --- \\
+Direct              & 89.2 & 29 / 0 & $<10^{-4}$ \\
+VRP (single-round)  & 92.8 & 23 / 7 & 0.005 \\
+Iter-VRP (matched budget) & 93.9 & 19 / 7 & 0.029 \\
+Reflexion           & \textbf{98.1} & 6 / 9 & 0.61 \\
+\method             & 97.2 & --- & --- \\
 \bottomrule\end{tabular}\end{table}
 
-With success rates near ceiling, the discordant counts are the informative statistic: every discordant comparison across all three models favors \method, a 46\% relative reduction in remaining error against the strongest baseline (3.7\%$\to$2.0\%), achieved at \emph{fewer} mean repair rounds than the budget-matched control (1.04 vs.\ 1.15). A per-example view sharpens the targeting claim: 18 of the 540 units are failed jointly by all three revision baselines (VRP, Iter-VRP, Reflexion); \method solves 10 of those 18, while the reverse---some revision baseline succeeding where \method fails---occurs on 3 units in the entire benchmark. Protocol disclosures: our scorer replicates the benchmark's ASIN-containment criterion at hit@1 rather than its trained-recommender top-10, and the ground-truth interaction is excluded from the visible history to prevent leakage.
+On real histories \method significantly outperforms direct prompting and both reprompting controls, and is statistically indistinguishable from Reflexion ($-0.8$\,pp, $p{=}0.61$, discordant 6/9): with leakage controlled, whole-trajectory regeneration and targeted repair are tied at the top of this benchmark, at essentially identical mean repair rounds (1.10 for \method vs.\ 1.11 for Reflexion). Per model, Reflexion edges \method on Llama 8\,B (97.2 vs.\ 94.4) while \method is 180/180 on Mistral 12\,B. An earlier evaluation on untruncated histories---in which every task's ground-truth item was present in the raw user history by construction---inflated all arms (Direct reached 96.7\% on Llama 8\,B) and yielded a spurious significant lead over Reflexion; it is retained only as an archival continuity note (Appendix~\ref{app:archival-matrix}), and the truncated protocol reported here is the only one we consider valid.
+
+\input{paper_sections/generated/jazz_f3.tex}
+
+\subsection{Human Fault Annotation on Natural Trajectories}\label{sec:human-annotation}
+% INTENTIONALLY BLANK --- results pending. Frozen design: N=100 naturally failed
+% trajectories, two independent annotators under a pre-registered codebook (pilot gate
+% kappa >= 0.6), rule-based adjudication, method-vs-consensus attribution accuracy with
+% floor baselines and MRR. Insert the generated numbers here when the study completes.
+\emph{[Reserved for the human fault-annotation study on natural trajectories; results pending.]}
 
 \section{Related Work}\label{sec:related}
 
@@ -332,7 +268,7 @@ Recent systems move closer to trajectory-level diagnosis: RAFFLES~\cite{zhu2026r
 
 \section{Limitations}\label{sec:limitations}
 
-At $n{=}60$ per cell ($n{=}36$ for TruthfulQA's frozen held-out split), the per-cell paired-McNemar MDE at $\alpha{=}0.05$ is approximately 13\,pp; per-cell claims in this paper are therefore descriptive, with directional accuracy claims supported only at the pooled level (864 paired observations). Human-annotated fault labels on natural trajectories are the highest-priority follow-up. Profile-injected variants of public benchmarks shift the construct from pure factuality to factuality-plus-profile-following, controlled within a row by paired sampling; native user-conditioned benchmarks (Appendix~\ref{app:travel}) provide a complementary evaluation track but do not reproduce the gains seen on Profile-injected QA. The relationship to Reflexion is conceptually parallel and mechanistically distinct: SPR conditions on the same DAG-grounded posterior $q$ as round one (Eq.~\ref{eq:spr-update}) and re-targets the next-best ancestor's downstream subgraph---no verbal critique, no full re-generation, no Reflexion subroutine call. The single NS loss (LongMemEval$\times$Llama 70\,B, $-1.7$\,pp) is consistent with an extracted-candidate limitation, but the present artifacts do not establish a unique causal explanation. The matched-budget Iter-VRP control is reported in §\ref{sec:vrp}.
+At $n{=}60$ per cell ($n{=}36$ for TruthfulQA's frozen held-out split), the per-cell paired-McNemar MDE at $\alpha{=}0.05$ is approximately 13\,pp; per-cell claims in this paper are therefore descriptive, with directional accuracy claims supported only at the pooled level (648 paired observations in the primary matrix). Human-annotated fault labels on natural trajectories are the highest-priority follow-up. Profile-injected variants of public benchmarks shift the construct from pure factuality to factuality-plus-profile-following, controlled within a row by paired sampling; native user-conditioned benchmarks (Appendix~\ref{app:travel}) provide a complementary evaluation track but do not reproduce the gains seen on Profile-injected QA. The relationship to Reflexion is conceptually parallel and mechanistically distinct: SPR conditions on the same DAG-grounded posterior $q$ as round one (Eq.~\ref{eq:spr-update}) and re-targets the next-best ancestor's downstream subgraph---no verbal critique, no full re-generation, no Reflexion subroutine call. The two Llama 70\,B losses (LongMemEval $-10.0$\,pp; MuSiQue $-3.4$\,pp; neither survives Holm) are consistent with an extracted-candidate limitation, but the present artifacts do not establish a unique causal explanation. Three further boundaries are reported as observed: the profile-robustness bootstrap's pre-registered bottom-decile clause was not met (pooled worst-decile mean $-0.34$\,pp; $-7.21$\,pp in the strict-fidelity confirmatory tier), single-fault baselines are archival runs subject to provider drift, and on truncated real histories \method ties rather than beats Reflexion (\S\ref{sec:personalwab}). The matched-budget Iter-VRP control is reported in §\ref{sec:vrp}.
 
 \section*{Broader Impact}\label{sec:broader-impact}
 
@@ -340,7 +276,7 @@ At $n{=}60$ per cell ($n{=}36$ for TruthfulQA's frozen held-out split), the per-
 
 \section{Conclusion}
 
-Across sixteen (dataset, model) cells, \method achieves the best or tied-best task success on fifteen with no significant losses, reaches a pooled mean of 87.0\% that exceeds the strongest baseline (Reflexion, 85.4\%) by 1.6\,pp, and matches or exceeds Tree-of-Thoughts accuracy at $11.8$--$14.9\times$ lower token cost. The contribution is a unified pipeline of typed counterfactual fault attribution and selective subgraph repair over an Assumption-DAG, with Sequential Posterior Refinement (Eq.~\ref{eq:spr-update}) reusing the same posterior, prior, and re-execution prompt to close the residual gap when the first-round MAP candidate misidentifies the fault.
+\method treats a failed user-conditioned trajectory as a diagnosis problem: extract the assumptions the agent relied on, organize them into a provenance-typed dependency graph, isolate the root cause by counterfactual repair trials, and regenerate only the dependent suffix, with Sequential Posterior Refinement folding each rejected repair back into the same posterior. The evaluation maps where this buys accuracy and where it does not. With a single injected fault, targeted repair holds parity-to-modest-lead over the strongest retry baseline at matched cost (89.35\% pooled over 648 observations, $+2.62$\,pp over Reflexion, descriptive). As faults compound, the mechanisms separate: over ${\sim}81{,}000$ trajectories carrying two to five simultaneous faults, \method leads all six baselines on all five datasets with margins that widen in fault count; under 100 seeded re-draws of every profile its paired advantage over Reflexion is favorable in 95 of 100 draws; and on leakage-controlled real user histories it beats direct prompting and both reprompting controls while tying Reflexion. The contribution is the closed loop---attribution evidence generated by repair execution, repair selected under edit cost, rejection re-entering the same posterior---together with an honest map of the regime in which that loop matters: multiple concurrent faults with at least one uncorrupted anchor.
 
 \bibliographystyle{iclr2027_conference}
 \begin{thebibliography}{99}
@@ -496,6 +432,78 @@ Across sixteen (dataset, model) cells, \method achieves the best or tied-best ta
 
 \appendix
 
+\section{Archival Mixed-Configuration Matrix}\label{app:archival-matrix}
+
+The tables below preserve the pre-rerun evaluation matrix for continuity: seven models including Qwen 2.5 7\,B (whose serving providers became unavailable before the SPR-enabled rerun) and three exploratory models, with \method rows from the earlier no-SPR configuration. These numbers are superseded by the primary twelve-cell matrix (\S\ref{sec:results}) and are not comparable to it. The July PersonalWAB run on untruncated histories is likewise archival: every task's ground-truth item was present in the raw user history by construction, so its absolute rates measure retrieval-from-context rather than recommendation, and its apparent significant lead over Reflexion does not survive the leakage control (\S\ref{sec:personalwab}).
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected TruthfulQA. Per-cell paired observations: 36 ($n{=}12$ examples that completed across all 8 methods $\times$ 3 dataset seeds). Success rate (\%).}
+\label{tab:truthfulqa-arch}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+deepseek-v3 & 38.9 & 22.2 & \textbf{83.3} & 36.1 & 33.3 & 47.2 & 52.8 & 41.7 \\
+gemini-2.5-flash & 41.7 & 33.3 & \textbf{75.0} & 36.1 & 30.6 & 41.7 & 36.1 & 44.4 \\
+gpt-oss-20b & 63.9 & 69.4 & \textbf{91.7} & 72.2 & 72.2 & 66.7 & 66.7 & 72.2 \\
+Llama 8B & 80.6 & 61.1 & \textbf{94.4} & 86.1 & 72.2 & 91.7 & 77.8 & \textbf{94.4} \\
+Llama 70B & 83.3 & 61.1 & \textbf{91.7} & 80.6 & 75.0 & 83.3 & 80.6 & 83.3 \\
+Mistral 12B & 63.9 & 61.1 & 80.6 & 69.4 & 63.9 & 72.7 & 56.5 & \textbf{86.1} \\
+Qwen 7B & 63.2 & 34.2 & 68.4 & 58.3 & 52.6 & 65.8 & 45.5 & \textbf{78.9} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Success rate (\%).}
+\label{tab:2wiki-arch}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+deepseek-v3 & 93.2 & 86.4 & \textbf{96.6} & 89.7 & 87.9 & 87.9 & 92.9 & 93.2 \\
+gemini-2.5-flash & 80.0 & 85.0 & \textbf{90.0} & 83.3 & 83.3 & 81.7 & \textbf{90.0} & 83.3 \\
+gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Llama 8B & 86.7 & 76.7 & \textbf{93.3} & 78.3 & 76.7 & 66.7 & 80.0 & \textbf{93.3} \\
+Llama 70B & \textbf{96.7} & 91.7 & \textbf{96.7} & 95.0 & 95.0 & 93.3 & 90.0 & \textbf{96.7} \\
+Mistral 12B & 91.7 & 86.7 & 95.0 & 90.0 & 86.7 & 89.8 & 92.2 & \textbf{96.7} \\
+Qwen 7B & 81.7 & 80.0 & \textbf{91.7} & 85.0 & 76.7 & 85.0 & 90.9 & 90.0 \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected LongMemEval ($n{=}60$). Success rate (\%).}
+\label{tab:longmemeval-arch}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+deepseek-v3 & 36.2 & 25.9 & 43.1 & 36.2 & 31.0 & 39.6 & 43.2 & \textbf{45.6} \\
+gemini-2.5-flash & 28.3 & 23.3 & \textbf{33.3} & 30.0 & 25.4 & 26.7 & 26.7 & 30.0 \\
+gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Llama 8B & 63.3 & 51.7 & 76.7 & 63.3 & 61.7 & 50.0 & 55.0 & \textbf{78.3} \\
+Llama 70B & 43.3 & 48.3 & \textbf{70.0} & 45.0 & 40.0 & 33.3 & 30.0 & 56.7 \\
+Mistral 12B & 55.0 & 50.0 & \textbf{73.3} & 58.3 & 58.3 & 53.3 & 67.9 & \textbf{73.3} \\
+Qwen 7B & 70.0 & 66.7 & \textbf{76.7} & 66.7 & 63.3 & 75.0 & 25.0 & 71.7 \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Profile-injected MuSiQue ($n{=}60$). Success rate (\%).}
+\label{tab:musique-arch}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccccccc}\toprule
+& Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method \\\midrule
+deepseek-v3 & 56.7 & 55.0 & \textbf{71.7} & 56.7 & 66.7 & 63.3 & 61.7 & 61.7 \\
+gemini-2.5-flash & 51.7 & 41.7 & \textbf{68.3} & 55.0 & 41.7 & 51.7 & 63.3 & 60.0 \\
+gpt-oss-20b & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Llama 8B & 76.7 & 66.7 & 90.0 & 76.7 & 66.7 & 51.7 & 71.7 & \textbf{91.7} \\
+Llama 70B & 83.3 & 78.3 & \textbf{96.7} & 81.7 & 81.7 & 70.0 & 55.0 & 93.3 \\
+Mistral 12B & 71.7 & 61.7 & \textbf{85.0} & 71.7 & 68.3 & 75.0 & 68.6 & 81.7 \\
+Qwen 7B & 80.0 & 63.3 & 83.3 & 80.0 & 65.0 & 75.0 & 77.3 & \textbf{85.0} \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Aggregate outcomes across sixteen (dataset, model) cells. ``NS losses'' are paired-McNemar non-significant losses (the single NS loss in this matrix has $p = 1.000$).}
+\label{tab:summary-arch}
+\begin{tabular}{lcccc}\toprule
+\textbf{Dataset} & \textbf{Wins} & \textbf{Ties} & \textbf{NS losses} & \textbf{Sig.\ losses} \\\midrule
+Prof.-inj.\ TruthfulQA & 2 & 2 & 0 & 0 \\
+Prof.-inj.\ 2Wiki & 2 & 2 & 0 & 0 \\
+Prof.-inj.\ LongMemEval & 1 & 2 & 1 & 0 \\
+Prof.-inj.\ MuSiQue & 3 & 1 & 0 & 0 \\\midrule
+\textbf{Total (16 cells)} & \textbf{8} & \textbf{7} & \textbf{1} & \textbf{0} \\
+\bottomrule\end{tabular}\end{table}
+
 \section{Classical Diagnosis Comparison}\label{app:classical-comparison}
 
 \begin{table}[t]\centering\small
@@ -561,7 +569,7 @@ MuSiQue $\times$ Llama 70B & 83.3 & 96.7 & 93.3 & 96.7 & $+3.3$ & TIE \\
 MuSiQue $\times$ Mistral   & 71.7 & 85.0 & 81.7 & 91.7 & $+10.0$ & \textbf{WIN $+6.7$\,pp} \\
 \bottomrule\end{tabular}\end{table}
 
-On the ten cells where the first-round repair satisfies the verifier, SPR never fires and the rest of the matrix is unchanged. SPR is the difference between trailing Reflexion in pooled mean ($-1.1$\,pp) and exceeding it ($+1.6$\,pp); disabling SPR ($T_{\text{spr}}=0$) does not break the method, it simply forfeits the second round of attribution, so the ablation is a clean isolation of the iterated-update contribution.
+On the ten cells where the first-round repair satisfies the verifier, SPR never fires and the rest of the matrix is unchanged. On the archival matrix, SPR is the difference between trailing Reflexion in pooled mean ($-1.1$\,pp) and exceeding it ($+1.6$\,pp); disabling SPR ($T_{\text{spr}}=0$) does not break the method, it simply forfeits the second round of attribution, so the ablation is a clean isolation of the iterated-update contribution.
 
 \section{Hyperparameters}\label{app:hparams}
 
@@ -746,11 +754,13 @@ User-prompt formatters for all four prompts (the deterministic JSON-dump wrapper
 The extractor can be evaluated against the gold graph on synthetic diagnostics, but the row-level extraction-evaluation artifact underlying the earlier draft table is not present in the release snapshot audited for this submission. We therefore omit those point estimates rather than presenting untraceable numbers. When the extracted graph is cyclic, the implementation removes the edge whose source node has the lowest confidence; human-annotated extraction evaluation on natural trajectories remains future work.
 
 \section{Full Per-Cell Statistical Tables}\label{app:full-tables}
-Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique} report McNemar exact-test $p$-values and 95\% paired-bootstrap confidence intervals for $\Delta = \text{IS} - \text{baseline}$ (in pp; positive favors \method). Checkmark $\checkmark$ = \method significantly better at $p{<}0.05$ (uncorrected). CIs from 10{,}000 paired-bootstrap resamples. All entries are regenerated by \texttt{scripts/regen\_pvalue\_tables.py} from the same per-cell JSONLs that produce the headline success rates in Tables~\ref{tab:truthfulqa}--\ref{tab:musique}; \method numbers reflect the full pipeline (single-round attribution + SPR).
+Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique} report McNemar exact-test $p$-values and 95\% paired-bootstrap confidence intervals for $\Delta = \text{IS} - \text{baseline}$ (in pp; positive favors \method). Checkmark $\checkmark$ = \method significantly better at $p{<}0.05$ (uncorrected). CIs from 10{,}000 paired-bootstrap resamples. The generated paired-statistics tables for the primary twelve-cell matrix follow below; the legacy tables in this appendix correspond to the archival matrix (Tables~\ref{tab:truthfulqa-arch}--\ref{tab:musique-arch}) and are regenerated by \texttt{scripts/regen\_pvalue\_tables.py} from its per-cell JSONLs.
+
+\input{paper_sections/generated/jazz_12/paired_tables.tex}
 
 \begin{table}[h]\centering\scriptsize
 \caption{Profile-injected TruthfulQA. Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}]. Per-cell paired observations: 36 (12 held-out examples $\times$ 3 configuration seeds).}
-\label{tab:pvalues-tqa}\setlength{\tabcolsep}{2pt}
+\label{tab:pvalues-tqa-arch}\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lccccccc}\toprule
  & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
 Llama 8B    & $0.062$\,[+3,+25] & $<\!.001$\checkmark\,[+19,+50] & $1.000$\,[+0,+0] & $0.250$\,[+0,+19] & $0.008$\checkmark\,[+8,+36] & $1.000$\,[+0,+8] & $0.031$\checkmark\,[+6,+31] \\
@@ -761,7 +771,7 @@ Qwen 7B     & $0.062$\,[+3,+25] & $<\!.001$\checkmark\,[+25,+58] & $0.375$\,[$-$
 
 \begin{table}[h]\centering\scriptsize
 \caption{Profile-injected 2WikiMultiHopQA ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}].}
-\label{tab:pvalues-2wiki}\setlength{\tabcolsep}{2pt}
+\label{tab:pvalues-2wiki-arch}\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lccccccc}\toprule
  & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
 Llama 8B    & $0.125$\,[+2,+13] & $0.002$\checkmark\,[+8,+27] & $1.000$\,[$-$5,+5] & $0.012$\checkmark\,[+5,+25] & $0.006$\checkmark\,[+7,+27] & $<\!.001$\checkmark\,[+17,+38] & $0.021$\checkmark\,[+3,+23] \\
@@ -772,7 +782,7 @@ Qwen 7B     & $0.021$\checkmark\,[+3,+24] & $0.012$\checkmark\,[+5,+25] & $0.625
 
 \begin{table}[h]\centering\scriptsize
 \caption{Profile-injected LongMemEval ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}]. ToT for Qwen 7B is omitted (insufficient paired completions to compute exact McNemar).}
-\label{tab:pvalues-lme}\setlength{\tabcolsep}{2pt}
+\label{tab:pvalues-lme-arch}\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lccccccc}\toprule
  & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
 Llama 8B    & $0.004$\checkmark\,[+7,+25] & $<\!.001$\checkmark\,[+15,+38] & $1.000$\,[$-$7,+10] & $0.012$\checkmark\,[+5,+25] & $0.006$\checkmark\,[+7,+27] & $<\!.001$\checkmark\,[+17,+40] & $<\!.001$\checkmark\,[+12,+35] \\
@@ -783,7 +793,7 @@ Qwen 7B     & $0.125$\,[+2,+13] & $0.070$\,[+2,+18] & $1.000$\,[$-$7,+7] & $0.03
 
 \begin{table}[h]\centering\scriptsize
 \caption{Profile-injected MuSiQue ($n{=}60$). Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}].}
-\label{tab:pvalues-musique}\setlength{\tabcolsep}{2pt}
+\label{tab:pvalues-musique-arch}\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lccccccc}\toprule
  & Direct & SR & Rfx & FR & ReAct & SChk & ToT \\\midrule
 Llama 8B    & $0.004$\checkmark\,[+7,+25] & $<\!.001$\checkmark\,[+15,+37] & $1.000$\,[$-$3,+8] & $0.012$\checkmark\,[+5,+25] & $<\!.001$\checkmark\,[+15,+37] & $<\!.001$\checkmark\,[+28,+52] & $<\!.001$\checkmark\,[+10,+30] \\
