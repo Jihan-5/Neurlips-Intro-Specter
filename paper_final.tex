@@ -436,6 +436,20 @@ At $n{=}60$ per cell ($n{=}36$ for TruthfulQA's frozen held-out split), the per-
 
 The tables below preserve the pre-rerun evaluation matrix for continuity: seven models including Qwen 2.5 7\,B (whose serving providers became unavailable before the SPR-enabled rerun) and three exploratory models, with \method rows from the earlier no-SPR configuration. These numbers are superseded by the primary twelve-cell matrix (\S\ref{sec:results}) and are not comparable to it. The July PersonalWAB run on untruncated histories is likewise archival: every task's ground-truth item was present in the raw user history by construction, so its absolute rates measure retrieval-from-context rather than recommendation, and its apparent significant lead over Reflexion does not survive the leakage control (\S\ref{sec:personalwab}).
 
+\begin{table}[h]\centering\small
+\caption{ARCHIVAL --- PersonalWAB on untruncated histories (July run). Every task's ground-truth item was present in the raw visible history by construction; these rates are inflated by target leakage and are superseded by Table~\ref{tab:personalwab}. Reproduced verbatim for continuity with the review record. Discordant = IS-win\,/\,IS-loss; $p$ from exact McNemar.}
+\label{tab:personalwab-arch}
+\begin{tabular}{lcccc}\toprule
+Cell & Direct & Reflexion & \method & IS vs.\ Reflexion \\\midrule
+Llama 3.1 8\,B      & 96.7 & 98.9 & 99.4  & $+0.6$\,pp, $p{=}1.00$ (2/1) \\
+Mistral Nemo 12\,B  & 91.1 & 96.7 & 97.8  & $+1.1$\,pp, $p{=}0.69$ (4/2) \\
+Qwen 2.5 7\,B (partial, $n{=}27$) & 92.6 & 92.6 & 100.0 & $+7.4$\,pp, $p{=}0.50$ (2/0) \\
+Qwen 2.5 7\,B (Together) & 91.7 & 93.3 & 96.7 & $+3.3$\,pp, $p{=}0.031$ (6/0) \\\midrule
+Pooled (567 pairs)  & ---  & 96.1 & 98.1  & $+1.9$\,pp, $p{=}0.013$ (14/3) \\
+\bottomrule\end{tabular}\end{table}
+
+Note that Direct prompting at 96.7\% on Llama 8\,B is itself diagnostic of the leak: on before-task-truncated histories the same arm scores 82.2\%. The pooled significance additionally leans on the two Qwen cells, which have no truncated-protocol counterpart because Qwen's serving providers became unavailable.
+
 \begin{table}[t]\centering\small
 \caption{Profile-injected TruthfulQA. Per-cell paired observations: 36 ($n{=}12$ examples that completed across all 8 methods $\times$ 3 dataset seeds). Success rate (\%).}
 \label{tab:truthfulqa-arch}\setlength{\tabcolsep}{3pt}
