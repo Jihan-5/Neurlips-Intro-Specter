@@ -49,7 +49,15 @@ We introduce \method, a framework for counterfactual fault attribution in user-c
 
 \begin{figure*}[t]\centering
   \IfFileExists{B1_figure_redraw_package/figure2_comparison_overlay.pdf}{\includegraphics[width=0.82\textwidth]{B1_figure_redraw_package/figure2_comparison_overlay.pdf}}{\fbox{\parbox{0.8\textwidth}{\centering\vspace{2em}[figure omitted from this build]\vspace{2em}}}}
-  \par\medskip\IfFileExists{paper_sections/figures/selfcheck_panel.tex}{\input{paper_sections/figures/selfcheck_panel.tex}}{}
+  \par\medskip% F1: restore the existing SelfCheckGPT baseline to the comparison figure.
+\begin{tikzpicture}[>=Latex, node distance=7mm,
+  stage/.style={draw,rounded corners,align=center,font=\scriptsize,inner sep=4pt}]
+  \node[stage] (samples) {SelfCheckGPT\\sample alternative outputs};
+  \node[stage,right=of samples] (consistency) {cross-sample\\consistency check};
+  \node[stage,right=of consistency] (response) {accept or regenerate\\the answer};
+  \draw[->] (samples) -- (consistency);
+  \draw[->] (consistency) -- (response);
+\end{tikzpicture}
   \caption{Comparison of Tree of Thoughts (ToT), Graph of Thoughts (GoT), Heuristic Tree of Thoughts (ToTH), SelfCheckGPT, and \method. SelfCheckGPT checks consistency across sampled outputs and can regenerate the answer. ToT explores a branching tree with backtracking. GoT generalizes to graph transformations. ToTH augments ToT with heuristic scoring and lookahead pruning. \method performs counterfactual fault attribution over an assumption graph: the score $q(a_k \mid \text{error})$ traces fault backward through the DAG, then repairs only the affected subgraph while reusing valid steps.}
   \label{fig:comparison}
 \end{figure*}
@@ -132,7 +140,66 @@ Violation-Reprompt & Re-prompt with violated profile span as feedback (1 round) 
 
 \paragraph{Scope.} The primary single-fault matrix comprises the twelve (dataset, model) cells with SPR-enabled runs on the three runnable models (Llama 3.1 8\,B, Llama 3.3 70\,B, Mistral Nemo 12\,B); Qwen 2.5 7\,B became unavailable at every serving provider before the rerun, and its archival no-SPR results, together with three exploratory models, are reported in Appendix~\ref{app:archival-matrix} under a mixed-configuration label. Tables~\ref{tab:truthfulqa}--\ref{tab:musique} report per-cell success (\%); \textbf{bold} marks all tied numerical maxima. Paired-statistics tables are in Appendix~\ref{app:full-tables}.
 
-\IfFileExists{paper_sections/generated/jazz_12/main_tables.tex}{\input{paper_sections/generated/jazz_12/main_tables.tex}}{}
+\begin{table}[t]\centering\small
+\caption{TruthfulQA: success (\%). Bold denotes all tied numerical maxima. Counts and provenance accompany the generated CSV.}
+\label{tab:truthfulqa}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method\\\midrule
+Llama 8B & 80.6 & 61.1 & \textbf{94.4} & 86.1 & 72.2 & 91.7 & 77.8 & \textbf{94.4} \\
+Llama 70B & 83.3 & 61.1 & 91.7 & 80.6 & 75.0 & 83.3 & 80.6 & \textbf{94.4} \\
+Mistral 12B & 63.9 & 61.1 & 80.6 & 69.4 & 63.9 & 72.7 & 56.5 & \textbf{86.1} \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{2WikiMultiHopQA: success (\%). Bold denotes all tied numerical maxima. Counts and provenance accompany the generated CSV.}
+\label{tab:2wiki}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method\\\midrule
+Llama 8B & 86.7 & 76.7 & 93.3 & 78.3 & 76.7 & 66.7 & 80.0 & \textbf{96.7} \\
+Llama 70B & \textbf{96.7} & 91.7 & \textbf{96.7} & 95.0 & 95.0 & 93.3 & 90.0 & \textbf{96.7} \\
+Mistral 12B & 91.7 & 86.7 & 95.0 & 90.0 & 86.7 & 89.8 & 92.2 & \textbf{100.0} \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{LongMemEval: success (\%). Bold denotes all tied numerical maxima. Counts and provenance accompany the generated CSV.}
+\label{tab:longmemeval}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method\\\midrule
+Llama 8B & 63.3 & 51.7 & 76.7 & 63.3 & 61.7 & 50.0 & 55.0 & \textbf{88.3} \\
+Llama 70B & 43.3 & 48.3 & \textbf{70.0} & 45.0 & 40.0 & 33.3 & 30.0 & 60.0 \\
+Mistral 12B & 55.0 & 50.0 & 73.3 & 58.3 & 58.3 & 53.3 & 67.9 & \textbf{81.7} \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{MuSiQue: success (\%). Bold denotes all tied numerical maxima. Counts and provenance accompany the generated CSV.}
+\label{tab:musique}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT & \method\\\midrule
+Llama 8B & 76.7 & 66.7 & 90.0 & 76.7 & 66.7 & 51.7 & 71.7 & \textbf{95.0} \\
+Llama 70B & 83.3 & 78.3 & \textbf{96.7} & 81.7 & 81.7 & 70.0 & 55.0 & 93.3 \\
+Mistral 12B & 71.7 & 61.7 & 85.0 & 71.7 & 68.3 & 75.0 & 68.6 & \textbf{88.3} \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{Cell outcomes against Reflexion; wins/ties are numerical, loss significance uses Holm adjustment.}
+\label{tab:summary}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}\toprule
+Dataset & Wins & Ties & NS losses & Sig. losses\\\midrule
+TruthfulQA & 2 & 1 & 0 & 0 \\
+2WikiMultiHopQA & 2 & 1 & 0 & 0 \\
+LongMemEval & 2 & 0 & 1 & 0 \\
+MuSiQue & 2 & 0 & 1 & 0 \\
+\bottomrule\end{tabular}}\end{table}
 
 \paragraph{Per-cell outcomes and pooled performance.} Across the twelve cells \method records 579/648 successes (\textbf{89.35\%}); against Reflexion (86.73\% on the same 648 matched observations) the difference is $+2.62$\,pp, with a cell record of 8 numerical wins, 2 ties, and 2 losses (LongMemEval and MuSiQue on Llama 70\,B). No individual cell survives Holm adjustment in either direction, so per-cell claims are descriptive. Two protocol caveats apply throughout: baseline rows are archival runs paired by (task, seed) keys, and pairing does not remove provider drift between run windows; missing observations are excluded, never scored as failures. Read as designed, the single-fault matrix is a parity-to-modest-lead result at matched cost---consistent with the mechanism: with exactly one injected fault and a strong retry baseline, whole-trajectory regeneration and targeted repair converge, and the regimes where they separate are tested in \S\ref{sec:multifault}--\S\ref{sec:personalwab}. On the two mid-tier models \method is top or tied-top on eight of eight cells; both losses fall on Llama 3.3 70\,B, the regime where extracted ancestor sets are larger, the single-trial counterfactual is a noisier signal, and the true fault more often lies outside the extracted DAG (a single model family, $n{=}1$; descriptive).
 
@@ -223,7 +290,8 @@ MuSiQue       & 85.6 / 79.9 & 80.8 / 73.5 & 44.3 / 42.4 & 39.0 / 33.2 \\
 
 Two boundary behaviors are reported rather than omitted. First, when every fact in a reasoning chain is corrupted at once (2Wiki $N{=}5$; MuSiQue $N{\ge}4$), all seven methods converge toward statistical ties: with no uncorrupted anchor left against which a counterfactual repair can be validated, attribution has nothing to attribute against, and full regeneration is the appropriate tool. Second, on TravelPlanner---short trajectories with globally-cascading constraints---all methods sit within a few points of each other at every $N$. Both boundaries are instances of the operating envelope stated in \S\ref{sec:limitations}: the advantage requires at least one uncorrupted anchor and at least one localizable fault.
 
-\IfFileExists{paper_sections/generated/jazz_f2.tex}{\input{paper_sections/generated/jazz_f2.tex}}{}
+\subsection{Profile-draw robustness (Amendments A1/A2)}
+We report two pre-declared tiers after the strict paraphrase review preserved 17/30 sampled constraints. The confirmatory tier contains only variants for which every redrawn canonical template type was uniformly judged meaning-preserved in the frozen review; the complete grid is exploratory and labeled profile re-draw plus paraphrase with surface fidelity 17/30. Conflicting historical logical keys were discarded and rerun under a single writer; non-conflicting rows were retained. In the confirmatory tier (2944 paired outcomes), the mean paired Intro-Specter--Reflexion effect was +1.59\,pp, the bottom-decile mean was -7.21\,pp, and the favorable-draw fraction was 0.700 (Hoeffding bound 0.000335). Across the exploratory full grid (40800 paired outcomes), the corresponding values were +2.07\,pp, -0.34\,pp, and 0.950.
 
 \subsection{Real User Histories: PersonalWAB}\label{sec:personalwab}
 
@@ -243,7 +311,8 @@ Reflexion           & \textbf{98.1} & 6 / 9 & 0.61 \\
 
 On real histories \method significantly outperforms direct prompting and both reprompting controls, and is statistically indistinguishable from Reflexion ($-0.8$\,pp, $p{=}0.61$, discordant 6/9): with leakage controlled, whole-trajectory regeneration and targeted repair are tied at the top of this benchmark, at essentially identical mean repair rounds (1.10 for \method vs.\ 1.11 for Reflexion). Per model, Reflexion edges \method on Llama 8\,B (97.2 vs.\ 94.4) while \method is 180/180 on Mistral 12\,B. An earlier evaluation on untruncated histories---in which every task's ground-truth item was present in the raw user history by construction---inflated all arms (Direct reached 96.7\% on Llama 8\,B) and yielded a spurious significant lead over Reflexion; it is retained only as an archival continuity note (Appendix~\ref{app:archival-matrix}), and the truncated protocol reported here is the only one we consider valid.
 
-\IfFileExists{paper_sections/generated/jazz_f3.tex}{\input{paper_sections/generated/jazz_f3.tex}}{}
+\subsection{When the profile itself is at fault}
+The synthetic diagnostic above tests localization when the gold fault node is known by construction. Complementing that evidence, the paired candidacy study tests whether broadening the extracted candidate set can recover failures under the stored benchmark trajectories. It recovered 16 of 37 clean-solved, corruption-associated default failures (43.2\%). The denominator requires the clean control to succeed and the matched corrupted default arm to fail; this is a recovered-failure quantity, not a claim that every failure is causally traceable to one node. This distinction is consistent with the inferred-component limitation summarized in Table~\ref{tab:classical}.
 
 \subsection{Human Fault Annotation on Natural Trajectories}\label{sec:human-annotation}
 % INTENTIONALLY BLANK --- results pending. Frozen design: N=100 naturally failed
@@ -782,7 +851,53 @@ The extractor can be evaluated against the gold graph on synthetic diagnostics, 
 \section{Full Per-Cell Statistical Tables}\label{app:full-tables}
 Tables~\ref{tab:pvalues-tqa}--\ref{tab:pvalues-musique} report McNemar exact-test $p$-values and 95\% paired-bootstrap confidence intervals for $\Delta = \text{IS} - \text{baseline}$ (in pp; positive favors \method). Checkmark $\checkmark$ = \method significantly better at $p{<}0.05$ (uncorrected). CIs from 10{,}000 paired-bootstrap resamples. The generated paired-statistics tables for the primary twelve-cell matrix follow below; the legacy tables in this appendix correspond to the archival matrix (Tables~\ref{tab:truthfulqa-arch}--\ref{tab:musique-arch}) and are regenerated by \texttt{scripts/regen\_pvalue\_tables.py} from its per-cell JSONLs.
 
-\IfFileExists{paper_sections/generated/jazz_12/paired_tables.tex}{\input{paper_sections/generated/jazz_12/paired_tables.tex}}{}
+\begin{table}[t]\centering\small
+\caption{TruthfulQA: exact raw $p$, paired-bootstrap 95\% CI (pp), and paired $n$ in parentheses. $\ast$: Holm-adjusted $p<.05$ within the baseline family; sign of the CI determines direction.}
+\label{tab:pvalues-tqa}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT\\\midrule
+Llama 8B & $0.062$ [+2.8,+25.0]\,(36) & $<.001$* [+19.4,+50.0]\,(36) & $1.000$ [+0.0,+0.0]\,(36) & $0.250$ [+0.0,+19.4]\,(36) & $0.008$* [+8.3,+36.1]\,(36) & $1.000$ [+0.0,+8.3]\,(36) & $0.031$ [+5.6,+30.6]\,(36) \\
+Llama 70B & $0.125$ [+2.8,+22.2]\,(36) & $<.001$* [+19.4,+50.0]\,(36) & $1.000$ [+0.0,+8.3]\,(36) & $0.062$ [+2.8,+25.0]\,(36) & $0.016$* [+8.3,+33.3]\,(36) & $0.125$ [+2.8,+22.2]\,(36) & $0.062$ [+2.8,+25.0]\,(36) \\
+Mistral 12B & $0.021$ [+5.6,+38.9]\,(36) & $0.022$ [+8.3,+41.7]\,(36) & $0.625$ [-5.6,+16.7]\,(36) & $0.031$ [+5.6,+30.6]\,(36) & $0.008$* [+8.3,+36.1]\,(36) & $0.219$ [+0.0,+27.3]\,(33) & $0.039$ [+8.7,+52.2]\,(23) \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{2WikiMultiHopQA: exact raw $p$, paired-bootstrap 95\% CI (pp), and paired $n$ in parentheses. $\ast$: Holm-adjusted $p<.05$ within the baseline family; sign of the CI determines direction.}
+\label{tab:pvalues-2wiki}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT\\\midrule
+Llama 8B & $0.031$ [+3.3,+18.3]\,(60) & $<.001$* [+10.0,+30.0]\,(60) & $0.625$ [-3.3,+10.0]\,(60) & $<.001$* [+8.3,+28.3]\,(60) & $<.001$* [+10.0,+30.0]\,(60) & $<.001$* [+18.3,+41.7]\,(60) & $0.002$* [+8.3,+26.7]\,(60) \\
+Llama 70B & $1.000$ [+0.0,+0.0]\,(60) & $0.250$ [+0.0,+11.7]\,(60) & $1.000$ [+0.0,+0.0]\,(60) & $1.000$ [-3.3,+8.3]\,(60) & $1.000$ [+0.0,+5.0]\,(60) & $0.500$ [+0.0,+8.3]\,(60) & $0.125$ [+1.7,+13.3]\,(60) \\
+Mistral 12B & $0.062$ [+1.7,+16.7]\,(60) & $0.008$* [+5.0,+23.3]\,(60) & $0.250$ [+0.0,+11.7]\,(60) & $0.031$ [+3.3,+18.3]\,(60) & $0.008$* [+5.0,+21.7]\,(60) & $0.031$ [+3.4,+18.6]\,(59) & $0.125$ [+2.0,+15.7]\,(51) \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{LongMemEval: exact raw $p$, paired-bootstrap 95\% CI (pp), and paired $n$ in parentheses. $\ast$: Holm-adjusted $p<.05$ within the baseline family; sign of the CI determines direction.}
+\label{tab:pvalues-lme}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT\\\midrule
+Llama 8B & $<.001$* [+13.3,+36.7]\,(60) & $<.001$* [+25.0,+48.3]\,(60) & $0.065$ [+1.7,+21.7]\,(60) & $<.001$* [+13.3,+36.7]\,(60) & $<.001$* [+15.0,+38.3]\,(60) & $<.001$* [+25.0,+51.7]\,(60) & $<.001$* [+21.7,+45.0]\,(60) \\
+Llama 70B & $0.006$ [+6.7,+28.3]\,(60) & $0.092$ [+0.0,+23.3]\,(60) & $0.210$ [-23.3,+1.7]\,(60) & $0.004$* [+6.7,+25.0]\,(60) & $0.002$* [+10.0,+31.7]\,(60) & $<.001$* [+16.7,+38.3]\,(60) & $<.001$* [+18.3,+41.7]\,(60) \\
+Mistral 12B & $<.001$* [+16.7,+38.3]\,(60) & $<.001$* [+20.0,+43.3]\,(60) & $0.227$ [-1.7,+18.3]\,(60) & $<.001$* [+13.3,+35.0]\,(60) & $<.001$* [+11.7,+35.0]\,(60) & $<.001$* [+16.7,+40.0]\,(60) & $0.070$ [+1.9,+20.8]\,(53) \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{table}[t]\centering\small
+\caption{MuSiQue: exact raw $p$, paired-bootstrap 95\% CI (pp), and paired $n$ in parentheses. $\ast$: Holm-adjusted $p<.05$ within the baseline family; sign of the CI determines direction.}
+\label{tab:pvalues-musique}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccccccc}\toprule
+ & Direct & SR & Rfx & FR & ReAct & SChk & ToT\\\midrule
+Llama 8B & $<.001$* [+10.0,+28.3]\,(60) & $<.001$* [+16.7,+40.0]\,(60) & $0.375$ [-1.7,+11.7]\,(60) & $0.003$* [+8.3,+30.0]\,(60) & $<.001$* [+16.7,+40.0]\,(60) & $<.001$* [+31.7,+56.7]\,(60) & $<.001$* [+13.3,+35.0]\,(60) \\
+Llama 70B & $0.070$ [+1.7,+20.0]\,(60) & $0.012$* [+5.0,+25.0]\,(60) & $0.625$ [-10.0,+3.3]\,(60) & $0.039$ [+3.3,+21.7]\,(60) & $0.039$ [+3.3,+21.7]\,(60) & $<.001$* [+11.7,+35.0]\,(60) & $<.001$* [+26.7,+50.0]\,(60) \\
+Mistral 12B & $0.013$ [+5.0,+28.3]\,(60) & $<.001$* [+13.3,+40.0]\,(60) & $0.754$ [-6.7,+13.3]\,(60) & $0.021$ [+5.0,+28.3]\,(60) & $0.002$* [+10.0,+31.7]\,(60) & $0.057$ [+1.7,+25.0]\,(60) & $0.021$ [+5.9,+33.3]\,(51) \\
+\bottomrule\end{tabular}}\end{table}
 
 \begin{table}[h]\centering\scriptsize
 \caption{Profile-injected TruthfulQA. Cells: $p$\,[CI\textsubscript{low}, CI\textsubscript{high}]. Per-cell paired observations: 36 (12 held-out examples $\times$ 3 configuration seeds).}
