@@ -60,6 +60,33 @@ user context, invented, or correctly held but misused?* (context → 1, invented
 correctly held → next) → *Was the plan wrong or the execution of a right plan wrong?*
 (plan → 4, execution → 3).
 
+### Boundary notes for recurring distinctions
+
+**Category 2 versus category 4 — unsupported information versus reasoning/planning.**
+
+- Use category 2 when the first causal failure is an assertion, assumption, or action based on a fact that appears nowhere in the task, user profile/context, or observations available at that point. This includes invented product details, fabricated tool results, and imagined constraints.
+- Use category 4 when the information used is grounded in the available task/profile/observations, but the agent draws an invalid inference, omits a stated requirement, drifts from the requested goal, or stops before completing the task.
+- A later incomplete or incorrect output does not move a category-2 case to category 4 when the unsupported fact is the first causal fault. Conversely, a concrete-looking output does not become category 2 merely because it is poorly planned; category 2 requires that the unsupported fact itself entered the trajectory.
+
+**Category 2 versus category 1 — invented information versus misused context.**
+
+- Treat information explicitly present in the task, user profile/history, local constraints, or earlier observations as available context. Ignoring, misreading, contradicting, or dropping that information is category 1.
+- Treat information absent from all of those sources as invented or hallucinated information under category 2, even when the invented statement concerns a user preference or a plausible product/tool result.
+- If the agent combines a real context fact with an unsupported added detail, identify which part is the first causal fault: the ignored/misread context points to category 1; the unsupported added fact points to category 2.
+
+**Category 3 versus category 4 — execution/tool misuse versus plan/reasoning.**
+
+- Use category 3 when the intended plan is otherwise appropriate and the execution fails: the wrong tool, malformed arguments, wrong item/identifier, or dependency-breaking order is used despite a sound plan.
+- Use category 4 when the plan or reasoning itself is defective: a required constraint or subgoal is omitted, the goal changes, an invalid inference is made, or the agent declares/stops before completion.
+- If the tool call or result introduces an unsupported fact, apply category 2; do not relabel it as category 3 solely because a tool appears in the step.
+
+**Earliest-fault-step localization.**
+
+- Choose the first numbered step at which the causal error enters or is first acted on, not the final step where its consequences are visible.
+- For an ignored requirement, use the first step where the agent had the requirement available and made the relevant plan/action/output choice; downstream omissions are consequences.
+- For an unsupported fact, use the first step that asserts or acts on that fact. For a wrong tool/argument, use the first erroneous call or execution. For an invalid plan or premature stop, use the first planning/stop step that makes the failure inevitable.
+- If a fault lies between numbered steps, use the earliest numbered step where the warranted action could have been taken. If displayed step numbers are duplicated, missing, or otherwise non-unique, flag the item as malformed rather than guessing a numeric Q2 label; replace it from reserve under the preregistration.
+
 ---
 
 ## Worked examples
