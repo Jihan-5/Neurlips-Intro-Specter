@@ -1,0 +1,172 @@
+{
+  "status": "Pre-adjudication diagnostics; frozen exclusions stand",
+  "agreement": {
+    "effective_n": 85,
+    "eligible_n": 0,
+    "category_exact": 0.8588235294117647,
+    "category_exact_count": 73,
+    "kappa": 0.7451911066699974,
+    "alpha_nominal": 0.7465950268649256,
+    "q2_exact": 0.8705882352941177,
+    "q2_exact_count": 74,
+    "q2_within1": 0.9529411764705882,
+    "q2_within1_count": 81,
+    "disagreement_count": 14,
+    "adjudication_count": 12
+  },
+  "track_p": {
+    "track_p_complete": true,
+    "models": [
+      "llama-3.1-8b",
+      "mistral-nemo-12b"
+    ],
+    "rows": 1800,
+    "cells": 10,
+    "duplicates": 0,
+    "task_seed_coverage": "60 x 3; all cells identical",
+    "leak_and_task_id_checks": true,
+    "comparisons": {
+      "llama-3.1-8b": {
+        "direct": {
+          "pairs": 180,
+          "is_wins": 22,
+          "baseline_wins": 0,
+          "delta": 0.12222222222222222,
+          "ci95": [
+            0.07777777777777778,
+            0.17222222222222222
+          ],
+          "exact_p": 4.76837158203125e-07
+        },
+        "reflexion": {
+          "pairs": 180,
+          "is_wins": 4,
+          "baseline_wins": 9,
+          "delta": -0.027777777777777776,
+          "ci95": [
+            -0.06666666666666667,
+            0.011111111111111112
+          ],
+          "exact_p": 0.266845703125
+        },
+        "violation_reprompt": {
+          "pairs": 180,
+          "is_wins": 17,
+          "baseline_wins": 7,
+          "delta": 0.05555555555555555,
+          "ci95": [
+            0.005555555555555556,
+            0.1111111111111111
+          ],
+          "exact_p": 0.06391465663909912
+        },
+        "iter_vrp": {
+          "pairs": 180,
+          "is_wins": 13,
+          "baseline_wins": 7,
+          "delta": 0.03333333333333333,
+          "ci95": [
+            -0.011111111111111112,
+            0.08333333333333333
+          ],
+          "exact_p": 0.26317596435546875
+        }
+      },
+      "mistral-nemo-12b": {
+        "direct": {
+          "pairs": 180,
+          "is_wins": 7,
+          "baseline_wins": 0,
+          "delta": 0.03888888888888889,
+          "ci95": [
+            0.011111111111111112,
+            0.06666666666666667
+          ],
+          "exact_p": 0.015625
+        },
+        "reflexion": {
+          "pairs": 180,
+          "is_wins": 2,
+          "baseline_wins": 0,
+          "delta": 0.011111111111111112,
+          "ci95": [
+            0.0,
+            0.027777777777777776
+          ],
+          "exact_p": 0.5
+        },
+        "violation_reprompt": {
+          "pairs": 180,
+          "is_wins": 6,
+          "baseline_wins": 0,
+          "delta": 0.03333333333333333,
+          "ci95": [
+            0.011111111111111112,
+            0.06111111111111111
+          ],
+          "exact_p": 0.03125
+        },
+        "iter_vrp": {
+          "pairs": 180,
+          "is_wins": 6,
+          "baseline_wins": 0,
+          "delta": 0.03333333333333333,
+          "ci95": [
+            0.011111111111111112,
+            0.06111111111111111
+          ],
+          "exact_p": 0.03125
+        }
+      },
+      "pooled": {
+        "direct": {
+          "pairs": 360,
+          "is_wins": 29,
+          "baseline_wins": 0,
+          "delta": 0.08055555555555556,
+          "ci95": [
+            0.05277777777777778,
+            0.10833333333333334
+          ],
+          "exact_p": 3.725290298461914e-09
+        },
+        "reflexion": {
+          "pairs": 360,
+          "is_wins": 6,
+          "baseline_wins": 9,
+          "delta": -0.008333333333333333,
+          "ci95": [
+            -0.030555555555555555,
+            0.011111111111111112
+          ],
+          "exact_p": 0.60723876953125
+        },
+        "violation_reprompt": {
+          "pairs": 360,
+          "is_wins": 23,
+          "baseline_wins": 7,
+          "delta": 0.044444444444444446,
+          "ci95": [
+            0.016666666666666666,
+            0.075
+          ],
+          "exact_p": 0.005222879350185394
+        },
+        "iter_vrp": {
+          "pairs": 360,
+          "is_wins": 19,
+          "baseline_wins": 7,
+          "delta": 0.03333333333333333,
+          "ci95": [
+            0.005555555555555556,
+            0.06111111111111111
+          ],
+          "exact_p": 0.028959274291992188
+        }
+      }
+    }
+  },
+  "repilot_kappa": 0.8854961832061069,
+  "protected_files_unchanged": 58,
+  "tests_passed": 38
+}

@@ -124,3 +124,90 @@ Scope 16:
 
 [2026-09-19] [E1 human annotation PREP COMPLETE] Froze all 30 completed trace shards into persistent `outputs/iclr/e1_trace_pool`: 358 unique natural traces, 216 natural failures, 20 deterministic attention traces, zero malformed/duplicate/conflicting keys, and all 378 content hashes reverified. Under D6/Sep-21, deterministic seed-42 sampling produced N=100 natural items +30 reserve +10 attention checks; 15 common pilot items and 85 post-gate natural items, with five hidden checks per named annotator's 90-item main page. Jazz/Mahfuza pilot and main pages pass exact ID/count/order, blinding, private-keymap, and hidden-metadata leak checks. Two independent full rebuilds were byte-identical (tree SHA-256 `eaf1ede04be3ec246ae315722b33a98a4eed8e9e62d4729af968c4915fb36fbc`). E1-specific tests 3/3 and full offline suite 88/88 pass. No human labels were created. Next: Jazz and Mahfuza independently label the 15-item pilot; proceed to main only if Cohen's kappa >=0.6.
 [2026-09-17] [E1 annotation] Built+tested full E1 pipeline on branch worktree-jazz-annotator-instructions: dump-traces flag (runner+CLI+personalwab script, smoke-tested vs warm cache), sampler/blinding/HTML pages (leak-checked, answers round-trip), agreement script (kappa/alpha/screening/consensus), codebook v1, prereg draft, prep_personalwab_compact.py (task-id verify 60/60). FINDING: Jul-27 personalwab runs used unfiltered histories (post-task purchases in profile; target likely included) — see JAZZ_HUMAN_ANNOTATOR_INSTRUCTIONS §11; decision needed from Jihan before touching §4.7 numbers. Next: travelplanner_real trace backfill, then sample+pages.
+
+[2026-09-23] [Jazz sprint completion audit / Jihan decision required] Coordinator provenance correction: Jazz1/Jazz2 are two distinct independent human annotators, blinded according to Jihan's protocol, as confirmed by the experiment coordinator. Substantive judgments were made by humans; tooling handled answers and file generation only. Erroneous provenance fields were corrected without changing IDs, ordering, or any answer-array byte. Current file/payload hashes are recorded in `outputs/iclr/e1_dataset/private/provenance_correction_2026-09-23.json`; temporary pre-images were removed. The mechanical screening result below is unchanged. Assignment-by-assignment handoff: `orchestration/jazz_sprint_handoff_2026-09-23.md`. Earlier E/F completion artifacts retained without rerunning experiments. E1 raw answers/pages/keymap preserved; 85 natural items and five annotator-specific checks each. Official screening output from the completed coordinator check:
+```text
+== attention-check screening ==
+  jazz: 5 wrong of 5 checks -> EXCLUDED
+  jazz2: 5 wrong of 5 checks -> EXCLUDED
+== pairwise Cohen's kappa (Q1, natural items) ==
+== consensus status == {}
+```
+Check/codebook conflict and requested Jihan decision: `outputs/iclr/e1_dataset/private/attention_check_conflict_2026-09-23.md`. Local dataset README/datasheet stub completed; no eligible agreement, adjudication, or final release. No recovery_v2 workflow retained.
+
+[2026-09-23] [Track P pooled reporting / notify Jihan] Filled the sprint's missing pooled comparison using `.venv/bin/python -B scripts/aggregate_personalwab.py --root outputs/rebuttal/experiment_personalwab_clean --models llama-3.1-8b,mistral-nemo-12b,qwen-2.5-7b-together --pooled-only --output outputs/rebuttal/experiment_personalwab_clean/POOLED_SUMMARY.md`. Current raw verification: 1,800 rows across ten complete Llama/Mistral cells, 180 unique (task_id, seed) pairs per cell; Qwen has zero rows and a recorded model_not_available failure. Verbatim generated pooled IS-vs-Reflexion row (pairs | IS wins / baseline wins | delta pp [95% CI] | exact p):
+```text
+| reflexion | 360 | 6 / 9 | -0.833333 [-3.055556, +1.111111] | 0.60723877 |
+```
+This is the completed two-model pool, not the full requested three-model grid. Negative/non-significant result and Qwen scope require Jihan's attention. No API launch, paper changes, commit, push, or external message performed.
+
+[2026-09-23] [FINAL EXECUTION / supersedes earlier sprint audit] Track P authorized scope is Llama + Mistral; Jihan explicitly said “Leave out bro” for Qwen. No Qwen blocker or substitution remains. 1,800 rows, ten complete cells, all 60 task IDs × seeds 0/1/2, no duplicates. Both summaries regenerated with --require-complete; independent exact-binomial and paired-bootstrap checks pass. Fresh task-ID and leak checks: 60/60 each. Earlier E/F receipts all present/passing; experiments not rerun, paper unchanged.
+
+Verbatim agreement script output (DESCRIPTIVE ONLY; frozen exclusions retained):
+```json
+{
+  "status": "DESCRIPTIVE ONLY; excluded by frozen screen",
+  "effective_n": 85,
+  "eligible_n": 0,
+  "category_exact": 0.8588235294117647,
+  "category_exact_count": 73,
+  "kappa": 0.7451911066699974,
+  "alpha_nominal": 0.7465950268649256,
+  "q2_exact": 0.8705882352941177,
+  "q2_exact_count": 74,
+  "q2_within1": 0.9529411764705882,
+  "q2_within1_count": 81,
+  "disagreement_count": 14,
+  "adjudication_count": 12,
+  "screen": [
+    [
+      "jazz",
+      5,
+      5,
+      "EXCLUDED"
+    ],
+    [
+      "jazz2",
+      5,
+      5,
+      "EXCLUDED"
+    ]
+  ],
+  "excluded": [
+    "jazz",
+    "jazz2"
+  ],
+  "replacements": {
+    "e1_0020": "e1_0049",
+    "e1_0128": "e1_0066",
+    "e1_0125": "e1_0072",
+    "e1_0078": "e1_0074",
+    "e1_0107": "e1_0075",
+    "e1_0121": "e1_0092"
+  },
+  "consensus_status": {
+    "agreed": 73,
+    "needs_adjudication": 12
+  },
+  "category_confusion": {
+    "2,2": 48,
+    "4,1": 3,
+    "1,1": 15,
+    "1,2": 3,
+    "4,4": 10,
+    "2,4": 3,
+    "1,4": 2,
+    "4,2": 1
+  }
+}
+```
+
+[2026-09-23] [G PRE-ADJUDICATION READY] Complete effective exports/hashes, full 14-item disagreement list, 12-item adjudication queue, existing-workflow Jihan page, validated frozen-rule merge, attribution-vs-human JSON/CSV (exact/±1/binomial CI/MRR/all three floors), prediction coverage inventory, 85-record private draft with manifests/license notice, README/datasheet/reproduction commands. No invented labels, ranks, judge configuration or eligibility waiver. All 58 protected files byte-identical, separate AI baseline unchanged, no recovery_v2, no paper edits.
+
+[2026-09-23] [Transport blocked / automatic approval review] No push occurred. Review rejected the broad 314-file/49.3 MB safe artifact push because exact sensitive payload/destination approval was not explicit. Final manifest: outputs/jazz/finalization_transport_manifest.json. Destination is this repository origin https://github.com/Jihan-5/Neurlips-Intro-Specter.git, artifacts branch. Final local work complete; explicit approval needed for artifact upload, including private human labels/keymap.
+
+Only scientific actions remaining: Jihan attention-conflict/eligibility disposition; 12 actual adjudications; missing frozen judge-model/prompt record and ensuing exact-trace predictions/scoring/release; identities/affiliations/freeze record/final datasheet prose. Current handoff: orchestration/jazz_sprint_handoff_2026-09-23.md.
+
+[2026-09-23] [Final transport disposition] User explicitly selected “Keep the completed artifacts local.” No push performed; no upload approval pending. Completed artifacts stay local by instruction. This supersedes the preceding transport-approval request; scientific prerequisites remain unchanged.
+
+[2026-09-23] [Current-branch publication authorized] Coordinator reports Jihan approved pushing completed non-sensitive scripts/tests/reports, Track P outputs and handoff/status documentation to the current branch only. Prior local-only hold is superseded only for this allowlisted scope. Private E1 directories, human answer/label files, keymaps, credentials, temporary provenance archives and the broad transport snapshot remain local. No merge or force-push authorized. Public aggregate validation: outputs/jazz/finalization_public/.

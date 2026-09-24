@@ -29,13 +29,18 @@ def safe_relative(path):
     return p
 
 
-def pull(tip):
+def pull(tip, includes=()):
     entries=git('ls-tree','-r','-z',tip,'--','outputs/').split(b'\0')
     copied=different=0
     for entry in entries:
         if not entry: continue
         meta,name=entry.split(b'\t',1); mode,kind,blob=meta.split()
         p=Path(os.fsdecode(name))
+        if includes and not any(p == prefix or p.is_relative_to(prefix) for prefix in includes):
+            continue
+        # The invalid E1 recovery_v2 workflow must never be restored by transport.
+        if p.is_relative_to('outputs/iclr/e1_dataset') and 'recovery_v2' in p.parts:
+            continue
         if p.is_relative_to('outputs/rebuttal/profile_bootstrap'): continue
         safe_relative(str(p))
         if mode not in (b'100644',b'100755'): raise ValueError('Non-regular artifact')
@@ -61,7 +66,8 @@ def main():
     args=ap.parse_args()
     git('fetch','origin','artifacts')
     tip=git('rev-parse','FETCH_HEAD').decode().strip()
-    pull(tip)  # Always pull before push; never touches an existing local file.
+    includes = [safe_relative(name) for name in args.include]
+    pull(tip, includes)  # Scoped pull before push; existing local files are preserved.
     if args.action=='pull': return
     if not args.include: raise SystemExit('push requires --include for completed outputs only')
     paths=[]

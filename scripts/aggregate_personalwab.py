@@ -43,7 +43,7 @@ PRICES = {
 }
 
 
-def load_rows(model: str, arm: str, root: Path = ROOT) -> dict[tuple[str, int], dict]:
+def load_rows(model: str, arm: str, root: Path = ROOT, strict: bool = False) -> dict[tuple[str, int], dict]:
     """Last-write-wins dedup on (task_id, seed), matching the runner's resume key."""
     path = root / model / f"{arm}.jsonl"
     rows: dict[tuple[str, int], dict] = {}
@@ -54,7 +54,10 @@ def load_rows(model: str, arm: str, root: Path = ROOT) -> dict[tuple[str, int], 
         if not line:
             continue
         r = json.loads(line)
-        rows[(r["task_id"], r["seed"])] = r
+        key = (r["task_id"], r["seed"])
+        if strict and (key in rows or r.get("arm") != arm or type(r.get("success")) is not bool):
+            raise ValueError(f"Duplicate or invalid row in {path}: {key}")
+        rows[key] = r
     return rows
 
 
@@ -66,10 +69,30 @@ def main() -> None:
                         help="comma-separated model directory names")
     parser.add_argument("--output", type=Path, default=None,
                         help="summary path (default: ROOT/SUMMARY.md)")
+    parser.add_argument("--pooled-only", action="store_true",
+                        help="pool pairs matched within model without regenerating per-model tables")
+    parser.add_argument("--require-complete", action="store_true",
+                        help="require 60 tasks x seeds 0,1,2 in every cell, identical keys, no duplicates")
     args = parser.parse_args()
     root = args.root
     models = [m.strip() for m in args.models.split(",") if m.strip()]
     out = args.output or root / "SUMMARY.md"
+
+    if not models or len(models) != len(set(models)):
+        raise ValueError("Models must be nonempty and unique")
+    if args.require_complete:
+        reference = None
+        for model in models:
+            for arm in ARMS:
+                rows = load_rows(model, arm, root, strict=True)
+                keys = set(rows)
+                tasks = {t for t, _ in keys}
+                expected = {(t, seed) for t in tasks for seed in (0, 1, 2)}
+                if len(tasks) != 60 or keys != expected:
+                    raise ValueError(f"Incomplete task/seed coverage: {model}/{arm}")
+                if reference is not None and keys != reference:
+                    raise ValueError(f"Different task/seed sets: {model}/{arm}")
+                reference = keys
 
     lines: list[str] = []
     lines.append("# PersonalWAB (WWW'25) single-turn recommendation -- rebuttal experiment\n")
@@ -81,7 +104,42 @@ def main() -> None:
         "own containment criterion). All counts below are read from the JSONL "
         "files on disk.\n")
 
-    for model in models:
+    if args.pooled_only:
+        lines.append("\n## Pooled requested models\n")
+        lines.append("Requested models: " + ", ".join(models) + ".\n")
+        pooled = {arm: {} for arm in ARMS}
+        lines.append("| model | " + " | ".join(ARMS) + " |")
+        lines.append("|---|" + "---|" * len(ARMS))
+        for model in models:
+            per_arm = {arm: load_rows(model, arm, root) for arm in ARMS}
+            lines.append("| " + model + " | " + " | ".join(str(len(per_arm[arm])) for arm in ARMS) + " |")
+            for arm, rows in per_arm.items():
+                pooled[arm].update({(model, *key): row for key, row in rows.items()})
+        lines.append("\nZero-row cells contribute no observations; this is not a complete requested grid if any cell is short.\n")
+        lines.append("| arm | rows | successes | success rate |")
+        lines.append("|---|---|---|---|")
+        for arm, rows in pooled.items():
+            n = len(rows)
+            successes = sum(bool(row["success"]) for row in rows.values())
+            rate = f"{successes / n:.6f}" if n else "--"
+            lines.append(f"| {arm} | {n} | {successes} | {rate} |")
+        lines.append("\nPairs are matched within model on (task_id, seed), then pooled; delta = IS − baseline.\n")
+        lines.append("| baseline | pairs | IS wins / baseline wins | delta (pp) [95% paired-bootstrap CI] | exact McNemar p |")
+        lines.append("|---|---|---|---|---|")
+        for arm in BASELINE_ARMS:
+            keys = sorted(set(pooled["intro_specter"]) & set(pooled[arm]))
+            if not keys:
+                lines.append(f"| {arm} | 0 | -- | -- | -- |")
+                continue
+            baseline = [bool(pooled[arm][key]["success"]) for key in keys]
+            method = [bool(pooled["intro_specter"][key]["success"]) for key in keys]
+            wins = sum(y and not x for x, y in zip(baseline, method))
+            losses = sum(x and not y for x, y in zip(baseline, method))
+            test = mcnemar(baseline, method)
+            ci = paired_bootstrap_ci(list(map(float, baseline)), list(map(float, method)))
+            lines.append(f"| {arm} | {len(keys)} | {wins} / {losses} | {ci.point * 100:+.6f} [{ci.low * 100:+.6f}, {ci.high * 100:+.6f}] | {test.pvalue:.8g} |")
+
+    for model in ([] if args.pooled_only else models):
         lines.append(f"\n## {model}\n")
         per_arm = {arm: load_rows(model, arm, root) for arm in ARMS}
 
@@ -124,8 +182,8 @@ def main() -> None:
                 ci = paired_bootstrap_ci([float(x) for x in a], [float(y) for y in b])
                 lines.append(
                     f"| {arm} | {len(keys)} | {is_wins} / {bl_wins} "
-                    f"| {ci.point * 100:+.1f} [{ci.low * 100:+.1f}, {ci.high * 100:+.1f}] "
-                    f"| {test.pvalue:.4f} |")
+                    f"| {ci.point * 100:+.6f} [{ci.low * 100:+.6f}, {ci.high * 100:+.6f}] "
+                    f"| {test.pvalue:.8g} |")
 
     out.write_text("\n".join(lines) + "\n")
     print(f"wrote {out}")

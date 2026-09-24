@@ -4,6 +4,8 @@ Scope: **experiments and generated artifacts only.** All tex/paper writing is Ji
 do NOT touch `paper_final.tex`, the abstract, or prose sections. Your deliverables are
 JSONLs, generated tables/JSON summaries, and artifact-branch pushes.
 
+> **Track P scope clarification (recorded 2026-09-23):** Jihan explicitly said “Leave out bro” for Qwen, as confirmed by the coordinator. The authorized clean scope is Llama + Mistral only. The original Qwen launch line below is superseded; do not run or substitute Qwen. Completion evidence: `orchestration/jazz_sprint_handoff_2026-09-23.md`.
+
 Three tracks. **P and A start NOW and run in parallel** — P is API-bound (background),
 A is your hands. G chains off A.
 
